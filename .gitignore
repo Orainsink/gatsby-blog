@@ -71,3 +71,4 @@ yarn-error.log
 .vscode/
 .npmrc
 .cache/
+content/blog/
