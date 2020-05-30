@@ -1,7 +1,7 @@
 {
-  "name": "Blog - Oran XD",
+  "name": "gatsby-blog",
   "private": true,
-  "description": "Private Blog",
+  "description": "my blog",
   "version": "0.1.0",
   "author": "Orainsink <ywt1250066597@gmail.com>",
   "dependencies": {
@@ -35,7 +35,7 @@
   "devDependencies": {
     "prettier": "2.0.5"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/Orainsink/gatsby-blog",
   "keywords": [
     "gatsby"
   ],
@@ -43,7 +43,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/Orainsink/gatsby-blog.git"
   },
   "scripts": {
     "build": "gatsby build",
