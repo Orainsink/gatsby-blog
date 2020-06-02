@@ -1,15 +1,15 @@
 import Typography from 'typography';
 import noriega from 'typography-theme-noriega';
 
-// noriega.overrideThemeStyles = () => {
-//   return {
-//     'a.gatsby-resp-image-link': {
-//       boxShadow: `none`,
-//     },
-//   };
-// };
+noriega.overrideThemeStyles = () => {
+  return {
+    'a.gatsby-resp-image-link': {
+      boxShadow: `none`,
+    },
+  };
+};
 
-// delete noriega.googleFonts;
+delete noriega.googleFonts;
 
 const typography = new Typography(noriega);
 
