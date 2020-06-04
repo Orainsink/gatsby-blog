@@ -7,5 +7,6 @@
     "moduleResolution": "node",
     "allowJs": true,
     "outDir": "./public"
-  }
+  },
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }

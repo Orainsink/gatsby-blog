@@ -1,17 +1,37 @@
 import * as React from 'react';
-import { Canvas, useFrame } from 'react-three-fiber';
+import * as THREE from 'three';
+import { Canvas, useFrame, useLoader } from 'react-three-fiber';
 import styles from '../styles/Dynamic.module.less';
+// import yoyo from '../utils/yoyoUtil';
+import rock from '../../content/assets/rock.json';
 
 interface Props {}
 const Dynamic: React.FC<Props> = () => {
+  React.useEffect(() => {
+    THREE.Cache.enabled = true;
+  }, []);
+  const rockGeo = useLoader(THREE.ObjectLoader, rock);
+
   return (
-    <Canvas className={styles.wrapper}>
-      <pointLight position={[10, 10, 10]} />
-      <mesh>
-        <sphereBufferGeometry attach="geometry" />
-        <meshStandardMaterial attach="material" color="hotpink" />
-      </mesh>
-    </Canvas>
+    <div className={styles.wrapper}>
+      <Canvas>
+        <group>
+          <pointLight position={[10, 10, 10]} />
+          <mesh position={[0, 11, -40]}>
+            <meshBasicMaterial attach="material" color="#0a0a0a" fog={false} />
+            <sphereGeometry attach="geometry" args={[0, 11, -40]} />
+          </mesh>
+          <mesh geometry={rockGeo} position={[-70, 0, -30]}>
+            <meshLambertMaterial
+              attach="material"
+              color="#0a0a0a"
+              side={THREE.DoubleSide}
+              flatShading
+            />
+          </mesh>
+        </group>
+      </Canvas>
+    </div>
   );
 };
 
