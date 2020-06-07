@@ -36,10 +36,11 @@ const Modal = () => {
   const stripsGroup = useRef(null);
   const lightRef = useRef(null);
 
-  // 初始化相机,暂时关闭迷雾
+  // 初始化相机
   useEffect(() => {
     setDefaultCamera(camera.current);
     scene.fog = new THREE.FogExp2('#0a0a0a', 0.0025);
+
     return () => {
       setDefaultCamera(defaultCamera);
     };
