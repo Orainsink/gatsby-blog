@@ -1,5 +1,6 @@
 // Gatsby supports TypeScript natively!
 import * as React from 'react';
+import { Suspense } from 'react';
 import { PageProps, Link, graphql } from 'gatsby';
 
 import Bio from '../components/bio';
@@ -38,6 +39,7 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
   return (
     <>
       <Dynamic />
+
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" />
         <Bio />
