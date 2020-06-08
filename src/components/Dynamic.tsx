@@ -31,6 +31,7 @@ const Modal = () => {
   const stripsGroup = useRef(null);
   const lightRef = useRef(null);
   const [words, setWords] = useState(null);
+  const [active, setActive] = useState(false);
 
   // 初始化相机
   useEffect(() => {
@@ -148,15 +149,21 @@ const Modal = () => {
       {/* moon light */}
       <pointLight
         attach="light"
-        args={['#ffffff', 15, 70, 2]}
+        args={active ? ['#ffffff', 20, 80, 2] : ['#ffffff', 15, 70, 2]}
         position={[0, 20, -40]}
         ref={lightRef}
+      />
+      <mesh
+        attach="mesh"
+        onPointerOver={(e) => setActive(true)}
+        onPointerOut={(e) => setActive(false)}
+        onClick={(e) => {}}
+        scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
+        position={[0, 20, -40]}
       >
-        <mesh attach="mesh" position={[0, 0, 0]}>
-          <meshBasicMaterial attach="material" color="#ffffff" />
-          <sphereGeometry attach="geometry" args={[5, 20, 20]} />
-        </mesh>
-      </pointLight>
+        <meshBasicMaterial attach="material" color="#ffffff" />
+        <sphereGeometry attach="geometry" args={[5, 20, 20]} />
+      </mesh>
       {/* stars */}
       <group ref={stripsGroup}>
         <points attach="points">
@@ -185,7 +192,7 @@ const Modal = () => {
         />
       </mesh>
       {words ? <Text words={words} position={[0, -5, 0]} /> : null}
-      <Text words={['少熬夜,多运动']} position={[0, -20, -20]} />
+      <Text words={['少熬夜,多运动']} position={[0, -18, -20]} />
     </group>
   );
 };
