@@ -21,6 +21,7 @@ import { yoyo } from '../utils/utils';
 import Text from './Textpanel';
 import { MainContext } from '../context/MainContext';
 import classnames from 'classnames';
+import { Scene } from 'three';
 
 interface Props {}
 
@@ -261,6 +262,12 @@ const Dynamic: React.FC<Props> = () => {
   const _handleClickMoon = useCallback(() => {
     dispatch({ type: 'SCENE', payload: false });
   }, [dispatch]);
+
+  useEffect(() => {
+    if (sessionStorage.getItem('skipscene')) {
+      dispatch({ type: 'SCENE', payload: false });
+    }
+  }, []);
 
   return (
     <div

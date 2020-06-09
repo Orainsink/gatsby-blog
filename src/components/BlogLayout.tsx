@@ -1,18 +1,13 @@
 import * as React from 'react';
-import { useContext, useEffect } from 'react';
 import { Link } from 'gatsby';
-import classnames from 'classnames';
-import styles from '../styles/layout.module.less';
-import { MainContext } from '../context/MainContext';
 
 import { rhythm, scale } from '../utils/typography';
-interface Props {
+interface IProps {
   location: any;
   title: string;
   children?: any;
 }
-const Layout = ({ location, title, children }: Props) => {
-  const [state, dispatch] = useContext(MainContext);
+const Layout = ({ location, title, children }: IProps) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   let header;
 
@@ -57,14 +52,6 @@ const Layout = ({ location, title, children }: Props) => {
     );
   }
 
-  useEffect(() => {
-    const body = document.getElementsByTagName('body')[0];
-    if (state.scene) {
-      body.style.overflowY = 'hidden';
-    } else {
-      body.style.overflowY = 'scroll';
-    }
-  }, [state.scene]);
   return (
     <div
       style={{
@@ -73,14 +60,6 @@ const Layout = ({ location, title, children }: Props) => {
         maxWidth: rhythm(24),
         padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
       }}
-      className={classnames(
-        styles.wrapper,
-        !state.scene
-          ? styles.disActive
-          : state.trigger
-          ? styles.trigger
-          : styles.active
-      )}
     >
       <header>{header}</header>
       <main>{children}</main>
