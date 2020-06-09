@@ -1,3 +1,6 @@
+/**
+ * 博客页面的加载页面
+ */
 import * as React from 'react';
 import {
   Suspense,
@@ -65,7 +68,7 @@ const Modal = () => {
       });
   }, []);
 
-  // 生成场景方块, 因为不知道merge怎么用react-three-fiber写,所以这里直接控制three
+  // 生成场景方块, 因为不知道merge()怎么用react-three-fiber写,所以这里直接控制three
   useEffect(() => {
     const stripsGeometry = new THREE.Geometry();
     const stripGeometry = new THREE.PlaneGeometry(5, 2);
@@ -106,7 +109,7 @@ const Modal = () => {
       ),
     [yoyo, lightRef.current]
   );
-
+  // 
   const moonTween = useMemo(() => {
     if (moonRef.current)
       return gsap.to(moonRef.current.scale, {
@@ -117,7 +120,6 @@ const Modal = () => {
         paused: true,
       });
   }, [moonRef.current]);
-
   const lightTween = useMemo(() => {
     if (lightRef.current)
       return gsap.to(lightRef.current, {
@@ -167,7 +169,7 @@ const Modal = () => {
     (length) => [...new Array(length).join(',').split(',')],
     []
   );
-
+  // 镜头随鼠标左右晃动
   const handlePointerMove = (e) => {
     mouseX = (e.clientX / window.innerWidth) * 2 - 1;
   };
@@ -189,7 +191,6 @@ const Modal = () => {
       <pointLight
         attach="light"
         args={['#ffffff', 15, 70, 2]}
-        // args={active ? ['#ffffff', 20, 80, 2] : ['#ffffff', 15, 70, 2]}
         position={[0, 20, -40]}
         ref={lightRef}
       />
@@ -199,7 +200,6 @@ const Modal = () => {
         onPointerOut={(e) => setActive(false)}
         onClick={(e) => {}}
         ref={moonRef}
-        // scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
         position={[0, 20, -40]}
       >
         <meshBasicMaterial attach="material" color="#ffffff" />
