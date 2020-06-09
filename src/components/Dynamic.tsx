@@ -30,6 +30,7 @@ const Modal = () => {
   const camera = useRef(null);
   const stripsGroup = useRef(null);
   const lightRef = useRef(null);
+  const moonRef = useRef(null);
   const [words, setWords] = useState(null);
   const [active, setActive] = useState(false);
 
@@ -86,7 +87,7 @@ const Modal = () => {
   }, []);
 
   // 月亮上下移动的动画实例
-  const tween = useMemo(
+    const tween = useMemo(
     () =>
       gsap.to(
         { x: -2, z: -45 },
@@ -95,7 +96,7 @@ const Modal = () => {
           x: 2,
           z: -35,
           paused: true,
-          onUpdate: function () {
+          onUpdate: function(){
             if (lightRef.current)
               lightRef.current.position.z = this._targets[0].z;
           },
@@ -106,6 +107,27 @@ const Modal = () => {
     [yoyo, lightRef.current]
   );
 
+  const moonTween = useMemo(() => {
+    if (moonRef.current)
+      return gsap.to(moonRef.current.scale, {
+        duration: 0.5,
+        x: 1.5,
+        y: 1.5,
+        z: 1.5,
+        paused: true,
+      });
+  }, [moonRef.current]);
+
+  const lightTween = useMemo(() => {
+    if (lightRef.current)
+      return gsap.to(lightRef.current, {
+        duration: 0.5,
+        intensity: 20,
+        distance: 80,
+        paused: true,
+      });
+  }, [lightRef.current]);
+
   // 绑定及卸载动画
   useEffect(() => {
     tween.resume();
@@ -113,6 +135,23 @@ const Modal = () => {
       tween.kill();
     };
   }, []);
+  useEffect(() => {
+    if (active) {
+      moonTween.play();
+      lightTween.play();
+    } else {
+      if (moonTween) {
+        moonTween.reverse();
+        lightTween.reverse();
+      }
+    }
+    if(moonTween){
+      return () => {
+        moonTween.kill();
+        lightTween.kill();
+      };
+    }
+  }, [active]);
 
   // 渲染循环, 控制镜头偏移, 月亮偏移
   useFrame(({ gl, scene, camera }) => {
@@ -149,7 +188,8 @@ const Modal = () => {
       {/* moon light */}
       <pointLight
         attach="light"
-        args={active ? ['#ffffff', 20, 80, 2] : ['#ffffff', 15, 70, 2]}
+        args={['#ffffff', 15, 70, 2]}
+        // args={active ? ['#ffffff', 20, 80, 2] : ['#ffffff', 15, 70, 2]}
         position={[0, 20, -40]}
         ref={lightRef}
       />
@@ -158,7 +198,8 @@ const Modal = () => {
         onPointerOver={(e) => setActive(true)}
         onPointerOut={(e) => setActive(false)}
         onClick={(e) => {}}
-        scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
+        ref={moonRef}
+        // scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
         position={[0, 20, -40]}
       >
         <meshBasicMaterial attach="material" color="#ffffff" />
