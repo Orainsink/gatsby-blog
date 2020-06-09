@@ -8,5 +8,5 @@
     "allowJs": true,
     "outDir": "./public"
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./global.d.ts"]
 }

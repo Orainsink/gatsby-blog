@@ -1,0 +1,47 @@
+html {
+  overflow-y: hidden;
+}
+body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:vertical {
+  height: 5px;
+  background-color: rgba(125, 125, 125, 0.7);
+  -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:horizontal {
+  width: 5px;
+  background-color: rgba(125, 125, 125, 0.7);
+  -webkit-border-radius: 6px;
+}
+
+.wrapper {
+  position: absolute;
+  top: 100%;
+  transform: translateY(0);
+  transition: transform 0.5s ease-out;
+  left: 0;
+  right: 0;
+}
+.active {
+  transform: translateY(0);
+}
+.disActive {
+  transform: translateY(-100vh);
+}
+.trigger {
+  transform: translateY(-10vh);
+}

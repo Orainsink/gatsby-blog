@@ -1,15 +1,23 @@
 import * as React from 'react';
 
-const MainContext = React.createContext(null);
+export const MainContext = React.createContext(null);
 
 const initState = {
-  scene: false,
+  scene: true,
+  trigger: false,
+  sliding: false,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'scene': {
+    case 'SCENE': {
       return { ...state, scene: action.payload };
+    }
+    case 'TRIGGER': {
+      return { ...state, trigger: action.payload };
+    }
+    case 'SLIDING': {
+      return { ...state, sliding: action.payload };
     }
   }
 };

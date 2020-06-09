@@ -1,13 +1,14 @@
 // Gatsby supports TypeScript natively!
 import * as React from 'react';
-import { Suspense } from 'react';
 import { PageProps, Link, graphql } from 'gatsby';
 
 import Bio from '../components/bio';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Dynamic from '../components/Dynamic';
+import Trigger from '../components/Trigger';
 import { rhythm } from '../utils/typography';
+import MainProvider from '../context/MainContext';
 
 type Data = {
   site: {
@@ -38,38 +39,40 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
 
   return (
     <>
-      <Dynamic />
-
-      <Layout location={location} title={siteTitle}>
-        <SEO title="All posts" />
-        <Bio />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug;
-          return (
-            <article key={node.fields.slug}>
-              <header>
-                <h3
-                  style={{
-                    marginBottom: rhythm(1 / 4),
-                  }}
-                >
-                  <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                    {title}
-                  </Link>
-                </h3>
-                <small>{node.frontmatter.date}</small>
-              </header>
-              <section>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: node.frontmatter.description || node.excerpt,
-                  }}
-                />
-              </section>
-            </article>
-          );
-        })}
-      </Layout>
+      <MainProvider>
+        <Dynamic />
+        <Trigger />
+        <Layout location={location} title={siteTitle}>
+          <SEO title="All posts" />
+          <Bio />
+          {posts.map(({ node }) => {
+            const title = node.frontmatter.title || node.fields.slug;
+            return (
+              <article key={node.fields.slug}>
+                <header>
+                  <h3
+                    style={{
+                      marginBottom: rhythm(1 / 4),
+                    }}
+                  >
+                    <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                      {title}
+                    </Link>
+                  </h3>
+                  <small>{node.frontmatter.date}</small>
+                </header>
+                <section>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: node.frontmatter.description || node.excerpt,
+                    }}
+                  />
+                </section>
+              </article>
+            );
+          })}
+        </Layout>
+      </MainProvider>
     </>
   );
 };

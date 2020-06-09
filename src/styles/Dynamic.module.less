@@ -1,12 +1,3 @@
-:global(body) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-}
-
 .wrapper {
   position: absolute;
   z-index: 10;
@@ -14,4 +5,15 @@
   height: 100%;
   user-select: none;
   background: #0a0a0a;
+  transform: translateY(0);
+  transition: transform 0.5s ease-out;
+}
+.active {
+  transform: translateY(0);
+}
+.disActive {
+  transform: translateY(-100vh);
+}
+.trigger {
+  transform: translateY(-10vh);
 }

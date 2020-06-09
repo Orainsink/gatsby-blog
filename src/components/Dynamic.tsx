@@ -9,6 +9,7 @@ import {
   useMemo,
   useCallback,
   useState,
+  useContext,
 } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
@@ -18,6 +19,8 @@ import random from '../utils/random';
 import gsap from 'gsap';
 import { yoyo } from '../utils/utils';
 import Text from './Textpanel';
+import { MainContext } from '../context/MainContext';
+import classnames from 'classnames';
 
 interface Props {}
 
@@ -27,7 +30,13 @@ const url = 'https://foolishrobot.oss-cn-beijing.aliyuncs.com/rock.gltf';
 const hfUrl =
   'https://free-api.heweather.net/s6/weather/now?&location=auto_ip&key=8b283eca0bbd4063b9184f872adc1360';
 
-const Modal = () => {
+interface IProps {
+  isScene: boolean;
+  _handleClickMoon: () => void;
+}
+
+const Modal = (props: IProps) => {
+  const { isScene, _handleClickMoon } = props;
   const gltf = useLoader(GLTFLoader, url);
   const { camera: defaultCamera, setDefaultCamera, scene } = useThree();
   const camera = useRef(null);
@@ -90,7 +99,7 @@ const Modal = () => {
   }, []);
 
   // 月亮上下移动的动画实例
-    const tween = useMemo(
+  const tween = useMemo(
     () =>
       gsap.to(
         { x: -2, z: -45 },
@@ -99,7 +108,7 @@ const Modal = () => {
           x: 2,
           z: -35,
           paused: true,
-          onUpdate: function(){
+          onUpdate: function () {
             if (lightRef.current)
               lightRef.current.position.z = this._targets[0].z;
           },
@@ -109,7 +118,7 @@ const Modal = () => {
       ),
     [yoyo, lightRef.current]
   );
-  // 
+  //
   const moonTween = useMemo(() => {
     if (moonRef.current)
       return gsap.to(moonRef.current.scale, {
@@ -147,16 +156,20 @@ const Modal = () => {
         lightTween.reverse();
       }
     }
-    if(moonTween){
-      return () => {
+
+    return () => {
+      if (moonTween) {
         moonTween.kill();
         lightTween.kill();
-      };
-    }
+      }
+    };
   }, [active]);
 
   // 渲染循环, 控制镜头偏移, 月亮偏移
   useFrame(({ gl, scene, camera }) => {
+    // 隐藏时禁止所有动画
+    if (!isScene) return;
+
     camera.position.y += Math.cos(cameraShakeY) / 50;
     camera.position.x += (mouseX * 5 - camera.position.x) * 0.03;
     cameraShakeY += 0.02;
@@ -196,9 +209,11 @@ const Modal = () => {
       />
       <mesh
         attach="mesh"
-        onPointerOver={(e) => setActive(true)}
-        onPointerOut={(e) => setActive(false)}
-        onClick={(e) => {}}
+        onPointerOver={() => setActive(true)}
+        onPointerOut={() => setActive(false)}
+        onClick={() => {
+          _handleClickMoon();
+        }}
         ref={moonRef}
         position={[0, 20, -40]}
       >
@@ -224,9 +239,11 @@ const Modal = () => {
       </group>
       {/* floor */}
       <mesh position={[-70, -20, -30]} rotation={[0.3, 0, 0]}>
+        // @ts-ignore
         <bufferGeometry attach="geometry" {...gltf.__$[1].geometry} />
         <meshLambertMaterial
           attach="material"
+          // @ts-ignore
           {...gltf.__$[1].material}
           flatShading
           side={THREE.DoubleSide}
@@ -239,11 +256,26 @@ const Modal = () => {
 };
 
 const Dynamic: React.FC<Props> = () => {
+  const [state, dispatch] = useContext(MainContext);
+
+  const _handleClickMoon = useCallback(() => {
+    dispatch({ type: 'SCENE', payload: false });
+  }, [dispatch]);
+
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={classnames(
+        styles.wrapper,
+        !state.scene
+          ? styles.disActive
+          : state.trigger
+          ? styles.trigger
+          : styles.active
+      )}
+    >
       <Canvas>
         <Suspense fallback={null}>
-          <Modal />
+          <Modal isScene={state.scene} _handleClickMoon={_handleClickMoon} />
         </Suspense>
       </Canvas>
     </div>
