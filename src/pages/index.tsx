@@ -39,7 +39,7 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
   const posts = data.allMarkdownRemark.edges;
 
   const skipScene = useMemo(() => {
-    if (typeof window !== undefined) {
+    if (typeof window !== 'undefined') {
       return !!window.sessionStorage.getItem('skipscene');
     } else return false;
   }, []);
