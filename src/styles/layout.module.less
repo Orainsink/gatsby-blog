@@ -45,3 +45,22 @@ body {
 .trigger {
   transform: translateY(-10vh);
 }
+.skip {
+  top: 0 !important;
+  transition: unset !important;
+  transform: unset !important;
+}
+.anime {
+  animation-name: grayscaleIn;
+  animation-duration: 0.6s;
+  animation-delay: 0.3s;
+  transition: background-color 0.3s;
+}
+@keyframes grayscaleIn {
+  0% {
+    filter: grayscale(100%);
+  }
+  100% {
+    filter: grayscale(0%);
+  }
+}

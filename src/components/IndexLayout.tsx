@@ -7,11 +7,12 @@ import { MainContext } from '../context/MainContext';
 
 import { rhythm, scale } from '../utils/typography';
 interface IProps {
+  skip?: boolean;
   location: any;
   title: string;
   children?: any;
 }
-const Layout = ({ location, title, children }: IProps) => {
+const Layout = ({ location, title, children, skip = false }: IProps) => {
   const [state, dispatch] = useContext(MainContext);
   const rootPath = `${__PATH_PREFIX__}/`;
   let header;
@@ -61,12 +62,14 @@ const Layout = ({ location, title, children }: IProps) => {
     const body = document.getElementsByTagName('body')[0];
     if (state.scene) {
       body.style.overflowY = 'hidden';
-      sessionStorage.setItem('skipscene', '1');
     } else {
       body.style.overflowY = 'scroll';
-      // sessionStorage.removeItem('skipscene');
     }
   }, [state.scene]);
+
+  useEffect(() => {
+    if (skip) dispatch({ type: 'SCENE', payload: false });
+  }, [skip]);
 
   return (
     <div
@@ -82,7 +85,8 @@ const Layout = ({ location, title, children }: IProps) => {
           ? styles.disActive
           : state.trigger
           ? styles.trigger
-          : styles.active
+          : styles.active,
+        skip ? styles.skip : null
       )}
     >
       <header>{header}</header>

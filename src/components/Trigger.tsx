@@ -12,18 +12,25 @@ const Trigger = () => {
   const { scene } = state;
 
   return (
-    <div
-      className={classnames(styles.trigger, scene ? styles.bottom : styles.top)}
-      onMouseEnter={() => {
-        dispatch({ type: 'TRIGGER', payload: true });
-      }}
-      onMouseLeave={() => {
-        dispatch({ type: 'TRIGGER', payload: false });
-      }}
-      onClick={() => {
-        dispatch({ type: 'SCENE', payload: !scene });
-      }}
-    />
+    <>
+      {scene && (
+        <div
+          className={classnames(
+            styles.trigger,
+            scene ? styles.bottom : styles.top
+          )}
+          onMouseEnter={() => {
+            dispatch({ type: 'TRIGGER', payload: true });
+          }}
+          onMouseLeave={() => {
+            dispatch({ type: 'TRIGGER', payload: false });
+          }}
+          onClick={() => {
+            dispatch({ type: 'SCENE', payload: false });
+          }}
+        />
+      )}
+    </>
   );
 };
 

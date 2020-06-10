@@ -11,6 +11,9 @@ const initState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case 'SCENE': {
+      if (!action.payload) {
+        sessionStorage.setItem('skipscene', '1');
+      }
       return { ...state, scene: action.payload };
     }
     case 'TRIGGER': {

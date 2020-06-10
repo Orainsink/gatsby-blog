@@ -263,12 +263,6 @@ const Dynamic: React.FC<Props> = () => {
     dispatch({ type: 'SCENE', payload: false });
   }, [dispatch]);
 
-  useEffect(() => {
-    if (sessionStorage.getItem('skipscene')) {
-      dispatch({ type: 'SCENE', payload: false });
-    }
-  }, []);
-
   return (
     <div
       className={classnames(
