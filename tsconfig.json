@@ -6,7 +6,8 @@
     "jsx": "preserve",
     "moduleResolution": "node",
     "allowJs": true,
-    "outDir": "./public"
+    "outDir": "./public",
+    "allowSyntheticDefaultImports": true
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx", "./global.d.ts"]
 }

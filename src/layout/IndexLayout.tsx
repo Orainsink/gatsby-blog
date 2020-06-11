@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 import classnames from 'classnames';
 import styles from '../styles/layout.module.less';
 import { MainContext } from '../context/MainContext';
+import Footer from '../components/Footer';
 
 import { rhythm, scale } from '../utils/typography';
 interface IProps {
@@ -91,11 +92,7 @@ const Layout = ({ location, title, children, skip = false }: IProps) => {
     >
       <header>{header}</header>
       <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+      <Footer />
     </div>
   );
 };

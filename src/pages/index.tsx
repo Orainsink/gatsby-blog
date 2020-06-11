@@ -2,10 +2,10 @@
 import * as React from 'react';
 import { useMemo } from 'react';
 import { PageProps, Link, graphql } from 'gatsby';
-import '../styles/index.module.less'
+import '../styles/index.module.less';
 
 import Bio from '../components/bio';
-import Layout from '../components/IndexLayout';
+import Layout from '../layout/IndexLayout';
 import SEO from '../components/seo';
 import Dynamic from '../components/Dynamic';
 import Trigger from '../components/Trigger';

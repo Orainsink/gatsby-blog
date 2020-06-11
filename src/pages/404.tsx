@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 
-import Layout from '../components/BlogLayout';
+import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 
 interface Props {

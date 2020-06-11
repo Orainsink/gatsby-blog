@@ -11,7 +11,7 @@ module.exports = {
       github: `Orainsink`,
     },
   },
-  pathPrefix: "/gatsby-blog",
+  pathPrefix: '/gatsby-blog',
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
@@ -81,6 +81,12 @@ module.exports = {
     `gatsby-plugin-less`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-css-modules`,
+    {
+      resolve: 'gatsby-plugin-antd',
+      options: {
+        style: true,
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

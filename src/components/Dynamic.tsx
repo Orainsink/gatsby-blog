@@ -246,7 +246,7 @@ const Modal = (props: IProps) => {
       </group>
       {/* floor */}
       <mesh position={[-70, -20, -30]} rotation={[0.3, 0, 0]}>
-        // @ts-ignore
+        {/* @ts-ignore */}
         <bufferGeometry attach="geometry" {...gltf.__$[1].geometry} />
         <meshLambertMaterial
           attach="material"

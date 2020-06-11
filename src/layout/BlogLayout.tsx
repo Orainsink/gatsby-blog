@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
+import Footer from '../components/Footer';
 
 import { rhythm, scale } from '../utils/typography';
 interface IProps {
@@ -63,11 +64,7 @@ const Layout = ({ location, title, children }: IProps) => {
     >
       <header>{header}</header>
       <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+      <Footer />
     </div>
   );
 };
