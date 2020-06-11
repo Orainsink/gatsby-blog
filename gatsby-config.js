@@ -11,6 +11,7 @@ module.exports = {
       github: `Orainsink`,
     },
   },
+  pathPrefix: "/gatsby-blog",
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,

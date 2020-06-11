@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { useMemo } from 'react';
 import { PageProps, Link, graphql } from 'gatsby';
+import '../styles/index.module.less'
 
 import Bio from '../components/bio';
 import Layout from '../components/IndexLayout';
