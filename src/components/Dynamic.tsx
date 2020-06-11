@@ -27,17 +27,18 @@ interface Props {}
 
 let cameraShakeY = 0;
 let mouseX = 0;
+let mouseY = 0;
 const url = 'https://foolishrobot.oss-cn-beijing.aliyuncs.com/rock.gltf';
 const hfUrl =
   'https://free-api.heweather.net/s6/weather/now?&location=auto_ip&key=8b283eca0bbd4063b9184f872adc1360';
 
 interface IProps {
   isScene: boolean;
-  _handleClickMoon: () => void;
+  _handleScene: () => void;
 }
 
 const Modal = (props: IProps) => {
-  const { isScene, _handleClickMoon } = props;
+  const { isScene, _handleScene } = props;
   const gltf = useLoader(GLTFLoader, url);
   const { camera: defaultCamera, setDefaultCamera, scene } = useThree();
   const camera = useRef(null);
@@ -99,7 +100,9 @@ const Modal = (props: IProps) => {
     stripsGroup.current.add(totalMesh);
   }, []);
 
-  // 月亮上下移动的动画实例
+  /**
+   * 动画实例
+   */
   const tween = useMemo(
     () =>
       gsap.to(
@@ -119,7 +122,6 @@ const Modal = (props: IProps) => {
       ),
     [yoyo, lightRef.current]
   );
-  //
   const moonTween = useMemo(() => {
     if (moonRef.current)
       return gsap.to(moonRef.current.scale, {
@@ -134,7 +136,7 @@ const Modal = (props: IProps) => {
     if (lightRef.current)
       return gsap.to(lightRef.current, {
         duration: 0.5,
-        intensity: 20,
+        intensity: 30,
         distance: 80,
         paused: true,
       });
@@ -171,7 +173,8 @@ const Modal = (props: IProps) => {
     // 隐藏时禁止所有动画
     if (!isScene) return;
 
-    camera.position.y += Math.cos(cameraShakeY) / 50;
+    camera.position.y +=
+      Math.cos(cameraShakeY) / 50 - (mouseY * 5 + camera.position.y) * 0.03;
     camera.position.x += (mouseX * 5 - camera.position.x) * 0.03;
     cameraShakeY += 0.02;
 
@@ -184,12 +187,16 @@ const Modal = (props: IProps) => {
     []
   );
   // 镜头随鼠标左右晃动
-  const handlePointerMove = (e) => {
-    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-  };
+  const handlePointerMove = useCallback(
+    (e) => {
+      mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+      mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+    },
+    [window.innerWidth, window.innerHeight]
+  );
 
   return (
-    <group onPointerMove={handlePointerMove}>
+    <group onPointerMove={handlePointerMove} onWheel={_handleScene}>
       <perspectiveCamera
         attach="camera"
         args={[60, 1, 1, 4000]}
@@ -204,23 +211,22 @@ const Modal = (props: IProps) => {
       {/* moon light */}
       <pointLight
         attach="light"
-        args={['#ffffff', 15, 70, 2]}
+        args={['#ffffff', 20, 70, 2]}
         position={[0, 20, -40]}
         ref={lightRef}
-      />
-      <mesh
-        attach="mesh"
-        onPointerOver={() => setActive(true)}
-        onPointerOut={() => setActive(false)}
-        onClick={() => {
-          _handleClickMoon();
-        }}
-        ref={moonRef}
-        position={[0, 20, -40]}
       >
-        <meshBasicMaterial attach="material" color="#ffffff" />
-        <sphereGeometry attach="geometry" args={[5, 20, 20]} />
-      </mesh>
+        <mesh
+          attach="mesh"
+          onPointerOver={() => setActive(true)}
+          onPointerOut={() => setActive(false)}
+          onClick={_handleScene}
+          ref={moonRef}
+        >
+          <meshBasicMaterial attach="material" color="#ffffff" />
+          <sphereGeometry attach="geometry" args={[5, 20, 20]} />
+        </mesh>
+      </pointLight>
+
       {/* stars */}
       <group ref={stripsGroup}>
         <points attach="points">
@@ -259,7 +265,7 @@ const Modal = (props: IProps) => {
 const Dynamic: React.FC<Props> = () => {
   const [state, dispatch] = useContext(MainContext);
 
-  const _handleClickMoon = useCallback(() => {
+  const _handleScene = useCallback(() => {
     dispatch({ type: 'SCENE', payload: false });
   }, [dispatch]);
 
@@ -276,7 +282,7 @@ const Dynamic: React.FC<Props> = () => {
     >
       <Canvas>
         <Suspense fallback={null}>
-          <Modal isScene={state.scene} _handleClickMoon={_handleClickMoon} />
+          <Modal isScene={state.scene} _handleScene={_handleScene} />
         </Suspense>
       </Canvas>
     </div>
