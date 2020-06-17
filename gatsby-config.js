@@ -3,7 +3,11 @@ module.exports = {
     title: `Orainsink's blog`,
     author: {
       name: `Orainsink`,
+<<<<<<< HEAD
       summary: `博客有了, 文章呢?`,
+=======
+      summary: `空空如也`,
+>>>>>>> 5a2c81e2a8dd645dfa682425a4bb0c46e9dee7d1
     },
     description: `Blog XD`,
     siteUrl: `https://foolishrobot.xyz/gatsby-blog/`,

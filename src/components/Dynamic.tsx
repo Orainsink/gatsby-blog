@@ -19,7 +19,7 @@ import random from '../utils/random';
 import gsap from 'gsap';
 import { yoyo } from '../utils/utils';
 import Text from './Textpanel';
-import { MainContext } from '../context/MainContext';
+// import { MainContext } from '../redux/Provider';
 import classnames from 'classnames';
 import { Scene } from 'three';
 

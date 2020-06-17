@@ -3,7 +3,7 @@ import { useContext, useEffect } from 'react';
 import { Link } from 'gatsby';
 import classnames from 'classnames';
 import styles from '../styles/layout.module.less';
-import { MainContext } from '../context/MainContext';
+import { MainContext } from '../redux/Provider';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
