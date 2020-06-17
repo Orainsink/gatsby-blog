@@ -1,5 +1,6 @@
 import React from 'react';
 
+/**Footer */
 const Footer: React.SFC = () => {
   return (
     <footer>

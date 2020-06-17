@@ -2,14 +2,14 @@
  * 上下切换的 Trigger
  */
 import * as React from 'react';
-import { useContext } from 'react';
 import styles from '../styles/Trigger.module.less';
-import { MainContext } from '../redux/Provider';
 import classnames from 'classnames';
+import { useSelector, useDispatch } from 'react-redux';
 
-const Trigger = () => {
-  const [state, dispatch] = useContext(MainContext);
-  const { scene } = state;
+/**首页触发器 */
+const Trigger: React.FC = () => {
+  const { scene } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -34,4 +34,4 @@ const Trigger = () => {
   );
 };
 
-export default Trigger;
+export default React.memo(Trigger);

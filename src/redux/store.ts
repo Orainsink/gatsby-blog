@@ -1,24 +1,25 @@
-import { createStore as reduxCreateStore } from "redux"
+import { createStore as reduxCreateStore } from 'redux';
 
 const reducer = (state, action) => {
-  switch(action.type){
+  switch (action.type) {
     case 'SCENE': {
-        if (!action.payload && typeof window !== 'undefined') {
-          window.sessionStorage.setItem('skipscene', '1');
-        }
-        return { ...state, scene: action.payload };
-      }
-      case 'TRIGGER': {
-        return { ...state, trigger: action.payload };
-      }
-      case 'SLIDING': {
-        return { ...state, sliding: action.payload };
-      }
+      return { ...state, scene: action.payload };
+    }
+    case 'TRIGGER': {
+      return { ...state, trigger: action.payload };
+    }
+    case 'SLIDING': {
+      return { ...state, sliding: action.payload };
+    }
   }
-  return state
-}
+  return state;
+};
 
-const initialState = { count: 0 }
+const initialState = {
+  scene: true,
+  trigger: false,
+  sliding: false,
+};
 
-const createStore = () => reduxCreateStore(reducer, initialState)
+const createStore = () => reduxCreateStore(reducer, initialState);
 export default createStore;

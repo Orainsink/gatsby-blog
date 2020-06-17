@@ -1,16 +1,15 @@
 /**
  * 博客页面的加载页面
  */
-import * as React from 'react';
-import {
+import React, {
   Suspense,
   useEffect,
   useRef,
   useMemo,
   useCallback,
   useState,
-  useContext,
 } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Canvas, useLoader, useFrame, useThree } from 'react-three-fiber';
@@ -19,9 +18,7 @@ import random from '../utils/random';
 import gsap from 'gsap';
 import { yoyo } from '../utils/utils';
 import Text from './Textpanel';
-// import { MainContext } from '../redux/Provider';
 import classnames from 'classnames';
-import { Scene } from 'three';
 
 interface Props {}
 
@@ -261,9 +258,10 @@ const Modal = (props: IProps) => {
     </group>
   );
 };
-
+/**首页webGl动画 */
 const Dynamic: React.FC<Props> = () => {
-  const [state, dispatch] = useContext(MainContext);
+  const { scene, trigger } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   const _handleScene = useCallback(() => {
     dispatch({ type: 'SCENE', payload: false });
@@ -273,16 +271,12 @@ const Dynamic: React.FC<Props> = () => {
     <div
       className={classnames(
         styles.wrapper,
-        !state.scene
-          ? styles.disActive
-          : state.trigger
-          ? styles.trigger
-          : styles.active
+        !scene ? styles.disActive : trigger ? styles.trigger : styles.active
       )}
     >
       <Canvas>
         <Suspense fallback={null}>
-          <Modal isScene={state.scene} _handleScene={_handleScene} />
+          <Modal isScene={scene} _handleScene={_handleScene} />
         </Suspense>
       </Canvas>
     </div>

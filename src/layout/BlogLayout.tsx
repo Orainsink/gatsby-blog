@@ -1,6 +1,7 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'gatsby';
 import Footer from '../components/Footer';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { rhythm, scale } from '../utils/typography';
 interface IProps {
@@ -8,9 +9,20 @@ interface IProps {
   title: string;
   children?: any;
 }
+/**文章页Layout */
 const Layout = ({ location, title, children }: IProps) => {
+  const { scene, trigger } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
   const rootPath = `${__PATH_PREFIX__}/`;
   let header;
+
+  useEffect(() => {
+    dispatch({ type: 'SCENE', payload: false });
+
+    const body = document.getElementsByTagName('body')[0];
+    body.style.overflowY = 'scroll';
+  }, []);
 
   if (location.pathname === rootPath) {
     header = (

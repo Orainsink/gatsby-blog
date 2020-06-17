@@ -1,6 +1,5 @@
 // Gatsby supports TypeScript natively!
-import * as React from 'react';
-import { useMemo } from 'react';
+import React from 'react';
 import { PageProps, Link, graphql } from 'gatsby';
 import '../styles/index.module.less';
 
@@ -10,8 +9,7 @@ import SEO from '../components/seo';
 import Dynamic from '../components/Dynamic';
 import Trigger from '../components/Trigger';
 import { rhythm } from '../utils/typography';
-// import MainProvider from '../context/MainContext';
-import Header from '../components/Header'
+import Header from '../components/Header';
 
 type Data = {
   site: {
@@ -40,17 +38,11 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
 
-  const skipScene = useMemo(() => {
-    if (typeof window !== 'undefined') {
-      return !!window.sessionStorage.getItem('skipscene');
-    } else return false;
-  }, []);
-
   return (
     <>
-      {!skipScene && <Dynamic />}
+      <Dynamic />
       <Trigger />
-      <Layout location={location} title={siteTitle} skip={skipScene}>
+      <Layout location={location} title={siteTitle}>
         <Header />
         <SEO title="All posts" />
         <Bio />

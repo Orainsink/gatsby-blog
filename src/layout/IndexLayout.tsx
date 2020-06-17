@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'gatsby';
 import classnames from 'classnames';
 import styles from '../styles/layout.module.less';
-import { MainContext } from '../redux/Provider';
+import { useSelector, useDispatch } from 'react-redux';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
@@ -14,11 +14,12 @@ interface IProps {
   title: string;
   children?: any;
 }
+/**首页Layout */
 const Layout = ({ location, title, children, skip = false }: IProps) => {
-  const [state, dispatch] = useContext(MainContext);
-  const rootPath = `${__PATH_PREFIX__}/`;
-  let header;
-
+  const { scene, trigger } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  // const rootPath = `${__PATH_PREFIX__}/`;
+  // let header;
   // if (location.pathname === rootPath) {
   //   header = (
   //     <h1
@@ -62,26 +63,18 @@ const Layout = ({ location, title, children, skip = false }: IProps) => {
 
   useEffect(() => {
     const body = document.getElementsByTagName('body')[0];
-    if (state.scene) {
+    if (scene) {
       body.style.overflowY = 'hidden';
     } else {
       body.style.overflowY = 'scroll';
     }
-  }, [state.scene]);
-
-  useEffect(() => {
-    if (skip) dispatch({ type: 'SCENE', payload: false });
-  }, [skip]);
+  }, [scene]);
 
   return (
     <div
       className={classnames(
         styles.wrapper,
-        !state.scene
-          ? styles.disActive
-          : state.trigger
-          ? styles.trigger
-          : styles.active,
+        !scene ? styles.disActive : trigger ? styles.trigger : styles.active,
         skip ? styles.skip : null
       )}
       style={{

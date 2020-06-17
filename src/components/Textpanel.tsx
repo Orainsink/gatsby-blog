@@ -1,14 +1,12 @@
-import * as React from 'react';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-/**
- * 文字组件, 简单封装
- */
+
 interface IProps {
   words: string[] | null;
   position?: [number, number, number];
   rotation?: [number, number, number];
 }
+/** three文字组件 */
 const Text = (props: IProps) => {
   const { words, position, rotation } = props;
   const textRef = useRef(null);
