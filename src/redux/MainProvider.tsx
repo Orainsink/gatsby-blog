@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-export const MainContext = React.createContext(null);
-
 const initState = {
   scene: true,
   trigger: false,
@@ -25,7 +23,8 @@ const reducer = (state, action) => {
   }
 };
 
-const MainProvider = ({ children }) => {
+export default ({ children }) => {
+  const MainContext = React.createContext(null);
   const [state, dispatch] = React.useReducer(reducer, initState);
   return (
     <MainContext.Provider value={[state, dispatch]}>
@@ -34,4 +33,3 @@ const MainProvider = ({ children }) => {
   );
 };
 
-export default MainProvider;

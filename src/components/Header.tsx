@@ -1,13 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext,useRef } from 'react';
 import styles from '../styles/Header.module.less';
-import { MainContext } from '../context/MainContext';
+import { MainContext } from '../redux/Provider';
 import classnames from 'classnames';
 import { Avatar } from 'antd';
+import Player from './Player'
 
-const Header = () => {
+/**Header */
+const Header:React.FC = () => {
+
   return (
     <div className={styles.wrapper}>
-      <Avatar />
+      {/* <Avatar /> */}
+      <Player />
     </div>
   );
 };

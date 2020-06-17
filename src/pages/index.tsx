@@ -10,7 +10,8 @@ import SEO from '../components/seo';
 import Dynamic from '../components/Dynamic';
 import Trigger from '../components/Trigger';
 import { rhythm } from '../utils/typography';
-import MainProvider from '../context/MainContext';
+// import MainProvider from '../context/MainContext';
+import Header from '../components/Header'
 
 type Data = {
   site: {
@@ -46,10 +47,11 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
   }, []);
 
   return (
-    <MainProvider>
+    <>
       {!skipScene && <Dynamic />}
       <Trigger />
       <Layout location={location} title={siteTitle} skip={skipScene}>
+        <Header />
         <SEO title="All posts" />
         <Bio />
         {posts.map(({ node }) => {
@@ -79,7 +81,7 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
           );
         })}
       </Layout>
-    </MainProvider>
+    </>
   );
 };
 

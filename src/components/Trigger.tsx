@@ -4,7 +4,7 @@
 import * as React from 'react';
 import { useContext } from 'react';
 import styles from '../styles/Trigger.module.less';
-import { MainContext } from '../context/MainContext';
+import { MainContext } from '../redux/Provider';
 import classnames from 'classnames';
 
 const Trigger = () => {
