@@ -3,10 +3,10 @@ module.exports = {
     title: `Orainsink's blog`,
     author: {
       name: `Orainsink`,
-      summary: `不会吧不会吧不会真的有人看这个博客吧`,
+      summary: `博客有了, 文章呢?`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    description: `Blog XD`,
+    siteUrl: `https://foolishrobot.xyz/gatsby-blog/`,
     social: {
       github: `Orainsink`,
     },

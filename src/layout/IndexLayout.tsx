@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import styles from '../styles/layout.module.less';
 import { MainContext } from '../context/MainContext';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 import { rhythm, scale } from '../utils/typography';
 interface IProps {
@@ -18,46 +19,46 @@ const Layout = ({ location, title, children, skip = false }: IProps) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   let header;
 
-  if (location.pathname === rootPath) {
-    header = (
-      <h1
-        style={{
-          ...scale(1.5),
-          marginBottom: rhythm(1.5),
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h1>
-    );
-  } else {
-    header = (
-      <h3
-        style={{
-          fontFamily: `Montserrat, sans-serif`,
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h3>
-    );
-  }
+  // if (location.pathname === rootPath) {
+  //   header = (
+  //     <h1
+  //       style={{
+  //         ...scale(1.5),
+  //         marginBottom: rhythm(1.5),
+  //         marginTop: 0,
+  //       }}
+  //     >
+  //       <Link
+  //         style={{
+  //           boxShadow: `none`,
+  //           color: `inherit`,
+  //         }}
+  //         to={`/`}
+  //       >
+  //         {title}
+  //       </Link>
+  //     </h1>
+  //   );
+  // } else {
+  //   header = (
+  //     <h3
+  //       style={{
+  //         fontFamily: `Montserrat, sans-serif`,
+  //         marginTop: 0,
+  //       }}
+  //     >
+  //       <Link
+  //         style={{
+  //           boxShadow: `none`,
+  //           color: `inherit`,
+  //         }}
+  //         to={`/`}
+  //       >
+  //         {title}
+  //       </Link>
+  //     </h3>
+  //   );
+  // }
 
   useEffect(() => {
     const body = document.getElementsByTagName('body')[0];
@@ -90,7 +91,6 @@ const Layout = ({ location, title, children, skip = false }: IProps) => {
         maxWidth: rhythm(24),
       }}
     >
-      <header>{header}</header>
       <main>{children}</main>
       <Footer />
     </div>
