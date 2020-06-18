@@ -13,7 +13,7 @@ const Player: React.FC = () => {
   useEffect(() => {
     const player = new APlayer({
       fixed: true,
-      volume: 0.5,
+      volume: 0.3,
       container: aplayer.current,
       listFolded: true,
       listMaxHeight: 60,
@@ -30,7 +30,13 @@ const Player: React.FC = () => {
     }
   }, [scene]);
 
-  return <div id="aplayer" ref={aplayer} />;
+  return (
+    <div
+      id="aplayer"
+      ref={aplayer}
+      style={{ display: scene ? 'none' : 'block' }}
+    />
+  );
 };
 
 export default React.memo(Player);

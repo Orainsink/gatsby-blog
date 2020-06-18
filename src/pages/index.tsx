@@ -1,9 +1,8 @@
 // Gatsby supports TypeScript natively!
 import React from 'react';
 import { PageProps, Link, graphql } from 'gatsby';
-import '../styles/index.module.less';
 
-import Bio from '../components/bio';
+// import Bio from '../components/bio';
 import Layout from '../layout/IndexLayout';
 import SEO from '../components/seo';
 import Dynamic from '../components/Dynamic';
@@ -42,10 +41,10 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
     <>
       <Dynamic />
       <Trigger />
+      <Header />
       <Layout location={location} title={siteTitle}>
-        <Header />
         <SEO title="All posts" />
-        <Bio />
+        {/* <Bio /> */}
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug;
           return (

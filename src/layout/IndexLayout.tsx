@@ -80,7 +80,7 @@ const Layout = ({ location, title, children, skip = false }: IProps) => {
       style={{
         marginLeft: `auto`,
         marginRight: `auto`,
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+        padding: `${rhythm(3.5)} ${rhythm(3 / 4)}`,
         maxWidth: rhythm(24),
       }}
     >
