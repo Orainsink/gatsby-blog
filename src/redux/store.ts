@@ -20,6 +20,13 @@ const initialState = {
   trigger: false,
   sliding: false,
 };
-
-const createStore = () => reduxCreateStore(reducer, initialState);
+const createStore = () =>
+  reduxCreateStore(
+    reducer,
+    initialState,
+    // @ts-ignore
+    window?.__REDUX_DEVTOOLS_EXTENSION__ &&
+      // @ts-ignore
+      window?.__REDUX_DEVTOOLS_EXTENSION__()
+  );
 export default createStore;

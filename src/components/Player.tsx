@@ -2,13 +2,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import '../styles/Player.css';
 import APlayer from 'aplayer';
 import songs from '../assets/js/songs';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 /**APlayer */
 const Player: React.FC = () => {
   const aplayer = useRef<HTMLDivElement>(null);
   const { scene } = useSelector((state) => state);
   const [ap, setAp] = useState(null);
+  const [vol, setVol] = useState(0);
 
   useEffect(() => {
     const player = new APlayer({
@@ -22,11 +23,15 @@ const Player: React.FC = () => {
     setAp(player);
   }, []);
 
+  /**模拟静音 */
   useEffect(() => {
     if (scene) {
-      ap && ap.pause();
+      if (ap) {
+        setVol(ap.audio.volume);
+        ap.volume(0);
+      }
     } else {
-      ap && ap.play();
+      ap && ap.volume(ap.audio.volume || vol);
     }
   }, [scene]);
 

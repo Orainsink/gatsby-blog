@@ -68,7 +68,6 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 .history/
-.vscode/
 .npmrc
 .cache/
 content/blog/
