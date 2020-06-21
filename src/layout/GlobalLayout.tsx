@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import Footer from '../components/Footer';
 import Player from '../components/Player';
 import { BrowserView } from 'react-device-detect';
 import '../styles/global.less';
@@ -9,10 +7,10 @@ import '../styles/global.less';
 const Layout = ({ element, props }) => {
   return (
     <>
+      {element}
       <BrowserView>
         <Player />
       </BrowserView>
-      {element}
     </>
   );
 };

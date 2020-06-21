@@ -41,7 +41,6 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
       <Trigger />
       <Dynamic />
       <Header />
-
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" />
         {posts.map(({ node }) => {

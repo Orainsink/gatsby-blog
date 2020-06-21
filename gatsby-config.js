@@ -37,12 +37,7 @@ module.exports = {
               maxWidth: 590,
             },
           },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
+          `gatsby-remark-responsive-iframe`,
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
@@ -82,6 +77,10 @@ module.exports = {
       resolve: `gatsby-plugin-less`,
       options: {
         javascriptEnabled: true,
+        cssLoaderOptions: {
+          camelCase: false,
+          strictMath: true,
+        },
         modifyVars: {
           'primary-color': '#BADA55',
           'link-color': '#2b2b2b', // 链接色

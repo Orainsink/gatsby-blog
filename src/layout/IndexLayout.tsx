@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 // import { Link } from 'gatsby';
 import classnames from 'classnames';
-import styles from '../styles/layout.module.less';
+import styles from '../styles/Indexlayout.module.less';
 import { useSelector, useDispatch } from 'react-redux';
 import Footer from '../components/Footer';
 import { useStaticQuery, graphql } from 'gatsby';
@@ -59,7 +59,6 @@ const Layout = ({ location, title, children, skip = false }: IProps) => {
       />
       <main
         style={{
-          // padding: `${rhythm(3.5)} ${rhythm(3 / 4)}`,
           margin: `${rhythm(5)} auto`,
           maxWidth: rhythm(32),
           padding: `${rhythm(1 / 4)}`,
