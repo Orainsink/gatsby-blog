@@ -60,6 +60,31 @@
     transition: none;
   }
 }
+.drawerBtn {
+  border: none;
+  color: inherit;
+  font-size: 16px;
+  font-weight: 700;
+}
+.drawerTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: @text-color;
+}
+.drawerNav {
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0;
+  margin: 0;
+  li {
+    width: 80%;
+    margin: 0;
+    &::after {
+      background-color: @text-color;
+    }
+  }
+}
 .git {
   box-sizing: border-box;
   font-size: 30px;

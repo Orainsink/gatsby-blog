@@ -85,9 +85,7 @@ module.exports = {
           'primary-color': '#BADA55',
           'link-color': '#2b2b2b', // 链接色
           'main-background': '#efefef',
-          // @success-color: #52c41a; // 成功色
-          // @warning-color: #faad14; // 警告色
-          // @error-color: #f5222d; // 错误色
+          'btn-primary-bg': '#fff',
           // @font-size-base: 14px; // 主字号
           // @heading-color: rgba(0, 0, 0, 0.85); // 标题色
           'text-color': '#3d4451', // 主文本色
