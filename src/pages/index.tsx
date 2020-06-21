@@ -2,7 +2,6 @@
 import React from 'react';
 import { PageProps, Link, graphql } from 'gatsby';
 
-// import Bio from '../components/bio';
 import Layout from '../layout/IndexLayout';
 import SEO from '../components/seo';
 import Dynamic from '../components/Dynamic';
@@ -39,12 +38,12 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
 
   return (
     <>
-      <Dynamic />
       <Trigger />
+      <Dynamic />
       <Header />
+
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" />
-        {/* <Bio /> */}
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug;
           return (

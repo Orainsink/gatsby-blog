@@ -1,7 +1,7 @@
 /**
  * 上下切换的 Trigger
  */
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import styles from '../styles/Trigger.module.less';
 import classnames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,10 +15,7 @@ const Trigger: React.FC = () => {
     <>
       {scene && (
         <div
-          className={classnames(
-            styles.trigger,
-            scene ? styles.bottom : styles.top
-          )}
+          className={styles.trigger}
           onMouseEnter={() => {
             dispatch({ type: 'TRIGGER', payload: true });
           }}
@@ -27,6 +24,7 @@ const Trigger: React.FC = () => {
           }}
           onClick={() => {
             dispatch({ type: 'SCENE', payload: false });
+            dispatch({ type: 'TRIGGER', payload: false });
           }}
         />
       )}

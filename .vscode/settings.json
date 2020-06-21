@@ -1,0 +1,23 @@
+{
+  "editor.tabSize": 2,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+  // "prettier.singleQuote": true,
+  // "prettier.semi": true,
+  // "prettier.endOfLine": "lf",
+  // "prettier.jsxBracketSameLine": false,
+  // "prettier.trailingComma": "es5",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.eol": "\n",
+  "files.autoSave": "off",
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.associations": {
+    "*.css": "postcss"
+  },
+  "typescript.tsdk": "node_modules\\typescript\\lib"
+}

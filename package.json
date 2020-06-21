@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "Orainsink <ywt1250066597@gmail.com>",
   "dependencies": {
+    "@ant-design/icons": "4.2.1",
+    "@svgr/webpack": "5.4.0",
     "antd": "4.3.3",
     "aplayer": "^1.10.1",
     "classnames": "2.2.6",
@@ -19,7 +21,9 @@
     "gatsby-plugin-postcss": "^2.3.2",
     "gatsby-plugin-react-css-modules": "2.3.3",
     "gatsby-plugin-react-helmet": "^3.3.1",
+    "gatsby-plugin-react-redux": "1.1.0-0",
     "gatsby-plugin-sharp": "^2.6.4",
+    "gatsby-plugin-svgr": "2.0.2",
     "gatsby-plugin-typescript": "^2.4.4",
     "gatsby-plugin-typography": "^2.5.2",
     "gatsby-remark-copy-linked-files": "^2.3.2",
@@ -41,6 +45,7 @@
     "react-redux": "7.2.0",
     "react-three-fiber": "^4.2.8",
     "react-typography": "^0.16.19",
+    "redux": "4.0.5",
     "three": "^0.117.1",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75",
@@ -70,6 +75,6 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "deploy": "gatsby build && gh-pages -d public"
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   }
 }

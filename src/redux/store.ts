@@ -8,9 +8,6 @@ const reducer = (state, action) => {
     case 'TRIGGER': {
       return { ...state, trigger: action.payload };
     }
-    case 'SLIDING': {
-      return { ...state, sliding: action.payload };
-    }
   }
   return state;
 };
@@ -18,15 +15,17 @@ const reducer = (state, action) => {
 const initialState = {
   scene: true,
   trigger: false,
-  sliding: false,
 };
+
+const windowGlobal = typeof window !== 'undefined' && window;
+
 const createStore = () =>
   reduxCreateStore(
     reducer,
     initialState,
     // @ts-ignore
-    window?.__REDUX_DEVTOOLS_EXTENSION__ &&
+    windowGlobal?.__REDUX_DEVTOOLS_EXTENSION__ &&
       // @ts-ignore
-      window?.__REDUX_DEVTOOLS_EXTENSION__()
+      windowGlobal?.__REDUX_DEVTOOLS_EXTENSION__()
   );
 export default createStore;

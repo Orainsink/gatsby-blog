@@ -78,17 +78,49 @@ module.exports = {
       },
     },
     `gatsby-plugin-postcss`,
-    `gatsby-plugin-less`,
+    {
+      resolve: `gatsby-plugin-less`,
+      options: {
+        javascriptEnabled: true,
+        modifyVars: {
+          'primary-color': '#BADA55',
+          'link-color': '#2b2b2b', // 链接色
+          'main-background': '#efefef',
+          // @success-color: #52c41a; // 成功色
+          // @warning-color: #faad14; // 警告色
+          // @error-color: #f5222d; // 错误色
+          // @font-size-base: 14px; // 主字号
+          // @heading-color: rgba(0, 0, 0, 0.85); // 标题色
+          'text-color': '#3d4451', // 主文本色
+          // @text-color-secondary: rgba(0, 0, 0, 0.45); // 次文本色
+          // @disabled-color: rgba(0, 0, 0, 0.25); // 失效色
+          // @border-radius-base: 4px; // 组件/浮层圆角
+          // @border-color-base: #d9d9d9; // 边框色
+          // @box-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.15); // 浮层阴影
+        },
+      },
+    },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-css-modules`,
+    'gatsby-plugin-svgr',
     {
       resolve: 'gatsby-plugin-antd',
       options: {
         style: true,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-react-redux`,
+      options: {
+        pathToCreateStoreModule: './src/redux/store',
+        serialize: {
+          space: 0,
+          isJSON: true,
+          unsafe: false,
+        },
+        cleanupOnClient: true,
+        windowKey: '__PRELOADED_STATE__',
+      },
+    },
   ],
 };

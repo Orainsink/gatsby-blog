@@ -5,7 +5,6 @@ import React, {
   Suspense,
   useEffect,
   useRef,
-  useMemo,
   useCallback,
   useState,
 } from 'react';
@@ -15,10 +14,9 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Canvas, useLoader, useFrame, useThree } from 'react-three-fiber';
 import styles from '../styles/Dynamic.module.less';
 import random from '../utils/random';
-import gsap from 'gsap';
-import { yoyo } from '../utils/utils';
 import Text from './Textpanel';
 import classnames from 'classnames';
+import Moon from './Moon';
 
 interface Props {}
 
@@ -33,17 +31,15 @@ interface IProps {
   isScene: boolean;
   _handleScene: () => void;
 }
-
+/**模型 */
 const Modal = (props: IProps) => {
   const { isScene, _handleScene } = props;
   const gltf = useLoader(GLTFLoader, url);
   const { camera: defaultCamera, setDefaultCamera, scene } = useThree();
   const camera = useRef(null);
   const stripsGroup = useRef(null);
-  const lightRef = useRef(null);
-  const moonRef = useRef(null);
+
   const [words, setWords] = useState(null);
-  const [active, setActive] = useState(false);
 
   // 初始化相机
   useEffect(() => {
@@ -97,74 +93,6 @@ const Modal = (props: IProps) => {
     stripsGroup.current.add(totalMesh);
   }, []);
 
-  /**
-   * 动画实例
-   */
-  const tween = useMemo(
-    () =>
-      gsap.to(
-        { x: -2, z: -45 },
-        {
-          duration: 2,
-          x: 2,
-          z: -35,
-          paused: true,
-          onUpdate: function () {
-            if (lightRef.current)
-              lightRef.current.position.z = this._targets[0].z;
-          },
-          onComplete: yoyo,
-          onReverseComplete: yoyo,
-        }
-      ),
-    [yoyo, lightRef.current]
-  );
-  const moonTween = useMemo(() => {
-    if (moonRef.current)
-      return gsap.to(moonRef.current.scale, {
-        duration: 0.5,
-        x: 1.5,
-        y: 1.5,
-        z: 1.5,
-        paused: true,
-      });
-  }, [moonRef.current]);
-  const lightTween = useMemo(() => {
-    if (lightRef.current)
-      return gsap.to(lightRef.current, {
-        duration: 0.5,
-        intensity: 30,
-        distance: 80,
-        paused: true,
-      });
-  }, [lightRef.current]);
-
-  // 绑定及卸载动画
-  useEffect(() => {
-    tween.resume();
-    return () => {
-      tween.kill();
-    };
-  }, []);
-  useEffect(() => {
-    if (active) {
-      moonTween.play();
-      lightTween.play();
-    } else {
-      if (moonTween) {
-        moonTween.reverse();
-        lightTween.reverse();
-      }
-    }
-
-    return () => {
-      if (moonTween) {
-        moonTween.kill();
-        lightTween.kill();
-      }
-    };
-  }, [active]);
-
   // 渲染循环, 控制镜头偏移, 月亮偏移
   useFrame(({ gl, scene, camera }) => {
     // 隐藏时禁止所有动画
@@ -184,7 +112,7 @@ const Modal = (props: IProps) => {
     []
   );
   // 镜头随鼠标左右晃动
-  const handlePointerMove = useCallback(
+  const _handlePointerMove = useCallback(
     (e) => {
       mouseX = (e.clientX / window.innerWidth) * 2 - 1;
       mouseY = (e.clientY / window.innerHeight) * 2 - 1;
@@ -192,8 +120,14 @@ const Modal = (props: IProps) => {
     [window.innerWidth, window.innerHeight]
   );
 
+  const _handleWheel = useCallback((e) => {
+    if (e.deltaY > 0) {
+      _handleScene();
+    }
+  }, []);
+
   return (
-    <group onPointerMove={handlePointerMove} onWheel={_handleScene}>
+    <group onPointerMove={_handlePointerMove} onWheel={_handleWheel}>
       <perspectiveCamera
         attach="camera"
         args={[60, 1, 1, 4000]}
@@ -206,23 +140,7 @@ const Modal = (props: IProps) => {
         position={[0.2, 1, 0.5]}
       />
       {/* moon light */}
-      <pointLight
-        attach="light"
-        args={['#ffffff', 20, 70, 2]}
-        position={[0, 20, -40]}
-        ref={lightRef}
-      >
-        <mesh
-          attach="mesh"
-          onPointerOver={() => setActive(true)}
-          onPointerOut={() => setActive(false)}
-          onClick={_handleScene}
-          ref={moonRef}
-        >
-          <meshBasicMaterial attach="material" color="#ffffff" />
-          <sphereGeometry attach="geometry" args={[5, 20, 20]} />
-        </mesh>
-      </pointLight>
+      <Moon _handleScene={_handleScene} isScene={isScene} />
 
       {/* stars */}
       <group ref={stripsGroup}>
