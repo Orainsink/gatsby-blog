@@ -1,4 +1,10 @@
-import React, { useEffect, useCallback, useState, useMemo } from 'react';
+import React, {
+  useLayoutEffect,
+  useEffect,
+  useCallback,
+  useState,
+  useMemo,
+} from 'react';
 import styles from '../styles/Header.module.less';
 import classnames from 'classnames';
 import { Row, Col, Drawer, Button } from 'antd';
@@ -8,6 +14,20 @@ import { Link } from 'gatsby';
 import { GithubOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
 import { useDispatch } from 'react-redux';
+
+/** resize hook */
+const useWindowSize = () => {
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    const updateSize = () => {
+      setSize([window.innerWidth, window.innerHeight]);
+    };
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+  return size;
+};
 
 /**抽屉菜单,用于移动端兼容 */
 const MenuDrawer = () => {
@@ -70,22 +90,10 @@ const Header: React.FC = () => {
   const { author } = data.site.siteMetadata;
   const dispatch = useDispatch();
   const [active, setActive] = useState(false);
-  const [width, setWidth] = useState(1280);
   const [drawer, setDrawer] = useState(false);
+  const [width, height] = useWindowSize();
 
   console.log(width);
-
-  const _handleScroll = useCallback(
-    (e) => {
-      if (width < 768) return setActive(false);
-      if (document.body.scrollTop > 0) {
-        setActive(true);
-      } else {
-        setActive(false);
-      }
-    },
-    [width]
-  );
 
   useEffect(() => {
     if (width < 468) {
@@ -95,33 +103,29 @@ const Header: React.FC = () => {
     }
   }, [width]);
 
-  const onResize = useCallback((e) => {
-    setWidth(window.innerWidth);
-  }, []);
-
   useEffect(() => {
-    window.addEventListener('resize', onResize, { passive: false });
-
-    return () => {
-      window.removeEventListener('resize', onResize);
+    const _handleScroll = () => {
+      if (width < 768) return setActive(false);
+      if (document.body.scrollTop > 0) {
+        setActive(true);
+      } else {
+        setActive(false);
+      }
     };
-  }, []);
 
-  useEffect(() => {
     document.body.addEventListener('scroll', _handleScroll, {
       passive: false,
     });
     return () => {
       document.body.removeEventListener('scroll', _handleScroll);
     };
-  }, []);
+  }, [width]);
 
   const _handleArrow = useCallback(() => {
     dispatch({ type: 'SCENE', payload: true });
   }, []);
 
   const menu = useMemo(() => {
-    console.log(document.body.clientWidth);
     if (drawer) {
       return <MenuDrawer />;
     } else
