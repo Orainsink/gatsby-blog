@@ -2232,7 +2232,7 @@
   resolved "https://registry.yarnpkg.com/@juggle/resize-observer/-/resize-observer-3.2.0.tgz#5e0b448d27fe3091bae6216456512c5904d05661"
   integrity sha512-fsLxt0CHx2HCV9EL8lDoVkwHffsA0snUpddYjdLyXcG5E41xaamn9ZyQqOE9TUJdrRlH8/hjIf+UdOdDeKCUgg==
 
-"@loadable/babel-plugin@5.12.0":
+"@loadable/babel-plugin@^5.12.0":
   version "5.12.0"
   resolved "https://registry.npm.taobao.org/@loadable/babel-plugin/download/@loadable/babel-plugin-5.12.0.tgz#de18d4637eb8f4bdecd694a6737880b3e2094d4c"
   integrity sha1-3hjUY3649L3s1pSmc3iAs+IJTUw=
@@ -2246,6 +2246,20 @@
   dependencies:
     "@babel/runtime" "^7.7.7"
     hoist-non-react-statics "^3.3.1"
+
+"@loadable/server@^5.12.0":
+  version "5.12.0"
+  resolved "https://registry.npm.taobao.org/@loadable/server/download/@loadable/server-5.12.0.tgz#61069d9cf6151e7d22c25f54264165556a101634"
+  integrity sha1-YQadnPYVHn0iwl9UJkFlVWoQFjQ=
+  dependencies:
+    lodash "^4.17.15"
+
+"@loadable/webpack-plugin@^5.12.0":
+  version "5.12.0"
+  resolved "https://registry.npm.taobao.org/@loadable/webpack-plugin/download/@loadable/webpack-plugin-5.12.0.tgz#b28c6e7a979e9c2f8d8b743a634de0ede124c76f"
+  integrity sha1-soxuepeenC+Ni3Q6Y03g7eEkx28=
+  dependencies:
+    mkdirp "^0.5.1"
 
 "@mdx-js/mdx@^1.6.1":
   version "1.6.1"
@@ -7085,6 +7099,17 @@ gatsby-plugin-less@^3.2.2:
   dependencies:
     "@babel/runtime" "^7.9.6"
     less-loader "^5.0.0"
+
+gatsby-plugin-loadable-components-ssr@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npm.taobao.org/gatsby-plugin-loadable-components-ssr/download/gatsby-plugin-loadable-components-ssr-2.1.0.tgz#cafb98df82ec029d5380a2dcf4816fd572f52dfe"
+  integrity sha1-yvuY34LsAp1TgKLc9IFv1XL1Lf4=
+  dependencies:
+    "@babel/runtime" "^7.9.6"
+    "@loadable/babel-plugin" "^5.12.0"
+    "@loadable/server" "^5.12.0"
+    "@loadable/webpack-plugin" "^5.12.0"
+    react-dom "^16.12.0"
 
 gatsby-plugin-manifest@^2.4.5:
   version "2.4.5"

@@ -6,7 +6,6 @@
   "author": "Orainsink <ywt1250066597@gmail.com>",
   "dependencies": {
     "@ant-design/icons": "4.2.1",
-    "@loadable/babel-plugin": "5.12.0",
     "@loadable/component": "5.12.0",
     "@svgr/webpack": "5.4.0",
     "antd": "4.3.3",
@@ -18,6 +17,7 @@
     "gatsby-plugin-feed": "^2.5.1",
     "gatsby-plugin-google-analytics": "^2.3.1",
     "gatsby-plugin-less": "^3.2.2",
+    "gatsby-plugin-loadable-components-ssr": "2.1.0",
     "gatsby-plugin-manifest": "^2.4.5",
     "gatsby-plugin-offline": "^3.2.3",
     "gatsby-plugin-postcss": "^2.3.2",

@@ -6,9 +6,11 @@ import SEO from '../components/seo';
 import Trigger from '../components/Trigger';
 import { rhythm } from '../utils/typography';
 import Header from '../components/Header';
-import { lazy } from '@loadable/component';
-const Dynamic = lazy(() => import('../components/Dynamic'));
+// import { lazy } from '@loadable/component';
+// import Loadable from '@loadable/component';
 import Loading from '../components/Loading';
+// const Dynamic = Loadable(() => import('../components/Dynamic'));
+import Dynamic from '../components/Dynamic';
 
 type Data = {
   site: {
@@ -40,9 +42,9 @@ const Index = ({ data, location }: PageProps<Data>) => {
   return (
     <>
       <Trigger />
-      <Suspense fallback={<Loading debounce={500} />}>
-        <Dynamic />
-      </Suspense>
+      {/* <Suspense fallback={<Loading debounce={500} />}> */}
+      <Dynamic />
+      {/* </Suspense> */}
       <Header />
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" />
