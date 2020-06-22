@@ -6,6 +6,8 @@
   "author": "Orainsink <ywt1250066597@gmail.com>",
   "dependencies": {
     "@ant-design/icons": "4.2.1",
+    "@loadable/babel-plugin": "5.12.0",
+    "@loadable/component": "5.12.0",
     "@svgr/webpack": "5.4.0",
     "antd": "4.3.3",
     "aplayer": "^1.10.1",

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-// import { Link } from 'gatsby';
 import classnames from 'classnames';
 import styles from '../styles/Indexlayout.module.less';
 import { useSelector, useDispatch } from 'react-redux';
@@ -14,6 +13,7 @@ interface IProps {
   title: string;
   children?: any;
 }
+
 /**首页Layout */
 const Layout = ({ location, title, children, skip = false }: IProps) => {
   const data = useStaticQuery(graphql`
@@ -58,6 +58,7 @@ const Layout = ({ location, title, children, skip = false }: IProps) => {
           pointerEvents: 'none',
         }}
       />
+
       <main
         style={{
           margin: `${rhythm(5)} auto`,

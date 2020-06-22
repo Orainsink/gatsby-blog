@@ -1,13 +1,14 @@
-// Gatsby supports TypeScript natively!
-import React from 'react';
+import React, { Suspense } from 'react';
 import { PageProps, Link, graphql } from 'gatsby';
 
 import Layout from '../layout/IndexLayout';
 import SEO from '../components/seo';
-import Dynamic from '../components/Dynamic';
 import Trigger from '../components/Trigger';
 import { rhythm } from '../utils/typography';
 import Header from '../components/Header';
+import { lazy } from '@loadable/component';
+const Dynamic = lazy(() => import('../components/Dynamic'));
+import Loading from '../components/Loading';
 
 type Data = {
   site: {
@@ -32,14 +33,16 @@ type Data = {
   };
 };
 
-const BlogIndex = ({ data, location }: PageProps<Data>) => {
+const Index = ({ data, location }: PageProps<Data>) => {
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
 
   return (
     <>
       <Trigger />
-      <Dynamic />
+      <Suspense fallback={<Loading debounce={500} />}>
+        <Dynamic />
+      </Suspense>
       <Header />
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" />
@@ -74,7 +77,7 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
   );
 };
 
-export default BlogIndex;
+export default Index;
 
 export const pageQuery = graphql`
   query {

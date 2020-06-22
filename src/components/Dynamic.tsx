@@ -27,12 +27,12 @@ const url = 'https://foolishrobot.oss-cn-beijing.aliyuncs.com/rock.gltf';
 const hfUrl =
   'https://free-api.heweather.net/s6/weather/now?&location=auto_ip&key=8b283eca0bbd4063b9184f872adc1360';
 
-interface IProps {
+interface ModalProps {
   isScene: boolean;
   _handleScene: () => void;
 }
 /**模型 */
-const Modal = (props: IProps) => {
+const Modal = (props: ModalProps) => {
   const { isScene, _handleScene } = props;
   const gltf = useLoader(GLTFLoader, url);
   const { camera: defaultCamera, setDefaultCamera, scene } = useThree();
