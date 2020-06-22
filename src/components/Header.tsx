@@ -30,7 +30,7 @@ const useWindowSize = () => {
 };
 
 /**抽屉菜单,用于移动端兼容 */
-const MenuDrawer = () => {
+const MenuDrawer: React.FC = () => {
   const [visible, setVisible] = useState(false);
   return (
     <>
@@ -93,8 +93,6 @@ const Header: React.FC = () => {
   const [drawer, setDrawer] = useState(false);
   const [width, height] = useWindowSize();
 
-  console.log(width);
-
   useEffect(() => {
     if (width < 468) {
       setDrawer(true);
@@ -155,8 +153,10 @@ const Header: React.FC = () => {
             }}
           />
         </Col>
-        <Col flex={1}>{menu}</Col>
-        <Col span={4}>
+        <Col flex={1} style={{ textAlign: 'right' }}>
+          {menu}
+        </Col>
+        <Col span={drawer ? 8 : 4}>
           <GithubOutlined
             className={styles.git}
             onClick={(e) => {

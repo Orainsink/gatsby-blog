@@ -55,6 +55,7 @@ const Layout = ({ location, title, children, skip = false }: IProps) => {
           width: '100%',
           height: '270px',
           position: 'absolute',
+          pointerEvents: 'none',
         }}
       />
       <main
