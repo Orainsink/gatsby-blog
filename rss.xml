@@ -1,4 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's blog]]></title><description><![CDATA[Blog XD]]></description><link>https://foolishrobot.xyz/gatsby-blog</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 22 Jun 2020 02:56:50 GMT</lastBuildDate><item><title><![CDATA[New Beginnings]]></title><description><![CDATA[Far far away, behind the word mountains, far from the countries Vokalia and
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's blog]]></title><description><![CDATA[Blog XD]]></description><link>https://foolishrobot.xyz/gatsby-blog</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 22 Jun 2020 18:08:30 GMT</lastBuildDate><item><title><![CDATA[用现代MVVM框架开发Shopify主题]]></title><description><![CDATA[失业过后进行过短暂的 shopify 开发, 虽然自己不会再写 Liquid 了, 但是这一段时间的收获还是需要记录下来. Liquid模板语言的缺点 开发shopify主题的时候, 通常我们是直接使用 shopify 的 liquid 模板语言加上 jQuery…]]></description><link>https://foolishrobot.xyz/gatsby-blog/用现代MVVM框架开发Shopify主题/</link><guid isPermaLink="false">https://foolishrobot.xyz/gatsby-blog/用现代MVVM框架开发Shopify主题/</guid><pubDate>Sun, 17 May 2020 12:20:23 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;失业过后进行过短暂的 shopify 开发, 虽然自己不会再写 Liquid 了, 但是这一段时间的收获还是需要记录下来.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1&gt;Liquid模板语言的缺点&lt;/h1&gt;
+&lt;p&gt;开发shopify主题的时候, 通常我们是直接使用 shopify 的 liquid 模板语言加上 jQuery进行开发, 这在处理一些比较简单的业务场景的时候还得心应手, 但是在面对一些复杂场景, 比如自定义的侧边购物车, 或者是像我开发过程中遇到的, 商品属性较多, 表单较复杂的场景, 用 jQuery 就会导致代码拓展和维护困难. &lt;/p&gt;
+&lt;p&gt;复杂交互场景下, 如果能使用 mvvm 框架的话, 页面的性能也会有相应的提升, 还可以直接使用 element-ui 或者antD. 相应的, 因为我们只在网页的部分地方使用框架, 所以对商品网页的 SEO 影响并不大. 使用框架的缺点是维护比较困难, 增加了额外的下载开销, 酌情取舍.&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;h1&gt;如何使用&lt;/h1&gt;
+&lt;p&gt;首先, 不管是 Vue 还是 React 都不能直接从 shopify 后台获取数据, 获取数据的方式有两个: &lt;/p&gt;
+&lt;h2&gt;1. 曲线救国, 通过Liquid文件内的内嵌 script 标签&lt;/h2&gt;
+&lt;p&gt;举个简单的例子, 代码为 Vue:&lt;/p&gt;
+&lt;p&gt;Liquid文件&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;script
+	id&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;data&quot;&lt;/span&gt;
+	type&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;application/json&quot;&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;\&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; product &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; json &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;\&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;script&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Vue:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; data &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;data&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;innnerHtml&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; MyComponent&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+	propsData&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; data
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;React 的话基本同理, 只是写法不同. 之所以选择 Vue, 无非是因为 Vue 也是模板语法, 和 liquid 搭配起来不会很突兀.&lt;/p&gt;
+&lt;h2&gt;2. 通过 Shopify 提供的部分 Ajax 接口, 进行局部View更新&lt;/h2&gt;
+&lt;p&gt;完全用 liquid 和 jquery 开发的一大问题, 就是 View 的局部更新, 我们大部分时间只能用 &lt;code class=&quot;language-text&quot;&gt;$.html()&lt;/code&gt;这种落后的方式来局部更新视图, 代码很繁杂, 且高度定制的情况下维护很困难.&lt;/p&gt;
+&lt;p&gt;好在 Shopify 还提供了部分 &lt;a href=&quot;https://shopify.dev/docs/themes/ajax-api/getting-started&quot;&gt;Ajax 接口&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;通过这些接口,  我们能在 Vue 代码内和后台进行部分交互, 完成一些特定的功能. &lt;/p&gt;
+&lt;h2&gt;3. 嵌入Vue&lt;/h2&gt;
+&lt;p&gt;…就直接引入 Vue 的 js 文件, 在需要引入 Vue 的地方, 放置一个 具有 id 的元素, 然后把 Vue 实例挂载到该元素上就行了. &lt;/p&gt;
+&lt;p&gt;参考资料: &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.bounteous.com/insights/2019/09/06/developing-shopify-themes-storefront-api-and-vuejs/&quot;&gt;Developing Shopify Themes with the Storefront API and Vue.js&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[New Beginnings]]></title><description><![CDATA[Far far away, behind the word mountains, far from the countries Vokalia and
 Consonantia, there live the blind texts. Separated they live in…]]></description><link>https://foolishrobot.xyz/gatsby-blog/new-beginnings/</link><guid isPermaLink="false">https://foolishrobot.xyz/gatsby-blog/new-beginnings/</guid><pubDate>Thu, 28 May 2015 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;Far far away, behind the word mountains, far from the countries Vokalia and
 Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
 right at the coast of the Semantics, a large language ocean. A small river named
