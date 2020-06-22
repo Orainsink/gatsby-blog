@@ -10,21 +10,21 @@ const Loading: React.FC<{ debounce?: number }> = (props) => {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        background: '#0a0a0a',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        zIndex: 99999,
-      }}
-    >
-      {active && (
+    active && (
+      <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: '#0a0a0a',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 11,
+        }}
+      >
         <svg
           version="1.1"
           id="loader-1"
@@ -58,8 +58,8 @@ const Loading: React.FC<{ debounce?: number }> = (props) => {
           </circle>
           <circle cx="20" cy="20" r="5" fill="#fff"></circle>
         </svg>
-      )}
-    </div>
+      </div>
+    )
   );
 };
 export default Loading;

@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link } from 'gatsby';
 import Footer from '../components/Footer';
+import Bg from '../components/Bg';
+import Header from '../components/Header';
 import { useSelector, useDispatch } from 'react-redux';
+import styles from '../styles/BlogLayout.module.less';
+import classnames from 'classnames';
 
 import { rhythm, scale } from '../utils/typography';
 interface IProps {
@@ -14,68 +18,37 @@ const Layout = ({ location, title, children }: IProps) => {
   const { scene, trigger } = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const rootPath = `${__PATH_PREFIX__}/`;
-  let header;
-
   useEffect(() => {
     dispatch({ type: 'SCENE', payload: false });
+    dispatch({ type: 'FROMBLOG', payload: true });
 
     const body = document.getElementsByTagName('body')[0];
     body.style.overflowY = 'scroll';
   }, []);
 
-  if (location.pathname === rootPath) {
-    header = (
-      <h1
-        style={{
-          ...scale(1.5),
-          marginBottom: rhythm(1.5),
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h1>
-    );
-  } else {
-    header = (
-      <h3
-        style={{
-          fontFamily: `Montserrat, sans-serif`,
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h3>
-    );
-  }
-
   return (
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-        maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-      }}
-    >
-      <header>{header}</header>
-      <main>{children}</main>
+    <div className={styles.wrapper}>
+      <Header />
+      <Bg />
+      <main
+        style={{
+          margin: `${rhythm(5)} auto`,
+          maxWidth: rhythm(32),
+          padding: `${rhythm(1 / 4)}`,
+        }}
+      >
+        <div
+          style={{
+            background: '#FFF',
+            padding: `${rhythm(1 / 2)}`,
+            borderRadius: '2px',
+            boxShadow:
+              '0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24)',
+          }}
+        >
+          {children}
+        </div>
+      </main>
       <Footer />
     </div>
   );

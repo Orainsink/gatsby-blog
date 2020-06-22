@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom';
 import GlobalLayout from './src/layout/GlobalLayout';
 import { loadableReady } from '@loadable/component';
 
+export const wrapPageElement = GlobalLayout;
 export const replaceHydrateFunction = () => {
   return (element, container, callback) => {
     loadableReady(() => {
@@ -14,4 +15,3 @@ export const replaceHydrateFunction = () => {
     });
   };
 };
-export const wrapPageElement = GlobalLayout;

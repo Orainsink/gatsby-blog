@@ -3,8 +3,7 @@ import classnames from 'classnames';
 import styles from '../styles/Indexlayout.module.less';
 import { useSelector, useDispatch } from 'react-redux';
 import Footer from '../components/Footer';
-import { useStaticQuery, graphql } from 'gatsby';
-import Image from 'gatsby-image';
+import Bg from '../components/Bg';
 
 import { rhythm, scale } from '../utils/typography';
 interface IProps {
@@ -16,18 +15,7 @@ interface IProps {
 
 /**首页Layout */
 const Layout = ({ location, title, children, skip = false }: IProps) => {
-  const data = useStaticQuery(graphql`
-    query IndexLayoutQuery {
-      bg: file(absolutePath: { regex: "/mainBg.png/" }) {
-        childImageSharp {
-          fixed(width: 1280, height: 800) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
-  `);
-  const { scene, trigger } = useSelector((state) => state);
+  const { scene, trigger, fromBlog } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,19 +34,9 @@ const Layout = ({ location, title, children, skip = false }: IProps) => {
         !scene ? styles.disActive : trigger ? styles.trigger : styles.active,
         skip ? styles.skip : null
       )}
+      style={{ transition: fromBlog ? 'unset' : 'transform 0.5s ease-out' }}
     >
-      <Image
-        className={styles.bg}
-        fixed={data.bg.childImageSharp.fixed}
-        alt={'bg'}
-        style={{
-          width: '100%',
-          height: '270px',
-          position: 'absolute',
-          pointerEvents: 'none',
-        }}
-      />
-
+      <Bg />
       <main
         style={{
           margin: `${rhythm(5)} auto`,

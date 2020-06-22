@@ -1,29 +1,9 @@
 .wrapper {
   position: absolute;
-  top: 100%;
-  transform: translateY(0);
-  transition: transform 0.5s ease-out;
-  left: 0;
-  right: 0;
-  background: #efefef;
-}
-.active {
-  transform: translateY(0);
-}
-.disActive {
-  transform: translateY(-100vh);
-}
-.trigger {
-  transform: translateY(-10vh);
-}
-.skip {
-  top: 0 !important;
-  transition: unset !important;
-  transform: unset !important;
-}
-.bg {
-  position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  background: #efefef;
+  z-index: 0;
+  margin: auto;
+  right: 0;
 }

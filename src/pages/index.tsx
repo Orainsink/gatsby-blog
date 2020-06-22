@@ -1,16 +1,16 @@
-import React, { Suspense } from 'react';
-import { PageProps, Link, graphql } from 'gatsby';
+import React, { useState } from 'react';
+import Loadable from '@loadable/component';
 
+import { PageProps, Link, graphql } from 'gatsby';
 import Layout from '../layout/IndexLayout';
 import SEO from '../components/seo';
 import Trigger from '../components/Trigger';
 import { rhythm } from '../utils/typography';
 import Header from '../components/Header';
-// import { lazy } from '@loadable/component';
-// import Loadable from '@loadable/component';
 import Loading from '../components/Loading';
-// const Dynamic = Loadable(() => import('../components/Dynamic'));
-import Dynamic from '../components/Dynamic';
+import { useSelector } from 'react-redux';
+const Dyn = /* #__LOADABLE__ */ () => import('../components/Dynamic');
+const Dynamic = Loadable(Dyn);
 
 type Data = {
   site: {
@@ -38,14 +38,13 @@ type Data = {
 const Index = ({ data, location }: PageProps<Data>) => {
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
+  const { scene } = useSelector((state) => state);
 
   return (
     <>
       <Trigger />
-      {/* <Suspense fallback={<Loading debounce={500} />}> */}
-      <Dynamic />
-      {/* </Suspense> */}
-      <Header />
+      <Dynamic fallback={<Loading debounce={500} />} />
+      {!scene && <Header />}
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" />
         {posts.map(({ node }) => {

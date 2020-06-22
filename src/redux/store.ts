@@ -8,6 +8,9 @@ const reducer = (state, action) => {
     case 'TRIGGER': {
       return { ...state, trigger: action.payload };
     }
+    case 'FROMBLOG': {
+      return { ...state, fromBlog: action.payload };
+    }
   }
   return state;
 };
@@ -15,6 +18,7 @@ const reducer = (state, action) => {
 const initialState = {
   scene: true,
   trigger: false,
+  fromBlog: false,
 };
 
 const windowGlobal = typeof window !== 'undefined' && window;
