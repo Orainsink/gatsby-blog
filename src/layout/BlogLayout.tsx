@@ -19,6 +19,10 @@ const Layout = ({ location, title, children }: IProps) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch({ type: 'HASARROW', payload: false });
+  }, []);
+
+  useEffect(() => {
     dispatch({ type: 'SCENE', payload: false });
 
     const body = document.getElementsByTagName('body')[0];
@@ -27,8 +31,6 @@ const Layout = ({ location, title, children }: IProps) => {
 
   return (
     <div className={styles.wrapper}>
-      {/* <Header /> */}
-      {/* <Bg /> */}
       <main
         style={{
           margin: `${rhythm(5)} auto`,

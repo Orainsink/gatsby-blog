@@ -13,7 +13,7 @@ import Image from 'gatsby-image';
 import { Link } from 'gatsby';
 import { GithubOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 /** resize hook */
 const useWindowSize = () => {
@@ -92,6 +92,7 @@ const Header: React.FC = () => {
   const [active, setActive] = useState(false);
   const [drawer, setDrawer] = useState(false);
   const [width, height] = useWindowSize();
+  const { hasArrow } = useSelector((state) => state);
 
   useEffect(() => {
     if (width < 468) {
@@ -165,7 +166,7 @@ const Header: React.FC = () => {
               window.open('https://github.com/Orainsink');
             }}
           />
-          {!active && (
+          {!active && hasArrow && (
             <ArrowSvg className={styles.arrow} onClick={_handleArrow} />
           )}
         </Col>

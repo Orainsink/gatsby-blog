@@ -14,8 +14,12 @@ interface IProps {
 
 /**首页Layout */
 const Layout = ({ location, title, children }: IProps) => {
-  const { scene, trigger, fromBlog } = useSelector((state) => state);
+  const { scene, trigger } = useSelector((state) => state);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: 'HASARROW', payload: true });
+  }, []);
 
   useEffect(() => {
     const body = document.getElementsByTagName('body')[0];
