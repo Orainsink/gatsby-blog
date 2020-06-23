@@ -39,12 +39,12 @@ const Index = ({ data, location }: PageProps<Data>) => {
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
   const { scene } = useSelector((state) => state);
-
+  //{!scene && <Header />}
   return (
     <>
       <Trigger />
       <Dynamic fallback={<Loading debounce={500} />} />
-      {!scene && <Header />}
+
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" />
         {posts.map(({ node }) => {

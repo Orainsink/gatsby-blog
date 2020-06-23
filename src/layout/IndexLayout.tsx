@@ -15,7 +15,7 @@ interface IProps {
 
 /**首页Layout */
 const Layout = ({ location, title, children, skip = false }: IProps) => {
-  const { scene, trigger, fromBlog } = useSelector((state) => state);
+  const { scene, trigger } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,9 +34,8 @@ const Layout = ({ location, title, children, skip = false }: IProps) => {
         !scene ? styles.disActive : trigger ? styles.trigger : styles.active,
         skip ? styles.skip : null
       )}
-      style={{ transition: fromBlog ? 'unset' : 'transform 0.5s ease-out' }}
     >
-      <Bg />
+      {/* <Bg /> */}
       <main
         style={{
           margin: `${rhythm(5)} auto`,

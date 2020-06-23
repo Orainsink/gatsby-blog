@@ -20,7 +20,6 @@ const Layout = ({ location, title, children }: IProps) => {
 
   useEffect(() => {
     dispatch({ type: 'SCENE', payload: false });
-    dispatch({ type: 'FROMBLOG', payload: true });
 
     const body = document.getElementsByTagName('body')[0];
     body.style.overflowY = 'scroll';
@@ -28,8 +27,8 @@ const Layout = ({ location, title, children }: IProps) => {
 
   return (
     <div className={styles.wrapper}>
-      <Header />
-      <Bg />
+      {/* <Header /> */}
+      {/* <Bg /> */}
       <main
         style={{
           margin: `${rhythm(5)} auto`,

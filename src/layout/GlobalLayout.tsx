@@ -2,12 +2,18 @@ import React from 'react';
 import Player from '../components/Player';
 import { BrowserView } from 'react-device-detect';
 import '../styles/global.less';
+import Header from '../components/Header';
+import Bg from '../components/Bg';
+import { useSelector, useDispatch } from 'react-redux';
 
 /**全局PageElement */
-const Layout = ({ element, props }) => {
+const GlobalLayout = ({ children, ...props }) => {
+  const { scene } = useSelector((state) => state);
   return (
     <>
-      {element}
+      {children}
+      {!scene && <Header />}
+      <Bg />
       <BrowserView>
         <Player />
       </BrowserView>
@@ -15,4 +21,4 @@ const Layout = ({ element, props }) => {
   );
 };
 
-export default Layout;
+export default React.memo(GlobalLayout);

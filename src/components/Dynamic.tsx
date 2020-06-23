@@ -178,7 +178,7 @@ const Modal = (props: ModalProps) => {
 };
 /**首页webGl动画 */
 const Dynamic: React.FC<Props> = () => {
-  const { scene, trigger, fromBlog } = useSelector((state) => state);
+  const { scene, trigger } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const _handleScene = useCallback(() => {
@@ -191,7 +191,6 @@ const Dynamic: React.FC<Props> = () => {
         styles.wrapper,
         !scene ? styles.disActive : trigger ? styles.trigger : styles.active
       )}
-      style={{ transition: fromBlog ? 'unset' : 'transform 0.5s ease-out' }}
     >
       <Canvas>
         <Suspense fallback={null}>
