@@ -1,25 +1,17 @@
 .wrapper {
   position: absolute;
-  top: 100%;
-  transform: translateY(0);
+  top: 0;
   transition: transform 0.5s ease-out;
   left: 0;
   right: 0;
   z-index: 1;
 }
 .active {
-  transform: translateY(0);
+  transform: translateY(100vh);
 }
 .disActive {
-  transform: translateY(-100vh);
+  transform: none;
 }
 .trigger {
-  transform: translateY(-10vh);
-}
-.skip {
-  top: 0 !important;
-  transition: unset !important;
-  transform: unset !important;
-}
-.bg {
+  transform: translateY(90vh);
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Loadable from '@loadable/component';
 
 import { PageProps, Link, graphql } from 'gatsby';
@@ -6,9 +6,10 @@ import Layout from '../layout/IndexLayout';
 import SEO from '../components/seo';
 import Trigger from '../components/Trigger';
 import { rhythm } from '../utils/typography';
-import Header from '../components/Header';
 import Loading from '../components/Loading';
-import { useSelector } from 'react-redux';
+
+// magic comments
+// https://loadable-components.com/docs/babel-plugin/#magic-comments
 const Dyn = /* #__LOADABLE__ */ () => import('../components/Dynamic');
 const Dynamic = Loadable(Dyn);
 
@@ -38,8 +39,7 @@ type Data = {
 const Index = ({ data, location }: PageProps<Data>) => {
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
-  const { scene } = useSelector((state) => state);
-  //{!scene && <Header />}
+
   return (
     <>
       <Trigger />

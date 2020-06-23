@@ -7,15 +7,14 @@ import Bg from '../components/Bg';
 
 import { rhythm, scale } from '../utils/typography';
 interface IProps {
-  skip?: boolean;
   location: any;
   title: string;
   children?: any;
 }
 
 /**首页Layout */
-const Layout = ({ location, title, children, skip = false }: IProps) => {
-  const { scene, trigger } = useSelector((state) => state);
+const Layout = ({ location, title, children }: IProps) => {
+  const { scene, trigger, fromBlog } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,11 +30,9 @@ const Layout = ({ location, title, children, skip = false }: IProps) => {
     <div
       className={classnames(
         styles.wrapper,
-        !scene ? styles.disActive : trigger ? styles.trigger : styles.active,
-        skip ? styles.skip : null
+        !scene ? styles.disActive : trigger ? styles.trigger : styles.active
       )}
     >
-      {/* <Bg /> */}
       <main
         style={{
           margin: `${rhythm(5)} auto`,

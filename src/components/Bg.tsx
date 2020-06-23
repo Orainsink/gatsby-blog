@@ -24,6 +24,7 @@ const Bg = () => {
       fixed={data.bg.childImageSharp.fixed}
       alt={'bg'}
       style={{
+        width: '100%',
         height: scene ? 0 : '270px',
         transition: 'height 0.6s ease-in',
       }}
