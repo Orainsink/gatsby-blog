@@ -121,6 +121,7 @@ const Header: React.FC = () => {
   }, [width]);
 
   const _handleArrow = useCallback(() => {
+    dispatch({ type: 'SKIP', payload: false });
     dispatch({ type: 'SCENE', payload: true });
   }, []);
 

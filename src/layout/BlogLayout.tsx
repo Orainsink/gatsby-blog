@@ -19,6 +19,7 @@ const Layout = ({ location, title, children }: IProps) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch({ type: 'SKIP', payload: true });
     dispatch({ type: 'HASARROW', payload: false });
   }, []);
 

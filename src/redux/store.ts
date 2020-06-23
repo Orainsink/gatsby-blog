@@ -11,6 +11,9 @@ const reducer = (state, action) => {
     case 'HASARROW': {
       return { ...state, hasArrow: action.payload };
     }
+    case 'SKIP': {
+      return { ...state, skip: action.payload };
+    }
   }
   return state;
 };
@@ -19,6 +22,7 @@ const initialState = {
   scene: true,
   trigger: false,
   hasArrow: true,
+  skip: false,
 };
 
 const windowGlobal = typeof window !== 'undefined' && window;

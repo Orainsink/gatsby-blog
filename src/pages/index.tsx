@@ -7,6 +7,7 @@ import SEO from '../components/seo';
 import Trigger from '../components/Trigger';
 import { rhythm } from '../utils/typography';
 import Loading from '../components/Loading';
+import { useSelector } from 'react-redux';
 
 // magic comments
 // https://loadable-components.com/docs/babel-plugin/#magic-comments
@@ -39,11 +40,12 @@ type Data = {
 const Index = ({ data, location }: PageProps<Data>) => {
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
+  const { skip } = useSelector((state) => state);
 
   return (
     <>
       <Trigger />
-      <Dynamic fallback={<Loading debounce={500} />} />
+      {!skip && <Dynamic fallback={<Loading debounce={500} />} />}
 
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" />

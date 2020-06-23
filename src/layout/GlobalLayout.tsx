@@ -7,13 +7,13 @@ import Bg from '../components/Bg';
 import { useSelector, useDispatch } from 'react-redux';
 
 /**全局PageElement */
-const GlobalLayout = ({ children, ...props }) => {
+const GlobalLayout = ({ children, location, ...props }) => {
   const { scene } = useSelector((state) => state);
   return (
     <>
       {children}
       {!scene && <Header />}
-      <Bg />
+      <Bg location={location} />
       <BrowserView>
         <Player />
       </BrowserView>

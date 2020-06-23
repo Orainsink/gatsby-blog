@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Image from 'gatsby-image';
 import { useStaticQuery, graphql } from 'gatsby';
 import styles from '../styles/Bg.module.less';
 import { useSelector } from 'react-redux';
 
-const Bg = () => {
+const Bg = ({ location }) => {
   const data = useStaticQuery(graphql`
     query BgQuery {
       bg: file(absolutePath: { regex: "/mainBg.png/" }) {
@@ -17,6 +17,10 @@ const Bg = () => {
     }
   `);
 
+  const isIndex = useMemo(() => {
+    return location.pathName === '/';
+  }, [location]);
+
   const { scene } = useSelector((state) => state);
 
   return (
@@ -25,7 +29,8 @@ const Bg = () => {
       alt={'bg'}
       style={{
         width: '100%',
-        height: scene ? 0 : '270px',
+        height: '270px',
+        opacity: scene ? 0 : 1,
         transition: 'height 0.6s ease-in',
       }}
       className={styles.bg}
