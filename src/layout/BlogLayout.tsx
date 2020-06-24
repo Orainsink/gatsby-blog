@@ -1,13 +1,9 @@
 import React, { useEffect } from 'react';
-import { Link } from 'gatsby';
 import Footer from '../components/Footer';
-import Bg from '../components/Bg';
-import Header from '../components/Header';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styles from '../styles/BlogLayout.module.less';
-import classnames from 'classnames';
 
-import { rhythm, scale } from '../utils/typography';
+import { rhythm } from '../utils/typography';
 interface IProps {
   location: any;
   title: string;
@@ -15,7 +11,6 @@ interface IProps {
 }
 /**文章页Layout */
 const Layout = ({ location, title, children }: IProps) => {
-  const { scene, trigger } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,7 +22,7 @@ const Layout = ({ location, title, children }: IProps) => {
     dispatch({ type: 'SCENE', payload: false });
 
     const body = document.getElementsByTagName('body')[0];
-    body.style.overflowY = 'scroll';
+    body.style.overflowY = 'auto';
   }, []);
 
   return (

@@ -4,7 +4,7 @@ import { BrowserView } from 'react-device-detect';
 import '../styles/global.less';
 import Header from '../components/Header';
 import Bg from '../components/Bg';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 /**全局PageElement */
 const GlobalLayout = ({ children, location, ...props }) => {
@@ -12,8 +12,8 @@ const GlobalLayout = ({ children, location, ...props }) => {
   return (
     <>
       {children}
-      {!scene && <Header />}
-      <Bg location={location} />
+      {!scene && <Header location={location} />}
+      <Bg />
       <BrowserView>
         <Player />
       </BrowserView>

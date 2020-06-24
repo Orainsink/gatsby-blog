@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import styles from '../styles/Bg.module.less';
 import { useSelector } from 'react-redux';
 
-const Bg = ({ location }) => {
+const Bg = () => {
   const data = useStaticQuery(graphql`
     query BgQuery {
       bg: file(absolutePath: { regex: "/mainBg.png/" }) {
@@ -17,10 +17,6 @@ const Bg = ({ location }) => {
     }
   `);
 
-  const isIndex = useMemo(() => {
-    return location.pathName === '/';
-  }, [location]);
-
   const { scene } = useSelector((state) => state);
 
   return (
@@ -31,7 +27,7 @@ const Bg = ({ location }) => {
         width: '100%',
         height: '270px',
         opacity: scene ? 0 : 1,
-        transition: 'height 0.6s ease-in',
+        transition: 'opacity 0.6s ease-in',
       }}
       className={styles.bg}
     />

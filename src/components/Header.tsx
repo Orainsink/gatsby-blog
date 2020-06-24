@@ -30,8 +30,14 @@ const useWindowSize = () => {
 };
 
 /**抽屉菜单,用于移动端兼容 */
-const MenuDrawer: React.FC = () => {
+const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
   const [visible, setVisible] = useState(false);
+
+  /**路径改变时关闭菜单 */
+  useEffect(() => {
+    setVisible(false);
+  }, [location]);
+
   return (
     <>
       <Button
@@ -63,7 +69,7 @@ const MenuDrawer: React.FC = () => {
 };
 
 /**Header */
-const Header: React.FC = () => {
+const Header: React.FC<{ location: any }> = ({ location }) => {
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
@@ -127,7 +133,7 @@ const Header: React.FC = () => {
 
   const menu = useMemo(() => {
     if (drawer) {
-      return <MenuDrawer />;
+      return <MenuDrawer location={location} />;
     } else
       return (
         <ul className={styles.nav}>
@@ -140,7 +146,7 @@ const Header: React.FC = () => {
           </li>
         </ul>
       );
-  }, [drawer]);
+  }, [drawer, location]);
 
   return (
     <header className={classnames(styles.wrapper, active && styles.active)}>

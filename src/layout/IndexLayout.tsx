@@ -3,9 +3,8 @@ import classnames from 'classnames';
 import styles from '../styles/Indexlayout.module.less';
 import { useSelector, useDispatch } from 'react-redux';
 import Footer from '../components/Footer';
-import Bg from '../components/Bg';
 
-import { rhythm, scale } from '../utils/typography';
+import { rhythm } from '../utils/typography';
 interface IProps {
   location: any;
   title: string;
@@ -23,10 +22,11 @@ const Layout = ({ location, title, children }: IProps) => {
 
   useEffect(() => {
     const body = document.getElementsByTagName('body')[0];
+    console.log(scene, body.style.overflowY);
     if (scene) {
       body.style.overflowY = 'hidden';
     } else {
-      body.style.overflowY = 'scroll';
+      body.style.overflowY = 'auto';
     }
   }, [scene]);
 
