@@ -22,7 +22,7 @@ const Layout = ({ location, title, children }: IProps) => {
 
   useEffect(() => {
     const body = document.getElementsByTagName('body')[0];
-    console.log(scene, body.style.overflowY);
+
     if (scene) {
       body.style.overflowY = 'hidden';
     } else {
@@ -49,6 +49,7 @@ const Layout = ({ location, title, children }: IProps) => {
             background: '#FFF',
             padding: `${rhythm(1 / 2)}`,
             borderRadius: '2px',
+            minHeight: `${rhythm(16)}`,
             boxShadow:
               '0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24)',
           }}

@@ -12,20 +12,18 @@ const Footer: React.FC = () => {
             className={styles.icon}
             style={{ transform: 'translateY(-1px)' }}
           />
-          <a href="https://github.com/Orainsink/gatsby-blog">
-            Git Repository: Orainsink
-          </a>
+          <a href="https://github.com/Orainsink/gatsby-blog">Site Repository</a>
         </div>
         <div>
           <MailOutlined
             className={styles.icon}
-            style={{ transform: 'translateY(2px)' }}
+            style={{ transform: 'translateY(1px)' }}
           />
           Email: ywt1250066597@gmail.com
         </div>
       </div>
       <div>
-        ©{new Date().getFullYear()}, Built with{' '}
+        © Orainsink {new Date().getFullYear()}, Built with{' '}
         <a href="https://www.gatsbyjs.org">Gatsby</a>
         {', '}
         <a href="https://ant.design">Antd</a>
