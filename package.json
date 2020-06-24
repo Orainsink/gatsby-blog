@@ -37,6 +37,7 @@
     "gatsby-transformer-remark": "^2.8.9",
     "gatsby-transformer-sharp": "^2.5.2",
     "gsap": "^3.3.0",
+    "jinrishici": "1.0.6",
     "less": "^3.11.2",
     "prismjs": "^1.20.0",
     "react": "^16.12.0",

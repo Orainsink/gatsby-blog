@@ -8,6 +8,7 @@ import Trigger from '../components/Trigger';
 import { rhythm } from '../utils/typography';
 import Loading from '../components/Loading';
 import { useSelector } from 'react-redux';
+import Poem from '../components/Poem';
 
 // magic comments
 // https://loadable-components.com/docs/babel-plugin/#magic-comments
@@ -49,6 +50,7 @@ const Index = ({ data, location }: PageProps<Data>) => {
 
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" />
+        <Poem />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug;
           return (

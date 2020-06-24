@@ -9519,6 +9519,11 @@ jimp@^0.10.2:
     core-js "^3.4.1"
     regenerator-runtime "^0.13.3"
 
+jinrishici@1.0.6:
+  version "1.0.6"
+  resolved "https://registry.npm.taobao.org/jinrishici/download/jinrishici-1.0.6.tgz#1f3e1259de5e889ce1bab00f118248c7c346bd98"
+  integrity sha1-Hz4SWd5eiJzhurAPEYJIx8NGvZg=
+
 jpeg-js@^0.3.4:
   version "0.3.7"
   resolved "https://registry.yarnpkg.com/jpeg-js/-/jpeg-js-0.3.7.tgz#471a89d06011640592d314158608690172b1028d"
