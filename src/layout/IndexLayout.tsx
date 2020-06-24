@@ -39,7 +39,7 @@ const Layout = ({ location, title, children }: IProps) => {
     >
       <main
         style={{
-          margin: `${rhythm(5)} auto`,
+          margin: `${rhythm(5)} auto 0 auto`,
           maxWidth: rhythm(32),
           padding: `${rhythm(1 / 4)}`,
         }}
@@ -55,8 +55,8 @@ const Layout = ({ location, title, children }: IProps) => {
         >
           {children}
         </div>
+        <Footer />
       </main>
-      <Footer />
     </div>
   );
 };
