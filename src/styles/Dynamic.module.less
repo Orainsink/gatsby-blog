@@ -19,10 +19,57 @@ body {
 .disActive {
   transform: translateY(-100vh);
   // 解决react-three-fiber的一个bug
-  // 该bug导致切换scene过后, moon无法通过光追绑定事件
+  // 该bug导致切换scene过后, Moon无法通过光线追踪绑定事件
   // 虽然不知道原理, 但是重新计算宽度就解决了-_-||
   width: calc(100% - 1px);
 }
 .trigger {
   transform: translateY(-10vh);
+}
+.arrow {
+  width: 40px;
+  height: 17px;
+  color: rgba(255, 255, 255, 0.7);
+  position: absolute;
+  margin: auto;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+  overflow: visible;
+  transform: rotate(90deg) scale(1.4);
+  path {
+    transition: all 1.5s cubic-bezier(0.2, 1, 0.3, 1);
+  }
+  path:nth-child(1) {
+    animation: arrow-anim 1.5s cubic-bezier(0.2, 1, 0.3, 1) infinite running;
+  }
+  path:nth-child(2) {
+    animation: arrow-fixed-anim 1.5s cubic-bezier(0.2, 1, 0.3, 1) infinite
+      running;
+  }
+}
+@keyframes arrow-anim {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  5% {
+    transform: translateX(-0.1rem);
+  }
+  100% {
+    transform: translateX(1rem);
+    opacity: 0;
+  }
+}
+@keyframes arrow-fixed-anim {
+  5% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
 }

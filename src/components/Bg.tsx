@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import Image from 'gatsby-image';
 import { useStaticQuery, graphql } from 'gatsby';
 import styles from '../styles/Bg.module.less';
@@ -28,6 +28,7 @@ const Bg = () => {
         height: '270px',
         opacity: scene ? 0 : 1,
         transition: 'opacity 0.6s ease-in',
+        transitionDelay: '0.5s',
       }}
       className={styles.bg}
     />

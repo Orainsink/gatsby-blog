@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import jinrishici from 'jinrishici';
+import styles from '../styles/Poem.module.less';
 const jinrishici = require('jinrishici');
 
 interface IPoem {
@@ -22,7 +22,15 @@ const Poem: React.FC = () => {
     });
   }, []);
   console.log(poem);
-  return poem && <article></article>;
+  return (
+    poem && (
+      <article className={styles.wrap}>
+        <div>{poem.content}</div>
+        <div>《{poem.origin.title}》</div>
+        <div>{poem.origin.author}</div>
+      </article>
+    )
+  );
 };
 
 export default React.memo(Poem);

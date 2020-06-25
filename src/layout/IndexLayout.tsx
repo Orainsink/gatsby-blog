@@ -37,6 +37,13 @@ const Layout = ({ location, title, children }: IProps) => {
         !scene ? styles.disActive : trigger ? styles.trigger : styles.active
       )}
     >
+      {scene && (
+        <div
+          className={classnames(styles.clickTip, trigger ? styles.show : null)}
+        >
+          Click to slide
+        </div>
+      )}
       <main
         style={{
           margin: `${rhythm(5)} auto 0 auto`,

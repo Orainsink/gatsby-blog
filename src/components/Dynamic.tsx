@@ -17,6 +17,7 @@ import random from '../utils/random';
 import Text from './Textpanel';
 import classnames from 'classnames';
 import Moon from './Moon';
+import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
 
 interface Props {}
 
@@ -173,6 +174,7 @@ const Modal = (props: ModalProps) => {
       </mesh>
       {words ? <Text words={words} position={[0, -5, 0]} /> : null}
       <Text words={['少熬夜,多运动']} position={[0, -18, -20]} />
+      <Text words={["Orainsink's Blog"]} position={[0, 22, -10]} />
     </group>
   );
 };
@@ -197,6 +199,7 @@ const Dynamic: React.FC<Props> = () => {
           <Modal isScene={scene} _handleScene={_handleScene} />
         </Suspense>
       </Canvas>
+      <ArrowSvg className={styles.arrow} onClick={_handleScene} />
     </div>
   );
 };
