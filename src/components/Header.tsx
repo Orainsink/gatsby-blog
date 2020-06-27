@@ -58,7 +58,9 @@ const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
           <li>
             <Link to="/">home</Link>
           </li>
-          <li>achives</li>
+          <li>
+            <Link to="/archives">archives</Link>
+          </li>
           <li>
             <Link to="/about">about</Link>
           </li>
@@ -163,6 +165,11 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
             }}
           />
         </Col>
+        {!drawer && (
+          <Col className={styles.author}>
+            <span>{"Orainsink'Blog"}</span>
+          </Col>
+        )}
         <Col flex={1} style={{ textAlign: 'right' }}>
           {menu}
         </Col>

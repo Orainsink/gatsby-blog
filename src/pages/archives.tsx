@@ -66,7 +66,7 @@ const ArchivesPage = ({ data, location }: Props) => {
 
   return (
     <Layout location={location} title={'目录'}>
-      <SEO title="archives" />
+      <SEO title="Archives" />
       <Search
         size="large"
         placeholder={'Preceding "#" to match tags'}

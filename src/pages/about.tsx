@@ -11,7 +11,7 @@ interface Props {
 const AboutPage = ({ data, location }: Props) => {
   return (
     <Layout location={location} title={'About me'}>
-      <SEO title="404: Not Found" />
+      <SEO title="About" />
       <h1>这里是我</h1>
       <p>这里是我的介绍</p>
     </Layout>

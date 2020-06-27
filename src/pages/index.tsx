@@ -50,7 +50,7 @@ const Index = ({ data, location }: PageProps<Data>) => {
       <Trigger />
       {!skip && <Dynamic fallback={<Loading debounce={500} />} />}
       <Layout location={location} title={siteTitle}>
-        <SEO title="All posts" />
+        <SEO title="Home page" />
         <Poem />
         <TagsSnippet />
 
