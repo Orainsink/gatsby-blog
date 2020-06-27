@@ -93,7 +93,7 @@ module.exports = {
           strictMath: true,
         },
         modifyVars: {
-          'primary-color': '#BADA55',
+          'primary-color': '#3390ff',
           'link-color': '#2b2b2b', // 链接色
           'main-background': '#efefef',
           'btn-primary-bg': '#fff',

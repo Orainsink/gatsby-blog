@@ -14,6 +14,9 @@ const reducer = (state, action) => {
     case 'SKIP': {
       return { ...state, skip: action.payload };
     }
+    case 'SEARCH': {
+      return { ...state, search: action.payload.trim() };
+    }
   }
   return state;
 };
@@ -23,6 +26,7 @@ const initialState = {
   trigger: false,
   hasArrow: true,
   skip: false,
+  search: '',
 };
 
 const windowGlobal = typeof window !== 'undefined' && window;

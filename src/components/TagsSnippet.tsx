@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import styles from '../styles/TagsSnippet.module.less';
 import { Row, Col, Card } from 'antd';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, navigate } from 'gatsby';
 import Image from 'gatsby-image';
 import { ReactComponent as MarkSvg } from '../assets/img/mark.svg';
+import { useDispatch } from 'react-redux';
 
 const { Meta } = Card;
 
@@ -23,6 +24,7 @@ interface IData {
 
 /**首页-标签跳转 */
 const TagsSnippet: React.FC = () => {
+  const dispatch = useDispatch();
   const tags = [
     { tag: '前端', name: '前端' },
     { tag: 'leetcode', name: 'leetcode' },
@@ -92,6 +94,11 @@ const TagsSnippet: React.FC = () => {
     [group, totalCount]
   );
 
+  const _handleClickCard = useCallback((tag: string) => {
+    dispatch({ type: 'SEARCH', payload: tag ? `#${tag}` : '' });
+    navigate('/archives/', { replace: true });
+  }, []);
+
   return (
     <section className={styles.wrap}>
       <div className={styles.title}>
@@ -104,6 +111,7 @@ const TagsSnippet: React.FC = () => {
             <Card
               hoverable
               className={styles.cardWrap}
+              onClick={() => _handleClickCard(tag.tag)}
               cover={
                 <Image
                   fixed={tagFilter(tag.tag).img.childImageSharp.fixed}
