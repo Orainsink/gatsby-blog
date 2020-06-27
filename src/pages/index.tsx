@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import Loadable from '@loadable/component';
 
 import { PageProps, Link, graphql } from 'gatsby';
