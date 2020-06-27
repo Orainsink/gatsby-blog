@@ -5,6 +5,7 @@ import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import { rhythm, scale } from '../utils/typography';
 import styles from '../styles/Blog.module.less';
+import Tags from '../components/Tags';
 
 interface IProps {
   data: {
@@ -26,6 +27,7 @@ const BlogPostTemplate: React.FC<IProps> = ({
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata.title;
   const { previous, next } = pageContext;
+  const { tags } = post.frontmatter;
 
   return (
     <>
@@ -58,7 +60,7 @@ const BlogPostTemplate: React.FC<IProps> = ({
               marginBottom: rhythm(1),
             }}
           />
-          <footer>{/* <Bio /> */}</footer>
+          <Tags tags={tags} />
         </article>
 
         <nav>
@@ -109,6 +111,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "YYYY/MM/DD")
         description
+        tags
       }
     }
   }

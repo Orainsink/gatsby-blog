@@ -38,6 +38,7 @@ const ArchivesPage = ({ data, location }: Props) => {
   const posts = data.allMarkdownRemark.edges;
   const searchRef = useRef(null);
 
+  // 节流有点问题, 性能影响不大的情况下, 感觉没有节流的必要.
   // const throttleDispatch = useCallback(
   //   throttle(() => {
   //     let value = searchRef?.current.input.state.value || '';
@@ -70,7 +71,7 @@ const ArchivesPage = ({ data, location }: Props) => {
       <Search
         size="large"
         placeholder={'Preceding "#" to match tags'}
-        defaultValue={search}
+        value={search}
         onSearch={(value) => {
           dispatch({ type: 'SEARCH', payload: value });
         }}

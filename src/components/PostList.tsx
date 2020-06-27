@@ -2,6 +2,7 @@ import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { rhythm } from '../utils/typography';
 import { Link } from 'gatsby';
 import { useSelector, useDispatch } from 'react-redux';
+import Tags from '../components/Tags';
 
 interface IProp {
   posts: {
@@ -24,15 +25,6 @@ const PostList: React.FC<IProp> = ({ posts }) => {
   const dispatch = useDispatch();
   const { search } = useSelector((state) => state);
   const [filteredPosts, setFilteredPosts] = useState(posts);
-  const onTagClicked = useCallback(
-    (e) => {
-      dispatch({
-        type: 'SEARCH',
-        payload: '#' + (e.currentTarget.dataset.tag || '').trim(),
-      });
-    },
-    [dispatch]
-  );
 
   const lowerCasePosts = useMemo(
     () =>
@@ -76,6 +68,7 @@ const PostList: React.FC<IProp> = ({ posts }) => {
     <>
       {filteredPosts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug;
+        const { date, description, tags } = node.frontmatter;
         return (
           <article key={node.fields.slug}>
             <header>
@@ -88,15 +81,16 @@ const PostList: React.FC<IProp> = ({ posts }) => {
                   {title}
                 </Link>
               </h3>
-              <small>{node.frontmatter.date}</small>
+              <small>{date}</small>
             </header>
             <section>
               <p
                 style={{ color: 'rgb(0,0,0,0.45)' }}
                 dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
+                  __html: description || node.excerpt,
                 }}
               />
+              <Tags tags={tags} />
             </section>
           </article>
         );
