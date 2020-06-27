@@ -4,6 +4,7 @@ import { BrowserView } from 'react-device-detect';
 import '../styles/global.less';
 import Header from '../components/Header';
 import Bg from '../components/Bg';
+import BackTop from '../components/BackTop';
 import { useSelector } from 'react-redux';
 
 /**全局PageElement */
@@ -14,6 +15,7 @@ const GlobalLayout = ({ children, location, ...props }) => {
       {children}
       {!scene && <Header location={location} />}
       <Bg />
+      <BackTop />
       <BrowserView>
         <Player />
       </BrowserView>

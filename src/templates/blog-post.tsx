@@ -4,6 +4,7 @@ import { Link, graphql } from 'gatsby';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import { rhythm, scale } from '../utils/typography';
+import styles from '../styles/Blog.module.less';
 
 interface IProps {
   data: {
@@ -35,25 +36,23 @@ const BlogPostTemplate: React.FC<IProps> = ({
         />
         <article>
           <header>
-            <h1
-              style={{
-                marginTop: rhythm(1),
-                marginBottom: 0,
-              }}
-            >
-              {post.frontmatter.title}
-            </h1>
+            <h1 style={{ textAlign: 'center' }}>{post.frontmatter.title}</h1>
             <p
               style={{
                 ...scale(-1 / 5),
                 display: `block`,
                 marginBottom: rhythm(1),
+                color: '#999999',
+                textAlign: 'center',
               }}
             >
               {post.frontmatter.date}
             </p>
           </header>
-          <section dangerouslySetInnerHTML={{ __html: post.html }} />
+          <section
+            dangerouslySetInnerHTML={{ __html: post.html }}
+            className={styles.container}
+          />
           <hr
             style={{
               marginBottom: rhythm(1),
@@ -108,7 +107,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "YYYY/MM/DD")
         description
       }
     }

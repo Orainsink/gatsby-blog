@@ -5,11 +5,11 @@
  * @method yoyo
  */
 export function yoyo() {
-	if (this.reversed()) {
-		this.restart();
-	} else {
-		this.reverse();
-	}
+  if (this.reversed()) {
+    this.restart();
+  } else {
+    this.reverse();
+  }
 }
 /**
  * Set loop on a TweenLite tween
@@ -18,7 +18,7 @@ export function yoyo() {
  * @method loop
  */
 export function loop() {
-	this.restart();
+  this.restart();
 }
 /**
  * Return a random value in a specified range
@@ -30,14 +30,21 @@ export function loop() {
  * @return {Number} Random value
  */
 export function random(low, high, round) {
-	round = round || false;
+  round = round || false;
 
-	let randomValue = Math.random() * (high - low) + low;
+  let randomValue = Math.random() * (high - low) + low;
 
-	if (round) {
-		return Math.floor(randomValue);
-	}
+  if (round) {
+    return Math.floor(randomValue);
+  }
 
-	return randomValue;
+  return randomValue;
 }
 
+/**
+ * generate array
+ * @param length
+ */
+export function arr(length: number) {
+  return [...Array(length).keys()];
+}

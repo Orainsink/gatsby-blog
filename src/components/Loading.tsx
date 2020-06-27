@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-/**loading组件,默认debounce=500 */
+/**loading组件,用于组件懒加载,默认debounce=500 */
 const Loading: React.FC<{ debounce?: number }> = (props) => {
   const { debounce = 500 } = props;
   const [active, setActive] = useState(false);

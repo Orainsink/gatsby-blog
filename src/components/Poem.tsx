@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../styles/Poem.module.less';
+import { Skeleton } from 'antd';
 const jinrishici = require('jinrishici');
 
 interface IPoem {
@@ -13,23 +14,27 @@ interface IPoem {
   [key: string]: any;
 }
 
+/**诗歌 */
 const Poem: React.FC = () => {
   const [poem, setPoem] = useState<null | IPoem>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     jinrishici.load((res) => {
       setPoem(res.data);
+      setLoading(false);
     });
   }, []);
-  console.log(poem);
+
   return (
-    poem && (
+    <Skeleton loading={loading} active paragraph={{ rows: 2 }} title>
       <article className={styles.wrap}>
-        <div>{poem.content}</div>
-        <div>《{poem.origin.title}》</div>
-        <div>{poem.origin.author}</div>
+        <div>{poem?.content}</div>
+        <div>《{poem?.origin.title}》</div>
+        <div>{poem?.origin.author}</div>
       </article>
-    )
+    </Skeleton>
   );
 };
 

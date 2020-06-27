@@ -58,7 +58,7 @@ const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
           <li>
             <Link to="/">home</Link>
           </li>
-          <li>tags</li>
+          <li>achives</li>
           <li>
             <Link to="/about">about</Link>
           </li>
@@ -93,7 +93,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
     }
   `);
 
-  const { author } = data.site.siteMetadata;
+  const { author, social } = data.site.siteMetadata;
   const dispatch = useDispatch();
   const [active, setActive] = useState(false);
   const [drawer, setDrawer] = useState(false);
@@ -140,7 +140,9 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
           <li>
             <Link to="/">home</Link>
           </li>
-          <li>tags</li>
+          <li>
+            <Link to="/archives">archives</Link>
+          </li>
           <li>
             <Link to="/about">about</Link>
           </li>
@@ -170,7 +172,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
             onClick={(e) => {
               e.stopPropagation();
               e.preventDefault();
-              window.open('https://github.com/Orainsink');
+              window.open(social.github);
             }}
           />
           {!active && hasArrow && (

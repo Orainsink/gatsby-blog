@@ -39,9 +39,13 @@ body {
 }
 
 article {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  padding: 10px;
-  -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, 0.6);
-  -moz-box-shadow: 0 0 5px rgba(202, 203, 204, 0.6);
+  padding: 1.5rem 0.7rem;
+  border-radius: 2px;
+  border-bottom: 1px solid rgba(202, 202, 202, 0.6);
+  transition: background-color 0.2s ease-in;
+  a {
+    &:hover {
+      color: rgb(50, 124, 228);
+    }
+  }
 }

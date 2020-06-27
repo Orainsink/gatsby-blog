@@ -4,6 +4,9 @@
   overflow: hidden;
   opacity: 1;
   height: 100px;
+  &:hover {
+    background-color: #fff;
+  }
   div {
     position: absolute;
     font-weight: 700;
@@ -15,6 +18,7 @@
     transform: translate(-50%, -50%);
     z-index: 1;
     width: 100%;
+    padding: 0 4px;
     text-align: center;
   }
   & > div:nth-child(2) {
@@ -27,7 +31,7 @@
     font-size: 45px;
     bottom: 0;
     right: 10%;
-    color: @main-background;
+    color: #dcdcdc;
   }
 }
 @media screen and (min-width: 467px) and (max-width: 767px) {

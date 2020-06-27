@@ -8,7 +8,7 @@ module.exports = {
     description: `Blog XD`,
     siteUrl: `https://foolishrobot.xyz/gatsby-blog/`,
     social: {
-      github: `Orainsink`,
+      github: `https://github.com/Orainsink`,
     },
   },
   pathPrefix: '/gatsby-blog',
@@ -38,7 +38,12 @@ module.exports = {
             },
           },
           `gatsby-remark-responsive-iframe`,
-          `gatsby-remark-prismjs`,
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              showLineNumbers: true,
+            },
+          },
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
         ],
@@ -97,7 +102,7 @@ module.exports = {
           'text-color': '#3d4451', // 主文本色
           // @text-color-secondary: rgba(0, 0, 0, 0.45); // 次文本色
           // @disabled-color: rgba(0, 0, 0, 0.25); // 失效色
-          // @border-radius-base: 4px; // 组件/浮层圆角
+          'border-radius-base': '2px', // 组件/浮层圆角
           // @border-color-base: #d9d9d9; // 边框色
           // @box-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.15); // 浮层阴影
         },

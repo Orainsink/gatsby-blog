@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classnames from 'classnames';
 import styles from '../styles/Indexlayout.module.less';
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,6 +15,7 @@ interface IProps {
 const Layout = ({ location, title, children }: IProps) => {
   const { scene, trigger } = useSelector((state) => state);
   const dispatch = useDispatch();
+  const wrapperRef = useRef(null);
 
   useEffect(() => {
     dispatch({ type: 'HASARROW', payload: true });
@@ -36,6 +37,8 @@ const Layout = ({ location, title, children }: IProps) => {
         styles.wrapper,
         !scene ? styles.disActive : trigger ? styles.trigger : styles.active
       )}
+      id="markdownBody"
+      ref={wrapperRef}
     >
       {scene && (
         <div
