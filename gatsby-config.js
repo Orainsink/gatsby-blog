@@ -112,7 +112,7 @@ module.exports = {
           'link-color': '#2b2b2b', // 链接色
           'main-background': '#efefef',
           'btn-primary-bg': '#fff',
-          // @font-size-base: 14px; // 主字号
+          'font-size-base': '16px', // 主字号
           // @heading-color: rgba(0, 0, 0, 0.85); // 标题色
           'text-color': '#3d4451', // 主文本色
           // @text-color-secondary: rgba(0, 0, 0, 0.45); // 次文本色
