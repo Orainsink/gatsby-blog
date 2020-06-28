@@ -1,9 +1,10 @@
 import React, { useRef, useMemo, useEffect } from 'react';
-import WordCloud from 'wordcloud';
 import { useStaticQuery, graphql } from 'gatsby';
 import { random } from 'lodash';
 import { useDispatch } from 'react-redux';
 import styles from '../styles/WordCloud.module.less';
+const WordCloud =
+  typeof window !== 'undefined' ? require('wordCloud') : undefined;
 
 interface IWordCloud {
   allMarkdownRemark: {

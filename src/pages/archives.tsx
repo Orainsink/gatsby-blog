@@ -6,7 +6,6 @@ import SEO from '../components/seo';
 import PostList from '../components/PostList';
 import { useSelector, useDispatch } from 'react-redux';
 import WordCloud from '../components/WordCloud';
-
 const { Search } = Input;
 
 interface Props {
