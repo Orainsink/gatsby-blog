@@ -1,10 +1,11 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useMemo } from 'react';
 import { graphql } from 'gatsby';
 import { Input } from 'antd';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import PostList from '../components/PostList';
 import { useSelector, useDispatch } from 'react-redux';
+import WordCloud from '../components/WordCloud';
 
 const { Search } = Input;
 
@@ -36,9 +37,10 @@ const ArchivesPage = ({ data, location }: Props) => {
   const { search } = useSelector((state) => state);
   const dispatch = useDispatch();
   const posts = data.allMarkdownRemark.edges;
+
   const searchRef = useRef(null);
 
-  // 节流有点问题, 性能影响不大的情况下, 感觉没有节流的必要.
+  // 本地筛选, 性能影响不大的情况下, 感觉没有节流的必要.
   // const throttleDispatch = useCallback(
   //   throttle(() => {
   //     let value = searchRef?.current.input.state.value || '';
@@ -54,7 +56,6 @@ const ArchivesPage = ({ data, location }: Props) => {
   const _handleChange = useCallback(
     (e) => {
       e.persist();
-
       let value = e.target.value || '';
 
       dispatch({
@@ -68,6 +69,7 @@ const ArchivesPage = ({ data, location }: Props) => {
   return (
     <Layout location={location} title={'目录'}>
       <SEO title="Archives" />
+      <WordCloud />
       <Search
         size="large"
         placeholder={'Preceding "#" to match tags'}
