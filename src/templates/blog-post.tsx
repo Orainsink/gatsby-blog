@@ -23,7 +23,6 @@ interface IProps {
 const BlogPostTemplate: React.FC<IProps> = ({
   data,
   pageContext,
-  tableOfContents,
   location,
 }) => {
   const post = data.markdownRemark;
@@ -53,10 +52,10 @@ const BlogPostTemplate: React.FC<IProps> = ({
               {post.frontmatter.date}
             </p>
           </header>
-          {!!tableOfContents && (
+          {!!post.tableOfContents && (
             <div
               className={styles.tableContents}
-              dangerouslySetInnerHTML={{ __html: tableOfContents }}
+              dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
             />
           )}
           <section

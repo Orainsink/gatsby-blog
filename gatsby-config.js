@@ -32,12 +32,27 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `gatsby-remark-table-of-contents`,
+            options: {
+              exclude: 'Table of Contents',
+              tight: false,
+              fromHeading: 1,
+              toHeading: 6,
+            },
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
             },
           },
           `gatsby-remark-responsive-iframe`,
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: `200`,
+            },
+          },
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
@@ -74,22 +89,6 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `content/assets/gatsby-icon.png`,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-table-of-contents`,
-            options: {
-              exclude: 'Table of Contents',
-              tight: false,
-              fromHeading: 1,
-              toHeading: 6,
-            },
-          },
-        ],
       },
     },
     `gatsby-plugin-react-helmet`,

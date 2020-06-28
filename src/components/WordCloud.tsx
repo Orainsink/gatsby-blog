@@ -3,6 +3,7 @@ import WordCloud from 'wordcloud';
 import { useStaticQuery, graphql } from 'gatsby';
 import { random } from 'lodash';
 import { useDispatch } from 'react-redux';
+import styles from '../styles/WordCloud.module.less';
 
 interface IWordCloud {
   allMarkdownRemark: {
@@ -31,7 +32,7 @@ const WordCloudItem: React.FC = () => {
     group.forEach((item) => {
       obj[item.tag] = true;
     });
-    return Object.keys(obj).map((key) => [key, random(16, 24, false)]);
+    return Object.keys(obj).map((key) => [key, random(16, 32, false)]);
   }, [group]);
 
   useEffect(() => {
@@ -54,7 +55,7 @@ const WordCloudItem: React.FC = () => {
   }, [allTags, dispatch]);
 
   return (
-    <div style={{ width: '100%', padding: '24px 0' }}>
+    <div style={{ width: '100%', padding: '24px 0' }} className={styles.wrap}>
       <div
         ref={wordRef}
         style={{ width: '100%', height: '100px', boxSizing: 'border-box' }}

@@ -5,7 +5,7 @@ import 'typeface-merriweather';
 import './src/assets/theme/prism-costom.css';
 import './src/assets/theme/prism-line-number-custom.css';
 import ReactDOM from 'react-dom';
-//margin: 1em
+
 import GlobalLayout from './src/layout/GlobalLayout';
 import { loadableReady } from '@loadable/component';
 

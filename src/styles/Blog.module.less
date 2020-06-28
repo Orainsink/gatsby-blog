@@ -36,7 +36,34 @@
 .tableContents {
   padding: 1em;
   border-left: 5px solid #dbdbdb;
-  background: #f5f5f5;
+  background: transparent;
+  margin-bottom: 1em;
+  position: relative;
+  z-index: auto;
+  &::after {
+    position: absolute;
+    content: '目录';
+    top: -10%;
+    right: 10%;
+    font-size: 42px;
+    color: #efefef;
+    font-weight: 700;
+    z-index: 0;
+  }
+  * {
+    z-index: 1;
+    position: relative;
+  }
+  p {
+    margin: 0;
+  }
+  ul {
+    margin: 0 0 0 1em;
+  }
+  li {
+    margin: 0;
+    list-style: decimal;
+  }
 }
 @media screen and (max-width: 768px) {
   .tableContents {
