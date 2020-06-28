@@ -145,5 +145,12 @@ module.exports = {
         windowKey: '__PRELOADED_STATE__',
       },
     },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        color: `#3390ff`,
+        showSpinner: true,
+      },
+    },
   ],
 };
