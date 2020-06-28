@@ -1,6 +1,9 @@
 /**
 * mkdowm parse styles
 */
+body {
+  counter-reset: chapter;
+}
 .container {
   a {
     color: #0593d3;
@@ -31,6 +34,12 @@
     font-weight: 700;
     text-rendering: optimizeLegibility;
     line-height: 1.1;
+  }
+  h2 {
+    &::before {
+      counter-increment: chapter;
+      content: counter(chapter) '. ';
+    }
   }
 }
 .tableContents {
