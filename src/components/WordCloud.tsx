@@ -1,6 +1,6 @@
 import React, { useRef, useMemo, useEffect } from 'react';
 import WordCloud from 'wordcloud';
-import { useStaticQuery, graphql, navigate } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 import { random } from 'lodash';
 import { useDispatch } from 'react-redux';
 

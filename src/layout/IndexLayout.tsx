@@ -22,16 +22,6 @@ const Layout = ({ location, title, children }: IProps) => {
     dispatch({ type: 'SEARCH', payload: '' });
   }, []);
 
-  useEffect(() => {
-    const body = document.getElementsByTagName('body')[0];
-
-    if (scene) {
-      body.style.overflowY = 'hidden';
-    } else {
-      body.style.overflowY = 'auto';
-    }
-  }, [scene]);
-
   return (
     <div
       className={classnames(

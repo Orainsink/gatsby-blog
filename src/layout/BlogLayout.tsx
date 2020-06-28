@@ -20,9 +20,6 @@ const Layout = ({ location, title, children }: IProps) => {
 
   useEffect(() => {
     dispatch({ type: 'SCENE', payload: false });
-
-    const body = document.getElementsByTagName('body')[0];
-    body.style.overflowY = 'auto';
   }, []);
 
   return (
