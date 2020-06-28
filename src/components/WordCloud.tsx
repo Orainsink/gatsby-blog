@@ -47,7 +47,6 @@ const WordCloudItem: React.FC = () => {
         fontFamily: 'Yahei',
         color: 'random-dark',
         click: (item) => {
-          console.log(item);
           dispatch({ type: 'SEARCH', payload: `#${item[0]}` });
         },
       });

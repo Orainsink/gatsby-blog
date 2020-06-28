@@ -17,11 +17,13 @@ interface IProps {
     };
   };
   pageContext: any;
+  tableOfContents: any;
   location: any;
 }
 const BlogPostTemplate: React.FC<IProps> = ({
   data,
   pageContext,
+  tableOfContents,
   location,
 }) => {
   const post = data.markdownRemark;
@@ -51,6 +53,12 @@ const BlogPostTemplate: React.FC<IProps> = ({
               {post.frontmatter.date}
             </p>
           </header>
+          {!!tableOfContents && (
+            <div
+              className={styles.tableContents}
+              dangerouslySetInnerHTML={{ __html: tableOfContents }}
+            />
+          )}
           <section
             dangerouslySetInnerHTML={{ __html: post.html }}
             className={styles.container}
@@ -106,6 +114,7 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
+      tableOfContents
       html
       frontmatter {
         title
