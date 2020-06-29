@@ -6,19 +6,41 @@ import styles from '../styles/MyPlayer.module.less';
 import { songs, ISong } from '../assets/js/songs';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
+import { ReactComponent as PausedSvg } from '../assets/img/paused.svg';
+import { ReactComponent as StartSvg } from '../assets/img/start.svg';
+import { ReactComponent as RandomSvg } from '../assets/img/random.svg';
+import { ReactComponent as LoopSvg } from '../assets/img/loop.svg';
 
 const Controller: React.FC = () => {
-  // 控件啦 ****
+  const dispatch = useDispatch();
+  const { playing, volume, mute, loop, id } = useSelector(
+    (state) => state.music
+  );
+
+  const _handleClick = useCallback(() => {
+    dispatch({ type: 'MUSIC', payload: { playing: !playing } });
+  }, [playing, dispatch]);
+  const _handleClickLoop = useCallback(() => {
+    dispatch({ type: 'MUSIC', payload: { loop: !loop } });
+  }, [loop, dispatch]);
   return (
-    <li>
-      <span> || </span>
-      <span></span>
+    <li className={styles.controller}>
+      {playing ? (
+        <PausedSvg onClick={_handleClick} />
+      ) : (
+        <StartSvg onClick={_handleClick} />
+      )}
+      {loop ? (
+        <LoopSvg onClick={_handleClickLoop} />
+      ) : (
+        <RandomSvg onClick={_handleClickLoop} />
+      )}
     </li>
   );
 };
 
 /**播放器面板 */
-const Panel: React.FC = () => {
+const Panel: React.FC = (props) => {
   const { playing, volume, mute, loop, id } = useSelector(
     (state) => state.music
   );
@@ -31,11 +53,11 @@ const Panel: React.FC = () => {
     }
   }, []);
 
-  /**点击item */
+  /**点击item切换歌曲或者暂停播放 */
   const _handleClick = useCallback(
     (song: ISong) => {
       if (song.id === id) {
-        dispatch({ type: 'MUSIC', payload: { playing: false } });
+        dispatch({ type: 'MUSIC', payload: { playing: !playing } });
       } else {
         dispatch({
           type: 'MUSIC',
@@ -43,66 +65,89 @@ const Panel: React.FC = () => {
         });
       }
     },
-    [dispatch]
+    [dispatch, id, playing]
   );
 
-  const songItem = useCallback((song: ISong) => {
-    return (
-      <li
-        key={song.id}
-        onClick={() => _handleClick(song)}
-        className={classnames(
-          styles.liWrap,
-          song.id === id ? styles.active : null
-        )}
-      >
-        <span>svgComponent</span>
-        <span>{name}</span>
-        <span>playingComponent</span>
-      </li>
-    );
-  }, []);
+  const songItem = useCallback(
+    (song: ISong) => {
+      return (
+        <li
+          key={song.id}
+          onClick={() => _handleClick(song)}
+          className={classnames(
+            styles.liWrap,
+            song.id === id ? styles.active : null
+          )}
+        >
+          <span className={styles.name}>{song.name}</span>
+          {song.id === id ? (
+            <div
+              className={classnames(
+                styles.playingImg,
+                playing ? styles.running : styles.paused
+              )}
+            >
+              <div />
+              <div />
+              <div />
+              <div />
+              <div />
+            </div>
+          ) : null}
+        </li>
+      );
+    },
+    [id, playing]
+  );
 
   const songUrl = useMemo(() => {
-    return songs.filter((song) => song.id === id)[0].url;
+    return songs.filter((song) => song.id === id)[0]?.url;
   }, [id]);
 
   return (
     <div ref={waveRef}>
       <ReactHowler
+        html5
         playing={playing}
         volume={volume}
         mute={mute}
         loop={false}
         src={songUrl}
+        format={['mp3']}
+        xhr={{}}
       />
       <Controller />
       {/* <Progress /> */}
-      <ul>{songs.map((song) => songItem(song))}</ul>
+      <ul className={styles.list}>{songs.map((song) => songItem(song))}</ul>
     </div>
   );
 };
 
 /**播放器入口 */
 const MyPlayer: React.FC = () => {
+  const { playing } = useSelector((state) => state.music);
   return (
     <>
-      <Tooltip title={<Panel />}>
+      <Tooltip title={<Panel />} trigger="click" visible={true}>
         <div>
           <svg
+            className={classnames(
+              styles.svg,
+              playing ? styles.running : styles.paused
+            )}
             xmlSpace="preserve"
             viewBox="0 0 100 100"
             y="0"
             x="0"
             xmlns="http://www.w3.org/2000/svg"
             version="1.1"
-            width="128px"
-            height="128px"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            className={styles.svg}
+            width="50px"
+            height="50px"
           >
-            <g>
+            <g className={styles.g1}>
               <path d="M27.378 92.5c-5.288 0-9.792-2.668-12.048-7.138-3.657-7.246-.386-16.816 7.446-21.787 2.617-1.661 5.486-2.62 8.354-2.8V27c0-3.22 2.071-6.01 5.154-6.941L76.816 7.81a7.24 7.24 0 0 1 2.098-.31 7.3 7.3 0 0 1 4.323 1.43 7.278 7.278 0 0 1 2.928 5.821V62.37c0 .285-.034.563-.097.828.162 6.045-3.306 12.289-8.911 15.847-2.919 1.852-6.15 2.831-9.344 2.831-5.288 0-9.792-2.669-12.048-7.139-3.656-7.246-.386-16.815 7.446-21.786 2.646-1.68 5.551-2.641 8.452-2.805V37.363l-26.029 7.832v28.381c0 .05-.001.098-.003.148.208 6.132-3.258 12.358-8.908 15.944-2.92 1.853-6.151 2.832-9.345 2.832z"></path>
+            </g>
+            <g className={styles.g2}>
               <path d="M82.626 14.752a3.71 3.71 0 0 0-4.787-3.554L37.308 23.446A3.712 3.712 0 0 0 34.669 27v37.568c-3.081-.717-6.694-.103-9.997 1.994-6.218 3.946-8.987 11.65-6.183 17.205 2.804 5.556 10.119 6.861 16.337 2.914 4.789-3.04 7.528-8.306 7.255-13.104h.013V42.565L75.2 32.603V53.97c-3.103-.753-6.756-.15-10.094 1.968-6.217 3.946-8.986 11.649-6.183 17.204 2.804 5.556 10.119 6.861 16.337 2.914 4.984-3.163 7.748-8.737 7.207-13.687h.159V14.752z"></path>
             </g>
           </svg>

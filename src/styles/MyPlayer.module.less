@@ -1,27 +1,135 @@
 .svg {
-  width: 100%;
-  height: 100%;
-  background-size: initial;
-  background-repeat-y: initial;
-  background-repeat-x: initial;
-  background-position-y: initial;
-  background-position-x: initial;
-  background-origin: initial;
-  background-image: initial;
-  background-color: rgb(255, 255, 255);
-  background-clip: initial;
-  background-attachment: initial;
-  g {
-    transform-origin: 50% 50%;
-    transform: rotate(0deg) scale(0.8, 0.8);
+  .g1 {
+    transform-origin: 50px 50px;
+    transform: scale(0.85);
+    animation: breath 1.5s linear -1s infinite normal forwards;
+    path {
+      fill: #d1d1d1;
+    }
   }
-  path:nth-child(1) {
-    fill: #d1d1d1;
-  }
-  path:nth-child(2) {
-    fill: #454545;
+  .g2 {
+    transform-origin: 50px 50px;
+    transform: scale(0.85);
+    animation: breath 1.5s linear -1.5s infinite normal forwards;
+    path {
+      fill: #454545;
+    }
   }
 }
+.running {
+  * {
+    animation-play-state: running !important;
+  }
+}
+.paused {
+  * {
+    animation-play-state: paused !important;
+  }
+}
+.list {
+  margin: 0;
+  padding: 0.5em 0;
+  font-size: 14px;
+}
+
 .liWrap {
+  margin: 0;
+  padding: 0.3em 1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease-in;
+  .name {
+    margin-right: 30px;
+  }
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+.active {
+  padding: 1em 1em;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes breath {
+  0% {
+    animation-timing-function: cubic-bezier(0.628, 0.308, 0.2636, 0.7088);
+    transform: scale(0.85);
+  }
+
+  51% {
+    animation-timing-function: cubic-bezier(0.5819, 0.316, 0.3275, 0.6954);
+    transform: scale(1.08976);
+  }
+
+  100% {
+    transform: scale(0.85);
+  }
+}
+
+.playingImg {
   position: relative;
+  width: 25px;
+  height: 22px;
+  text-align: center;
+  font-size: 10px;
+  transition: all 0.2s ease;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: -25px;
+  & > div {
+    background-color: #fff;
+    height: 100%;
+    width: 3px;
+    display: inline-block;
+    transition: all 0.2s ease;
+    animation: wavy 1s ease infinite forwards;
+    transform-origin: 50% 50%;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
+  }
+  & > div:nth-child(2) {
+    animation-delay: 0.25s;
+  }
+  & > div:nth-child(3) {
+    animation-delay: 0.5s;
+  }
+  & > div:nth-child(4) {
+    animation-delay: 0.75s;
+  }
+  & > div:nth-child(5) {
+    animation-delay: 1s;
+  }
+  @keyframes wavy {
+    0% {
+      transform: scaleY(1);
+    }
+    50% {
+      transform: scaleY(0.6);
+    }
+    100% {
+      transform: scaleY(1);
+    }
+  }
+}
+.controller {
+  svg {
+    width: 32px;
+    height: 32px;
+    fill: #fff;
+  }
+}
+
+// 覆盖默认antd样式
+:global(..ant-tooltip) {
+}
+:global(.ant-tooltip-arrow) {
+  display: none;
+}
+:global(.ant-tooltip-inner) {
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(135deg, #141619 0%, #c7d2db 100%);
 }

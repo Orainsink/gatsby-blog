@@ -25,9 +25,6 @@ const reducer = (state, action) => {
   return state;
 };
 
-/**1:单曲,2:列表随机,3:列表循环 */
-type ILoop = 1 | 2 | 3;
-
 const initialState = {
   scene: true,
   trigger: false,
@@ -36,10 +33,10 @@ const initialState = {
   search: '',
   music: {
     playing: false,
-    volume: 0.3,
+    volume: 0.7,
     mute: false,
-    loop: 3 as ILoop,
-    id: null as number | null,
+    loop: false,
+    id: 2 as number | null,
   },
 };
 

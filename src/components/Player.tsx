@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../assets/theme/Player.css';
 import APlayer from 'aplayer';
-import songs from '../assets/js/songs';
+import { songs } from '../assets/js/songs';
 import { useSelector } from 'react-redux';
 
 /**APlayer */

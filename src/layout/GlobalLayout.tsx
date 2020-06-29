@@ -27,9 +27,9 @@ const GlobalLayout = ({ children, location, ...props }) => {
       {!scene && <Header location={location} />}
       <Bg />
       <BackTop />
-      <BrowserView>
+      {/* <BrowserView>
         <Player />
-      </BrowserView>
+      </BrowserView> */}
     </>
   );
 };

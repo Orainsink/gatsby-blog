@@ -14,6 +14,7 @@ import { Link } from 'gatsby';
 import { GithubOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
 import { useDispatch, useSelector } from 'react-redux';
+import MyPlayer from '../components/MyPlayer';
 
 /** resize hook */
 const useWindowSize = () => {
@@ -165,6 +166,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
             }}
           />
         </Col>
+        <MyPlayer />
         {!drawer && (
           <Col className={styles.author}>
             <span>{"Orainsink'Blog"}</span>
