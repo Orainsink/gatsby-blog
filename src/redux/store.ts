@@ -17,9 +17,16 @@ const reducer = (state, action) => {
     case 'SEARCH': {
       return { ...state, search: action.payload.trim() };
     }
+    case 'MUSIC': {
+      state.music = { ...state.music, ...action.payload };
+      return state;
+    }
   }
   return state;
 };
+
+/**1:单曲,2:列表随机,3:列表循环 */
+type ILoop = 1 | 2 | 3;
 
 const initialState = {
   scene: true,
@@ -27,6 +34,13 @@ const initialState = {
   hasArrow: true,
   skip: false,
   search: '',
+  music: {
+    playing: false,
+    volume: 0.3,
+    mute: false,
+    loop: 3 as ILoop,
+    id: null as number | null,
+  },
 };
 
 const windowGlobal = typeof window !== 'undefined' && window;
