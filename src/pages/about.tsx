@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
+import MyPlayer from '../components/MyPlayer';
 
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
@@ -12,8 +13,7 @@ const AboutPage = ({ data, location }: Props) => {
   return (
     <Layout location={location} title={'About me'}>
       <SEO title="About" />
-      <h1>这里是我</h1>
-      <p>这里是我的介绍</p>
+      <MyPlayer />
     </Layout>
   );
 };
