@@ -45,6 +45,6 @@ export function random(low, high, round) {
  * generate array
  * @param length
  */
-export function arr(length: number) {
+export function arr(length: number): number[] {
   return [...Array(length).keys()];
 }

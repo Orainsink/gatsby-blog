@@ -115,10 +115,46 @@
   }
 }
 .controller {
+  margin: 0;
+  padding: 1em 1em 0 1em;
   svg {
-    width: 32px;
-    height: 32px;
     fill: #fff;
+    transition: all 0.2s linear;
+  }
+}
+
+.start {
+  svg {
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    &:hover {
+      fill: #d1d1d1;
+    }
+  }
+}
+.loop {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    &:hover {
+      fill: #d1d1d1;
+    }
+  }
+}
+.volume {
+  display: flex;
+  align-items: center;
+  > svg {
+    margin-left: 0.6em;
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -131,5 +167,9 @@
 :global(.ant-tooltip-inner) {
   padding: 0;
   margin: 0;
+  border-radius: @border-radius-base;
   background: linear-gradient(135deg, #141619 0%, #c7d2db 100%);
+}
+:global(.ant-slider-track) {
+  background: linear-gradient(90deg, #7b8696 0%, #c7d2db 100%);
 }
