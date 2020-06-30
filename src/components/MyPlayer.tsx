@@ -34,35 +34,37 @@ const Controller: React.FC = () => {
     dispatch({ type: 'MUSIC', payload: { loop: !loop } });
   }, [loop, dispatch]);
   return (
-    <Row className={styles.controller} gutter={8} align="middle">
-      <Col className={styles.start}>
-        {playing ? (
-          <PausedSvg onClick={_handleClick} />
-        ) : (
-          <StartSvg onClick={_handleClick} />
-        )}
-      </Col>
-      <Col className={styles.loop}>
-        {loop ? (
-          <LoopSvg style={{ width: '24px' }} onClick={_handleClickLoop} />
-        ) : (
-          <RandomSvg style={{ width: '18px' }} onClick={_handleClickLoop} />
-        )}
-      </Col>
-      <Col className={styles.volume} flex={1}>
-        <VolumeSvg />
-        <Slider
-          style={{ width: '100%' }}
-          onChange={(val) =>
-            dispatch({ type: 'MUSIC', payload: { volume: +val / 10 } })
-          }
-          defaultValue={volume * 10}
-          step={1}
-          max={10}
-          tooltipVisible={false}
-        />
-      </Col>
-    </Row>
+    <div id="wave" className={styles.waveWrap}>
+      <Row className={styles.controller} gutter={8} align="middle">
+        <Col className={styles.start}>
+          {playing ? (
+            <PausedSvg onClick={_handleClick} />
+          ) : (
+            <StartSvg onClick={_handleClick} />
+          )}
+        </Col>
+        <Col className={styles.loop}>
+          {loop ? (
+            <LoopSvg style={{ width: '24px' }} onClick={_handleClickLoop} />
+          ) : (
+            <RandomSvg style={{ width: '18px' }} onClick={_handleClickLoop} />
+          )}
+        </Col>
+        <Col className={styles.volume} flex={1}>
+          <VolumeSvg />
+          <Slider
+            style={{ width: '100%' }}
+            onChange={(val) =>
+              dispatch({ type: 'MUSIC', payload: { volume: +val / 10 } })
+            }
+            defaultValue={volume * 10}
+            step={1}
+            max={10}
+            tooltipVisible={false}
+          />
+        </Col>
+      </Row>
+    </div>
   );
 };
 
@@ -78,6 +80,10 @@ const Panel: React.FC = () => {
   /**生成 wave */
   useEffect(() => {
     if (waveRef.current) {
+      const siriWave = new SiriWave({
+        container: document.getElementById('wave'),
+        cover: true,
+      });
     }
   }, []);
 
