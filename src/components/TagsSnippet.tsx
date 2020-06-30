@@ -103,7 +103,7 @@ const TagsSnippet: React.FC = () => {
     <section className={styles.wrap}>
       <div className={styles.title}>
         <MarkSvg className={styles.mark} />
-        欢迎光临本博客！博主是个前端菜狗，龟速学习中。
+        欢迎光临！博主 Orainsink 是个前端菜狗，龟速学习中。
       </div>
       <Row gutter={16}>
         {tags.map((tag) => (

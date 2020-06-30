@@ -83,14 +83,6 @@ const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
   );
 };
 
-// avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
-//   childImageSharp {
-//     fixed(width: 50, height: 50) {
-//       ...GatsbyImageSharpFixed
-//     }
-//   }
-// }
-
 /**Header */
 const Header: React.FC<{ location: any }> = ({ location }) => {
   const data = useStaticQuery(graphql`
@@ -173,14 +165,6 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
     >
       <Row justify="space-around" align="middle">
         <Col style={{ display: 'flex', alignItems: 'center' }}>
-          {/* <Image
-            className={styles.avatar}
-            fixed={data.avatar.childImageSharp.fixed}
-            alt={author.name}
-            imgStyle={{
-              borderRadius: `50%`,
-            }}
-          /> */}
           <MyPlayer />
         </Col>
         {!drawer && (
@@ -191,7 +175,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
         <Col flex={1} style={{ textAlign: 'right' }}>
           {menu}
         </Col>
-        <Col span={drawer ? 8 : 4}>
+        <Col style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <GithubOutlined
             className={styles.git}
             onClick={(e) => {
