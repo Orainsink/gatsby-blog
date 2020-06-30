@@ -154,19 +154,22 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
   }, [drawer, location]);
 
   return (
-    <header className={classnames(styles.wrapper, active && styles.active)}>
+    <header
+      id="header"
+      className={classnames(styles.wrapper, active && styles.active)}
+    >
       <Row justify="space-around" align="middle">
-        <Col span={2} style={{ textAlign: 'end' }}>
-          <Image
+        <Col style={{ display: 'flex', alignItems: 'center' }}>
+          {/* <Image
             className={styles.avatar}
             fixed={data.avatar.childImageSharp.fixed}
             alt={author.name}
             imgStyle={{
               borderRadius: `50%`,
             }}
-          />
+          /> */}
+          <MyPlayer />
         </Col>
-        <MyPlayer />
         {!drawer && (
           <Col className={styles.author}>
             <span>{"Orainsink'Blog"}</span>

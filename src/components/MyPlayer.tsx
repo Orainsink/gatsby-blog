@@ -188,9 +188,9 @@ const MyPlayer: React.FC = () => {
     <Tooltip
       title={<Panel />}
       trigger="click"
-      getPopupContainer={() => document.getElementById('music')}
+      getPopupContainer={() => document.getElementById('header')}
     >
-      <div id="music">
+      <div style={{ cursor: 'pointer' }}>
         <svg
           className={classnames(
             styles.svg,
