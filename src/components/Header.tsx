@@ -9,7 +9,7 @@ import styles from '../styles/Header.module.less';
 import classnames from 'classnames';
 import { Row, Col, Drawer, Button } from 'antd';
 import { useStaticQuery, graphql } from 'gatsby';
-import Image from 'gatsby-image';
+// import Image from 'gatsby-image';
 import { Link } from 'gatsby';
 import { GithubOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
@@ -83,17 +83,18 @@ const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
   );
 };
 
+// avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
+//   childImageSharp {
+//     fixed(width: 50, height: 50) {
+//       ...GatsbyImageSharpFixed
+//     }
+//   }
+// }
+
 /**Header */
 const Header: React.FC<{ location: any }> = ({ location }) => {
   const data = useStaticQuery(graphql`
     query HeaderQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
-        childImageSharp {
-          fixed(width: 50, height: 50) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
       site {
         siteMetadata {
           author {

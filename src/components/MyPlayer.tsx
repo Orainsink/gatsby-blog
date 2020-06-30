@@ -17,7 +17,6 @@ import { ReactComponent as StartSvg } from '../assets/img/start.svg';
 import { ReactComponent as RandomSvg } from '../assets/img/random.svg';
 import { ReactComponent as LoopSvg } from '../assets/img/loop.svg';
 import { ReactComponent as VolumeSvg } from '../assets/img/volume.svg';
-import { ReactComponent as MuteSvg } from '../assets/img/mute.svg';
 import { arr } from '../utils/utils';
 
 const Controller: React.FC = () => {
