@@ -30,6 +30,8 @@
   margin: 0;
   padding: 0.5em 0;
   font-size: 14px;
+  z-index: 1;
+  position: relative;
 }
 
 .liWrap {
@@ -117,6 +119,8 @@
 .controller {
   margin: 0;
   padding: 1em 1em 0 1em;
+  position: relative;
+  z-index: 1;
   svg {
     fill: #fff;
     transition: all 0.2s linear;
@@ -158,6 +162,13 @@
   }
 }
 .waveWrap {
+  position: relative;
+  canvas {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    bottom: -60%;
+  }
 }
 // 覆盖默认antd样式
 :global(..ant-tooltip) {

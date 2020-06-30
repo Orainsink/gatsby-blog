@@ -19,6 +19,7 @@ import { ReactComponent as LoopSvg } from '../assets/img/loop.svg';
 import { ReactComponent as VolumeSvg } from '../assets/img/volume.svg';
 import { arr } from '../utils/utils';
 
+/**播放器控件 */
 const Controller: React.FC = () => {
   const dispatch = useDispatch();
   const { playing, volume, mute, loop, id } = useSelector(
@@ -77,14 +78,29 @@ const Panel: React.FC = () => {
   const waveRef = useRef(null);
   const [randomList, setRandomList] = useState([]);
 
-  /**生成 wave */
-  useEffect(() => {
+  const siriWave = useMemo(() => {
     if (waveRef.current) {
-      const siriWave = new SiriWave({
+      const wave = new SiriWave({
         container: document.getElementById('wave'),
         cover: true,
       });
+      wave.stop();
+      return wave;
     }
+  }, [waveRef.current]);
+
+  useEffect(() => {
+    if (playing) {
+      siriWave && siriWave.start();
+    } else {
+      siriWave && siriWave.stop();
+    }
+  }, [playing, siriWave]);
+
+  const generatRandom = useMemo(() => {
+    return arr(songs.length)
+      .map((item) => item + 1)
+      .sort(() => Math.random() - 0.5);
   }, []);
 
   /**点击item切换歌曲或者暂停播放 */
@@ -93,13 +109,14 @@ const Panel: React.FC = () => {
       if (song.id === id) {
         dispatch({ type: 'MUSIC', payload: { playing: !playing } });
       } else {
+        !loop && setRandomList(generatRandom);
         dispatch({
           type: 'MUSIC',
           payload: { id: song.id, playing: true },
         });
       }
     },
-    [dispatch, id, playing]
+    [dispatch, id, playing, generatRandom, loop]
   );
 
   const songItem = useCallback(
@@ -138,34 +155,24 @@ const Panel: React.FC = () => {
     return songs.filter((song) => song.id === id)[0]?.url;
   }, [id]);
 
-  const generatRandom = useCallback(() => {
-    setRandomList(
-      arr(songs.length)
-        .filter((item) => item !== id)
-        .sort(() => Math.random() - 0.5)
-    );
-  }, [id]);
-
   /**列表随机:生成随机id列表 */
   useEffect(() => {
     if (!loop) {
-      generatRandom();
+      setRandomList(generatRandom);
     }
   }, [loop, generatRandom]);
 
   /**onEnd, 循环或随机 */
   const _handleMusicEnd = useCallback(() => {
     if (!loop) {
-      dispatch({ type: 'MUSIC', payload: { id: randomList[0] } });
-      if (randomList.length > 1) {
-        let tmpArr = [...randomList];
-        tmpArr.pop();
-        setRandomList(tmpArr);
-      } else {
-        generatRandom();
+      let tmpList = randomList.filter((item) => item !== id);
+      if (tmpList.length < 1) {
+        tmpList = generatRandom.filter((item) => item !== id);
       }
+      setRandomList(tmpList);
+      dispatch({ type: 'MUSIC', payload: { id: tmpList[0] } });
     }
-  }, [id, loop, generatRandom]);
+  }, [id, loop, generatRandom, randomList]);
 
   return (
     <div ref={waveRef}>
@@ -195,7 +202,7 @@ const MyPlayer: React.FC = () => {
       trigger="click"
       getPopupContainer={() => document.getElementById('header')}
     >
-      <div style={{ cursor: 'pointer' }}>
+      <div style={{ cursor: 'pointer', transform: 'translateY(0.2em)' }}>
         <svg
           className={classnames(
             styles.svg,
