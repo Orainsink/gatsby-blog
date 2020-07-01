@@ -71,15 +71,7 @@ const BlogPostTemplate: React.FC<IProps> = ({
         </article>
 
         <nav>
-          <ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              padding: 0,
-            }}
-          >
+          <ul className={styles.lead}>
             <li>
               {previous && (
                 <Link to={previous.fields.slug} rel="prev">

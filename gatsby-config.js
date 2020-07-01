@@ -102,6 +102,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-less`,
       options: {
+        postCssPlugins: [require('autoprefixer')()],
         javascriptEnabled: true,
         cssLoaderOptions: {
           camelCase: false,

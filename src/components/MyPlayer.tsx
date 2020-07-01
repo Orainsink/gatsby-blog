@@ -175,7 +175,7 @@ const Panel: React.FC = () => {
   }, [id, loop, generatRandom, randomList]);
 
   return (
-    <div ref={waveRef}>
+    <>
       <ReactHowler
         html5
         playing={playing}
@@ -186,9 +186,11 @@ const Panel: React.FC = () => {
         format={['mp3']}
         onEnd={_handleMusicEnd}
       />
-      <Controller />
-      <ul className={styles.list}>{songs.map((song) => songItem(song))}</ul>
-    </div>
+      <div ref={waveRef}>
+        <Controller />
+        <ul className={styles.list}>{songs.map((song) => songItem(song))}</ul>
+      </div>
+    </>
   );
 };
 

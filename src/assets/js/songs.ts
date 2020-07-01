@@ -9,11 +9,11 @@ export interface ISong {
 export const songs: ISong[] = [
   {
     id: 1,
-    name: 'Paris in the Rain',
-    artist: 'Lauv',
-    url: 'http://music.163.com/song/media/outer/url?id=518904648.mp3',
+    name: 'Intro',
+    artist: 'The xx',
+    url: 'http://music.163.com/song/media/outer/url?id=4341314.mp3',
     cover:
-      'http://p2.music.126.net/4Xf4fRbDc2N30rShLT_irQ==/18251893021647481.jpg?param=130y130',
+      'http://p1.music.126.net/Xik6a3wXoGPOLI1GNXGdFQ==/825733232504415.jpg?param=130y130',
   },
   {
     id: 2,
