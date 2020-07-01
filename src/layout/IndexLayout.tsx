@@ -44,6 +44,7 @@ const Layout = ({ location, title, children }: IProps) => {
           maxWidth: rhythm(32),
           padding: `${rhythm(1 / 4)}`,
         }}
+        className={styles.main}
       >
         <div
           style={{
