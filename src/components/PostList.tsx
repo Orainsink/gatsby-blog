@@ -22,7 +22,6 @@ interface IProp {
 }
 
 const PostList: React.FC<IProp> = ({ posts }) => {
-  const dispatch = useDispatch();
   const { search } = useSelector((state) => state);
   const [filteredPosts, setFilteredPosts] = useState(posts);
 

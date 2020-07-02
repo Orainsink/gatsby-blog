@@ -95,6 +95,9 @@ const Panel: React.FC = () => {
     } else {
       siriWave && siriWave.stop();
     }
+    return () => {
+      siriWave && siriWave.stop();
+    };
   }, [playing, siriWave]);
 
   const generatRandom = useMemo(() => {

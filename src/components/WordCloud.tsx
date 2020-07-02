@@ -46,7 +46,7 @@ const WordCloudItem: React.FC = () => {
         drawOutOfBound: false,
         ellipticity: 1.5,
         backgroundColor: 'transparent',
-        fontFamily: 'Yahei',
+        fontFamily: 'PingFang SC, Yahei,Tahoma,Arial,SimSun,Verdana',
         color: 'random-dark',
         click: (item) => {
           dispatch({ type: 'SEARCH', payload: `#${item[0]}` });

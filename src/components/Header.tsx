@@ -106,7 +106,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
   const [active, setActive] = useState(false);
   const [drawer, setDrawer] = useState(false);
   const [width, height] = useWindowSize();
-  const { hasArrow } = useSelector((state) => state);
+  const { hasArrow, scene } = useSelector((state) => state);
 
   useEffect(() => {
     if (width < 468) {
@@ -160,6 +160,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
 
   return (
     <header
+      style={{ display: scene ? 'none' : 'block' }}
       id="header"
       className={classnames(styles.wrapper, active && styles.active)}
     >

@@ -35,7 +35,9 @@ interface Data {
 const ArchivesPage = ({ data, location }: Props) => {
   const { search } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const posts = data.allMarkdownRemark.edges;
+  const posts = data.allMarkdownRemark.edges.filter((edge) => {
+    return edge.node.frontmatter.title;
+  });
 
   const searchRef = useRef(null);
 

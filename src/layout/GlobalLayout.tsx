@@ -22,7 +22,7 @@ const GlobalLayout = ({ children, location, ...props }) => {
   return (
     <>
       {children}
-      {!scene && <Header location={location} />}
+      <Header location={location} />
       <Bg />
       <BackTop />
     </>

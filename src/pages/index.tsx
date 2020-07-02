@@ -42,7 +42,9 @@ type Data = {
 
 const Index = ({ data, location }: PageProps<Data>) => {
   const siteTitle = data.site.siteMetadata.title;
-  const posts = data.allMarkdownRemark.edges;
+  const posts = data.allMarkdownRemark.edges.filter((edge) => {
+    return edge.node.frontmatter.title;
+  });
   const { skip } = useSelector((state) => state);
 
   return (
