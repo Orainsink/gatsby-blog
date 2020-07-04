@@ -64,4 +64,4 @@ const Layout = ({ location, title, children }: IProps) => {
   );
 };
 
-export default Layout;
+export default React.memo(Layout);

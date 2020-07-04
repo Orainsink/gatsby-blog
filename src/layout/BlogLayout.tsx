@@ -16,9 +16,6 @@ const Layout = ({ location, title, children }: IProps) => {
   useEffect(() => {
     dispatch({ type: 'SKIP', payload: true });
     dispatch({ type: 'HASARROW', payload: false });
-  }, []);
-
-  useEffect(() => {
     dispatch({ type: 'SCENE', payload: false });
   }, []);
 
@@ -49,4 +46,4 @@ const Layout = ({ location, title, children }: IProps) => {
   );
 };
 
-export default Layout;
+export default React.memo(Layout);

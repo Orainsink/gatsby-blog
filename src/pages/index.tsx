@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Loadable from '@loadable/component';
 
 import { PageProps, Link, graphql } from 'gatsby';
@@ -6,7 +6,7 @@ import Layout from '../layout/IndexLayout';
 import SEO from '../components/seo';
 import Trigger from '../components/Trigger';
 import Loading from '../components/Loading';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Poem from '../components/Poem';
 import TagsSnippet from '../components/TagsSnippet';
 import PostList from '../components/PostList';
@@ -45,7 +45,12 @@ const Index = ({ data, location }: PageProps<Data>) => {
   const posts = data.allMarkdownRemark.edges.filter((edge) => {
     return edge.node.frontmatter.title;
   });
+  const dispatch = useDispatch();
   const { skip } = useSelector((state) => state);
+
+  // useEffect(()=>{
+  //   dispatch({type:'TITLE',payload:''})
+  // },[])
 
   return (
     <>
@@ -80,7 +85,7 @@ const Index = ({ data, location }: PageProps<Data>) => {
   );
 };
 
-export default Index;
+export default React.memo(Index);
 
 export const pageQuery = graphql`
   query {

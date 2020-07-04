@@ -62,4 +62,4 @@ const Loading: React.FC<{ debounce?: number }> = (props) => {
     )
   );
 };
-export default Loading;
+export default React.memo(Loading);

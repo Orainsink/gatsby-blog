@@ -21,6 +21,9 @@ const reducer = (state, action) => {
       state.music = { ...state.music, ...action.payload };
       return state;
     }
+    case 'TITLE': {
+      return { ...state, title: action.payload };
+    }
   }
   return state;
 };
@@ -33,10 +36,11 @@ const initialState = {
   search: '',
   music: {
     playing: false,
-    volume: 0.7,
+    volume: 0.5,
     mute: false,
     loop: false,
     id: 2 as number | null,
+    title: '',
   },
 };
 

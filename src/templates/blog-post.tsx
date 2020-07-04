@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { Link, graphql } from 'gatsby';
 
 import Layout from '../layout/BlogLayout';
@@ -6,6 +6,7 @@ import SEO from '../components/seo';
 import { rhythm, scale } from '../utils/typography';
 import styles from '../styles/Blog.module.less';
 import Tags from '../components/Tags';
+import { useDispatch } from 'react-redux';
 
 interface IProps {
   data: {
@@ -29,6 +30,14 @@ const BlogPostTemplate: React.FC<IProps> = ({
   const siteTitle = data.site.siteMetadata.title;
   const { previous, next } = pageContext;
   const { tags } = post.frontmatter;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: 'TITLE', payload: post.frontmatter.title });
+    return () => {
+      dispatch({ type: 'TITLE', payload: '' });
+    };
+  }, [post.frontmatter.title]);
 
   return (
     <>

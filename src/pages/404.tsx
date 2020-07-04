@@ -26,7 +26,7 @@ const NotFoundPage = ({ data, location }: Props) => {
   );
 };
 
-export default NotFoundPage;
+export default React.memo(NotFoundPage);
 
 export const pageQuery = graphql`
   query {

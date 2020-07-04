@@ -1,16 +1,24 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { graphql } from 'gatsby';
 import styles from '../styles/Blog.module.less';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
+import { useDispatch } from 'react-redux';
 
 interface Props {
   data: any;
   location: any;
 }
 const AboutPage = ({ data, location }: Props) => {
-  console.log(data);
   const post = data?.markdownRemark;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: 'TITLE', payload: 'About' });
+    return () => {
+      dispatch({ type: 'TITLE', payload: '' });
+    };
+  }, []);
 
   return (
     <Layout location={location} title={'About me'}>
@@ -24,7 +32,7 @@ const AboutPage = ({ data, location }: Props) => {
   );
 };
 
-export default AboutPage;
+export default React.memo(AboutPage);
 export const pageQuery = graphql`
   query {
     markdownRemark(fields: { slug: { eq: "/关于本博客/" } }) {

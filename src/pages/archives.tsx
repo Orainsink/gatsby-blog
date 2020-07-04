@@ -87,7 +87,7 @@ const ArchivesPage = ({ data, location }: Props) => {
   );
 };
 
-export default ArchivesPage;
+export default React.memo(ArchivesPage);
 
 export const pageQuery = graphql`
   query {

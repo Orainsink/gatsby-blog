@@ -8,7 +8,7 @@ import React, {
 import styles from '../styles/Header.module.less';
 import classnames from 'classnames';
 import { Row, Col, Drawer, Button } from 'antd';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, navigate } from 'gatsby';
 // import Image from 'gatsby-image';
 import { Link } from 'gatsby';
 import { GithubOutlined, UnorderedListOutlined } from '@ant-design/icons';
@@ -36,7 +36,6 @@ const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
   const { scene } = useSelector((state) => state);
 
   const toggleScroll = () => {
-    console.log(1);
     const body = document.getElementsByTagName('body')[0];
     body.style.overflowY = scene ? 'hidden' : 'auto';
   };
@@ -105,10 +104,17 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
   const dispatch = useDispatch();
   const [active, setActive] = useState(false);
   const [drawer, setDrawer] = useState(false);
+  const [titleVisible, setTitleVisible] = useState(true);
   const [width, height] = useWindowSize();
-  const { hasArrow, scene } = useSelector((state) => state);
+  const { hasArrow, scene, title } = useSelector((state) => state);
 
   useEffect(() => {
+    if (width < 1024) {
+      setTitleVisible(false);
+    } else {
+      setTitleVisible(true);
+    }
+
     if (width < 468) {
       setDrawer(true);
     } else {
@@ -170,7 +176,19 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
         </Col>
         {!drawer && (
           <Col className={styles.author}>
-            <span>{"Orainsink'Blog"}</span>
+            {!titleVisible ? null : active && title ? (
+              <span>{title}</span>
+            ) : (
+              <span
+                style={{ cursor: 'pointer' }}
+                onClick={(event) => {
+                  event.preventDefault();
+                  navigate('/');
+                }}
+              >
+                Orainsink'Blog
+              </span>
+            )}
           </Col>
         )}
         <Col flex={1} style={{ textAlign: 'right' }}>
