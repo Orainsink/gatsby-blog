@@ -4,7 +4,7 @@ import { random } from 'lodash';
 import { useDispatch } from 'react-redux';
 import styles from '../styles/WordCloud.module.less';
 const WordCloud =
-  typeof window !== 'undefined' ? require('wordCloud') : undefined;
+  typeof window !== 'undefined' ? require('wordcloud') : undefined;
 
 interface IWordCloud {
   allMarkdownRemark: {

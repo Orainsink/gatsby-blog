@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Footer from '../components/Footer';
 import { useDispatch } from 'react-redux';
-import styles from '../styles/BlogLayout.module.less';
+import styles from '../styles/Bloglayout.module.less';
 import { rhythm } from '../utils/typography';
 interface IProps {
   location: any;
