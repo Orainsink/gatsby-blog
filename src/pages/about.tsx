@@ -4,6 +4,7 @@ import styles from '../styles/Blog.module.less';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import { useDispatch } from 'react-redux';
+import Poem from '../components/Poem';
 
 interface Props {
   data: any;
@@ -23,6 +24,7 @@ const AboutPage = ({ data, location }: Props) => {
   return (
     <Layout location={location} title={'About me'}>
       <SEO title="About" />
+      <Poem />
       <section
         dangerouslySetInnerHTML={{ __html: post.html }}
         className={styles.container}

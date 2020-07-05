@@ -58,8 +58,8 @@ const Layout = ({ location, title, children }: IProps) => {
         >
           {children}
         </div>
-        <Footer />
       </main>
+      <Footer />
     </div>
   );
 };

@@ -70,4 +70,4 @@ yarn-error.log
 .history/
 .npmrc
 .cache/
-content/blog/
+# content/blog/

@@ -1,0 +1,82 @@
+---
+title: css-自用常用代码
+copyright: true
+permalink: 1
+top: 0
+date: 2019-09-09 13:20:13
+tags: ["前端", "css"]
+categories: css
+password:
+---
+
+## 文本超出部分省略号
+
+```css
+overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+```
+
+## 隐藏滚动条
+
+<!--more-->
+
+```css
+body::-webkit-scrollbar { display: none }
+body { -ms-overflow-style: none; }
+body { overflow: -moz-scrollbars-none; }
+```
+
+## ios overflow模拟滚动防止卡顿
+
+```css
+-webkit-overflow-scrolling: touch
+```
+
+## 圣杯布局
+
+```css
+<template>
+<header>header</header>
+<section class="wrapper">
+    <section class="col main">
+        <section class="main-wrap">main</section>
+    </section>
+    <aside class="col left">left</aside>
+    <aside class="col right">right</aside>
+</section>
+<footer>footer</footer>
+</template>
+
+<style>
+header,footer {height: 50px;}
+.wrapper {padding: 0; overflow:hidden;}
+.col {float: left;}
+.main {width: 100%;}
+.main-wrap {margin: 0 100px 0 100px;height: 200px;}
+.left {width: 100px; height: 200px; margin-left: -100%;}
+.right {width: 100px; height: 200px; margin-left: -100px;}
+</style>
+```
+
+## h5阻止长按复制
+
+```css
+user-select:none;
+```
+
+## 文字阴影
+
+```css
+text-shadow: 0 0 3px #FFF;
+```
+
+## h5禁止长按出现选单
+
+```css
+pointer-events: none;
+```
+

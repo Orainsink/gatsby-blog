@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import Footer from '../components/Footer';
 import { useDispatch } from 'react-redux';
 import styles from '../styles/BlogLayout.module.less';
-
 import { rhythm } from '../utils/typography';
 interface IProps {
   location: any;
@@ -40,8 +39,8 @@ const Layout = ({ location, title, children }: IProps) => {
         >
           {children}
         </div>
-        <Footer />
       </main>
+      <Footer />
     </div>
   );
 };
