@@ -133,6 +133,7 @@ module.exports = {
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-css-modules`,
     'gatsby-plugin-svgr',
+    // `gatsby-plugin-stylelint`,
     {
       resolve: 'gatsby-plugin-antd',
       options: {

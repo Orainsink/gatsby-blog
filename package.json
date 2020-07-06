@@ -64,7 +64,12 @@
   "devDependencies": {
     "eslint-config-react-app": "5.2.1",
     "gh-pages": "3.0.0",
-    "prettier": "2.0.5"
+    "husky": "4.2.5",
+    "lint-staged": "10.2.11",
+    "prettier": "2.0.5",
+    "stylelint": "13.6.1",
+    "stylelint-config-prettier": "8.0.2",
+    "stylelint-config-recommended": "^3.0.0"
   },
   "homepage": "https://Orainsink.github.io/gatsby-blog",
   "keywords": [
@@ -76,6 +81,18 @@
     "type": "git",
     "url": "git+https://github.com/Orainsink/gatsby-blog.git"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.css": "stylelint",
+    "*.less": "stylelint --syntax less",
+    "*.{jsx,js,ts,tsx,json,md,css,less}": [
+      "prettier --write"
+    ]
+  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -84,6 +101,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" ",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public -r https://$GH_TOKEN@github.com/Orainsink/gatsby-blog.git"
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public -r https://$GH_TOKEN@github.com/Orainsink/gatsby-blog.git",
+    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
+    "lint:fix": "yarn lint --fix"
   }
 }

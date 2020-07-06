@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from '../styles/Footer.module.less';
 import { GithubOutlined, MailOutlined } from '@ant-design/icons';
+import styles from '../styles/Footer.module.less';
 
 /**Footer */
 const Footer: React.FC = () => {

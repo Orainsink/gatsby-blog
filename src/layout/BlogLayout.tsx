@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import Footer from '../components/Footer';
 import { useDispatch } from 'react-redux';
-import styles from '../styles/Bloglayout.module.less';
 import { rhythm } from '../utils/typography';
+import styles from '../styles/Bloglayout.module.less';
+
 interface IProps {
   location: any;
   title: string;
