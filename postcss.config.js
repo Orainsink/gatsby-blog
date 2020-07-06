@@ -1,3 +1,6 @@
 module.exports = ({ env }) => ({
-  plugins: [env === 'production' ? require('cssnano') : null],
+  plugins: [
+    require('autoprefixer'),
+    env === 'production' ? require('cssnano') : null,
+  ],
 });
