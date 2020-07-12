@@ -167,6 +167,7 @@ const Panel: React.FC = () => {
 
   /**onEnd, 循环或随机 */
   const _handleMusicEnd = useCallback(() => {
+    console.log('loop', loop);
     if (!loop) {
       let tmpList = randomList.filter((item) => item !== id);
       if (tmpList.length < 1) {
