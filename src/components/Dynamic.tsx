@@ -18,8 +18,7 @@ import Text from './Textpanel';
 import classnames from 'classnames';
 import Moon from './Moon';
 import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
-
-interface Props {}
+import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 
 let cameraShakeY = 0;
 let mouseX = 0;
@@ -30,11 +29,11 @@ const hfUrl =
 
 interface ModalProps {
   isScene: boolean;
-  _handleScene: () => void;
+  onCloseScene: () => void;
 }
 /**模型 */
 const Modal = (props: ModalProps) => {
-  const { isScene, _handleScene } = props;
+  const { isScene, onCloseScene } = props;
   const gltf = useLoader(GLTFLoader, url);
   const { camera: defaultCamera, setDefaultCamera, scene } = useThree();
   const camera = useRef(null);
@@ -121,14 +120,8 @@ const Modal = (props: ModalProps) => {
     [window.innerWidth, window.innerHeight]
   );
 
-  const _handleWheel = useCallback((e) => {
-    if (e.deltaY > 0) {
-      _handleScene();
-    }
-  }, []);
-
   return (
-    <group onPointerMove={_handlePointerMove} onWheel={_handleWheel}>
+    <group onPointerMove={_handlePointerMove}>
       <perspectiveCamera
         attach="camera"
         args={[60, 1, 1, 4000]}
@@ -141,7 +134,7 @@ const Modal = (props: ModalProps) => {
         position={[0.2, 1, 0.5]}
       />
       {/* moon light */}
-      <Moon _handleScene={_handleScene} isScene={isScene} />
+      <Moon onCloseScene={onCloseScene} isScene={isScene} />
 
       {/* stars */}
       <group ref={stripsGroup}>
@@ -179,7 +172,7 @@ const Modal = (props: ModalProps) => {
   );
 };
 /**首页webGl动画 */
-const Dynamic: React.FC<Props> = () => {
+const Dynamic: React.FC = () => {
   const { scene, trigger } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -188,19 +181,21 @@ const Dynamic: React.FC<Props> = () => {
   }, [dispatch]);
 
   return (
-    <div
-      className={classnames(
-        styles.wrapper,
-        !scene ? styles.disActive : trigger ? styles.trigger : styles.active
-      )}
-    >
-      <Canvas>
-        <Suspense fallback={null}>
-          <Modal isScene={scene} _handleScene={_handleScene} />
-        </Suspense>
-      </Canvas>
-      <ArrowSvg className={styles.arrow} onClick={_handleScene} />
-    </div>
+    <ReactScrollWheelHandler downHandler={_handleScene}>
+      <div
+        className={classnames(
+          styles.wrapper,
+          !scene ? styles.disActive : trigger ? styles.trigger : styles.active
+        )}
+      >
+        <Canvas>
+          <Suspense fallback={null}>
+            <Modal isScene={scene} onCloseScene={_handleScene} />
+          </Suspense>
+        </Canvas>
+        <ArrowSvg className={styles.arrow} onClick={_handleScene} />
+      </div>
+    </ReactScrollWheelHandler>
   );
 };
 

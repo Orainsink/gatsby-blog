@@ -9,7 +9,6 @@ import styles from '../styles/Header.module.less';
 import classnames from 'classnames';
 import { Row, Col, Drawer, Button } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
-// import Image from 'gatsby-image';
 import { Link } from 'gatsby';
 import { GithubOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
@@ -100,12 +99,12 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
     }
   `);
 
-  const { author, social } = data.site.siteMetadata;
+  const { social } = data.site.siteMetadata;
   const dispatch = useDispatch();
   const [active, setActive] = useState(false);
   const [drawer, setDrawer] = useState(false);
   const [titleVisible, setTitleVisible] = useState(true);
-  const [width, height] = useWindowSize();
+  const [width] = useWindowSize();
   const { hasArrow, scene, title } = useSelector((state) => state);
 
   useEffect(() => {

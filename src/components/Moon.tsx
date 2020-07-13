@@ -3,12 +3,12 @@ import React, { useEffect, useRef, useMemo, useState } from 'react';
 import gsap from 'gsap';
 
 interface IProps {
-  _handleScene: () => void;
+  onCloseScene: () => void;
   isScene: boolean;
 }
 /** three月亮 */
 const Moon = (props: IProps) => {
-  const { _handleScene, isScene } = props;
+  const { onCloseScene, isScene } = props;
   const [active, setActive] = useState(false);
   const lightRef = useRef(null);
   const moonRef = useRef(null);
@@ -94,7 +94,7 @@ const Moon = (props: IProps) => {
         attach="mesh"
         onPointerOver={() => setActive(true)}
         onPointerOut={() => setActive(false)}
-        onClick={_handleScene}
+        onClick={onCloseScene}
         ref={moonRef}
       >
         <meshBasicMaterial attach="material" color="#ffffff" />

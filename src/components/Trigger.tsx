@@ -1,9 +1,8 @@
 /**
  * 上下切换的 Trigger
  */
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from '../styles/Trigger.module.less';
-import classnames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 
 /**首页触发器 */

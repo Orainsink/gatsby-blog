@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useMemo } from 'react';
+import React, { useRef, useCallback, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import { Input } from 'antd';
 import Layout from '../layout/BlogLayout';
@@ -40,6 +40,15 @@ const ArchivesPage = ({ data, location }: Props) => {
   });
 
   const searchRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      dispatch({
+        type: 'SEARCH',
+        payload: '',
+      });
+    };
+  }, []);
 
   // 本地筛选, 性能影响不大的情况下, 感觉没有节流的必要.
   // const throttleDispatch = useCallback(

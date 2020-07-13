@@ -13648,6 +13648,11 @@ react-refresh@^0.7.0:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.7.2.tgz#f30978d21eb8cac6e2f2fde056a7d04f6844dd50"
   integrity sha512-u5l7fhAJXecWUJzVxzMRU2Zvw8m4QmDNHlTrT5uo3KBlYBhmChd7syAakBoay1yIiVhx/8Fi7a6v6kQZfsw81Q==
 
+react-scroll-wheel-handler@1.1.5:
+  version "1.1.5"
+  resolved "https://registry.npm.taobao.org/react-scroll-wheel-handler/download/react-scroll-wheel-handler-1.1.5.tgz#57f207f9ef84a193ce9997771175f3184050e5a6"
+  integrity sha1-V/IH+e+EoZPOmZd3EXXzGEBQ5aY=
+
 react-side-effect@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-1.2.0.tgz#0e940c78faba0c73b9b0eba9cd3dda8dfb7e7dae"
