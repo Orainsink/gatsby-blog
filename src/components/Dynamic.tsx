@@ -19,6 +19,7 @@ import classnames from 'classnames';
 import Moon from './Moon';
 import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
+import { arr } from '../utils/utils';
 
 let cameraShakeY = 0;
 let mouseX = 0;
@@ -106,11 +107,6 @@ const Modal = (props: ModalProps) => {
     gl.render(scene, camera);
   }, 1);
 
-  // 用于遍历的工具数组
-  const arr = useCallback(
-    (length) => [...new Array(length).join(',').split(',')],
-    []
-  );
   // 镜头随鼠标左右晃动
   const _handlePointerMove = useCallback(
     (e) => {

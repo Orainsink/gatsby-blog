@@ -4,7 +4,6 @@ import styles from '../styles/Footer.module.less';
 
 /**Footer */
 const Footer: React.FC = () => {
-  const rootPath = `${__PATH_PREFIX__}/`;
   return (
     <footer className={styles.wrapper}>
       <div className={styles.phrase}>

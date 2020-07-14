@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { rhythm } from '../utils/typography';
 import { Link } from 'gatsby';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Tags from '../components/Tags';
 
 interface IProp {
