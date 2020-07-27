@@ -67,10 +67,7 @@
     "gh-pages": "3.0.0",
     "husky": "4.2.5",
     "lint-staged": "10.2.11",
-    "prettier": "2.0.5",
-    "stylelint": "13.6.1",
-    "stylelint-config-prettier": "8.0.2",
-    "stylelint-config-recommended": "^3.0.0"
+    "prettier": "2.0.5"
   },
   "homepage": "https://Orainsink.github.io/gatsby-blog",
   "keywords": [
@@ -88,8 +85,6 @@
     }
   },
   "lint-staged": {
-    "*.css": "stylelint",
-    "*.less": "stylelint --syntax less",
     "*.{jsx,js,ts,tsx,json,md,css,less}": [
       "prettier --write"
     ]

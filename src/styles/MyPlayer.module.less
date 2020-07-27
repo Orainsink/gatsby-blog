@@ -127,31 +127,6 @@
   }
 }
 
-.start {
-  svg {
-    width: 38px;
-    height: 38px;
-    cursor: pointer;
-    &:hover {
-      fill: #d1d1d1;
-    }
-  }
-}
-.loop {
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  svg {
-    width: 28px;
-    height: 28px;
-    cursor: pointer;
-    &:hover {
-      fill: #d1d1d1;
-    }
-  }
-}
 .volume {
   display: flex;
   align-items: center;
@@ -170,18 +145,47 @@
     bottom: -60%;
   }
 }
-// 覆盖默认antd样式
-:global(..ant-tooltip) {
+.loop {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    &:hover {
+      fill: #d1d1d1;
+    }
+  }
 }
-:global(.ant-tooltip-arrow) {
-  display: none;
+.start {
+  svg {
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    &:hover {
+      &:hover {
+        fill: #d1d1d1;
+      }
+    }
+  }
 }
-:global(.ant-tooltip-inner) {
-  padding: 0;
-  margin: 0;
-  border-radius: @border-radius-base;
-  background: linear-gradient(135deg, #141619 0%, #c7d2db 100%);
-}
-:global(.ant-slider-track) {
-  background: linear-gradient(90deg, #7b8696 0%, #c7d2db 100%);
+
+.wrapper {
+  // 覆盖默认antd样式
+  :global(.ant-tooltip-arrow) {
+    display: none;
+  }
+  :global(.ant-tooltip-inner) {
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0;
+    margin: 0;
+    border-radius: @border-radius-base;
+    background: linear-gradient(135deg, #141619 0%, #c7d2db 100%);
+  }
+  :global(.ant-slider-track) {
+    background: linear-gradient(90deg, #7b8696 0%, #c7d2db 100%);
+  }
 }

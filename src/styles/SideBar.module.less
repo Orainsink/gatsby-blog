@@ -1,0 +1,73 @@
+.sideWrap {
+  margin-left: 10px;
+}
+.avatar {
+  border-radius: 50%;
+  touch-action: none;
+}
+
+.InfoWrap {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+}
+.titleWrap {
+  div {
+    z-index: 1;
+    position: relative;
+  }
+  > div:nth-child(2) {
+    font-size: 20px;
+    padding-top: 16px;
+    font-weight: bold;
+  }
+}
+.iconWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+}
+
+.steamWrap {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  del {
+    color: @text-color-secondary;
+    font-size: 12px;
+  }
+}
+.wechatWrap {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  del {
+    color: @text-color-secondary;
+    font-size: 12px;
+  }
+}
+
+.col {
+  background: #fff;
+  border-radius: @border-radius-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 14px;
+  box-shadow: @box-shadow-base;
+  margin: 10px;
+  .title {
+    font-size: 45px;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-weight: bold;
+    color: @transparent-color;
+    z-index: 0;
+  }
+}

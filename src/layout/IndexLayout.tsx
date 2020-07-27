@@ -3,8 +3,9 @@ import classnames from 'classnames';
 import styles from '../styles/Indexlayout.module.less';
 import { useSelector, useDispatch } from 'react-redux';
 import Footer from '../components/Footer';
-
+import SideBar from '../components/SideBar';
 import { rhythm } from '../utils/typography';
+import { Row, Col } from 'antd';
 interface IProps {
   location: any;
   title: string;
@@ -41,23 +42,24 @@ const Layout = ({ location, title, children }: IProps) => {
       <main
         style={{
           margin: `${rhythm(5)} auto 0 auto`,
-          maxWidth: rhythm(32),
+          maxWidth: '1200px',
           padding: `${rhythm(1 / 4)}`,
         }}
         className={styles.main}
       >
-        <div
-          style={{
-            background: '#FFF',
-            padding: `${rhythm(1 / 2)}`,
-            borderRadius: '2px',
-            minHeight: `${rhythm(16)}`,
-            boxShadow:
-              '0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24)',
-          }}
-        >
-          {children}
-        </div>
+        <Row justify="space-between" gutter={8}>
+          <Col
+            flex="1 1 800px"
+            className={styles.mainWrap}
+            style={{
+              padding: `${rhythm(1 / 2)}`,
+              minHeight: `${rhythm(16)}`,
+            }}
+          >
+            {children}
+          </Col>
+          <SideBar />
+        </Row>
       </main>
       <Footer />
     </div>
