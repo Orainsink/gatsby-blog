@@ -22,9 +22,7 @@ import { arr } from '../utils/utils';
 /**播放器控件 */
 const Controller: React.FC = () => {
   const dispatch = useDispatch();
-  const { playing, volume, mute, loop, id } = useSelector(
-    (state) => state.music
-  );
+  const { playing, volume, loop } = useSelector((state) => state.music);
   /**暂停/播放 */
   const _handleClick = useCallback(() => {
     dispatch({ type: 'MUSIC', payload: { playing: !playing } });

@@ -48,7 +48,7 @@ const ArchivesPage = ({ data, location }: Props) => {
         payload: '',
       });
     };
-  }, []);
+  }, [dispatch]);
 
   // 本地筛选, 性能影响不大的情况下, 感觉没有节流的必要.
   // const throttleDispatch = useCallback(
@@ -73,6 +73,7 @@ const ArchivesPage = ({ data, location }: Props) => {
         payload: value,
       });
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [dispatch, searchRef?.current]
   );
 

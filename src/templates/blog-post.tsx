@@ -37,7 +37,7 @@ const BlogPostTemplate: React.FC<IProps> = ({
     return () => {
       dispatch({ type: 'TITLE', payload: '' });
     };
-  }, [post.frontmatter.title]);
+  }, [post.frontmatter.title, dispatch]);
 
   return (
     <>

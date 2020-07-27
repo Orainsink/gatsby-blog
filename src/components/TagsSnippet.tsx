@@ -91,6 +91,7 @@ const TagsSnippet: React.FC = () => {
           return { count: totalCount, img: allImg };
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [group, totalCount]
   );
 

@@ -61,7 +61,7 @@ const PostList: React.FC<IProp> = ({ posts }) => {
     } else {
       setFilteredPosts(posts);
     }
-  }, [search, lowerCasePosts]);
+  }, [search, lowerCasePosts, posts]);
 
   return (
     <>
