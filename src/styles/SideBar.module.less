@@ -1,21 +1,23 @@
-.sideWrap {
-  margin-left: 10px;
-}
 .avatar {
   border-radius: 50%;
   touch-action: none;
+  position: relative;
+  z-index: 1;
 }
 
 .InfoWrap {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  flex-flow: column;
   position: relative;
+  justify-content: start;
+  align-items: center;
+  z-index: 1;
 }
 .titleWrap {
   div {
     z-index: 1;
     position: relative;
+    text-align: center;
   }
   > div:nth-child(2) {
     font-size: 20px;
@@ -27,7 +29,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 16px;
+  font-size: 24px;
+  margin-top: 10px;
+  > * {
+    margin: 0 10px;
+  }
 }
 
 .steamWrap {
@@ -61,10 +67,11 @@
   padding: 14px;
   box-shadow: @box-shadow-base;
   margin: 10px;
+  height: 250px;
   .title {
     font-size: 45px;
     position: absolute;
-    top: 0;
+    bottom: 10%;
     right: 10px;
     font-weight: bold;
     color: @transparent-color;
