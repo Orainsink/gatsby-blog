@@ -108,13 +108,10 @@ const Modal = (props: ModalProps) => {
   }, 1);
 
   // 镜头随鼠标左右晃动
-  const _handlePointerMove = useCallback(
-    (e) => {
-      mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-      mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-    },
-    [window.innerWidth, window.innerHeight]
-  );
+  const _handlePointerMove = (e) => {
+    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+    mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+  };
 
   return (
     <group onPointerMove={_handlePointerMove}>

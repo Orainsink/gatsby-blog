@@ -8,7 +8,7 @@ const Loading: React.FC<{ debounce?: number }> = (props) => {
   useEffect(() => {
     const timer = setTimeout(() => setActive(true), debounce);
     return () => clearTimeout(timer);
-  }, []);
+  }, [debounce]);
   return (
     active && (
       <div

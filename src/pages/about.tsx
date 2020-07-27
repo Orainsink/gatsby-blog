@@ -19,7 +19,7 @@ const AboutPage = ({ data, location }: Props) => {
     return () => {
       dispatch({ type: 'TITLE', payload: '' });
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <Layout location={location} title={'About me'}>

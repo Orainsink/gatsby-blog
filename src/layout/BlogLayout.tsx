@@ -17,7 +17,7 @@ const Layout = ({ location, title, children }: IProps) => {
     dispatch({ type: 'SKIP', payload: true });
     dispatch({ type: 'HASARROW', payload: false });
     dispatch({ type: 'SCENE', payload: false });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={styles.wrapper}>

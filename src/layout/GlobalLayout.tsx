@@ -10,14 +10,15 @@ const GlobalLayout = ({ children, location, ...props }) => {
   const { scene } = useSelector((state) => state);
 
   /**切换是否可滚动, 不用useCallback的原因是切换页面的时候要重新获取body */
-  const toggleScroll = () => {
-    const body = document.getElementsByTagName('body')[0];
-    body.style.overflowY = scene ? 'hidden' : 'auto';
-  };
+  const body = document.getElementsByTagName('body')[0];
+  body.style.overflowY = scene ? 'hidden' : 'auto';
+  // const toggleScroll = () => {
 
-  useEffect(() => {
-    toggleScroll();
-  }, [scene, toggleScroll]);
+  // };
+
+  // useEffect(() => {
+  //   toggleScroll();
+  // }, [scene, toggleScroll]);
 
   return (
     <>

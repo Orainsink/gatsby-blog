@@ -142,7 +142,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
   const _handleArrow = useCallback(() => {
     dispatch({ type: 'SKIP', payload: false });
     dispatch({ type: 'SCENE', payload: true });
-  }, []);
+  }, [dispatch]);
 
   const menu = useMemo(() => {
     if (drawer) {

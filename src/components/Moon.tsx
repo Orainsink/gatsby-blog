@@ -35,6 +35,7 @@ const Moon = (props: IProps) => {
           onReverseComplete: yoyo,
         }
       ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [yoyo, lightRef.current]
   );
   const moonTween = useMemo(() => {
@@ -46,6 +47,7 @@ const Moon = (props: IProps) => {
         z: 1.5,
         paused: true,
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [moonRef.current]);
   const lightTween = useMemo(() => {
     if (lightRef.current)
@@ -55,6 +57,7 @@ const Moon = (props: IProps) => {
         distance: 80,
         paused: true,
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lightRef.current]);
 
   // 绑定及卸载动画
@@ -63,6 +66,7 @@ const Moon = (props: IProps) => {
     return () => {
       tween.kill();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     if (active) {
@@ -81,6 +85,7 @@ const Moon = (props: IProps) => {
         lightTween.kill();
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
 
   return (
