@@ -77,16 +77,16 @@ const TagsSnippet: React.FC = () => {
 
   const tagFilter = useCallback(
     (tag) => {
-      const getCout = (tag: string) => {
+      const getCount = (tag: string) => {
         return group.filter((item) => item.tag === tag)[0]?.totalCount || 0;
       };
       switch (tag) {
         case '前端':
-          return { count: getCout('前端'), img: FEImg };
+          return { count: getCount('前端'), img: FEImg };
         case 'leetcode':
-          return { count: getCout('leetcode'), img: leetcodeImg };
+          return { count: getCount('leetcode'), img: leetcodeImg };
         case '随笔':
-          return { count: getCout('随笔'), img: dialogImg };
+          return { count: getCount('随笔'), img: dialogImg };
         case '':
           return { count: totalCount, img: allImg };
       }

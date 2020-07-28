@@ -120,20 +120,23 @@ module.exports = {
           'main-background': '#efefef',
           'btn-primary-bg': '#fff',
           'font-size-base': '16px', // 主字号
+          'box-shadow-base':
+            '0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24)',
+          'tooltip-bg': '#FFF',
+          'tooltip-color': '#3d4451',
+          'transparent-color': '#efefef',
           // @heading-color: rgba(0, 0, 0, 0.85); // 标题色
           'text-color': '#3d4451', // 主文本色
-          // @text-color-secondary: rgba(0, 0, 0, 0.45); // 次文本色
+          'text-color-secondary': '#666666', // 次文本色
           // @disabled-color: rgba(0, 0, 0, 0.25); // 失效色
           'border-radius-base': '4px', // 组件/浮层圆角
           // @border-color-base: #d9d9d9; // 边框色
-          // @box-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.15); // 浮层阴影
         },
       },
     },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-css-modules`,
     'gatsby-plugin-svgr',
-    // `gatsby-plugin-stylelint`,
     {
       resolve: 'gatsby-plugin-antd',
       options: {

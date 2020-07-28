@@ -59,7 +59,7 @@ const WordCloudItem: React.FC = () => {
     <div style={{ width: '100%', padding: '24px 0' }} className={styles.wrap}>
       <div
         ref={wordRef}
-        style={{ width: '100%', height: '100px', boxSizing: 'border-box' }}
+        style={{ width: '100%', height: '150px', boxSizing: 'border-box' }}
       />
     </div>
   );

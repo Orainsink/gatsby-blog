@@ -1,0 +1,80 @@
+.avatar {
+  border-radius: 50%;
+  touch-action: none;
+  position: relative;
+  z-index: 1;
+}
+
+.InfoWrap {
+  display: flex;
+  flex-flow: column;
+  position: relative;
+  justify-content: start;
+  align-items: center;
+  z-index: 1;
+}
+.titleWrap {
+  div {
+    z-index: 1;
+    position: relative;
+    text-align: center;
+  }
+  > div:nth-child(2) {
+    font-size: 20px;
+    padding-top: 16px;
+    font-weight: bold;
+  }
+}
+.iconWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  margin-top: 10px;
+  > * {
+    margin: 0 10px;
+  }
+}
+
+.steamWrap {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  del {
+    color: @text-color-secondary;
+    font-size: 12px;
+  }
+}
+.wechatWrap {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  del {
+    color: @text-color-secondary;
+    font-size: 12px;
+  }
+}
+
+.col {
+  background: #fff;
+  border-radius: @border-radius-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 14px;
+  box-shadow: @box-shadow-base;
+  margin: 10px;
+  height: 250px;
+  .title {
+    font-size: 45px;
+    position: absolute;
+    bottom: 10%;
+    right: 10px;
+    font-weight: bold;
+    color: @transparent-color;
+    z-index: 0;
+  }
+}

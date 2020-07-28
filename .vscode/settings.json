@@ -25,7 +25,7 @@
   "editor.fontSize": 16,
   "terminal.integrated.fontFamily": "Lucida Console",
   "sync.gist": "65cf3c81fe9f66369e2034c58536b699",
-  "workbench.colorTheme": "Webstorm IntelliJ Darcula Theme",
+  "workbench.colorTheme": "Default Dark+",
   "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
   "git.autofetch": true,
   "[typescriptreact]": {

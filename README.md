@@ -18,6 +18,19 @@ This blog is a personal project for practicing, so there are no special optimiza
 
 - [Antd 4.0](https://ant.design/)
 
+## :sparkle:Quick Start
+
+```
+# add dependences
+yarn
+# start dev server
+yarn start
+# build project
+yarn build
+# write a new post
+yarn new your-post-name or /your-post-folder-name
+```
+
 ## Todos
 
 [ ] Add todolist component

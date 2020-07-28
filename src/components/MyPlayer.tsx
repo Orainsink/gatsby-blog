@@ -204,6 +204,7 @@ const MyPlayer: React.FC = () => {
     <Tooltip
       title={<Panel />}
       trigger="click"
+      overlayClassName={styles.wrapper}
       getPopupContainer={() => document.getElementById('header')}
     >
       <div style={{ cursor: 'pointer', transform: 'translateY(0.2em)' }}>
