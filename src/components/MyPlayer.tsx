@@ -149,7 +149,7 @@ const Panel: React.FC = () => {
         </li>
       );
     },
-    [id, playing]
+    [id, playing, _handleClick]
   );
 
   const songUrl = useMemo(() => {
@@ -174,7 +174,7 @@ const Panel: React.FC = () => {
       setRandomList(tmpList);
       dispatch({ type: 'MUSIC', payload: { id: tmpList[0] } });
     }
-  }, [id, loop, generatRandom, randomList]);
+  }, [id, loop, generatRandom, randomList, dispatch]);
 
   return (
     <>

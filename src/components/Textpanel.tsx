@@ -76,7 +76,7 @@ const Text = (props: IProps) => {
 
     let mesh = new THREE.Mesh(geometry, material);
     textRef.current.add(mesh);
-  }, []);
+  }, [words]);
 
   return (
     <group

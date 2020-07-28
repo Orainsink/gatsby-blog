@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { rhythm } from '../utils/typography';
 import { Link } from 'gatsby';
 import { useSelector } from 'react-redux';
@@ -20,7 +20,6 @@ interface IProp {
     };
   }[];
 }
-
 const PostList: React.FC<IProp> = ({ posts }) => {
   const { search } = useSelector((state) => state);
   const [filteredPosts, setFilteredPosts] = useState(posts);

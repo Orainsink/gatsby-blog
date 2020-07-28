@@ -95,10 +95,13 @@ const TagsSnippet: React.FC = () => {
     [group, totalCount]
   );
 
-  const _handleClickCard = useCallback((tag: string) => {
-    dispatch({ type: 'SEARCH', payload: tag ? `#${tag}` : '' });
-    navigate('/archives/', { replace: true });
-  }, []);
+  const _handleClickCard = useCallback(
+    (tag: string) => {
+      dispatch({ type: 'SEARCH', payload: tag ? `#${tag}` : '' });
+      navigate('/archives/', { replace: true });
+    },
+    [dispatch]
+  );
 
   return (
     <section className={styles.wrap}>
