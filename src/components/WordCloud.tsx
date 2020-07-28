@@ -46,10 +46,10 @@ const WordCloudItem: React.FC<IWordCloudItem> = (props) => {
       WordCloud(wordRef.current, {
         list: allTags,
         gridSize: 18,
-        shape: 'square',
+        shape: 'pentagon',
         shrinkToFit: true,
         drawOutOfBound: false,
-        ellipticity: 1.5,
+        ellipticity: 1,
         backgroundColor: 'transparent',
         fontFamily: 'PingFang SC, Yahei,Tahoma,Arial,SimSun,Verdana',
         color: 'random-dark',
