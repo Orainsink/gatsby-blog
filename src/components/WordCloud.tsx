@@ -1,5 +1,5 @@
 import React, { useRef, useMemo, useEffect } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { random } from 'lodash';
 import { useDispatch } from 'react-redux';
 import styles from '../styles/WordCloud.module.less';
@@ -14,7 +14,11 @@ interface IWordCloud {
   };
 }
 
-const WordCloudItem: React.FC = () => {
+interface IWordCloudItem {
+  jump?: boolean;
+}
+
+const WordCloudItem: React.FC<IWordCloudItem> = (props) => {
   const data: IWordCloud = useStaticQuery(graphql`
     query {
       allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
@@ -24,6 +28,7 @@ const WordCloudItem: React.FC = () => {
       }
     }
   `);
+  const { jump = false } = props;
   const group = data.allMarkdownRemark.group;
   const wordRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
@@ -50,13 +55,14 @@ const WordCloudItem: React.FC = () => {
         color: 'random-dark',
         click: (item) => {
           dispatch({ type: 'SEARCH', payload: `#${item[0]}` });
+          jump && navigate('/archives/');
         },
       });
     }
-  }, [allTags, dispatch]);
+  }, [allTags, jump, dispatch]);
 
   return (
-    <div style={{ width: '100%', padding: '24px 0' }} className={styles.wrap}>
+    <div className={styles.wrap}>
       <div
         ref={wordRef}
         style={{ width: '100%', height: '150px', boxSizing: 'border-box' }}

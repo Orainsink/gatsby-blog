@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 /**loading组件,用于组件懒加载,默认debounce=500 */
-const Loading: React.FC<{ debounce?: number }> = (props) => {
-  const { debounce = 500 } = props;
+const Loading: React.FC<{ debounce?: number; children?: any }> = (props) => {
+  const { debounce = 500, children } = props;
   const [active, setActive] = useState(false);
 
   useEffect(() => {
@@ -58,6 +58,7 @@ const Loading: React.FC<{ debounce?: number }> = (props) => {
           </circle>
           <circle cx="20" cy="20" r="5" fill="#fff"></circle>
         </svg>
+        {children}
       </div>
     )
   );

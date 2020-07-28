@@ -50,6 +50,7 @@ const Modal = (props: ModalProps) => {
     return () => {
       setDefaultCamera(defaultCamera);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 根据IP获取当地天气信息
@@ -67,7 +68,7 @@ const Modal = (props: ModalProps) => {
         const data = res.HeWeather6[0];
         const words = [
           data.basic.location, //城市名
-          data.now.tmp + '℃' + ' ' + data.now.cond_txt, // 温度
+          data.now.tmp + '℃ ' + data.now.cond_txt, // 温度
         ];
         setWords(words);
       });

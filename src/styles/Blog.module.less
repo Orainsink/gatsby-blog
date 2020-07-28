@@ -41,6 +41,13 @@ body {
       content: counter(chapter) '. ';
     }
   }
+  // 锚点偏移
+  @media screen and (min-width: 768px) {
+    *[id] {
+      padding-top: 70px;
+      margin-top: -70px;
+    }
+  }
 }
 .tableContents {
   padding: 1em;

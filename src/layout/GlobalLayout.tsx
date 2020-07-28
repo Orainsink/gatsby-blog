@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import '../styles/global.less';
 import Header from '../components/Header';
 import Bg from '../components/Bg';

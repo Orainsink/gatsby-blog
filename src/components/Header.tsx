@@ -1,10 +1,4 @@
-import React, {
-  useLayoutEffect,
-  useEffect,
-  useCallback,
-  useState,
-  useMemo,
-} from 'react';
+import React, { useEffect, useCallback, useState, useMemo } from 'react';
 import styles from '../styles/Header.module.less';
 import classnames from 'classnames';
 import { Row, Col, Drawer, Button } from 'antd';
@@ -14,20 +8,7 @@ import { GithubOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import MyPlayer from '../components/MyPlayer';
-
-/** resize hook */
-const useWindowSize = () => {
-  const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
-    const updateSize = () => {
-      setSize([window.innerWidth, window.innerHeight]);
-    };
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
-  return size;
-};
+import useWindowSize from '../hooks/useWindowSize';
 
 /**抽屉菜单,用于移动端兼容 */
 const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
@@ -47,6 +28,7 @@ const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
   /**fix bug,当drawer关闭时,antd组件会重设body的style,导致滚动失效 */
   useEffect(() => {
     if (!visible) toggleScroll();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
 
   return (

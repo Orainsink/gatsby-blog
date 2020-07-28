@@ -5,15 +5,22 @@ import { rhythm } from '../utils/typography';
 import styles from '../styles/Bloglayout.module.less';
 import { Row, Col } from 'antd';
 import SideBar from '../components/SideBar';
+import Info from '../components/SideBlocks/Info';
+import useWindowSize from '../hooks/useWindowSize';
+import Catalog from '../components/SideBlocks/Catalog';
 
 interface IProps {
+  content?: any;
   location: any;
   title: string;
+  hasCatalog?: boolean; // 是否有目录, 默认 false
   children?: any;
 }
 /**文章页Layout */
-const Layout = ({ location, title, children }: IProps) => {
+const Layout = (props: IProps) => {
+  const { content, hasCatalog = false, children } = props;
   const dispatch = useDispatch();
+  const [width] = useWindowSize();
 
   useEffect(() => {
     dispatch({ type: 'SKIP', payload: true });
@@ -42,7 +49,10 @@ const Layout = ({ location, title, children }: IProps) => {
           >
             {children}
           </Col>
-          <SideBar />
+          <SideBar>
+            <Info />
+            {width > 1110 && hasCatalog ? <Catalog content={content} /> : null}
+          </SideBar>
         </Row>
       </main>
       <Footer />

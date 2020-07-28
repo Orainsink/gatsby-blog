@@ -1,6 +1,5 @@
 import React from 'react';
 import Loadable from '@loadable/component';
-
 import { PageProps, Link, graphql } from 'gatsby';
 import Layout from '../layout/IndexLayout';
 import SEO from '../components/seo';

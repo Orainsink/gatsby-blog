@@ -117,8 +117,9 @@ module.exports = {
         modifyVars: {
           'primary-color': '#3390ff',
           'link-color': '#2b2b2b', // 链接色
+          'link-hover-color': '#327ce4', // 链接hover颜色
           'main-background': '#efefef',
-          'btn-primary-bg': '#fff',
+          // 'btn-primary-bg': '#fff',
           'font-size-base': '16px', // 主字号
           'box-shadow-base':
             '0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24)',

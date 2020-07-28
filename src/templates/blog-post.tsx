@@ -7,6 +7,7 @@ import { rhythm, scale } from '../utils/typography';
 import styles from '../styles/Blog.module.less';
 import Tags from '../components/Tags';
 import { useDispatch } from 'react-redux';
+import useWindowSize from '../hooks/useWindowSize';
 
 interface IProps {
   data: {
@@ -31,6 +32,7 @@ const BlogPostTemplate: React.FC<IProps> = ({
   const { previous, next } = pageContext;
   const { tags } = post.frontmatter;
   const dispatch = useDispatch();
+  const [width] = useWindowSize();
 
   useEffect(() => {
     dispatch({ type: 'TITLE', payload: post.frontmatter.title });
@@ -41,7 +43,12 @@ const BlogPostTemplate: React.FC<IProps> = ({
 
   return (
     <>
-      <Layout location={location} title={siteTitle}>
+      <Layout
+        location={location}
+        title={siteTitle}
+        hasCatalog={true}
+        content={post.tableOfContents}
+      >
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
@@ -61,7 +68,7 @@ const BlogPostTemplate: React.FC<IProps> = ({
               {post.frontmatter.date}
             </p>
           </header>
-          {!!post.tableOfContents && (
+          {!!post.tableOfContents && width < 1110 && (
             <div
               className={styles.tableContents}
               dangerouslySetInnerHTML={{ __html: post.tableOfContents }}

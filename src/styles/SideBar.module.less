@@ -58,7 +58,6 @@
     font-size: 12px;
   }
 }
-
 .col {
   background: #fff;
   border-radius: @border-radius-base;
@@ -77,4 +76,31 @@
     color: @transparent-color;
     z-index: 0;
   }
+}
+
+.catalogWrap {
+  height: unset;
+  li {
+    list-style-type: decimal;
+    list-style-position: outside;
+  }
+  .catalog {
+    z-index: 1;
+    position: relative;
+    ul {
+      margin-left: 1em;
+    }
+    a {
+      text-decoration: underline;
+      &:hover {
+        color: @link-hover-color;
+      }
+    }
+  }
+}
+.catalogFix {
+  position: fixed;
+  max-width: 300px;
+  min-width: 295px;
+  top: 64px;
 }

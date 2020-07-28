@@ -74,7 +74,7 @@ const ArchivesPage = ({ data, location }: Props) => {
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [dispatch, searchRef?.current]
+    [dispatch, searchRef.current]
   );
 
   return (

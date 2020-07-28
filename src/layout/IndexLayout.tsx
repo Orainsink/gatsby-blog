@@ -6,6 +6,8 @@ import Footer from '../components/Footer';
 import SideBar from '../components/SideBar';
 import { rhythm } from '../utils/typography';
 import { Row, Col } from 'antd';
+import Info from '../components/SideBlocks/Info';
+import TagsBlock from '../components/SideBlocks/TagsBlock';
 interface IProps {
   location: any;
   title: string;
@@ -58,7 +60,10 @@ const Layout = ({ location, title, children }: IProps) => {
           >
             {children}
           </Col>
-          <SideBar />
+          <SideBar>
+            <Info />
+            <TagsBlock />
+          </SideBar>
         </Row>
       </main>
       <Footer />

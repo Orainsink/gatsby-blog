@@ -1,23 +1,16 @@
-import React, { useMemo } from 'react';
-import styles from '../styles/SideBar.module.less';
-import { Col, Row, Tooltip } from 'antd';
-import WordCloud from './WordCloud';
-import classnames from 'classnames';
+import React from 'react';
+import { Col, Row } from 'antd';
 
-interface ISideBar {}
-
+interface ISideBar {
+  children: any;
+}
+/**侧边栏 */
 const SideBar: React.FC<ISideBar> = (props) => {
+  const { children } = props;
   return (
     <Col flex="1 1 300px">
       <Row align="top" justify="center">
-        {/* wordCloud */}
-        <Col
-          flex="1 1 300px"
-          className={classnames(styles.wordCloudWrap, styles.col)}
-        >
-          <div className={styles.title}>TAGS</div>
-          <WordCloud />
-        </Col>
+        {children}
       </Row>
     </Col>
   );

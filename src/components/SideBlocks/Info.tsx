@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import styles from './index.module.less';
+import styles from '../../styles/SideBar.module.less';
 import { Col, Tooltip } from 'antd';
 import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
@@ -8,8 +8,9 @@ import Icon, {
   GithubOutlined,
   WechatOutlined,
 } from '@ant-design/icons';
-import { ReactComponent as SteamSvg } from '../assets/img/steam.svg';
+import { ReactComponent as SteamSvg } from '../../assets/img/steam.svg';
 import classnames from 'classnames';
+import useWindowSize from '../../hooks/useWindowSize';
 
 interface IData {
   avatar: any;
@@ -45,6 +46,7 @@ const Info = () => {
   `);
 
   const { avatar, wechat, moogle } = data;
+  const [x] = useWindowSize();
 
   const weChatContent = useMemo(() => {
     return (
@@ -72,7 +74,10 @@ const Info = () => {
   }, [moogle]);
 
   return (
-    <Col flex="1 1 300px" className={classnames(styles.InfoWrap, styles.col)}>
+    <Col
+      flex={x > 1110 ? '0 0 300px' : '1 1 300px'}
+      className={classnames(styles.InfoWrap, styles.col)}
+    >
       <Image
         fixed={avatar.childImageSharp.fixed}
         alt=""
@@ -86,10 +91,15 @@ const Info = () => {
           <a
             href="https://www.zhihu.com/people/f6e5b2cbbe6e9535239e41b51305bf2c?utm_source=qq&utm_medium=social&utm_oi=586439395150794752"
             target="_blank"
+            rel="noreferrer"
           >
             <ZhihuOutlined />
           </a>
-          <a href="https://github.com/Orainsink" target="_blank">
+          <a
+            href="https://github.com/Orainsink"
+            target="_blank"
+            rel="noreferrer"
+          >
             <GithubOutlined />
           </a>
           <Tooltip title={weChatContent}>
