@@ -1,7 +1,12 @@
-.wrapper {
-  padding: 30px 0 20px 0;
+.wrap {
+  width: 100%;
+  margin-top: 100px;
+  position: relative;
+  height: 200px;
+  background: linear-gradient(135deg, #012, #221 70%, #332 90%);
+}
+.main {
   // background-image: url('https://foolishrobot.oss-cn-beijing.aliyuncs.com/cloud-dark.svg');
-
   > div {
     text-align: center;
     margin: 0;
@@ -23,4 +28,15 @@
   > div {
     margin: 0 20px;
   }
+}
+.valley {
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(../assets/img/valley.svg);
 }
