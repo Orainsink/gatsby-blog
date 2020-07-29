@@ -15,7 +15,7 @@ const TagesBlock: React.FC = () => {
       className={classnames(styles.wordCloudWrap, styles.col)}
     >
       <div className={styles.title}>TAGS</div>
-      <WordCloud jump />
+      <WordCloud jump height={200} />
     </Col>
   );
 };

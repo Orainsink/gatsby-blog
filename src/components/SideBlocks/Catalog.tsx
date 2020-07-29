@@ -15,7 +15,7 @@ const Catalog: React.FC<ICatalog> = (props) => {
 
   const isFixd = useMemo(() => {
     if (catalogRef.current) {
-      return scrollY > 363;
+      return scrollY > 333;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scrollY, catalogRef.current]);

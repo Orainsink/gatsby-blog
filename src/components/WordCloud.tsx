@@ -16,6 +16,7 @@ interface IWordCloud {
 
 interface IWordCloudItem {
   jump?: boolean;
+  height?: number;
 }
 
 const WordCloudItem: React.FC<IWordCloudItem> = (props) => {
@@ -28,7 +29,7 @@ const WordCloudItem: React.FC<IWordCloudItem> = (props) => {
       }
     }
   `);
-  const { jump = false } = props;
+  const { jump = false, height = 150 } = props;
   const group = data.allMarkdownRemark.group;
   const wordRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
@@ -38,20 +39,22 @@ const WordCloudItem: React.FC<IWordCloudItem> = (props) => {
     group.forEach((item) => {
       obj[item.tag] = true;
     });
-    return Object.keys(obj).map((key) => [key, random(16, 32, false)]);
+    return Object.keys(obj).map((key) => [key, random(14, 32, false)]);
   }, [group]);
 
   useEffect(() => {
     if (wordRef.current) {
       WordCloud(wordRef.current, {
         list: allTags,
-        gridSize: 18,
-        shape: 'pentagon',
+        gridSize: 16,
+        shape: 'square',
         shrinkToFit: true,
+        weightFactor: 2,
         drawOutOfBound: false,
-        ellipticity: 1,
+        rotateRatio: 0,
+        ellipticity: 1.5,
         backgroundColor: 'transparent',
-        fontFamily: 'PingFang SC, Yahei,Tahoma,Arial,SimSun,Verdana',
+        fontFamily: 'Lato,sans-serif',
         color: 'random-dark',
         click: (item) => {
           dispatch({ type: 'SEARCH', payload: `#${item[0]}` });
@@ -63,10 +66,7 @@ const WordCloudItem: React.FC<IWordCloudItem> = (props) => {
 
   return (
     <div className={styles.wrap}>
-      <div
-        ref={wordRef}
-        style={{ width: '100%', height: '150px', boxSizing: 'border-box' }}
-      />
+      <div ref={wordRef} style={{ width: '100%', height: `${height}px` }} />
     </div>
   );
 };
