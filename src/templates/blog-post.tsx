@@ -8,6 +8,8 @@ import styles from '../styles/Blog.module.less';
 import Tags from '../components/Tags';
 import { useDispatch } from 'react-redux';
 import useWindowSize from '../hooks/useWindowSize';
+import Gitalk from 'gatsby-plugin-gitalk';
+import '@suziwen/gitalk/dist/gitalk.css';
 
 interface IProps {
   data: {
@@ -40,6 +42,11 @@ const BlogPostTemplate: React.FC<IProps> = ({
       dispatch({ type: 'TITLE', payload: '' });
     };
   }, [post.frontmatter.title, dispatch]);
+
+  let gitalkConfig = {
+    id: post.slug || post.id,
+    title: post.title,
+  };
 
   return (
     <>
@@ -104,6 +111,8 @@ const BlogPostTemplate: React.FC<IProps> = ({
             </li>
           </ul>
         </nav>
+
+        <Gitalk options={gitalkConfig} />
       </Layout>
     </>
   );

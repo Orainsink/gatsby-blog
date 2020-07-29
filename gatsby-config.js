@@ -164,5 +164,19 @@ module.exports = {
         showSpinner: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-gitalk`,
+      options: {
+        config: {
+          enable: true,
+          ClientID: '434fda17050ffd6ed6ce',
+          ClientSecret: '033e366656262b836a727e0f714ed0a48c53b781',
+          repo: 'https://github.com/Orainsink/gatsby-blog.git',
+          owner: 'Orainsink',
+          adminUser: ['Orainsink'],
+          perPage: 15,
+        },
+      },
+    },
   ],
 };

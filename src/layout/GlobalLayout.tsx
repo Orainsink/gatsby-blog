@@ -12,13 +12,6 @@ const GlobalLayout = ({ children, location, ...props }) => {
   /**切换是否可滚动, 不用useCallback的原因是切换页面的时候要重新获取body */
   const body = document.getElementsByTagName('body')[0];
   body.style.overflowY = scene ? 'hidden' : 'auto';
-  // const toggleScroll = () => {
-
-  // };
-
-  // useEffect(() => {
-  //   toggleScroll();
-  // }, [scene, toggleScroll]);
 
   return (
     <>
