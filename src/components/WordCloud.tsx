@@ -49,7 +49,7 @@ const WordCloudItem: React.FC<IWordCloudItem> = (props) => {
         gridSize: 16,
         shape: 'square',
         shrinkToFit: true,
-        weightFactor: 2,
+        weightFactor: 1,
         drawOutOfBound: false,
         rotateRatio: 0,
         ellipticity: 1.5,

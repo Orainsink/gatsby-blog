@@ -1,7 +1,7 @@
 import React from 'react';
 import { GithubOutlined, MailOutlined } from '@ant-design/icons';
 import styles from '../styles/Footer.module.less';
-import { ReactComponent as ValleySvg } from '../assets/img/valley.svg';
+import classnames from 'classnames';
 
 /**Footer */
 const Footer: React.FC = () => {
@@ -9,11 +9,10 @@ const Footer: React.FC = () => {
     <footer className={styles.wrap}>
       <div className={styles.valley}></div>
       <div className={styles.main}>
-        {/* <ValleySvg className={styles.valley} /> */}
         <div className={styles.phrase}>
           <div>
             <GithubOutlined
-              className={styles.icon}
+              className={classnames(styles.icon, styles.git)}
               style={{ transform: 'translateY(-1px)' }}
             />
             <a

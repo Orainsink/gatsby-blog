@@ -67,6 +67,19 @@
   box-shadow: @box-shadow-base;
   margin-bottom: 10px;
   height: 250px;
+  position: relative;
+  &::after {
+    height: 20px;
+    width: 20px;
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../assets/img/pin.svg);
+  }
   .title {
     font-size: 45px;
     position: absolute;
@@ -77,7 +90,11 @@
     z-index: 0;
   }
 }
-
+@media screen and (max-width: 1110px) and (min-width: 631px) {
+  .col {
+    margin: 10px;
+  }
+}
 .catalogWrap {
   height: unset;
   li {
