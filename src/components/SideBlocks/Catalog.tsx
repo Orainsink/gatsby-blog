@@ -29,22 +29,20 @@ const Catalog: React.FC<ICatalog> = (props) => {
   }, [scrollY]);
 
   return (
-    content && (
-      <Col
-        flex="0 0 300px"
-        className={classnames(styles.col, styles.catalogWrap, {
-          [styles.catalogFix]: isFixd,
-          [styles.hide]: isHide,
-        })}
-      >
-        <div className={styles.title}>Catalog</div>
-        <div
-          ref={catalogRef}
-          className={classnames(styles.catalog)}
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
-      </Col>
-    )
+    <Col
+      flex="0 0 300px"
+      className={classnames(styles.col, styles.catalogWrap, {
+        [styles.catalogFix]: isFixd,
+        [styles.hide]: isHide,
+      })}
+    >
+      <div className={styles.title}>Catalog</div>
+      <div
+        ref={catalogRef}
+        className={classnames(styles.catalog)}
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
+    </Col>
   );
 };
 export default React.memo(Catalog);

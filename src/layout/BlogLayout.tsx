@@ -51,7 +51,9 @@ const Layout = (props: IProps) => {
           </Col>
           <SideBar>
             <Info />
-            {width > 1110 && hasCatalog ? <Catalog content={content} /> : null}
+            {width > 1110 && hasCatalog && content ? (
+              <Catalog content={content} />
+            ) : null}
           </SideBar>
         </Row>
       </main>
