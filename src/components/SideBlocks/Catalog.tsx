@@ -20,20 +20,31 @@ const Catalog: React.FC<ICatalog> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scrollY, catalogRef.current]);
 
+  const isHide = useMemo(() => {
+    if (catalogRef) {
+      return (
+        scrollY > document.body.scrollHeight - document.body.clientHeight - 400
+      );
+    }
+  }, [scrollY]);
+
   return (
-    <Col
-      flex="0 0 300px"
-      className={classnames(styles.col, styles.catalogWrap, {
-        [styles.catalogFix]: isFixd,
-      })}
-    >
-      <div className={styles.title}>Catalog</div>
-      <div
-        ref={catalogRef}
-        className={styles.catalog}
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
-    </Col>
+    content && (
+      <Col
+        flex="0 0 300px"
+        className={classnames(styles.col, styles.catalogWrap, {
+          [styles.catalogFix]: isFixd,
+          [styles.hide]: isHide,
+        })}
+      >
+        <div className={styles.title}>Catalog</div>
+        <div
+          ref={catalogRef}
+          className={classnames(styles.catalog)}
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+      </Col>
+    )
   );
 };
 export default React.memo(Catalog);
