@@ -45,8 +45,7 @@ const BlogPostTemplate: React.FC<IProps> = ({
 
   let gitalkConfig = {
     ...gittalkOptions,
-    id: post.slug || post.id,
-    title: post.title,
+    title: post.frontmatter.title,
   };
 
   return (
