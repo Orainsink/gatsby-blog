@@ -164,19 +164,6 @@ module.exports = {
         showSpinner: true,
       },
     },
-    {
-      resolve: `gatsby-plugin-gitalk`,
-      options: {
-        config: {
-          enable: true,
-          ClientID: 'dfefcbc84e337f5aa1b3',
-          ClientSecret: 'a596d0f64c1552b4ff5f903391aaf8a2564d60d1',
-          repo: 'gatsby-blog',
-          owner: 'Orainsink',
-          adminUser: ['Orainsink'],
-          perPage: 15,
-        },
-      },
-    },
+    `gatsby-plugin-gitalk`,
   ],
 };

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Link, graphql } from 'gatsby';
-
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import { rhythm, scale } from '../utils/typography';
@@ -10,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import useWindowSize from '../hooks/useWindowSize';
 import Gitalk from 'gatsby-plugin-gitalk';
 import '@suziwen/gitalk/dist/gitalk.css';
+import { gittalkOptions } from '../assets/js/gittalk';
 
 interface IProps {
   data: {
@@ -44,6 +44,7 @@ const BlogPostTemplate: React.FC<IProps> = ({
   }, [post.frontmatter.title, dispatch]);
 
   let gitalkConfig = {
+    ...gittalkOptions,
     id: post.slug || post.id,
     title: post.title,
   };
