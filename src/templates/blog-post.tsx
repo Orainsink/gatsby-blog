@@ -46,7 +46,7 @@ const BlogPostTemplate: React.FC<IProps> = ({
   let gitalkConfig = {
     ...gittalkOptions,
     id: location.href,
-    title: document.title || post.frontmatter.title,
+    title: post.frontmatter.title,
   };
 
   return (
@@ -113,7 +113,7 @@ const BlogPostTemplate: React.FC<IProps> = ({
           </ul>
         </nav>
 
-        <Gitalk options={gitalkConfig} />
+        {post && <Gitalk options={gitalkConfig} />}
       </Layout>
     </>
   );
