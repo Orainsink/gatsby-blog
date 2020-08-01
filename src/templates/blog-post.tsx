@@ -7,8 +7,10 @@ import styles from '../styles/Blog.module.less';
 import Tags from '../components/Tags';
 import { useDispatch } from 'react-redux';
 import useWindowSize from '../hooks/useWindowSize';
-import Gitalk from 'gatsby-plugin-gitalk';
-import '@suziwen/gitalk/dist/gitalk.css';
+import 'gitalk/dist/gitalk.css';
+import Gitalk from 'gitalk';
+// @ts-ignore
+import GitalkComponent from 'gitalk/dist/gitalk-component';
 import { gittalkOptions } from '../assets/js/gittalk';
 
 interface IProps {
@@ -113,7 +115,7 @@ const BlogPostTemplate: React.FC<IProps> = ({
           </ul>
         </nav>
 
-        {post && <Gitalk options={gitalkConfig} />}
+        {post && <GitalkComponent options={gitalkConfig} />}
       </Layout>
     </>
   );

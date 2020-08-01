@@ -164,6 +164,5 @@ module.exports = {
         showSpinner: true,
       },
     },
-    `gatsby-plugin-gitalk`,
   ],
 };
