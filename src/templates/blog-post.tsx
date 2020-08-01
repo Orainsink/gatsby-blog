@@ -47,7 +47,7 @@ const BlogPostTemplate: React.FC<IProps> = ({
 
   let gitalkConfig = {
     ...gittalkOptions,
-    id: location.href,
+    id: decodeURIComponent(location.pathname).substring(0, 49),
     title: post.frontmatter.title,
   };
 
