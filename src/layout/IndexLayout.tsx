@@ -8,6 +8,7 @@ import { rhythm } from '../utils/typography';
 import { Row, Col } from 'antd';
 import Info from '../components/SideBlocks/Info';
 import TagsBlock from '../components/SideBlocks/TagsBlock';
+import Comment from '../components/SideBlocks/Comment';
 interface IProps {
   location: any;
   title: string;
@@ -63,6 +64,7 @@ const Layout = ({ location, title, children }: IProps) => {
           <SideBar>
             <Info />
             <TagsBlock />
+            <Comment />
           </SideBar>
         </Row>
       </main>

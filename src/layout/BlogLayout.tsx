@@ -8,17 +8,19 @@ import SideBar from '../components/SideBar';
 import Info from '../components/SideBlocks/Info';
 import useWindowSize from '../hooks/useWindowSize';
 import Catalog from '../components/SideBlocks/Catalog';
+import Comment from '../components/SideBlocks/Comment';
 
 interface IProps {
   content?: any;
   location: any;
   title: string;
   hasCatalog?: boolean; // 是否有目录, 默认 false
+  hasComment?: boolean; // 是否有评论, 默认 false
   children?: any;
 }
 /**文章页Layout */
 const Layout = (props: IProps) => {
-  const { content, hasCatalog = false, children } = props;
+  const { content, hasCatalog = false, hasComment = false, children } = props;
   const dispatch = useDispatch();
   const [width] = useWindowSize();
 
@@ -54,6 +56,7 @@ const Layout = (props: IProps) => {
             {width > 1110 && hasCatalog && content ? (
               <Catalog content={content} />
             ) : null}
+            {hasComment && <Comment />}
           </SideBar>
         </Row>
       </main>

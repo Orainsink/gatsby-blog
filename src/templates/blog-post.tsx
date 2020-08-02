@@ -7,11 +7,7 @@ import styles from '../styles/Blog.module.less';
 import Tags from '../components/Tags';
 import { useDispatch } from 'react-redux';
 import useWindowSize from '../hooks/useWindowSize';
-import 'gitalk/dist/gitalk.css';
-import Gitalk from 'gitalk';
-// @ts-ignore
-import GitalkComponent from 'gitalk/dist/gitalk-component';
-import { gittalkOptions } from '../assets/js/gittalk';
+import MyGitalk from '../components/MyGitalk';
 
 interface IProps {
   data: {
@@ -44,21 +40,6 @@ const BlogPostTemplate: React.FC<IProps> = ({
       dispatch({ type: 'TITLE', payload: '' });
     };
   }, [post.frontmatter.title, dispatch]);
-
-  let gitalkConfig = {
-    ...gittalkOptions,
-    id: decodeURIComponent(location.pathname).substring(0, 49),
-    title: post.frontmatter.title,
-  };
-
-  const renderGitalk = useMemo(() => {
-    if (typeof window !== 'undefined') {
-      if (post) {
-        return <GitalkComponent options={gitalkConfig} />;
-      }
-    }
-    return <></>;
-  }, [post]);
 
   return (
     <>
@@ -123,7 +104,7 @@ const BlogPostTemplate: React.FC<IProps> = ({
             </li>
           </ul>
         </nav>
-        {renderGitalk}
+        {post && <MyGitalk title={post.frontmatter.title} />}
       </Layout>
     </>
   );
