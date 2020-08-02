@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Link, graphql } from 'gatsby';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
@@ -50,6 +50,15 @@ const BlogPostTemplate: React.FC<IProps> = ({
     id: decodeURIComponent(location.pathname).substring(0, 49),
     title: post.frontmatter.title,
   };
+
+  const renderGitalk = useMemo(() => {
+    if (typeof window !== 'undefined') {
+      if (post) {
+        return <GitalkComponent options={gitalkConfig} />;
+      }
+    }
+    return <></>;
+  }, [post]);
 
   return (
     <>
@@ -114,8 +123,7 @@ const BlogPostTemplate: React.FC<IProps> = ({
             </li>
           </ul>
         </nav>
-
-        {post && <GitalkComponent options={gitalkConfig} />}
+        {renderGitalk}
       </Layout>
     </>
   );
