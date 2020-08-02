@@ -6,14 +6,13 @@ import 'gitalk/dist/gitalk.css';
 
 interface IMyGitalk {
   title?: string;
-  location: any;
 }
 const MyGitalk: React.FC<IMyGitalk> = (props) => {
-  const { title, location } = props;
+  const { title } = props;
 
   let gitalkConfig = {
     ...gittalkOptions,
-    id: decodeURIComponent(location.pathname).substring(0, 49),
+    id: decodeURIComponent(window.location.pathname).substring(0, 49),
     title,
   };
 
