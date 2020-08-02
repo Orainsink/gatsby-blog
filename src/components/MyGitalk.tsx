@@ -10,14 +10,14 @@ interface IMyGitalk {
 const MyGitalk: React.FC<IMyGitalk> = (props) => {
   const { title } = props;
 
-  let gitalkConfig = {
-    ...gittalkOptions,
-    id: decodeURIComponent(window.location.pathname).substring(0, 49),
-    title,
-  };
-
   const renderGitalk = useMemo(() => {
     if (typeof window !== 'undefined') {
+      let gitalkConfig = {
+        ...gittalkOptions,
+        id: decodeURIComponent(window.location.pathname).substring(0, 49),
+        title,
+      };
+
       return <GitalkComponent options={gitalkConfig} />;
     }
   }, []);
