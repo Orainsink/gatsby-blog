@@ -6,6 +6,8 @@
 
 [![Build Status](https://travis-ci.org/Orainsink/gatsby-blog.svg?branch=master)](https://travis-ci.org/Orainsink/gatsby-blog)
 
+![preview](./preview.gif)
+
 ## 👷Built with
 
 - Typescript + less modules
