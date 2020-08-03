@@ -5,7 +5,7 @@ module.exports = {
       name: `Orainsink`,
       summary: `空空如也`,
     },
-    description: `Blog XD`,
+    description: `Orainsink 的博客, 写一点东西`,
     siteUrl: `https://foolishrobot.xyz/gatsby-blog/`,
     social: {
       github: `https://github.com/Orainsink`,
@@ -157,6 +157,7 @@ module.exports = {
         windowKey: '__PRELOADED_STATE__',
       },
     },
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {

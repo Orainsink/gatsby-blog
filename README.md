@@ -16,10 +16,6 @@
 - [howler.js](https://howlerjs.com/)
 - [Antd 4.0](https://ant.design/)
 
-> This blog is a personal project for practicing, so there are no special optimizations for extensibility or customization.
->
-> But if you are interested in it , you can clone this repo and then follow the steps above.
-
 ## :sparkle:Quick Start
 
 ```shell
@@ -38,6 +34,10 @@ yarn new your-post-name
 # or if your post contains imgs, use
 yarn new /your-post-folder-name
 ```
+
+> This blog is a personal project for practicing, so there are no special optimizations for extensibility or customization.
+>
+> But if you are interested in it , you can clone this repo and then follow the steps above.
 
 ## :hammer:Custimize​
 
@@ -74,6 +74,6 @@ yarn new /your-post-folder-name
 
    You can change global less vars by modifying `gatsby-config.js`
 
-4. As I say, this blog is a personal project for practicing, so there are no special optimizations for extensibility or customization. you need to change a few details yourself .
+4. You need to change details yourself .
 
 <!-- AUTO-GENERATED-CONTENT:END -->
