@@ -4,7 +4,8 @@ import styles from '../styles/Blog.module.less';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import { useDispatch } from 'react-redux';
-import Poem from '../components/Poem';
+import loadable from '@loadable/component';
+const Poem = loadable(() => import('../components/Poem'));
 
 interface Props {
   data: any;

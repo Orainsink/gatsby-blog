@@ -4,8 +4,9 @@ import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import { Button } from 'antd';
 import { Link } from 'gatsby';
-import Loading from '../components/Loading';
 import styles from '../styles/404.module.less';
+import loadable from '@loadable/component';
+const Loading = loadable(() => import('../components/Loading'));
 
 interface Props {
   data: {

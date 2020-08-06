@@ -99,7 +99,7 @@ const Panel: React.FC = () => {
     };
   }, [playing, siriWave]);
 
-  const generatRandom = useMemo(() => {
+  const generateRandom = useMemo(() => {
     return arr(songs.length)
       .map((item) => item + 1)
       .sort(() => Math.random() - 0.5);
@@ -111,14 +111,14 @@ const Panel: React.FC = () => {
       if (song.id === id) {
         dispatch({ type: 'MUSIC', payload: { playing: !playing } });
       } else {
-        !loop && setRandomList(generatRandom);
+        !loop && setRandomList(generateRandom);
         dispatch({
           type: 'MUSIC',
           payload: { id: song.id, playing: true },
         });
       }
     },
-    [dispatch, id, playing, generatRandom, loop]
+    [dispatch, id, playing, generateRandom, loop]
   );
 
   const songItem = useCallback(
@@ -160,21 +160,21 @@ const Panel: React.FC = () => {
   /**列表随机:生成随机id列表 */
   useEffect(() => {
     if (!loop) {
-      setRandomList(generatRandom);
+      setRandomList(generateRandom);
     }
-  }, [loop, generatRandom]);
+  }, [loop, generateRandom]);
 
   /**onEnd, 循环或随机 */
   const _handleMusicEnd = useCallback(() => {
     if (!loop) {
       let tmpList = randomList.filter((item) => item !== id);
       if (tmpList.length < 1) {
-        tmpList = generatRandom.filter((item) => item !== id);
+        tmpList = generateRandom.filter((item) => item !== id);
       }
       setRandomList(tmpList);
       dispatch({ type: 'MUSIC', payload: { id: tmpList[0] } });
     }
-  }, [id, loop, generatRandom, randomList, dispatch]);
+  }, [id, loop, generateRandom, randomList, dispatch]);
 
   return (
     <>

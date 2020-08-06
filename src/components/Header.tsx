@@ -7,8 +7,9 @@ import { Link } from 'gatsby';
 import { GithubOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import MyPlayer from '../components/MyPlayer';
 import useWindowSize from '../hooks/useWindowSize';
+import loadable from '@loadable/component';
+const MyPlayer = loadable(() => import('../components/MyPlayer'));
 
 /**抽屉菜单,用于移动端兼容 */
 const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {

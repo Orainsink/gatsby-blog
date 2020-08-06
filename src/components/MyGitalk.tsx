@@ -20,7 +20,7 @@ const MyGitalk: React.FC<IMyGitalk> = (props) => {
 
       return <GitalkComponent options={gitalkConfig} />;
     }
-  }, []);
+  }, [title]);
   return <>{renderGitalk}</>;
 };
 export default React.memo(MyGitalk);

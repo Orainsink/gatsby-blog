@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { Link, graphql } from 'gatsby';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
@@ -7,7 +7,8 @@ import styles from '../styles/Blog.module.less';
 import Tags from '../components/Tags';
 import { useDispatch } from 'react-redux';
 import useWindowSize from '../hooks/useWindowSize';
-import MyGitalk from '../components/MyGitalk';
+import loadable from '@loadable/component';
+const MyGitalk = loadable(() => import('../components/MyGitalk'));
 
 interface IProps {
   data: {

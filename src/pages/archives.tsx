@@ -3,9 +3,16 @@ import { graphql } from 'gatsby';
 import { Input } from 'antd';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
-import PostList from '../components/PostList';
 import { useSelector, useDispatch } from 'react-redux';
-import WordCloud from '../components/WordCloud';
+import loadable from '@loadable/component';
+import ComponentLoading from '../components/ComponentLoading';
+const WordCloud = loadable(() => import('../components/WordCloud'), {
+  fallback: <ComponentLoading />,
+});
+const PostList = loadable(() => import('../components/PostList'), {
+  fallback: <ComponentLoading />,
+});
+
 const { Search } = Input;
 
 interface Props {
@@ -49,19 +56,6 @@ const ArchivesPage = ({ data, location }: Props) => {
       });
     };
   }, [dispatch]);
-
-  // 本地筛选, 性能影响不大的情况下, 感觉没有节流的必要.
-  // const throttleDispatch = useCallback(
-  //   throttle(() => {
-  //     let value = searchRef?.current.input.state.value || '';
-  //     console.log(value);
-  //     dispatch({
-  //       type: 'SEARCH',
-  //       payload: value,
-  //     });
-  //   }, 300),
-  //   [dispatch]
-  // );
 
   const _handleChange = useCallback(
     (e) => {

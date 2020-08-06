@@ -1,19 +1,20 @@
 import React from 'react';
-import Loadable from '@loadable/component';
+import loadable from '@loadable/component';
 import { PageProps, Link, graphql } from 'gatsby';
 import Layout from '../layout/IndexLayout';
 import SEO from '../components/seo';
-import Trigger from '../components/Trigger';
-import Loading from '../components/Loading';
 import { useSelector } from 'react-redux';
-import Poem from '../components/Poem';
-import TagsSnippet from '../components/TagsSnippet';
-import PostList from '../components/PostList';
-
-// magic comments
-// https://loadable-components.com/docs/babel-plugin/#magic-comments
-const Dyn = /* #__LOADABLE__ */ () => import('../components/Dynamic');
-const Dynamic = Loadable(Dyn);
+import ComponentLoading from '../components/ComponentLoading';
+const TagsSnippet = loadable(() => import('../components/TagsSnippet'));
+const Trigger = loadable(() => import('../components/Trigger'));
+const Loading = loadable(() => import('../components/Loading'));
+const Poem = loadable(() => import('../components/Poem'));
+const PostList = loadable(() => import('../components/PostList'), {
+  fallback: <ComponentLoading />,
+});
+const Dynamic = loadable(() => import('../components/Dynamic'), {
+  fallback: <Loading debounce={700} />,
+});
 
 type Data = {
   site: {

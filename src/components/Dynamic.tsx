@@ -14,12 +14,13 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Canvas, useLoader, useFrame, useThree } from 'react-three-fiber';
 import styles from '../styles/Dynamic.module.less';
 import random from '../utils/random';
-import Text from './Textpanel';
 import classnames from 'classnames';
-import Moon from './Moon';
 import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 import { arr } from '../utils/utils';
+import loadable from '@loadable/component';
+const Text = loadable(() => import('./Textpanel'));
+const Moon = loadable(() => import('./Moon'));
 
 let cameraShakeY = 0;
 let mouseX = 0;

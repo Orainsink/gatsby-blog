@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
-import Footer from '../components/Footer';
 import { useDispatch } from 'react-redux';
 import { rhythm } from '../utils/typography';
 import styles from '../styles/Bloglayout.module.less';
 import { Row, Col } from 'antd';
-import SideBar from '../components/SideBar';
-import Info from '../components/SideBlocks/Info';
+import loadable from '@loadable/component';
 import useWindowSize from '../hooks/useWindowSize';
-import Catalog from '../components/SideBlocks/Catalog';
-import Comment from '../components/SideBlocks/Comment';
+const SideBar = loadable(() => import('../components/SideBar'));
+const Footer = loadable(() => import('../components/Footer'));
+const Info = loadable(() => import('../components/SideBlocks/Info'));
+const Catalog = loadable(() => import('../components/SideBlocks/Catalog'));
+const Comment = loadable(() => import('../components/SideBlocks/Comment'));
 
 interface IProps {
   content?: any;
