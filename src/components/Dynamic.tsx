@@ -40,7 +40,6 @@ const Modal = (props: ModalProps) => {
   const { camera: defaultCamera, setDefaultCamera, scene } = useThree();
   const camera = useRef(null);
   const stripsGroup = useRef(null);
-
   const [words, setWords] = useState(null);
 
   // 初始化相机

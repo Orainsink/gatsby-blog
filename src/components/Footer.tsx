@@ -11,10 +11,7 @@ const Footer: React.FC = () => {
       <div className={styles.main}>
         <div className={styles.phrase}>
           <div>
-            <GithubOutlined
-              className={classnames(styles.icon, styles.git)}
-              style={{ transform: 'translateY(-1px)' }}
-            />
+            <GithubOutlined className={classnames(styles.icon, styles.git)} />
             <a
               href="https://github.com/Orainsink/gatsby-blog"
               target="_blank"
@@ -24,10 +21,7 @@ const Footer: React.FC = () => {
             </a>
           </div>
           <div>
-            <MailOutlined
-              className={styles.icon}
-              style={{ transform: 'translateY(1px)' }}
-            />
+            <MailOutlined className={styles.icon} />
             Email: ywt1250066597@gmail.com
           </div>
         </div>

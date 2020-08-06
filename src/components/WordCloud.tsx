@@ -1,6 +1,6 @@
 import React, { useRef, useMemo, useEffect } from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
-import { random } from 'lodash';
+import random from 'lodash/random';
 import { useDispatch } from 'react-redux';
 import styles from '../styles/WordCloud.module.less';
 const WordCloud =

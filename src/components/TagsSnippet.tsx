@@ -5,7 +5,6 @@ import { useStaticQuery, graphql, navigate } from 'gatsby';
 import Image from 'gatsby-image';
 import { ReactComponent as MarkSvg } from '../assets/img/mark.svg';
 import { useDispatch } from 'react-redux';
-
 const { Meta } = Card;
 
 interface IData {

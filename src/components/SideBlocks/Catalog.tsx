@@ -13,7 +13,7 @@ const Catalog: React.FC<ICatalog> = (props) => {
   const catalogRef = useRef(null);
   const scrollY = useScrollY();
 
-  const isFixd = useMemo(() => {
+  const isFixed = useMemo(() => {
     if (catalogRef.current) {
       return scrollY > 333;
     }
@@ -31,7 +31,7 @@ const Catalog: React.FC<ICatalog> = (props) => {
     <Col
       flex="0 0 300px"
       className={classnames(styles.col, styles.catalogWrap, {
-        [styles.catalogFix]: isFixd,
+        [styles.catalogFix]: isFixed,
         [styles.hide]: isHide,
       })}
     >
