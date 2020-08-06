@@ -16,11 +16,6 @@ const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
   const [visible, setVisible] = useState(false);
   const { scene } = useSelector((state) => state);
 
-  const toggleScroll = () => {
-    const body = document.getElementsByTagName('body')[0];
-    body.style.overflowY = scene ? 'hidden' : 'auto';
-  };
-
   /**路径改变时关闭菜单 */
   useEffect(() => {
     setVisible(false);
@@ -28,9 +23,11 @@ const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
 
   /**fix bug,当drawer关闭时,antd组件会重设body的style,导致滚动失效 */
   useEffect(() => {
-    if (!visible) toggleScroll();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible]);
+    if (!visible) {
+      const body = document.getElementsByTagName('body')[0];
+      body.style.overflowY = scene ? 'hidden' : 'auto';
+    }
+  }, [visible, scene]);
 
   return (
     <>

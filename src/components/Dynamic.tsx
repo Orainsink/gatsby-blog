@@ -129,7 +129,7 @@ const Modal = (props: ModalProps) => {
         position={[0.2, 1, 0.5]}
       />
       {/* moon light */}
-      <Moon onCloseScene={onCloseScene} isScene={isScene} />
+      <Moon onCloseScene={onCloseScene} />
 
       {/* stars */}
       <group ref={stripsGroup}>

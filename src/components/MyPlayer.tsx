@@ -85,8 +85,7 @@ const Panel: React.FC = () => {
       wave.stop();
       return wave;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [waveRef.current]);
+  }, []);
 
   useEffect(() => {
     if (playing) {

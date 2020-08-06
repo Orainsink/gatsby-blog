@@ -67,8 +67,7 @@ const ArchivesPage = ({ data, location }: Props) => {
         payload: value,
       });
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [dispatch, searchRef.current]
+    [dispatch]
   );
 
   return (

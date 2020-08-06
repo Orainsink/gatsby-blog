@@ -17,8 +17,7 @@ const Catalog: React.FC<ICatalog> = (props) => {
     if (catalogRef.current) {
       return scrollY > 333;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scrollY, catalogRef.current]);
+  }, [scrollY]);
 
   const isHide = useMemo(() => {
     if (catalogRef) {
