@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from '../../styles/SideBar.module.less';
 import { Col } from 'antd';
-import WordCloud from '../WordCloud';
 import classnames from 'classnames';
 import useWindowSize from '../../hooks/useWindowSize';
+import loadable from '@loadable/component';
+const WordCloud = loadable(() => import('../WordCloud'));
 
 /* wordCloud */
-const TagesBlock: React.FC = () => {
+const TagsBlock: React.FC = () => {
   const [x] = useWindowSize();
 
   return (
@@ -19,4 +20,4 @@ const TagesBlock: React.FC = () => {
     </Col>
   );
 };
-export default React.memo(TagesBlock);
+export default React.memo(TagsBlock);

@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react';
 import styles from '../../styles/SideBar.module.less';
-import MyGitalk from '../MyGitalk';
 import classnames from 'classnames';
 import { Col } from 'antd';
 import useWindowSize from '../../hooks/useWindowSize';
+import loadable from '@loadable/component';
+const MyGitalk = loadable(() => import('../MyGitalk'));
 
 const Comment: React.FC = () => {
   const [x] = useWindowSize();
