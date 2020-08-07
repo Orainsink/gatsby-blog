@@ -77,17 +77,18 @@ const Panel: React.FC = () => {
     (state) => state.music
   );
   const dispatch = useDispatch();
-  const waveRef = useRef(null);
-  const [randomList, setRandomList] = useState([]);
 
-  const siriWave = useMemo(() => {
-    if (waveRef.current) {
+  const [randomList, setRandomList] = useState([]);
+  const [siriWave, setSiriWave] = useState(null);
+
+  const waveRefCallback = useCallback((node) => {
+    if (node !== null) {
       const wave = new SiriWave({
         container: document.getElementById('wave'),
         cover: true,
       });
       wave.stop();
-      return wave;
+      setSiriWave(wave);
     }
   }, []);
 
@@ -196,7 +197,7 @@ const Panel: React.FC = () => {
         format={['mp3']}
         onEnd={_handleMusicEnd}
       />
-      <div ref={waveRef}>
+      <div ref={waveRefCallback}>
         <Controller />
         <ul className={styles.list}>{songs.map((song) => songItem(song))}</ul>
       </div>
