@@ -15,11 +15,11 @@ interface IProps {
   content?: any;
   location: any;
   title: string;
-  hasCatalog?: boolean; // 是否有目录, 默认 false
-  hasComment?: boolean; // 是否有评论, 默认 false
+  hasCatalog?: boolean; // default false
+  hasComment?: boolean; // default false
   children?: any;
 }
-/**文章页Layout */
+/** blog posts Layout */
 const Layout = (props: IProps) => {
   const { content, hasCatalog = false, hasComment = false, children } = props;
   const dispatch = useDispatch();

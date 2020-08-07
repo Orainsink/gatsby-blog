@@ -16,7 +16,7 @@ interface IProps {
   children?: any;
 }
 
-/**首页Layout */
+/**index Layout */
 const Layout = ({ location, title, children }: IProps) => {
   const { scene, trigger } = useSelector((state) => state);
   const dispatch = useDispatch();

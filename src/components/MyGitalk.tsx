@@ -7,6 +7,11 @@ import 'gitalk/dist/gitalk.css';
 interface IMyGitalk {
   title?: string;
 }
+/**
+ * gitalk comment component
+ * @param props
+ * @param {String} props.title - title
+ */
 const MyGitalk: React.FC<IMyGitalk> = (props) => {
   const { title } = props;
 

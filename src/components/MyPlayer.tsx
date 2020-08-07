@@ -19,16 +19,20 @@ import { ReactComponent as LoopSvg } from '../assets/img/loop.svg';
 import { ReactComponent as VolumeSvg } from '../assets/img/volume.svg';
 import { arr } from '../utils/utils';
 
-/**播放器控件 */
+/**Controller */
 const Controller: React.FC = () => {
   const dispatch = useDispatch();
   const { playing, volume, loop } = useSelector((state) => state.music);
-  /**暂停/播放 */
+  /** stop/start playing */
   const _handleClick = useCallback(() => {
     dispatch({ type: 'MUSIC', payload: { playing: !playing } });
   }, [playing, dispatch]);
 
-  /**循环模式 true单曲循环,false 列表随机 */
+  /**
+   * loop mode
+   * true: single track loop
+   * false: list random
+   */
   const _handleClickLoop = useCallback(() => {
     dispatch({ type: 'MUSIC', payload: { loop: !loop } });
   }, [loop, dispatch]);
@@ -67,7 +71,7 @@ const Controller: React.FC = () => {
   );
 };
 
-/**播放器面板 */
+/** Controller panel */
 const Panel: React.FC = () => {
   const { playing, volume, mute, loop, id } = useSelector(
     (state) => state.music
@@ -104,7 +108,10 @@ const Panel: React.FC = () => {
       .sort(() => Math.random() - 0.5);
   }, []);
 
-  /**点击item切换歌曲或者暂停播放 */
+  /**
+   * change play status
+   * @param {ISong} song - song detail
+   */
   const _handleClick = useCallback(
     (song: ISong) => {
       if (song.id === id) {
@@ -156,14 +163,16 @@ const Panel: React.FC = () => {
     return songs.filter((song) => song.id === id)[0]?.url;
   }, [id]);
 
-  /**列表随机:生成随机id列表 */
+  /**
+   * list random mode: generate random id list
+   */
   useEffect(() => {
     if (!loop) {
       setRandomList(generateRandom);
     }
   }, [loop, generateRandom]);
 
-  /**onEnd, 循环或随机 */
+  /**onEnd, loop or random play */
   const _handleMusicEnd = useCallback(() => {
     if (!loop) {
       let tmpList = randomList.filter((item) => item !== id);
@@ -195,7 +204,7 @@ const Panel: React.FC = () => {
   );
 };
 
-/**播放器入口 */
+/** myPlayer wrap */
 const MyPlayer: React.FC = () => {
   const { playing } = useSelector((state) => state.music);
 

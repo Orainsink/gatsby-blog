@@ -5,7 +5,7 @@ import gsap from 'gsap';
 interface IProps {
   onCloseScene: () => void;
 }
-/** three月亮 */
+/** three.js moon */
 const Moon = (props: IProps) => {
   const { onCloseScene } = props;
   const [active, setActive] = useState(false);
@@ -56,7 +56,9 @@ const Moon = (props: IProps) => {
     }
   }, []);
 
-  // 绑定及卸载动画
+  /**
+   * start or stop animations
+   */
   useEffect(() => {
     tween?.resume();
     return () => {
@@ -73,7 +75,6 @@ const Moon = (props: IProps) => {
         lightTween?.reverse();
       }
     }
-
     return () => {
       if (moonTween) {
         moonTween?.kill();

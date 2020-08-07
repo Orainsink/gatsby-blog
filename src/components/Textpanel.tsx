@@ -6,11 +6,12 @@ interface IProps {
   position?: [number, number, number];
   rotation?: [number, number, number];
 }
-/** three文字组件 */
+/** three.js text component */
 const Text = (props: IProps) => {
   const { words, position, rotation } = props;
   const textRef = useRef(null);
 
+  // TODO: need refactor
   useEffect(() => {
     const params = {
       size: 50,

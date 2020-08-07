@@ -6,17 +6,22 @@ import { Link } from 'gatsby';
 import { UnorderedListOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 
-/**抽屉菜单,用于移动端兼容 */
+/**
+ * menu drawer for phone
+ **/
 const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
   const [visible, setVisible] = useState(false);
   const { scene } = useSelector((state) => state);
 
-  /**路径改变时关闭菜单 */
+  /** close menu when location changes */
   useEffect(() => {
     setVisible(false);
   }, [location]);
 
-  /**fix bug,当drawer关闭时,antd组件会重设body的style,导致滚动失效 */
+  /**
+   * fix bug.
+   * When the Drawer is closed, the antd Drawer component resets the overflow style of body, causing scrolling to fail.
+   **/
   useEffect(() => {
     if (!visible) {
       const body = document.getElementsByTagName('body')[0];

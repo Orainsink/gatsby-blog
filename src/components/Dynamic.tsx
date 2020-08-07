@@ -1,6 +1,3 @@
-/**
- * 博客页面的加载页面
- */
 import React, {
   Suspense,
   useEffect,
@@ -33,7 +30,11 @@ interface ModalProps {
   isScene: boolean;
   onCloseScene: () => void;
 }
-/**模型 */
+/**
+ * 博客页面的加载页面
+ */
+
+/**Modal for Dynamic component */
 const Modal = (props: ModalProps) => {
   const { isScene, onCloseScene } = props;
   const gltf = useLoader(GLTFLoader, url);
@@ -42,7 +43,7 @@ const Modal = (props: ModalProps) => {
   const stripsGroup = useRef(null);
   const [words, setWords] = useState(null);
 
-  // 初始化相机
+  // set default camera, and scene fog
   useEffect(() => {
     setDefaultCamera(camera.current);
     scene.fog = new THREE.FogExp2('#0a0a0a', 0.0025);
@@ -53,7 +54,7 @@ const Modal = (props: ModalProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // 根据IP获取当地天气信息
+  // fetch weather data by IP
   useEffect(() => {
     fetch(hfUrl, {
       headers: {
@@ -67,14 +68,14 @@ const Modal = (props: ModalProps) => {
       .then((res) => {
         const data = res.HeWeather6[0];
         const words = [
-          data.basic.location, //城市名
-          data.now.tmp + '℃ ' + data.now.cond_txt, // 温度
+          data.basic.location, //city
+          data.now.tmp + '℃ ' + data.now.cond_txt, // temperature
         ];
         setWords(words);
       });
   }, []);
 
-  // 生成场景方块, 因为不知道merge()怎么用react-three-fiber写,所以这里直接控制three
+  // TODO: use react-three-fiber to refactor
   useEffect(() => {
     const stripsGeometry = new THREE.Geometry();
     const stripGeometry = new THREE.PlaneGeometry(5, 2);
@@ -95,9 +96,9 @@ const Modal = (props: ModalProps) => {
     stripsGroup.current.add(totalMesh);
   }, []);
 
-  // 渲染循环, 控制镜头偏移, 月亮偏移
+  // animation frame
   useFrame(({ gl, scene, camera }) => {
-    // 隐藏时禁止所有动画
+    // Stop all animations when scene is hidden
     if (!isScene) return;
 
     camera.position.y +=
@@ -108,7 +109,7 @@ const Modal = (props: ModalProps) => {
     gl.render(scene, camera);
   }, 1);
 
-  // 镜头随鼠标左右晃动
+  // shake camera
   const _handlePointerMove = (e) => {
     mouseX = (e.clientX / window.innerWidth) * 2 - 1;
     mouseY = (e.clientY / window.innerHeight) * 2 - 1;
@@ -165,7 +166,7 @@ const Modal = (props: ModalProps) => {
     </group>
   );
 };
-/**首页webGl动画 */
+/** webGl wrapper  */
 const Dynamic: React.FC = () => {
   const { scene, trigger } = useSelector((state) => state);
   const dispatch = useDispatch();

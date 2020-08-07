@@ -5,11 +5,14 @@ import Bg from '../components/Bg';
 import BackTop from '../components/BackTop';
 import { useSelector } from 'react-redux';
 
-/**全局PageElement */
+/**global PageElement */
 const GlobalLayout = ({ children, location, ...props }) => {
   const { scene } = useSelector((state) => state);
 
-  /**切换是否可滚动, 不用useCallback的原因是切换页面的时候要重新获取body */
+  /**
+   * Toggle whether it is scrollable
+   * The reason why not using useCallback is that each time I switch pages, I have to get the body node.
+   * */
   const body = document.getElementsByTagName('body')[0];
   body.style.overflowY = scene ? 'hidden' : 'auto';
 

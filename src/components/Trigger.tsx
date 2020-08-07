@@ -1,5 +1,5 @@
 /**
- * 上下切换的 Trigger
+ * change scene Trigger
  */
 import React from 'react';
 import styles from '../styles/Trigger.module.less';

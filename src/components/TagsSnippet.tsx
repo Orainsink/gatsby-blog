@@ -21,7 +21,6 @@ interface IData {
   allImg: any;
 }
 
-/**首页-标签跳转 */
 const TagsSnippet: React.FC = () => {
   const dispatch = useDispatch();
   const tags = [
@@ -79,6 +78,7 @@ const TagsSnippet: React.FC = () => {
       const getCount = (tag: string) => {
         return group.filter((item) => item.tag === tag)[0]?.totalCount || 0;
       };
+      // Use switch instated of object to save ram
       switch (tag) {
         case '前端':
           return { count: getCount('前端'), img: FEImg };

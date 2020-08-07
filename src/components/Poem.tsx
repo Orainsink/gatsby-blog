@@ -14,7 +14,6 @@ interface IPoem {
   [key: string]: any;
 }
 
-/**诗歌 */
 const Poem: React.FC = () => {
   const [poem, setPoem] = useState<null | IPoem>(null);
   const [loading, setLoading] = useState(true);
