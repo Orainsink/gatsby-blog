@@ -100,7 +100,7 @@
     "clean": "gatsby clean",
     "new": "node new_post.js",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" ",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public -r https://$GH_TOKEN@github.com/Orainsink/gatsby-blog.git",
+    "deploy": "gatsby build && gh-pages -d public -r https://$GH_TOKEN@github.com/Orainsink/gatsby-blog.git",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
     "lint:fix": "yarn lint --fix"
   }

@@ -11,7 +11,7 @@ module.exports = {
       github: `https://github.com/Orainsink`,
     },
   },
-  pathPrefix: '/gatsby-blog',
+  // pathPrefix: '/gatsby-blog', //--prefix-paths
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
