@@ -6,7 +6,7 @@ import { rhythm, scale } from '../utils/typography';
 import styles from '../styles/Blog.module.less';
 import Tags from '../components/Tags';
 import { useDispatch } from 'react-redux';
-import useWindowSize from '../hooks/useWindowSize';
+import useWindowSize from '../useHooks/useWindowSize';
 import loadable from '@loadable/component';
 const MyGitalk = loadable(() => import('../components/MyGitalk'));
 

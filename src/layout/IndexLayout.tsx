@@ -6,7 +6,7 @@ import { rhythm } from '../utils/typography';
 import { Row, Col } from 'antd';
 import loadable from '@loadable/component';
 const Footer = loadable(() => import('../components/Footer'));
-const SideBar = loadable(() => import('../components/SideBar'));
+const SideBar = loadable(() => import('./SideBar'));
 const Info = loadable(() => import('../components/SideBlocks/Info'));
 const TagsBlock = loadable(() => import('../components/SideBlocks/TagsBlock'));
 const Comment = loadable(() => import('../components/SideBlocks/Comment'));

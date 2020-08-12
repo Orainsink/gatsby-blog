@@ -11,15 +11,7 @@ export function yoyo() {
     this.reverse();
   }
 }
-/**
- * Set loop on a TweenLite tween
- * must be passed on onComplete
- *
- * @method loop
- */
-export function loop() {
-  this.restart();
-}
+
 /**
  * Return a random value in a specified range
  *
@@ -43,6 +35,7 @@ export function random(low, high, round) {
 
 /**
  * generate array
+ * @method arr
  * @param length
  */
 export function arr(length: number): number[] {

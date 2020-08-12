@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import styles from '../../styles/SideBar.module.less';
 import classnames from 'classnames';
 import { Col } from 'antd';
-import useWindowSize from '../../hooks/useWindowSize';
+import useWindowSize from '../../useHooks/useWindowSize';
 import loadable from '@loadable/component';
 const MyGitalk = loadable(() => import('../MyGitalk'));
 

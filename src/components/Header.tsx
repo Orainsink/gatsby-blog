@@ -7,7 +7,7 @@ import { Link } from 'gatsby';
 import { GithubOutlined } from '@ant-design/icons';
 import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import useWindowSize from '../hooks/useWindowSize';
+import useWindowSize from '../useHooks/useWindowSize';
 import loadable from '@loadable/component';
 const MyPlayer = loadable(() => import('../components/MyPlayer'));
 const MenuDrawer = loadable(() => import('../components/MenuDrawer'));

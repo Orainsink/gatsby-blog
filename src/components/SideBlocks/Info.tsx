@@ -10,7 +10,7 @@ import Icon, {
 } from '@ant-design/icons';
 import { ReactComponent as SteamSvg } from '../../assets/img/steam.svg';
 import classnames from 'classnames';
-import useWindowSize from '../../hooks/useWindowSize';
+import useWindowSize from '../../useHooks/useWindowSize';
 
 interface IData {
   avatar: any;

@@ -6,7 +6,11 @@ function getScrollPosition() {
   return isBrowser ? document.body.scrollTop : 0;
 }
 
-const useScrollY = () => {
+/**
+ * body scrollY hook
+ * @returns {number} scrollY
+ */
+const useScrollY = (): number => {
   const [scrollY, setScrollY] = useState(getScrollPosition());
 
   useEffect(() => {
