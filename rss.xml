@@ -1,4 +1,70 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's blog]]></title><description><![CDATA[Orainsink 的博客, 写一点东西]]></description><link>https://foolishrobot.xyz/gatsby-blog</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 09 Aug 2020 11:56:45 GMT</lastBuildDate><item><title><![CDATA[CSS函数]]></title><description><![CDATA[CSS 函数]]></description><link>https://foolishrobot.xyz/gatsby-blog/CSS函数/</link><guid isPermaLink="false">https://foolishrobot.xyz/gatsby-blog/CSS函数/</guid><pubDate>Tue, 21 Jul 2020 07:54:10 GMT</pubDate><content:encoded>&lt;h1 id=&quot;css-函数&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#css-%E5%87%BD%E6%95%B0&quot; aria-label=&quot;css 函数 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;CSS 函数&lt;/h1&gt;</content:encoded></item><item><title><![CDATA[博客迁移记录]]></title><description><![CDATA[工作稳定之后终于有闲心重写博客了. 原来的博客基于Hexo, 优点是简单, 缺点是技术太落后. 重写博客的时候考虑了多种建站方式, 最后找到了最契合的静态网站生成器gatsby. react生态, 插件丰富, 社区活跃, 更新稳定, 真香~ 博客迁移记录 博客历史 201…]]></description><link>https://foolishrobot.xyz/gatsby-blog/博客迁移记录/</link><guid isPermaLink="false">https://foolishrobot.xyz/gatsby-blog/博客迁移记录/</guid><pubDate>Sun, 12 Jul 2020 22:50:01 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's blog]]></title><description><![CDATA[Orainsink 的博客, 写一点东西]]></description><link>https://foolishrobot.xyz/gatsby-blog</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 12 Aug 2020 15:16:02 GMT</lastBuildDate><item><title><![CDATA[数据结构-数组、链表、跳表基本特性]]></title><description><![CDATA[数组(Array) 可直接访问数组元素, 直接访问的时间复杂度为 O(…]]></description><link>https://foolishrobot.xyz/gatsby-blog/数据结构-数组、链表、跳表基本实现和特性/数据结构-数组、链表、跳表基本实现和特性/</link><guid isPermaLink="false">https://foolishrobot.xyz/gatsby-blog/数据结构-数组、链表、跳表基本实现和特性/数据结构-数组、链表、跳表基本实现和特性/</guid><pubDate>Wed, 12 Aug 2020 12:57:22 GMT</pubDate><content:encoded>&lt;h2 id=&quot;数组array&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E6%95%B0%E7%BB%84array&quot; aria-label=&quot;数组array permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;数组(Array)&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;可直接访问数组元素, 直接访问的时间复杂度为 O(1)&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除指定项的过程:&lt;/p&gt;
+&lt;p&gt;移除指定项的数据 -&gt; 将后续数组项向前平挪一个角标 -&gt; 删除数组最后一项或者直接将数组的长度减一&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;添加指定项的过程:&lt;/p&gt;
+&lt;p&gt;在指定角标处插入添加的项 -&gt; 后续数组项往后平挪一位&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;数组的添加和删除, 都是 O(n)的时间复杂度, 频繁的添加删除操作效率并不高.&lt;/p&gt;
+&lt;h2 id=&quot;链表linked-list&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E9%93%BE%E8%A1%A8linked-list&quot; aria-label=&quot;链表linked list permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;链表(Linked-list)&lt;/h2&gt;
+&lt;p&gt;js 实现 Node 类&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-js line-numbers&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// 当前节点的值&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;val &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; val&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// next 指针, 指向下一个节点&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;next &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;根据指针的差别, 链表又分为单向链表, 双向链表和循环链表&lt;/p&gt;
+&lt;p&gt;链表相对于数组, 最大的优势就是删除和增加操作, 数组需要平移操作, 但是链表只需要改指针, 链表的删除增加操作, 时间复杂度是 O(1), 但是链表除了&lt;code class=&quot;language-text&quot;&gt;head&lt;/code&gt;和&lt;code class=&quot;language-text&quot;&gt;tail&lt;/code&gt;可以直接访问外, 链表节点的访问必须遍历节点, 时间复杂度是 O(n) , 链表和数组各有利弊.&lt;/p&gt;
+&lt;h2 id=&quot;跳表&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E8%B7%B3%E8%A1%A8&quot; aria-label=&quot;跳表 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;跳表&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/dfb4e7134aba0aa54b17a8196965bcd6/6569d/%E8%B7%B3%E8%A1%A8.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 39.189189189189186%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsSAAALEgHS3X78AAABcklEQVQY0z2Pe1OCQBTF+U6pmSH4ggWEBXYFhEVRUDTNF5WZmeOY/dl37spUM2funN+5j5nLOf2phLuqHYpq50ZQi7X2r0StXDeQFcimX/oPc5XybkFQOG8wl7A/nD0rpF+R7KpCQTwIUVHpsNHSiR54mfCI/OVEQB1etuEEV4AbogYNgFJdBwEWcw+mIll3LbMgXrH4l4NuG0a5iTkSpoiENhsjO6wi0jQ87A5li8EXNc3BXmx2E0GhgArtKzSqtV3wkNzLNhc/bnU3Hsy3ZjBu6J7uxcliZ4eTlhkg0utNM3+0kiwGyNI1SzcQSmbQMHz4ixM0F4T9sdju8opTVR3sj2q6D+YeUc2NEe2DAWyazPCSfOa6IrY9jvRmdcwMP0WdIaIDiUSYpTKJ5NyrbqJ5iUyvCCEOJhIYOmhaPdji9udvGs2Xu880O85fTuPNYf3+BXX2fFq8nifZR7o5rPaX6dNxmh2Xb5fZywmG3XgJyz/1h5m3rEoxdAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;跳表&quot;
+        title=&quot;跳表&quot;
+        src=&quot;/static/dfb4e7134aba0aa54b17a8196965bcd6/fcda8/%E8%B7%B3%E8%A1%A8.png&quot;
+        srcset=&quot;/static/dfb4e7134aba0aa54b17a8196965bcd6/12f09/%E8%B7%B3%E8%A1%A8.png 148w,
+/static/dfb4e7134aba0aa54b17a8196965bcd6/e4a3f/%E8%B7%B3%E8%A1%A8.png 295w,
+/static/dfb4e7134aba0aa54b17a8196965bcd6/fcda8/%E8%B7%B3%E8%A1%A8.png 590w,
+/static/dfb4e7134aba0aa54b17a8196965bcd6/efc66/%E8%B7%B3%E8%A1%A8.png 885w,
+/static/dfb4e7134aba0aa54b17a8196965bcd6/c83ae/%E8%B7%B3%E8%A1%A8.png 1180w,
+/static/dfb4e7134aba0aa54b17a8196965bcd6/6569d/%E8%B7%B3%E8%A1%A8.png 1328w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;通过升维, 携带多级索引的链表就是跳表.&lt;/p&gt;
+&lt;p&gt;跳表有个前提, 就是原始链表必须是有序的.&lt;/p&gt;
+&lt;p&gt;因为多携带了索引信息, 所以跳表占用内存比链表大, 但是跳表的查询时间复杂度是 O(logn), 比链表的 O(n)快得多.&lt;/p&gt;
+&lt;p&gt;跳表的查询过程:&lt;/p&gt;
+&lt;p&gt;如上图, 我们要查询 10,&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;从第二级索引开始遍历, 1 -&gt; 7 , 发现 7 小于 10, 从 1 的索引向一级索引遍历, 遍历了 2 个节点&lt;/li&gt;
+&lt;li&gt;第一级索引, 7 -&gt; 9 , 发现 9 小于 10, 从 9 的索引向原始链表遍历, 遍历了 1 个节点&lt;/li&gt;
+&lt;li&gt;原始链表, 9 -&gt; 10, 找到目标元素, 遍历了 1 个节点&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;一共遍历了 4 个节点, 相比原始链表直接遍历 8 个节点效率上有所提升.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[CSS函数]]></title><description><![CDATA[CSS 函数]]></description><link>https://foolishrobot.xyz/gatsby-blog/CSS函数/</link><guid isPermaLink="false">https://foolishrobot.xyz/gatsby-blog/CSS函数/</guid><pubDate>Tue, 21 Jul 2020 07:54:10 GMT</pubDate><content:encoded>&lt;h1 id=&quot;css-函数&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#css-%E5%87%BD%E6%95%B0&quot; aria-label=&quot;css 函数 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;CSS 函数&lt;/h1&gt;</content:encoded></item><item><title><![CDATA[博客迁移记录]]></title><description><![CDATA[工作稳定之后终于有闲心重写博客了. 原来的博客基于Hexo, 优点是简单, 缺点是技术太落后. 重写博客的时候考虑了多种建站方式, 最后找到了最契合的静态网站生成器gatsby. react生态, 插件丰富, 社区活跃, 更新稳定, 真香~ 博客迁移记录 博客历史 201…]]></description><link>https://foolishrobot.xyz/gatsby-blog/博客迁移记录/</link><guid isPermaLink="false">https://foolishrobot.xyz/gatsby-blog/博客迁移记录/</guid><pubDate>Sun, 12 Jul 2020 22:50:01 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;工作稳定之后终于有闲心重写博客了. 原来的博客基于Hexo, 优点是简单, 缺点是技术太落后. 重写博客的时候考虑了多种建站方式, 最后找到了最契合的静态网站生成器gatsby. react生态, 插件丰富, 社区活跃, 更新稳定, 真香~&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=&quot;博客迁移记录&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E8%AE%B0%E5%BD%95&quot; aria-label=&quot;博客迁移记录 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;博客迁移记录&lt;/h1&gt;
