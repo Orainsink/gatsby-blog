@@ -7116,6 +7116,11 @@ gatsby-plugin-antd@2.2.0:
     antd "^4.0.0"
     babel-plugin-import "^1.13.0"
 
+gatsby-plugin-cname@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/gatsby-plugin-cname/download/gatsby-plugin-cname-1.0.0.tgz#5752d006c476a3c7897fca5c307901df5501747a"
+  integrity sha1-V1LQBsR2o8eJf8pcMHkB31UBdHo=
+
 gatsby-plugin-feed@^2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-feed/-/gatsby-plugin-feed-2.5.1.tgz#dad412c2c0455342849ddd51c8b228c8747d5fef"

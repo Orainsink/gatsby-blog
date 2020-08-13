@@ -2,7 +2,7 @@
 
 # Orainsink's Blog - Quick, Responsive, WebGL
 
-**Site url: [foolishrobot.xyz/gatsby-blog](https://foolishrobot.xyz/gatsby-blog)**
+**Site url: [foolishrobot.xyz](https://foolishrobot.xyz/)**
 
 [![Build Status](https://travis-ci.org/Orainsink/gatsby-blog.svg?branch=master)](https://travis-ci.org/Orainsink/gatsby-blog)
 

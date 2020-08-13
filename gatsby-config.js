@@ -6,12 +6,11 @@ module.exports = {
       summary: `空空如也`,
     },
     description: `Orainsink 的博客, 写一点东西`,
-    siteUrl: `https://foolishrobot.xyz/gatsby-blog/`,
+    siteUrl: `https://foolishrobot.xyz/`,
     social: {
       github: `https://github.com/Orainsink`,
     },
   },
-  // pathPrefix: '/gatsby-blog', //--prefix-paths
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
@@ -89,12 +88,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Orainsink's Blog`,
+        short_name: `Orainsink`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
+        background_color: `#efefef`,
+        theme_color: `#3d4451`,
+        display: `antd`,
         icon: `content/assets/gatsby-icon.png`,
       },
     },
@@ -137,6 +136,7 @@ module.exports = {
     },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-css-modules`,
+    'gatsby-plugin-cname',
     'gatsby-plugin-svgr',
     {
       resolve: 'gatsby-plugin-antd',
