@@ -1,4 +1,4 @@
-import { yoyo } from '../utils/utils';
+import { yoyo } from '../../utils/utils';
 import React, { useEffect, useState, useCallback } from 'react';
 import gsap from 'gsap';
 

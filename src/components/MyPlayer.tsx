@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useMemo,
-  useCallback,
-} from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Tooltip, Row, Col, Slider } from 'antd';
 import SiriWave from 'siriwave';
 import ReactHowler from 'react-howler';
@@ -128,7 +122,7 @@ const Panel: React.FC = () => {
     [dispatch, id, playing, generateRandom, loop]
   );
 
-  const songItem = useCallback(
+  const renderSongItem = useCallback(
     (song: ISong) => {
       return (
         <li
@@ -199,7 +193,9 @@ const Panel: React.FC = () => {
       />
       <div ref={waveRefCallback}>
         <Controller />
-        <ul className={styles.list}>{songs.map((song) => songItem(song))}</ul>
+        <ul className={styles.list}>
+          {songs.map((song) => renderSongItem(song))}
+        </ul>
       </div>
     </>
   );

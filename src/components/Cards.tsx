@@ -78,7 +78,7 @@ const TagsSnippet: React.FC = () => {
       const getCount = (tag: string) => {
         return group.filter((item) => item.tag === tag)[0]?.totalCount || 0;
       };
-      // Use switch instated of object to save ram
+      // Use switch instated of object
       switch (tag) {
         case '前端':
           return { count: getCount('前端'), img: FEImg };

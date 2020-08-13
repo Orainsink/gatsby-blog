@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as THREE from 'three';
 
 interface IProps {
@@ -6,13 +6,17 @@ interface IProps {
   position?: [number, number, number];
   rotation?: [number, number, number];
 }
+
 /** three.js text component */
 const Text = (props: IProps) => {
   const { words, position, rotation } = props;
-  const textRef = useRef(null);
 
-  // TODO: need refactor
+  const [size, setSize] = useState([0, 0]);
+  const [map, setMap] = useState(null);
+
   useEffect(() => {
+    if (!words) return;
+
     const params = {
       size: 50,
       font: 'Futura, Trebuchet MS, Arial, sans-serif',
@@ -28,8 +32,8 @@ const Text = (props: IProps) => {
 
     // max width
     let width;
-
     let maxWidth = 0;
+    // measure text width
     words.forEach((word) => {
       let tempWidth = context.measureText(word).width;
       if (tempWidth > maxWidth) {
@@ -43,6 +47,7 @@ const Text = (props: IProps) => {
     let height = lineHeight * words.length;
 
     // security margin
+    setSize([width / 20 + 1, height / 20 + 1]);
     canvas.width = width + 20;
     canvas.height = height + 20;
 
@@ -57,35 +62,28 @@ const Text = (props: IProps) => {
       let left = canvas.width / 2;
       context.fillText(word, left, lineHeight * index);
     });
-
     let texture = new THREE.Texture(canvas);
     texture.needsUpdate = true;
-
-    let material = new THREE.MeshBasicMaterial({
-      map: texture,
-      transparent: true,
-      depthWrite: false,
-      depthTest: true,
-      side: THREE.DoubleSide,
-      opacity: 1,
-    });
-
-    let geometry = new THREE.PlaneGeometry(
-      canvas.width / 20,
-      canvas.height / 20
-    );
-
-    let mesh = new THREE.Mesh(geometry, material);
-    textRef.current.add(mesh);
+    setMap(texture);
   }, [words]);
 
   return (
-    <group
-      name="text"
-      ref={textRef}
-      position={position}
-      rotation={rotation}
-    ></group>
+    map && (
+      <group name="text" position={position} rotation={rotation}>
+        <mesh>
+          <planeGeometry attach="geometry" args={[size[0], size[1]]} />
+          <meshBasicMaterial
+            attach="material"
+            transparent
+            depthTest
+            opacity={1}
+            side={THREE.DoubleSide}
+            depthWrite={false}
+            map={map}
+          />
+        </mesh>
+      </group>
+    )
   );
 };
 

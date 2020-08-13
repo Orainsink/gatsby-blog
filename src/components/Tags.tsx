@@ -16,21 +16,17 @@ const Tags: React.FC<{ tags: string[] }> = ({ tags }) => {
     [dispatch]
   );
 
-  return (
-    <>
-      {tags && tags.length ? (
-        <p className="tags">
-          {tags.map((tag) => (
-            <Link key={tag} onClick={() => onTagClicked(tag)} to={`/archives`}>
-              <Tag color="blue" style={{ cursor: 'pointer' }}>
-                #{tag}
-              </Tag>
-            </Link>
-          ))}
-        </p>
-      ) : null}
-    </>
-  );
+  return tags && tags.length ? (
+    <p className="tags">
+      {tags.map((tag) => (
+        <Link key={tag} onClick={() => onTagClicked(tag)} to={`/archives`}>
+          <Tag color="blue" style={{ cursor: 'pointer' }}>
+            #{tag}
+          </Tag>
+        </Link>
+      ))}
+    </p>
+  ) : null;
 };
 
 export default React.memo(Tags);
