@@ -4,3 +4,5 @@ declare module '*.less';
 declare module '*.json';
 declare module '*.gltf';
 declare module '*.svg';
+declare module 'react-instantsearch-dom';
+declare module 'algoliasearch/lite';

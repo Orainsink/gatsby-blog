@@ -2,6 +2,9 @@ import algoliasearch from 'algoliasearch/lite';
 import React, { useState, useRef } from 'react';
 import { InstantSearch } from 'react-instantsearch-dom';
 import useClickOutside from '../../useHooks/useClickOutside';
+import SearchBox from './SearchBox';
+import SearchResult from './SearchResult';
+import styles from '../../styles/Algolia.module.less';
 
 export default function Search({ indices }) {
   const rootRef = useRef();
@@ -20,11 +23,12 @@ export default function Search({ indices }) {
         indexName={indices[0].name}
         onSearchStateChange={({ query }) => setQuery(query)}
       >
-        <div onFocus={() => setFocus(true)} />
-        {/* <StyledSearchResult
-            show={query && query.length > 0 && hasFocus}
-            indices={indices}
-          /> */}
+        <SearchBox onFocus={() => setFocus(true)} hasFocus={hasFocus} />
+
+        <SearchResult
+          // show={query && query.length > 0 && hasFocus}
+          indices={indices}
+        />
       </InstantSearch>
     </div>
   );
