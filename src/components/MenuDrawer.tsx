@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import styles from '../styles/Header.module.less';
 import classnames from 'classnames';
 import { Drawer, Button } from 'antd';
-import { Link } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 import { UnorderedListOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
+import Image from 'gatsby-image';
 
 /**
  * menu drawer for phone
@@ -12,6 +13,19 @@ import { useSelector } from 'react-redux';
 const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
   const [visible, setVisible] = useState(false);
   const { scene } = useSelector((state) => state);
+
+  const data = useStaticQuery(graphql`
+    query shasha3Query {
+      sharkMenu: file(absolutePath: { regex: "/menu.jpg/" }) {
+        childImageSharp {
+          fixed(width: 220) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `);
+  const { sharkMenu } = data;
 
   /** close menu when location changes */
   useEffect(() => {
@@ -56,6 +70,9 @@ const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
             <Link to="/about">about</Link>
           </li>
         </ul>
+        <div className={styles.shashaWrap}>
+          <Image fixed={sharkMenu.childImageSharp.fixed} alt="" />
+        </div>
       </Drawer>
     </>
   );

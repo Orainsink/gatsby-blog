@@ -11,7 +11,7 @@ import useWindowSize from '../useHooks/useWindowSize';
 import loadable from '@loadable/component';
 const MyPlayer = loadable(() => import('../components/MyPlayer'));
 const MenuDrawer = loadable(() => import('../components/MenuDrawer'));
-const SearchDrawer = loadable(() => import('../components/Algolia/index'));
+const SearchDrawer = loadable(() => import('../components/Algolia/Index'));
 
 /**Header */
 const Header: React.FC<{ location: any }> = ({ location }) => {

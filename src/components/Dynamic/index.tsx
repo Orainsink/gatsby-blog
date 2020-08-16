@@ -175,21 +175,23 @@ const Dynamic: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <ReactScrollWheelHandler downHandler={_handleScene}>
-      <div
-        className={classnames(
-          styles.wrapper,
-          !scene ? styles.disActive : trigger ? styles.trigger : styles.active
-        )}
-      >
-        <Canvas>
-          <Suspense fallback={null}>
-            <Modal isScene={scene} onCloseScene={_handleScene} />
-          </Suspense>
-        </Canvas>
-        <ArrowSvg className={styles.arrow} onClick={_handleScene} />
-      </div>
-    </ReactScrollWheelHandler>
+    <>
+      <ReactScrollWheelHandler downHandler={_handleScene}>
+        <div
+          className={classnames(
+            styles.wrapper,
+            !scene ? styles.disActive : trigger ? styles.trigger : styles.active
+          )}
+        >
+          <Canvas>
+            <Suspense fallback={null}>
+              <Modal isScene={scene} onCloseScene={_handleScene} />
+            </Suspense>
+          </Canvas>
+          <ArrowSvg className={styles.arrow} onClick={_handleScene} />
+        </div>
+      </ReactScrollWheelHandler>
+    </>
   );
 };
 

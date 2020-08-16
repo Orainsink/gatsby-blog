@@ -19,7 +19,7 @@ const HitCount = connectStateResults(({ searchResults }) => {
     query shasha2Query {
       sharkNoResult: file(absolutePath: { regex: "/noResult.jpg/" }) {
         childImageSharp {
-          fixed(width: 265, height: 227) {
+          fixed(width: 235, height: 206) {
             ...GatsbyImageSharpFixed
           }
         }
