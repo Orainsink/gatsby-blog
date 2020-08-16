@@ -1,35 +1,43 @@
-import algoliasearch from 'algoliasearch/lite';
-import React, { useState, useRef } from 'react';
-import { InstantSearch } from 'react-instantsearch-dom';
-import useClickOutside from '../../useHooks/useClickOutside';
-import SearchBox from './SearchBox';
-import SearchResult from './SearchResult';
-import styles from '../../styles/Algolia.module.less';
+import React, { useEffect } from 'react';
+import { Drawer } from 'antd';
+import AlgoliaSearch from './Search';
+import { useSelector } from 'react-redux';
+import useWindowSize from '../../useHooks/useWindowSize';
 
-export default function Search({ indices }) {
-  const rootRef = useRef();
-  const [query, setQuery] = useState();
-  const [hasFocus, setFocus] = useState(false);
-
-  const searchClient = algoliasearch(
-    process.env.GATSBY_ALGOLIA_APP_ID,
-    process.env.GATSBY_ALGOLIA_SEARCH_KEY
-  );
-  useClickOutside(rootRef.current, () => setFocus(false));
-  return (
-    <div ref={rootRef}>
-      <InstantSearch
-        searchClient={searchClient}
-        indexName={indices[0].name}
-        onSearchStateChange={({ query }) => setQuery(query)}
-      >
-        <SearchBox onFocus={() => setFocus(true)} hasFocus={hasFocus} />
-
-        <SearchResult
-          // show={query && query.length > 0 && hasFocus}
-          indices={indices}
-        />
-      </InstantSearch>
-    </div>
-  );
+interface ISearchDrawer {
+  visible: boolean;
+  location: any;
+  onClose: () => void;
 }
+const SearchDrawer: React.FC<ISearchDrawer> = (props) => {
+  const { visible, onClose, location } = props;
+  const { scene } = useSelector((state) => state);
+  const [width] = useWindowSize();
+
+  useEffect(() => {
+    if (!visible) {
+      const body = document.getElementsByTagName('body')[0];
+      body.style.overflowY = scene ? 'hidden' : 'auto';
+    }
+  }, [visible, scene]);
+
+  /** close menu when location changes */
+  useEffect(() => {
+    onClose && onClose();
+  }, [location]);
+
+  return (
+    <Drawer
+      title="SEARCH"
+      placement="left"
+      // maskClosable={false}
+      onClose={onClose}
+      visible={visible}
+      width={width < 600 ? '100%' : 600}
+      bodyStyle={{ padding: '12px' }}
+    >
+      <AlgoliaSearch />
+    </Drawer>
+  );
+};
+export default React.memo(SearchDrawer);

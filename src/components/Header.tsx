@@ -4,13 +4,14 @@ import classnames from 'classnames';
 import { Row, Col } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { Link } from 'gatsby';
-import { GithubOutlined } from '@ant-design/icons';
+import { GithubOutlined, SearchOutlined } from '@ant-design/icons';
 import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import useWindowSize from '../useHooks/useWindowSize';
 import loadable from '@loadable/component';
 const MyPlayer = loadable(() => import('../components/MyPlayer'));
 const MenuDrawer = loadable(() => import('../components/MenuDrawer'));
+const SearchDrawer = loadable(() => import('../components/Algolia/index'));
 
 /**Header */
 const Header: React.FC<{ location: any }> = ({ location }) => {
@@ -34,6 +35,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
   const dispatch = useDispatch();
   const [active, setActive] = useState(false);
   const [drawer, setDrawer] = useState(false);
+  const [searchVisible, setSearchVisible] = useState(false);
   const [titleVisible, setTitleVisible] = useState(true);
   const [width] = useWindowSize();
   const { hasArrow, scene, title } = useSelector((state) => state);
@@ -45,7 +47,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
       setTitleVisible(true);
     }
 
-    if (width < 468) {
+    if (width < 600) {
       setDrawer(true);
     } else {
       setDrawer(false);
@@ -121,12 +123,17 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
             )}
           </Col>
         )}
+
         <Col flex={1} style={{ textAlign: 'right' }}>
           {menu}
         </Col>
         <Col style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <SearchOutlined
+            className={classnames(styles.icon, styles.search)}
+            onClick={() => setSearchVisible(true)}
+          />
           <GithubOutlined
-            className={styles.git}
+            className={styles.icon}
             onClick={(e) => {
               e.stopPropagation();
               e.preventDefault();
@@ -138,6 +145,12 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
           )}
         </Col>
       </Row>
+
+      <SearchDrawer
+        location={location}
+        visible={searchVisible}
+        onClose={() => setSearchVisible(false)}
+      />
     </header>
   );
 };

@@ -14,8 +14,8 @@ const reducer = (state, action) => {
     case 'SKIP': {
       return { ...state, skip: action.payload };
     }
-    case 'SEARCH': {
-      return { ...state, search: action.payload.trim() };
+    case 'CURTAG': {
+      return { ...state, curTag: action.payload.trim() };
     }
     case 'MUSIC': {
       state.music = { ...state.music, ...action.payload };
@@ -33,7 +33,7 @@ const initialState = {
   trigger: false,
   hasArrow: true,
   skip: false,
-  search: '',
+  curTag: '',
   music: {
     playing: false,
     volume: 0.5,

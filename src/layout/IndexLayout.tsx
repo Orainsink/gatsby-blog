@@ -24,7 +24,7 @@ const Layout = ({ location, title, children }: IProps) => {
 
   useEffect(() => {
     dispatch({ type: 'HASARROW', payload: true });
-    dispatch({ type: 'SEARCH', payload: '' });
+    dispatch({ type: 'CURTAG', payload: '' });
   }, [dispatch]);
 
   return (

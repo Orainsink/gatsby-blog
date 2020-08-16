@@ -46,7 +46,7 @@ const Info = () => {
   `);
 
   const { avatar, wechat, moogle } = data;
-  const [x] = useWindowSize();
+  const [width] = useWindowSize();
 
   const weChatContent = useMemo(() => {
     return (
@@ -75,7 +75,7 @@ const Info = () => {
 
   return (
     <Col
-      flex={x > 1110 ? '0 0 300px' : '1 1 300px'}
+      flex={width > 1110 ? '0 0 300px' : '1 1 300px'}
       className={classnames(styles.InfoWrap, styles.col)}
     >
       <Image

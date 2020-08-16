@@ -21,7 +21,7 @@ interface IProp {
   }[];
 }
 const PostList: React.FC<IProp> = ({ posts }) => {
-  const { search } = useSelector((state) => state);
+  const { curTag } = useSelector((state) => state);
   const [filteredPosts, setFilteredPosts] = useState(posts);
 
   const lowerCasePosts = useMemo(
@@ -38,29 +38,16 @@ const PostList: React.FC<IProp> = ({ posts }) => {
   );
 
   useEffect(() => {
-    if (search) {
-      const lowerCaseText = search.toLowerCase();
-      if (lowerCaseText[0] === '#') {
-        const tag = lowerCaseText.slice(1);
-        if (tag) {
-          setFilteredPosts(
-            posts.filter((_, i) => lowerCasePosts[i].tags.includes(tag))
-          );
-        }
-      } else {
-        setFilteredPosts(
-          posts.filter(
-            (_, i) =>
-              lowerCasePosts[i].title.includes(lowerCaseText) ||
-              lowerCasePosts[i].description.includes(lowerCaseText) ||
-              lowerCasePosts[i].excerpt.includes(lowerCaseText)
-          )
-        );
-      }
+    if (curTag) {
+      setFilteredPosts(
+        posts.filter((_, i) =>
+          lowerCasePosts[i].tags.includes(curTag.toLowerCase())
+        )
+      );
     } else {
       setFilteredPosts(posts);
     }
-  }, [search, lowerCasePosts, posts]);
+  }, [curTag, lowerCasePosts, posts]);
 
   return (
     <>

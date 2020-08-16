@@ -9,8 +9,8 @@ const Tags: React.FC<{ tags: string[] }> = ({ tags }) => {
   const onTagClicked = useCallback(
     (tag) => {
       dispatch({
-        type: 'SEARCH',
-        payload: '#' + (tag || '').trim(),
+        type: 'CURTAG',
+        payload: tag.trim(),
       });
     },
     [dispatch]
