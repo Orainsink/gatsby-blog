@@ -17,7 +17,7 @@ interface IProps {
 }
 
 /**index Layout */
-const Layout = ({ location, title, children }: IProps) => {
+const Layout = ({ children }: IProps) => {
   const { scene, trigger } = useSelector((state) => state);
   const dispatch = useDispatch();
   const wrapperRef = useRef(null);

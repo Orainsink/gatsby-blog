@@ -12,7 +12,7 @@ const Poem = loadable(() => import('../components/Poem'));
 const PostList = loadable(() => import('../components/PostList'), {
   fallback: <ComponentLoading />,
 });
-const Dynamic = loadable(() => import('../components/Dynamic/Index'), {
+const Dynamic = loadable(() => import('../components/Dynamic/Dynamic'), {
   fallback: <Loading debounce={700} />,
 });
 
