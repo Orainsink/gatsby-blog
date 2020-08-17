@@ -96,7 +96,7 @@ const TagsSnippet: React.FC = () => {
 
   const _handleClickCard = useCallback(
     (tag: string) => {
-      dispatch({ type: 'CURTAG', payload: tag ? tag : '' });
+      dispatch({ type: 'CUR_TAG', payload: tag ? tag : '' });
       navigate('/archives/');
     },
     [dispatch]

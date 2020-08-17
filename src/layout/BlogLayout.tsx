@@ -27,7 +27,7 @@ const Layout = (props: IProps) => {
 
   useEffect(() => {
     dispatch({ type: 'SKIP', payload: true });
-    dispatch({ type: 'HASARROW', payload: false });
+    dispatch({ type: 'HAS_ARROW', payload: false });
     dispatch({ type: 'SCENE', payload: false });
   }, [dispatch]);
 

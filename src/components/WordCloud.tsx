@@ -57,7 +57,7 @@ const WordCloudItem: React.FC<IWordCloudItem> = (props) => {
         fontFamily: 'Lato,sans-serif',
         color: 'random-dark',
         click: (item) => {
-          dispatch({ type: 'CURTAG', payload: item[0] });
+          dispatch({ type: 'CUR_TAG', payload: item[0] });
           jump && navigate('/archives/');
         },
       });

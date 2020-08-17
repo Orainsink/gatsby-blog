@@ -8,13 +8,13 @@ const reducer = (state, action) => {
     case 'TRIGGER': {
       return { ...state, trigger: action.payload };
     }
-    case 'HASARROW': {
+    case 'HAS_ARROW': {
       return { ...state, hasArrow: action.payload };
     }
     case 'SKIP': {
       return { ...state, skip: action.payload };
     }
-    case 'CURTAG': {
+    case 'CUR_TAG': {
       return { ...state, curTag: action.payload.trim() };
     }
     case 'MUSIC': {

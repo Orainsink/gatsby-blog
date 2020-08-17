@@ -23,8 +23,8 @@ const Layout = ({ children }: IProps) => {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    dispatch({ type: 'HASARROW', payload: true });
-    dispatch({ type: 'CURTAG', payload: '' });
+    dispatch({ type: 'HAS_ARROW', payload: true });
+    dispatch({ type: 'CUR_TAG', payload: '' });
   }, [dispatch]);
 
   return (

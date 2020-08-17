@@ -12,7 +12,6 @@ import { Divider } from 'antd';
 import styles from '../../styles/Algolia.module.less';
 import { graphql, useStaticQuery } from 'gatsby';
 import Image from 'gatsby-image';
-import useMaxHeight from '../../useHooks/useMaxHeight';
 import { useSelector } from 'react-redux';
 
 const HitCount = connectStateResults(({ searchResults }) => {
@@ -30,7 +29,6 @@ const HitCount = connectStateResults(({ searchResults }) => {
   `);
   const { sharkNoResult } = data;
   const maxHeight = useSelector((state) => state.maxHeight);
-  useMaxHeight();
 
   return hitCount > 0 ? (
     <Divider orientation="center">

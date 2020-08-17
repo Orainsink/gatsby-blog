@@ -48,7 +48,7 @@ const ArchivesPage = ({ data, location }: Props) => {
   useEffect(() => {
     return () => {
       dispatch({
-        type: 'CURTAG',
+        type: 'CUR_TAG',
         payload: '',
       });
     };
@@ -56,7 +56,7 @@ const ArchivesPage = ({ data, location }: Props) => {
 
   const _handleClose = useCallback(() => {
     dispatch({
-      type: 'CURTAG',
+      type: 'CUR_TAG',
       payload: '',
     });
   }, [dispatch]);
