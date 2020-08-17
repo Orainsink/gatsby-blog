@@ -45,7 +45,7 @@ export default function Search() {
         ) : (
           <div
             className={styles.shashaWrap}
-            style={{ top: `${maxHeight / 2}px` }}
+            style={{ top: `${maxHeight / 2 - 130}px` }}
           >
             <Image fixed={sharkSearch.childImageSharp.fixed} alt="" />
             <div className={styles.noResultText}>Input to start search</div>

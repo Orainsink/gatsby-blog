@@ -35,7 +35,10 @@ const HitCount = connectStateResults(({ searchResults }) => {
       {hitCount} result{hitCount !== 1 ? `s` : ``}
     </Divider>
   ) : (
-    <div className={styles.shashaWrap} style={{ top: `${maxHeight / 2}px` }}>
+    <div
+      className={styles.shashaWrap}
+      style={{ top: `${maxHeight / 2 - 118}px` }}
+    >
       <Image fixed={sharkNoResult.childImageSharp.fixed} alt="" />
       <div className={styles.noResultText}>Whe, where's the results?</div>
     </div>
