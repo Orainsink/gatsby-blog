@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connectSearchBox } from 'react-instantsearch-dom';
 import { Input } from 'antd';
+import useDebounce from '../../useHooks/useDebounce';
 const { Search } = Input;
 
-export default connectSearchBox(({ refine, currentRefinement, onFocus }) => (
-  <Search
-    size="large"
-    placeholder="Search"
-    allowClear
-    onChange={(e) => refine(e.target.value)}
-    value={currentRefinement}
-    onFocus={onFocus}
-  />
-));
+export default connectSearchBox(({ refine, currentRefinement, onFocus }) => {
+  const [val, setVal] = useState('');
+  useDebounce(
+    () => {
+      refine(val);
+    },
+    300,
+    [val]
+  );
+
+  return (
+    <Search
+      size="large"
+      placeholder="Search"
+      allowClear
+      onChange={(e) => setVal(e.target.value)}
+      value={val}
+    />
+  );
+});

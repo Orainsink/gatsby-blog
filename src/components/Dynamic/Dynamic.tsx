@@ -24,15 +24,13 @@ let mouseX = 0;
 let mouseY = 0;
 const url = 'https://foolishrobot.oss-cn-beijing.aliyuncs.com/rock.gltf';
 const hfUrl =
-  'https://free-api.heweather.net/s6/weather/now?&location=auto_ip&key=8b283eca0bbd4063b9184f872adc1360';
+  'https://free-api.heweather.net/s6/weather/now?&location=auto_ip&key=' +
+  process.env.GATSBY_HEWEATHER_KEY;
 
 interface ModalProps {
   isScene: boolean;
   onCloseScene: () => void;
 }
-/**
- * 博客页面的加载页面
- */
 
 /**Modal for Dynamic component */
 const Modal = (props: ModalProps) => {
@@ -51,10 +49,14 @@ const Modal = (props: ModalProps) => {
     return () => {
       setDefaultCamera(defaultCamera);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, []);
 
-  // fetch weather data by IP
+  /**
+   * fetch weather data by IP
+   * 天气API
+   * https://dev.heweather.com/docs/api/overview
+   */
   useEffect(() => {
     fetch(hfUrl, {
       headers: {
