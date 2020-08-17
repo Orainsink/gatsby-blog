@@ -6,7 +6,15 @@ import React, {
   useState,
 } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import * as THREE from 'three';
+import {
+  FogExp2,
+  Vector3,
+  DoubleSide,
+  Geometry,
+  PlaneGeometry,
+  MeshLambertMaterial,
+  Mesh,
+} from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Canvas, useLoader, useFrame, useThree } from 'react-three-fiber';
 import styles from '../../styles/Dynamic.module.less';
@@ -44,7 +52,7 @@ const Modal = (props: ModalProps) => {
   // set default camera, and scene fog
   useEffect(() => {
     setDefaultCamera(camera.current);
-    scene.fog = new THREE.FogExp2('#0a0a0a', 0.0025);
+    scene.fog = new FogExp2('#0a0a0a', 0.0025);
 
     return () => {
       setDefaultCamera(defaultCamera);
@@ -78,11 +86,11 @@ const Modal = (props: ModalProps) => {
   }, []);
 
   useEffect(() => {
-    const stripsGeometry = new THREE.Geometry();
-    const stripGeometry = new THREE.PlaneGeometry(5, 2);
-    const stripMaterial = new THREE.MeshLambertMaterial({ color: '#666666' });
+    const stripsGeometry = new Geometry();
+    const stripGeometry = new PlaneGeometry(5, 2);
+    const stripMaterial = new MeshLambertMaterial({ color: '#666666' });
     for (let i = 0; i < 20; i++) {
-      const stripMesh = new THREE.Mesh(stripGeometry, stripMaterial);
+      const stripMesh = new Mesh(stripGeometry, stripMaterial);
       stripMesh.position.set(
         random(-50, 50),
         random(-100, 100),
@@ -92,7 +100,7 @@ const Modal = (props: ModalProps) => {
       stripMesh.updateMatrix();
       stripsGeometry.merge(stripMesh.geometry, stripMesh.matrix);
     }
-    const totalMesh = new THREE.Mesh(stripsGeometry, stripMaterial);
+    const totalMesh = new Mesh(stripsGeometry, stripMaterial);
 
     stripsGroup.current.add(totalMesh);
   }, []);
@@ -140,7 +148,7 @@ const Modal = (props: ModalProps) => {
             attach="geometry"
             vertices={arr(500).map(
               () =>
-                new THREE.Vector3(
+                new Vector3(
                   random(-50, 50),
                   random(-100, 100),
                   random(-50, 100)
@@ -158,7 +166,7 @@ const Modal = (props: ModalProps) => {
           // @ts-ignore
           {...gltf.__$[1].material}
           flatShading
-          side={THREE.DoubleSide}
+          side={DoubleSide}
         />
       </mesh>
       {words ? <Text words={words} position={[0, -5, 0]} /> : null}

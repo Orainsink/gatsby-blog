@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import * as THREE from 'three';
+import { Texture, DoubleSide } from 'three';
 
 interface IProps {
   words: string[] | null;
@@ -62,7 +62,7 @@ const Text = (props: IProps) => {
       let left = canvas.width / 2;
       context.fillText(word, left, lineHeight * index);
     });
-    let texture = new THREE.Texture(canvas);
+    let texture = new Texture(canvas);
     texture.needsUpdate = true;
     setMap(texture);
   }, [words]);
@@ -77,7 +77,7 @@ const Text = (props: IProps) => {
             transparent
             depthTest
             opacity={1}
-            side={THREE.DoubleSide}
+            side={DoubleSide}
             depthWrite={false}
             map={map}
           />

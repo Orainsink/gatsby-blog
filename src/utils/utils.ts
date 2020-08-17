@@ -37,7 +37,8 @@ export function random(low, high, round) {
  * generate array
  * @method arr
  * @param length
+ * @return undefined[]
  */
-export function arr(length: number): number[] {
-  return [...Array(length).keys()];
+export function arr(length: number): any[] {
+  return new Array(length).fill(undefined);
 }

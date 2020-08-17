@@ -99,7 +99,7 @@ const Panel: React.FC = () => {
 
   const generateRandom = useMemo(() => {
     return arr(songs.length)
-      .map((item) => item + 1)
+      .map((item, index) => index + 1)
       .sort(() => Math.random() - 0.5);
   }, []);
 
