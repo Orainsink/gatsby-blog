@@ -7,7 +7,7 @@ module.exports = {
       name: `Orainsink`,
       summary: `空空如也`,
     },
-    description: `Orainsink 的博客, 写一点东西`,
+    description: `Orainsink 的博客, 前端, 随笔, 其他技术笔记`,
     siteUrl: `https://foolishrobot.xyz/`,
     social: {
       github: `https://github.com/Orainsink`,
@@ -108,6 +108,7 @@ module.exports = {
         icon: `content/assets/gatsby-icon.png`,
       },
     },
+    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-typography`,

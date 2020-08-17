@@ -15,7 +15,7 @@ interface Props {
   title: string;
 }
 /**SEO */
-const SEO = ({ description = 'en', lang, meta, title }: Props) => {
+const SEO = ({ description, lang = 'CHS', meta, title }: Props) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -31,7 +31,6 @@ const SEO = ({ description = 'en', lang, meta, title }: Props) => {
       }
     `
   );
-
   const metaDescription = description || site.siteMetadata.description;
 
   return (
@@ -39,6 +38,7 @@ const SEO = ({ description = 'en', lang, meta, title }: Props) => {
       htmlAttributes={{
         lang,
       }}
+      defer={false}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[

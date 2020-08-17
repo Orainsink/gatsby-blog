@@ -1,6 +1,6 @@
-import React, { useRef, useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { graphql } from 'gatsby';
-import { Tag, Divider } from 'antd';
+import { Divider } from 'antd';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import { useSelector, useDispatch } from 'react-redux';
@@ -52,13 +52,6 @@ const ArchivesPage = ({ data, location }: Props) => {
         payload: '',
       });
     };
-  }, [dispatch]);
-
-  const _handleClose = useCallback(() => {
-    dispatch({
-      type: 'CUR_TAG',
-      payload: '',
-    });
   }, [dispatch]);
 
   return (
