@@ -24,6 +24,7 @@ const SearchDrawer: React.FC<ISearchDrawer> = (props) => {
   /** close menu when location changes */
   useEffect(() => {
     onClose && onClose();
+    // eslint-disable-next-line
   }, [location]);
 
   return (

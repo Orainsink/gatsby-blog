@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import useWindowSize from './useWindowSize';
 
-const useMaxHeight = (): number => {
+const useMaxHeight = () => {
   const [, height] = useWindowSize();
-  const [maxHeight, setMaxHeight] = useState(0);
+  const dispatch = useDispatch();
+  const maxHeight = useSelector((state) => state.maxHeight);
   useEffect(() => {
-    if (height > maxHeight) setMaxHeight(height);
-  }, [height]);
-  return maxHeight;
+    if (height > maxHeight) dispatch({ type: 'MAX_HEIGHT', payload: height });
+  }, [height, maxHeight, dispatch]);
 };
 export default useMaxHeight;

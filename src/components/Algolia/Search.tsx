@@ -1,5 +1,5 @@
 import algoliasearch from 'algoliasearch/lite';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { InstantSearch } from 'react-instantsearch-dom';
 import SearchBox from './SearchBox';
 import SearchResult from './SearchResult';
@@ -7,6 +7,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import styles from '../../styles/Algolia.module.less';
 import useMaxHeight from '../../useHooks/useMaxHeight';
+import { useSelector } from 'react-redux';
 
 export default function Search() {
   const rootRef = useRef();
@@ -23,7 +24,8 @@ export default function Search() {
     }
   `);
   const { sharkSearch } = data;
-  const maxHeight = useMaxHeight();
+  const maxHeight = useSelector((state) => state.maxHeight);
+  useMaxHeight();
 
   const searchClient = algoliasearch(
     process.env.GATSBY_ALGOLIA_APP_ID,

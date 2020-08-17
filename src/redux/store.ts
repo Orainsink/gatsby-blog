@@ -24,6 +24,9 @@ const reducer = (state, action) => {
     case 'TITLE': {
       return { ...state, title: action.payload };
     }
+    case 'MAX_HEIGHT': {
+      return { ...state, maxHeight: action.payload };
+    }
   }
   return state;
 };
@@ -34,6 +37,7 @@ const initialState = {
   hasArrow: true,
   skip: false,
   curTag: '',
+  maxHeight: 0,
   music: {
     playing: false,
     volume: 0.5,
