@@ -70,7 +70,7 @@ const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
             <Link to="/about">about</Link>
           </li>
         </ul>
-        <div className={styles.shashaWrap}>
+        <div className={styles.menuShasha}>
           <Image fixed={sharkMenu.childImageSharp.fixed} alt="" />
         </div>
       </Drawer>
