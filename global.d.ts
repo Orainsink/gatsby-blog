@@ -4,5 +4,19 @@ declare module '*.less';
 declare module '*.json';
 declare module '*.gltf';
 declare module '*.svg';
-declare module 'react-instantsearch-dom';
 declare module 'algoliasearch/lite';
+
+interface IPostItem {
+  node: {
+    excerpt: string;
+    frontmatter: {
+      title: string;
+      date: string;
+      description: string;
+      tags: string[];
+    };
+    fields: {
+      slug: string;
+    };
+  };
+}

@@ -7,17 +7,17 @@ import loadable from '@loadable/component';
 const MyGitalk = loadable(() => import('../MyGitalk'));
 
 const Comment: React.FC = () => {
-  const [x] = useWindowSize();
+  const [width] = useWindowSize();
 
-  const commentFlex = useMemo(() => {
-    if (x > 1110) return '0 0 300px';
-    if (x <= 1110 && x > 600) return '1 1 800px';
+  const secondFlex = useMemo(() => {
+    if (width > 1110) return '0 0 300px';
+    if (width <= 1110 && width > 600) return '1 1 800px';
     return '1 1 300px';
-  }, [x]);
+  }, [width]);
 
   return (
     <Col
-      flex={commentFlex}
+      flex={secondFlex}
       className={classnames(styles.col, styles.commentWrap)}
     >
       <MyGitalk title="首页评论" />

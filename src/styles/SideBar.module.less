@@ -63,6 +63,21 @@
     font-size: 12px;
   }
 }
+
+.calendar {
+  padding: 8px;
+  .header {
+    font-weight: bold;
+    font-size: 16px;
+    color: @text-color;
+  }
+}
+.calendarCell {
+  text-align: center;
+  .count {
+    font-size: 14px;
+  }
+}
 .col {
   background: #fff;
   border-radius: @border-radius-base;
@@ -88,6 +103,7 @@
   .title {
     font-size: 45px;
     position: absolute;
+    text-transform: uppercase;
     bottom: 10%;
     right: 10px;
     font-weight: bold;
@@ -138,4 +154,22 @@
 }
 .commentWrap {
   height: unset;
+}
+.calendarWrap {
+  height: unset;
+
+  & :global(.ant-picker-cell-disabled) {
+    color: @text-color-secondary !important;
+  }
+  & :global(.ant-picker-cell-disabled::before) {
+    background: none;
+  }
+
+  & :global(.ant-picker-cell-in-view) {
+    transition: all 0.3s linear;
+    color: @primary-color;
+    &:hover {
+      background: #e6f7ff;
+    }
+  }
 }

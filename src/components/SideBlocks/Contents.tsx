@@ -27,8 +27,6 @@ const Contents: React.FC<IContents> = (props) => {
     }
   }, [scrollY]);
 
-  console.log(content);
-
   return (
     <Col
       flex="0 0 300px"

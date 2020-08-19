@@ -14,8 +14,14 @@ const reducer = (state, action) => {
     case 'SKIP': {
       return { ...state, skip: action.payload };
     }
+    case 'RESET_SEARCH': {
+      return { ...state, curTag: '', curDate: '' };
+    }
     case 'CUR_TAG': {
-      return { ...state, curTag: action.payload.trim() };
+      return { ...state, curTag: action.payload.trim(), curDate: '' };
+    }
+    case 'CUR_DATE': {
+      return { ...state, curTag: '', curDate: action.payload };
     }
     case 'MUSIC': {
       state.music = { ...state.music, ...action.payload };
@@ -37,6 +43,7 @@ const initialState = {
   hasArrow: true,
   skip: false,
   curTag: '',
+  curDate: '',
   maxHeight: 0,
   music: {
     playing: false,

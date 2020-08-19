@@ -6,6 +6,7 @@ import SEO from '../components/seo';
 import { useDispatch } from 'react-redux';
 import loadable from '@loadable/component';
 const Poem = loadable(() => import('../components/Poem'));
+const Comment = loadable(() => import('../components/SideBlocks/Comment'));
 
 interface Props {
   data: any;
@@ -23,7 +24,7 @@ const AboutPage = ({ data, location }: Props) => {
   }, [dispatch]);
 
   return (
-    <Layout location={location} hasComment>
+    <Layout location={location} sideBlocks={<Comment />}>
       <SEO title="About" />
       <Poem />
       <section

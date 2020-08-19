@@ -7,21 +7,17 @@ import useWindowSize from '../useHooks/useWindowSize';
 const SideBar = loadable(() => import('./SideBar'));
 const Footer = loadable(() => import('../components/Footer'));
 const Info = loadable(() => import('../components/SideBlocks/Info'));
-const Contents = loadable(() => import('../components/SideBlocks/Contents'));
-const Comment = loadable(() => import('../components/SideBlocks/Comment'));
 
 interface IProps {
   content?: any;
   location: any;
-  hasContents?: boolean; // default false
-  hasComment?: boolean; // default false
+  sideBlocks?: React.ReactNode;
   children?: any;
 }
 /** blog posts Layout */
 const Layout = (props: IProps) => {
-  const { content, hasContents = false, hasComment = false, children } = props;
+  const { sideBlocks, children } = props;
   const dispatch = useDispatch();
-  const [width] = useWindowSize();
 
   useEffect(() => {
     dispatch({ type: 'SKIP', payload: true });
@@ -45,10 +41,7 @@ const Layout = (props: IProps) => {
           </Col>
           <SideBar>
             <Info />
-            {width > 1110 && hasContents && content ? (
-              <Contents content={content} />
-            ) : null}
-            {hasComment && <Comment />}
+            {sideBlocks}
           </SideBar>
         </Row>
       </main>

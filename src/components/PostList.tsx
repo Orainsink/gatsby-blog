@@ -4,23 +4,10 @@ import { useSelector } from 'react-redux';
 import Tags from '../components/Tags';
 
 interface IProp {
-  posts: {
-    node: {
-      excerpt: string;
-      frontmatter: {
-        title: string;
-        date: string;
-        description: string;
-        tags: string[];
-      };
-      fields: {
-        slug: string;
-      };
-    };
-  }[];
+  posts: IPostItem[];
 }
 const PostList: React.FC<IProp> = ({ posts }) => {
-  const { curTag } = useSelector((state) => state);
+  const { curTag, curDate } = useSelector((state) => state);
   const [filteredPosts, setFilteredPosts] = useState(posts);
 
   const lowerCasePosts = useMemo(
@@ -32,21 +19,31 @@ const PostList: React.FC<IProp> = ({ posts }) => {
         tags: (post.frontmatter.tags || []).map((tag) =>
           (tag || '').toLowerCase()
         ),
+        date: post.frontmatter.date,
       })),
     [posts]
   );
 
   useEffect(() => {
+    if (!curTag && !curDate) {
+      setFilteredPosts(posts);
+    }
     if (curTag) {
       setFilteredPosts(
         posts.filter((_, i) =>
           lowerCasePosts[i].tags.includes(curTag.toLowerCase())
         )
       );
-    } else {
-      setFilteredPosts(posts);
     }
-  }, [curTag, lowerCasePosts, posts]);
+    if (curDate) {
+      setFilteredPosts(
+        posts.filter((_, i) => lowerCasePosts[i].date.includes(curDate))
+      );
+    }
+    if (curTag && curDate) {
+      console.warn('tag and date should not all be true');
+    }
+  }, [curDate, curTag, lowerCasePosts, posts]);
 
   return (
     <>

@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import useWindowSize from '../useHooks/useWindowSize';
 import loadable from '@loadable/component';
 const MyGitalk = loadable(() => import('../components/MyGitalk'));
+const Contents = loadable(() => import('../components/SideBlocks/Contents'));
 
 interface IProps {
   data: {
@@ -44,8 +45,11 @@ const BlogPostTemplate: React.FC<IProps> = ({
     <>
       <Layout
         location={location}
-        hasContents={true}
-        content={post.tableOfContents}
+        sideBlocks={
+          width > 1110 && post.tableOfContents ? (
+            <Contents content={post.tableOfContents} />
+          ) : null
+        }
       >
         <SEO
           title={post.frontmatter.title}

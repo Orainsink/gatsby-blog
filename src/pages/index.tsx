@@ -23,20 +23,7 @@ type Data = {
     };
   };
   allMarkdownRemark: {
-    edges: {
-      node: {
-        excerpt: string;
-        frontmatter: {
-          title: string;
-          date: string;
-          description: string;
-          tags: string[];
-        };
-        fields: {
-          slug: string;
-        };
-      };
-    }[];
+    edges: IPostItem[];
   };
 };
 
