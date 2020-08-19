@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { graphql } from 'gatsby';
-import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import { Button } from 'antd';
 import { Link } from 'gatsby';
@@ -8,23 +6,10 @@ import styles from '../styles/404.module.less';
 import loadable from '@loadable/component';
 const Loading = loadable(() => import('../components/Loading'));
 
-interface Props {
-  data: {
-    site: {
-      siteMetadata: {
-        title: string;
-      };
-    };
-  };
-  location: any;
-}
-const NotFoundPage = ({ data, location }: Props) => {
-  const siteTitle = data.site.siteMetadata.title;
-
+const NotFoundPage = () => {
   return (
-    <Layout location={location} title={siteTitle}>
+    <>
       <SEO title="404: Not Found" />
-
       <Loading debounce={0}>
         <div className={styles.wrap}>
           <h1>404</h1>
@@ -35,18 +20,8 @@ const NotFoundPage = ({ data, location }: Props) => {
           </Link>
         </div>
       </Loading>
-    </Layout>
+    </>
   );
 };
 
 export default React.memo(NotFoundPage);
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;
