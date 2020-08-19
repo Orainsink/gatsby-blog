@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Drawer } from 'antd';
 import AlgoliaSearch from './Search';
-import { useSelector } from 'react-redux';
 import useWindowSize from '../../useHooks/useWindowSize';
+import useDrawerCloseEffect from '../../useHooks/useDrawerCloseEffect';
 
 interface ISearchDrawer {
   visible: boolean;
@@ -11,15 +11,8 @@ interface ISearchDrawer {
 }
 const SearchDrawer: React.FC<ISearchDrawer> = (props) => {
   const { visible, onClose, location } = props;
-  const { scene } = useSelector((state) => state);
   const [width] = useWindowSize();
-
-  useEffect(() => {
-    if (!visible) {
-      const body = document.getElementsByTagName('body')[0];
-      body.style.overflowY = scene ? 'hidden' : 'auto';
-    }
-  }, [visible, scene]);
+  useDrawerCloseEffect(visible);
 
   /** close menu when location changes */
   useEffect(() => {

@@ -3,6 +3,8 @@
   touch-action: none;
   position: relative;
   z-index: 1;
+  pointer-events: none;
+  user-select: none;
 }
 
 .InfoWrap {
@@ -33,6 +35,9 @@
   margin-top: 10px;
   > * {
     margin: 0 10px;
+  }
+  .icon {
+    color: @text-color;
   }
 }
 

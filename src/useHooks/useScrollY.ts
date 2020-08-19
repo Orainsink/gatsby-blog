@@ -8,6 +8,7 @@ function getScrollPosition() {
 
 /**
  * body scrollY hook
+ * @function useScrollY
  * @returns {number} scrollY
  */
 const useScrollY = (): number => {

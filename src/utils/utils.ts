@@ -1,7 +1,6 @@
 /**
  * Set yoyo on a TweenLite tween
  * must be passed on onComplete and onReverseComplete
- *
  * @method yoyo
  */
 export function yoyo() {
@@ -14,7 +13,6 @@ export function yoyo() {
 
 /**
  * Return a random value in a specified range
- *
  * @method random
  * @param {Number} [low] Lowest value possible
  * @param {Number} [high] Highest value possible

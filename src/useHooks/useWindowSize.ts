@@ -1,5 +1,6 @@
 import { useLayoutEffect, useState } from 'react';
 /** resize hook
+ * @function useWindowSize
  * @returns {number[]} [width, height]
  */
 const useWindowSize = (): [number, number] => {

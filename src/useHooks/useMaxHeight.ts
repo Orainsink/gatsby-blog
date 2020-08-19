@@ -2,6 +2,10 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import useWindowSize from './useWindowSize';
 
+/**
+ * Maximum height, for image positioning
+ * @function useMaxHeight
+ */
 const useMaxHeight = () => {
   const [, height] = useWindowSize();
   const dispatch = useDispatch();

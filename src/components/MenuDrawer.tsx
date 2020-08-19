@@ -4,15 +4,15 @@ import classnames from 'classnames';
 import { Drawer, Button } from 'antd';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import { UnorderedListOutlined } from '@ant-design/icons';
-import { useSelector } from 'react-redux';
 import Image from 'gatsby-image';
+import useDrawerCloseEffect from '../useHooks/useDrawerCloseEffect';
 
 /**
  * menu drawer for phone
  **/
 const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
   const [visible, setVisible] = useState(false);
-  const { scene } = useSelector((state) => state);
+  useDrawerCloseEffect(visible);
 
   const data = useStaticQuery(graphql`
     query shasha3Query {
@@ -31,17 +31,6 @@ const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
   useEffect(() => {
     setVisible(false);
   }, [location]);
-
-  /**
-   * fix bug.
-   * When the Drawer is closed, the antd Drawer component resets the overflow style of body, causing scrolling to fail.
-   **/
-  useEffect(() => {
-    if (!visible) {
-      const body = document.getElementsByTagName('body')[0];
-      body.style.overflowY = scene ? 'hidden' : 'auto';
-    }
-  }, [visible, scene]);
 
   return (
     <>

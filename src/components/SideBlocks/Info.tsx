@@ -93,7 +93,7 @@ const Info = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <ZhihuOutlined />
+            <ZhihuOutlined className={styles.icon} />
           </a>
           <a
             href="https://github.com/Orainsink"

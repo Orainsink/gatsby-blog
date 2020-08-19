@@ -7,7 +7,6 @@
  * @param {Boolean} [round=false] Floor the value?
  * @return {Number} Random value
  */
-
 const random = (low: number, high: number, round?: boolean) => {
   round = round || false;
 
