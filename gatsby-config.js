@@ -55,12 +55,12 @@ module.exports = {
             },
           },
           `gatsby-remark-responsive-iframe`,
-          {
-            resolve: `gatsby-remark-autolink-headers`,
-            options: {
-              offsetY: `200`,
-            },
-          },
+          // {
+          //   resolve: `gatsby-remark-autolink-headers`,
+          //   options: {
+          //     offsetY: `200`,
+          //   },
+          // },
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
