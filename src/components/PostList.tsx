@@ -1,5 +1,4 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { rhythm } from '../utils/typography';
 import { Link } from 'gatsby';
 import { useSelector } from 'react-redux';
 import Tags from '../components/Tags';
@@ -59,7 +58,7 @@ const PostList: React.FC<IProp> = ({ posts }) => {
             <header>
               <h3
                 style={{
-                  marginBottom: rhythm(1 / 4),
+                  marginBottom: '0.4em',
                 }}
               >
                 <Link style={{ boxShadow: `none` }} to={node.fields.slug}>

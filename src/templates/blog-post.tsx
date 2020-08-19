@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Link, graphql } from 'gatsby';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
-import { rhythm, scale } from '../utils/typography';
 import styles from '../styles/Blog.module.less';
 import Tags from '../components/Tags';
 import { useDispatch } from 'react-redux';
@@ -57,9 +56,8 @@ const BlogPostTemplate: React.FC<IProps> = ({
             <h1 style={{ textAlign: 'center' }}>{post.frontmatter.title}</h1>
             <p
               style={{
-                ...scale(-1 / 5),
-                display: `block`,
-                marginBottom: rhythm(1),
+                display: 'block',
+                marginBottom: '1.6em',
                 color: '#999999',
                 textAlign: 'center',
               }}
@@ -79,7 +77,7 @@ const BlogPostTemplate: React.FC<IProps> = ({
           />
           <hr
             style={{
-              marginBottom: rhythm(1),
+              marginBottom: '1.6em',
             }}
           />
           <Tags tags={tags} />

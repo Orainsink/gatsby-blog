@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import classnames from 'classnames';
 import styles from '../styles/Indexlayout.module.less';
 import { useSelector, useDispatch } from 'react-redux';
-import { rhythm } from '../utils/typography';
 import { Row, Col } from 'antd';
 import loadable from '@loadable/component';
 const Footer = loadable(() => import('../components/Footer'));
@@ -41,23 +40,9 @@ const Layout = ({ children }: IProps) => {
           Click to slide
         </div>
       )}
-      <main
-        style={{
-          margin: `${rhythm(5)} auto 0 auto`,
-          maxWidth: '1200px',
-          padding: `${rhythm(1 / 4)}`,
-        }}
-        className={styles.main}
-      >
+      <main className={styles.main}>
         <Row justify="space-between" gutter={8}>
-          <Col
-            flex="1 1 800px"
-            className={styles.mainWrap}
-            style={{
-              padding: `${rhythm(1 / 2)}`,
-              minHeight: `${rhythm(16)}`,
-            }}
-          >
+          <Col flex="1 1 800px" className={styles.mainWrap}>
             {children}
           </Col>
           <SideBar>

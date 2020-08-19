@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { rhythm } from '../utils/typography';
 import styles from '../styles/Bloglayout.module.less';
 import { Row, Col } from 'antd';
 import loadable from '@loadable/component';
@@ -34,21 +33,14 @@ const Layout = (props: IProps) => {
     <div className={styles.wrapper}>
       <main
         style={{
-          margin: `${rhythm(5)} auto 0 auto`,
+          margin: `8.05em auto 0 auto`,
           maxWidth: '1200px',
-          padding: `${rhythm(1 / 4)}`,
+          padding: `0.4em`,
         }}
         className={styles.main}
       >
         <Row justify="space-between" gutter={8}>
-          <Col
-            flex="1 1 800px"
-            className={styles.mainWrap}
-            style={{
-              padding: `${rhythm(1 / 2)}`,
-              minHeight: `${rhythm(16)}`,
-            }}
-          >
+          <Col flex="1 1 800px" className={styles.mainWrap}>
             {children}
           </Col>
           <SideBar>
