@@ -40,7 +40,7 @@ type Data = {
   };
 };
 
-const Index = ({ data, location }: PageProps<Data>) => {
+const Index = ({ data }: PageProps<Data>) => {
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges.filter((edge) => {
     return edge.node.frontmatter.title;
@@ -51,8 +51,8 @@ const Index = ({ data, location }: PageProps<Data>) => {
     <>
       <Trigger />
       {!skip && <Dynamic fallback={<Loading debounce={500} />} />}
-      <Layout location={location} title={siteTitle}>
-        <SEO title="Home page" />
+      <Layout>
+        <SEO title={siteTitle} />
         <Poem />
         <TagsSnippet />
 

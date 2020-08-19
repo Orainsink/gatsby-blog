@@ -11,8 +11,6 @@ const Info = loadable(() => import('../components/SideBlocks/Info'));
 const TagsBlock = loadable(() => import('../components/SideBlocks/TagsBlock'));
 const Comment = loadable(() => import('../components/SideBlocks/Comment'));
 interface IProps {
-  location: any;
-  title: string;
   children?: any;
 }
 

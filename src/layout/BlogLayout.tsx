@@ -8,20 +8,19 @@ import useWindowSize from '../useHooks/useWindowSize';
 const SideBar = loadable(() => import('./SideBar'));
 const Footer = loadable(() => import('../components/Footer'));
 const Info = loadable(() => import('../components/SideBlocks/Info'));
-const Catalog = loadable(() => import('../components/SideBlocks/Catalog'));
+const Contents = loadable(() => import('../components/SideBlocks/Contents'));
 const Comment = loadable(() => import('../components/SideBlocks/Comment'));
 
 interface IProps {
   content?: any;
   location: any;
-  title: string;
-  hasCatalog?: boolean; // default false
+  hasContents?: boolean; // default false
   hasComment?: boolean; // default false
   children?: any;
 }
 /** blog posts Layout */
 const Layout = (props: IProps) => {
-  const { content, hasCatalog = false, hasComment = false, children } = props;
+  const { content, hasContents = false, hasComment = false, children } = props;
   const dispatch = useDispatch();
   const [width] = useWindowSize();
 
@@ -54,8 +53,8 @@ const Layout = (props: IProps) => {
           </Col>
           <SideBar>
             <Info />
-            {width > 1110 && hasCatalog && content ? (
-              <Catalog content={content} />
+            {width > 1110 && hasContents && content ? (
+              <Contents content={content} />
             ) : null}
             {hasComment && <Comment />}
           </SideBar>

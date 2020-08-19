@@ -23,7 +23,7 @@ const AboutPage = ({ data, location }: Props) => {
   }, [dispatch]);
 
   return (
-    <Layout location={location} title={'About me'} hasComment>
+    <Layout location={location} hasComment>
       <SEO title="About" />
       <Poem />
       <section

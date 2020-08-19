@@ -29,7 +29,6 @@ const BlogPostTemplate: React.FC<IProps> = ({
   location,
 }) => {
   const post = data.markdownRemark;
-  const siteTitle = data.site.siteMetadata.title;
   const { previous, next } = pageContext;
   const { tags } = post.frontmatter;
   const dispatch = useDispatch();
@@ -46,8 +45,7 @@ const BlogPostTemplate: React.FC<IProps> = ({
     <>
       <Layout
         location={location}
-        title={siteTitle}
-        hasCatalog={true}
+        hasContents={true}
         content={post.tableOfContents}
       >
         <SEO

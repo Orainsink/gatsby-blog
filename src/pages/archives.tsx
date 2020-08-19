@@ -6,7 +6,6 @@ import SEO from '../components/seo';
 import { useSelector, useDispatch } from 'react-redux';
 import loadable from '@loadable/component';
 import ComponentLoading from '../components/ComponentLoading';
-
 const WordCloud = loadable(() => import('../components/WordCloud'), {
   fallback: <ComponentLoading />,
 });
@@ -18,7 +17,6 @@ interface Props {
   data: Data;
   location: any;
 }
-
 interface Data {
   allMarkdownRemark: {
     edges: {
@@ -55,7 +53,7 @@ const ArchivesPage = ({ data, location }: Props) => {
   }, [dispatch]);
 
   return (
-    <Layout location={location} title={'目录'}>
+    <Layout location={location}>
       <SEO title="Archives" />
       <WordCloud />
       <Divider
