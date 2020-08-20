@@ -8,11 +8,11 @@ const WordCloud = loadable(() => import('../WordCloud'));
 
 /* wordCloud */
 const TagsBlock: React.FC = () => {
-  const [x] = useWindowSize();
+  const [width] = useWindowSize();
 
   return (
     <Col
-      flex={x > 1110 ? '0 0 300px' : '1 1 300px'}
+      flex={width > 1110 ? '0 0 300px' : '1 1 300px'}
       className={classnames(styles.wordCloudWrap, styles.col)}
     >
       <div className={styles.title}>TAGS</div>
