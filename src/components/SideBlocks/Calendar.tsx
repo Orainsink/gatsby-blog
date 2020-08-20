@@ -1,12 +1,11 @@
 import React, { useMemo, useCallback } from 'react';
 import styles from '../../styles/SideBar.module.less';
 import { useDispatch } from 'react-redux';
-import { Calendar, Col, Row, Select } from 'antd';
+import { Col, Row, Select } from 'antd';
+import Calendar from './CustomCalendar';
 import useWindowSize from '../../useHooks/useWindowSize';
 import classnames from 'classnames';
-import moment from 'moment';
-import 'moment/locale/zh-cn';
-moment.locale('zh-cn');
+import dayjs from 'dayjs';
 
 interface ICalendar {
   posts: IPostItem[];
@@ -35,26 +34,26 @@ const CalendarBlock: React.FC<ICalendar> = ({ posts }) => {
   }, [posts]);
 
   const disableDate = useCallback(
-    (currentDate: moment.Moment) => {
-      return !allMonths[moment(currentDate).format('YYYY/MM')];
+    (currentDate: dayjs.Dayjs) => {
+      return !allMonths[dayjs(currentDate).format('YYYY/MM')];
     },
     [allMonths]
   );
 
   const monthCellRender = useCallback(
-    (currentDate: moment.Moment) => {
-      if (allMonths[moment(currentDate).format('YYYY/MM')]) {
-        const count = allMonths[moment(currentDate).format('YYYY/MM')];
+    (currentDate: dayjs.Dayjs) => {
+      if (allMonths[dayjs(currentDate).format('YYYY/MM')]) {
+        const count = allMonths[dayjs(currentDate).format('YYYY/MM')];
         return (
           <div className={styles.calendarCell}>
-            <div>{moment(currentDate).format('M月')}</div>
+            <div>{dayjs(currentDate).format('M月')}</div>
             <div className={styles.count}>{count + ' 篇'}</div>
           </div>
         );
       } else {
         return (
           <div className={styles.calendarCell}>
-            <div>{moment(currentDate).format('M月')}</div>
+            <div>{dayjs(currentDate).format('M月')}</div>
             <div style={{ height: '28px' }}></div>
           </div>
         );
@@ -67,7 +66,7 @@ const CalendarBlock: React.FC<ICalendar> = ({ posts }) => {
     const year = value.year();
     const options = [];
 
-    for (let i = 2018; i < moment().year() + 1; i += 1) {
+    for (let i = 2018; i < dayjs().year() + 1; i += 1) {
       options.push(
         <Select.Option key={i} value={i}>
           {i}
@@ -109,7 +108,7 @@ const CalendarBlock: React.FC<ICalendar> = ({ posts }) => {
         onChange={(date) =>
           dispatch({
             type: 'CUR_DATE',
-            payload: moment(date).format('YYYY/MM'),
+            payload: dayjs(date).format('YYYY/MM'),
           })
         }
         disabledDate={disableDate}

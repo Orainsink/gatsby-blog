@@ -8,7 +8,7 @@ module.exports = {
       summary: `空空如也`,
     },
     description: `Orainsink 的博客, 前端, 随笔, 其他技术笔记`,
-    siteUrl: `https://foolishrobot.xyz/`,
+    siteUrl: `https://blog.foolishrobot.xyz/`,
     social: {
       github: `https://github.com/Orainsink`,
     },
