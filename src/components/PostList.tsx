@@ -6,8 +6,9 @@ import { Divider } from 'antd';
 
 interface IProp {
   posts: IPostItem[];
+  hideMore?: boolean;
 }
-const PostList: React.FC<IProp> = ({ posts }) => {
+const PostList: React.FC<IProp> = ({ posts, hideMore = false }) => {
   const { curTag, curDate } = useSelector((state) => state);
   const [filteredPosts, setFilteredPosts] = useState(posts);
   const [fold, setFold] = useState(true);
@@ -82,9 +83,18 @@ const PostList: React.FC<IProp> = ({ posts }) => {
           </article>
         ) : null;
       })}
-      <Divider>
-        <span onClick={() => setFold(false)}>展开所有</span>
-      </Divider>
+      {hideMore && filteredPosts?.length > 6 && (
+        <div
+          style={{
+            textAlign: 'center',
+            fontSize: '18px',
+            padding: '1em 0',
+            cursor: 'pointer',
+          }}
+        >
+          <span onClick={() => setFold(false)}>展开所有</span>
+        </div>
+      )}
     </>
   );
 };
