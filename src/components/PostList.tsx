@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'gatsby';
 import { useSelector } from 'react-redux';
 import Tags from '../components/Tags';
+import { Divider } from 'antd';
 
 interface IProp {
   posts: IPostItem[];
@@ -9,6 +10,7 @@ interface IProp {
 const PostList: React.FC<IProp> = ({ posts }) => {
   const { curTag, curDate } = useSelector((state) => state);
   const [filteredPosts, setFilteredPosts] = useState(posts);
+  const [fold, setFold] = useState(true);
 
   const lowerCasePosts = useMemo(
     () =>
@@ -45,12 +47,16 @@ const PostList: React.FC<IProp> = ({ posts }) => {
     }
   }, [curDate, curTag, lowerCasePosts, posts]);
 
+  useEffect(() => {
+    setFold(true);
+  }, [curDate, curTag]);
+
   return (
     <>
-      {filteredPosts.map(({ node }) => {
+      {filteredPosts.map(({ node }, index) => {
         const title = node.frontmatter.title || node.fields.slug;
         const { date, description, tags } = node.frontmatter;
-        return (
+        return index < 6 || !fold ? (
           <article key={node.fields.slug}>
             <header>
               <h3
@@ -74,8 +80,11 @@ const PostList: React.FC<IProp> = ({ posts }) => {
               <Tags tags={tags} />
             </section>
           </article>
-        );
+        ) : null;
       })}
+      <Divider>
+        <span onClick={() => setFold(false)}>展开所有</span>
+      </Divider>
     </>
   );
 };
