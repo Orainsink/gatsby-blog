@@ -85,6 +85,7 @@ const PostList: React.FC<IProp> = ({ posts, hideMore = false }) => {
       })}
       {hideMore && filteredPosts?.length > 6 && (
         <div
+          onClick={() => setFold(false)}
           style={{
             textAlign: 'center',
             fontSize: '18px',
@@ -92,7 +93,7 @@ const PostList: React.FC<IProp> = ({ posts, hideMore = false }) => {
             cursor: 'pointer',
           }}
         >
-          <span onClick={() => setFold(false)}>展开所有</span>
+          <span>展开所有</span>
         </div>
       )}
     </>
