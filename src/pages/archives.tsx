@@ -54,7 +54,7 @@ const ArchivesPage = ({ data, location }: Props) => {
           />
         ) : null}
       </Divider>
-      <PostList posts={posts} />
+      <PostList posts={posts} hideMore />
     </Layout>
   );
 };
