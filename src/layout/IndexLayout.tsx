@@ -15,7 +15,7 @@ interface IProps {
 
 /**index Layout */
 const Layout = ({ children }: IProps) => {
-  const { scene, trigger } = useSelector((state) => state);
+  const { scene, trigger, skip } = useSelector((state) => state);
   const dispatch = useDispatch();
   const wrapperRef = useRef(null);
 
@@ -28,12 +28,16 @@ const Layout = ({ children }: IProps) => {
     <div
       className={classnames(
         styles.wrapper,
-        !scene ? styles.disActive : trigger ? styles.trigger : styles.active
+        !scene || skip
+          ? styles.disActive
+          : trigger
+          ? styles.trigger
+          : styles.active
       )}
       id="markdownBody"
       ref={wrapperRef}
     >
-      {scene && (
+      {scene && !skip && (
         <div
           className={classnames(styles.clickTip, trigger ? styles.show : null)}
         >

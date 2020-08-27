@@ -13,7 +13,7 @@ const PostList = loadable(() => import('../components/PostList'), {
   fallback: <ComponentLoading />,
 });
 const Dynamic = loadable(() => import('../components/Dynamic/Dynamic'), {
-  fallback: <Loading debounce={700} />,
+  fallback: <Loading debounce={100} />,
 });
 
 type Data = {
@@ -37,7 +37,7 @@ const Index = ({ data }: PageProps<Data>) => {
   return (
     <>
       <Trigger />
-      {!skip && <Dynamic fallback={<Loading debounce={500} />} />}
+      {!skip && <Dynamic />}
       <Layout>
         <SEO title={siteTitle} />
         <Poem />

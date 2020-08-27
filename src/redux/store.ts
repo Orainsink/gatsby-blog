@@ -1,8 +1,10 @@
 import { createStore as reduxCreateStore } from 'redux';
+const windowGlobal = typeof window !== 'undefined' && window;
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'SCENE': {
+      windowGlobal?.localStorage.setItem('SCENE', action.payload ? '1' : '');
       return { ...state, scene: action.payload };
     }
     case 'TRIGGER': {
@@ -12,6 +14,7 @@ const reducer = (state, action) => {
       return { ...state, hasArrow: action.payload };
     }
     case 'SKIP': {
+      windowGlobal?.localStorage.setItem('SKIP', action.payload ? '1' : '');
       return { ...state, skip: action.payload };
     }
     case 'RESET_SEARCH': {
@@ -38,10 +41,16 @@ const reducer = (state, action) => {
 };
 
 const initialState = {
-  scene: true,
+  scene:
+    windowGlobal && windowGlobal?.localStorage.getItem('SCENE') !== null
+      ? Boolean(localStorage.getItem('SCENE'))
+      : true,
   trigger: false,
   hasArrow: true,
-  skip: false,
+  skip:
+    windowGlobal && windowGlobal?.localStorage.getItem('SKIP') !== null
+      ? Boolean(localStorage.getItem('SKIP'))
+      : false,
   curTag: '',
   curDate: '',
   maxHeight: 0,
@@ -54,8 +63,6 @@ const initialState = {
     title: '',
   },
 };
-
-const windowGlobal = typeof window !== 'undefined' && window;
 
 const createStore = () =>
   reduxCreateStore(

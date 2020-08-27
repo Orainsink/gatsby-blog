@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import styles from '../styles/Bloglayout.module.less';
 import { Row, Col } from 'antd';
 import loadable from '@loadable/component';
-import useWindowSize from '../useHooks/useWindowSize';
 const SideBar = loadable(() => import('./SideBar'));
 const Footer = loadable(() => import('../components/Footer'));
 const Info = loadable(() => import('../components/SideBlocks/Info'));
