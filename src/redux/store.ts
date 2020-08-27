@@ -4,7 +4,6 @@ const windowGlobal = typeof window !== 'undefined' && window;
 const reducer = (state, action) => {
   switch (action.type) {
     case 'SCENE': {
-      windowGlobal?.localStorage.setItem('SCENE', action.payload ? '1' : '');
       return { ...state, scene: action.payload };
     }
     case 'TRIGGER': {

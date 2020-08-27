@@ -12,7 +12,7 @@ import loadable from '@loadable/component';
 const MyPlayer = loadable(() => import('../components/MyPlayer'));
 const MenuDrawer = loadable(() => import('../components/MenuDrawer'));
 const SearchDrawer = loadable(() => import('../components/Algolia/Index'));
-
+const isBrowser = typeof window !== `undefined`;
 /**Header */
 const Header: React.FC<{ location: any }> = ({ location }) => {
   const data = useStaticQuery(graphql`
@@ -75,6 +75,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
   const _handleArrow = useCallback(() => {
     dispatch({ type: 'SKIP', payload: false });
     dispatch({ type: 'SCENE', payload: true });
+    isBrowser && localStorage.setItem('SCENE', '1');
   }, [dispatch]);
 
   const menu = useMemo(() => {

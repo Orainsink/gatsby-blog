@@ -13,6 +13,7 @@ interface IProps {
   sideBlocks?: React.ReactNode;
   children?: any;
 }
+const isBrowser = typeof window !== `undefined`;
 /** blog posts Layout */
 const Layout = (props: IProps) => {
   const { sideBlocks, children } = props;
@@ -22,6 +23,7 @@ const Layout = (props: IProps) => {
     dispatch({ type: 'SKIP', payload: true });
     dispatch({ type: 'HAS_ARROW', payload: false });
     dispatch({ type: 'SCENE', payload: false });
+    isBrowser && localStorage.setItem('SCENE', '');
   }, [dispatch]);
 
   return (
