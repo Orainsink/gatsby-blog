@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-
 const isBrowser = typeof window !== `undefined`;
 
 function getScrollPosition() {

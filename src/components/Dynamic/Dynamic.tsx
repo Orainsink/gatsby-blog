@@ -18,11 +18,10 @@ import {
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Canvas, useLoader, useFrame, useThree } from 'react-three-fiber';
 import styles from '../../styles/Dynamic.module.less';
-import random from '../../utils/random';
 import classnames from 'classnames';
 import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
-import { arr } from '../../utils/utils';
+import { arr, random } from '../../utils/utils';
 import loadable from '@loadable/component';
 const Text = loadable(() => import('./TextComponent'));
 const Moon = loadable(() => import('./Moon'));

@@ -41,13 +41,13 @@ const reducer = (state, action) => {
 
 const initialState = {
   scene:
-    windowGlobal && windowGlobal?.localStorage.getItem('SCENE') !== null
+    windowGlobal && localStorage.getItem('SCENE') !== null
       ? Boolean(localStorage.getItem('SCENE'))
       : true,
   trigger: false,
   hasArrow: true,
   skip:
-    windowGlobal && windowGlobal?.localStorage.getItem('SKIP') !== null
+    windowGlobal && localStorage.getItem('SKIP') !== null
       ? Boolean(localStorage.getItem('SKIP'))
       : false,
   curTag: '',
