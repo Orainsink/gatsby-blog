@@ -1,8 +1,8 @@
 import React, { useRef, useMemo } from 'react';
-import styles from '../../styles/SideBar.module.less';
 import { Col } from 'antd';
 import classnames from 'classnames';
 import useScrollY from '../../useHooks/useScrollY';
+import styles from '../../styles/SideBar.module.less';
 
 interface IContents {
   content: any;

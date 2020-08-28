@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { graphql } from 'gatsby';
-import styles from '../styles/Blog.module.less';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import { useDispatch } from 'react-redux';
 import loadable from '@loadable/component';
+import styles from '../styles/Blog.module.less';
 const Poem = loadable(() => import('../components/Poem'));
 const Comment = loadable(() => import('../components/SideBlocks/Comment'));
 

@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import styles from '../../styles/SideBar.module.less';
 import { Col, Tooltip } from 'antd';
 import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
@@ -11,6 +10,7 @@ import Icon, {
 import { ReactComponent as SteamSvg } from '../../assets/img/steam.svg';
 import classnames from 'classnames';
 import useWindowSize from '../../useHooks/useWindowSize';
+import styles from '../../styles/SideBar.module.less';
 
 interface IData {
   avatar: any;

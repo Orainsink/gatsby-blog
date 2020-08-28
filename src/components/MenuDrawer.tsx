@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import styles from '../styles/Header.module.less';
 import classnames from 'classnames';
 import { Drawer, Button } from 'antd';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import { UnorderedListOutlined } from '@ant-design/icons';
 import Image from 'gatsby-image';
 import useDrawerCloseEffect from '../useHooks/useDrawerCloseEffect';
+import styles from '../styles/Header.module.less';
 
 /**
  * menu drawer for phone

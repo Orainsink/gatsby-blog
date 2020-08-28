@@ -32,12 +32,12 @@ const Index = ({ data }: PageProps<Data>) => {
   const posts = data.allMarkdownRemark.edges.filter((edge) => {
     return edge.node.frontmatter.title;
   });
-  const { skip } = useSelector((state) => state);
+  const { skip, scene } = useSelector((state) => state);
 
   return (
     <>
-      <Trigger />
       {!skip && <Dynamic />}
+      {!skip && scene && <Trigger />}
       <Layout>
         <SEO title={siteTitle} />
         <Poem />

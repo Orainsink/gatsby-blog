@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import styles from '../styles/Bloglayout.module.less';
 import { Row, Col } from 'antd';
 import loadable from '@loadable/component';
+import styles from '../styles/Bloglayout.module.less';
 const SideBar = loadable(() => import('./SideBar'));
 const Footer = loadable(() => import('../components/Footer'));
 const Info = loadable(() => import('../components/SideBlocks/Info'));

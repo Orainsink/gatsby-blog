@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Tooltip, Row, Col, Slider } from 'antd';
 import SiriWave from 'siriwave';
 import ReactHowler from 'react-howler';
-import styles from '../styles/MyPlayer.module.less';
 import { songs, ISong } from '../assets/js/songs';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
@@ -12,6 +11,7 @@ import { ReactComponent as RandomSvg } from '../assets/img/random.svg';
 import { ReactComponent as LoopSvg } from '../assets/img/loop.svg';
 import { ReactComponent as VolumeSvg } from '../assets/img/volume.svg';
 import { arr } from '../utils/utils';
+import styles from '../styles/MyPlayer.module.less';
 
 /**Controller */
 const Controller: React.FC = () => {

@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
-import styles from '../../styles/SideBar.module.less';
 import classnames from 'classnames';
 import { Col } from 'antd';
 import useWindowSize from '../../useHooks/useWindowSize';
 import loadable from '@loadable/component';
+import styles from '../../styles/SideBar.module.less';
 const MyGitalk = loadable(() => import('../MyGitalk'));
 
 const Comment: React.FC = () => {

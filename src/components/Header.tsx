@@ -1,5 +1,4 @@
 import React, { useEffect, useCallback, useState, useMemo } from 'react';
-import styles from '../styles/Header.module.less';
 import classnames from 'classnames';
 import { Row, Col } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
@@ -9,6 +8,7 @@ import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import useWindowSize from '../useHooks/useWindowSize';
 import loadable from '@loadable/component';
+import styles from '../styles/Header.module.less';
 const MyPlayer = loadable(() => import('../components/MyPlayer'));
 const MenuDrawer = loadable(() => import('../components/MenuDrawer'));
 const SearchDrawer = loadable(() => import('../components/Algolia/Index'));

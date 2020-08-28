@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
-import styles from '../styles/TagsSnippet.module.less';
 import { Row, Col, Card } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import Image from 'gatsby-image';
 import { ReactComponent as MarkSvg } from '../assets/img/mark.svg';
 import { useDispatch } from 'react-redux';
+import styles from '../styles/TagsSnippet.module.less';
 const { Meta } = Card;
 
 interface IData {

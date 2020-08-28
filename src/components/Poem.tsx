@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import styles from '../styles/Poem.module.less';
 import { Skeleton } from 'antd';
+import styles from '../styles/Poem.module.less';
 const jinrishici = require('jinrishici');
 
 interface IPoem {

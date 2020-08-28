@@ -29,6 +29,8 @@ const Bg = () => {
         opacity: scene ? 0 : 1,
         transition: 'opacity 0.6s ease-in',
         transitionDelay: '0.5s',
+        zIndex: 0,
+        position: 'absolute',
       }}
       className={styles.bg}
     />

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import classnames from 'classnames';
-import styles from '../styles/Indexlayout.module.less';
 import { useSelector, useDispatch } from 'react-redux';
 import { Row, Col } from 'antd';
 import loadable from '@loadable/component';
+import styles from '../styles/Indexlayout.module.less';
 const Footer = loadable(() => import('../components/Footer'));
 const SideBar = loadable(() => import('./SideBar'));
 const Info = loadable(() => import('../components/SideBlocks/Info'));

@@ -20,8 +20,8 @@ const GlobalLayout = ({ children, location, ...props }) => {
   return (
     <>
       {children}
-      <Header location={location} />
       <Bg />
+      <Header location={location} />
       <BackTop />
     </>
   );

@@ -2,7 +2,6 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'gatsby';
 import { useSelector } from 'react-redux';
 import Tags from '../components/Tags';
-import { Divider } from 'antd';
 
 interface IProp {
   posts: IPostItem[];

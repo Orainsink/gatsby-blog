@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from '../../styles/SideBar.module.less';
 import { Col } from 'antd';
 import classnames from 'classnames';
 import useWindowSize from '../../useHooks/useWindowSize';
 import loadable from '@loadable/component';
+import styles from '../../styles/SideBar.module.less';
 const WordCloud = loadable(() => import('../WordCloud'));
 
 /* wordCloud */
