@@ -184,7 +184,9 @@ const Dynamic: React.FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    document.body.style.background = '#efefef';
+    setInterval(() => {
+      document.body.style.background = '#efefef';
+    }, 500);
   }, []);
 
   return (

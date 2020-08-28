@@ -26,9 +26,8 @@ const Bg = () => {
       style={{
         width: '100%',
         height: '270px',
-        opacity: scene ? 0 : 1,
-        transition: 'opacity 0.6s ease-in',
-        transitionDelay: '0.5s',
+        top: scene ? '-100%' : '0',
+        transition: 'top 0.8s ease-out',
         zIndex: 0,
         position: 'absolute',
       }}
