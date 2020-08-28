@@ -26,6 +26,10 @@ const Layout = (props: IProps) => {
     isBrowser && localStorage.setItem('SCENE', '');
   }, [dispatch]);
 
+  useEffect(() => {
+    document.body.style.background = '#efefef';
+  }, []);
+
   return (
     <div className={styles.wrapper}>
       <main

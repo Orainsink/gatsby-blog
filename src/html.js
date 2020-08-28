@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Loading from './components/Loading';
 
 export default function HTML(props) {
   return (
@@ -14,7 +13,10 @@ export default function HTML(props) {
         />
         {props.headComponents}
       </head>
-      <body {...props.bodyAttributes}>
+      <body
+        {...props.bodyAttributes}
+        style={{ background: '#0a0a0a', overflowY: 'hidden' }}
+      >
         {props.preBodyComponents}
         <div
           key="loader"

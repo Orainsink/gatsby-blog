@@ -183,6 +183,10 @@ const Dynamic: React.FC = () => {
     dispatch({ type: 'SCENE', payload: false });
   }, [dispatch]);
 
+  useEffect(() => {
+    document.body.style.background = '#efefef';
+  }, []);
+
   return (
     <>
       <ReactScrollWheelHandler downHandler={_handleScene}>

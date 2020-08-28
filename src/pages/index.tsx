@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import loadable from '@loadable/component';
 import { PageProps, Link, graphql } from 'gatsby';
 import Layout from '../layout/IndexLayout';
@@ -33,6 +33,12 @@ const Index = ({ data }: PageProps<Data>) => {
     return edge.node.frontmatter.title;
   });
   const { skip, scene } = useSelector((state) => state);
+  useEffect(() => {
+    if (skip && !scene) {
+      document.body.style.background = '#efefef';
+    }
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>
