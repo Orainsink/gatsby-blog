@@ -157,7 +157,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#efefef`,
         theme_color: `#3d4451`,
-        display: `antd`,
+        display: `standalone`,
         icon: `content/assets/gatsby-icon.png`,
       },
     },

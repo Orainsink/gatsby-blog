@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { graphql } from 'gatsby';
+import { PageProps, graphql } from 'gatsby';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import { useDispatch } from 'react-redux';
@@ -8,11 +8,10 @@ import styles from '../styles/Blog.module.less';
 const Poem = loadable(() => import('../components/Poem'));
 const Comment = loadable(() => import('../components/SideBlocks/Comment'));
 
-interface Props {
-  data: any;
-  location: any;
+interface IData {
+  markdownRemark: any;
 }
-const AboutPage = ({ data, location }: Props) => {
+const AboutPage = ({ data, location }: PageProps<IData>) => {
   const post = data?.markdownRemark;
   const dispatch = useDispatch();
 

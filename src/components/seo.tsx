@@ -8,14 +8,14 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-interface Props {
+interface ISEO {
   description?: string;
   lang?: string;
   meta?: [];
   title: string;
 }
 /**SEO */
-const SEO = ({ description, lang = 'CHS', meta, title }: Props) => {
+const SEO = ({ description, lang = 'CHS', meta, title }: ISEO) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -79,4 +79,4 @@ const SEO = ({ description, lang = 'CHS', meta, title }: Props) => {
   );
 };
 
-export default SEO;
+export default React.memo(SEO);

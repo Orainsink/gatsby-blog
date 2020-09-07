@@ -9,7 +9,7 @@ import styles from '../../styles/Algolia.module.less';
 import useMaxHeight from '../../useHooks/useMaxHeight';
 import { useSelector } from 'react-redux';
 
-export default function Search() {
+const Search: React.FC = () => {
   const rootRef = useRef();
   const [query, setQuery] = useState<Iterable<any>>();
   const data = useStaticQuery(graphql`
@@ -56,4 +56,5 @@ export default function Search() {
       </InstantSearch>
     </div>
   );
-}
+};
+export default React.memo(Search);

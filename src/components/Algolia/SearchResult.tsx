@@ -76,4 +76,4 @@ const SearchResult: React.FC<ISearchResult> = ({ indices }) => {
     </div>
   );
 };
-export default SearchResult;
+export default React.memo(SearchResult);

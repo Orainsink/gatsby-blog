@@ -3,11 +3,11 @@ import { Link } from 'gatsby';
 import { useSelector } from 'react-redux';
 import Tags from '../components/Tags';
 
-interface IProp {
+interface IPostList {
   posts: IPostItem[];
   hideMore?: boolean;
 }
-const PostList: React.FC<IProp> = ({ posts, hideMore = false }) => {
+const PostList: React.FC<IPostList> = ({ posts, hideMore = false }) => {
   const { curTag, curDate } = useSelector((state) => state);
   const [filteredPosts, setFilteredPosts] = useState(posts);
   const [fold, setFold] = useState(true);

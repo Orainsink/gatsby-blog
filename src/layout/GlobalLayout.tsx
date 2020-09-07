@@ -7,7 +7,7 @@ const BackTop = loadable(() => import('../components/BackTop'));
 const Header = loadable(() => import('../components/Header'));
 
 /**global PageElement */
-const GlobalLayout = ({ children, location, ...props }) => {
+const GlobalLayout = ({ children, location }) => {
   const { scene } = useSelector((state) => state);
 
   /**

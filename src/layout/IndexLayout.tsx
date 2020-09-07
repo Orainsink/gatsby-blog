@@ -4,17 +4,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Row, Col } from 'antd';
 import loadable from '@loadable/component';
 import styles from '../styles/Indexlayout.module.less';
+import Info from '../components/SideBlocks/Info';
 const Footer = loadable(() => import('../components/Footer'));
 const SideBar = loadable(() => import('./SideBar'));
-const Info = loadable(() => import('../components/SideBlocks/Info'));
 const TagsBlock = loadable(() => import('../components/SideBlocks/TagsBlock'));
 const Comment = loadable(() => import('../components/SideBlocks/Comment'));
-interface IProps {
+interface ILayout {
   children?: any;
 }
 
 /**index Layout */
-const Layout = ({ children }: IProps) => {
+const Layout: React.FC<ILayout> = ({ children }) => {
   const { scene, trigger, skip } = useSelector((state) => state);
   const dispatch = useDispatch();
   const wrapperRef = useRef(null);

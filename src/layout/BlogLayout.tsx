@@ -3,11 +3,11 @@ import { useDispatch } from 'react-redux';
 import { Row, Col } from 'antd';
 import loadable from '@loadable/component';
 import styles from '../styles/Bloglayout.module.less';
+import Info from '../components/SideBlocks/Info';
 const SideBar = loadable(() => import('./SideBar'));
 const Footer = loadable(() => import('../components/Footer'));
-const Info = loadable(() => import('../components/SideBlocks/Info'));
 
-interface IProps {
+interface ILayout {
   content?: any;
   location: any;
   sideBlocks?: React.ReactNode;
@@ -15,7 +15,7 @@ interface IProps {
 }
 const isBrowser = typeof window !== `undefined`;
 /** blog posts Layout */
-const Layout = (props: IProps) => {
+const Layout: React.FC<ILayout> = (props) => {
   const { sideBlocks, children } = props;
   const dispatch = useDispatch();
 

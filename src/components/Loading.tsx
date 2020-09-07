@@ -38,7 +38,6 @@ const Loading: React.FC<{ debounce?: number; children?: any }> = (props) => {
           width="260px"
           height="260px"
           viewBox="0 0 40 40"
-          xmlSpace="preserve"
         >
           <path
             id=""

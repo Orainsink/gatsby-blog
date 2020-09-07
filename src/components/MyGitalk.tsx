@@ -9,8 +9,7 @@ interface IMyGitalk {
 }
 /**
  * gitalk comment component
- * @param props
- * @param {String} props.title - title
+ * @param {String} title - title
  */
 const MyGitalk: React.FC<IMyGitalk> = (props) => {
   const { title } = props;

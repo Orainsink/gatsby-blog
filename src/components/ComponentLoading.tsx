@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Spin } from 'antd';
 
-const ComponentLoading: React.FC = (props) => {
+const ComponentLoading: React.FC = () => {
   return (
     <div
       style={{

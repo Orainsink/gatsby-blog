@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Texture, DoubleSide } from 'three';
 
-interface IProps {
+interface IText {
   words: string[] | null;
   position?: [number, number, number];
   rotation?: [number, number, number];
 }
 
 /** three.js text component */
-const Text = (props: IProps) => {
+const Text = (props: IText) => {
   const { words, position, rotation } = props;
 
   const [size, setSize] = useState([0, 0]);

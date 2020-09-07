@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { graphql } from 'gatsby';
+import { PageProps, graphql } from 'gatsby';
 import { Divider } from 'antd';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
@@ -16,17 +16,13 @@ const PostList = loadable(() => import('../components/PostList'), {
 });
 const Calendar = loadable(() => import('../components/SideBlocks/Calendar'));
 
-interface Props {
-  data: Data;
-  location: any;
-}
-interface Data {
+interface IData {
   allMarkdownRemark: {
     edges: IPostItem[];
   };
 }
 
-const ArchivesPage = ({ data, location }: Props) => {
+const ArchivesPage = ({ data, location }: PageProps<IData>) => {
   const { curTag, curDate } = useSelector((state) => state);
   const dispatch = useDispatch();
   const posts = data.allMarkdownRemark.edges.filter((edge) => {

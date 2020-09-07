@@ -34,13 +34,13 @@ const hfUrl =
   'https://free-api.heweather.net/s6/weather/now?&location=auto_ip&key=' +
   process.env.GATSBY_HEWEATHER_KEY;
 
-interface ModalProps {
+interface IModal {
   isScene: boolean;
   onCloseScene: () => void;
 }
 
 /**Modal for Dynamic component */
-const Modal = (props: ModalProps) => {
+const Modal = React.memo((props: IModal) => {
   const { isScene, onCloseScene } = props;
   const gltf = useLoader(GLTFLoader, url);
   const { camera: defaultCamera, setDefaultCamera, scene } = useThree();
@@ -173,7 +173,7 @@ const Modal = (props: ModalProps) => {
       <Text words={["Orainsink's Blog"]} position={[0, 22, -10]} />
     </group>
   );
-};
+});
 /** webGl wrapper  */
 const Dynamic: React.FC = () => {
   const { scene, trigger } = useSelector((state) => state);

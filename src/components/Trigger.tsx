@@ -1,11 +1,10 @@
-/**
- * change scene Trigger
- */
 import React from 'react';
 import styles from '../styles/Trigger.module.less';
 import { useDispatch } from 'react-redux';
 
-/**首页触发器 */
+/**
+ * scene Trigger
+ */
 const Trigger: React.FC = () => {
   const dispatch = useDispatch();
 
