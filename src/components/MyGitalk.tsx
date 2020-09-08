@@ -4,14 +4,14 @@ import GitalkComponent from 'gitalk/dist/gitalk-component';
 import { gittalkOptions } from '../assets/js/gittalk';
 import 'gitalk/dist/gitalk.css';
 
-interface IMyGitalk {
+interface Props {
   title?: string;
 }
 /**
  * gitalk comment component
  * @param {String} title - title
  */
-const MyGitalk: React.FC<IMyGitalk> = (props) => {
+const MyGitalk: React.FC<Props> = (props) => {
   const { title } = props;
 
   const renderGitalk = useMemo(() => {

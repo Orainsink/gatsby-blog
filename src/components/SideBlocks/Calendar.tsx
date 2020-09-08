@@ -7,10 +7,10 @@ import classnames from 'classnames';
 import dayjs from 'dayjs';
 import styles from '../../styles/SideBar.module.less';
 
-interface ICalendar {
-  posts: IPostItem[];
+interface Props {
+  posts: PostItem[];
 }
-const CalendarBlock: React.FC<ICalendar> = ({ posts }) => {
+const CalendarBlock: React.FC<Props> = ({ posts }) => {
   const dispatch = useDispatch();
   const [width] = useWindowSize();
 

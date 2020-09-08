@@ -8,10 +8,10 @@ import styles from '../styles/Blog.module.less';
 const Poem = loadable(() => import('../components/Poem'));
 const Comment = loadable(() => import('../components/SideBlocks/Comment'));
 
-interface IData {
+interface Data {
   markdownRemark: any;
 }
-const AboutPage = ({ data, location }: PageProps<IData>) => {
+const AboutPage = ({ data, location }: PageProps<Data>) => {
   const post = data?.markdownRemark;
   const dispatch = useDispatch();
 

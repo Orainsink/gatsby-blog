@@ -9,12 +9,12 @@ const Footer = loadable(() => import('../components/Footer'));
 const SideBar = loadable(() => import('./SideBar'));
 const TagsBlock = loadable(() => import('../components/SideBlocks/TagsBlock'));
 const Comment = loadable(() => import('../components/SideBlocks/Comment'));
-interface ILayout {
+interface Props {
   children?: any;
 }
 
 /**index Layout */
-const Layout: React.FC<ILayout> = ({ children }) => {
+const Layout: React.FC<Props> = ({ children }) => {
   const { scene, trigger, skip } = useSelector((state) => state);
   const dispatch = useDispatch();
   const wrapperRef = useRef(null);

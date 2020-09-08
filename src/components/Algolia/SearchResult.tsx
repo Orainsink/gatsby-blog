@@ -63,11 +63,11 @@ const HitsInIndex = ({ index }) => (
   </Index>
 );
 
-interface ISearchResult {
+interface Props {
   indices: any[];
 }
 
-const SearchResult: React.FC<ISearchResult> = ({ indices }) => {
+const SearchResult: React.FC<Props> = ({ indices }) => {
   return (
     <div className={styles.resultWrap}>
       {indices.length > 0 &&

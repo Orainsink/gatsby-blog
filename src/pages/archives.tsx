@@ -16,13 +16,13 @@ const PostList = loadable(() => import('../components/PostList'), {
 });
 const Calendar = loadable(() => import('../components/SideBlocks/Calendar'));
 
-interface IData {
+interface Data {
   allMarkdownRemark: {
-    edges: IPostItem[];
+    edges: PostItem[];
   };
 }
 
-const ArchivesPage = ({ data, location }: PageProps<IData>) => {
+const ArchivesPage = ({ data, location }: PageProps<Data>) => {
   const { curTag, curDate } = useSelector((state) => state);
   const dispatch = useDispatch();
   const posts = data.allMarkdownRemark.edges.filter((edge) => {

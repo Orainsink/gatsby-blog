@@ -12,14 +12,14 @@ import classnames from 'classnames';
 import useWindowSize from '../../useHooks/useWindowSize';
 import styles from '../../styles/SideBar.module.less';
 
-interface IData {
+interface Data {
   avatar: any;
   moogle: any;
   wechat: any;
 }
 /**个人信息块 */
 const Info = () => {
-  const data: IData = useStaticQuery(graphql`
+  const data: Data = useStaticQuery(graphql`
     query sideQuery {
       avatar: file(absolutePath: { regex: "/avatar.png/" }) {
         childImageSharp {

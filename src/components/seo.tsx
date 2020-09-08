@@ -8,14 +8,14 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-interface ISEO {
+interface Props {
   description?: string;
   lang?: string;
   meta?: [];
   title: string;
 }
 /**SEO */
-const SEO = ({ description, lang = 'CHS', meta, title }: ISEO) => {
+const SEO = ({ description, lang = 'CHS', meta, title }: Props) => {
   const { site } = useStaticQuery(
     graphql`
       query {

@@ -2,11 +2,11 @@ import { yoyo } from '../../utils/utils';
 import React, { useEffect, useState, useCallback } from 'react';
 import gsap from 'gsap';
 
-interface IMoon {
+interface Props {
   onCloseScene: () => void;
 }
 /** three.js moon */
-const Moon = (props: IMoon) => {
+const Moon = (props: Props) => {
   const { onCloseScene } = props;
   const [active, setActive] = useState(false);
   const [tween, setTween] = useState(null);

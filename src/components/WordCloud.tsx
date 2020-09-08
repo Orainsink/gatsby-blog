@@ -6,7 +6,7 @@ import styles from '../styles/WordCloud.module.less';
 const WordCloud =
   typeof window !== 'undefined' ? require('wordcloud') : undefined;
 
-interface IWordCloud {
+interface Data {
   allMarkdownRemark: {
     group: {
       tag: string;
@@ -14,13 +14,13 @@ interface IWordCloud {
   };
 }
 
-interface IWordCloudItem {
+interface Props {
   jump?: boolean;
   height?: number;
 }
 
-const WordCloudItem: React.FC<IWordCloudItem> = (props) => {
-  const data: IWordCloud = useStaticQuery(graphql`
+const WordCloudItem: React.FC<Props> = (props) => {
+  const data: Data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
         group(field: frontmatter___tags) {

@@ -4,12 +4,12 @@ import AlgoliaSearch from './Search';
 import useWindowSize from '../../useHooks/useWindowSize';
 import useDrawerCloseEffect from '../../useHooks/useDrawerCloseEffect';
 
-interface ISearchDrawer {
+interface Props {
   visible: boolean;
   location: any;
   onClose: () => void;
 }
-const SearchDrawer: React.FC<ISearchDrawer> = (props) => {
+const SearchDrawer: React.FC<Props> = (props) => {
   const { visible, onClose, location } = props;
   const [width] = useWindowSize();
   useDrawerCloseEffect(visible);

@@ -1,12 +1,12 @@
 /**网易云歌单 */
-export interface ISong {
+export interface Song {
   name: string;
   artist: string;
   url: string;
   cover: string;
   id: number;
 }
-export const songs: ISong[] = [
+export const songs: Song[] = [
   {
     id: 1,
     name: 'Intro',

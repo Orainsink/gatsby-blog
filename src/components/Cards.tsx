@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import styles from '../styles/TagsSnippet.module.less';
 const { Meta } = Card;
 
-interface IData {
+interface Data {
   allMarkdownRemark: {
     group: {
       totalCount: number;
@@ -30,7 +30,7 @@ const TagsSnippet: React.FC = () => {
     { tag: '', name: '全部文章' },
   ];
 
-  const data: IData = useStaticQuery(graphql`
+  const data: Data = useStaticQuery(graphql`
     query TagsQuery {
       allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
         group(field: frontmatter___tags) {

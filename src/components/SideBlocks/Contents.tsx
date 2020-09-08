@@ -4,11 +4,11 @@ import classnames from 'classnames';
 import useScrollY from '../../useHooks/useScrollY';
 import styles from '../../styles/SideBar.module.less';
 
-interface IContents {
+interface Props {
   content: any;
 }
 /** 侧边栏 目录块 */
-const Contents: React.FC<IContents> = (props) => {
+const Contents: React.FC<Props> = (props) => {
   const { content } = props;
   const contentsRef = useRef(null);
   const scrollY = useScrollY();

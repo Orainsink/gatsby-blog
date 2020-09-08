@@ -7,7 +7,7 @@ import Info from '../components/SideBlocks/Info';
 const SideBar = loadable(() => import('./SideBar'));
 const Footer = loadable(() => import('../components/Footer'));
 
-interface ILayout {
+interface Props {
   content?: any;
   location: any;
   sideBlocks?: React.ReactNode;
@@ -15,7 +15,7 @@ interface ILayout {
 }
 const isBrowser = typeof window !== `undefined`;
 /** blog posts Layout */
-const Layout: React.FC<ILayout> = (props) => {
+const Layout: React.FC<Props> = (props) => {
   const { sideBlocks, children } = props;
   const dispatch = useDispatch();
 

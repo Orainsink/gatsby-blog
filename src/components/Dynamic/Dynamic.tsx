@@ -34,13 +34,13 @@ const hfUrl =
   'https://free-api.heweather.net/s6/weather/now?&location=auto_ip&key=' +
   process.env.GATSBY_HEWEATHER_KEY;
 
-interface IModal {
+interface ModalProps {
   isScene: boolean;
   onCloseScene: () => void;
 }
 
 /**Modal for Dynamic component */
-const Modal = React.memo((props: IModal) => {
+const Modal = React.memo((props: ModalProps) => {
   const { isScene, onCloseScene } = props;
   const gltf = useLoader(GLTFLoader, url);
   const { camera: defaultCamera, setDefaultCamera, scene } = useThree();

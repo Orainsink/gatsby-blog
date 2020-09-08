@@ -6,7 +6,7 @@ declare module '*.gltf';
 declare module '*.svg';
 declare module 'algoliasearch/lite';
 
-interface IPostItem {
+interface PostItem {
   node: {
     excerpt: string;
     frontmatter: {

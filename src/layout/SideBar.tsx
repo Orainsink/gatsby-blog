@@ -1,11 +1,11 @@
 import React from 'react';
 import { Col, Row } from 'antd';
 
-interface ISideBar {
+interface Props {
   children: any;
 }
 /**侧边栏 */
-const SideBar: React.FC<ISideBar> = (props) => {
+const SideBar: React.FC<Props> = (props) => {
   const { children } = props;
 
   const sideWrap = {

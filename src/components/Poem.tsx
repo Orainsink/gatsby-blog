@@ -3,7 +3,7 @@ import { Skeleton } from 'antd';
 import styles from '../styles/Poem.module.less';
 const jinrishici = require('jinrishici');
 
-interface IPoem {
+interface Poem {
   content: string;
   origin: {
     title: string;
@@ -15,7 +15,7 @@ interface IPoem {
 }
 
 const Poem: React.FC = () => {
-  const [poem, setPoem] = useState<null | IPoem>(null);
+  const [poem, setPoem] = useState<null | Poem>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

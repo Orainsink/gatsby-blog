@@ -16,18 +16,18 @@ const Dynamic = loadable(() => import('../components/Dynamic/Dynamic'), {
   fallback: <Loading debounce={100} />,
 });
 
-interface IData {
+interface Data {
   site: {
     siteMetadata: {
       title: string;
     };
   };
   allMarkdownRemark: {
-    edges: IPostItem[];
+    edges: PostItem[];
   };
 }
 
-const Index = ({ data }: PageProps<IData>) => {
+const Index = ({ data }: PageProps<Data>) => {
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges.filter((edge) => {
     return edge.node.frontmatter.title;
