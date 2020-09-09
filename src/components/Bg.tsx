@@ -26,8 +26,8 @@ const Bg = () => {
       style={{
         width: '100%',
         height: '270px',
-        top: scene ? '-100%' : '0',
-        transition: 'top 0.8s ease-out',
+        top: scene ? '100vh' : '0',
+        transition: 'all 0.5s ease-out',
         zIndex: 0,
         position: 'absolute',
       }}

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Tooltip, Row, Col, Slider } from 'antd';
 import SiriWave from 'siriwave';
 import ReactHowler from 'react-howler';
-import { songs, ISong } from '../assets/js/songs';
+import { songs, Song } from '../assets/js/songs';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
 import { ReactComponent as PausedSvg } from '../assets/img/paused.svg';
@@ -105,10 +105,10 @@ const Panel: React.FC = () => {
 
   /**
    * change play status
-   * @param {ISong} song - song detail
+   * @param {Song} song - song detail
    */
   const _handleClick = useCallback(
-    (song: ISong) => {
+    (song: Song) => {
       if (song.id === id) {
         dispatch({ type: 'MUSIC', payload: { playing: !playing } });
       } else {
@@ -123,7 +123,7 @@ const Panel: React.FC = () => {
   );
 
   const renderSongItem = useCallback(
-    (song: ISong) => {
+    (song: Song) => {
       return (
         <li
           key={song.id}

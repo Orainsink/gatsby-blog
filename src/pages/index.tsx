@@ -4,14 +4,11 @@ import { PageProps, Link, graphql } from 'gatsby';
 import Layout from '../layout/IndexLayout';
 import SEO from '../components/seo';
 import { useSelector } from 'react-redux';
-import ComponentLoading from '../components/ComponentLoading';
 const TagsSnippet = loadable(() => import('../components/Cards'));
 const Trigger = loadable(() => import('../components/Trigger'));
 const Loading = loadable(() => import('../components/Loading'));
 const Poem = loadable(() => import('../components/Poem'));
-const PostList = loadable(() => import('../components/PostList'), {
-  fallback: <ComponentLoading />,
-});
+const PostList = loadable(() => import('../components/PostList'));
 const Dynamic = loadable(() => import('../components/Dynamic/Dynamic'), {
   fallback: <Loading debounce={100} />,
 });

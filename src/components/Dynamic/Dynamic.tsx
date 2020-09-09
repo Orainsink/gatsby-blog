@@ -23,25 +23,32 @@ import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 import { arr, random } from '../../utils/utils';
 import loadable from '@loadable/component';
+import { useStaticQuery, graphql } from 'gatsby';
 const Text = loadable(() => import('./TextComponent'));
 const Moon = loadable(() => import('./Moon'));
 
 let cameraShakeY = 0;
 let mouseX = 0;
 let mouseY = 0;
-const url = 'https://foolishrobot.oss-cn-beijing.aliyuncs.com/rock.gltf';
+// const url = 'https://foolishrobot.oss-cn-beijing.aliyuncs.com/rock.gltf';
 const hfUrl =
   'https://free-api.heweather.net/s6/weather/now?&location=auto_ip&key=' +
   process.env.GATSBY_HEWEATHER_KEY;
 
 interface ModalProps {
   isScene: boolean;
+  url: string;
   onCloseScene: () => void;
+}
+interface Data {
+  file: {
+    publicURL: string;
+  };
 }
 
 /**Modal for Dynamic component */
 const Modal = React.memo((props: ModalProps) => {
-  const { isScene, onCloseScene } = props;
+  const { isScene, onCloseScene, url } = props;
   const gltf = useLoader(GLTFLoader, url);
   const { camera: defaultCamera, setDefaultCamera, scene } = useThree();
   const camera = useRef(null);
@@ -189,6 +196,15 @@ const Dynamic: React.FC = () => {
     }, 500);
   }, []);
 
+  const data: Data = useStaticQuery(graphql`
+    {
+      file(absolutePath: { regex: "/rock.gltf/" }) {
+        publicURL
+      }
+    }
+  `);
+  const url = data?.file.publicURL;
+
   return (
     <>
       <ReactScrollWheelHandler downHandler={_handleScene}>
@@ -200,7 +216,7 @@ const Dynamic: React.FC = () => {
         >
           <Canvas>
             <Suspense fallback={null}>
-              <Modal isScene={scene} onCloseScene={_handleScene} />
+              <Modal isScene={scene} onCloseScene={_handleScene} url={url} />
             </Suspense>
           </Canvas>
           <ArrowSvg className={styles.arrow} onClick={_handleScene} />

@@ -5,15 +5,10 @@ import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import { useSelector, useDispatch } from 'react-redux';
 import loadable from '@loadable/component';
-import ComponentLoading from '../components/ComponentLoading';
 import { ReloadOutlined } from '@ant-design/icons';
 import styles from '../styles/archives.module.less';
-const WordCloud = loadable(() => import('../components/WordCloud'), {
-  fallback: <ComponentLoading />,
-});
-const PostList = loadable(() => import('../components/PostList'), {
-  fallback: <ComponentLoading />,
-});
+const WordCloud = loadable(() => import('../components/WordCloud'));
+const PostList = loadable(() => import('../components/PostList'));
 const Calendar = loadable(() => import('../components/SideBlocks/Calendar'));
 
 interface Data {
