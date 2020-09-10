@@ -1,7 +1,7 @@
 .wrapper {
   position: absolute;
   top: 0;
-  transition: transform 0.5s ease-out;
+  transition: top 0.5s ease-out;
   left: 0;
   right: 0;
   z-index: 1;
@@ -12,13 +12,13 @@
   }
 }
 .active {
-  transform: translateY(100vh);
+  top: 100vh;
 }
 .disActive {
-  transform: none;
+  top: 0;
 }
 .trigger {
-  transform: translateY(90vh);
+  top: 90vh;
 }
 .clickTip {
   color: @text-color;

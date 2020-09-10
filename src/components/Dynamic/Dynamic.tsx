@@ -30,7 +30,6 @@ const Moon = loadable(() => import('./Moon'));
 let cameraShakeY = 0;
 let mouseX = 0;
 let mouseY = 0;
-// const url = 'https://foolishrobot.oss-cn-beijing.aliyuncs.com/rock.gltf';
 const hfUrl =
   'https://free-api.heweather.net/s6/weather/now?&location=auto_ip&key=' +
   process.env.GATSBY_HEWEATHER_KEY;

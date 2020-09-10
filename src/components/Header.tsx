@@ -99,7 +99,9 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
 
   return (
     <header
-      style={{ display: scene ? 'none' : 'block' }}
+      style={{
+        /* display: scene ? 'none' : 'block' */ top: scene ? '100vh' : '0',
+      }}
       id="header"
       className={classnames(styles.wrapper, active && styles.active)}
     >

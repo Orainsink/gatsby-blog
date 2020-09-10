@@ -5,19 +5,17 @@ body {
 .wrapper {
   position: absolute;
   z-index: 10;
-  top: 0;
   height: 100%;
   user-select: none;
   background: #0a0a0a;
-  transform: translateY(0);
   transition: all 0.5s ease-out;
 }
 .active {
-  transform: translateY(0);
+  top: 0;
   width: 100%;
 }
 .disActive {
-  transform: translateY(-100vh);
+  top: -100vh;
   // 解决react-three-fiber的一个bug
   // 该bug导致切换scene过后, Moon无法通过光线追踪绑定事件
   // 虽然不知道原理, 但是重新计算宽度就解决了-_-||
