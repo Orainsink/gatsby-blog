@@ -87,4 +87,12 @@ export const songs: Song[] = [
     cover:
       'http://p1.music.126.net/dmO6rDVy3IRCauP4nbFYOg==/937883418539064.jpg?param=130y130',
   },
+  {
+    id: 11,
+    name: '流れ行く夜を越えて',
+    artist: 'Falcom Sound Team jdk',
+    url: 'http://music.163.com/song/media/outer/url?id=1364353126.mp3',
+    cover:
+      'http://p1.music.126.net/5M49xn4JIQlxfP_ekV6kjQ==/109951164063354523.jpg?param=130y130',
+  },
 ];

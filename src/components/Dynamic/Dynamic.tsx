@@ -15,7 +15,7 @@ import {
   MeshLambertMaterial,
   Mesh,
 } from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Canvas, useLoader, useFrame, useThree } from 'react-three-fiber';
 import styles from '../../styles/Dynamic.module.less';
 import classnames from 'classnames';
@@ -48,7 +48,7 @@ interface Data {
 /**Modal for Dynamic component */
 const Modal = React.memo((props: ModalProps) => {
   const { isScene, onCloseScene, url } = props;
-  const gltf = useLoader(GLTFLoader, url);
+  const gltf = useLoader<any>(GLTFLoader, url);
   const { camera: defaultCamera, setDefaultCamera, scene } = useThree();
   const camera = useRef(null);
   const stripsGroup = useRef(null);
@@ -164,11 +164,9 @@ const Modal = React.memo((props: ModalProps) => {
       </group>
       {/* floor */}
       <mesh position={[-70, -20, -30]} rotation={[0.3, 0, 0]}>
-        {/* @ts-ignore */}
         <bufferGeometry attach="geometry" {...gltf.__$[1].geometry} />
         <meshLambertMaterial
           attach="material"
-          // @ts-ignore
           {...gltf.__$[1].material}
           flatShading
           side={DoubleSide}
