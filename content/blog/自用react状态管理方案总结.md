@@ -7,7 +7,9 @@ tags: [react, 前端]
 
 # 自用 react 状态管理方案总结
 
-## [props && callback](https://zh-hans.reactjs.org/docs/components-and-props.html)
+## props && callback
+
+官方文档: https://zh-hans.reactjs.org/docs/components-and-props.html
 
 react 基本的父子通讯方式.
 
@@ -41,7 +43,9 @@ const Child = (props) => {
 };
 ```
 
-## [react context](https://zh-hans.reactjs.org/docs/context.html#gatsby-focus-wrapper)
+## react context
+
+官方文档: https://zh-hans.reactjs.org/docs/context.html#gatsby-focus-wrapper
 
 react 自带的上下文, 其设计目的是为了共享那些对于一个组件树而言是“全局”的数据,
 
@@ -89,7 +93,11 @@ const Button = () => {
 
 其他解决办法: https://github.com/facebook/react/issues/15156
 
-## [redux](https://react-redux.js.org/api/connect) / [mobx](https://cn.mobx.js.org/)
+## redux/ mobx
+
+redux 文档:https://react-redux.js.org/api/connect
+
+mobx 文档:https://cn.mobx.js.org
 
 react context 是吸收了 redux 精华而新增的特性, 所以 redux 的使用方式除了部分代码写法不一样, 其基本思想和 context 一致.
 
@@ -97,7 +105,9 @@ react context 是吸收了 redux 精华而新增的特性, 所以 redux 的使�
 
 本人对 mobx 并不是十分了解, 只在一个较小的 demo 项目里使用过 mobx, 往后除非必要, 也不会去深究 mobx, 这里贴一篇对比 redux 和 mobx 的文章: https://juejin.im/post/6844903910537166862
 
-## [unstated-next](https://github.com/jamiebuilds/unstated-next/blob/master/README-zh-cn.md)
+## unstated-next
+
+unstated-next 文档: https://github.com/jamiebuilds/unstated-next/blob/master/README-zh-cn.md
 
 unstated-next 是 react 的一个轻量状态管理库, 它仅使用了 React 的内置 API ,直接实现状态管理的功能.
 
@@ -143,7 +153,11 @@ const Child = () => {
 };
 ```
 
-## [dva](https://dvajs.com/guide/getting-started.html) / [Rematch](https://rematch.gitbook.io/handbook/)
+## dva/ rematch
+
+dva 文档:https://dvajs.com/guide/getting-started.html
+
+rematch 文档: https://rematch.gitbook.io/handbook
 
 以上几种方案没有涉及到副作用的处理.
 
