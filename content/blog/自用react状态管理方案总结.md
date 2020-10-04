@@ -5,7 +5,7 @@ description: react 有着庞大的生态圈, 有着包括 redux 和 mobx 在内�
 tags: [react, 前端]
 ---
 
-# 自用 react 状态管理方案总结
+> react 有着庞大的生态圈, 在不同体量的项目中选择合适的状态管理方案可以平衡开发效率和项目维护难度之间的矛盾.
 
 ## props && callback
 
@@ -85,15 +85,15 @@ const Child = () => {
 
 ```jsx
 const Button = () => {
-  let theme = useContext(ThemeContext);
+  let visible = useContext(VisibleContext);
   // The rest of your rendering logic
-  return <ExpensiveTree className={theme} />;
+  return <ExpensiveTree className={visible} />;
 };
 ```
 
 其他解决办法: https://github.com/facebook/react/issues/15156
 
-## redux/ mobx
+## redux / mobx
 
 redux 文档:https://react-redux.js.org/api/connect
 
@@ -119,7 +119,7 @@ container 文件
 import { createContainer } from 'unstated-next';
 
 function useCustomHook() {
-  let [value, setInput] = useState();
+  let [value, setValue] = useState();
   let onChange = (e) => setValue(e.currentTarget.value);
   return { value, onChange };
 }

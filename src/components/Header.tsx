@@ -6,7 +6,7 @@ import { Link } from 'gatsby';
 import { GithubOutlined, SearchOutlined } from '@ant-design/icons';
 import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import useWindowSize from '../useHooks/useWindowSize';
+import useWindowSize from '../hooks/useWindowSize';
 import loadable from '@loadable/component';
 import styles from '../styles/Header.module.less';
 const MyPlayer = loadable(() => import('../components/MyPlayer'));
