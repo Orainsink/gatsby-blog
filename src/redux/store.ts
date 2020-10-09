@@ -1,5 +1,5 @@
 import { createStore as reduxCreateStore } from 'redux';
-const windowGlobal = typeof window !== 'undefined' && window;
+const windowGlobal: any = typeof window !== 'undefined' && window;
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -67,9 +67,7 @@ const createStore = () =>
   reduxCreateStore(
     reducer,
     initialState,
-    // @ts-ignore
     windowGlobal?.__REDUX_DEVTOOLS_EXTENSION__ &&
-      // @ts-ignore
       windowGlobal?.__REDUX_DEVTOOLS_EXTENSION__()
   );
 export default createStore;

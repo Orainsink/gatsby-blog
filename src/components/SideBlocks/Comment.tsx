@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import classnames from 'classnames';
 import { Col } from 'antd';
-import useWindowSize from '../../useHooks/useWindowSize';
+import useWindowSize from '../../hooks/useWindowSize';
 import loadable from '@loadable/component';
 import styles from '../../styles/SideBar.module.less';
 const MyGitalk = loadable(() => import('../MyGitalk'));

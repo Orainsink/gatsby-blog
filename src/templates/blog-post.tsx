@@ -4,7 +4,7 @@ import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import Tags from '../components/Tags';
 import { useDispatch } from 'react-redux';
-import useWindowSize from '../useHooks/useWindowSize';
+import useWindowSize from '../hooks/useWindowSize';
 import loadable from '@loadable/component';
 import styles from '../styles/Blog.module.less';
 const MyGitalk = loadable(() => import('../components/MyGitalk'));

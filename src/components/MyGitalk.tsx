@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-// @ts-ignore
 import GitalkComponent from 'gitalk/dist/gitalk-component';
 import { gittalkOptions } from '../assets/js/gittalk';
 import 'gitalk/dist/gitalk.css';

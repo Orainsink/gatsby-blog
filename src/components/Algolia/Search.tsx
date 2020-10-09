@@ -6,12 +6,12 @@ import SearchResult from './SearchResult';
 import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import styles from '../../styles/Algolia.module.less';
-import useMaxHeight from '../../useHooks/useMaxHeight';
+import useMaxHeight from '../../hooks/useMaxHeight';
 import { useSelector } from 'react-redux';
 
-const Search: React.FC = () => {
+const Search = () => {
   const rootRef = useRef();
-  const [query, setQuery] = useState<Iterable<any>>();
+  const [query, setQuery] = useState<any>();
   const data = useStaticQuery(graphql`
     query shashaQuery {
       sharkSearch: file(absolutePath: { regex: "/search.jpg/" }) {
@@ -41,7 +41,6 @@ const Search: React.FC = () => {
         onSearchStateChange={({ query }) => setQuery(query)}
       >
         <SearchBox />
-        {/* @ts-ignore */}
         {query && query.length > 0 ? (
           <SearchResult indices={indices} />
         ) : (

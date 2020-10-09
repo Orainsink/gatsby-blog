@@ -39,14 +39,14 @@ const WordCloudItem: React.FC<Props> = (props) => {
     group.forEach((item) => {
       obj[item.tag] = true;
     });
-    return Object.keys(obj).map((key) => [key, random(14, 32, false)]);
+    return Object.keys(obj).map((key) => [key, random(16, 32, false)]);
   }, [group]);
 
   useEffect(() => {
     if (wordRef.current) {
       WordCloud(wordRef.current, {
         list: allTags,
-        gridSize: 16,
+        gridSize: 12,
         shape: 'square',
         shrinkToFit: true,
         weightFactor: 1,
@@ -54,7 +54,7 @@ const WordCloudItem: React.FC<Props> = (props) => {
         rotateRatio: 0,
         ellipticity: 1.5,
         backgroundColor: 'transparent',
-        fontFamily: 'Lato,sans-serif',
+        fontFamily: 'Finger Paint, sans-serif',
         color: 'random-dark',
         click: (item) => {
           dispatch({ type: 'CUR_TAG', payload: item[0] });

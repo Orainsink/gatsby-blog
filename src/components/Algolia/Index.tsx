@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Drawer } from 'antd';
 import AlgoliaSearch from './Search';
-import useWindowSize from '../../useHooks/useWindowSize';
-import useDrawerCloseEffect from '../../useHooks/useDrawerCloseEffect';
+import useWindowSize from '../../hooks/useWindowSize';
+import useDrawerCloseEffect from '../../hooks/useDrawerCloseEffect';
 
 interface Props {
   visible: boolean;

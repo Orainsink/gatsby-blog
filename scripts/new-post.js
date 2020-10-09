@@ -24,7 +24,6 @@ date: ${date}
 description:
 tags: []
 ---
-# ${title}
 `;
 if (folder) {
   fs.mkdirSync(`./content/blog/${title}`);

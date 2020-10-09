@@ -4,7 +4,7 @@ import { Drawer, Button } from 'antd';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import { UnorderedListOutlined } from '@ant-design/icons';
 import Image from 'gatsby-image';
-import useDrawerCloseEffect from '../useHooks/useDrawerCloseEffect';
+import useDrawerCloseEffect from '../hooks/useDrawerCloseEffect';
 import styles from '../styles/Header.module.less';
 
 /**
