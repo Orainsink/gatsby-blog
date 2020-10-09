@@ -10,7 +10,7 @@ import styles from '../styles/Blog.module.less';
 const MyGitalk = loadable(() => import('../components/MyGitalk'));
 const Contents = loadable(() => import('../components/SideBlocks/Contents'));
 
-interface IProps {
+interface Props {
   data: {
     markdownRemark: any;
     site: {
@@ -23,11 +23,7 @@ interface IProps {
   tableOfContents: any;
   location: any;
 }
-const BlogPostTemplate: React.FC<IProps> = ({
-  data,
-  pageContext,
-  location,
-}) => {
+const BlogPostTemplate: React.FC<Props> = ({ data, pageContext, location }) => {
   const post = data.markdownRemark;
   const { previous, next } = pageContext;
   const { tags } = post.frontmatter;
