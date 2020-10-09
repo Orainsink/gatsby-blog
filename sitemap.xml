@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://blog.foolishrobot.xyz/React-three-fiber文档翻译/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://blog.foolishrobot.xyz/前端离线化offline浅谈/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://blog.foolishrobot.xyz/React-hooks防抖和节流/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://blog.foolishrobot.xyz/React-hooks个人最佳实践/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -9,12 +10,11 @@
 <url> <loc>https://blog.foolishrobot.xyz/博客迁移记录/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://blog.foolishrobot.xyz/用现代MVVM框架开发Shopify主题/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://blog.foolishrobot.xyz/web性能分析/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://blog.foolishrobot.xyz/React性能优化-PureComponent与hooks-memo/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://blog.foolishrobot.xyz/react-loadable组件/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://blog.foolishrobot.xyz/当react遇上gsap3/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://blog.foolishrobot.xyz/移动端优化-禁止qq微信浏览器下拉出现空白区域/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://blog.foolishrobot.xyz/结合React-Hooks和GreenSock制作动画/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://blog.foolishrobot.xyz/redux-react-hook文档翻译/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://blog.foolishrobot.xyz/React性能优化-PureComponent与hooks-memo/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://blog.foolishrobot.xyz/小程序WXS脚本语言简单应用/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://blog.foolishrobot.xyz/js实现点击按钮复制内容/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://blog.foolishrobot.xyz/css-自用常用代码/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -28,7 +28,6 @@
 <url> <loc>https://blog.foolishrobot.xyz/前端优化-雪碧图及base64/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://blog.foolishrobot.xyz/CSS-三栏布局中间自适应/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://blog.foolishrobot.xyz/CSS占位图片/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://blog.foolishrobot.xyz/SPA页面的SSR优化/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://blog.foolishrobot.xyz/跨浏览器开发/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://blog.foolishrobot.xyz/Three-js入门7-模型及模型的加载/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://blog.foolishrobot.xyz/ES6异步编程-async和await/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
