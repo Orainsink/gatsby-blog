@@ -1,7 +1,7 @@
 ---
 title: React-hooks防抖和节流
 date: 2020-10-04 20:29:08
-description:
+description: lodash 的 debounce 和 throttle 函数是不能在函数组件内直接使用的, 我们需要自己写 hooks 版本的 debounce 和 throttle
 tags: [react, 前端]
 ---
 

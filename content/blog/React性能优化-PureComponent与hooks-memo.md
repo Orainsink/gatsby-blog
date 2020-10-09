@@ -3,13 +3,13 @@ title: React性能优化-PureComponent与hooks_memo
 copyright: true
 permalink: 1
 top: 0
-date: 2020-03-29 17:10:09
-tags: ["前端", "react"]
+date: 2019-09-29 17:10:09
+tags: ['前端', 'react']
 categories: react
 password:
 ---
 
-# React性能优化-PureComponent 与 React.useMemo,Reacat.useCallback
+# React 性能优化-PureComponent 与 React.useMemo,Reacat.useCallback
 
 ## PureComponent
 
@@ -21,12 +21,12 @@ PureComponent 即纯组件, 用法类似 Component , 作用是减少不必要的
 
 ```js
 if (this._compositeType === CompositeTypes.PureClass) {
-  shouldUpdate = !shallowEqual(prevProps, nextProps)
-  || !shallowEqual(inst.state, nextState);
+  shouldUpdate =
+    !shallowEqual(prevProps, nextProps) || !shallowEqual(inst.state, nextState);
 }
 ```
 
- `shallowEqual` 会比较 `Object.keys(state | props)` 的长度是否一致，每一个 key是否两者都有，并且是否是一个引用，也就是只比较了第一层的值，深层的嵌套数据是对比不出来的，使用过程中需要避免在嵌套数据中放入会改变的状态数据。
+`shallowEqual` 会比较 `Object.keys(state | props)` 的长度是否一致，每一个 key 是否两者都有，并且是否是一个引用，也就是只比较了第一层的值，深层的嵌套数据是对比不出来的，使用过程中需要避免在嵌套数据中放入会改变的状态数据。
 
 详细使用教程， 参考文档 [React 官方文档](https://zh-hans.reactjs.org/docs/react-api.html#reactpurecomponent)
 
@@ -38,9 +38,7 @@ class Greeting extends React.Component {
 }
 ```
 
-
-
-我们在实际工作中，对于简单组件，能使用 PureComponent 的时候就尽量使用 PureComponent, 但因为可能引发深层数据更新但不触发 Render 的情况, 所以使用的时候需要注意. 
+我们在实际工作中，对于简单组件，能使用 PureComponent 的时候就尽量使用 PureComponent, 但因为可能引发深层数据更新但不触发 Render 的情况, 所以使用的时候需要注意.
 
 ## React.useMemo
 
@@ -61,12 +59,9 @@ const MyComponent = React.memo(function MyComponent(props) {
 ## React.useCallback
 
 ```js
-const memoizedCallback = useCallback(
-  () => {
-    doSomething(a, b);
-  },
-  [a, b],
-);
+const memoizedCallback = useCallback(() => {
+  doSomething(a, b);
+}, [a, b]);
 ```
 
 返回一个 [memoized](https://en.wikipedia.org/wiki/Memoization) 回调函数。
@@ -75,4 +70,4 @@ const memoizedCallback = useCallback(
 
 `useCallback(fn, deps)` 相当于 `useMemo(() => fn, deps)`
 
-注意, 依赖项数组不会作为参数传给回调函数, 且如果回调函数引用到会变化的 state, 那最好是配合reducer 使用, 不然不能达到性能优化的目的.
+注意, 依赖项数组不会作为参数传给回调函数, 且如果回调函数引用到会变化的 state, 那最好是配合 reducer 使用, 不然不能达到性能优化的目的.
