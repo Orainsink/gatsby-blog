@@ -77,7 +77,7 @@ react 函数组件会在 props 发生改变等情况下触发重新计算, 函�
 
 解决`debounce`失效的关键就在于保持`timer`唯一且不会被意外清零.
 
-同理, 解决`throttle`失效的关键就在于保持`timer`和`last`.
+同理, 解决`throttle`失效的关键也是保持`timer`
 
 react hooks 中, 保持对象引用或者变量的最万能的办法, 就是用 **`useRef`**
 
