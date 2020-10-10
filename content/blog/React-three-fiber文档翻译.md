@@ -1,7 +1,7 @@
 ---
 title: React-three-fiber API文档翻译
 date: 2020-10-09 11:42:54
-description:
+description: react-three-fiber的api文档翻译
 tags: [react, 前端, three]
 ---
 
@@ -211,11 +211,11 @@ function Mesh() {
 
 # Events
 
-Threejs objects that implement their own `raycast` method (meshes, lines, etc) can be interacted with by declaring events on them. We support pointer events, clicks and wheel-scroll. Events contain the browser event as well as the Threejs event data (object, point, distance, etc). You need to [polyfill](https://github.com/jquery/PEP) them yourself, if that's a concern.
+对于一些实现了光线投射 `raycast` 方法的 Threejs 对象（网格、线条等），我们可以通过绑定事件的方式来和他们进行交互。three-fiber 支持鼠标事件，点击和滚动事件。three-fiber 支持的事件包括了浏览器事件和 Threejs 事件（对象，点，距离等）。如果你对 three-fiber 的事件不放心，你可以自己添加[polyfill](https://github.com/jquery/PEP)
 
-Additionally, there's a special `onUpdate` that is called every time the object gets fresh props, which is good for things like `self => (self.verticesNeedUpdate = true)`.
+此外，还有一个特殊的`onUpdate`事件，每次对象的 props 发生改变的时候都会触发，方便处理`self => (self.verticesNeedUpdate = true)`这样地事情。
 
-Also notice the `onPointerMissed` on the canvas element, which fires on clicks that haven't hit any meshes.
+另外，`Canvas`组件可以绑定`onPointerMissed`事件，当鼠标在 canvas 内点击， 但是并没有点击到任何 mesh 元素的时候即会触发。
 
 ```jsx
 <mesh
@@ -251,35 +251,35 @@ Also notice the `onPointerMissed` on the canvas element, which fires on clicks t
 }) => ...
 ```
 
-#### Propagation and capturing
+#### 捕获和冒泡
 
 ```jsx
   onPointerDown={e => {
-    // Only the mesh closest to the camera will be processed
+    // 只有在最靠近相机地mesh才会触发，类似于DOM的阻止事件冒泡
     e.stopPropagation()
-    // You may optionally capture the target
+    // 根据pointerId，进行事件捕获
     e.target.setPointerCapture(e.pointerId)
   }}
   onPointerUp={e => {
     e.stopPropagation()
-    // Optionally release capture
+    // 释放事件捕获
     e.target.releasePointerCapture(e.pointerId)
   }}
 ```
 
 # Hooks
 
-Hooks can only be used **inside** the Canvas element because they rely on context! You cannot expect something like this to work:
+Hooks 只能在引入了 `Canvas`的元素内使用，因为他们依赖于`context`, 你不能之王下面这种代码生效：
 
 ```jsx
 function App() {
-  const { size } = useThree() // This will just crash
+  const { size } = useThree() // 会报错
   return (
     <Canvas>
       <mesh>
 ```
 
-Do this instead:
+你应该这么做:
 
 ```jsx
 function SomeComponent() {
@@ -299,7 +299,7 @@ function App() {
 useThree(): SharedCanvasContext
 ```
 
-This hook gives you access to all the basic objects that are kept internally, like the default renderer, scene, camera. It also gives you the current size of the canvas in screen and viewport coordinates. The hook is reactive, if you resize the browser, for instance, and you get fresh measurements, same applies to any of the defaults you can change.
+这个钩子让你可以获取到内部保存的所有基本对象，例如渲染器，场景和摄像机。他还提供了当前 canvas 的视口桌标和画布大小。这个钩子是响应式的，例如如果你改变了浏览器窗口的大小，钩子会重新触发，返回新的参数，当你修改任何默认值的的时候，钩子都会像这样重新触发。
 
 ```jsx
 import { useThree } from 'react-three-fiber'
@@ -342,9 +342,11 @@ forceResize()
 useFrame((callback: (state, delta) => void), (renderPriority: number = 0));
 ```
 
-This hook calls you back every frame, which is good for running effects, updating controls, etc. You receive the state (same as useThree) and a clock delta. If you supply a render priority greater than zero it will switch off automatic rendering entirely, you can then control rendering yourself. If you have multiple frames with a render priority then they are ordered highest priority last, similar to the web's z-index. Frames are managed, three-fiber will remove them automatically when the component that holds them is unmounted.
+这个钩子的第一个参数传入一个回调函数，该回调函数会在 webGl 渲染的每一帧进行调用。用于处理副作用和控制更新等。回调函数接受`state`（和 `useThree`一样）和一个 delta（时间增量）。
 
-Updating controls:
+第二个参数是可选的渲染优先级，如果你传入了这个参数，就会关闭自动渲染，然后可以自己控制渲染。如果有多个具有渲染优先级的帧，则他们会按照优先级降序依次执行，类似于 web 的 `z-index`。帧是可控的，three-fiber 会在组件卸载的时候自动移除他们。
+
+控制更新：
 
 ```jsx
 import { useFrame } from 'react-three-fiber';
@@ -354,7 +356,7 @@ useFrame((state) => controls.current.update());
 return <orbitControls ref={controls} />;
 ```
 
-Taking over the render-loop:
+控制渲染循环：
 
 ```jsx
 useFrame(({ gl, scene, camera }) => gl.render(scene, camera), 1);
@@ -366,7 +368,7 @@ useFrame(({ gl, scene, camera }) => gl.render(scene, camera), 1);
 useResource((optionalRef = undefined));
 ```
 
-Take advantage of React's `useRef` with the added consideration of rendering when a component is available (e.g. in the next frame). Useful when you want to share and re-use declarative resources.
+通过 React 的`useRef`对一些可复用的声明式资源对象进行引用，然后就可以在其他对象中分享或者复用该资源。
 
 ```jsx
 import { useResource } from 'react-three-fiber'
@@ -386,7 +388,7 @@ return (
 useUpdate(callback, dependencies, (optionalRef = undefined));
 ```
 
-When objects need to be updated imperatively.
+当需要强制更新对象的时候：
 
 ```jsx
 import { useUpdate } from 'react-three-fiber';
@@ -407,7 +409,7 @@ return <bufferGeometry ref={ref} />;
 useLoader(loader, url: string | string[], extensions?, xhr?)
 ```
 
-This hook loads assets and suspends for easier fallback- and error-handling.
+这个钩子让你在使用 Threejs 的 loader 时更容易处理回调和错误信息
 
 ```jsx
 import React, { Suspense } from 'react';
@@ -424,7 +426,7 @@ function Asset({ url }) {
 </Suspense>;
 ```
 
-You can provide a callback if you need to configure your loader:
+你可以给你想使用的 loader 添加回调：
 
 ```jsx
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
@@ -436,7 +438,7 @@ useLoader(GLTFLoader, url, (loader) => {
 });
 ```
 
-It can also make multiple requests in parallel:
+他还可以异步并行发出多个请求：
 
 ```jsx
 const [bumpMap, specMap, normalMap] = useLoader(TextureLoader, [
@@ -446,7 +448,7 @@ const [bumpMap, specMap, normalMap] = useLoader(TextureLoader, [
 ]);
 ```
 
-# Additional exports
+# 额外的功能
 
 ```jsx
 import {
@@ -465,9 +467,9 @@ import {
 
 # Gotchas
 
-#### Consuming context from a foreign provider
+#### 使用来自外部提供者的上下文
 
-At the moment React context [can not be readily used between two renderers](https://github.com/react-spring/react-three-fiber/issues/43), this is due to a problem within React. If react-dom opens up a provider, you will not be able to consume it within ``. If managing state (like Redux) is your problem, then [zustand](https://github.com/react-spring/zustand) is likely the best solution, otherwise you can solve it by forwarding the context object that you are trying to access:
+目前 React context[不能在两个渲染器之间方便地使用](https://github.com/react-spring/react-three-fiber/issues/43)，这是由于 React 的问题。如果 react-dom 提供了`Provider`，您将无法在`<Canvas>`中使用它。如果你不想用管理状态（如 Redux），那么[zustand](https://github.com/react-spring/zustand)可能是最好的解决方案，否则您可以通过转发您想获取的上下文对象来解决它：
 
 ```jsx
 function App() {
