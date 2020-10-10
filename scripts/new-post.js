@@ -15,7 +15,7 @@ let _path = require('path');
 let folder = process.argv[2].startsWith('/');
 
 let title = folder ? process.argv[2].slice(1) : process.argv[2],
-  date = moment().format('YYYY-MM-DD h:mm:ss'),
+  date = moment().format('YYYY-MM-DD hh:mm:ss'),
   path;
 
 let output = `---
