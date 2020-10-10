@@ -61,9 +61,9 @@ ReactDOM.render(
   onPointerMissed />            // Response for pointer clicks that have missed a target
 ```
 
-你也可以在`Canvas`标签上添加一些可选的 react dom 属性(例如`className`和`style`), 他们将被添加到自动生成的 div 容器上。
+你也可以在`Canvas`标签上添加一些可选的 ReactElement 属性(例如`className`和`style`), 他们将被添加到自动生成的 div 容器上。
 
-### Canvas 组件属性默认值
+## Canvas 组件属性默认值
 
 `Canvas`将会生成一个具有以下默认属性的半透明 webGl-renderer：
 
@@ -119,15 +119,15 @@ ReactDOM.render(
 </mesh>
 ```
 
-#### 快捷设置(set)
+## 快捷设置(set)
 
 在 Threejs 中，所有带有`.set()`方法的属性都可以用在标签上直接传值的方法来代替`.set()`函数。例如[THREE.Color.set](https://threejs.org/docs/index.html#api/zh/math/Color.set)可以接受颜色字符串，像这样：`color={new THREE.Color('hotpink')}`，但是通过快捷设置，你可以这样写：`color="hotpink"`。有一些`set`方法可以传多个值，例如[THREE.Vector3](https://threejs.org/docs/index.html#api/zh/math/Vector3.set)，这里我们需要传一个数组`position={[100, 0, 0]}`
 
-#### 非三维物体的属性
+## 非三维物体的属性
 
-**V5 新增功能**：所有以“Material”结尾的元素都将自动传入`attach="Material"`，所有以“Geometry”结尾的元素都将自动传入`attach="Geometry"`。你不用在每一个标签上都写这两个东西了，当然你想手动覆盖也没什么问题。
+**V5 新增功能**：所有以“Material”结尾的元素都将自动传入`attach="material"`，所有以“Geometry”结尾的元素都将自动传入`attach="geometry"`。你不用在每一个标签上都写这两个东西了，当然你想手动覆盖也没什么问题。
 
-使用 attach 属性可以将对象通过[`Object.attach()`](https://threejs.org/docs/index.html#api/zh/core/Object3D.attach)绑定到其父对象上，并在卸载后取消绑定。也可以将非三维物体([_Object3D_](https://threejs.org/docs/index.html#api/zh/core/Object3D))的一些基本对象（几何体、材质等）放入渲染树中，使它们可被 react 管理和响应。除了对象自带的一些属性，你也可以通过`arg`属性传入构造参数数组，需要注意的是，**如果参数发生变化，该对象和其子对象都会重新构造！**
+使用 attach 属性可以将对象通过[`Object.attach()`](https://threejs.org/docs/index.html#api/zh/core/Object3D.attach)绑定到其父对象上，并在组件卸载后取消绑定。也可以将非三维物体([_Object3D_](https://threejs.org/docs/index.html#api/zh/core/Object3D))的一些基本对象（几何体、材质等）放入渲染树中，使它们可被 react 管理和响应。除了对象自带的一些属性，你也可以通过`arg`属性传入构造参数数组，需要注意的是，**如果参数发生变化，该对象和其子对象都会重新构造！**
 
 你也可以直接嵌套基本对象：
 
@@ -137,7 +137,7 @@ ReactDOM.render(
     <texture attach="map" image={img} onUpdate={self => img && (self.needsUpdate = true)} />
 ```
 
-有时候，`attach`是不够用的。例如，以下示例将`effects`附加到父对象`effectComposer`的名为`passes`的数组里。请注意`attachArray`的用法，它将对象添加到目标数组并在组件卸载时将其解绑：
+有时候，`attach`是不够用的。例如，以下示例将`effects`效果附加到父对象`effectComposer`的名为`passes`的数组里。请注意`attachArray`的用法：
 
 ```jsx
 <effectComposer>
@@ -152,9 +152,7 @@ ReactDOM.render(
   <bufferAttribute attachObject={['attributes', 'position']} count={v.length / 3} array={v} itemSize={3} />
 ```
 
-#### 嵌套属性
-
-If you want to reach into nested attributes (for instance: `mesh.rotation.x`), just use dash-case.
+## 嵌套属性
 
 如果你想访问嵌套属性（例如：`mesh.rotation.x`），只需要使用破折号`-`连接：
 
@@ -165,20 +163,22 @@ If you want to reach into nested attributes (for instance: `mesh.rotation.x`), j
 />
 ```
 
-#### 把已存在的对象放入 scene 中
+## 把已存在的对象放入 scene 中
 
-你可以通过`<primitive />`标签将基本对象放进场景中，并且你依旧可以对其添加属性或者绑定界定啊。
+你可以通过`<primitive />`标签将基本对象放进场景中，并且你依旧可以对`<primitive />`添加属性或者绑定`attach`。
 
-但是千万不要将同一个对象多次添加，这在 Threejs 里面时不允许的
+但是千万不要把同一个对象多次添加，这在 Threejs 里面是不被允许的。
 
 ```jsx
 const mesh = useMemo(() => new THREE.Mesh(), []);
 return <primitive object={mesh} position={[0, 0, 0]} />;
 ```
 
-#### 声明式地使用第三方对象
+## 声明式地使用第三方对象
 
-`extend`函数扩展了 three-fiber 的 JSX 元素。将拓展组件通过`import`引入过后，用首字母小写的驼峰标签来使用扩展组件。
+`extend`函数扩展了 three-fiber 的 JSX 元素。
+
+将拓展组件通过`import`引入过后，用首字母小写的驼峰标签来使用扩展组件。
 
 ```jsx
 import { extend } from 'react-three-fiber'
@@ -211,11 +211,11 @@ function Mesh() {
 
 # Events
 
-对于一些实现了光线投射 `raycast` 方法的 Threejs 对象（网格、线条等），我们可以通过绑定事件的方式来和他们进行交互。three-fiber 支持鼠标事件，点击和滚动事件。three-fiber 支持的事件包括了浏览器事件和 Threejs 事件（对象，点，距离等）。如果你对 three-fiber 的事件不放心，你可以自己添加[polyfill](https://github.com/jquery/PEP)
+对于一些实现了光线投射 `raycast` 方法的 Threejs 对象（网格、线条等），我们可以通过绑定事件的方式来和他们进行交互。three-fiber 支持鼠标移动，点击和滚动事件。three-fiber 支持的事件包括了浏览器事件和 Threejs 事件（对象，点，距离等）。如果你对 three-fiber 的事件不放心，你可以自己添加[polyfill](https://github.com/jquery/PEP)
 
 此外，还有一个特殊的`onUpdate`事件，每次对象的 props 发生改变的时候都会触发，方便处理`self => (self.verticesNeedUpdate = true)`这样地事情。
 
-另外，`Canvas`组件可以绑定`onPointerMissed`事件，当鼠标在 canvas 内点击， 但是并没有点击到任何 mesh 元素的时候即会触发。
+另外，`Canvas`组件可以绑定`onPointerMissed`事件，当鼠标在 canvas 内点击， 但是并没有点击到任何 mesh 的时候即会触发。
 
 ```jsx
 <mesh
@@ -234,7 +234,7 @@ function Mesh() {
 />
 ```
 
-#### Event data
+## Event data
 
 ```jsx
 ({
@@ -251,11 +251,11 @@ function Mesh() {
 }) => ...
 ```
 
-#### 捕获和冒泡
+## 捕获和冒泡
 
 ```jsx
   onPointerDown={e => {
-    // 只有在最靠近相机地mesh才会触发，类似于DOM的阻止事件冒泡
+    // 类似于DOM的阻止事件冒泡，根据距离相机的距离，阻止事件冒泡
     e.stopPropagation()
     // 根据pointerId，进行事件捕获
     e.target.setPointerCapture(e.pointerId)
@@ -269,7 +269,7 @@ function Mesh() {
 
 # Hooks
 
-Hooks 只能在引入了 `Canvas`的元素内使用，因为他们依赖于`context`, 你不能之王下面这种代码生效：
+Hooks 只能在被`<Canvas></Canvas>`包裹的组件的内部使用，因为他们依赖于`Canvas`提供给子组件的`context`, 所以以下代码不会生效：
 
 ```jsx
 function App() {
@@ -279,7 +279,7 @@ function App() {
       <mesh>
 ```
 
-你应该这么做:
+正确的使用方式:
 
 ```jsx
 function SomeComponent() {
@@ -293,13 +293,15 @@ function App() {
       <SomeComponent />
 ```
 
-#### useThree
+## useThree
 
 ```jsx
 useThree(): SharedCanvasContext
 ```
 
-这个钩子让你可以获取到内部保存的所有基本对象，例如渲染器，场景和摄像机。他还提供了当前 canvas 的视口桌标和画布大小。这个钩子是响应式的，例如如果你改变了浏览器窗口的大小，钩子会重新触发，返回新的参数，当你修改任何默认值的的时候，钩子都会像这样重新触发。
+这个钩子让你可以获取到内部保存的所有基本对象，例如渲染器，场景和摄像机。他还提供了当前 canvas 的视口桌标和画布大小。
+
+这个钩子是响应式的，当你修改任何默认值的的时候，钩子会重新触发。例如当你改变了浏览器窗口的大小，钩子触发，返回新的浏览器大小。
 
 ```jsx
 import { useThree } from 'react-three-fiber'
@@ -336,15 +338,15 @@ intersect(optionalEvent?: PointerEvent)
 forceResize()
 ```
 
-#### useFrame
+## useFrame
 
 ```jsx
 useFrame((callback: (state, delta) => void), (renderPriority: number = 0));
 ```
 
-这个钩子的第一个参数传入一个回调函数，该回调函数会在 webGl 渲染的每一帧进行调用。用于处理副作用和控制更新等。回调函数接受`state`（和 `useThree`一样）和一个 delta（时间增量）。
+这个钩子的第一个参数传入一个回调函数，该回调函数会在 webGl 渲染的每一帧进行调用。用于处理副作用和控制更新等。回调函数接受`state`（和 `useThree`一样）和一个 `delta`（时间增量）。
 
-第二个参数是可选的渲染优先级，如果你传入了这个参数，就会关闭自动渲染，然后可以自己控制渲染。如果有多个具有渲染优先级的帧，则他们会按照优先级降序依次执行，类似于 web 的 `z-index`。帧是可控的，three-fiber 会在组件卸载的时候自动移除他们。
+第二个参数是可选的`renderPriority`(渲染优先级)。渲染优先级非零时会关闭自动渲染，然后根据优先级自己控制渲染。如果有多个具有渲染优先级的帧，他们会按照优先级降序依次执行，类似于 web 的 `z-index`。帧也是可以被 react 控制的，three-fiber 会在组件卸载的时候将他们自动移除。
 
 控制更新：
 
@@ -362,13 +364,13 @@ return <orbitControls ref={controls} />;
 useFrame(({ gl, scene, camera }) => gl.render(scene, camera), 1);
 ```
 
-#### useResource
+## useResource
 
 ```jsx
 useResource((optionalRef = undefined));
 ```
 
-通过 React 的`useRef`对一些可复用的声明式资源对象进行引用，然后就可以在其他对象中分享或者复用该资源。
+通过 React 的`useRef`对一些可复用的声明式资源进行引用，然后就可以在其他对象中分享或者复用该资源。
 
 ```jsx
 import { useResource } from 'react-three-fiber'
@@ -382,7 +384,7 @@ return (
 )
 ```
 
-#### useUpdate
+## useUpdate
 
 ```jsx
 useUpdate(callback, dependencies, (optionalRef = undefined));
@@ -398,12 +400,12 @@ const ref = useUpdate(
     geometry.addAttribute('position', getVertices(x, y, z));
     geometry.attributes.position.needsUpdate = true;
   },
-  [x, y, z] // execute only if these properties change
+  [x, y, z] // 监听的参数发生变化的时候强制执行回调函数。
 );
 return <bufferGeometry ref={ref} />;
 ```
 
-#### useLoader
+## useLoader
 
 ```jsx
 useLoader(loader, url: string | string[], extensions?, xhr?)
@@ -467,9 +469,9 @@ import {
 
 # Gotchas
 
-#### 使用来自外部提供者的上下文
+## 使用来自外部`provider`提供的上下文
 
-目前 React context[不能在两个渲染器之间方便地使用](https://github.com/react-spring/react-three-fiber/issues/43)，这是由于 React 的问题。如果 react-dom 提供了`Provider`，您将无法在`<Canvas>`中使用它。如果你不想用管理状态（如 Redux），那么[zustand](https://github.com/react-spring/zustand)可能是最好的解决方案，否则您可以通过转发您想获取的上下文对象来解决它：
+目前 React context[不能在两个渲染器之间方便地使用](https://github.com/react-spring/react-three-fiber/issues/43)，这是 React 的问题。如果 react-dom 提供了`Provider`，您将无法在`<Canvas>`中使用它。如果你不想用状态管理库（如 Redux），那么[zustand](https://github.com/react-spring/zustand)可能是最好的解决方案，否则您可以通过转发您想获取的上下文对象来解决它：
 
 ```jsx
 function App() {
