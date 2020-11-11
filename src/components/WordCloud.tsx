@@ -7,7 +7,7 @@ const WordCloud =
   typeof window !== 'undefined' ? require('wordcloud') : undefined;
 
 interface Data {
-  allMarkdownRemark: {
+  allMdx: {
     group: {
       tag: string;
     }[];
@@ -22,7 +22,7 @@ interface Props {
 const WordCloudItem: React.FC<Props> = (props) => {
   const data: Data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
         group(field: frontmatter___tags) {
           tag: fieldValue
         }
@@ -30,7 +30,7 @@ const WordCloudItem: React.FC<Props> = (props) => {
     }
   `);
   const { jump = false, height = 150 } = props;
-  const group = data.allMarkdownRemark.group;
+  const group = data.allMdx.group;
   const wordRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
 

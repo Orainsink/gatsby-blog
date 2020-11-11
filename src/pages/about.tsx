@@ -5,14 +5,17 @@ import SEO from '../components/seo';
 import { useDispatch } from 'react-redux';
 import loadable from '@loadable/component';
 import styles from '../styles/Blog.module.less';
-const Poem = loadable(() => import('../components/Poem'));
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import Poem from '../components/Poem';
 const Comment = loadable(() => import('../components/SideBlocks/Comment'));
 
 interface Data {
-  markdownRemark: any;
+  mdx: {
+    body: string;
+  };
 }
 const AboutPage = ({ data, location }: PageProps<Data>) => {
-  const post = data?.markdownRemark;
+  const { mdx } = data;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,11 +29,9 @@ const AboutPage = ({ data, location }: PageProps<Data>) => {
     <Layout location={location} sideBlocks={<Comment />}>
       <SEO title="About" />
       <Poem />
-      <section
-        dangerouslySetInnerHTML={{ __html: post.html }}
-        className={styles.container}
-        style={{ padding: '1em' }}
-      />
+      <section className={styles.container} style={{ padding: '1em' }}>
+        {<MDXRenderer>{mdx.body}</MDXRenderer>}
+      </section>
     </Layout>
   );
 };
@@ -38,8 +39,8 @@ const AboutPage = ({ data, location }: PageProps<Data>) => {
 export default React.memo(AboutPage);
 export const pageQuery = graphql`
   query {
-    markdownRemark(fields: { slug: { eq: "/关于本博客/" } }) {
-      html
+    mdx(fields: { slug: { eq: "/关于本博客" } }) {
+      body
     }
   }
 `;

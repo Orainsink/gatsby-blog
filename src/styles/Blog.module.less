@@ -55,12 +55,13 @@ body {
   }
 }
 .tableContents {
-  padding: 1em;
-  border-left: 5px solid #dbdbdb;
   background: transparent;
   margin-bottom: 1em;
   position: relative;
   z-index: auto;
+  & :global(.ant-anchor-wrapper) {
+    background: unset;
+  }
   &::after {
     position: absolute;
     content: '目录';
@@ -86,11 +87,7 @@ body {
     list-style: decimal;
   }
 }
-@media screen and (max-width: 768px) {
-  .tableContents {
-    padding: 1em;
-  }
-}
+
 .lead {
   display: flex;
   flex-wrap: wrap;

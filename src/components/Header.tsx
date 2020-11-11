@@ -64,6 +64,11 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
       }
     };
 
+    /** change active status when component mounted */
+    if (document.body.scrollTop > 0 && width >= 768) {
+      setActive(true);
+    }
+
     document.body.addEventListener('scroll', _handleScroll, {
       passive: false,
     });
@@ -100,7 +105,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
   return (
     <header
       style={{
-        /* display: scene ? 'none' : 'block' */ top: scene ? '100vh' : '0',
+        top: scene ? '100vh' : '0',
       }}
       id="header"
       className={classnames(styles.wrapper, active && styles.active)}

@@ -12,7 +12,7 @@ const PostList = loadable(() => import('../components/PostList'));
 const Calendar = loadable(() => import('../components/SideBlocks/Calendar'));
 
 interface Data {
-  allMarkdownRemark: {
+  allMdx: {
     edges: PostItem[];
   };
 }
@@ -20,7 +20,7 @@ interface Data {
 const ArchivesPage = ({ data, location }: PageProps<Data>) => {
   const { curTag, curDate } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const posts = data.allMarkdownRemark.edges.filter((edge) => {
+  const posts = data.allMdx.edges.filter((edge) => {
     return edge.node.frontmatter.title;
   });
 
@@ -54,7 +54,7 @@ export default React.memo(ArchivesPage);
 
 export const pageQuery = graphql`
   {
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { tags: {} } }
     ) {

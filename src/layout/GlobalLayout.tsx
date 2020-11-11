@@ -1,10 +1,9 @@
 import React from 'react';
 import '../styles/global.less';
 import { useSelector } from 'react-redux';
-import loadable from '@loadable/component';
-const Bg = loadable(() => import('../components/Bg'));
-const BackTop = loadable(() => import('../components/BackTop'));
-const Header = loadable(() => import('../components/Header'));
+import Bg from '../components/Bg';
+import BackTop from '../components/BackTop';
+import Header from '../components/Header';
 
 /**global PageElement */
 const GlobalLayout = ({ children, location }) => {

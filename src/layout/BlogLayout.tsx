@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Row, Col } from 'antd';
-import loadable from '@loadable/component';
 import styles from '../styles/Bloglayout.module.less';
 import Info from '../components/SideBlocks/Info';
-const SideBar = loadable(() => import('./SideBar'));
-const Footer = loadable(() => import('../components/Footer'));
+import SideBar from './SideBar';
+import Footer from '../components/Footer';
 
 interface Props {
   content?: any;
@@ -39,6 +38,7 @@ const Layout: React.FC<Props> = (props) => {
           padding: `0.4em`,
         }}
         className={styles.main}
+        id="main"
       >
         <Row justify="space-between" gutter={8}>
           <Col flex="1 1 800px" className={styles.mainWrap}>

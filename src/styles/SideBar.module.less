@@ -125,25 +125,19 @@
   .contents {
     z-index: 1;
     position: relative;
-    ul {
-      margin-left: 1em;
-    }
-    a {
-      text-decoration: none;
-      &:hover {
-        color: @link-hover-color;
-      }
+    & :global(.ant-anchor-wrapper) {
+      background: none;
+      max-height: unset !important;
     }
   }
 }
 .contentsFix {
   position: fixed;
   width: 300px;
-  max-height: 88%;
+  max-height: calc(100vh - 80px);
   top: 74px;
-  overflow-y: auto;
-  overflow-x: hidden;
   padding-top: 20px;
+  overflow-y: auto;
 }
 .wordCloudWrap {
   overflow: hidden;

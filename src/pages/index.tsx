@@ -4,11 +4,11 @@ import { PageProps, Link, graphql } from 'gatsby';
 import Layout from '../layout/IndexLayout';
 import SEO from '../components/seo';
 import { useSelector } from 'react-redux';
-const TagsSnippet = loadable(() => import('../components/Cards'));
-const Trigger = loadable(() => import('../components/Trigger'));
-const Loading = loadable(() => import('../components/Loading'));
-const Poem = loadable(() => import('../components/Poem'));
-const PostList = loadable(() => import('../components/PostList'));
+import TagsSnippet from '../components/Cards';
+import Trigger from '../components/Trigger';
+import Loading from '../components/Loading';
+import Poem from '../components/Poem';
+import PostList from '../components/PostList';
 const Dynamic = loadable(() => import('../components/Dynamic/Dynamic'), {
   fallback: <Loading debounce={100} />,
 });
@@ -19,14 +19,14 @@ interface Data {
       title: string;
     };
   };
-  allMarkdownRemark: {
+  allMdx: {
     edges: PostItem[];
   };
 }
 
 const Index = ({ data }: PageProps<Data>) => {
   const siteTitle = data.site.siteMetadata.title;
-  const posts = data.allMarkdownRemark.edges.filter((edge) => {
+  const posts = data.allMdx.edges.filter((edge) => {
     return edge.node.frontmatter.title;
   });
   const { skip, scene } = useSelector((state) => state);
@@ -79,21 +79,18 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: 5
-    ) {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 5) {
       edges {
         node {
-          excerpt
           fields {
             slug
           }
+          excerpt
           frontmatter {
             date(formatString: "YYYY/MM/DD")
-            title
             description
             tags
+            title
           }
         }
       }

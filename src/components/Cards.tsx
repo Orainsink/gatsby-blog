@@ -8,7 +8,7 @@ import styles from '../styles/TagsSnippet.module.less';
 const { Meta } = Card;
 
 interface Data {
-  allMarkdownRemark: {
+  allMdx: {
     group: {
       totalCount: number;
       tag: string;
@@ -32,7 +32,7 @@ const TagsSnippet: React.FC = () => {
 
   const data: Data = useStaticQuery(graphql`
     query TagsQuery {
-      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
         group(field: frontmatter___tags) {
           totalCount
           tag: fieldValue
@@ -70,7 +70,7 @@ const TagsSnippet: React.FC = () => {
     }
   `);
 
-  const { group, totalCount } = data.allMarkdownRemark;
+  const { group, totalCount } = data.allMdx;
   const { FEImg, leetcodeImg, dialogImg, allImg } = data;
 
   const tagFilter = useCallback(

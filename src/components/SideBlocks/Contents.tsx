@@ -3,29 +3,42 @@ import { Col } from 'antd';
 import classnames from 'classnames';
 import useScrollY from '../../hooks/useScrollY';
 import styles from '../../styles/SideBar.module.less';
+import { Anchor } from 'antd';
+const { Link } = Anchor;
 
 interface Props {
   content: any;
 }
+
 /** 侧边栏 目录块 */
 const Contents: React.FC<Props> = (props) => {
   const { content } = props;
   const contentsRef = useRef(null);
   const scrollY = useScrollY();
 
-  const isFixed = useMemo(() => {
-    if (contentsRef.current) {
-      return scrollY > 333;
-    }
-  }, [scrollY]);
+  const isFixed = useMemo(() => scrollY > 333, [scrollY]);
 
-  const isHide = useMemo(() => {
-    if (contentsRef) {
-      return (
-        scrollY > document.body.scrollHeight - document.body.clientHeight - 400
-      );
+  const isHide = useMemo(
+    () =>
+      scrollY > document.body.scrollHeight - document.body.clientHeight - 400,
+    [scrollY]
+  );
+
+  /**
+   * Recursion Links
+   */
+  const renderLinks = useMemo(() => {
+    if (!content.items) return null;
+
+    function renderLink(items) {
+      return items.map((item) => (
+        <Link href={item.url} title={item.title} key={item.url}>
+          {item.items ? renderLink(item.items) : null}
+        </Link>
+      ));
     }
-  }, [scrollY]);
+    return renderLink(content.items);
+  }, [content]);
 
   return (
     <Col
@@ -36,11 +49,14 @@ const Contents: React.FC<Props> = (props) => {
       })}
     >
       <div className={styles.title}>Contents</div>
-      <div
-        ref={contentsRef}
-        className={classnames(styles.contents)}
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+      <div ref={contentsRef} className={classnames(styles.contents)}>
+        <Anchor
+          getContainer={() => document.body as HTMLElement}
+          targetOffset={200}
+        >
+          {renderLinks}
+        </Anchor>
+      </div>
     </Col>
   );
 };

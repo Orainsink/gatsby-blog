@@ -2,13 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import classnames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { Row, Col } from 'antd';
-import loadable from '@loadable/component';
 import styles from '../styles/Indexlayout.module.less';
 import Info from '../components/SideBlocks/Info';
-const Footer = loadable(() => import('../components/Footer'));
-const SideBar = loadable(() => import('./SideBar'));
-const TagsBlock = loadable(() => import('../components/SideBlocks/TagsBlock'));
-const Comment = loadable(() => import('../components/SideBlocks/Comment'));
+import Footer from '../components/Footer';
+import SideBar from './SideBar';
+import TagsBlock from '../components/SideBlocks/TagsBlock';
+import Comment from '../components/SideBlocks/Comment';
+
 interface Props {
   children?: any;
 }

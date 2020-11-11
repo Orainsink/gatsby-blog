@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { Link, graphql } from 'gatsby';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
@@ -7,12 +7,25 @@ import { useDispatch } from 'react-redux';
 import useWindowSize from '../hooks/useWindowSize';
 import loadable from '@loadable/component';
 import styles from '../styles/Blog.module.less';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { Anchor } from 'antd';
+import Contents from '../components/SideBlocks/Contents';
 const MyGitalk = loadable(() => import('../components/MyGitalk'));
-const Contents = loadable(() => import('../components/SideBlocks/Contents'));
 
 interface Props {
   data: {
-    markdownRemark: any;
+    mdx: {
+      id: string;
+      frontmatter: {
+        title: string;
+        date: string;
+        description: string;
+        tags: string[];
+      };
+      body: string;
+      excerpt: string;
+      tableOfContents: any;
+    };
     site: {
       siteMetadata: {
         title: string;
@@ -22,38 +35,60 @@ interface Props {
   pageContext: any;
   tableOfContents: any;
   location: any;
+  children: any;
 }
-const BlogPostTemplate: React.FC<Props> = ({ data, pageContext, location }) => {
-  const post = data.markdownRemark;
+const BlogPostTemplate: React.FC<Props> = ({
+  data: { mdx },
+  pageContext,
+  location,
+  children,
+}) => {
+  const {
+    frontmatter: { title, tags, description, date },
+    excerpt,
+    tableOfContents,
+  } = mdx;
   const { previous, next } = pageContext;
-  const { tags } = post.frontmatter;
   const dispatch = useDispatch();
   const [width] = useWindowSize();
 
   useEffect(() => {
-    dispatch({ type: 'TITLE', payload: post.frontmatter.title });
+    dispatch({ type: 'TITLE', payload: title });
     return () => {
       dispatch({ type: 'TITLE', payload: '' });
     };
-  }, [post.frontmatter.title, dispatch]);
+  }, [title, dispatch]);
+
+  /**
+   * Recursion Links
+   */
+  const renderLinks = useCallback((content) => {
+    if (!content.items) return null;
+
+    function renderLink(items) {
+      return items.map((item) => (
+        <Anchor.Link href={item.url} title={item.title} key={item.url}>
+          {item.items ? renderLink(item.items) : null}
+        </Anchor.Link>
+      ));
+    }
+    return renderLink(content.items);
+  }, []);
 
   return (
     <>
       <Layout
         location={location}
         sideBlocks={
-          width > 1110 && post.tableOfContents ? (
-            <Contents content={post.tableOfContents} />
+          width > 1110 && tableOfContents ? (
+            <Contents content={tableOfContents} />
           ) : null
         }
       >
-        <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
-        />
+        <SEO title={title} description={description || excerpt} />
         <article>
           <header>
-            <h1 style={{ textAlign: 'center' }}>{post.frontmatter.title}</h1>
+            <h1 style={{ textAlign: 'center' }}>{title}</h1>
             <p
               style={{
                 display: 'block',
@@ -62,7 +97,7 @@ const BlogPostTemplate: React.FC<Props> = ({ data, pageContext, location }) => {
                 textAlign: 'center',
               }}
             >
-              {post.frontmatter.date}
+              {date}
               <a
                 className={styles.licence}
                 rel="license"
@@ -82,16 +117,20 @@ const BlogPostTemplate: React.FC<Props> = ({ data, pageContext, location }) => {
               </a>
             </p>
           </header>
-          {!!post.tableOfContents && width < 1110 && (
-            <div
-              className={styles.tableContents}
-              dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
-            />
+          {!!tableOfContents && width < 1110 && (
+            <div className={styles.tableContents}>
+              <Anchor
+                getContainer={() => document.body as HTMLElement}
+                targetOffset={200}
+                affix={false}
+              >
+                {renderLinks(tableOfContents)}
+              </Anchor>
+            </div>
           )}
-          <section
-            dangerouslySetInnerHTML={{ __html: post.html }}
-            className={styles.container}
-          />
+          <section className={styles.container}>
+            <MDXRenderer>{mdx.body}</MDXRenderer>
+          </section>
           <hr
             style={{
               marginBottom: '1.6em',
@@ -118,7 +157,7 @@ const BlogPostTemplate: React.FC<Props> = ({ data, pageContext, location }) => {
             </li>
           </ul>
         </nav>
-        {post && <MyGitalk title={post.frontmatter.title} />}
+        {mdx && <MyGitalk title={title} />}
       </Layout>
     </>
   );
@@ -127,23 +166,23 @@ const BlogPostTemplate: React.FC<Props> = ({ data, pageContext, location }) => {
 export default BlogPostTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostQuery($id: String) {
     site {
       siteMetadata {
         title
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(id: { eq: $id }) {
       id
-      excerpt(pruneLength: 160)
-      tableOfContents
-      html
       frontmatter {
         title
         date(formatString: "YYYY/MM/DD")
         description
         tags
       }
+      body
+      excerpt
+      tableOfContents
     }
   }
 `;
