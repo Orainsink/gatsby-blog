@@ -1,5 +1,5 @@
 import { yoyo } from '../../utils/utils';
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import gsap from 'gsap';
 
 interface Props {
@@ -9,50 +9,45 @@ interface Props {
 const Moon = (props: Props) => {
   const { onCloseScene } = props;
   const [active, setActive] = useState(false);
-  const [tween, setTween] = useState(null);
-  const [moonTween, setMoonTween] = useState(null);
-  const [lightTween, setLightTween] = useState(null);
+  const tweenRef = useRef(null);
+  const moonRef = useRef(null);
+  const lightRef = useRef(null);
 
   const lightRefCallback = useCallback((node) => {
     if (node !== null) {
-      setTween(
-        gsap.to(
-          { x: -2, z: -45 },
-          {
-            duration: 2,
-            x: 2,
-            z: -35,
-            paused: true,
-            onUpdate: function () {
-              node.position.z = this._targets[0].z;
-            },
-            onComplete: yoyo,
-            onReverseComplete: yoyo,
-          }
-        )
-      );
-      setLightTween(
-        gsap.to(node, {
-          duration: 0.5,
-          intensity: 30,
-          distance: 80,
+      tweenRef.current = gsap.to(
+        { x: -2, z: -45 },
+        {
+          duration: 2,
+          x: 2,
+          z: -35,
           paused: true,
-        })
+          onUpdate: function () {
+            node.position.z = this._targets[0].z;
+          },
+          onComplete: yoyo,
+          onReverseComplete: yoyo,
+        }
       );
+
+      lightRef.current = gsap.to(node, {
+        duration: 0.5,
+        intensity: 30,
+        distance: 80,
+        paused: true,
+      });
     }
   }, []);
 
   const moonRefCallback = useCallback((node) => {
     if (node !== null) {
-      setMoonTween(
-        gsap.to(node.scale, {
-          duration: 0.5,
-          x: 1.5,
-          y: 1.5,
-          z: 1.5,
-          paused: true,
-        })
-      );
+      moonRef.current = gsap.to(node.scale, {
+        duration: 0.5,
+        x: 1.5,
+        y: 1.5,
+        z: 1.5,
+        paused: true,
+      });
     }
   }, []);
 
@@ -60,28 +55,25 @@ const Moon = (props: Props) => {
    * start or stop animations
    */
   useEffect(() => {
-    tween?.resume();
+    tweenRef.current?.resume();
     return () => {
-      tween?.kill();
+      tweenRef.current?.kill();
     };
-  }, [tween]);
+  }, []);
   useEffect(() => {
     if (active) {
-      moonTween?.play();
-      lightTween?.play();
+      moonRef.current?.play();
+      lightRef.current?.play();
     } else {
-      if (moonTween) {
-        moonTween?.reverse();
-        lightTween?.reverse();
-      }
+      moonRef.current?.reverse();
+      lightRef.current?.reverse();
     }
-    return () => {
-      if (moonTween) {
-        moonTween?.kill();
-        lightTween?.kill();
-      }
-    };
-  }, [active, moonTween, lightTween]);
+    // FIXME: I dont know why this clean function was called every time when 'active' changed
+    // return () => {
+    //   moonRef.current?.kill();
+    //   lightRef.current?.kill();
+    // };
+  }, [active]);
 
   return (
     <pointLight

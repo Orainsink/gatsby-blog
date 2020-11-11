@@ -5,14 +5,13 @@ import SEO from '../components/seo';
 import Tags from '../components/Tags';
 import { useDispatch } from 'react-redux';
 import useWindowSize from '../hooks/useWindowSize';
-import loadable from '@loadable/component';
 import styles from '../styles/Blog.module.less';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Anchor } from 'antd';
 import Contents from '../components/SideBlocks/Contents';
 import CodeBlock from './CodeBlock';
-const MyGitalk = loadable(() => import('../components/MyGitalk'));
+import MyGitalk from '../components/MyGitalk';
 
 interface Props {
   data: {
@@ -35,15 +34,12 @@ interface Props {
     };
   };
   pageContext: any;
-  tableOfContents: any;
   location: any;
-  children: any;
 }
 const BlogPostTemplate: React.FC<Props> = ({
   data: { mdx },
   pageContext,
   location,
-  children,
 }) => {
   const {
     frontmatter: { title, tags, description, date },
@@ -51,6 +47,7 @@ const BlogPostTemplate: React.FC<Props> = ({
     tableOfContents,
   } = mdx;
   const { previous, next } = pageContext;
+
   const dispatch = useDispatch();
   const [width] = useWindowSize();
 

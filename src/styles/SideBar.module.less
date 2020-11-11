@@ -118,6 +118,7 @@
 }
 .contentsWrap {
   height: unset;
+  max-width: 300px;
   li {
     list-style-type: decimal;
     list-style-position: outside;
@@ -125,9 +126,14 @@
   .contents {
     z-index: 1;
     position: relative;
-    & :global(.ant-anchor-wrapper) {
-      background: none;
-      max-height: unset !important;
+    & :global {
+      .ant-anchor-wrapper {
+        background: none;
+        max-height: unset !important;
+      }
+      .ant-affix {
+        position: absolute !important;
+      }
     }
   }
 }

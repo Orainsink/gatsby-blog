@@ -56,7 +56,7 @@
     "react-howler": "3.7.4",
     "react-instantsearch-dom": "6.7.0",
     "react-redux": "7.2.0",
-    "react-scroll-wheel-handler": "1.1.5",
+    "react-scroll-wheel-handler": "2.0.1",
     "react-three-fiber": "^4.2.8",
     "react-typography": "^0.16.19",
     "redux": "4.0.5",

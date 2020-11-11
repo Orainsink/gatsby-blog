@@ -3,11 +3,10 @@ import { PageProps, graphql } from 'gatsby';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import { useDispatch } from 'react-redux';
-import loadable from '@loadable/component';
 import styles from '../styles/Blog.module.less';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Poem from '../components/Poem';
-const Comment = loadable(() => import('../components/SideBlocks/Comment'));
+import Comment from '../components/SideBlocks/Comment';
 
 interface Data {
   mdx: {

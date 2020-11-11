@@ -33,6 +33,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/assets`,
+        path: `${__dirname}/content/assets`,
         name: `assets`,
       },
     },
@@ -147,11 +148,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        defaultLayouts: {
-          default: require.resolve('./src/layout/BlogLayout.tsx'),
-        },
         extensions: ['.mdx', '.md'],
-        // workaround: https://github.com/gatsbyjs/gatsby/issues/16422#issuecomment-518985316
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
@@ -160,16 +157,12 @@ module.exports = {
             },
           },
           'gatsby-remark-responsive-iframe',
-          `gatsby-remark-autolink-headers`,
-          // {
-          //   resolve: `gatsby-remark-prismjs`,
-          //   options: {
-          //     classPrefix: 'language-',
-          //     inlineCodeMarker: null,
-          //     showLineNumbers: false,
-          //     noInlineHighlight: false,
-          //   },
-          // },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              icon: false,
+            },
+          },
         ],
       },
     },

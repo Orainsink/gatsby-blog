@@ -16,6 +16,9 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
             fields {
               slug
             }
+            frontmatter {
+              title
+            }
           }
         }
       }
@@ -24,11 +27,15 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
     if (result.errors) {
       return Promise.reject(result.errors);
     }
-    result.data.allMdx.edges.forEach(({ node }) => {
+    const posts = result.data.allMdx.edges;
+    posts.forEach(({ node }, index) => {
+      const previous =
+        index === posts.length - 1 ? null : posts[index + 1].node;
+      const next = index === 0 ? null : posts[index - 1].node;
       createPage({
         path: replacePath(node.fields.slug),
         component: Template,
-        context: { id: node.id }, // additional data can be passed via context
+        context: { id: node.id, previous, next },
       });
     });
   });

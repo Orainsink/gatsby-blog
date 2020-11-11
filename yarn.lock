@@ -14619,10 +14619,10 @@ react-remove-scroll@^2.3.0:
     use-callback-ref "^1.2.3"
     use-sidecar "^1.0.1"
 
-react-scroll-wheel-handler@1.1.5:
-  version "1.1.5"
-  resolved "https://registry.npm.taobao.org/react-scroll-wheel-handler/download/react-scroll-wheel-handler-1.1.5.tgz#57f207f9ef84a193ce9997771175f3184050e5a6"
-  integrity sha1-V/IH+e+EoZPOmZd3EXXzGEBQ5aY=
+react-scroll-wheel-handler@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npm.taobao.org/react-scroll-wheel-handler/download/react-scroll-wheel-handler-2.0.1.tgz#b2c834efdde9d841c0dd838ba3f9fb03a22e2b3a"
+  integrity sha1-ssg0793p2EHA3YOLo/n7A6IuKzo=
 
 react-side-effect@^1.1.0:
   version "1.2.0"

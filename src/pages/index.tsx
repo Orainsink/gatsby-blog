@@ -10,7 +10,7 @@ import Loading from '../components/Loading';
 import Poem from '../components/Poem';
 import PostList from '../components/PostList';
 const Dynamic = loadable(() => import('../components/Dynamic/Dynamic'), {
-  fallback: <Loading debounce={100} />,
+  fallback: null,
 });
 
 interface Data {
@@ -39,7 +39,7 @@ const Index = ({ data }: PageProps<Data>) => {
 
   return (
     <>
-      {!skip && <Dynamic />}
+      <Dynamic />
       {!skip && scene && <Trigger />}
       <Layout>
         <SEO title={siteTitle} />

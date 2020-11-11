@@ -7,9 +7,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import loadable from '@loadable/component';
 import { ReloadOutlined } from '@ant-design/icons';
 import styles from '../styles/archives.module.less';
+import PostList from '../components/PostList';
+import Calendar from '../components/SideBlocks/Calendar';
 const WordCloud = loadable(() => import('../components/WordCloud'));
-const PostList = loadable(() => import('../components/PostList'));
-const Calendar = loadable(() => import('../components/SideBlocks/Calendar'));
 
 interface Data {
   allMdx: {
