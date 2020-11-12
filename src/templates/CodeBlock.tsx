@@ -76,7 +76,7 @@ const CodeBlock = ({ children, className: langClass = 'javascript' }: any) => {
               }}
             >
               {copied ? <SmileOutlined /> : <CopyOutlined />}
-              {copied ? 'successed' : 'copy'}
+              {copied ? 'succeed' : 'copy'}
             </Button>
           </div>
           <pre

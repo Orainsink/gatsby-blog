@@ -33,7 +33,11 @@ interface Props {
       };
     };
   };
-  pageContext: any;
+  pageContext: {
+    previous: any;
+    next: any;
+    id: string;
+  };
   location: any;
 }
 const BlogPostTemplate: React.FC<Props> = ({
@@ -141,14 +145,14 @@ const BlogPostTemplate: React.FC<Props> = ({
 
       <nav>
         <ul className={styles.lead}>
-          <li>
+          <li style={{ textAlign: 'left' }}>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
                 ← {previous.frontmatter.title}
               </Link>
             )}
           </li>
-          <li>
+          <li style={{ textAlign: 'right' }}>
             {next && (
               <Link to={next.fields.slug} rel="next">
                 {next.frontmatter.title} →

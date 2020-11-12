@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const loadingSvg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="260" height="260" viewBox="0 0 40 40"><path id="a" d="M20.201 15.917c-9.2 0-16.66 3.284-16.66 7.335S11 30.587 20.2 30.587s16.66-3.284 16.66-7.335c0-4.05-7.46-7.335-16.66-7.335z" stroke-opacity="0" stroke-width=".1" stroke="transparent" fill="transparent"/><circle r="1" fill="#fff"><animateMotion dur="2s"><mpath xlink:href="#a"/></animateMotion></circle><circle cx="20" cy="20" r="5" fill="#fff"/></svg>`;
+const loadingSvg = `<svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="260px" height="260px" viewBox="0 0 40 40"><path fill="transparent" stroke="transparent" stroke-width="0.1" stroke-opacity="0"  d="m0.27143,-0.2878c-9.20089,0 -16.6606,3.28421 -16.6606,7.335c0,4.05128 7.4597,7.335 16.6606,7.335s16.6606,-3.28372 16.6606,-7.335c-0.00111,-4.05079 -7.4597,-7.335 -16.6606,-7.335z" id="orbit"/><circle id="mun" r="1" cx="20" cy="16" fill="#fff"><animateMotion id="animation" dur="2s" repeatCount="indefinite"><mpath xlink:href="#orbit"></mpath></animateMotion></circle><circle cx="20" cy="20" r="5" fill="#fff"></circle></svg>`;
 
 export default function HTML(props) {
   return (
@@ -22,7 +22,9 @@ export default function HTML(props) {
         {props.preBodyComponents}
         <div
           id="___loader"
-          dangerouslySetInnerHTML={{ __html: loadingSvg }}
+          dangerouslySetInnerHTML={{
+            __html: loadingSvg,
+          }}
           style={{
             position: 'absolute',
             top: 0,
