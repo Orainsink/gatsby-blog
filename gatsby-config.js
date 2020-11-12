@@ -6,7 +6,7 @@ module.exports = {
     title: `Orainsink's blog`,
     author: {
       name: `Orainsink`,
-      summary: `空空如也`,
+      summary: `做嘛做嘛, 都可以做, 小问题, 不要慌`,
     },
     description: `Orainsink 的博客, 前端, 随笔, 其他技术笔记`,
     siteUrl: `https://blog.foolishrobot.xyz/`,

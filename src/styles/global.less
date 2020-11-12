@@ -5,6 +5,21 @@ a {
 li {
   list-style: none;
 }
+:not(pre) > code {
+  color: #db4c69;
+  background: #f9f2f4;
+  padding: 0.1em 0.3em;
+  border-radius: 0.3em;
+  text-shadow: none;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+  tab-size: 4;
+  hyphens: none;
+}
 /* custom */
 html,
 body {
@@ -24,7 +39,6 @@ body {
 }
 ::-webkit-scrollbar-track-piece {
   background-color: @main-background;
-  -webkit-border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:vertical {
   height: 8px;

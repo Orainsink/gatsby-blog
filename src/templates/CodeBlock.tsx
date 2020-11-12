@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import dark from 'prism-react-renderer/themes/vsDark';
+import theme from '../assets/theme/customPrism';
 import { Button } from 'antd';
 import { CopyOutlined, SmileOutlined } from '@ant-design/icons';
 
@@ -31,10 +31,15 @@ const CodeBlock = ({ children, className: langClass = 'javascript' }: any) => {
       {...defaultProps}
       code={children}
       language={language}
-      theme={dark}
+      theme={theme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <div style={{ margin: '40px 0', position: 'relative' }}>
+        <div
+          style={{
+            margin: '2em 0 1em 0',
+            position: 'relative',
+          }}
+        >
           <div
             style={{
               display: 'flex',
@@ -46,17 +51,17 @@ const CodeBlock = ({ children, className: langClass = 'javascript' }: any) => {
               transform: 'translateY(-98%)',
               fontSize: '18px',
               textTransform: 'uppercase',
-              color: '#b9b9ba',
+              color: '#3d4451',
             }}
           >
             <div
               style={{
                 padding: '2px 12px 0px',
-                background: '#1e1e1e',
+                background: '#efefef',
                 borderRadius: '8px 8px 0px 0px',
                 pointerEvents: 'none',
                 margin: '0 5px',
-                border: '1px solid #1e1e1e',
+                border: '1px solid #efefef',
               }}
             >
               {language}
@@ -70,8 +75,8 @@ const CodeBlock = ({ children, className: langClass = 'javascript' }: any) => {
               }}
               style={{
                 padding: '2px 12px 0px',
-                background: '#1e1e1e',
-                color: '#b9b9ba',
+                background: '#efefef',
+                color: '#3d4451',
                 borderRadius: '8px 8px 0px 0px',
               }}
             >
@@ -87,6 +92,7 @@ const CodeBlock = ({ children, className: langClass = 'javascript' }: any) => {
               borderRadius: 4,
               lineHeight: 1.5,
               overflow: 'auto',
+              maxHeight: '40em',
             }}
           >
             {tokens.map((line, i) => (
