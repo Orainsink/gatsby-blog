@@ -7,7 +7,7 @@ import { CopyOutlined, SmileOutlined } from '@ant-design/icons';
 /**
  * code block component
  * default theme is vscode dark
- * @prop className: langClass 语言类型, 默认javascript // TODO: add sh plugin
+ * @prop className: langClass 语言类型, 默认javascript
  */
 const CodeBlock = ({ children, className: langClass = 'javascript' }: any) => {
   const language = langClass.replace(/language-/, '');

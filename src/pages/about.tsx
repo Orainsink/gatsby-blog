@@ -38,7 +38,7 @@ const AboutPage = ({ data, location }: PageProps<Data>) => {
 export default React.memo(AboutPage);
 export const pageQuery = graphql`
   query {
-    mdx(fields: { slug: { eq: "/关于本博客" } }) {
+    mdx(fields: { slug: { eq: "/about" } }) {
       body
     }
   }

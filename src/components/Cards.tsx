@@ -8,12 +8,12 @@ import styles from '../styles/TagsSnippet.module.less';
 const { Meta } = Card;
 
 interface Data {
-  allMdx: {
+  allFile: {
+    totalCount: number;
     group: {
       totalCount: number;
-      tag: string;
+      fieldValue: string;
     }[];
-    totalCount: number;
   };
   FEImg: any;
   leetcodeImg: any;
@@ -32,12 +32,12 @@ const TagsSnippet: React.FC = () => {
 
   const data: Data = useStaticQuery(graphql`
     query TagsQuery {
-      allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
-        group(field: frontmatter___tags) {
-          totalCount
-          tag: fieldValue
-        }
+      allFile(filter: { sourceInstanceName: { eq: "blog" } }) {
         totalCount
+        group(field: childMdx___frontmatter___tags) {
+          totalCount
+          fieldValue
+        }
       }
       FEImg: file(absolutePath: { regex: "/javascript.png/" }) {
         childImageSharp {
@@ -70,13 +70,15 @@ const TagsSnippet: React.FC = () => {
     }
   `);
 
-  const { group, totalCount } = data.allMdx;
+  const { group, totalCount } = data.allFile;
   const { FEImg, leetcodeImg, dialogImg, allImg } = data;
 
   const tagFilter = useCallback(
-    (tag) => {
+    (tag: string) => {
       const getCount = (tag: string) => {
-        return group.filter((item) => item.tag === tag)[0]?.totalCount || 0;
+        return (
+          group.filter((item) => item.fieldValue === tag)[0]?.totalCount || 0
+        );
       };
       // Use switch instated of object
       switch (tag) {

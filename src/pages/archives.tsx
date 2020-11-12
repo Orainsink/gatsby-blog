@@ -12,8 +12,23 @@ import Calendar from '../components/SideBlocks/Calendar';
 const WordCloud = loadable(() => import('../components/WordCloud'));
 
 interface Data {
-  allMdx: {
-    edges: PostItem[];
+  allFile: {
+    edges: {
+      node: {
+        childMdx: {
+          frontmatter: {
+            data: string;
+            title: string;
+            description: string;
+            tags: string[];
+          };
+          fields: {
+            slug: string;
+          };
+          excerpt: string;
+        };
+      };
+    }[];
   };
 }
 
@@ -52,23 +67,48 @@ const ArchivesPage = ({ data, location }: PageProps<Data>) => {
 
 export default React.memo(ArchivesPage);
 
+// export const pageQuery = graphql`
+//   {
+//     allMdx(
+//       sort: { fields: [frontmatter___date], order: DESC }
+//       filter: { frontmatter: { tags: {} } }
+//     ) {
+//       edges {
+//         node {
+//           excerpt
+//           fields {
+//             slug
+//           }
+//           frontmatter {
+//             date(formatString: "YYYY/MM/DD")
+//             title
+//             description
+//             tags
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 export const pageQuery = graphql`
   {
-    allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: {} } }
+    allFile(
+      filter: { sourceInstanceName: { eq: "blog" } }
+      sort: { fields: childMdx___frontmatter___date, order: DESC }
     ) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "YYYY/MM/DD")
-            title
-            description
-            tags
+          childMdx {
+            frontmatter {
+              date(formatString: "YYYY/MM/DD")
+              title
+              description
+              tags
+            }
+            fields {
+              slug
+            }
+            excerpt
           }
         }
       }

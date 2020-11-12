@@ -6,7 +6,6 @@ import SEO from '../components/seo';
 import { useSelector } from 'react-redux';
 import TagsSnippet from '../components/Cards';
 import Trigger from '../components/Trigger';
-import Loading from '../components/Loading';
 import Poem from '../components/Poem';
 import PostList from '../components/PostList';
 const Dynamic = loadable(() => import('../components/Dynamic/Dynamic'), {
