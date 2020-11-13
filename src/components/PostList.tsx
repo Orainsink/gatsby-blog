@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import Tags from '../components/Tags';
 
 interface Props {
-  posts: PostItem[];
+  posts: ChildMdxItem[];
   hideMore?: boolean;
 }
 const PostList: React.FC<Props> = ({ posts, hideMore = false }) => {
@@ -14,14 +14,16 @@ const PostList: React.FC<Props> = ({ posts, hideMore = false }) => {
 
   const lowerCasePosts = useMemo(
     () =>
-      posts.map(({ node: post }) => ({
-        title: (post.frontmatter.title || '').toLowerCase(),
-        description: (post.frontmatter.description || '').toLowerCase(),
-        excerpt: (post.excerpt || '').toLowerCase(),
-        tags: (post.frontmatter.tags || []).map((tag) =>
+      posts.map(({ node }) => ({
+        title: (node.childMdx.frontmatter.title || '').toLowerCase(),
+        description: (
+          node.childMdx.frontmatter.description || ''
+        ).toLowerCase(),
+        excerpt: (node.childMdx.excerpt || '').toLowerCase(),
+        tags: (node.childMdx.frontmatter.tags || []).map((tag) =>
           (tag || '').toLowerCase()
         ),
-        date: post.frontmatter.date,
+        date: node.childMdx.frontmatter.date,
       })),
     [posts]
   );
@@ -54,17 +56,21 @@ const PostList: React.FC<Props> = ({ posts, hideMore = false }) => {
   return (
     <>
       {filteredPosts.map(({ node }, index) => {
-        const title = node.frontmatter.title || node.fields.slug;
-        const { date, description, tags } = node.frontmatter;
+        const title =
+          node.childMdx.frontmatter.title || node.childMdx.fields.slug;
+        const { date, description, tags } = node.childMdx.frontmatter;
         return index < 6 || !fold ? (
-          <article key={node.fields.slug}>
+          <article key={node.childMdx.fields.slug}>
             <header>
               <h3
                 style={{
                   marginBottom: '0.4em',
                 }}
               >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                <Link
+                  style={{ boxShadow: `none` }}
+                  to={node.childMdx.fields.slug}
+                >
                   {title}
                 </Link>
               </h3>
@@ -74,7 +80,7 @@ const PostList: React.FC<Props> = ({ posts, hideMore = false }) => {
               <p
                 style={{ color: 'rgb(0,0,0,0.45)' }}
                 dangerouslySetInnerHTML={{
-                  __html: description || node.excerpt,
+                  __html: description || node.childMdx.excerpt,
                 }}
               />
               <Tags tags={tags} />

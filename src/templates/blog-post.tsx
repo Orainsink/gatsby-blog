@@ -15,18 +15,7 @@ import MyGitalk from '../components/MyGitalk';
 
 interface Props {
   data: {
-    mdx: {
-      id: string;
-      frontmatter: {
-        title: string;
-        date: string;
-        description: string;
-        tags: string[];
-      };
-      body: string;
-      excerpt: string;
-      tableOfContents: any;
-    };
+    mdx: PostItem;
     site: {
       siteMetadata: {
         title: string;
@@ -46,7 +35,7 @@ const BlogPostTemplate: React.FC<Props> = ({
   location,
 }) => {
   const {
-    frontmatter: { title, tags, description, date },
+    frontmatter: { title, tags, description, date, category },
     excerpt,
     tableOfContents,
   } = mdx;
@@ -99,6 +88,7 @@ const BlogPostTemplate: React.FC<Props> = ({
               textAlign: 'center',
             }}
           >
+            <span>分类：{category}</span>
             {date}
             <a
               className={styles.licence}
@@ -182,6 +172,7 @@ export const pageQuery = graphql`
         date(formatString: "YYYY/MM/DD")
         description
         tags
+        category
       }
       body
       excerpt

@@ -13,31 +13,14 @@ const WordCloud = loadable(() => import('../components/WordCloud'));
 
 interface Data {
   allFile: {
-    edges: {
-      node: {
-        childMdx: {
-          frontmatter: {
-            data: string;
-            title: string;
-            description: string;
-            tags: string[];
-          };
-          fields: {
-            slug: string;
-          };
-          excerpt: string;
-        };
-      };
-    }[];
+    edges: ChildMdxItem[];
   };
 }
 
 const ArchivesPage = ({ data, location }: PageProps<Data>) => {
   const { curTag, curDate } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const posts = data.allMdx.edges.filter((edge) => {
-    return edge.node.frontmatter.title;
-  });
+  const posts = data.allFile.edges;
 
   useEffect(() => {
     return () => {
@@ -67,29 +50,6 @@ const ArchivesPage = ({ data, location }: PageProps<Data>) => {
 
 export default React.memo(ArchivesPage);
 
-// export const pageQuery = graphql`
-//   {
-//     allMdx(
-//       sort: { fields: [frontmatter___date], order: DESC }
-//       filter: { frontmatter: { tags: {} } }
-//     ) {
-//       edges {
-//         node {
-//           excerpt
-//           fields {
-//             slug
-//           }
-//           frontmatter {
-//             date(formatString: "YYYY/MM/DD")
-//             title
-//             description
-//             tags
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
 export const pageQuery = graphql`
   {
     allFile(

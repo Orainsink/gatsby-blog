@@ -7,16 +7,24 @@ declare module '*.svg';
 declare module 'algoliasearch/lite';
 
 interface PostItem {
+  id?: string;
+  body?: string;
+  tableOfContents?: any;
+  excerpt: string;
+  frontmatter: {
+    title: string;
+    date: string;
+    description: string;
+    tags: string[];
+    category: string;
+  };
+  fields: {
+    slug: string;
+  };
+}
+
+interface ChildMdxItem {
   node: {
-    excerpt: string;
-    frontmatter: {
-      title: string;
-      date: string;
-      description: string;
-      tags: string[];
-    };
-    fields: {
-      slug: string;
-    };
+    childMdx: PostItem;
   };
 }

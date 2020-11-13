@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import loadable from '@loadable/component';
-import { PageProps, Link, graphql } from 'gatsby';
+import { PageProps, graphql } from 'gatsby';
 import Layout from '../layout/IndexLayout';
 import SEO from '../components/seo';
 import { useSelector } from 'react-redux';
@@ -19,15 +19,19 @@ interface Data {
     };
   };
   allMdx: {
-    edges: PostItem[];
+    edges: {
+      node: PostItem;
+    }[];
   };
 }
-
+// TODO: category
 const Index = ({ data }: PageProps<Data>) => {
   const siteTitle = data.site.siteMetadata.title;
-  const posts = data.allMdx.edges.filter((edge) => {
-    return edge.node.frontmatter.title;
-  });
+  const posts = data.allMdx.edges.map((edge) => ({
+    node: {
+      childMdx: edge.node,
+    },
+  })) as ChildMdxItem[];
   const { skip, scene } = useSelector((state) => state);
   useEffect(() => {
     if (skip && !scene) {
@@ -52,18 +56,9 @@ const Index = ({ data }: PageProps<Data>) => {
             margin: 0,
           }}
         >
-          最近文章：
+          最近五篇文章：
         </h5>
         <PostList posts={posts} />
-        <h5
-          style={{
-            textAlign: 'center',
-            padding: '1em 0',
-            margin: 0,
-          }}
-        >
-          <Link to={'/archives'}>查看全部</Link>
-        </h5>
       </Layout>
     </>
   );
@@ -90,6 +85,7 @@ export const pageQuery = graphql`
             description
             tags
             title
+            category
           }
         }
       }

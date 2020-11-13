@@ -8,7 +8,7 @@ import dayjs from 'dayjs';
 import styles from '../../styles/SideBar.module.less';
 
 interface Props {
-  posts: PostItem[];
+  posts: ChildMdxItem[];
 }
 const CalendarBlock: React.FC<Props> = ({ posts }) => {
   const dispatch = useDispatch();
@@ -22,8 +22,8 @@ const CalendarBlock: React.FC<Props> = ({ posts }) => {
 
   const allMonths = useMemo(() => {
     const obj = {};
-    posts.forEach(({ node: post }) => {
-      let date = post.frontmatter.date.substring(0, 7);
+    posts.forEach(({ node }) => {
+      let date = node.childMdx.frontmatter.date.substring(0, 7);
       if (obj[date]) {
         obj[date] += 1;
       } else {
