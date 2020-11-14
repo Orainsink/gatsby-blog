@@ -5,7 +5,6 @@ import styles from '../styles/Bloglayout.module.less';
 import Info from '../components/SideBlocks/Info';
 import SideBar from '../components/SideBlocks/SideBar';
 import Footer from '../components/Footer';
-import useBackgroundColor from '../../.history/src/hooks/useBackgroundColor_20201114180255';
 
 interface Props {
   content?: any;

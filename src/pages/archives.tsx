@@ -53,7 +53,7 @@ export default React.memo(ArchivesPage);
 export const pageQuery = graphql`
   {
     allFile(
-      filter: { sourceInstanceName: { eq: "blog" } }
+      filter: { sourceInstanceName: { eq: "tech" } }
       sort: { fields: childMdx___frontmatter___date, order: DESC }
     ) {
       edges {
