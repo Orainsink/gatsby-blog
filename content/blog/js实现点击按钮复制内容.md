@@ -4,8 +4,8 @@ copyright: true
 permalink: 1
 top: 0
 date: 2019-09-23 13:00:52
-tags: ["前端", "js"]
-categories: js
+tags: ['前端', 'js']
+categories: tech
 password:
 ---
 
@@ -17,9 +17,7 @@ password:
 
 <!--more-->
 
-### 插件:  [clipboard](https://clipboardjs.com/)
-
-
+### 插件: [clipboard](https://clipboardjs.com/)
 
 ### 原生实现: [document.execCommand()](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/execCommand) 方法
 
@@ -28,7 +26,7 @@ password:
 **命令**
 
 ```js
-bool = document.execCommand(aCommandName, aShowDefaultUI, aValueArgument)
+bool = document.execCommand(aCommandName, aShowDefaultUI, aValueArgument);
 ```
 
 **参数**
@@ -39,30 +37,29 @@ aShowDefaultUI：是否展示用户界面，一般情况下都是 false
 aValueArgument：有些命令需要额外的参数，一般用不到
 ```
 
-兼容性及方法返回值等见MDN
+兼容性及方法返回值等见 MDN
 
 **实现**
 
 可编辑区域内容元素:
 
 ```html
-<input id="demoInput" value="hello world">
-<button id="btn">点我复制</button>
+<input id="demoInput" value="hello world" /> <button id="btn">点我复制</button>
 ```
 
 ```js
 const btn = document.querySelector('#btn');
 btn.addEventListener('click', () => {
-    const input = document.querySelector('#demoInput');
-    input.select();
-    if (document.execCommand('copy')) {
-        document.execCommand('copy');
-        console.log('复制成功');
-    }
-})
+  const input = document.querySelector('#demoInput');
+  input.select();
+  if (document.execCommand('copy')) {
+    document.execCommand('copy');
+    console.log('复制成功');
+  }
+});
 ```
 
-`document.execCommand`只支持操纵可编辑区域内容的元素, div 和 span 的内容不属于可编辑区域, 可以采用曲线救国的方法: 
+`document.execCommand`只支持操纵可编辑区域内容的元素, div 和 span 的内容不属于可编辑区域, 可以采用曲线救国的方法:
 
 ```html
 <button id="btn">点我复制</button>
@@ -70,24 +67,24 @@ btn.addEventListener('click', () => {
 
 ```js
 const btn = document.querySelector('#btn');
-btn.addEventListener('click',() => {
-    const input = document.createElement('input');
-    // 解决ios自动聚焦导致的闪屏问题
-    input.setAttribute('readonly', 'readonly');
-    // 解决文档过长时点击按钮页面会乱跳的问题
-    input.setAttribute("style", "position:fixed;bottom:0;left:0;opacity:0;");
-    input.value = "需要复制的内容";
-    document.body.appendChild(input);
-    // ios 如果只用select,会复制不了,所以先focus再setSelectionRange
-    input.focus();
-    input.setSelectionRange(0, input.value.length);
-    // input.select();
-    if (document.execCommand('copy')) {
-        document.execCommand('copy');
-        console.log('复制成功');
-    }
-    document.body.removeChild(input);
-})
+btn.addEventListener('click', () => {
+  const input = document.createElement('input');
+  // 解决ios自动聚焦导致的闪屏问题
+  input.setAttribute('readonly', 'readonly');
+  // 解决文档过长时点击按钮页面会乱跳的问题
+  input.setAttribute('style', 'position:fixed;bottom:0;left:0;opacity:0;');
+  input.value = '需要复制的内容';
+  document.body.appendChild(input);
+  // ios 如果只用select,会复制不了,所以先focus再setSelectionRange
+  input.focus();
+  input.setSelectionRange(0, input.value.length);
+  // input.select();
+  if (document.execCommand('copy')) {
+    document.execCommand('copy');
+    console.log('复制成功');
+  }
+  document.body.removeChild(input);
+});
 ```
 
 **其他**
@@ -96,5 +93,4 @@ btn.addEventListener('click',() => {
 
 参考资料:
 
-[axuebin的博客](https://juejin.im/post/5a94f8eff265da4e9b593c29)
-
+[axuebin 的博客](https://juejin.im/post/5a94f8eff265da4e9b593c29)

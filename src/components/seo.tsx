@@ -7,6 +7,7 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
+import useCustomTitle from '../hooks/useCustomTitle';
 
 interface Props {
   description?: string;
@@ -32,6 +33,7 @@ const SEO = ({ description, lang = 'CHS', meta, title }: Props) => {
     `
   );
   const metaDescription = description || site.siteMetadata.description;
+  useCustomTitle(title);
 
   return (
     <Helmet

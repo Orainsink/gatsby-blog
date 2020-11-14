@@ -15,13 +15,13 @@ let _path = require('path');
 let str = process.argv[2];
 
 let isFolder = str.startsWith('/');
-let category = str.split('##')[1] || 'blog';
+let category = str.split('##')[1] || 'tech';
 let title = str.replace('/', '').replace(/##.+/, '');
 let date = moment().format('YYYY-MM-DD HH:mm:ss');
 let path = '';
 
 // content/category
-const categories = ['blog', 'leetcode', 'snippet'];
+const categories = ['tech', 'leetcode', 'snippet', 'essay'];
 if (categories.indexOf(category) === -1) {
   return console.error(new Error("wrong category -_-''"));
 }
@@ -31,7 +31,7 @@ title: ${title}
 date: ${date}
 description:
 tags: []
-category: ${category}
+categories: ${category}
 ---
 `;
 

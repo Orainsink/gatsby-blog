@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Bg from '../components/Bg';
 import BackTop from '../components/BackTop';
 import Header from '../components/Header';
+import useBackgroundColor from '../hooks/useBackgroundColor';
 
 /**global PageElement */
 const GlobalLayout = ({ children, location }) => {
@@ -15,6 +16,8 @@ const GlobalLayout = ({ children, location }) => {
    * */
   const body = document.getElementsByTagName('body')[0];
   body.style.overflowY = scene ? 'hidden' : 'auto';
+
+  useBackgroundColor();
 
   return (
     <>

@@ -4,47 +4,48 @@ copyright: true
 permalink: 3
 top: 0
 date: 2019-07-24 22:26:22
-tags: ["前端", "小程序"]
-categories: 小程序
+tags: ['前端', '小程序']
+categories: tech
 password:
 ---
 
-> 状态较少的小程序一般用不到大型的状态管理工具,所以eventBus就行了
+> 状态较少的小程序一般用不到大型的状态管理工具,所以 eventBus 就行了
 
 eventBus.js
 
 <!--more-->
 
 ```js
- class EventBus {
-    constructor() {
-        this.EventCache = {};
-    }
+class EventBus {
+  constructor() {
+    this.EventCache = {};
+  }
 
-    on(type, self, handler) {
-        let cache = this.EventCache[type] || (this.EventCache[type] = {});
-        
-        cache[self.__wxExparserNodeId__] = handler;
-    }
+  on(type, self, handler) {
+    let cache = this.EventCache[type] || (this.EventCache[type] = {});
 
-    emit(type, ...param) {
-        let cache = this.EventCache[type];
+    cache[self.__wxExparserNodeId__] = handler;
+  }
 
-        if (!cache) return;
+  emit(type, ...param) {
+    let cache = this.EventCache[type];
 
-        for (let key in cache) cache[key] && cache[key].call(this, ...param);
-    }
+    if (!cache) return;
 
-    off(type, self) {
-        let cache = this.EventCache[type];
+    for (let key in cache) cache[key] && cache[key].call(this, ...param);
+  }
 
-        for (let key in cache) key === self.__wxExparserNodeId__ && (delete this.EventCache[type][key]);
-    }
+  off(type, self) {
+    let cache = this.EventCache[type];
+
+    for (let key in cache)
+      key === self.__wxExparserNodeId__ && delete this.EventCache[type][key];
+  }
 }
-module.exports = { EventBus }
+module.exports = { EventBus };
 ```
 
-使用时先在app.js实例化
+使用时先在 app.js 实例化
 
 ```js
 App({
@@ -60,11 +61,10 @@ App({
 // 获取app实例
 const app = getApp();
 // 注册监听,传this是为了绑定this对象
-app.event.on('reLoad',this,(payload)=>{
-    // do something
-})
-const payload = true
-app.event.emit('reload', payload)
-app.event.off("reload", this);
+app.event.on('reLoad', this, (payload) => {
+  // do something
+});
+const payload = true;
+app.event.emit('reload', payload);
+app.event.off('reload', this);
 ```
-

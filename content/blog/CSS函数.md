@@ -3,6 +3,7 @@ title: CSS函数, var和attr
 date: 2020-07-21 7:54:10
 description:
 tags: [css, 前端]
+categories: tech
 ---
 
 > CSS 全称层叠样式表, 在最基本的使用时它只是一个样式表的标记语言, 根本算不上编程, 所以后来者为了增强 CSS 而开发了 Less 和 Scss. 但随着 CSS 的不断变革, CSS 也增加了许多内置函数, 有部分函数相当实用, 这篇文章就稍微记录一下这些 CSS 函数的特性和常见使用方法.

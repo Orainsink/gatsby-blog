@@ -3,6 +3,7 @@ title: 使用react-three-fiber的性能注意要点
 date: 2020-10-10 12:10:57
 description: 你需要时刻记得three-fiber只是一个封装threejs的语法糖库,他并没有改变threejs的本质,threejs对象不是DOM,react的虚拟DOM对threejs来说没有用,错误的更新和生成threejs对象可能会造成严重的性能问题
 tags: [react, 前端, three]
+categories: tech
 ---
 
 > 本文是[官方文档](https://github.com/pmndrs/react-three-fiber/blob/master/pitfalls.md)的翻译, 该文档总结了部分 three-fiber 使用过程中的注意要点, 旨在帮助使用者避免因为错误的写法而造成的性能问题。

@@ -4,14 +4,14 @@ copyright: true
 permalink: 2
 top: 0
 date: 2019-08-23 10:32:45
-tags: ["前端", "小程序"]
-categories: 小程序
+tags: ['前端', '小程序']
+categories: tech
 password:
 ---
 
 ## 问题
 
-生命周期函数`onLaunch`是先于页面生命周期`onLoad`执行的, 但是需要注意的一点是**`onLaunch`和`onLoad`的执行顺序并不能保证这两个钩子内的请求返回顺序**, 比如以下操作: 
+生命周期函数`onLaunch`是先于页面生命周期`onLoad`执行的, 但是需要注意的一点是**`onLaunch`和`onLoad`的执行顺序并不能保证这两个钩子内的请求返回顺序**, 比如以下操作:
 
 1. 在`app.onLaunch()`中发送`login`登录请求
 2. 通过微信开发者平台设置编译模式, 直接打开某个页面
@@ -19,7 +19,7 @@ password:
 
 结果会报错`GET https://xxxxxx 401 (Unauthorized)`
 
-查看网络请求, `login`在返回结果前已经发出去了`getData`的包, 导致`getData`的请求并没有携带sessionId, 请求失败.
+查看网络请求, `login`在返回结果前已经发出去了`getData`的包, 导致`getData`的请求并没有携带 sessionId, 请求失败.
 
 <!--more-->
 
@@ -101,12 +101,8 @@ Page({
 })
 ```
 
-
-
-
-
 参考文章:
 
-[追逐时光的博客_CSDN](https://www.cnblogs.com/Can-daydayup/p/10614399.html)
+[追逐时光的博客\_CSDN](https://www.cnblogs.com/Can-daydayup/p/10614399.html)
 
-[mipaifu328的博客_简书](https://www.jianshu.com/p/aaf65625fc9d)
+[mipaifu328 的博客\_简书](https://www.jianshu.com/p/aaf65625fc9d)

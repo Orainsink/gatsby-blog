@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import loadable from '@loadable/component';
 import { PageProps, graphql } from 'gatsby';
 import Layout from '../layout/IndexLayout';
@@ -8,6 +8,8 @@ import TagsSnippet from '../components/Cards';
 import Trigger from '../components/Trigger';
 import Poem from '../components/Poem';
 import PostList from '../components/PostList';
+import { MarkdownRemarkConnection } from '../../graphql-types';
+import useBackgroundColor from '../hooks/useBackgroundColor';
 const Dynamic = loadable(() => import('../components/Dynamic/Dynamic'), {
   fallback: null,
 });
@@ -18,27 +20,19 @@ interface Data {
       title: string;
     };
   };
-  allMdx: {
-    edges: {
-      node: PostItem;
-    }[];
-  };
+  allMdx: MarkdownRemarkConnection;
 }
-// TODO: category
+
 const Index = ({ data }: PageProps<Data>) => {
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMdx.edges.map((edge) => ({
     node: {
       childMdx: edge.node,
     },
-  })) as ChildMdxItem[];
+  }));
   const { skip, scene } = useSelector((state) => state);
-  useEffect(() => {
-    if (skip && !scene) {
-      document.body.style.background = '#efefef';
-    }
-    // eslint-disable-next-line
-  }, []);
+
+  useBackgroundColor();
 
   return (
     <>
@@ -85,7 +79,7 @@ export const pageQuery = graphql`
             description
             tags
             title
-            category
+            categories
           }
         }
       }

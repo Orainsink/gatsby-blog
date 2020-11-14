@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux';
 import { Row, Col } from 'antd';
 import styles from '../styles/Bloglayout.module.less';
 import Info from '../components/SideBlocks/Info';
-import SideBar from './SideBar';
+import SideBar from '../components/SideBlocks/SideBar';
 import Footer from '../components/Footer';
+import useBackgroundColor from '../../.history/src/hooks/useBackgroundColor_20201114180255';
 
 interface Props {
   content?: any;
@@ -24,10 +25,6 @@ const Layout: React.FC<Props> = (props) => {
     dispatch({ type: 'SCENE', payload: false });
     isBrowser && localStorage.setItem('SCENE', '');
   }, [dispatch]);
-
-  useEffect(() => {
-    document.body.style.background = '#efefef';
-  }, []);
 
   return (
     <div className={styles.wrapper}>

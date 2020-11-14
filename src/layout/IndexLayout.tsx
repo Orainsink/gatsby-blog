@@ -5,7 +5,7 @@ import { Row, Col } from 'antd';
 import styles from '../styles/Indexlayout.module.less';
 import Info from '../components/SideBlocks/Info';
 import Footer from '../components/Footer';
-import SideBar from './SideBar';
+import SideBar from '../components/SideBlocks/SideBar';
 import TagsBlock from '../components/SideBlocks/TagsBlock';
 import Comment from '../components/SideBlocks/Comment';
 

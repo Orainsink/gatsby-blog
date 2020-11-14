@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { PageProps, graphql } from 'gatsby';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
-import { useDispatch } from 'react-redux';
 import styles from '../styles/Blog.module.less';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Poem from '../components/Poem';
@@ -13,16 +12,8 @@ interface Data {
     body: string;
   };
 }
-const AboutPage = ({ data, location }: PageProps<Data>) => {
+const AboutPostTemplate = ({ data, location }: PageProps<Data>) => {
   const { mdx } = data;
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch({ type: 'TITLE', payload: 'About' });
-    return () => {
-      dispatch({ type: 'TITLE', payload: '' });
-    };
-  }, [dispatch]);
 
   return (
     <Layout location={location} sideBlocks={<Comment />}>
@@ -35,7 +26,8 @@ const AboutPage = ({ data, location }: PageProps<Data>) => {
   );
 };
 
-export default React.memo(AboutPage);
+export default AboutPostTemplate;
+
 export const pageQuery = graphql`
   query {
     mdx(fields: { slug: { eq: "/about" } }) {

@@ -32,9 +32,9 @@ const TagsSnippet: React.FC = () => {
 
   const data: Data = useStaticQuery(graphql`
     query TagsQuery {
-      allFile(filter: { sourceInstanceName: { eq: "blog" } }) {
+      allFile {
         totalCount
-        group(field: childMdx___frontmatter___tags) {
+        group(field: childMdx___frontmatter___categories) {
           totalCount
           fieldValue
         }

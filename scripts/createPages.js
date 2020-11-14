@@ -5,8 +5,16 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
 
   const Template = path.resolve(`src/templates/blog-post.tsx`);
+  const SnippetTemplate = path.resolve(`src/templates/snippet-post.tsx`);
+  const AboutTemplate = path.resolve(`src/templates/about-post.tsx`);
+  const componentTemplate = {
+    tech: Template,
+    leetcode: Template,
+    essay: Template,
+    snippet: SnippetTemplate,
+    about: AboutTemplate,
+  };
 
-  // sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000
   return graphql(`
     {
       allMdx {
@@ -18,6 +26,7 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
             }
             frontmatter {
               title
+              categories
             }
           }
         }
@@ -32,9 +41,10 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
       const previous =
         index === posts.length - 1 ? null : posts[index + 1].node;
       const next = index === 0 ? null : posts[index - 1].node;
+
       createPage({
         path: replacePath(node.fields.slug),
-        component: Template,
+        component: componentTemplate[node.frontmatter.categories] ?? Template,
         context: { id: node.id, previous, next },
       });
     });

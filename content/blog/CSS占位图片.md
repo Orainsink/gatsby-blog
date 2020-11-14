@@ -4,8 +4,8 @@ copyright: true
 permalink: 1
 top: 0
 date: 2019-05-13 18:30:23
-tags: ["前端", "css"]
-categories: css
+tags: ['前端', 'css']
+categories: tech
 password:
 ---
 
@@ -17,9 +17,9 @@ password:
 
 ```css
 img::after {
-    content: "";
-    background: url('xxxx.png') ;
+  content: '';
+  background: url('xxxx.png');
 }
 ```
 
-通过伪类,设置img的背景为本地图片,至于位置或者大小,视情况自己填
+通过伪类,设置 img 的背景为本地图片,至于位置或者大小,视情况自己填

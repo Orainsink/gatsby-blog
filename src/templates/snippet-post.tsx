@@ -8,9 +8,8 @@ import styles from '../styles/Blog.module.less';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Anchor } from 'antd';
-import Contents from '../components/SideBlocks/Contents';
+import Comment from '../components/SideBlocks/Comment';
 import CodeBlock from '../components/CodeBlock';
-import MyGitalk from '../components/MyGitalk';
 
 interface Props {
   data: {
@@ -28,7 +27,7 @@ interface Props {
   };
   location: any;
 }
-const BlogPostTemplate: React.FC<Props> = ({
+const SnippetPostTemplate: React.FC<Props> = ({
   data: { mdx },
   pageContext,
   location,
@@ -58,10 +57,7 @@ const BlogPostTemplate: React.FC<Props> = ({
   }, []);
 
   return (
-    <Layout
-      location={location}
-      sideBlocks={width > 1110 ? <Contents content={tableOfContents} /> : null}
-    >
+    <Layout location={location} sideBlocks={<Comment />}>
       <SEO title={title} description={description || excerpt} />
       <article>
         <header>
@@ -137,15 +133,14 @@ const BlogPostTemplate: React.FC<Props> = ({
           </li>
         </ul>
       </nav>
-      {mdx && <MyGitalk title={title} />}
     </Layout>
   );
 };
 
-export default BlogPostTemplate;
+export default SnippetPostTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostQuery($id: String) {
+  query SnippetPostQuery($id: String) {
     site {
       siteMetadata {
         title

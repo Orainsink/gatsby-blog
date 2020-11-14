@@ -4,18 +4,17 @@ copyright: true
 permalink: 2
 top: 0
 date: 2019-02-16 00:30:55
-tags: ["前端", "three"]
-categories: webGL
-password:
+tags: ['前端', 'three']
+categories: tech
 ---
 
-> tween.js是一个实现缓动补间动画的库,使用的地方包括但不限于three.js,一些animate.css不能实现的功能都能用tween.js实现
+> tween.js 是一个实现缓动补间动画的库,使用的地方包括但不限于 three.js,一些 animate.css 不能实现的功能都能用 tween.js 实现
 >
 > [官方文档](https://github.com/tweenjs/tween.js/)
 
 <!--more-->
 
-## 引入tween.js
+## 引入 tween.js
 
 **标签引入** [下载地址](https://raw.githubusercontent.com/tweenjs/tween.js/master/src/Tween.js)
 
@@ -23,55 +22,55 @@ password:
 <script src="js/Tween.js"></script>
 ```
 
-**CDN加速**
+**CDN 加速**
 
 ```js
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
 ```
 
-**npm安装**
+**npm 安装**
 
 ```shell
 npm install @tweenjs/tween.js
 ```
 
-require引入
+require 引入
 
 ```js
 var TWEEN = require('@tweenjs/tween.js');
 ```
 
-ES6的import引入
+ES6 的 import 引入
 
 ```js
-import TWEEN from '@tweenjs/tween.js'
+import TWEEN from '@tweenjs/tween.js';
 ```
 
 实例化,开始使用
 
 ```js
-var t = new TWEEN.Tween( /* etc */ );
+var t = new TWEEN.Tween(/* etc */);
 t.start();
 ```
 
 ## 特性
 
 - 做且仅做一件事：补间属性
-- 不处理CSS单位（例如附加px）
+- 不处理 CSS 单位（例如附加 px）
 - 不插入颜色
-- 缓动函数可以在Tween之外复用
+- 缓动函数可以在 Tween 之外复用
 - 可以使用自定义缓动功能
 
-> 以下使用指南翻译来源[zhaoqize的blog](https://github.com/zhaoqize/blog/issues/10)
+> 以下使用指南翻译来源[zhaoqize 的 blog](https://github.com/zhaoqize/blog/issues/10)
 
-## tween是什么？如何使用？你为什么想用它？
+## tween 是什么？如何使用？你为什么想用它？
 
 补间(动画)（来自 [in-between](https://en.wikipedia.org/wiki/Inbetweening)）是一个概念，允许你以平滑的方式更改对象的属性。你只需告诉它哪些属性要更改，当补间结束运行时它们应该具有哪些最终值，以及这需要多长时间，补间引擎将负责计算从起始点到结束点的值。
 
 例如，`position`对象拥有`x`和`y`两个坐标:
 
 ```js
-var position = { x: 100, y: 0 }
+var position = { x: 100, y: 0 };
 ```
 
 如果你想将`x`坐标的值从`100`变成`200`，你应该这么做：
@@ -97,20 +96,20 @@ tween.start();
 animate();
 
 function animate() {
-	requestAnimationFrame(animate);
-	// [...]
-	TWEEN.update();
-	// [...]
+  requestAnimationFrame(animate);
+  // [...]
+  TWEEN.update();
+  // [...]
 }
 ```
 
-这样在更新每帧的时候都会运行补间动画；经过 1秒后 (1000 毫秒) `position.x`将会变成 `200`。
+这样在更新每帧的时候都会运行补间动画；经过 1 秒后 (1000 毫秒) `position.x`将会变成 `200`。
 
-除非你在控制台中打印出 `x` 的值，不然你看不到它的变化。你可能想要使用 `onUpdate `回调:
+除非你在控制台中打印出 `x` 的值，不然你看不到它的变化。你可能想要使用 `onUpdate`回调:
 
 ```js
-tween.onUpdate(function(object) {
-	console.log(object.x);
+tween.onUpdate(function (object) {
+  console.log(object.x);
 });
 ```
 
@@ -122,20 +121,20 @@ tween.onUpdate(function(object) {
 
 ```js
 var tween = new TWEEN.Tween(cube.position)
-		.to({ x: 100, y: 100, z: 100 }, 10000)
-		.start();
+  .to({ x: 100, y: 100, z: 100 }, 10000)
+  .start();
 
 animate();
 
 function animate() {
-	requestAnimationFrame(animate);
-	TWEEN.update();
+  requestAnimationFrame(animate);
+  TWEEN.update();
 
-	threeRenderer.render(scene, camera);
+  threeRenderer.render(scene, camera);
 }
 ```
 
-在这种情况下，因为three.js渲染器将在渲染之前查看对象的位置，所以不需要使用明确的`onUpdate`回调。
+在这种情况下，因为 three.js 渲染器将在渲染之前查看对象的位置，所以不需要使用明确的`onUpdate`回调。
 
 你可能也注意到了一些不同的地方：tween.js 可以链式调用！ 每个`tween`函数都会返回`tween`实例，所以你可以重写下面的代码：
 
@@ -148,14 +147,12 @@ tween.start();
 改成这样：
 
 ```js
-var tween = new TWEEN.Tween(position)
-	.to({ x: 200 }, 1000)
-	.start();
+var tween = new TWEEN.Tween(position).to({ x: 200 }, 1000).start();
 ```
 
 在将会看到很多例子，所以熟悉它是很好的！比如 [04-simplest](https://github.com/tweenjs/tween.js/blob/master/examples/04_simplest.html) 这个例子。
 
-## tween.js的动画
+## tween.js 的动画
 
 Tween.js 不会自行运行。你需要显式的调用 `update` 方法来告诉它何时运行。推荐的方法是在主动画循环中执行这个操作。使用 `requestAnimationFrame` 调用此循环以获得最佳的图形性能。
 
@@ -165,10 +162,10 @@ Tween.js 不会自行运行。你需要显式的调用 `update` 方法来告诉�
 animate();
 
 function animate() {
-	requestAnimationFrame(animate);
-	// [...]
-	TWEEN.update();
-	// [...]
+  requestAnimationFrame(animate);
+  // [...]
+  TWEEN.update();
+  // [...]
 }
 ```
 
@@ -205,7 +202,7 @@ tween.stop();
 
 ### update
 
-补间也有一个更新的方法---这实际上是由 `TWEEN.update` 调用的。 你通常不需要直接调用它，除非你是个 疯狂的hacker。
+补间也有一个更新的方法---这实际上是由 `TWEEN.update` 调用的。 你通常不需要直接调用它，除非你是个 疯狂的 hacker。
 
 ### chain
 
@@ -215,7 +212,7 @@ tween.stop();
 tweenA.chain(tweenB);
 ```
 
-或者，对于一个无限的链式，设置tweenA一旦tweenB完成就开始：
+或者，对于一个无限的链式，设置 tweenA 一旦 tweenB 完成就开始：
 
 ```js
 tweenA.chain(tweenB);
@@ -227,10 +224,10 @@ tweenB.chain(tweenA);
 在其他情况下，您可能需要将多个补间链接到另一个补间，以使它们（链接的补间）同时开始动画：
 
 ```js
-tweenA.chain(tweenB,tweenC);
+tweenA.chain(tweenB, tweenC);
 ```
 
-> 警告：调用 `tweenA.chain（tweenB）` 实际上修改了tweenA，所以tweenA总是在tweenA完成时启动。 `chain` 的返回值只是tweenA，不是一个新的tween。
+> 警告：调用 `tweenA.chain（tweenB）` 实际上修改了 tweenA，所以 tweenA 总是在 tweenA 完成时启动。 `chain` 的返回值只是 tweenA，不是一个新的 tween。
 
 ### repeat
 
@@ -256,7 +253,7 @@ tween.delay(1000);
 tween.start();
 ```
 
-将在调用启动方法后的1秒钟后开始执行。
+将在调用启动方法后的 1 秒钟后开始执行。
 
 ## 控制所有补间
 
@@ -293,17 +290,11 @@ tween.start();
 var groupA = new TWEEN.Group();
 var groupB = new TWEEN.Group();
 
-var tweenA = new TWEEN.Tween({ x: 1 }, groupA)
-	.to({ x: 10 }, 100)
-	.start();
+var tweenA = new TWEEN.Tween({ x: 1 }, groupA).to({ x: 10 }, 100).start();
 
-var tweenB = new TWEEN.Tween({ x: 1 }, groupB)
-	.to({ x: 10 }, 100)
-	.start();
+var tweenB = new TWEEN.Tween({ x: 1 }, groupB).to({ x: 10 }, 100).start();
 
-var tweenC = new TWEEN.Tween({ x: 1 })
-	.to({ x: 10 }, 100)
-	.start();
+var tweenC = new TWEEN.Tween({ x: 1 }).to({ x: 10 }, 100).start();
 
 groupA.update(); // 只更新tweenA
 groupB.update(); // 只更新tweenB
@@ -328,11 +319,11 @@ tween.easing(TWEEN.Easing.Quadratic.In);
 
 ### 可用的缓动函数：TWEEN.Easing
 
-tween.js提供了一些现有的缓动功能。它们按照它们表示的方程式进行分组：线性，二次，三次，四次，五次，正弦，指数，圆形，弹性，背部和弹跳，然后是缓动型：In，Out和InOut。
+tween.js 提供了一些现有的缓动功能。它们按照它们表示的方程式进行分组：线性，二次，三次，四次，五次，正弦，指数，圆形，弹性，背部和弹跳，然后是缓动型：In，Out 和 InOut。
 
 除非您已经熟悉这些概念，否则这些名称可能不会对您说什么，所以您可能需要查看 [Graphs](https://github.com/tweenjs/tween.js/blob/master/examples/03_graphs.html) 示例，该示例将一个页面中的所有曲线进行图形化，以便比较它们如何看待一瞥。
 
-这些功能是从 Robert Penner 慷慨地提供几年前作为自由软件提供的原始方程派生而来的，但是已经被优化以便与JavaScript很好地发挥作用。
+这些功能是从 Robert Penner 慷慨地提供几年前作为自由软件提供的原始方程派生而来的，但是已经被优化以便与 JavaScript 很好地发挥作用。
 
 ### 使用自定义缓动功能
 
@@ -342,7 +333,7 @@ tween.js提供了一些现有的缓动功能。它们按照它们表示的方程
   - `k`: 缓动过程，或我们的补间所处的时间有多长。允许的值在[0，1]的范围内。
 - 它必须根据输入参数返回一个值。
 
-不管要修改多少个属性，easing函数在每次更新时只调用一次。 然后将结果与初始值以及这个值和最终值之间的差值（delta）一起使用，就像这个伪代码一样：
+不管要修改多少个属性，easing 函数在每次更新时只调用一次。 然后将结果与初始值以及这个值和最终值之间的差值（delta）一起使用，就像这个伪代码一样：
 
 ```
 easedElapsed = easing(k);
@@ -356,7 +347,7 @@ for each property:
 
 ```js
 function tenStepEasing(k) {
-	return Math.floor(k * 10) / 10;
+  return Math.floor(k * 10) / 10;
 }
 ```
 
@@ -372,28 +363,26 @@ tween.easing(tenStepEasing);
 
 另一个强大的特性是能够在每个补间的生命周期的特定时间运行自己的功能。 当更改属性不够时，通常需要这样做。
 
-例如，假设你正在试图给一些不能直接访问属性的对象设置动画，但是需要你调用setter。 您可以使用 `update` 回调来读取新的更新值，然后手动调用setters。 所有的回调函数都将补间对象作为唯一的参数。
+例如，假设你正在试图给一些不能直接访问属性的对象设置动画，但是需要你调用 setter。 您可以使用 `update` 回调来读取新的更新值，然后手动调用 setters。 所有的回调函数都将补间对象作为唯一的参数。
 
 ```js
 var trickyObjTween = new TWEEN.Tween({
-	propertyA: trickyObj.getPropertyA(),
-	propertyB: trickyObj.getPropertyB()
+  propertyA: trickyObj.getPropertyA(),
+  propertyB: trickyObj.getPropertyB(),
 })
-	.to({ propertyA: 100, propertyB: 200 })
-	.onUpdate(function(object) {
-		object.setA( object.propertyA );
-		object.setB( object.propertyB );
-	});
+  .to({ propertyA: 100, propertyB: 200 })
+  .onUpdate(function (object) {
+    object.setA(object.propertyA);
+    object.setB(object.propertyB);
+  });
 ```
 
 或者想象一下，当一个补间开始时，你想播放声音。你可以使用 `start` 回调：
 
 ```js
-var tween = new TWEEN.Tween(obj)
-	.to({ x: 100 })
-	.onStart(function() {
-		sound.play();
-	});
+var tween = new TWEEN.Tween(obj).to({ x: 100 }).onStart(function () {
+  sound.play();
+});
 ```
 
 每个回调的范围是补间对象--在这种情况下，是 `obj`。
@@ -428,7 +417,7 @@ var tween = new TWEEN.Tween(obj)
 
 ### 相对值
 
-使用 `to` 方法时，也可以使用相对值。 当tween启动时，Tween.js将读取当前属性值并应用相对值来找出新的最终值。
+使用 `to` 方法时，也可以使用相对值。 当 tween 启动时，Tween.js 将读取当前属性值并应用相对值来找出新的最终值。
 **但是你需要使用引号**，否则这些值将被视为绝对的。 我们来看一个例子:
 
 ```js
@@ -445,7 +434,7 @@ absoluteTween.start(); // Makes x go to 100
 
 // This will make the `x` property be 100 units more,
 // relative to the actual value when it starts
-var relativeTween = new TWEEN.Tween(relativeObj).to({ x: "+100" });
+var relativeTween = new TWEEN.Tween(relativeObj).to({ x: '+100' });
 
 // Suppose relativeObj.x is 0 now
 relativeTween.start(); // Makes x go to 0 +100 = 100
@@ -458,26 +447,26 @@ relativeTween.start(); // Makes x go to -100 +100 = 0
 
 ### 补间值的数组
 
-除了补间为绝对值或相对值之外，还可以让Tween.js跨一系列值更改属性。 要做到这一点，你只需要指定一个数组的值，而不是一个属性的单个值。 例如：
+除了补间为绝对值或相对值之外，还可以让 Tween.js 跨一系列值更改属性。 要做到这一点，你只需要指定一个数组的值，而不是一个属性的单个值。 例如：
 
 ```
 var tween = new TWEEN.Tween(relativeObj).to({ x: [0, -100, 100] });
 ```
 
-将使 `x` 从初始值变为0，-100和100。
+将使 `x` 从初始值变为 0，-100 和 100。
 
 这些值的计算方法如下：
 
 - 首先，补间进度如常计算
-- 进度（从0到1）用作插值函数的输入
+- 进度（从 0 到 1）用作插值函数的输入
 - 基于进度和值的数组，生成内插值
 
-例如，当补间刚刚启动（进度为0）时，插值函数将返回数组中的第一个值。 当补间到一半时，插值函数将返回一个大约在数组中间的值，当补间结束时，插值函数将返回最后一个值。
+例如，当补间刚刚启动（进度为 0）时，插值函数将返回数组中的第一个值。 当补间到一半时，插值函数将返回一个大约在数组中间的值，当补间结束时，插值函数将返回最后一个值。
 
 您可以使用插值方法更改插值函数。 例如：
 
 ```js
-tween.interpolation( TWEEN.Interpolation.Bezier );
+tween.interpolation(TWEEN.Interpolation.Bezier);
 ```
 
 以下值可用：
@@ -489,26 +478,26 @@ tween.interpolation( TWEEN.Interpolation.Bezier );
 默认是 `Linear`。
 
 请注意，插值函数对于与同一补间中的数组进行补间的所有属性是全局的。
-您不能使用数组和线性函数进行属性A的更改，也不能使用相同的补间进行数组B的属性B和Bezier函数的更改; 您应该使用运行在同一对象上的两个补间对象，但修改不同的属性并使用不同的插值函数。
+您不能使用数组和线性函数进行属性 A 的更改，也不能使用相同的补间进行数组 B 的属性 B 和 Bezier 函数的更改; 您应该使用运行在同一对象上的两个补间对象，但修改不同的属性并使用不同的插值函数。
 
 查看 [06_array_interpolation](https://github.com/tweenjs/tween.js/blob/master/examples/06_array_interpolation.html) 示例。
 
 ## 获得最佳性能
 
-虽然Tween.js试图自己执行，但是没有什么能够阻止你以一种反作用的方式使用它。 这里有一些方法可以避免在使用Tween.js时（或者在网页中进行动画制作时）减慢项目速度。
+虽然 Tween.js 试图自己执行，但是没有什么能够阻止你以一种反作用的方式使用它。 这里有一些方法可以避免在使用 Tween.js 时（或者在网页中进行动画制作时）减慢项目速度。
 
-### 使用高性能的CSS
+### 使用高性能的 CSS
 
 当您尝试在页面中设置元素的位置时，最简单的解决方案是为 `top` 和 `left` 属性设置动画，如下所示：
 
 ```js
 var element = document.getElementById('myElement');
 var tween = new TWEEN.Tween({ top: 0, left: 0 })
-	.to({ top: 100, left: 100 }, 1000)
-	.onUpdate(function(object) {
-		element.style.top = object.top + 'px';
-		element.style.left = object.left + 'px';
-	});
+  .to({ top: 100, left: 100 }, 1000)
+  .onUpdate(function (object) {
+    element.style.top = object.top + 'px';
+    element.style.left = object.left + 'px';
+  });
 ```
 
 但这实际上是效率低下的，因为改变这些属性会迫使浏览器在每次更新时重新计算布局，这是非常昂贵的操作。 相反的，您应该使用 `transform`，这不会使布局无效，并且在可能的情况下也将被硬件加速，比如：
@@ -516,22 +505,23 @@ var tween = new TWEEN.Tween({ top: 0, left: 0 })
 ```js
 var element = document.getElementById('myElement');
 var tween = new TWEEN.Tween({ top: 0, left: 0 })
-	.to({ top: 100, left: 100 }, 1000)
-	.onUpdate(function(object) {
-		element.style.transform = 'translate(' + object.left + 'px, ' + object.top + 'px);';
-	});
+  .to({ top: 100, left: 100 }, 1000)
+  .onUpdate(function (object) {
+    element.style.transform =
+      'translate(' + object.left + 'px, ' + object.top + 'px);';
+  });
 ```
 
 如果你想了解更多关于这个，看看[这篇文章](https://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/)。
 
-但是，如果您的动画需求非常简单，那么在适用的情况下使用CSS动画或转换可能会更好，以便浏览器尽可能优化。
-当您的动画需要涉及复杂的布局时，Tween.js是非常有用的，也就是说，您需要将多个补间同步到一起，在完成一些动作之后，循环多次等等。
+但是，如果您的动画需求非常简单，那么在适用的情况下使用 CSS 动画或转换可能会更好，以便浏览器尽可能优化。
+当您的动画需要涉及复杂的布局时，Tween.js 是非常有用的，也就是说，您需要将多个补间同步到一起，在完成一些动作之后，循环多次等等。
 
-### 对垃圾收集器（别名GC）
+### 对垃圾收集器（别名 GC）
 
-如果你使用onUpdate回调函数，你需要非常小心的使用它。 因为这个函数每秒钟会被调用很多次，所以如果每次更新都要花费很多的代价，那么你可能会阻塞主线程并导致可怕的结果，或者如果你的操作涉及到内存分配的话， 垃圾收集器运行太频繁，也导致结果。 所以只是不要做些事情中的其中一个。 保持你的onUpdate回调非常轻量级，并确保在开发时也使用内存分析器。
+如果你使用 onUpdate 回调函数，你需要非常小心的使用它。 因为这个函数每秒钟会被调用很多次，所以如果每次更新都要花费很多的代价，那么你可能会阻塞主线程并导致可怕的结果，或者如果你的操作涉及到内存分配的话， 垃圾收集器运行太频繁，也导致结果。 所以只是不要做些事情中的其中一个。 保持你的 onUpdate 回调非常轻量级，并确保在开发时也使用内存分析器。
 
 ### 疯狂的补间
 
-这是你可能不经常使用的东西，但是你可以在Tween.js之外使用补间公式。 毕竟，它们只是功能。 所以你可以使用它们来计算平滑曲线作为输入数据。
+这是你可能不经常使用的东西，但是你可以在 Tween.js 之外使用补间公式。 毕竟，它们只是功能。 所以你可以使用它们来计算平滑曲线作为输入数据。
 例如，他们用于在 [这个实验](http://5013.es/toys/tween.audio/) 中生成音频数据。

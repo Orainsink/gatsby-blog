@@ -187,12 +187,6 @@ const Dynamic: React.FC = () => {
     dispatch({ type: 'SCENE', payload: false });
   }, [dispatch]);
 
-  useEffect(() => {
-    setInterval(() => {
-      document.body.style.background = '#efefef';
-    }, 500);
-  }, []);
-
   const data: Data = useStaticQuery(graphql`
     {
       file(absolutePath: { regex: "/rock.gltf/" }) {

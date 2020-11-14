@@ -30,6 +30,12 @@ var theme: PrismTheme = {
       },
     },
     {
+      types: ['property-access'],
+      style: {
+        color: '#DB4C69',
+      },
+    },
+    {
       types: ['keyword', 'attr-value', 'atrule', 'rule'],
       style: {
         color: '#0077aa',

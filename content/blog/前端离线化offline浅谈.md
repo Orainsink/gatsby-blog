@@ -3,6 +3,7 @@ title: 前端离线化offline浅谈
 date: 2020-10-09 11:01:03
 description: 前端离线化，让用户在手机断网的时候少骂一下程序员。多一点包容，世界更美好。
 tags: [前端, 性能]
+categories: tech
 ---
 
 > 参考资料 [腾讯前端团队-前端离线化探索](http://www.alloyteam.com/2019/07/web-applications-offline/)

@@ -3,6 +3,7 @@ title: React-hooks个人最佳实践
 date: 2020-10-04 18:09:54
 description: 《React Hooks 最佳实践》的整理, 和一些自己的看法
 tags: [react, 前端]
+categories: tech
 ---
 
 > 参考知乎的一篇总结文章: [精读《React Hooks 最佳实践》](https://zhuanlan.zhihu.com/p/81752821), 但是有部分的建议我有所修改

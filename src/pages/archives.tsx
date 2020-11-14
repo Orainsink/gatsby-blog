@@ -20,7 +20,7 @@ interface Data {
 const ArchivesPage = ({ data, location }: PageProps<Data>) => {
   const { curTag, curDate } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const posts = data.allFile.edges;
+  const posts = data.allFile.edges.filter((item) => item.node.childMdx);
 
   useEffect(() => {
     return () => {
