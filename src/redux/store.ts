@@ -1,7 +1,7 @@
 import { createStore as reduxCreateStore } from 'redux';
 const windowGlobal: any = typeof window !== 'undefined' && window;
 
-const reducer = (state, action) => {
+const reducer = (state: any, action: { type: string; payload: any }) => {
   switch (action.type) {
     case 'SCENE': {
       return { ...state, scene: action.payload };
@@ -71,3 +71,4 @@ const createStore = () =>
       windowGlobal?.__REDUX_DEVTOOLS_EXTENSION__()
   );
 export default createStore;
+export type RootState = ReturnType<typeof reducer>;

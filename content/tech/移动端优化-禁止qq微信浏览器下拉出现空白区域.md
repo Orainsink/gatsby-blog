@@ -4,7 +4,7 @@ copyright: true
 permalink: 1
 top: 0
 date: 2019-12-02 21:33:38
-tags: ['前端', 'js']
+tags: ['js']
 categories: tech
 password:
 ---

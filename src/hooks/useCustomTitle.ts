@@ -1,6 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
+/**
+ * set header title text
+ * @param title
+ */
 const useCustomTitle = (title: string) => {
   const dispatch = useDispatch();
 
@@ -9,6 +13,6 @@ const useCustomTitle = (title: string) => {
     return () => {
       dispatch({ type: 'TITLE', payload: '' });
     };
-  }, [dispatch]);
+  }, [dispatch, title]);
 };
 export default useCustomTitle;

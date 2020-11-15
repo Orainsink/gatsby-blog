@@ -36,7 +36,6 @@
 .nav {
   display: flex;
   align-items: flex-end;
-  height: 100%;
   justify-content: flex-end;
   color: inherit;
   font-size: 16px;
@@ -179,10 +178,26 @@ button.drawerBtn {
   user-select: none;
 }
 .menuShasha {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%);
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // transform: translateX(-50%);
   pointer-events: none;
   user-select: none;
+}
+.dropWrapper {
+  & :global {
+    .ant-dropdown-menu {
+      background: linear-gradient(135deg, #141619 0%, #c7d2db 100%);
+    }
+    .ant-dropdown-menu-item > a {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .ant-dropdown-menu-item:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    .ant-dropdown-arrow {
+      border-color: transparent;
+    }
+  }
 }

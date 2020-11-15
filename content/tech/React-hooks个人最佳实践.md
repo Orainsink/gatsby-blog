@@ -2,7 +2,7 @@
 title: React-hooks个人最佳实践
 date: 2020-10-04 18:09:54
 description: 《React Hooks 最佳实践》的整理, 和一些自己的看法
-tags: [react, 前端]
+tags: [react]
 categories: tech
 ---
 

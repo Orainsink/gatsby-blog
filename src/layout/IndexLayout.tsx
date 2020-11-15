@@ -15,7 +15,7 @@ interface Props {
 
 /**index Layout */
 const Layout: React.FC<Props> = ({ children }) => {
-  const { scene, trigger, skip } = useSelector((state) => state);
+  const { scene, trigger, skip } = useSelector((state: any) => state);
   const dispatch = useDispatch();
   const wrapperRef = useRef(null);
 

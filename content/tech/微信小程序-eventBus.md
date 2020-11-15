@@ -4,7 +4,7 @@ copyright: true
 permalink: 3
 top: 0
 date: 2019-07-24 22:26:22
-tags: ['前端', '小程序']
+tags: ['小程序']
 categories: tech
 password:
 ---

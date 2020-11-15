@@ -2,13 +2,14 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'gatsby';
 import { useSelector } from 'react-redux';
 import Tags from '../components/Tags';
+import { Tag } from 'antd';
 
 interface Props {
   posts: ChildMdxItem[];
   hideMore?: boolean;
 }
 const PostList: React.FC<Props> = ({ posts, hideMore = false }) => {
-  const { curTag, curDate } = useSelector((state) => state);
+  const { curTag, curDate } = useSelector((state: any) => state);
   const [filteredPosts, setFilteredPosts] = useState(posts);
   const [fold, setFold] = useState(true);
 
@@ -58,7 +59,12 @@ const PostList: React.FC<Props> = ({ posts, hideMore = false }) => {
       {filteredPosts.map(({ node }, index) => {
         const title =
           node.childMdx.frontmatter.title || node.childMdx.fields.slug;
-        const { date, description, tags } = node.childMdx.frontmatter;
+        const {
+          date,
+          description,
+          tags,
+          categories,
+        } = node.childMdx.frontmatter;
         return index < 6 || !fold ? (
           <article key={node.childMdx.fields.slug}>
             <header>
@@ -83,7 +89,7 @@ const PostList: React.FC<Props> = ({ posts, hideMore = false }) => {
                   __html: description || node.childMdx.excerpt,
                 }}
               />
-              <Tags tags={tags} />
+              <Tags tags={tags} categories={categories} />
             </section>
           </article>
         ) : null;

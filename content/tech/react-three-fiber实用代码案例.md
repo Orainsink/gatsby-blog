@@ -2,7 +2,7 @@
 title: react-three-fiber实用代码案例
 date: 2020-10-10 17:07:45
 description: 翻译的官网的一些实用代码案例，后续会在自己的实践基础上进行添加和修改
-tags: [react, 前端, three]
+tags: [react, three]
 categories: tech
 ---
 

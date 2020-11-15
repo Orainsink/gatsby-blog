@@ -1,6 +1,7 @@
 import Typography from 'typography';
 import noriega from 'typography-theme-noriega';
 
+noriega.baseFontSize = '16px';
 noriega.overrideThemeStyles = () => {
   return {
     'a.gatsby-resp-image-link': {

@@ -180,7 +180,7 @@ const Modal = React.memo((props: ModalProps) => {
 });
 /** webGl wrapper  */
 const Dynamic: React.FC = () => {
-  const { scene, trigger } = useSelector((state) => state);
+  const { scene, trigger } = useSelector((state: any) => state);
   const dispatch = useDispatch();
 
   const _handleScene = useCallback(() => {

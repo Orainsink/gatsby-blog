@@ -3,7 +3,10 @@ import { Link } from 'gatsby';
 import { Tag } from 'antd';
 import { useDispatch } from 'react-redux';
 
-const Tags: React.FC<{ tags: string[] }> = ({ tags }) => {
+const Tags: React.FC<{ tags: string[]; categories: string }> = ({
+  tags,
+  categories,
+}) => {
   const dispatch = useDispatch();
 
   const onTagClicked = useCallback(
@@ -15,6 +18,39 @@ const Tags: React.FC<{ tags: string[] }> = ({ tags }) => {
     },
     [dispatch]
   );
+  if (categories === 'leetcode') {
+    return (
+      <p className="tags">
+        <Link key="leetcode" to={`/leetcode`}>
+          <Tag color="#F57109" style={{ cursor: 'pointer' }}>
+            leetcode
+          </Tag>
+        </Link>
+      </p>
+    );
+  }
+  if (categories === 'snippet') {
+    return (
+      <p className="tags">
+        <Link key="snippet" to={`/snippet`}>
+          <Tag color="#2db7f5" style={{ cursor: 'pointer' }}>
+            snippet
+          </Tag>
+        </Link>
+      </p>
+    );
+  }
+  if (categories === 'essay') {
+    return (
+      <p className="tags">
+        <Link key="essay" to={`/essay`}>
+          <Tag color="#87d068" style={{ cursor: 'pointer' }}>
+            随笔
+          </Tag>
+        </Link>
+      </p>
+    );
+  }
 
   return tags && tags.length ? (
     <p className="tags">

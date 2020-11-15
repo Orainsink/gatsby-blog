@@ -14,6 +14,8 @@ const useScrollY = (): number => {
   const [scrollY, setScrollY] = useState(getScrollPosition());
 
   useEffect(() => {
+    if (!isBrowser) return;
+
     let requestRunning: number | null = null;
     function handleScroll() {
       if (isBrowser && requestRunning === null) {
@@ -24,10 +26,8 @@ const useScrollY = (): number => {
       }
     }
 
-    if (isBrowser) {
-      document.body.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
-    }
+    document.body.addEventListener('scroll', handleScroll);
+    return () => document.body.removeEventListener('scroll', handleScroll);
   }, []);
 
   return scrollY;

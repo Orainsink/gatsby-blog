@@ -17,7 +17,7 @@ const Bg = () => {
     }
   `);
 
-  const { scene } = useSelector((state) => state);
+  const { scene } = useSelector((state: any) => state);
 
   return (
     <Image

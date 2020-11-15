@@ -52,9 +52,23 @@ const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
           <li>
             <Link to="/">home</Link>
           </li>
-          <li>
-            <Link to="/archives">archives</Link>
-          </li>
+          <div style={{ width: '100%' }}>
+            <div style={{ padding: '12px 0' }}>archives</div>
+            <ul>
+              <li>
+                <Link to="/archives">技术</Link>
+              </li>
+              <li>
+                <Link to="/leetcode">Leetcode</Link>
+              </li>
+              <li>
+                <Link to="/snippet">Snippet</Link>
+              </li>
+              <li>
+                <Link to="/essay">随笔</Link>
+              </li>
+            </ul>
+          </div>
           <li>
             <Link to="/about">about</Link>
           </li>

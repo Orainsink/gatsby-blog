@@ -4,7 +4,7 @@ copyright: true
 permalink: 2
 top: 0
 date: 2019-06-17 13:29:21
-tags: ['前端', '性能']
+tags: ['性能']
 categories: tech
 password:
 ---

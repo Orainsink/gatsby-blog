@@ -4,7 +4,7 @@ copyright: true
 permalink: 1
 top: 0
 date: 2019-02-16 00:06:59
-tags: ['前端', 'three']
+tags: ['three']
 categories: tech
 ---
 

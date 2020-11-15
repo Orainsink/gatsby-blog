@@ -3,7 +3,7 @@ const modifyVars = require('./scripts/less-vars');
 
 module.exports = {
   siteMetadata: {
-    title: `Orainsink's blog`,
+    title: `Orainsink's Blog`,
     author: {
       name: `Orainsink`,
       summary: `做嘛做嘛, 都可以做, 小问题, 不要慌`,
@@ -41,6 +41,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content/leetcode`,
         name: `leetcode`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/essay`,
+        name: `essay`,
       },
     },
     {

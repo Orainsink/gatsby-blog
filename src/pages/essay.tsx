@@ -1,15 +1,13 @@
 import React from 'react';
-import { PageProps, graphql } from 'gatsby';
-import { Divider } from 'antd';
+import { PageProps, graphql, navigate } from 'gatsby';
+import { Divider, Card } from 'antd';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import { useSelector, useDispatch } from 'react-redux';
-import loadable from '@loadable/component';
 import { ReloadOutlined } from '@ant-design/icons';
 import styles from '../styles/archives.module.less';
-import PostList from '../components/PostList';
 import Calendar from '../components/SideBlocks/Calendar';
-const WordCloud = loadable(() => import('../components/WordCloud'));
+import useResetKey from '../hooks/useResetKey';
 
 interface Data {
   allFile: {
@@ -17,35 +15,52 @@ interface Data {
   };
 }
 
-const ArchivesPage = ({ data, location }: PageProps<Data>) => {
-  const { curTag, curDate } = useSelector((state: any) => state);
+const EssayPage = ({ data, location }: PageProps<Data>) => {
+  const { curDate } = useSelector((state: any) => state);
   const dispatch = useDispatch();
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
 
+  useResetKey();
+
   return (
-    <Layout location={location} sideBlocks={<Calendar posts={posts} />}>
-      <SEO title="Archives" />
-      <WordCloud />
+    <Layout location={location}>
+      <SEO title="随笔" />
       <Divider orientation="center" className={styles.divider}>
-        {curTag ? '#' + curTag : curDate ? curDate : 'ARCHIVES'}
-        {curTag || curDate ? (
+        {curDate ? curDate : '随笔'}
+        {curDate ? (
           <ReloadOutlined
             className={styles.reloadIcon}
             onClick={() => dispatch({ type: 'RESET_SEARCH' })}
           />
         ) : null}
       </Divider>
-      <PostList posts={posts} hideMore />
+      {!!posts && (
+        <div className={styles.essayCards}>
+          {posts.map(({ node: { childMdx: item } }) => (
+            <Card
+              onClick={() => navigate(item.fields.slug ?? '/')}
+              key={item.frontmatter.title}
+              hoverable
+              className={styles.essayItem}
+              cover={<img alt="" src={item.frontmatter.url} />}
+            >
+              <p className={styles.metaTitle}>{item.frontmatter.title}</p>
+              <p>{item.frontmatter.date}</p>
+              <p>{item.frontmatter.description}</p>
+            </Card>
+          ))}
+        </div>
+      )}
     </Layout>
   );
 };
 
-export default ArchivesPage;
+export default EssayPage;
 
 export const pageQuery = graphql`
   {
     allFile(
-      filter: { sourceInstanceName: { eq: "tech" } }
+      filter: { sourceInstanceName: { eq: "essay" } }
       sort: { fields: childMdx___frontmatter___date, order: DESC }
     ) {
       edges {
@@ -56,6 +71,7 @@ export const pageQuery = graphql`
               title
               description
               tags
+              url
             }
             fields {
               slug

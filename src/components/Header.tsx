@@ -1,9 +1,13 @@
 import React, { useEffect, useCallback, useState, useMemo } from 'react';
 import classnames from 'classnames';
-import { Row, Col } from 'antd';
+import { Row, Col, Dropdown, Menu } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { Link } from 'gatsby';
-import { GithubOutlined, SearchOutlined } from '@ant-design/icons';
+import {
+  GithubOutlined,
+  SearchOutlined,
+  DownOutlined,
+} from '@ant-design/icons';
 import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import useWindowSize from '../hooks/useWindowSize';
@@ -38,7 +42,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
   const [searchVisible, setSearchVisible] = useState(false);
   const [titleVisible, setTitleVisible] = useState(true);
   const [width] = useWindowSize();
-  const { hasArrow, scene, title } = useSelector((state) => state);
+  const { hasArrow, scene, title } = useSelector((state: any) => state);
 
   useEffect(() => {
     if (width < 1024) {
@@ -83,6 +87,26 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
     isBrowser && localStorage.setItem('SCENE', '1');
   }, [dispatch]);
 
+  const archivesMenu = useMemo(
+    () => (
+      <Menu>
+        <Menu.Item>
+          <Link to="/archives">技术</Link>
+        </Menu.Item>
+        <Menu.Item>
+          <Link to="/leetcode">Leetcode</Link>
+        </Menu.Item>
+        <Menu.Item>
+          <Link to="/snippet">Snippet</Link>
+        </Menu.Item>
+        <Menu.Item>
+          <Link to="/essay">随笔</Link>
+        </Menu.Item>
+      </Menu>
+    ),
+    []
+  );
+
   const menu = useMemo(() => {
     if (drawer) {
       return <MenuDrawer location={location} />;
@@ -93,14 +117,23 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
             <Link to="/">home</Link>
           </li>
           <li>
-            <Link to="/archives">archives</Link>
+            <Dropdown
+              overlay={archivesMenu}
+              trigger={['click']}
+              arrow
+              overlayClassName={styles.dropWrapper}
+            >
+              <span>
+                archives <DownOutlined />
+              </span>
+            </Dropdown>
           </li>
           <li>
             <Link to="/about">about</Link>
           </li>
         </ul>
       );
-  }, [drawer, location]);
+  }, [drawer, location, archivesMenu]);
 
   return (
     <header
@@ -126,7 +159,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
                   navigate('/');
                 }}
               >
-                Orainsink'Blog
+                Orainsink's Blog
               </span>
             )}
           </Col>

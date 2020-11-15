@@ -8,7 +8,7 @@ import useBackgroundColor from '../hooks/useBackgroundColor';
 
 /**global PageElement */
 const GlobalLayout = ({ children, location }) => {
-  const { scene } = useSelector((state) => state);
+  const { scene } = useSelector((state: any) => state);
 
   /**
    * Toggle whether it is scrollable

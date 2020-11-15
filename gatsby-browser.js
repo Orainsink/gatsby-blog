@@ -1,6 +1,6 @@
 import React from 'react';
-import 'typeface-montserrat';
-import 'typeface-merriweather';
+// import 'typeface-montserrat';
+// import 'typeface-merriweather';
 import GlobalLayout from './src/layout/GlobalLayout';
 
 export const onInitialClientRender = () => {

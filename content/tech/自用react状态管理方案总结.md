@@ -2,7 +2,7 @@
 title: 自用react状态管理方案总结
 date: 2020-9-12 1:48:56
 description: react 有着庞大的生态圈, 有着包括 redux 和 mobx 在内的多种数据管理方案, 在不同体量的项目中选择合适的状态管理方案可以平衡开发效率和项目维护难度之间的矛盾.
-tags: [react, 前端]
+tags: [react]
 categories: tech
 ---
 

@@ -30,6 +30,7 @@ const Controller: React.FC = () => {
   const _handleClickLoop = useCallback(() => {
     dispatch({ type: 'MUSIC', payload: { loop: !loop } });
   }, [loop, dispatch]);
+
   return (
     <div id="wave" className={styles.waveWrap}>
       <Row className={styles.controller} gutter={8} align="middle">

@@ -4,7 +4,7 @@ copyright: true
 permalink: 1
 top: 0
 date: 2019-09-29 17:10:09
-tags: ['前端', 'react']
+tags: ['react']
 categories: tech
 password:
 ---

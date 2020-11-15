@@ -4,11 +4,10 @@ import { PageProps, graphql } from 'gatsby';
 import Layout from '../layout/IndexLayout';
 import SEO from '../components/seo';
 import { useSelector } from 'react-redux';
-import TagsSnippet from '../components/Cards';
+import CateSnippet from '../components/Cards';
 import Trigger from '../components/Trigger';
 import Poem from '../components/Poem';
 import PostList from '../components/PostList';
-import { MarkdownRemarkConnection } from '../../graphql-types';
 import useBackgroundColor from '../hooks/useBackgroundColor';
 const Dynamic = loadable(() => import('../components/Dynamic/Dynamic'), {
   fallback: null,
@@ -20,7 +19,11 @@ interface Data {
       title: string;
     };
   };
-  allMdx: MarkdownRemarkConnection;
+  allMdx: {
+    edges: {
+      node: MdxItem;
+    }[];
+  };
 }
 
 const Index = ({ data }: PageProps<Data>) => {
@@ -30,7 +33,7 @@ const Index = ({ data }: PageProps<Data>) => {
       childMdx: edge.node,
     },
   }));
-  const { skip, scene } = useSelector((state) => state);
+  const { skip, scene } = useSelector((state: any) => state);
 
   useBackgroundColor();
 
@@ -41,7 +44,7 @@ const Index = ({ data }: PageProps<Data>) => {
       <Layout>
         <SEO title={siteTitle} />
         <Poem />
-        <TagsSnippet />
+        <CateSnippet />
 
         <h5
           style={{

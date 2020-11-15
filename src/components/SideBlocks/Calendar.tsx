@@ -63,7 +63,7 @@ const CalendarBlock: React.FC<Props> = ({ posts }) => {
   );
 
   const headerRender = useCallback(({ value, onChange }) => {
-    const year = value.year();
+    const year = value?.year();
     const options = [];
 
     for (let i = 2018; i < dayjs().year() + 1; i += 1) {

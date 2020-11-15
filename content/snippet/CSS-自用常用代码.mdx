@@ -1,12 +1,9 @@
 ---
 title: CSS-自用常用代码
-copyright: true
-permalink: 1
-top: 0
 date: 2019-09-09 13:20:13
-tags: ['前端', 'css']
-categories: tech
-password:
+tags: [css]
+categories: snippet
+description: 常用css代码片段
 ---
 
 ## 文本超出部分省略号
@@ -105,4 +102,22 @@ text-shadow: 0 0 3px #fff;
 
 ```css
 pointer-events: none;
+```
+
+## css 占位图片
+
+```css
+img::after {
+  content: '';
+  background: url('xxxx.png');
+}
+```
+
+## 三栏自适应(flex/float)-中间
+
+```css
+.middle {
+  width: 100%;
+  margin: 0 20px;
+}
 ```

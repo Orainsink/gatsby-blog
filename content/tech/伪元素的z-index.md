@@ -4,7 +4,7 @@ copyright: true
 permalink: 1
 top: 0
 date: 2019-08-23 09:57:54
-tags: ['前端', 'css']
+tags: ['css']
 categories: tech
 password:
 ---

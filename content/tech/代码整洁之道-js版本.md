@@ -2,7 +2,7 @@
 title: JavaScript 风格指南
 date: 2020-10-13 13:37:42
 description: 代码整洁之道js版本, 转载自github
-tags: [前端]
+tags: [规范]
 categories: tech
 ---
 

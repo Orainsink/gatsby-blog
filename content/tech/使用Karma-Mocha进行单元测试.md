@@ -4,7 +4,7 @@ copyright: true
 permalink: 1
 top: 0
 date: 2018-08-25 12:47:17
-tags: ['前端', '测试']
+tags: ['测试']
 categories: tech
 password:
 ---

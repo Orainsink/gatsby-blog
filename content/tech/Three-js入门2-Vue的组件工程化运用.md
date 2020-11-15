@@ -4,7 +4,7 @@ copyright: true
 permalink: 7
 top: 0
 date: 2019-01-27 02:41:21
-tags: ['前端', 'three']
+tags: ['three']
 categories: tech
 password:
 ---

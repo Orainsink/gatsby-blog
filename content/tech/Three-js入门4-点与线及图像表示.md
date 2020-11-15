@@ -1,7 +1,7 @@
 ---
 title: Three.js入门4-点与线及图像表示
 date: 2019-01-27 02:44:38
-tags: ['前端', 'three']
+tags: ['three']
 categories: tech
 ---
 
