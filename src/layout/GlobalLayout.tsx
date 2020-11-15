@@ -21,8 +21,8 @@ const GlobalLayout = ({ children, location }) => {
 
   return (
     <>
-      {children}
       <Bg />
+      {children}
       <Header location={location} />
       <BackTop />
     </>
