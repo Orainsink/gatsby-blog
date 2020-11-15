@@ -24,7 +24,7 @@ const ArchivesPage = ({ data, location }: PageProps<Data>) => {
 
   return (
     <Layout location={location} sideBlocks={<Calendar posts={posts} />}>
-      <SEO title="Archives" />
+      <SEO title="技术-归档" />
       <WordCloud />
       <Divider orientation="center" className={styles.divider}>
         {curTag ? '#' + curTag : curDate ? curDate : 'ARCHIVES'}

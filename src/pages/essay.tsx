@@ -24,7 +24,7 @@ const EssayPage = ({ data, location }: PageProps<Data>) => {
 
   return (
     <Layout location={location}>
-      <SEO title="随笔" />
+      <SEO title="随笔-归档" />
       <Divider orientation="center" className={styles.divider}>
         {curDate ? curDate : '随笔'}
         {curDate ? (

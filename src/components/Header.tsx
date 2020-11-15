@@ -119,7 +119,8 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
           <li>
             <Dropdown
               overlay={archivesMenu}
-              trigger={['click']}
+              // trigger={['click']}
+              //@ts-ignore
               arrow
               overlayClassName={styles.dropWrapper}
             >
