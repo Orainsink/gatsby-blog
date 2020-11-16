@@ -27,10 +27,10 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-ba168a047bf21e4a6088.js"
+    "url": "webpack-runtime-eedfec7cd50f29818c72.js"
   },
   {
-    "url": "styles.7d1665a4082559b0e043.css"
+    "url": "styles.b7cad39f00c9eb4ce098.css"
   },
   {
     "url": "styles-81852b6058b0ef837ba8.js"
@@ -39,11 +39,11 @@ self.__precacheManifest = [
     "url": "framework-95c1e77615cc04d592db.js"
   },
   {
-    "url": "app-6b810f2510c50df8231c.js"
+    "url": "app-55cdebd01a990e9159d6.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "09db88a35183236da88cb8706fcadd2b"
+    "revision": "2f90b14c65aca7c331d3946c1002d5ee"
   },
   {
     "url": "components-MyPlayer-1626485b6d65d6759b56.js"
@@ -55,7 +55,7 @@ self.__precacheManifest = [
     "url": "6c94ea1fd5648756663ba03e599231fe9bf734be-54f79554d86be23254c8.js"
   },
   {
-    "url": "components-Algolia-Index-b1276a0e3f54129195a0.js"
+    "url": "components-Algolia-Index-f8adee7c7c57ed24b87a.js"
   },
   {
     "url": "components-Bg-d4134ea0d52a330571d7.js"
@@ -160,7 +160,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-6b810f2510c50df8231c.js`))) {
+  if (!resources || !(await caches.match(`/app-55cdebd01a990e9159d6.js`))) {
     return await fetch(event.request)
   }
 
