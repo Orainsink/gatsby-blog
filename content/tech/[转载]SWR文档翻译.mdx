@@ -1,0 +1,473 @@
+---
+title: 转载-SWR文档翻译
+description: 来源掘金,用于日常翻阅
+date: 2020-11-16 20:29:08
+url:
+index:
+tags: [react]
+categories: tech
+---
+
+> 原文地址 https://juejin.im/post/6844904167786414093#heading-5
+
+# [转载]SWR 文档 - 远程数据请求的 React Hooks 封装
+
+GitHub: [github.com/zeit/swr](https://github.com/zeit/swr)
+
+官网: [SWR: React Hooks for Remote Data Fetching](https://swr.now.sh/)
+
+## 介绍
+
+SWR 是提供远程数据请求的 React Hooks 库。
+
+SWR 是由 stable-while-revalidate 的首字母组成，是由[HTTP RFC 5861](https://tools.ietf.org/html/rfc5861)普及的缓存失效策略。SWR 优先返回缓存数据(stable)，然后再发送远程请求(revalidate)，最后更新最新的数据。
+
+特性：
+
+- 数据请求与传输协议无关
+- 快速页面导航
+- 聚焦时自动请求数据
+- 轮询
+- 请求去重
+- 本地数据变化
+- 分页
+- 支持 TS
+- 支持 SSR
+- 支持 React Suspense
+- 支持 React Native
+- 少量 API 等等等......
+
+使用 SWR，组件可以持续自动更新数据。因此 UI 总是可以快速展示并且保持响应。
+
+## 快速开始
+
+```jsx
+import useSWR from 'swr';
+
+function Profile() {
+  const { data, error } = useSWR('/api/user', fetcher);
+
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
+  return <div>hello {data.name}!</div>;
+}
+```
+
+在这个例子中，useSWR 接收 key 和 fetcher 为参数。key 是这个请求的唯一标识，通常是这个 API 的 URL。fetcher 函数接收 key 为参数，并异步返回数据。
+
+useSWR 返回 2 个值: data 和 error。当请求在进行中时，data 的值为 undefined。当请求结束，并返回 response 时，将基于 fetcher 的返回值设置 data 和 error，并重新渲染组件。
+
+注意，fetcher 可以是任何异步函数，因此你可以使用你喜欢的数据请求库来处理这个部分。
+
+[查看更多 SWR 例子](https://swr.now.sh/) [最佳实践的例子](https://github.com/zeit/swr#examples)
+
+## 开始使用
+
+进入你的 React 项目，执行如下命令
+
+```sh
+yarn add swr
+```
+
+或者使用 npm
+
+```sh
+npm install swr
+```
+
+### API
+
+```jsx
+const { data, error, isValidating, mutate } = useSWR(key, fetcher, options);
+```
+
+#### 参数
+
+- key：string | function | array | null，请求的唯一标识[高级用法](https://github.com/zeit/swr#conditional-fetching)
+- fetcher：可选参数，返回 Promise 的函数，用于请求远程数据[细节](https://github.com/zeit/swr#data-fetching)
+- options：object, 可选参数，SWR hook 接收的选项对象
+
+#### 返回值
+
+- data：fetcher 函数返回的 Promise，resolve 时的数据（请求未返回时为 undefined）
+- error：fetcher 函数抛出的错误（或者为 undefined）
+- isValidating：true 为 loading 状态（请求进行中或者数据重新有效中）
+- mutate: (data?: any, shouldRevalidate?: any) => void，用于改变缓存数据的函数
+
+#### 选项
+
+- suspense = false：是否启用 React Suspense 模式[细节](https://github.com/zeit/swr#suspense-mode)
+- fetcher = undefined：默认的 fetcher 函数
+- initialData：返回的默认数据（注意：这个是预设钩子）
+- revalidateOnFocus = true：聚焦窗口时，自动获取数据
+- revalidateOnReconnect = true：浏览器重新联网时自动获取数据(通过：navigator.onLine)
+- refreshInterval = 0：轮询间隔时间(默认不启用轮询)
+- refreshWhenHidden = false：当窗口不可见时继续轮询（当 refreshInterval 启用时）
+- refreshWhenOffline = true：浏览器离线时继续轮询（由 navigator.onLine 决定）
+- shouldRetryOnError = true：fetcher 发生错误时是否重试[细节](https://github.com/zeit/swr#error-retries)
+- dedupingInterval = 2000：防抖，频发出发 revalidate，会进行防抖策略处理
+- focusThrottleInterval = 5000：在这个时间间隔内，revalidate 只执行一次
+- loadingTimeout = 3000：触发 onLoadingSlow 事件的超时时间，即请求超过规定时间未结束，则触发 onLoadingSlow 回调
+- errorRetryInterval = 5000：错误重试的时间间隔
+- errorRetryCount：错误重试的最大次数
+- onLoadingSlow(key, config)：请求时间过长，会触发的回调函数(参见 loadingTimeout)
+- onSuccess(data, key, config)：请求成功时的回调函数
+- onError(err, key, config)：请求返回 error 时的回调函数
+- onErrorRetry(err, key, config, revalidate, revalidateOps)：error 重试的处理函数[细节](https://github.com/zeit/swr#error-retries)
+- compare(a,b)：用来对比返回数据是否真的发生改变的函数，避免欺骗性重新渲染。默认使用[fast-deep-equal](https://github.com/epoberezkin/fast-deep-equal)
+
+慢网时（2G，<=70kbps），errorRetryInterval 默认为 10s，loadingTimeout 默认为 5s
+
+可以通过[全局配置](https://github.com/zeit/swr#global-configuration)来提供默认选项值。
+
+## 例子
+
+### 全局配置(Global Configuration)
+
+SWRConfig 可以提供全局默认配置。
+
+在下面的例子中，所有的 swrs 将使用相同的 fetcher 来请求 JSON 数据，并每隔 3s 刷新一次数据:
+
+```jsx
+import useSWR, { SWRConfig } from 'swr';
+
+function Dashboard() {
+  const { data: events } = useSWR('/api/events');
+  const { data: projects } = useSWR('/api/projects');
+  const { data: user } = useSWR('/api/user', { refreshInterval: 0 }); // 禁止刷新
+}
+
+function App() {
+  return (
+    <SWRConfig
+      value={{
+        refreshInterval: 3000,
+        fetcher: (...args) => fetch(...args).then((res) => res.json()),
+      }}
+    >
+      <Dashboard />
+    </SWRConfig>
+  );
+}
+```
+
+### 数据请求(Data Fetching)
+
+Fetcher 是一个接收 key 为参数的函数，并返回一个值或者 Promise。你可以使用任何库处理数据请求，例如：
+
+```jsx
+import fetch from 'unfetch';
+
+const fetcher = (url) => fetch(url).then((r) => r.json());
+
+function App() {
+  const { data } = useSWR('/api/data', fetcher);
+  // ...
+}
+```
+
+或者使用 GraphQL：
+
+```jsx
+import { request } from 'graphql-request';
+
+const API = 'https://api.graph.cool/simple/v1/movies';
+const fetcher = (query) => request(API, query);
+
+function App() {
+  const { data, error } = useSWR(
+    `{
+      Movie(title: "Inception") {
+        releaseDate
+        actors {
+          name
+        }
+      }
+    }`,
+    fetcher
+  );
+  // ...
+}
+```
+
+如果你想传递变量给 GraphQL query，[查看这里](https://github.com/zeit/swr#multiple-arguments)
+
+注意，如果提供了全局的 fetcher，则 useSWR 中可以省略 fetcher 参数
+
+### 有条件的请求(Conditional Fetching)
+
+给 useSWR 传递 null 或者一个函数作为 key，可以根据条件发起数据请求。如果函数抛出错误或者返回 false，SWR 会中止请求。
+
+```jsx
+// 条件请求
+const { data } = useSWR(shouldFetch ? '/api/data' : null, fetcher);
+
+// 返回false
+const { data } = useSWR(() => (shouldFetch ? '/api/data' : null), fethcer);
+
+// 抛出错误
+const { data } = useSWR(() => '/api/data?uid=' + user.id, fetcher);
+```
+
+### 依赖请求(Dependent Fetching)
+
+SWR 允许你的远程请求数据依赖其他数据。它可以最大限度的保持平行（避免瀑布法开发），同时保证当下一次数据请求要求动态数据时进行连续请求。
+
+```jsx
+function MyProjects() {
+  const { data: user } = useSWR('/api/user');
+  const { data: projects } = useSWR(() => '/api/projects?uid=' + user.id);
+  /*
+	传递给swr的key为函数时，取此函数的返回值为key的值。如果这个函数抛出错误，swr就知道某些依赖没有准备好。在此例子当中是user。
+	*/
+  if (!projects) return 'loading';
+  return 'You have ' + projects.length + 'projects';
+}
+```
+
+### 多个参数(Multiple Arguments)
+
+在某些场景中，传递多个参数（可以是任何值或者对象）给 fetcher 函数是很有用的。例如：
+
+```jsx
+useSWR('/api/user', (url) => fetchWithToken(url, token));
+```
+
+这是*不正确的*。因为数据的唯一标识（缓存的 index）是”/api/data”，因此即使 token 发生变化，SWR 依然会使用相同的 key，从而返回错误的数据。
+
+你应该使用*数组*作为 key 参数，这个数组是由 fetcher 接收的参数组成：
+
+```jsx
+const { data: user } = useSWR(['/api/user', token], fetchWithToken);
+
+const { data: orders } = useSWR(
+  user ? ['/api/orders', user] : null,
+  fetchWithUser
+);
+```
+
+请求的 key 值现在与所有值的变化都关联了。在每次渲染时，SWR 对参数进行*浅对比*，如果有任何更改，就会触发 revalidation。
+
+请记住，在渲染时，你不应该重新创建对象，不然每次渲染都会被当做不同的对象：
+
+```jsx
+// 不要这样写，每次渲染都会当做改变
+useSWR(['/api/user', { id }], query);
+
+// 应该传入稳定的值
+useSWR(['/api/user', id], (url, id) => query(user, { id }));
+```
+
+Dan Abramov 在[这里](https://overreacted.io/a-complete-guide-to-useeffect/#but-i-cant-put-this-function-inside-an-effect)解释的很好。
+
+### 手动触发(Manually Revalidate)
+
+调用 mutate(key)，可以向所有使用相同 key 的 SWR 广播一条 revalidation 信息。
+
+这个例子展示了，当用户点击“退出”按钮时，自动重新获取登录信息（e.g：内部）的实现.
+
+```jsx
+import useSWR, { mutate } from 'swr'
+
+function App() {
+	return (
+		<div>
+			<Profile />
+			<button
+				onClick = (() => {
+					// 设置cookie过期
+					document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+					// 发布广播，所有使用相同key值的SWR重新获取数据
+					mutate('/api/user')；
+				})
+			>
+				Logout
+			</button>
+		</div>
+	)
+}
+```
+
+### 修改和发送请求（Mutation and Post Request）
+
+在很多案例中，先修改本地数据这种方式，可以在感觉上提高响应速度——不需要等待远程数据。
+
+使用 mutate，你可以先更新你的本地数据，等请求结束再用最新的数据替换。
+
+```jsx
+import useSWR, { mutate } from 'swr';
+
+function Profile() {
+  const { data } = useSWR('/api/user', fetcher);
+
+  return (
+    <div>
+      <h1>My name is {data.name}.</h1>
+      <button
+        onClick={async () => {
+          const newName = data.name.toUpperCase();
+          // 发送请求，更新数据
+          await requestUpdateUsername(newName);
+          // 立即更新本地数据，并重新请求数据
+          // 注意：传入mutate的key，没有限制
+          mutate('/api/user', { ...data, name: newName });
+        }}
+      >
+        Uppercase my name!
+      </button>
+    </div>
+  );
+}
+```
+
+点击上例中的按钮，会发送一个 POST 请求修改远程数据，本地更新客户端数据，并尝试请求最新的数据。
+
+但是很多 POST APIs 只是直接返回更新的数据，因此我们没有必要再次 revalidate。 下面的例子展示了如何使用”local mutate - request - update”：
+
+```jsx
+// false,可以禁止revalidation
+mutate('/api/user', newUser, false);
+// updateUser是一个请求的Promise，返回更新后的文档
+mutate('/api/user', updateUser(newUser));
+```
+
+### 基于当前数据的修改（Mutate Based on Current Data）
+
+在很多场景中，API 只返回单条数据，你需要把这条数据追加到列表中。
+
+使用 mutate，你可以传入一个异步函数，这个函数会接收当前的缓存值，你可以返回一个更新后的文档。
+
+```jsx
+mutate('/api/users', async (users) => {
+  const user = await fetcher('/api/users/1');
+  return [user, ...users.slice(1)];
+});
+```
+
+### 从 Mutate 中返回数据(Returned Data from Mutate)
+
+也许，当你传入一个 promise 或者一个 async 函数给 mutate 时， 你需要使用返回值更新缓存。
+
+每次调用下面的函数时，会返回更新后的文档，或者抛出错误。
+
+```jsx
+try {
+  const user = await mutate('/api/user', updateUser(newUser));
+} catch (error) {
+  // 处理更新user时抛出的错误
+}
+```
+
+### 有限制的 mutate(Bound Mutate())
+
+useSWR 返回的 SWR 对象中也包含 mutate 函数，这个函数预先限制 key 为传入的 key。
+
+功能与全局 mutate 一样，但是不需要传入 key 参数：
+
+```jsx
+import useSWR from 'swr';
+
+function Profile() {
+  const { data, mutate } = useSWR('/api/user', fetcher);
+
+  return (
+    <div>
+      <h1>My name is {data.name}.</h1>
+      <button
+        onClick={async () => {
+          const newName = data.name.toUpperCase();
+          await requestUpdateUsername(newName);
+          mutate({ ...data, name: newName });
+        }}
+      >
+        UpperCase my name!
+      </button>
+    </div>
+  );
+}
+```
+
+### 使用 Next.js 实现 SSR（SSR with Next.js）
+
+使用 initialData 选项，你可以传入一个初始值给 hook。它在很多 SSR 解决方案中都工作的很好，例如 Next.js 中的 getServerSideProps：
+
+```jsx
+export asyn function getServerSideProps() {
+	const data = await fetcher('/api/data')
+	return { props: { data } }
+}
+
+function App(props) {
+	const initialData = props.data
+	const { data } = useSWR('/api/data', fetcher, { initialData })
+
+	return <div>{data}</div>
+}
+```
+
+上例保持 SSR 的同时，在客户端也可以很好的应用 SWR。这意味着数据可以是动态的，并且随着时间和用户交互不断更新。
+
+### Suspense 模式（ Suspense Mode）
+
+在应用 React Suspense 时，可以开启 suspense 选项：
+
+```jsx
+import { Suspense } from 'react';
+import useSWR from 'ssr';
+
+function Profile() {
+  const { data } = useSWR('/api/user', fetcher, { suspense: true });
+  return <div>hello, {data.name}</div>;
+}
+
+function App() {
+  return (
+    <Suspense fallback={<div>loading...</div>}>
+      <Profile />
+    </Suspense>
+  );
+}
+```
+
+在 Suspense 模式下，data 使用时请求响应的数据（因此你不需要检查数据是否为 undefined）。但是如果发生错误，你需要使用[error Boundary](https://reactjs.org/docs/concurrent-mode-suspense.html#handling-errors)去捕获错误。
+
+/注意，ssr 模式下不支持 Suspense/
+
+### 错误重试（Error Retires）
+
+SWR 默认采用[ exponential backoff algorithm(指数退避算法)](https://en.wikipedia.org/wiki/Exponential_backoff)处理错误重试。你可以通过阅读源码了解更多。 也可以通过 onErrorRetry 重写：
+
+```jsx
+useSWR(key, fetcher, {
+  onErrorRetry: (error, key, option, revalidation, { retryCount }) => {
+    if (retryCount >= 10) return;
+    if (error.status === 404) return;
+
+    // 5s后重试
+    setTimeout(() => revalidation({ retryCount: retryCount + 1 }), 5000);
+  },
+});
+```
+
+### 预加载数据(Prefetching Data)
+
+在 SWR 中有很多方式可以实现预加载。对于顶层请求，高度推荐 rel = “preload”：
+
+``
+
+这种方式在 js 开始下载之前开始预加载数据。因此后面的请求可以重用这个结果（当然也包括 SWR）。
+
+另一个选择是有条件的预加载。你可以写一个函数重新请求并且设置缓存：
+
+```jsx
+function prefetch() {
+  mutate(
+    '/api/data',
+    fetch('/api/data').then((res) => res.json())
+  );
+  // 第二个参数是Promise
+  // 当Promise resolve时，SWR将会使用这个结果
+}
+```
+
+当你需要重新加载资源时也可以使用他们（例如[hovering a link](https://github.com/GoogleChromeLabs/quicklink)）。 和 Next.js 里的[页面预加载（page preload）](https://nextjs.org/docs/api-reference/next/link)一起使用，就可以立即加载下一页和数据。

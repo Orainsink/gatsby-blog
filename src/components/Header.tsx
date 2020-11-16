@@ -17,6 +17,24 @@ const MyPlayer = loadable(() => import('../components/MyPlayer'));
 const MenuDrawer = loadable(() => import('../components/MenuDrawer'));
 const SearchDrawer = loadable(() => import('../components/Algolia/Index'));
 const isBrowser = typeof window !== `undefined`;
+
+const ArchivesMenu = React.memo(() => (
+  <Menu>
+    <Menu.Item>
+      <Link to="/archives">技术</Link>
+    </Menu.Item>
+    <Menu.Item>
+      <Link to="/leetcode">Leetcode</Link>
+    </Menu.Item>
+    <Menu.Item>
+      <Link to="/snippet">Snippet</Link>
+    </Menu.Item>
+    <Menu.Item>
+      <Link to="/essay">随笔</Link>
+    </Menu.Item>
+  </Menu>
+));
+
 /**Header */
 const Header: React.FC<{ location: any }> = ({ location }) => {
   const data = useStaticQuery(graphql`
@@ -87,26 +105,6 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
     isBrowser && localStorage.setItem('SCENE', '1');
   }, [dispatch]);
 
-  const archivesMenu = useMemo(
-    () => (
-      <Menu>
-        <Menu.Item>
-          <Link to="/archives">技术</Link>
-        </Menu.Item>
-        <Menu.Item>
-          <Link to="/leetcode">Leetcode</Link>
-        </Menu.Item>
-        <Menu.Item>
-          <Link to="/snippet">Snippet</Link>
-        </Menu.Item>
-        <Menu.Item>
-          <Link to="/essay">随笔</Link>
-        </Menu.Item>
-      </Menu>
-    ),
-    []
-  );
-
   const menu = useMemo(() => {
     if (drawer) {
       return <MenuDrawer location={location} />;
@@ -118,8 +116,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
           </li>
           <li>
             <Dropdown
-              overlay={archivesMenu}
-              // trigger={['click']}
+              overlay={<ArchivesMenu />}
               //@ts-ignore
               arrow
               overlayClassName={styles.dropWrapper}
@@ -134,7 +131,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
           </li>
         </ul>
       );
-  }, [drawer, location, archivesMenu]);
+  }, [drawer, location]);
 
   return (
     <header

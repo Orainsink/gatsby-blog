@@ -1,15 +1,15 @@
-import React, { useRef, useMemo, useEffect } from 'react';
+import React, { useRef, useMemo, useCallback, useEffect } from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
-import random from 'lodash/random';
 import { useDispatch } from 'react-redux';
 import styles from '../styles/WordCloud.module.less';
 const WordCloud =
   typeof window !== 'undefined' ? require('wordcloud') : undefined;
 
 interface Data {
-  allMdx: {
+  allFile: {
     group: {
-      tag: string;
+      fieldValue: string;
+      totalCount: number;
     }[];
   };
 }
@@ -22,25 +22,38 @@ interface Props {
 const WordCloudItem: React.FC<Props> = (props) => {
   const data: Data = useStaticQuery(graphql`
     query {
-      allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
-        group(field: frontmatter___tags) {
-          tag: fieldValue
+      allFile(filter: { sourceInstanceName: { eq: "tech" } }) {
+        group(field: childMdx___frontmatter___tags) {
+          fieldValue
+          totalCount
         }
       }
     }
   `);
   const { jump = false, height = 150 } = props;
-  const group = data.allMdx.group;
+  const group = data.allFile.group;
   const wordRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
 
-  const allTags: any[] = useMemo(() => {
-    const obj = {};
-    group.forEach((item) => {
-      obj[item.tag] = true;
-    });
-    return Object.keys(obj).map((key) => [key, random(16, 32, false)]);
+  const weighted = useMemo(() => {
+    let arr = group.map((item) => item.totalCount);
+    return {
+      max: Math.max(...arr),
+      min: Math.min(...arr),
+    };
   }, [group]);
+
+  const getFontSize = useCallback(
+    (count: number) => {
+      const { max, min } = weighted;
+      return 16 + (16 * (count - min)) / (max - min);
+    },
+    [weighted]
+  );
+
+  const allTags: any[] = useMemo(() => {
+    return group.map((item) => [item.fieldValue, getFontSize(item.totalCount)]);
+  }, [group, getFontSize]);
 
   useEffect(() => {
     if (wordRef.current) {
