@@ -1,4 +1,210 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 16 Nov 2020 01:57:05 GMT</lastBuildDate><item><title><![CDATA[JS新特性-问号和感叹号]]></title><link>https://blog.foolishrobot.xyz/JS新特性-问号和感叹号</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/JS新特性-问号和感叹号</guid><pubDate>Wed, 04 Nov 2020 20:31:14 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[JavaScript 风格指南]]></title><description><![CDATA[原文地址:  ryanmcdermott/clean-code-javascript 原文翻译:  alivebao / clean-code-js 转载文章用于自己学习查阅, 如有侵权, 联系作者删除. 介绍 作者 根据 Robert C. Martin…]]></description><link>https://blog.foolishrobot.xyz/代码整洁之道-js版本</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/代码整洁之道-js版本</guid><pubDate>Tue, 13 Oct 2020 13:37:42 GMT</pubDate><content:encoded>&lt;p&gt;原文地址: &lt;a href=&quot;https://github.com/ryanmcdermott/clean-code-javascript&quot;&gt;ryanmcdermott/clean-code-javascript&lt;/a&gt;&lt;/p&gt;&lt;p&gt;原文翻译: &lt;a href=&quot;https://github.com/alivebao&quot;&gt;alivebao&lt;/a&gt;/&lt;strong&gt;&lt;a href=&quot;https://github.com/alivebao/clean-code-js&quot;&gt;clean-code-js&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;转载文章用于自己学习查阅, 如有侵权, 联系作者删除.&lt;/p&gt;&lt;/blockquote&gt;&lt;h2 id=&quot;介绍&quot; style=&quot;position:relative&quot;&gt;介绍&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/ryanmcdermott&quot;&gt;作者&lt;/a&gt;根据 Robert C. Martin &lt;a href=&quot;https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882&quot;&gt;&lt;em&gt;《代码整洁之道》&lt;/em&gt;&lt;/a&gt;总结了适用于 JavaScript 的软件工程原则&lt;a href=&quot;https://github.com/ryanmcdermott/clean-code-javascript&quot;&gt;《Clean Code JavaScript》&lt;/a&gt;。&lt;/p&gt;&lt;p&gt;本文是对其的翻译。&lt;/p&gt;&lt;p&gt;不必严格遵守本文的所有原则，有时少遵守一些效果可能会更好，具体应根据实际情况决定。这是根据《代码整洁之道》作者多年经验整理的代码优化建议，但也仅仅只是一份建议。&lt;/p&gt;&lt;p&gt;软件工程已经发展了 50 多年，至今仍在不断前进。现在，把这些原则当作试金石，尝试将他们作为团队代码质量考核的标准之一吧。&lt;/p&gt;&lt;p&gt;最后你需要知道的是，这些东西不会让你立刻变成一个优秀的工程师，长期奉行他们也并不意味着你能够高枕无忧不再犯错。千里之行，始于足下。我们需要时常和同行们进行代码评审，不断优化自己的代码。不要惧怕改善代码质量所需付出的努力，加油。&lt;/p&gt;&lt;h2 id=&quot;变量&quot; style=&quot;position:relative&quot;&gt;&lt;strong&gt;变量&lt;/strong&gt;&lt;/h2&gt;&lt;h3 id=&quot;使用有意义，可读性好的变量名&quot; style=&quot;position:relative&quot;&gt;使用有意义，可读性好的变量名&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;反例&lt;/strong&gt;:&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;var yyyymmdstr = moment().format(&amp;#x27;YYYY/MM/DD&amp;#x27;);
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 16 Nov 2020 08:08:29 GMT</lastBuildDate><item><title><![CDATA[转载-SWR文档翻译]]></title><description><![CDATA[原文地址  https://juejin.im/post/6844904167786414093#heading-5 转载 SWR 文档 - 远程数据请求的 React Hooks 封装 GitHub:  github.com/zeit/swr 官网:  SWR: React…]]></description><link>https://blog.foolishrobot.xyz/[转载]SWR文档翻译</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/[转载]SWR文档翻译</guid><pubDate>Mon, 16 Nov 2020 20:29:08 GMT</pubDate><content:encoded>&lt;blockquote&gt;&lt;p&gt;原文地址 &lt;a href=&quot;https://juejin.im/post/6844904167786414093#heading-5&quot;&gt;https://juejin.im/post/6844904167786414093#heading-5&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;h1 id=&quot;转载swr-文档---远程数据请求的-react-hooks-封装&quot; style=&quot;position:relative&quot;&gt;[转载]SWR 文档 - 远程数据请求的 React Hooks 封装&lt;/h1&gt;&lt;p&gt;GitHub: &lt;a href=&quot;https://github.com/zeit/swr&quot;&gt;github.com/zeit/swr&lt;/a&gt;&lt;/p&gt;&lt;p&gt;官网: &lt;a href=&quot;https://swr.now.sh/&quot;&gt;SWR: React Hooks for Remote Data Fetching&lt;/a&gt;&lt;/p&gt;&lt;h2 id=&quot;介绍&quot; style=&quot;position:relative&quot;&gt;介绍&lt;/h2&gt;&lt;p&gt;SWR 是提供远程数据请求的 React Hooks 库。&lt;/p&gt;&lt;p&gt;SWR 是由 stable-while-revalidate 的首字母组成，是由&lt;a href=&quot;https://tools.ietf.org/html/rfc5861&quot;&gt;HTTP RFC 5861&lt;/a&gt;普及的缓存失效策略。SWR 优先返回缓存数据(stable)，然后再发送远程请求(revalidate)，最后更新最新的数据。&lt;/p&gt;&lt;p&gt;特性：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;数据请求与传输协议无关&lt;/li&gt;&lt;li&gt;快速页面导航&lt;/li&gt;&lt;li&gt;聚焦时自动请求数据&lt;/li&gt;&lt;li&gt;轮询&lt;/li&gt;&lt;li&gt;请求去重&lt;/li&gt;&lt;li&gt;本地数据变化&lt;/li&gt;&lt;li&gt;分页&lt;/li&gt;&lt;li&gt;支持 TS&lt;/li&gt;&lt;li&gt;支持 SSR&lt;/li&gt;&lt;li&gt;支持 React Suspense&lt;/li&gt;&lt;li&gt;支持 React Native&lt;/li&gt;&lt;li&gt;少量 API 等等等......&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;使用 SWR，组件可以持续自动更新数据。因此 UI 总是可以快速展示并且保持响应。&lt;/p&gt;&lt;h2 id=&quot;快速开始&quot; style=&quot;position:relative&quot;&gt;快速开始&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import useSWR from &amp;#x27;swr&amp;#x27;;
+
+function Profile() {
+  const { data, error } = useSWR(&amp;#x27;/api/user&amp;#x27;, fetcher);
+
+  if (error) return &amp;lt;div&amp;gt;failed to load&amp;lt;/div&amp;gt;;
+  if (!data) return &amp;lt;div&amp;gt;loading...&amp;lt;/div&amp;gt;;
+  return &amp;lt;div&amp;gt;hello {data.name}!&amp;lt;/div&amp;gt;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在这个例子中，useSWR 接收 key 和 fetcher 为参数。key 是这个请求的唯一标识，通常是这个 API 的 URL。fetcher 函数接收 key 为参数，并异步返回数据。&lt;/p&gt;&lt;p&gt;useSWR 返回 2 个值: data 和 error。当请求在进行中时，data 的值为 undefined。当请求结束，并返回 response 时，将基于 fetcher 的返回值设置 data 和 error，并重新渲染组件。&lt;/p&gt;&lt;p&gt;注意，fetcher 可以是任何异步函数，因此你可以使用你喜欢的数据请求库来处理这个部分。&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://swr.now.sh/&quot;&gt;查看更多 SWR 例子&lt;/a&gt; &lt;a href=&quot;https://github.com/zeit/swr#examples&quot;&gt;最佳实践的例子&lt;/a&gt;&lt;/p&gt;&lt;h2 id=&quot;开始使用&quot; style=&quot;position:relative&quot;&gt;开始使用&lt;/h2&gt;&lt;p&gt;进入你的 React 项目，执行如下命令&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;yarn add swr
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;或者使用 npm&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;npm install swr
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;api&quot; style=&quot;position:relative&quot;&gt;API&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;const { data, error, isValidating, mutate } = useSWR(key, fetcher, options);
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;参数&quot; style=&quot;position:relative&quot;&gt;参数&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;key：string | function | array | null，请求的唯一标识&lt;a href=&quot;https://github.com/zeit/swr#conditional-fetching&quot;&gt;高级用法&lt;/a&gt;&lt;/li&gt;&lt;li&gt;fetcher：可选参数，返回 Promise 的函数，用于请求远程数据&lt;a href=&quot;https://github.com/zeit/swr#data-fetching&quot;&gt;细节&lt;/a&gt;&lt;/li&gt;&lt;li&gt;options：object, 可选参数，SWR hook 接收的选项对象&lt;/li&gt;&lt;/ul&gt;&lt;h4 id=&quot;返回值&quot; style=&quot;position:relative&quot;&gt;返回值&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;data：fetcher 函数返回的 Promise，resolve 时的数据（请求未返回时为 undefined）&lt;/li&gt;&lt;li&gt;error：fetcher 函数抛出的错误（或者为 undefined）&lt;/li&gt;&lt;li&gt;isValidating：true 为 loading 状态（请求进行中或者数据重新有效中）&lt;/li&gt;&lt;li&gt;mutate: (data?: any, shouldRevalidate?: any) =&amp;gt; void，用于改变缓存数据的函数&lt;/li&gt;&lt;/ul&gt;&lt;h4 id=&quot;选项&quot; style=&quot;position:relative&quot;&gt;选项&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;suspense = false：是否启用 React Suspense 模式&lt;a href=&quot;https://github.com/zeit/swr#suspense-mode&quot;&gt;细节&lt;/a&gt;&lt;/li&gt;&lt;li&gt;fetcher = undefined：默认的 fetcher 函数&lt;/li&gt;&lt;li&gt;initialData：返回的默认数据（注意：这个是预设钩子）&lt;/li&gt;&lt;li&gt;revalidateOnFocus = true：聚焦窗口时，自动获取数据&lt;/li&gt;&lt;li&gt;revalidateOnReconnect = true：浏览器重新联网时自动获取数据(通过：navigator.onLine)&lt;/li&gt;&lt;li&gt;refreshInterval = 0：轮询间隔时间(默认不启用轮询)&lt;/li&gt;&lt;li&gt;refreshWhenHidden = false：当窗口不可见时继续轮询（当 refreshInterval 启用时）&lt;/li&gt;&lt;li&gt;refreshWhenOffline = true：浏览器离线时继续轮询（由 navigator.onLine 决定）&lt;/li&gt;&lt;li&gt;shouldRetryOnError = true：fetcher 发生错误时是否重试&lt;a href=&quot;https://github.com/zeit/swr#error-retries&quot;&gt;细节&lt;/a&gt;&lt;/li&gt;&lt;li&gt;dedupingInterval = 2000：防抖，频发出发 revalidate，会进行防抖策略处理&lt;/li&gt;&lt;li&gt;focusThrottleInterval = 5000：在这个时间间隔内，revalidate 只执行一次&lt;/li&gt;&lt;li&gt;loadingTimeout = 3000：触发 onLoadingSlow 事件的超时时间，即请求超过规定时间未结束，则触发 onLoadingSlow 回调&lt;/li&gt;&lt;li&gt;errorRetryInterval = 5000：错误重试的时间间隔&lt;/li&gt;&lt;li&gt;errorRetryCount：错误重试的最大次数&lt;/li&gt;&lt;li&gt;onLoadingSlow(key, config)：请求时间过长，会触发的回调函数(参见 loadingTimeout)&lt;/li&gt;&lt;li&gt;onSuccess(data, key, config)：请求成功时的回调函数&lt;/li&gt;&lt;li&gt;onError(err, key, config)：请求返回 error 时的回调函数&lt;/li&gt;&lt;li&gt;onErrorRetry(err, key, config, revalidate, revalidateOps)：error 重试的处理函数&lt;a href=&quot;https://github.com/zeit/swr#error-retries&quot;&gt;细节&lt;/a&gt;&lt;/li&gt;&lt;li&gt;compare(a,b)：用来对比返回数据是否真的发生改变的函数，避免欺骗性重新渲染。默认使用&lt;a href=&quot;https://github.com/epoberezkin/fast-deep-equal&quot;&gt;fast-deep-equal&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;慢网时（2G，&amp;lt;=70kbps），errorRetryInterval 默认为 10s，loadingTimeout 默认为 5s&lt;/p&gt;&lt;p&gt;可以通过&lt;a href=&quot;https://github.com/zeit/swr#global-configuration&quot;&gt;全局配置&lt;/a&gt;来提供默认选项值。&lt;/p&gt;&lt;h2 id=&quot;例子&quot; style=&quot;position:relative&quot;&gt;例子&lt;/h2&gt;&lt;h3 id=&quot;全局配置global-configuration&quot; style=&quot;position:relative&quot;&gt;全局配置(Global Configuration)&lt;/h3&gt;&lt;p&gt;SWRConfig 可以提供全局默认配置。&lt;/p&gt;&lt;p&gt;在下面的例子中，所有的 swrs 将使用相同的 fetcher 来请求 JSON 数据，并每隔 3s 刷新一次数据:&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import useSWR, { SWRConfig } from &amp;#x27;swr&amp;#x27;;
+
+function Dashboard() {
+  const { data: events } = useSWR(&amp;#x27;/api/events&amp;#x27;);
+  const { data: projects } = useSWR(&amp;#x27;/api/projects&amp;#x27;);
+  const { data: user } = useSWR(&amp;#x27;/api/user&amp;#x27;, { refreshInterval: 0 }); // 禁止刷新
+}
+
+function App() {
+  return (
+    &amp;lt;SWRConfig
+      value={{
+        refreshInterval: 3000,
+        fetcher: (...args) =&amp;gt; fetch(...args).then((res) =&amp;gt; res.json()),
+      }}
+    &amp;gt;
+      &amp;lt;Dashboard /&amp;gt;
+    &amp;lt;/SWRConfig&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;数据请求data-fetching&quot; style=&quot;position:relative&quot;&gt;数据请求(Data Fetching)&lt;/h3&gt;&lt;p&gt;Fetcher 是一个接收 key 为参数的函数，并返回一个值或者 Promise。你可以使用任何库处理数据请求，例如：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import fetch from &amp;#x27;unfetch&amp;#x27;;
+
+const fetcher = (url) =&amp;gt; fetch(url).then((r) =&amp;gt; r.json());
+
+function App() {
+  const { data } = useSWR(&amp;#x27;/api/data&amp;#x27;, fetcher);
+  // ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;或者使用 GraphQL：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import { request } from &amp;#x27;graphql-request&amp;#x27;;
+
+const API = &amp;#x27;https://api.graph.cool/simple/v1/movies&amp;#x27;;
+const fetcher = (query) =&amp;gt; request(API, query);
+
+function App() {
+  const { data, error } = useSWR(
+    `{
+      Movie(title: &amp;quot;Inception&amp;quot;) {
+        releaseDate
+        actors {
+          name
+        }
+      }
+    }`,
+    fetcher
+  );
+  // ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果你想传递变量给 GraphQL query，&lt;a href=&quot;https://github.com/zeit/swr#multiple-arguments&quot;&gt;查看这里&lt;/a&gt;&lt;/p&gt;&lt;p&gt;注意，如果提供了全局的 fetcher，则 useSWR 中可以省略 fetcher 参数&lt;/p&gt;&lt;h3 id=&quot;有条件的请求conditional-fetching&quot; style=&quot;position:relative&quot;&gt;有条件的请求(Conditional Fetching)&lt;/h3&gt;&lt;p&gt;给 useSWR 传递 null 或者一个函数作为 key，可以根据条件发起数据请求。如果函数抛出错误或者返回 false，SWR 会中止请求。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;// 条件请求
+const { data } = useSWR(shouldFetch ? &amp;#x27;/api/data&amp;#x27; : null, fetcher);
+
+// 返回false
+const { data } = useSWR(() =&amp;gt; (shouldFetch ? &amp;#x27;/api/data&amp;#x27; : null), fethcer);
+
+// 抛出错误
+const { data } = useSWR(() =&amp;gt; &amp;#x27;/api/data?uid=&amp;#x27; + user.id, fetcher);
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;依赖请求dependent-fetching&quot; style=&quot;position:relative&quot;&gt;依赖请求(Dependent Fetching)&lt;/h3&gt;&lt;p&gt;SWR 允许你的远程请求数据依赖其他数据。它可以最大限度的保持平行（避免瀑布法开发），同时保证当下一次数据请求要求动态数据时进行连续请求。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;function MyProjects() {
+  const { data: user } = useSWR(&amp;#x27;/api/user&amp;#x27;);
+  const { data: projects } = useSWR(() =&amp;gt; &amp;#x27;/api/projects?uid=&amp;#x27; + user.id);
+  /*
+    传递给swr的key为函数时，取此函数的返回值为key的值。如果这个函数抛出错误，swr就知道某些依赖没有准备好。在此例子当中是user。
+    */
+  if (!projects) return &amp;#x27;loading&amp;#x27;;
+  return &amp;#x27;You have &amp;#x27; + projects.length + &amp;#x27;projects&amp;#x27;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;多个参数multiple-arguments&quot; style=&quot;position:relative&quot;&gt;多个参数(Multiple Arguments)&lt;/h3&gt;&lt;p&gt;在某些场景中，传递多个参数（可以是任何值或者对象）给 fetcher 函数是很有用的。例如：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;useSWR(&amp;#x27;/api/user&amp;#x27;, (url) =&amp;gt; fetchWithToken(url, token));
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这是&lt;em&gt;不正确的&lt;/em&gt;。因为数据的唯一标识（缓存的 index）是”/api/data”，因此即使 token 发生变化，SWR 依然会使用相同的 key，从而返回错误的数据。&lt;/p&gt;&lt;p&gt;你应该使用&lt;em&gt;数组&lt;/em&gt;作为 key 参数，这个数组是由 fetcher 接收的参数组成：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;const { data: user } = useSWR([&amp;#x27;/api/user&amp;#x27;, token], fetchWithToken);
+
+const { data: orders } = useSWR(
+  user ? [&amp;#x27;/api/orders&amp;#x27;, user] : null,
+  fetchWithUser
+);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;请求的 key 值现在与所有值的变化都关联了。在每次渲染时，SWR 对参数进行&lt;em&gt;浅对比&lt;/em&gt;，如果有任何更改，就会触发 revalidation。&lt;/p&gt;&lt;p&gt;请记住，在渲染时，你不应该重新创建对象，不然每次渲染都会被当做不同的对象：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;// 不要这样写，每次渲染都会当做改变
+useSWR([&amp;#x27;/api/user&amp;#x27;, { id }], query);
+
+// 应该传入稳定的值
+useSWR([&amp;#x27;/api/user&amp;#x27;, id], (url, id) =&amp;gt; query(user, { id }));
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Dan Abramov 在&lt;a href=&quot;https://overreacted.io/a-complete-guide-to-useeffect/#but-i-cant-put-this-function-inside-an-effect&quot;&gt;这里&lt;/a&gt;解释的很好。&lt;/p&gt;&lt;h3 id=&quot;手动触发manually-revalidate&quot; style=&quot;position:relative&quot;&gt;手动触发(Manually Revalidate)&lt;/h3&gt;&lt;p&gt;调用 mutate(key)，可以向所有使用相同 key 的 SWR 广播一条 revalidation 信息。&lt;/p&gt;&lt;p&gt;这个例子展示了，当用户点击“退出”按钮时，自动重新获取登录信息（e.g：内部）的实现.&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import useSWR, { mutate } from &amp;#x27;swr&amp;#x27;
+
+function App() {
+    return (
+        &amp;lt;div&amp;gt;
+            &amp;lt;Profile /&amp;gt;
+            &amp;lt;button
+                onClick = (() =&amp;gt; {
+                    // 设置cookie过期
+                    document.cookie = &amp;#x27;token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;&amp;#x27;
+                    // 发布广播，所有使用相同key值的SWR重新获取数据
+                    mutate(&amp;#x27;/api/user&amp;#x27;)；
+                })
+            &amp;gt;
+                Logout
+            &amp;lt;/button&amp;gt;
+        &amp;lt;/div&amp;gt;
+    )
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;修改和发送请求（mutation-and-post-request）&quot; style=&quot;position:relative&quot;&gt;修改和发送请求（Mutation and Post Request）&lt;/h3&gt;&lt;p&gt;在很多案例中，先修改本地数据这种方式，可以在感觉上提高响应速度——不需要等待远程数据。&lt;/p&gt;&lt;p&gt;使用 mutate，你可以先更新你的本地数据，等请求结束再用最新的数据替换。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import useSWR, { mutate } from &amp;#x27;swr&amp;#x27;;
+
+function Profile() {
+  const { data } = useSWR(&amp;#x27;/api/user&amp;#x27;, fetcher);
+
+  return (
+    &amp;lt;div&amp;gt;
+      &amp;lt;h1&amp;gt;My name is {data.name}.&amp;lt;/h1&amp;gt;
+      &amp;lt;button
+        onClick={async () =&amp;gt; {
+          const newName = data.name.toUpperCase();
+          // 发送请求，更新数据
+          await requestUpdateUsername(newName);
+          // 立即更新本地数据，并重新请求数据
+          // 注意：传入mutate的key，没有限制
+          mutate(&amp;#x27;/api/user&amp;#x27;, { ...data, name: newName });
+        }}
+      &amp;gt;
+        Uppercase my name!
+      &amp;lt;/button&amp;gt;
+    &amp;lt;/div&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;点击上例中的按钮，会发送一个 POST 请求修改远程数据，本地更新客户端数据，并尝试请求最新的数据。&lt;/p&gt;&lt;p&gt;但是很多 POST APIs 只是直接返回更新的数据，因此我们没有必要再次 revalidate。 下面的例子展示了如何使用”local mutate - request - update”：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;// false,可以禁止revalidation
+mutate(&amp;#x27;/api/user&amp;#x27;, newUser, false);
+// updateUser是一个请求的Promise，返回更新后的文档
+mutate(&amp;#x27;/api/user&amp;#x27;, updateUser(newUser));
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;基于当前数据的修改（mutate-based-on-current-data）&quot; style=&quot;position:relative&quot;&gt;基于当前数据的修改（Mutate Based on Current Data）&lt;/h3&gt;&lt;p&gt;在很多场景中，API 只返回单条数据，你需要把这条数据追加到列表中。&lt;/p&gt;&lt;p&gt;使用 mutate，你可以传入一个异步函数，这个函数会接收当前的缓存值，你可以返回一个更新后的文档。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;mutate(&amp;#x27;/api/users&amp;#x27;, async (users) =&amp;gt; {
+  const user = await fetcher(&amp;#x27;/api/users/1&amp;#x27;);
+  return [user, ...users.slice(1)];
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;从-mutate-中返回数据returned-data-from-mutate&quot; style=&quot;position:relative&quot;&gt;从 Mutate 中返回数据(Returned Data from Mutate)&lt;/h3&gt;&lt;p&gt;也许，当你传入一个 promise 或者一个 async 函数给 mutate 时， 你需要使用返回值更新缓存。&lt;/p&gt;&lt;p&gt;每次调用下面的函数时，会返回更新后的文档，或者抛出错误。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;try {
+  const user = await mutate(&amp;#x27;/api/user&amp;#x27;, updateUser(newUser));
+} catch (error) {
+  // 处理更新user时抛出的错误
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;有限制的-mutatebound-mutate&quot; style=&quot;position:relative&quot;&gt;有限制的 mutate(Bound Mutate())&lt;/h3&gt;&lt;p&gt;useSWR 返回的 SWR 对象中也包含 mutate 函数，这个函数预先限制 key 为传入的 key。&lt;/p&gt;&lt;p&gt;功能与全局 mutate 一样，但是不需要传入 key 参数：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import useSWR from &amp;#x27;swr&amp;#x27;;
+
+function Profile() {
+  const { data, mutate } = useSWR(&amp;#x27;/api/user&amp;#x27;, fetcher);
+
+  return (
+    &amp;lt;div&amp;gt;
+      &amp;lt;h1&amp;gt;My name is {data.name}.&amp;lt;/h1&amp;gt;
+      &amp;lt;button
+        onClick={async () =&amp;gt; {
+          const newName = data.name.toUpperCase();
+          await requestUpdateUsername(newName);
+          mutate({ ...data, name: newName });
+        }}
+      &amp;gt;
+        UpperCase my name!
+      &amp;lt;/button&amp;gt;
+    &amp;lt;/div&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;使用-nextjs-实现-ssr（ssr-with-nextjs）&quot; style=&quot;position:relative&quot;&gt;使用 Next.js 实现 SSR（SSR with Next.js）&lt;/h3&gt;&lt;p&gt;使用 initialData 选项，你可以传入一个初始值给 hook。它在很多 SSR 解决方案中都工作的很好，例如 Next.js 中的 getServerSideProps：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;export asyn function getServerSideProps() {
+    const data = await fetcher(&amp;#x27;/api/data&amp;#x27;)
+    return { props: { data } }
+}
+
+function App(props) {
+    const initialData = props.data
+    const { data } = useSWR(&amp;#x27;/api/data&amp;#x27;, fetcher, { initialData })
+
+    return &amp;lt;div&amp;gt;{data}&amp;lt;/div&amp;gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;上例保持 SSR 的同时，在客户端也可以很好的应用 SWR。这意味着数据可以是动态的，并且随着时间和用户交互不断更新。&lt;/p&gt;&lt;h3 id=&quot;suspense-模式（-suspense-mode）&quot; style=&quot;position:relative&quot;&gt;Suspense 模式（ Suspense Mode）&lt;/h3&gt;&lt;p&gt;在应用 React Suspense 时，可以开启 suspense 选项：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import { Suspense } from &amp;#x27;react&amp;#x27;;
+import useSWR from &amp;#x27;ssr&amp;#x27;;
+
+function Profile() {
+  const { data } = useSWR(&amp;#x27;/api/user&amp;#x27;, fetcher, { suspense: true });
+  return &amp;lt;div&amp;gt;hello, {data.name}&amp;lt;/div&amp;gt;;
+}
+
+function App() {
+  return (
+    &amp;lt;Suspense fallback={&amp;lt;div&amp;gt;loading...&amp;lt;/div&amp;gt;}&amp;gt;
+      &amp;lt;Profile /&amp;gt;
+    &amp;lt;/Suspense&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在 Suspense 模式下，data 使用时请求响应的数据（因此你不需要检查数据是否为 undefined）。但是如果发生错误，你需要使用&lt;a href=&quot;https://reactjs.org/docs/concurrent-mode-suspense.html#handling-errors&quot;&gt;error Boundary&lt;/a&gt;去捕获错误。&lt;/p&gt;&lt;p&gt;/注意，ssr 模式下不支持 Suspense/&lt;/p&gt;&lt;h3 id=&quot;错误重试（error-retires）&quot; style=&quot;position:relative&quot;&gt;错误重试（Error Retires）&lt;/h3&gt;&lt;p&gt;SWR 默认采用&lt;a href=&quot;https://en.wikipedia.org/wiki/Exponential_backoff&quot;&gt; exponential backoff algorithm(指数退避算法)&lt;/a&gt;处理错误重试。你可以通过阅读源码了解更多。 也可以通过 onErrorRetry 重写：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;useSWR(key, fetcher, {
+  onErrorRetry: (error, key, option, revalidation, { retryCount }) =&amp;gt; {
+    if (retryCount &amp;gt;= 10) return;
+    if (error.status === 404) return;
+
+    // 5s后重试
+    setTimeout(() =&amp;gt; revalidation({ retryCount: retryCount + 1 }), 5000);
+  },
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;预加载数据prefetching-data&quot; style=&quot;position:relative&quot;&gt;预加载数据(Prefetching Data)&lt;/h3&gt;&lt;p&gt;在 SWR 中有很多方式可以实现预加载。对于顶层请求，高度推荐 rel = “preload”：&lt;/p&gt;&lt;p&gt;``&lt;/p&gt;&lt;p&gt;这种方式在 js 开始下载之前开始预加载数据。因此后面的请求可以重用这个结果（当然也包括 SWR）。&lt;/p&gt;&lt;p&gt;另一个选择是有条件的预加载。你可以写一个函数重新请求并且设置缓存：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;function prefetch() {
+  mutate(
+    &amp;#x27;/api/data&amp;#x27;,
+    fetch(&amp;#x27;/api/data&amp;#x27;).then((res) =&amp;gt; res.json())
+  );
+  // 第二个参数是Promise
+  // 当Promise resolve时，SWR将会使用这个结果
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当你需要重新加载资源时也可以使用他们（例如&lt;a href=&quot;https://github.com/GoogleChromeLabs/quicklink&quot;&gt;hovering a link&lt;/a&gt;）。 和 Next.js 里的&lt;a href=&quot;https://nextjs.org/docs/api-reference/next/link&quot;&gt;页面预加载（page preload）&lt;/a&gt;一起使用，就可以立即加载下一页和数据。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[JS新特性-问号和感叹号]]></title><link>https://blog.foolishrobot.xyz/JS新特性-问号和感叹号</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/JS新特性-问号和感叹号</guid><pubDate>Wed, 04 Nov 2020 20:31:14 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[JavaScript 风格指南]]></title><description><![CDATA[原文地址:  ryanmcdermott/clean-code-javascript 原文翻译:  alivebao / clean-code-js 转载文章用于自己学习查阅, 如有侵权, 联系作者删除. 介绍 作者 根据 Robert C. Martin…]]></description><link>https://blog.foolishrobot.xyz/代码整洁之道-js版本</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/代码整洁之道-js版本</guid><pubDate>Tue, 13 Oct 2020 13:37:42 GMT</pubDate><content:encoded>&lt;p&gt;原文地址: &lt;a href=&quot;https://github.com/ryanmcdermott/clean-code-javascript&quot;&gt;ryanmcdermott/clean-code-javascript&lt;/a&gt;&lt;/p&gt;&lt;p&gt;原文翻译: &lt;a href=&quot;https://github.com/alivebao&quot;&gt;alivebao&lt;/a&gt;/&lt;strong&gt;&lt;a href=&quot;https://github.com/alivebao/clean-code-js&quot;&gt;clean-code-js&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;转载文章用于自己学习查阅, 如有侵权, 联系作者删除.&lt;/p&gt;&lt;/blockquote&gt;&lt;h2 id=&quot;介绍&quot; style=&quot;position:relative&quot;&gt;介绍&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/ryanmcdermott&quot;&gt;作者&lt;/a&gt;根据 Robert C. Martin &lt;a href=&quot;https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882&quot;&gt;&lt;em&gt;《代码整洁之道》&lt;/em&gt;&lt;/a&gt;总结了适用于 JavaScript 的软件工程原则&lt;a href=&quot;https://github.com/ryanmcdermott/clean-code-javascript&quot;&gt;《Clean Code JavaScript》&lt;/a&gt;。&lt;/p&gt;&lt;p&gt;本文是对其的翻译。&lt;/p&gt;&lt;p&gt;不必严格遵守本文的所有原则，有时少遵守一些效果可能会更好，具体应根据实际情况决定。这是根据《代码整洁之道》作者多年经验整理的代码优化建议，但也仅仅只是一份建议。&lt;/p&gt;&lt;p&gt;软件工程已经发展了 50 多年，至今仍在不断前进。现在，把这些原则当作试金石，尝试将他们作为团队代码质量考核的标准之一吧。&lt;/p&gt;&lt;p&gt;最后你需要知道的是，这些东西不会让你立刻变成一个优秀的工程师，长期奉行他们也并不意味着你能够高枕无忧不再犯错。千里之行，始于足下。我们需要时常和同行们进行代码评审，不断优化自己的代码。不要惧怕改善代码质量所需付出的努力，加油。&lt;/p&gt;&lt;h2 id=&quot;变量&quot; style=&quot;position:relative&quot;&gt;&lt;strong&gt;变量&lt;/strong&gt;&lt;/h2&gt;&lt;h3 id=&quot;使用有意义，可读性好的变量名&quot; style=&quot;position:relative&quot;&gt;使用有意义，可读性好的变量名&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;反例&lt;/strong&gt;:&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;var yyyymmdstr = moment().format(&amp;#x27;YYYY/MM/DD&amp;#x27;);
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;正例&lt;/strong&gt;:&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;var yearMonthDay = moment().format(&amp;#x27;YYYY/MM/DD&amp;#x27;);
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;&gt;回到目录&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;&lt;h3 id=&quot;使用-es6-的-const-定义常量&quot; style=&quot;position:relative&quot;&gt;使用 ES6 的 const 定义常量&lt;/h3&gt;&lt;p&gt;反例中使用&amp;quot;var&amp;quot;定义的&amp;quot;常量&amp;quot;是可变的。&lt;/p&gt;&lt;p&gt;在声明一个常量时，该常量在整个程序中都应该是不可变的。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;反例&lt;/strong&gt;:&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;var FIRST_US_PRESIDENT = &amp;#x27;George Washington&amp;#x27;;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;正例&lt;/strong&gt;:&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;const FIRST_US_PRESIDENT = &amp;#x27;George Washington&amp;#x27;;
