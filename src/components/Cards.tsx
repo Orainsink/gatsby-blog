@@ -39,28 +39,28 @@ const CategoryComponent: React.FC = () => {
       }
       FEImg: file(absolutePath: { regex: "/javascript.png/" }) {
         childImageSharp {
-          fixed(width: 640, height: 360) {
+          fixed(width: 320, height: 180) {
             ...GatsbyImageSharpFixed
           }
         }
       }
       leetcodeImg: file(absolutePath: { regex: "/leetcode.png/" }) {
         childImageSharp {
-          fixed(width: 640, height: 360) {
+          fixed(width: 320, height: 180) {
             ...GatsbyImageSharpFixed
           }
         }
       }
       dialogImg: file(absolutePath: { regex: "/随笔.png/" }) {
         childImageSharp {
-          fixed(width: 640, height: 360) {
+          fixed(width: 320, height: 180) {
             ...GatsbyImageSharpFixed
           }
         }
       }
       snippetImg: file(absolutePath: { regex: "/snippet.png/" }) {
         childImageSharp {
-          fixed(width: 640, height: 360) {
+          fixed(width: 320, height: 180) {
             ...GatsbyImageSharpFixed
           }
         }
