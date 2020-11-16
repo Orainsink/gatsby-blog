@@ -75,6 +75,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/layout/GlobalLayout.tsx`),
+      },
+    },
+    {
       resolve: `gatsby-plugin-feed`,
       options: {
         query: `

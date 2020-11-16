@@ -7697,6 +7697,13 @@ gatsby-plugin-google-analytics@^2.3.1:
     "@babel/runtime" "^7.11.2"
     minimatch "3.0.4"
 
+gatsby-plugin-layout@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.npm.taobao.org/gatsby-plugin-layout/download/gatsby-plugin-layout-1.4.0.tgz#800b194fb4a26b38023b16791573c13d19120209"
+  integrity sha1-gAsZT7SiazgCOxZ5FXPBPRkSAgk=
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+
 gatsby-plugin-less@^3.2.2:
   version "3.2.9"
   resolved "https://registry.npm.taobao.org/gatsby-plugin-less/download/gatsby-plugin-less-3.2.9.tgz#bce554256a722ae201720e0595a6aea49b2677a6"
