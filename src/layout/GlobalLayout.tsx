@@ -23,7 +23,6 @@ const GlobalLayout = ({ children, location }) => {
       {children}
       <Header location={location} />
       <Bg />
-      <BackTop />
     </>
   );
 };

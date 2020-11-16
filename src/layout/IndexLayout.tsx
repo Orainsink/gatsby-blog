@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import SideBar from '../components/SideBlocks/SideBar';
 import TagsBlock from '../components/SideBlocks/TagsBlock';
 import Comment from '../components/SideBlocks/Comment';
+import BackTop from '../components/BackTop';
 
 interface Props {
   children?: any;
@@ -57,6 +58,7 @@ const Layout: React.FC<Props> = ({ children }) => {
         </Row>
       </main>
       <Footer />
+      <BackTop />
     </div>
   );
 };

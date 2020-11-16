@@ -13,9 +13,9 @@ const colorArr = [
   'hsl(178deg, 12%, 9%)',
   'hsl(224deg, 12%, 35%)',
   'hsl(257deg, 12%, 77%)',
-  'hsl(307deg, 12%, 77%)',
-  'hsl(333deg, 12%, 35%)',
-  'hsl(360deg, 12%, 9%)',
+  'hsl(224deg, 12%, 77%)',
+  'hsl(178deg, 12%, 35%)',
+  'hsl(224deg, 12%, 9%)',
 ];
 const useMagicColor = (node: any, active: boolean = true) => {
   useEffect(() => {
