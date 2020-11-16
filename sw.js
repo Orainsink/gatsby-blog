@@ -27,29 +27,44 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-fa6729821f4f23cec6c9.js"
+    "url": "webpack-runtime-ba168a047bf21e4a6088.js"
   },
   {
-    "url": "styles.9d19a40dba8ad670c4f4.css"
+    "url": "styles.7d1665a4082559b0e043.css"
   },
   {
     "url": "styles-81852b6058b0ef837ba8.js"
   },
   {
-    "url": "framework-96f685ffff7c2f5b5fca.js"
+    "url": "framework-95c1e77615cc04d592db.js"
   },
   {
-    "url": "app-c23585881a54a938c871.js"
+    "url": "app-6b810f2510c50df8231c.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "2e407c3d402d0954c5d8605348451403"
+    "revision": "09db88a35183236da88cb8706fcadd2b"
   },
   {
-    "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-d95a0802c5dbf17fa10b.js"
+    "url": "components-MyPlayer-1626485b6d65d6759b56.js"
   },
   {
-    "url": "polyfill-26384d03e3e9909f2880.js"
+    "url": "commons-0490d734c063bc5bde45.js"
+  },
+  {
+    "url": "6c94ea1fd5648756663ba03e599231fe9bf734be-54f79554d86be23254c8.js"
+  },
+  {
+    "url": "components-Algolia-Index-b1276a0e3f54129195a0.js"
+  },
+  {
+    "url": "components-Bg-d4134ea0d52a330571d7.js"
+  },
+  {
+    "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-ea151ffef4a3fdeadd05.js"
+  },
+  {
+    "url": "polyfill-e5a747004b7c38a03073.js"
   },
   {
     "url": "manifest.webmanifest",
@@ -145,7 +160,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-c23585881a54a938c871.js`))) {
+  if (!resources || !(await caches.match(`/app-6b810f2510c50df8231c.js`))) {
     return await fetch(event.request)
   }
 
