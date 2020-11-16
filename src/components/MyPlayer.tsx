@@ -205,12 +205,15 @@ const Panel: React.FC = () => {
 /** myPlayer wrap */
 const MyPlayer: React.FC = () => {
   const { playing } = useSelector((state) => state.music);
+  const { headerDrop } = useSelector((state: any) => state);
 
   return (
     <Tooltip
       title={<Panel />}
       trigger="click"
-      overlayClassName={styles.wrapper}
+      overlayClassName={classnames(styles.wrapper, {
+        [styles.headerDrop]: headerDrop,
+      })}
       getPopupContainer={() => document.getElementById('header')}
     >
       <div style={{ cursor: 'pointer', transform: 'translateY(0.2em)' }}>

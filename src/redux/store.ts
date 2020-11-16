@@ -35,6 +35,9 @@ const reducer = (state: any, action: { type: string; payload: any }) => {
     case 'MAX_HEIGHT': {
       return { ...state, maxHeight: action.payload };
     }
+    case 'HEADER_DROP': {
+      return { ...state, headerDrop: action.payload };
+    }
   }
   return state;
 };
@@ -53,6 +56,7 @@ const initialState = {
   curTag: '',
   curDate: '',
   maxHeight: 0,
+  headerDrop: false,
   music: {
     playing: false,
     volume: 0.5,

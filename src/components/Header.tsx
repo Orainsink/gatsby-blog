@@ -1,6 +1,12 @@
-import React, { useEffect, useCallback, useState, useMemo } from 'react';
+import React, {
+  useEffect,
+  useCallback,
+  useState,
+  useMemo,
+  useRef,
+} from 'react';
 import classnames from 'classnames';
-import { Row, Col, Dropdown, Menu } from 'antd';
+import { Row, Col, Dropdown } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { Link } from 'gatsby';
 import {
@@ -11,6 +17,7 @@ import {
 import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import useWindowSize from '../hooks/useWindowSize';
+import useMagicColor from '../hooks/useMagicColor';
 import loadable from '@loadable/component';
 import styles from '../styles/Header.module.less';
 const MyPlayer = loadable(() => import('../components/MyPlayer'));
@@ -18,22 +25,66 @@ const MenuDrawer = loadable(() => import('../components/MenuDrawer'));
 const SearchDrawer = loadable(() => import('../components/Algolia/Index'));
 const isBrowser = typeof window !== `undefined`;
 
-const ArchivesMenu = React.memo(() => (
-  <Menu>
-    <Menu.Item>
-      <Link to="/archives">技术</Link>
-    </Menu.Item>
-    <Menu.Item>
-      <Link to="/leetcode">Leetcode</Link>
-    </Menu.Item>
-    <Menu.Item>
-      <Link to="/snippet">Snippet</Link>
-    </Menu.Item>
-    <Menu.Item>
-      <Link to="/essay">随笔</Link>
-    </Menu.Item>
-  </Menu>
-));
+const ArchivesMenu = React.memo(({ visible }: { visible: boolean }) => {
+  const magicRef = useRef(null);
+  useMagicColor(magicRef.current, visible);
+
+  const refCallback = useCallback((node) => {
+    if (node !== null) {
+      magicRef.current = node;
+    }
+  }, []);
+
+  return (
+    <div className={styles.dropMenu} ref={refCallback}>
+      <Row align="middle" justify="space-between">
+        <Col span={12} className={styles.cls}>
+          <Link to="/archives">技术</Link>
+        </Col>
+        <Col span={12} className={styles.cls}>
+          <Link to="/leetcode">Leetcode</Link>
+        </Col>
+      </Row>
+      <Row align="middle" justify="space-between">
+        <Col span={12} className={styles.cls}>
+          <Link to="/snippet">Snippet</Link>
+        </Col>
+        <Col span={12} className={styles.cls}>
+          <Link to="/essay">随笔</Link>
+        </Col>
+      </Row>
+    </div>
+  );
+});
+
+const MenuComponent = React.memo(({ drawer }: { drawer: boolean }) => {
+  const [visible, setVisible] = useState(false);
+  if (drawer) {
+    return <MenuDrawer />;
+  } else
+    return (
+      <ul className={styles.nav}>
+        <li>
+          <Link to="/">home</Link>
+        </li>
+        <li>
+          <Dropdown
+            overlay={<ArchivesMenu visible={visible} />}
+            arrow
+            overlayClassName={styles.dropWrapper}
+            onVisibleChange={(visible) => setVisible(visible)}
+          >
+            <span>
+              archives <DownOutlined />
+            </span>
+          </Dropdown>
+        </li>
+        <li>
+          <Link to="/about">about</Link>
+        </li>
+      </ul>
+    );
+});
 
 /**Header */
 const Header: React.FC<{ location: any }> = ({ location }) => {
@@ -55,12 +106,18 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
 
   const { social } = data.site.siteMetadata;
   const dispatch = useDispatch();
-  const [active, setActive] = useState(false);
   const [drawer, setDrawer] = useState(false);
   const [searchVisible, setSearchVisible] = useState(false);
   const [titleVisible, setTitleVisible] = useState(true);
   const [width] = useWindowSize();
-  const { hasArrow, scene, title } = useSelector((state: any) => state);
+  const { hasArrow, scene, title, headerDrop } = useSelector(
+    (state: any) => state
+  );
+
+  const setActive = useCallback(
+    (active) => dispatch({ type: 'HEADER_DROP', payload: active }),
+    [dispatch]
+  );
 
   useEffect(() => {
     if (width < 1024) {
@@ -97,7 +154,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
     return () => {
       document.body.removeEventListener('scroll', _handleScroll);
     };
-  }, [width]);
+  }, [width, setActive]);
 
   const _handleArrow = useCallback(() => {
     dispatch({ type: 'SKIP', payload: false });
@@ -105,41 +162,13 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
     isBrowser && localStorage.setItem('SCENE', '1');
   }, [dispatch]);
 
-  const menu = useMemo(() => {
-    if (drawer) {
-      return <MenuDrawer location={location} />;
-    } else
-      return (
-        <ul className={styles.nav}>
-          <li>
-            <Link to="/">home</Link>
-          </li>
-          <li>
-            <Dropdown
-              overlay={<ArchivesMenu />}
-              //@ts-ignore
-              arrow
-              overlayClassName={styles.dropWrapper}
-            >
-              <span>
-                archives <DownOutlined />
-              </span>
-            </Dropdown>
-          </li>
-          <li>
-            <Link to="/about">about</Link>
-          </li>
-        </ul>
-      );
-  }, [drawer, location]);
-
   return (
     <header
       style={{
         top: scene ? '100vh' : '0',
       }}
       id="header"
-      className={classnames(styles.wrapper, active && styles.active)}
+      className={classnames(styles.wrapper, headerDrop && styles.active)}
     >
       <Row justify="space-around" align="middle">
         <Col style={{ display: 'flex', alignItems: 'center' }}>
@@ -147,7 +176,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
         </Col>
         {!drawer && (
           <Col className={styles.author}>
-            {!titleVisible ? null : active && title ? (
+            {!titleVisible ? null : headerDrop && title ? (
               <span>{title}</span>
             ) : (
               <span
@@ -164,7 +193,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
         )}
 
         <Col flex={1} style={{ textAlign: 'right' }}>
-          {menu}
+          <MenuComponent drawer={drawer} />
         </Col>
         <Col style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <SearchOutlined
@@ -179,7 +208,7 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
               window.open(social.github);
             }}
           />
-          {!active && hasArrow && (
+          {!headerDrop && hasArrow && (
             <ArrowSvg className={styles.arrow} onClick={_handleArrow} />
           )}
         </Col>

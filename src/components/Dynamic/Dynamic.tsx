@@ -15,7 +15,7 @@ import {
   MeshLambertMaterial,
   Mesh,
 } from 'three';
-import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Canvas, useLoader, useFrame, useThree } from 'react-three-fiber';
 import styles from '../../styles/Dynamic.module.less';
 import classnames from 'classnames';

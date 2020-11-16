@@ -178,26 +178,47 @@ button.drawerBtn {
   user-select: none;
 }
 .menuShasha {
-  // position: absolute;
-  // top: 50%;
-  // left: 50%;
-  // transform: translateX(-50%);
   pointer-events: none;
   user-select: none;
 }
 .dropWrapper {
   & :global {
-    .ant-dropdown-menu {
-      background: linear-gradient(135deg, #141619 0%, #c7d2db 100%);
-    }
-    .ant-dropdown-menu-item > a {
-      color: rgba(255, 255, 255, 0.7);
-    }
-    .ant-dropdown-menu-item:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
     .ant-dropdown-arrow {
       border-color: transparent;
+    }
+  }
+}
+
+.dropMenu {
+  width: 200px;
+  border-radius: 4px;
+  text-align: center;
+  padding: 0.2em;
+  background: linear-gradient(135deg, #141619 0%, #c7d2db 100%);
+  a {
+    padding: 0.5em;
+    color: #fff;
+    display: inline-block;
+    position: relative;
+    transition: all 0.2s ease-out;
+    &::after {
+      background-color: rgba(255, 255, 255, 0.7);
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 3px;
+      border-radius: 10px;
+      color: inherit;
+      transition: all 0.2s ease-out;
+    }
+    &:hover::after {
+      transform: translateY(-3px);
+      width: 100% !important;
+    }
+    &:hover {
+      transform: translateY(-3px);
     }
   }
 }
