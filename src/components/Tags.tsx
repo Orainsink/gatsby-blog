@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { Tag } from 'antd';
 import { useDispatch } from 'react-redux';
 
-const Tags: React.FC<{ tags: string[]; categories: string }> = ({
+const Tags: React.FC<{ tags: string[]; categories?: string }> = ({
   tags,
   categories,
 }) => {
