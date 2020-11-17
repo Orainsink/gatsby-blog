@@ -18,12 +18,12 @@ const GlobalLayout = ({ children, location }) => {
   useBackgroundColor();
 
   return (
-    <div>
-      {children}
+    <>
+      <div>{children}</div>
       <Header location={location} />
       <Bg />
       <BackTop />
-    </div>
+    </>
   );
 };
 
