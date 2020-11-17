@@ -1028,7 +1028,7 @@
 
 "@babel/preset-env@^7.11.5", "@babel/preset-env@^7.12.1":
   version "7.12.1"
-  resolved "https://registry.npm.taobao.org/@babel/preset-env/download/@babel/preset-env-7.12.1.tgz?cache=0&sync_timestamp=1602802054477&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fpreset-env%2Fdownload%2F%40babel%2Fpreset-env-7.12.1.tgz#9c7e5ca82a19efc865384bb4989148d2ee5d7ac2"
+  resolved "https://registry.npm.taobao.org/@babel/preset-env/download/@babel/preset-env-7.12.1.tgz?cache=0&sync_timestamp=1602801753046&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fpreset-env%2Fdownload%2F%40babel%2Fpreset-env-7.12.1.tgz#9c7e5ca82a19efc865384bb4989148d2ee5d7ac2"
   integrity sha1-nH5cqCoZ78hlOEu0mJFI0u5desI=
   dependencies:
     "@babel/compat-data" "^7.12.1"
@@ -1691,11 +1691,6 @@
     "@babel/runtime" "^7.7.2"
     regenerator-runtime "^0.13.3"
 
-"@juggle/resize-observer@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.npm.taobao.org/@juggle/resize-observer/download/@juggle/resize-observer-3.2.0.tgz#5e0b448d27fe3091bae6216456512c5904d05661"
-  integrity sha1-XgtEjSf+MJG65iFkVlEsWQTQVmE=
-
 "@loadable/babel-plugin@^5.12.0":
   version "5.13.2"
   resolved "https://registry.npm.taobao.org/@loadable/babel-plugin/download/@loadable/babel-plugin-5.13.2.tgz#373cddc64ee5437814f7dca1c1b6a7b2c1665a9f"
@@ -1705,7 +1700,7 @@
 
 "@loadable/component@5.14.1":
   version "5.14.1"
-  resolved "https://registry.npm.taobao.org/@loadable/component/download/@loadable/component-5.14.1.tgz#cacd807162430bb85ae085945318027a600adc85"
+  resolved "https://registry.npm.taobao.org/@loadable/component/download/@loadable/component-5.14.1.tgz?cache=0&sync_timestamp=1603352654419&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40loadable%2Fcomponent%2Fdownload%2F%40loadable%2Fcomponent-5.14.1.tgz#cacd807162430bb85ae085945318027a600adc85"
   integrity sha1-ys2AcWJDC7ha4IWUUxgCemAK3IU=
   dependencies:
     "@babel/runtime" "^7.7.7"
@@ -4615,7 +4610,7 @@ content-type@^1.0.4, content-type@~1.0.4:
 
 contentful-management@^5.26.3:
   version "5.28.0"
-  resolved "https://registry.npm.taobao.org/contentful-management/download/contentful-management-5.28.0.tgz?cache=0&sync_timestamp=1605535207315&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcontentful-management%2Fdownload%2Fcontentful-management-5.28.0.tgz#f3b58d60400d66e42439bbd9085cecb0e486f0bb"
+  resolved "https://registry.npm.taobao.org/contentful-management/download/contentful-management-5.28.0.tgz#f3b58d60400d66e42439bbd9085cecb0e486f0bb"
   integrity sha1-87WNYEANZuQkObvZCFzssOSG8Ls=
   dependencies:
     axios "^0.19.0"
@@ -5800,7 +5795,7 @@ end-of-stream@^1.0.0, end-of-stream@^1.1.0, end-of-stream@^1.4.1:
 
 engine.io-client@~3.4.0:
   version "3.4.4"
-  resolved "https://registry.npm.taobao.org/engine.io-client/download/engine.io-client-3.4.4.tgz?cache=0&sync_timestamp=1605602193508&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fengine.io-client%2Fdownload%2Fengine.io-client-3.4.4.tgz#77d8003f502b0782dd792b073a4d2cf7ca5ab967"
+  resolved "https://registry.npm.taobao.org/engine.io-client/download/engine.io-client-3.4.4.tgz?cache=0&sync_timestamp=1605607744844&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fengine.io-client%2Fdownload%2Fengine.io-client-3.4.4.tgz#77d8003f502b0782dd792b073a4d2cf7ca5ab967"
   integrity sha1-d9gAP1ArB4LdeSsHOk0s98pauWc=
   dependencies:
     component-emitter "~1.3.0"
@@ -5828,7 +5823,7 @@ engine.io-parser@~2.2.0:
 
 engine.io@~3.4.0:
   version "3.4.2"
-  resolved "https://registry.npm.taobao.org/engine.io/download/engine.io-3.4.2.tgz#8fc84ee00388e3e228645e0a7d3dfaeed5bd122c"
+  resolved "https://registry.npm.taobao.org/engine.io/download/engine.io-3.4.2.tgz?cache=0&sync_timestamp=1605608892642&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fengine.io%2Fdownload%2Fengine.io-3.4.2.tgz#8fc84ee00388e3e228645e0a7d3dfaeed5bd122c"
   integrity sha1-j8hO4AOI4+IoZF4KfT367tW9Eiw=
   dependencies:
     accepts "~1.3.4"
@@ -6020,7 +6015,7 @@ escape-string-regexp@^4.0.0:
 
 eslint-config-react-app@6.0.0:
   version "6.0.0"
-  resolved "https://registry.npm.taobao.org/eslint-config-react-app/download/eslint-config-react-app-6.0.0.tgz?cache=0&sync_timestamp=1603462763025&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Feslint-config-react-app%2Fdownload%2Feslint-config-react-app-6.0.0.tgz#ccff9fc8e36b322902844cbd79197982be355a0e"
+  resolved "https://registry.npm.taobao.org/eslint-config-react-app/download/eslint-config-react-app-6.0.0.tgz?cache=0&sync_timestamp=1603462326367&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Feslint-config-react-app%2Fdownload%2Feslint-config-react-app-6.0.0.tgz#ccff9fc8e36b322902844cbd79197982be355a0e"
   integrity sha1-zP+fyONrMikChEy9eRl5gr41Wg4=
   dependencies:
     confusing-browser-globals "^1.0.10"
@@ -7279,7 +7274,7 @@ gatsby-plugin-loadable-components-ssr@2.1.0:
 
 gatsby-plugin-manifest@2.6.0:
   version "2.6.0"
-  resolved "https://registry.npm.taobao.org/gatsby-plugin-manifest/download/gatsby-plugin-manifest-2.6.0.tgz?cache=0&sync_timestamp=1605499351277&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fgatsby-plugin-manifest%2Fdownload%2Fgatsby-plugin-manifest-2.6.0.tgz#d128d462a726b665551e53ffe0e6639381ee507e"
+  resolved "https://registry.npm.taobao.org/gatsby-plugin-manifest/download/gatsby-plugin-manifest-2.6.0.tgz#d128d462a726b665551e53ffe0e6639381ee507e"
   integrity sha1-0SjUYqcmtmVVHlP/4OZjk4HuUH4=
   dependencies:
     "@babel/runtime" "^7.11.2"
@@ -9908,7 +9903,7 @@ kleur@^3.0.3:
 
 klona@^2.0.4:
   version "2.0.4"
-  resolved "https://registry.npm.taobao.org/klona/download/klona-2.0.4.tgz?cache=0&sync_timestamp=1600226641291&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fklona%2Fdownload%2Fklona-2.0.4.tgz#7bb1e3affb0cb8624547ef7e8f6708ea2e39dfc0"
+  resolved "https://registry.npm.taobao.org/klona/download/klona-2.0.4.tgz?cache=0&sync_timestamp=1600226616064&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fklona%2Fdownload%2Fklona-2.0.4.tgz#7bb1e3affb0cb8624547ef7e8f6708ea2e39dfc0"
   integrity sha1-e7Hjr/sMuGJFR+9+j2cI6i4538A=
 
 language-subtag-registry@~0.3.2:
@@ -9954,7 +9949,7 @@ lcid@^2.0.0:
 
 less-loader@^6.2.0:
   version "6.2.0"
-  resolved "https://registry.npm.taobao.org/less-loader/download/less-loader-6.2.0.tgz?cache=0&sync_timestamp=1605095927771&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fless-loader%2Fdownload%2Fless-loader-6.2.0.tgz#8b26f621c155b342eefc24f5bd6e9dc40c42a719"
+  resolved "https://registry.npm.taobao.org/less-loader/download/less-loader-6.2.0.tgz#8b26f621c155b342eefc24f5bd6e9dc40c42a719"
   integrity sha1-iyb2IcFVs0Lu/CT1vW6dxAxCpxk=
   dependencies:
     clone "^2.1.2"
@@ -10654,9 +10649,9 @@ mdurl@^1.0.0:
   integrity sha1-/oWy7HWlkDfyrf7BAP1sYBdhFS4=
 
 meant@^1.0.1, meant@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npm.taobao.org/meant/download/meant-1.0.2.tgz?cache=0&sync_timestamp=1595297711106&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmeant%2Fdownload%2Fmeant-1.0.2.tgz#5d0c78310a3d8ae1408a16be0fe0bd42a969f560"
-  integrity sha1-XQx4MQo9iuFAiha+D+C9Qqlp9WA=
+  version "1.0.3"
+  resolved "https://registry.npm.taobao.org/meant/download/meant-1.0.3.tgz?cache=0&sync_timestamp=1605605825208&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmeant%2Fdownload%2Fmeant-1.0.3.tgz#67769af9de1d158773e928ae82c456114903554c"
+  integrity sha1-Z3aa+d4dFYdz6SiugsRWEUkDVUw=
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -13333,9 +13328,9 @@ rc-select@~11.4.0:
     warning "^4.0.3"
 
 rc-slider@~9.6.1:
-  version "9.6.2"
-  resolved "https://registry.npm.taobao.org/rc-slider/download/rc-slider-9.6.2.tgz#7ea1e9494ed90f602e871c43bccfe3057a0c59f6"
-  integrity sha1-fqHpSU7ZD2AuhxxDvM/jBXoMWfY=
+  version "9.6.3"
+  resolved "https://registry.npm.taobao.org/rc-slider/download/rc-slider-9.6.3.tgz?cache=0&sync_timestamp=1605610281201&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Frc-slider%2Fdownload%2Frc-slider-9.6.3.tgz#7bf8bc8581ae14ed7130d6a7edda3bb3a1b0deba"
+  integrity sha1-e/i8hYGuFO1xMNan7do7s6Gw3ro=
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.5"
@@ -13541,7 +13536,7 @@ react-gsap@^2.2.1:
 
 react-helmet@^6.1.0:
   version "6.1.0"
-  resolved "https://registry.npm.taobao.org/react-helmet/download/react-helmet-6.1.0.tgz?cache=0&sync_timestamp=1591591124473&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-helmet%2Fdownload%2Freact-helmet-6.1.0.tgz#a750d5165cb13cf213e44747502652e794468726"
+  resolved "https://registry.npm.taobao.org/react-helmet/download/react-helmet-6.1.0.tgz#a750d5165cb13cf213e44747502652e794468726"
   integrity sha1-p1DVFlyxPPIT5EdHUCZS55RGhyY=
   dependencies:
     object-assign "^4.1.1"
@@ -13610,7 +13605,7 @@ react-merge-refs@^1.1.0:
 
 react-reconciler@0.26.1:
   version "0.26.1"
-  resolved "https://registry.npm.taobao.org/react-reconciler/download/react-reconciler-0.26.1.tgz?cache=0&sync_timestamp=1603367887733&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-reconciler%2Fdownload%2Freact-reconciler-0.26.1.tgz#860952dd359fd870f94895c254271e3a9de3b2d6"
+  resolved "https://registry.npm.taobao.org/react-reconciler/download/react-reconciler-0.26.1.tgz?cache=0&sync_timestamp=1603367883533&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-reconciler%2Fdownload%2Freact-reconciler-0.26.1.tgz#860952dd359fd870f94895c254271e3a9de3b2d6"
   integrity sha1-hglS3TWf2HD5SJXCVCceOp3jstY=
   dependencies:
     loose-envify "^1.1.0"
@@ -13644,19 +13639,18 @@ react-side-effect@^2.1.0:
   integrity sha1-ZsVwHD51YKtIIqTuJ0Le4hXXLrM=
 
 react-three-fiber@^5.2.1:
-  version "5.2.1"
-  resolved "https://registry.npm.taobao.org/react-three-fiber/download/react-three-fiber-5.2.1.tgz#2d33e3b1af039795b01fed0622318cced7173fcb"
-  integrity sha1-LTPjsa8Dl5WwH+0GIjGMztcXP8s=
+  version "5.3.0"
+  resolved "https://registry.npm.taobao.org/react-three-fiber/download/react-three-fiber-5.3.0.tgz#043cc2d195570a497ac66f4cb1fad41686be41c7"
+  integrity sha1-BDzC0ZVXCkl6xm9MsfrUFoa+Qcc=
   dependencies:
     "@babel/runtime" "^7.12.1"
-    "@juggle/resize-observer" "^3.2.0"
     react-merge-refs "^1.1.0"
     react-reconciler "0.26.1"
     react-use-measure "^2.0.3"
     resize-observer-polyfill "^1.5.1"
     scheduler "0.20.1"
     tiny-emitter "^2.1.0"
-    use-asset "^0.1.4"
+    use-asset "^0.1.5"
     utility-types "^3.10.0"
 
 react-typography@^0.16.19:
@@ -16502,7 +16496,7 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
-use-asset@^0.1.4:
+use-asset@^0.1.5:
   version "0.1.5"
   resolved "https://registry.npm.taobao.org/use-asset/download/use-asset-0.1.5.tgz#196b6edf9f162bb900e0990888da3215514dec29"
   integrity sha1-GWtu358WK7kA4JkIiNoyFVFN7Ck=
