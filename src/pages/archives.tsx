@@ -17,13 +17,13 @@ interface Data {
   };
 }
 
-const ArchivesPage = ({ data, location }: PageProps<Data>) => {
+const ArchivesPage = ({ data }: PageProps<Data>) => {
   const { curTag, curDate } = useSelector((state: any) => state);
   const dispatch = useDispatch();
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
 
   return (
-    <Layout location={location} sideBlocks={<Calendar posts={posts} />}>
+    <Layout sideBlocks={<Calendar posts={posts} />}>
       <SEO title="技术-归档" />
       <WordCloud />
       <Divider orientation="center" className={styles.divider}>

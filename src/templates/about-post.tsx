@@ -12,11 +12,11 @@ interface Data {
     body: string;
   };
 }
-const AboutPostTemplate = ({ data, location }: PageProps<Data>) => {
+const AboutPostTemplate = ({ data }: PageProps<Data>) => {
   const { mdx } = data;
 
   return (
-    <Layout location={location} sideBlocks={<Comment />}>
+    <Layout sideBlocks={<Comment />}>
       <SEO title="About" />
       <Poem />
       <section className={styles.container} style={{ padding: '1em' }}>

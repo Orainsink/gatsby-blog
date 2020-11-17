@@ -26,13 +26,8 @@ interface Props {
     next: any;
     id: string;
   };
-  location: any;
 }
-const BlogPostTemplate: React.FC<Props> = ({
-  data: { mdx },
-  pageContext,
-  location,
-}) => {
+const BlogPostTemplate: React.FC<Props> = ({ data: { mdx }, pageContext }) => {
   const {
     frontmatter: { title, tags, description, date, categories },
     excerpt,
@@ -59,7 +54,6 @@ const BlogPostTemplate: React.FC<Props> = ({
 
   return (
     <Layout
-      location={location}
       sideBlocks={width > 1110 ? <Contents content={tableOfContents} /> : null}
     >
       <SEO title={title} description={description || excerpt} />

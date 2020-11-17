@@ -23,7 +23,7 @@ interface Data {
   };
 }
 
-const EssayPage = ({ data, location }: PageProps<Data>) => {
+const EssayPage = ({ data }: PageProps<Data>) => {
   const { curDate } = useSelector((state: any) => state);
   const dispatch = useDispatch();
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
@@ -40,7 +40,7 @@ const EssayPage = ({ data, location }: PageProps<Data>) => {
   useResetKey();
 
   return (
-    <Layout location={location}>
+    <Layout>
       <SEO title="随笔-归档" />
       <Divider orientation="center" className={styles.divider}>
         {curDate ? curDate : '随笔'}

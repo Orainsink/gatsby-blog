@@ -8,7 +8,6 @@ import Footer from '../components/Footer';
 
 interface Props {
   content?: any;
-  location: any;
   sideBlocks?: React.ReactNode;
   children?: any;
 }

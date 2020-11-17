@@ -87,7 +87,7 @@ const MenuComponent = React.memo(({ drawer }: { drawer: boolean }) => {
 });
 
 /**Header */
-const Header: React.FC<{ location: any }> = ({ location }) => {
+const Header: React.FC = () => {
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       site {
@@ -215,7 +215,6 @@ const Header: React.FC<{ location: any }> = ({ location }) => {
       </Row>
 
       <SearchDrawer
-        location={location}
         visible={searchVisible}
         onClose={() => setSearchVisible(false)}
       />

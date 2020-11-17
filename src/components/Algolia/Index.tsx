@@ -3,16 +3,17 @@ import { Drawer } from 'antd';
 import AlgoliaSearch from './Search';
 import useWindowSize from '../../hooks/useWindowSize';
 import useDrawerCloseEffect from '../../hooks/useDrawerCloseEffect';
+import { useLocation } from '@reach/router';
 
 interface Props {
   visible: boolean;
-  location: any;
   onClose: () => void;
 }
 const SearchDrawer: React.FC<Props> = (props) => {
-  const { visible, onClose, location } = props;
+  const { visible, onClose } = props;
   const [width] = useWindowSize();
   useDrawerCloseEffect(visible);
+  const location = useLocation();
 
   /** close menu when location changes */
   useEffect(() => {

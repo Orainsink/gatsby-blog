@@ -6,11 +6,12 @@ import { UnorderedListOutlined } from '@ant-design/icons';
 import Image from 'gatsby-image';
 import useDrawerCloseEffect from '../hooks/useDrawerCloseEffect';
 import styles from '../styles/Header.module.less';
+import { useLocation } from '@reach/router';
 
 /**
  * menu drawer for phone
  **/
-const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
+const MenuDrawer: React.FC = () => {
   const [visible, setVisible] = useState(false);
   useDrawerCloseEffect(visible);
 
@@ -26,6 +27,7 @@ const MenuDrawer: React.FC<{ location: any }> = ({ location }) => {
     }
   `);
   const { sharkMenu } = data;
+  const location = useLocation();
 
   /** close menu when location changes */
   useEffect(() => {

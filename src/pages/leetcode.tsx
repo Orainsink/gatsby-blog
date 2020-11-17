@@ -18,7 +18,7 @@ interface Data {
   };
 }
 
-const SnippetPage = ({ data, location }: PageProps<Data>) => {
+const SnippetPage = ({ data }: PageProps<Data>) => {
   const { curDate } = useSelector((state: any) => state);
   const dispatch = useDispatch();
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
@@ -144,7 +144,7 @@ const SnippetPage = ({ data, location }: PageProps<Data>) => {
   ];
 
   return (
-    <Layout location={location}>
+    <Layout>
       <SEO title="Leetcode-归档" />
       <Divider orientation="center" className={styles.divider}>
         {curDate ? curDate : 'LEETCODE'}

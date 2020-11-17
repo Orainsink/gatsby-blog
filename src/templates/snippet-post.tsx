@@ -25,12 +25,10 @@ interface Props {
     next: any;
     id: string;
   };
-  location: any;
 }
 const SnippetPostTemplate: React.FC<Props> = ({
   data: { mdx },
   pageContext,
-  location,
 }) => {
   const {
     frontmatter: { title, tags, description, date, categories },
@@ -57,7 +55,7 @@ const SnippetPostTemplate: React.FC<Props> = ({
   }, []);
 
   return (
-    <Layout location={location} sideBlocks={<Comment />}>
+    <Layout sideBlocks={<Comment />}>
       <SEO title={title} description={description || excerpt} />
       <article>
         <header>
