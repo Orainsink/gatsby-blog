@@ -129,6 +129,8 @@ const Modal = React.memo((props: ModalProps) => {
     mouseY = (e.clientY / window.innerHeight) * 2 - 1;
   };
 
+  console.log(gltf);
+
   return (
     <group onPointerMove={_handlePointerMove}>
       <perspectiveCamera
@@ -164,12 +166,12 @@ const Modal = React.memo((props: ModalProps) => {
       </group>
       {/* floor */}
       <mesh position={[-70, -20, -30]} rotation={[0.3, 0, 0]}>
-        <bufferGeometry attach="geometry" {...gltf.__$[1].geometry} />
+        <bufferGeometry attach="geometry" {...gltf.nodes.mesh_0.geometry} />
         <meshLambertMaterial
           attach="material"
-          {...gltf.__$[1].material}
           flatShading
           side={DoubleSide}
+          {...gltf.materials['']}
         />
       </mesh>
       {words ? <Text words={words} position={[0, -5, 0]} /> : null}

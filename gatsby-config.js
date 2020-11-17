@@ -163,12 +163,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-less`,
       options: {
-        javascriptEnabled: true,
-        cssLoaderOptions: {
-          camelCase: false,
-          strictMath: true,
+        lessOptions: {
+          javascriptEnabled: true,
+          cssLoaderOptions: {
+            camelCase: false,
+            strictMath: true,
+          },
+          modifyVars,
         },
-        modifyVars,
       },
     },
     {
