@@ -67,7 +67,7 @@ interface Props {
   indices: any[];
 }
 
-const SearchResult: React.FC<Props> = ({ indices }) => {
+const SearchResult = ({ indices }: Props) => {
   return (
     <div className={styles.resultWrap}>
       {indices.length > 0 &&

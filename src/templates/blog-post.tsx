@@ -22,12 +22,12 @@ interface Props {
     };
   };
   pageContext: {
-    previous: any;
-    next: any;
+    previous: MarkdownRemark;
+    next: MarkdownRemark;
     id: string;
   };
 }
-const BlogPostTemplate: React.FC<Props> = ({ data: { mdx }, pageContext }) => {
+const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
   const {
     frontmatter: { title, tags, description, date, categories },
     excerpt,

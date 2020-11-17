@@ -1,9 +1,5 @@
 import { useEffect } from 'react';
-/**
- * magic color hook, hasn't support color property yet....XD
- * @param node node ref
- * @notice 存在兼容性问题, 需要在元素的样式里写上默认的 background-color 做降级处理
- */
+
 const colorNames = [
   '--magic-color-mag-0',
   '--magic-color-mag-1',
@@ -17,6 +13,11 @@ const colorArr = [
   'hsl(178deg, 12%, 35%)',
   'hsl(224deg, 12%, 9%)',
 ];
+/**
+ * magic color hook, hasn't support color property yet....XD
+ * @param node node ref
+ * @notice 存在兼容性问题, 需要在元素的样式里写上默认的 background-color 做降级处理
+ */
 const useMagicColor = (node: any, active: boolean = true) => {
   useEffect(() => {
     if (window.CSS && window.CSS.hasOwnProperty('registerProperty')) {

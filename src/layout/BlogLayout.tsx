@@ -13,7 +13,7 @@ interface Props {
 }
 const isBrowser = typeof window !== `undefined`;
 /** blog posts Layout */
-const Layout: React.FC<Props> = (props) => {
+const Layout = (props: Props) => {
   const { sideBlocks, children } = props;
   const dispatch = useDispatch();
 

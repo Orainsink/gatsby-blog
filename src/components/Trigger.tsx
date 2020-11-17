@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 /**
  * scene Trigger
  */
-const Trigger: React.FC = () => {
+const Trigger = () => {
   const dispatch = useDispatch();
 
   return (

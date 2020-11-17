@@ -5,7 +5,7 @@ interface Props {
   children: any;
 }
 /**侧边栏 */
-const SideBar: React.FC<Props> = (props) => {
+const SideBar = (props: Props) => {
   const { children } = props;
 
   const sideWrap = {

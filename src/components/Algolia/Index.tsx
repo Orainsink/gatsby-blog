@@ -9,7 +9,7 @@ interface Props {
   visible: boolean;
   onClose: () => void;
 }
-const SearchDrawer: React.FC<Props> = (props) => {
+const SearchDrawer = (props: Props) => {
   const { visible, onClose } = props;
   const [width] = useWindowSize();
   useDrawerCloseEffect(visible);

@@ -2,11 +2,11 @@ import React, { useCallback } from 'react';
 import { Link } from 'gatsby';
 import { Tag } from 'antd';
 import { useDispatch } from 'react-redux';
-
-const Tags: React.FC<{ tags: string[]; categories?: string }> = ({
-  tags,
-  categories,
-}) => {
+interface Props {
+  tags: string[];
+  categories?: string;
+}
+const Tags = ({ tags, categories }: Props) => {
   const dispatch = useDispatch();
 
   const onTagClicked = useCallback(

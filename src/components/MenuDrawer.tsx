@@ -11,7 +11,7 @@ import { useLocation } from '@reach/router';
 /**
  * menu drawer for phone
  **/
-const MenuDrawer: React.FC = () => {
+const MenuDrawer = () => {
   const [visible, setVisible] = useState(false);
   useDrawerCloseEffect(visible);
 

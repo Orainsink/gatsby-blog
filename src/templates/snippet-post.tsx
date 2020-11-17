@@ -26,10 +26,7 @@ interface Props {
     id: string;
   };
 }
-const SnippetPostTemplate: React.FC<Props> = ({
-  data: { mdx },
-  pageContext,
-}) => {
+const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
   const {
     frontmatter: { title, tags, description, date, categories },
     excerpt,

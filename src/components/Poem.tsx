@@ -14,7 +14,7 @@ interface Poem {
   [key: string]: any;
 }
 
-const Poem: React.FC = () => {
+const Poem = () => {
   const [poem, setPoem] = useState<null | Poem>(null);
   const [loading, setLoading] = useState(true);
 

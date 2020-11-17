@@ -14,7 +14,7 @@ import { arr } from '../utils/utils';
 import styles from '../styles/MyPlayer.module.less';
 
 /**Controller */
-const Controller: React.FC = () => {
+const Controller = () => {
   const dispatch = useDispatch();
   const { playing, volume, loop } = useSelector((state) => state.music);
   /** stop/start playing */
@@ -67,7 +67,7 @@ const Controller: React.FC = () => {
 };
 
 /** Controller panel */
-const Panel: React.FC = () => {
+const Panel = () => {
   const { playing, volume, mute, loop, id } = useSelector(
     (state) => state.music
   );
@@ -203,7 +203,7 @@ const Panel: React.FC = () => {
 };
 
 /** myPlayer wrap */
-const MyPlayer: React.FC = () => {
+const MyPlayer = () => {
   const { playing } = useSelector((state) => state.music);
   const { headerDrop } = useSelector((state: any) => state);
 

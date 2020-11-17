@@ -6,7 +6,7 @@ import styles from '../../styles/SideBar.module.less';
 import WordCloud from '../WordCloud';
 
 /* wordCloud */
-const TagsBlock: React.FC = () => {
+const TagsBlock = () => {
   const [width] = useWindowSize();
 
   return (

@@ -10,7 +10,7 @@ import styles from '../../styles/SideBar.module.less';
 interface Props {
   posts: ChildMdxItem[];
 }
-const CalendarBlock: React.FC<Props> = ({ posts }) => {
+const CalendarBlock = ({ posts }: Props) => {
   const dispatch = useDispatch();
   const [width] = useWindowSize();
 

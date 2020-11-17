@@ -5,7 +5,7 @@ import useWindowSize from '../../hooks/useWindowSize';
 import styles from '../../styles/SideBar.module.less';
 import MyGitalk from '../MyGitalk';
 
-const Comment: React.FC = () => {
+const Comment = () => {
   const [width] = useWindowSize();
 
   const secondFlex = useMemo(() => {

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import useWindowSize from './useWindowSize';
 
 /**
- * Maximum height, for image positioning
+ * Maximum height, for image position
  * @function useMaxHeight
  */
 const useMaxHeight = () => {

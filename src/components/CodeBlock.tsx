@@ -3,13 +3,19 @@ import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from '../assets/theme/customPrism';
 import { Button } from 'antd';
 import { CopyOutlined, SmileOutlined } from '@ant-design/icons';
-
+interface Props {
+  children: any;
+  className?: string;
+}
 /**
  * code block component
  * default theme is vscode dark
  * @prop className: langClass 语言类型, 默认javascript
  */
-const CodeBlock = ({ children, className: langClass = 'javascript' }: any) => {
+const CodeBlock = ({
+  children,
+  className: langClass = 'javascript',
+}: Props) => {
   const language = langClass.replace(/language-/, '');
   const [copied, setCopied] = useState(false);
 

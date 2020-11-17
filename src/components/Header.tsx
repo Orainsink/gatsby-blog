@@ -87,7 +87,7 @@ const MenuComponent = React.memo(({ drawer }: { drawer: boolean }) => {
 });
 
 /**Header */
-const Header: React.FC = () => {
+const Header = () => {
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       site {

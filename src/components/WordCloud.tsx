@@ -19,7 +19,7 @@ interface Props {
   height?: number;
 }
 
-const WordCloudItem: React.FC<Props> = (props) => {
+const WordCloudItem = (props: Props) => {
   const data: Data = useStaticQuery(graphql`
     query {
       allFile(filter: { sourceInstanceName: { eq: "tech" } }) {

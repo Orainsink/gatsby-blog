@@ -7,7 +7,7 @@ interface Props {
   posts: ChildMdxItem[];
   hideMore?: boolean;
 }
-const PostList: React.FC<Props> = ({ posts, hideMore = false }) => {
+const PostList = ({ posts, hideMore = false }: Props) => {
   const { curTag, curDate } = useSelector((state: any) => state);
   const [filteredPosts, setFilteredPosts] = useState(posts);
   const [fold, setFold] = useState(true);

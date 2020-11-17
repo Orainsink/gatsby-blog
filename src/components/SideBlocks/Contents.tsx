@@ -11,7 +11,7 @@ interface Props {
 }
 
 /** 侧边栏 目录块 */
-const Contents: React.FC<Props> = (props) => {
+const Contents = (props: Props) => {
   const { content } = props;
   const contentsRef = useRef(null);
   const scrollY = useScrollY();

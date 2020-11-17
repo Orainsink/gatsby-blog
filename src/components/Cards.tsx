@@ -20,7 +20,7 @@ interface Data {
   snippetImg: any;
 }
 
-const CategoryComponent: React.FC = () => {
+const CategoryComponent = () => {
   const cates = [
     { category: 'leetcode', name: 'leetcode', path: '/leetcode' },
     { category: 'snippet', name: 'snippet', path: '/snippet' },

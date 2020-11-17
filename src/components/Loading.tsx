@@ -4,7 +4,11 @@ import { ReactComponent as LoadingSvg } from '../assets/img/loading.svg';
  * loading组件,用于组件懒加载,默认debounce=500
  * @param {number} debounce debounce time
  */
-const Loading: React.FC<{ debounce?: number; children?: any }> = (props) => {
+interface Props {
+  debounce?: number;
+  children?: any;
+}
+const Loading = (props: Props) => {
   const { debounce = 500, children } = props;
   const [active, setActive] = useState(false);
 

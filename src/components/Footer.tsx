@@ -4,7 +4,7 @@ import styles from '../styles/Footer.module.less';
 import classnames from 'classnames';
 
 /**Footer */
-const Footer: React.FC = () => {
+const Footer = () => {
   return (
     <footer className={styles.wrap}>
       <div className={styles.valley}></div>

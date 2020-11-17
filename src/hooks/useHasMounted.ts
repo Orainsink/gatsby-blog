@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 /**
  * https://joshwcomeau.com/react/the-perils-of-rehydration/#the-solution
- * fix wrong html bug
+ * @notice fix wrong html bug, this bug drove me crazy.
+ 这是SSR的问题, 读了上面那篇文章才对SSR的原理有了更深入的了解.
  */
 const useHasMounted = () => {
   const [hasMounted, setHasMounted] = useState(false);

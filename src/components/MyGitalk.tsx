@@ -10,7 +10,7 @@ interface Props {
  * gitalk comment component
  * @param {String} title - title
  */
-const MyGitalk: React.FC<Props> = (props) => {
+const MyGitalk = (props: Props) => {
   const { title } = props;
 
   const renderGitalk = useMemo(() => {
