@@ -8,6 +8,7 @@ import SideBar from '../components/SideBlocks/SideBar';
 import TagsBlock from '../components/SideBlocks/TagsBlock';
 import Comment from '../components/SideBlocks/Comment';
 import styles from '../styles/Indexlayout.module.less';
+import useHasMounted from '../hooks/useHasMounted';
 interface Props {
   children?: any;
 }
@@ -22,6 +23,8 @@ const Layout = ({ children }: Props) => {
     dispatch({ type: 'HAS_ARROW', payload: true });
     dispatch({ type: 'CUR_TAG', payload: '' });
   }, [dispatch]);
+
+  const hasMounted = useHasMounted();
 
   return (
     <div
@@ -43,18 +46,20 @@ const Layout = ({ children }: Props) => {
           Click to slide
         </div>
       )}
-      <main className={styles.main}>
-        <Row justify="space-between" gutter={8}>
-          <Col flex="1 1 800px" className={styles.mainWrap}>
-            {children}
-          </Col>
-          <SideBar>
-            <Info />
-            <TagsBlock />
-            <Comment />
-          </SideBar>
-        </Row>
-      </main>
+      {hasMounted && (
+        <main className={styles.main}>
+          <Row justify="space-between" gutter={8}>
+            <Col flex="1 1 800px" className={styles.mainWrap}>
+              {children}
+            </Col>
+            <SideBar>
+              <Info />
+              <TagsBlock />
+              <Comment />
+            </SideBar>
+          </Row>
+        </main>
+      )}
       <Footer />
     </div>
   );
