@@ -5,7 +5,6 @@ import styles from '../styles/Bloglayout.module.less';
 import Info from '../components/SideBlocks/Info';
 import SideBar from '../components/SideBlocks/SideBar';
 import Footer from '../components/Footer';
-import BackTop from '../components/BackTop';
 
 interface Props {
   content?: any;
@@ -48,7 +47,6 @@ const Layout: React.FC<Props> = (props) => {
         </Row>
       </main>
       <Footer />
-      <BackTop />
     </div>
   );
 };

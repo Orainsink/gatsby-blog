@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import '../styles/global.less';
 import { useSelector } from 'react-redux';
-import BackTop from '../components/BackTop';
 import Header from '../components/Header';
 import useBackgroundColor from '../hooks/useBackgroundColor';
-import loadable from '@loadable/component';
-const Bg = loadable(() => import('../components/Bg'));
+import Bg from '../components/Bg';
+import BackTop from '../components/BackTop';
 
 /**global PageElement */
 const GlobalLayout = ({ children, location }) => {
@@ -19,11 +18,12 @@ const GlobalLayout = ({ children, location }) => {
   useBackgroundColor();
 
   return (
-    <>
+    <div>
       {children}
       <Header location={location} />
       <Bg />
-    </>
+      <BackTop />
+    </div>
   );
 };
 
