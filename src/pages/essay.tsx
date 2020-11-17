@@ -59,7 +59,12 @@ const EssayPage = ({ data }: PageProps<Data>) => {
               key={item.frontmatter.title}
               hoverable
               className={styles.essayItem}
-              cover={<Image fixed={getImg(item.frontmatter.title)} />}
+              cover={
+                <Image
+                  fixed={getImg(item.frontmatter.title)}
+                  style={{ width: '100%' }}
+                />
+              }
             >
               <p className={styles.metaTitle}>{item.frontmatter.title}</p>
               <p>{item.frontmatter.date}</p>
