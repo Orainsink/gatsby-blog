@@ -1,0 +1,120 @@
+---
+title: CSS变量实现动态变化的背景色
+date: 2020-11-17 20:27:50
+description:
+tags: []
+categories: tech
+---
+
+## 实现效果
+
+import MagicComponent from './MagicComponent';
+
+<MagicComponent />
+
+## 实现原理
+
+之前我写过一篇简单学习[CSS 变量的文章](https://blog.foolishrobot.xyz/CSS%E5%87%BD%E6%95%B0)
+
+## 简单封装的 useMagicColor
+
+```tsx
+import { useEffect } from 'react';
+
+const colorNames = [
+  '--magic-color-mag-0',
+  '--magic-color-mag-1',
+  '--magic-color-mag-2',
+];
+const colorArr = [
+  'hsl(178deg, 12%, 9%)',
+  'hsl(224deg, 12%, 35%)',
+  'hsl(257deg, 12%, 77%)',
+  'hsl(224deg, 12%, 77%)',
+  'hsl(178deg, 12%, 35%)',
+  'hsl(224deg, 12%, 9%)',
+];
+
+const useMagicColor = (node: any, active: boolean = true) => {
+  useEffect(() => {
+    if (window.CSS && window.CSS.hasOwnProperty('registerProperty')) {
+      colorNames.forEach((name, index) => {
+        try {
+          window.CSS.registerProperty!({
+            name,
+            syntax: '<color>',
+            inherits: false,
+            initialValue: colorArr[index],
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!node) return;
+    if (!window.CSS || !window.CSS.hasOwnProperty('registerProperty')) return;
+    let index = 1;
+    node.style.setProperty(
+      'transition',
+      `${colorNames[0]} 1625ms linear 0s,
+    ${colorNames[1]} 1625ms linear 0s, ${colorNames[2]} 1625ms linear 0s`
+    );
+    node.style.setProperty(
+      'background',
+      `radial-gradient(
+      circle at top left,
+      var(${colorNames[2]}),
+      var(${colorNames[1]}),
+      var(${colorNames[0]})
+    )`
+    );
+
+    const changeColor = () => {
+      node.style.setProperty(colorNames[0], `${colorArr[index]}`);
+      node.style.setProperty(colorNames[1], `${colorArr[(index + 1) % 6]}`);
+      node.style.setProperty(colorNames[2], `${colorArr[(index + 2) % 6]}`);
+
+      index = (index + 1) % 6;
+      return changeColor;
+    };
+
+    const timer = setInterval(changeColor, 1000);
+
+    if (!active) clearInterval(timer);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [node, active]);
+};
+export default useMagicColor;
+```
+
+## 使用 color hook 的组件
+
+```tsx
+import React, { useRef } from 'react';
+import useMagicColor from './useMagicColor';
+
+const MagicComponent = () => {
+  const nodeRef = useRef();
+  useMagicColor(nodeRef.current);
+
+  return (
+    <div
+      style={{
+        background: '#000',
+        width: '300px',
+        height: '100px',
+        borderRadius: '10px',
+        margin: 'auto',
+      }}
+      ref={nodeRef}
+    ></div>
+  );
+};
+export default MagicComponent;
+```
