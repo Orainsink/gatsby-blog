@@ -2,8 +2,8 @@ import * as React from 'react';
 import SEO from '../components/seo';
 import { Button } from 'antd';
 import { Link } from 'gatsby';
-import styles from '../styles/404.module.less';
 import Loading from '../components/Loading';
+import styles from '../styles/404.module.less';
 
 const NotFoundPage = () => {
   return (

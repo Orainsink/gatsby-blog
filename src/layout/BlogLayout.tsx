@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Row, Col } from 'antd';
-import styles from '../styles/Bloglayout.module.less';
 import Info from '../components/SideBlocks/Info';
 import SideBar from '../components/SideBlocks/SideBar';
 import Footer from '../components/Footer';
+import styles from '../styles/Bloglayout.module.less';
 
 interface Props {
   content?: any;
