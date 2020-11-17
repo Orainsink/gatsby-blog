@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+  useRef,
+} from 'react';
 import { Tooltip, Row, Col, Slider } from 'antd';
 import SiriWave from 'siriwave';
 import ReactHowler from 'react-howler';
@@ -74,29 +80,32 @@ const Panel = () => {
   const dispatch = useDispatch();
 
   const [randomList, setRandomList] = useState([]);
-  const [siriWave, setSiriWave] = useState(null);
+  const siriWaveRef = useRef(null);
 
   const waveRefCallback = useCallback((node) => {
     if (node !== null) {
       const wave = new SiriWave({
         container: document.getElementById('wave'),
         cover: true,
+        //@ts-ignore
+        style: 'ios9',
+        amplitude: 2,
       });
       wave.stop();
-      setSiriWave(wave);
+      siriWaveRef.current = wave;
     }
   }, []);
 
   useEffect(() => {
     if (playing) {
-      siriWave && siriWave.start();
+      siriWaveRef.current?.start();
     } else {
-      siriWave && siriWave.stop();
+      siriWaveRef.current?.stop();
     }
     return () => {
-      siriWave && siriWave.stop();
+      siriWaveRef.current?.stop();
     };
-  }, [playing, siriWave]);
+  }, [playing]);
 
   const generateRandom = useMemo(() => {
     return arr(songs.length)

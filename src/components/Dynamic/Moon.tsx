@@ -32,7 +32,7 @@ const Moon = (props: Props) => {
 
       lightRef.current = gsap.to(node, {
         duration: 0.5,
-        intensity: 30,
+        intensity: 6,
         distance: 80,
         paused: true,
       });
@@ -68,17 +68,19 @@ const Moon = (props: Props) => {
       moonRef.current?.reverse();
       lightRef.current?.reverse();
     }
-    // FIXME: I dont know why this clean function was called every time when 'active' changed
-    // return () => {
-    //   moonRef.current?.kill();
-    //   lightRef.current?.kill();
-    // };
   }, [active]);
+
+  useEffect(() => {
+    return () => {
+      moonRef.current?.kill();
+      lightRef.current?.kill();
+    };
+  }, []);
 
   return (
     <pointLight
       attach="light"
-      args={['#ffffff', 20, 70, 2]}
+      args={['#ffffff', 4, 70, 2]}
       position={[0, 20, -40]}
       ref={lightRefCallback}
     >

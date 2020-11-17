@@ -40,7 +40,7 @@ const useMagicColor = (node: any, active: boolean = true) => {
   useEffect(() => {
     if (!node) return;
     if (!window.CSS || !window.CSS.hasOwnProperty('registerProperty')) return;
-    let index = 0;
+    let index = 1;
     node.style.setProperty(
       'transition',
       `${colorNames[0]} 1625ms linear 0s,
@@ -55,13 +55,17 @@ const useMagicColor = (node: any, active: boolean = true) => {
       var(${colorNames[0]})
     )`
     );
-    const timer = setInterval(() => {
+
+    const changeColor = () => {
       node.style.setProperty(colorNames[0], `${colorArr[index]}`);
       node.style.setProperty(colorNames[1], `${colorArr[(index + 1) % 6]}`);
       node.style.setProperty(colorNames[2], `${colorArr[(index + 2) % 6]}`);
 
       index = (index + 1) % 6;
-    }, 1000);
+      return changeColor;
+    };
+
+    const timer = setInterval(changeColor, 1000);
 
     if (!active) clearInterval(timer);
 

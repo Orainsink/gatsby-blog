@@ -129,8 +129,6 @@ const Modal = React.memo((props: ModalProps) => {
     mouseY = (e.clientY / window.innerHeight) * 2 - 1;
   };
 
-  console.log(gltf);
-
   return (
     <group onPointerMove={_handlePointerMove}>
       <perspectiveCamera
@@ -139,11 +137,12 @@ const Modal = React.memo((props: ModalProps) => {
         position={[0, 0, 40]}
         ref={camera}
       />
-      <directionalLight
+      {/* 更新three版本过后突然变得超级亮. 头皮发麻. 所以把平行光屏蔽了
+       <directionalLight
         attach="light"
         args={['#ffffff', 0.5]}
         position={[0.2, 1, 0.5]}
-      />
+      /> */}
       {/* moon light */}
       <Moon onCloseScene={onCloseScene} />
 
@@ -169,9 +168,9 @@ const Modal = React.memo((props: ModalProps) => {
         <bufferGeometry attach="geometry" {...gltf.nodes.mesh_0.geometry} />
         <meshLambertMaterial
           attach="material"
+          {...gltf.materials['']}
           flatShading
           side={DoubleSide}
-          {...gltf.materials['']}
         />
       </mesh>
       {words ? <Text words={words} position={[0, -5, 0]} /> : null}
