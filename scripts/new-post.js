@@ -30,10 +30,10 @@ let output = `---
 title: ${title}
 date: ${date}
 description:
-url:
-index:
 tags: []
 categories: ${category}
+${category === 'leetcode' ? 'url' : ''}
+${category === 'leetcode' ? 'index:' : ''}
 ---
 `;
 
