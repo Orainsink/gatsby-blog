@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import Highlight, { defaultProps } from 'prism-react-renderer';
+import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import theme from '../assets/theme/customPrism';
 import { Button } from 'antd';
 import { CopyOutlined, SmileOutlined } from '@ant-design/icons';
@@ -16,7 +16,7 @@ const CodeBlock = ({
   children,
   className: langClass = 'javascript',
 }: Props) => {
-  const language = langClass.replace(/language-/, '');
+  const language = langClass.replace(/language-/, '') as Language;
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = useCallback((code: string) => {
