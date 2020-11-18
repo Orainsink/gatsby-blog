@@ -27,13 +27,11 @@ const Poem = () => {
   }, []);
 
   return (
-    <Skeleton loading={loading} active paragraph={{ rows: 2 }} title>
-      <article className={styles.wrap}>
-        <div>{poem?.content}</div>
-        <div>《{poem?.origin.title}》</div>
-        <div>{poem?.origin.author}</div>
-      </article>
-    </Skeleton>
+    <article className={styles.wrap}>
+      <div>{poem?.content}</div>
+      {poem?.origin.title ? <div>《{poem?.origin.title}》</div> : null}
+      <div>{poem?.origin.author}</div>
+    </article>
   );
 };
 

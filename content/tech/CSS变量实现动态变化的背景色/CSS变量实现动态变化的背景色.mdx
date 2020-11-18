@@ -16,16 +16,24 @@ import MagicComponent from './MagicComponent';
 
 之前我写过一篇简单学习[CSS 变量的文章](https://blog.foolishrobot.xyz/CSS%E5%87%BD%E6%95%B0)
 
+里面提到了css变量可以通过js改变，以达到动态改变颜色值的效果。
+
+这篇文章就是css变量的实践应用。
+
+话不多说直接上代码：
+
 ## 简单封装的 useMagicColor
 
 ```tsx
 import { useEffect } from 'react';
 
+// 定义三个颜色css变量, 放到数组中
 const colorNames = [
   '--magic-color-mag-0',
   '--magic-color-mag-1',
   '--magic-color-mag-2',
 ];
+// 定义6个hsl颜色色值
 const colorArr = [
   'hsl(178deg, 12%, 9%)',
   'hsl(224deg, 12%, 35%)',
@@ -34,16 +42,19 @@ const colorArr = [
   'hsl(178deg, 12%, 35%)',
   'hsl(224deg, 12%, 9%)',
 ];
-
+// 封装的钩子, 传入真实的DOM或者react的DOM ref引用, active作为控制动画启动的开关
 const useMagicColor = (node: any, active: boolean = true) => {
   useEffect(() => {
+    // css变量存在兼容性问题
     if (window.CSS && window.CSS.hasOwnProperty('registerProperty')) {
       colorNames.forEach((name, index) => {
         try {
           window.CSS.registerProperty!({
             name,
+            // 将三个变量注册为color类型, 否则不能直接作为颜色使用
             syntax: '<color>',
             inherits: false,
+            // 从colorArr里填入初始值
             initialValue: colorArr[index],
           });
         } catch (err) {
@@ -57,11 +68,14 @@ const useMagicColor = (node: any, active: boolean = true) => {
     if (!node) return;
     if (!window.CSS || !window.CSS.hasOwnProperty('registerProperty')) return;
     let index = 1;
+    // css transition, 为了不影响其他样式, 选择在钩子内通过js设置, 当然也可以直接通过css设置
     node.style.setProperty(
       'transition',
       `${colorNames[0]} 1625ms linear 0s,
     ${colorNames[1]} 1625ms linear 0s, ${colorNames[2]} 1625ms linear 0s`
     );
+    // css background: radial-gradient(...) 或者 linear-gradient(...)
+    // 关键颜色设为声明的三个css变量
     node.style.setProperty(
       'background',
       `radial-gradient(
@@ -71,7 +85,7 @@ const useMagicColor = (node: any, active: boolean = true) => {
       var(${colorNames[0]})
     )`
     );
-
+    // 对css变量重新赋值的函数
     const changeColor = () => {
       node.style.setProperty(colorNames[0], `${colorArr[index]}`);
       node.style.setProperty(colorNames[1], `${colorArr[(index + 1) % 6]}`);
@@ -80,11 +94,11 @@ const useMagicColor = (node: any, active: boolean = true) => {
       index = (index + 1) % 6;
       return changeColor;
     };
-
+    // 通过setInterval让六个颜色在三个变量中循环改变
     const timer = setInterval(changeColor, 1000);
-
+		// 清除定时器
     if (!active) clearInterval(timer);
-
+		// 组件卸载,清除定时器
     return () => {
       clearInterval(timer);
     };
@@ -101,6 +115,7 @@ import useMagicColor from './useMagicColor';
 
 const MagicComponent = () => {
   const nodeRef = useRef();
+  // 传入DOM的ref
   useMagicColor(nodeRef.current);
 
   return (
@@ -118,3 +133,15 @@ const MagicComponent = () => {
 };
 export default MagicComponent;
 ```
+
+## 总结
+
+上面两块代码执行后的效果就是最上面的实现效果啦。
+
+思路很简单：
+
+1. **注册三个`syntax: '<color>'`的css变量, 并赋初始值**。不指定css变量为color类型的话，该变量是不能直接当做颜色使用的。
+2. **对目标元素添加渐变背景，颜色值用上一步注册的css变量**。css 的 `background`属性并不直接支持`transition`过渡， 但是用`linear-gradient`或者`radial-gradient`转成`background-image`就可以使用`transition`过渡了。更多细节，可以看张鑫旭的这篇比较老的文章： [几种CSS渐变背景图片transtion动画方法](https://www.zhangxinxu.com/wordpress/2018/03/background-gradient-transtion/)
+3. **定时器通过`style.setProperty()`不间断修改css变量的值**。
+
+**注意事项**: 最大的问题就是兼容性, 第一是部分浏览器还不支持css变量, 第二是部分浏览器(qq浏览器)html元素的`background`即便是设为渐变背景图, `transition`也不会生效。平时自己玩的话无所谓， 如果要上正式环境， 需要做降级处理，设置默认的`background`值。

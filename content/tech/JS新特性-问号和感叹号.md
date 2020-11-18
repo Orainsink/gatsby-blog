@@ -31,7 +31,7 @@ let text2 = typeof count === 'number' ? count : '-'; // 0
 let text3 = count ?? '-'; // 0
 ```
 
-# ?. 安全链式调用
+## ?. 安全链式调用
 
 一个菜鸡前端，每天要处理大量的`error: can't call method on an undefined value`这种报错，尤其是使用 hooks 的时候。工具对象尚未实例化就调用他的函数，或者后端数据还没拿到，就想去拿数据（`null`）里的值。如果每个调用的地方都去做一下空值判断当然也不是不可以。但有了`?.`之后就 dark 不必。
 
