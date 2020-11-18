@@ -1,10 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 18 Nov 2020 14:37:47 GMT</lastBuildDate><item><title><![CDATA[CSS变量实现动态变化的背景色]]></title><description><![CDATA[实现效果 实现原理 之前我写过一篇简单学习 CSS 变量的文章 简单封装的 useMagicColor 使用 color hook 的组件]]></description><link>https://blog.foolishrobot.xyz/CSS变量实现动态变化的背景色/CSS变量实现动态变化的背景色</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/CSS变量实现动态变化的背景色/CSS变量实现动态变化的背景色</guid><pubDate>Tue, 17 Nov 2020 20:27:50 GMT</pubDate><content:encoded>&lt;h2 id=&quot;实现效果&quot;&gt;实现效果&lt;/h2&gt;&lt;div style=&quot;background:#000;width:300px;height:100px;border-radius:10px;margin:auto&quot;&gt;&lt;/div&gt;&lt;h2 id=&quot;实现原理&quot;&gt;实现原理&lt;/h2&gt;&lt;p&gt;之前我写过一篇简单学习&lt;a href=&quot;https://blog.foolishrobot.xyz/CSS%E5%87%BD%E6%95%B0&quot;&gt;CSS 变量的文章&lt;/a&gt;&lt;/p&gt;&lt;h2 id=&quot;简单封装的-usemagiccolor&quot;&gt;简单封装的 useMagicColor&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-tsx&quot;&gt;import { useEffect } from &amp;#x27;react&amp;#x27;;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 18 Nov 2020 18:24:09 GMT</lastBuildDate><item><title><![CDATA[CSS变量实现动态变化的背景色]]></title><description><![CDATA[实现效果 实现原理 之前我写过一篇简单学习 CSS 变量的文章 里面提到了css变量可以通过js改变，以达到动态改变颜色值的效果。 这篇文章就是css变量的实践应用。 话不多说直接上代码： 简单封装的 useMagicColor 使用 color hook…]]></description><link>https://blog.foolishrobot.xyz/CSS变量实现动态变化的背景色/CSS变量实现动态变化的背景色</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/CSS变量实现动态变化的背景色/CSS变量实现动态变化的背景色</guid><pubDate>Tue, 17 Nov 2020 20:27:50 GMT</pubDate><content:encoded>&lt;h2 id=&quot;实现效果&quot;&gt;实现效果&lt;/h2&gt;&lt;div style=&quot;background:#000;width:300px;height:100px;border-radius:10px;margin:auto&quot;&gt;&lt;/div&gt;&lt;h2 id=&quot;实现原理&quot;&gt;实现原理&lt;/h2&gt;&lt;p&gt;之前我写过一篇简单学习&lt;a href=&quot;https://blog.foolishrobot.xyz/CSS%E5%87%BD%E6%95%B0&quot;&gt;CSS 变量的文章&lt;/a&gt;&lt;/p&gt;&lt;p&gt;里面提到了css变量可以通过js改变，以达到动态改变颜色值的效果。&lt;/p&gt;&lt;p&gt;这篇文章就是css变量的实践应用。&lt;/p&gt;&lt;p&gt;话不多说直接上代码：&lt;/p&gt;&lt;h2 id=&quot;简单封装的-usemagiccolor&quot;&gt;简单封装的 useMagicColor&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-tsx&quot;&gt;import { useEffect } from &amp;#x27;react&amp;#x27;;
 
+// 定义三个颜色css变量, 放到数组中
 const colorNames = [
   &amp;#x27;--magic-color-mag-0&amp;#x27;,
   &amp;#x27;--magic-color-mag-1&amp;#x27;,
   &amp;#x27;--magic-color-mag-2&amp;#x27;,
 ];
+// 定义6个hsl颜色色值
 const colorArr = [
   &amp;#x27;hsl(178deg, 12%, 9%)&amp;#x27;,
   &amp;#x27;hsl(224deg, 12%, 35%)&amp;#x27;,
@@ -13,16 +15,19 @@ const colorArr = [
   &amp;#x27;hsl(178deg, 12%, 35%)&amp;#x27;,
   &amp;#x27;hsl(224deg, 12%, 9%)&amp;#x27;,
 ];
-
+// 封装的钩子, 传入真实的DOM或者react的DOM ref引用, active作为控制动画启动的开关
 const useMagicColor = (node: any, active: boolean = true) =&amp;gt; {
   useEffect(() =&amp;gt; {
+    // css变量存在兼容性问题
     if (window.CSS &amp;amp;&amp;amp; window.CSS.hasOwnProperty(&amp;#x27;registerProperty&amp;#x27;)) {
       colorNames.forEach((name, index) =&amp;gt; {
         try {
           window.CSS.registerProperty!({
             name,
+            // 将三个变量注册为color类型, 否则不能直接作为颜色使用
             syntax: &amp;#x27;&amp;lt;color&amp;gt;&amp;#x27;,
             inherits: false,
+            // 从colorArr里填入初始值
             initialValue: colorArr[index],
           });
         } catch (err) {
@@ -36,11 +41,14 @@ const useMagicColor = (node: any, active: boolean = true) =&amp;gt; {
     if (!node) return;
     if (!window.CSS || !window.CSS.hasOwnProperty(&amp;#x27;registerProperty&amp;#x27;)) return;
     let index = 1;
+    // css transition, 为了不影响其他样式, 选择在钩子内通过js设置, 当然也可以直接通过css设置
     node.style.setProperty(
       &amp;#x27;transition&amp;#x27;,
       `${colorNames[0]} 1625ms linear 0s,
     ${colorNames[1]} 1625ms linear 0s, ${colorNames[2]} 1625ms linear 0s`
     );
+    // css background: radial-gradient(...) 或者 linear-gradient(...)
+    // 关键颜色设为声明的三个css变量
     node.style.setProperty(
       &amp;#x27;background&amp;#x27;,
       `radial-gradient(
@@ -50,7 +58,7 @@ const useMagicColor = (node: any, active: boolean = true) =&amp;gt; {
       var(${colorNames[0]})
     )`
     );
-
+    // 对css变量重新赋值的函数
     const changeColor = () =&amp;gt; {
       node.style.setProperty(colorNames[0], `${colorArr[index]}`);
       node.style.setProperty(colorNames[1], `${colorArr[(index + 1) % 6]}`);
@@ -59,11 +67,11 @@ const useMagicColor = (node: any, active: boolean = true) =&amp;gt; {
       index = (index + 1) % 6;
       return changeColor;
     };
-
+    // 通过setInterval让六个颜色在三个变量中循环改变
     const timer = setInterval(changeColor, 1000);
-
+        // 清除定时器
     if (!active) clearInterval(timer);
-
+        // 组件卸载,清除定时器
     return () =&amp;gt; {
       clearInterval(timer);
     };
@@ -75,6 +83,7 @@ import useMagicColor from &amp;#x27;./useMagicColor&amp;#x27;;
 
 const MagicComponent = () =&amp;gt; {
   const nodeRef = useRef();
+  // 传入DOM的ref
   useMagicColor(nodeRef.current);
 
   return (
@@ -91,7 +100,7 @@ const MagicComponent = () =&amp;gt; {
   );
 };
 export default MagicComponent;
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title><![CDATA[转载-SWR文档翻译]]></title><description><![CDATA[原文地址  https://juejin.im/post/6844904167786414093#heading-5 转载 SWR 文档 - 远程数据请求的 React Hooks 封装 GitHub:  github.com/zeit/swr 官网:  SWR: React…]]></description><link>https://blog.foolishrobot.xyz/[转载]SWR文档翻译</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/[转载]SWR文档翻译</guid><pubDate>Mon, 16 Nov 2020 20:29:08 GMT</pubDate><content:encoded>&lt;blockquote&gt;&lt;p&gt;原文地址 &lt;a href=&quot;https://juejin.im/post/6844904167786414093#heading-5&quot;&gt;https://juejin.im/post/6844904167786414093#heading-5&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;h1 id=&quot;转载swr-文档---远程数据请求的-react-hooks-封装&quot;&gt;[转载]SWR 文档 - 远程数据请求的 React Hooks 封装&lt;/h1&gt;&lt;p&gt;GitHub: &lt;a href=&quot;https://github.com/zeit/swr&quot;&gt;github.com/zeit/swr&lt;/a&gt;&lt;/p&gt;&lt;p&gt;官网: &lt;a href=&quot;https://swr.now.sh/&quot;&gt;SWR: React Hooks for Remote Data Fetching&lt;/a&gt;&lt;/p&gt;&lt;h2 id=&quot;介绍&quot;&gt;介绍&lt;/h2&gt;&lt;p&gt;SWR 是提供远程数据请求的 React Hooks 库。&lt;/p&gt;&lt;p&gt;SWR 是由 stable-while-revalidate 的首字母组成，是由&lt;a href=&quot;https://tools.ietf.org/html/rfc5861&quot;&gt;HTTP RFC 5861&lt;/a&gt;普及的缓存失效策略。SWR 优先返回缓存数据(stable)，然后再发送远程请求(revalidate)，最后更新最新的数据。&lt;/p&gt;&lt;p&gt;特性：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;数据请求与传输协议无关&lt;/li&gt;&lt;li&gt;快速页面导航&lt;/li&gt;&lt;li&gt;聚焦时自动请求数据&lt;/li&gt;&lt;li&gt;轮询&lt;/li&gt;&lt;li&gt;请求去重&lt;/li&gt;&lt;li&gt;本地数据变化&lt;/li&gt;&lt;li&gt;分页&lt;/li&gt;&lt;li&gt;支持 TS&lt;/li&gt;&lt;li&gt;支持 SSR&lt;/li&gt;&lt;li&gt;支持 React Suspense&lt;/li&gt;&lt;li&gt;支持 React Native&lt;/li&gt;&lt;li&gt;少量 API 等等等......&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;使用 SWR，组件可以持续自动更新数据。因此 UI 总是可以快速展示并且保持响应。&lt;/p&gt;&lt;h2 id=&quot;快速开始&quot;&gt;快速开始&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import useSWR from &amp;#x27;swr&amp;#x27;;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;总结&quot;&gt;总结&lt;/h2&gt;&lt;p&gt;上面两块代码执行后的效果就是最上面的实现效果啦。&lt;/p&gt;&lt;p&gt;思路很简单：&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;strong&gt;注册三个&lt;code&gt;syntax: &amp;#x27;&amp;lt;color&amp;gt;&amp;#x27;&lt;/code&gt;的css变量, 并赋初始值&lt;/strong&gt;。不指定css变量为color类型的话，该变量是不能直接当做颜色使用的。&lt;/li&gt;&lt;li&gt;&lt;strong&gt;对目标元素添加渐变背景，颜色值用上一步注册的css变量&lt;/strong&gt;。css 的 &lt;code&gt;background&lt;/code&gt;属性并不直接支持&lt;code&gt;transition&lt;/code&gt;过渡， 但是用&lt;code&gt;linear-gradient&lt;/code&gt;或者&lt;code&gt;radial-gradient&lt;/code&gt;转成&lt;code&gt;background-image&lt;/code&gt;就可以使用&lt;code&gt;transition&lt;/code&gt;过渡了。更多细节，可以看张鑫旭的这篇比较老的文章： &lt;a href=&quot;https://www.zhangxinxu.com/wordpress/2018/03/background-gradient-transtion/&quot;&gt;几种CSS渐变背景图片transtion动画方法&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;定时器通过&lt;code&gt;style.setProperty()&lt;/code&gt;不间断修改css变量的值&lt;/strong&gt;。&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;strong&gt;注意事项&lt;/strong&gt;: 最大的问题就是兼容性, 第一是部分浏览器还不支持css变量, 第二是部分浏览器(qq浏览器)html元素的&lt;code&gt;background&lt;/code&gt;即便是设为渐变背景图, &lt;code&gt;transition&lt;/code&gt;也不会生效。平时自己玩的话无所谓， 如果要上正式环境， 需要做降级处理，设置默认的&lt;code&gt;background&lt;/code&gt;值。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[转载-SWR文档翻译]]></title><description><![CDATA[原文地址  https://juejin.im/post/6844904167786414093#heading-5 转载 SWR 文档 - 远程数据请求的 React Hooks 封装 GitHub:  github.com/zeit/swr 官网:  SWR: React…]]></description><link>https://blog.foolishrobot.xyz/[转载]SWR文档翻译</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/[转载]SWR文档翻译</guid><pubDate>Mon, 16 Nov 2020 20:29:08 GMT</pubDate><content:encoded>&lt;blockquote&gt;&lt;p&gt;原文地址 &lt;a href=&quot;https://juejin.im/post/6844904167786414093#heading-5&quot;&gt;https://juejin.im/post/6844904167786414093#heading-5&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;h1 id=&quot;转载swr-文档---远程数据请求的-react-hooks-封装&quot;&gt;[转载]SWR 文档 - 远程数据请求的 React Hooks 封装&lt;/h1&gt;&lt;p&gt;GitHub: &lt;a href=&quot;https://github.com/zeit/swr&quot;&gt;github.com/zeit/swr&lt;/a&gt;&lt;/p&gt;&lt;p&gt;官网: &lt;a href=&quot;https://swr.now.sh/&quot;&gt;SWR: React Hooks for Remote Data Fetching&lt;/a&gt;&lt;/p&gt;&lt;h2 id=&quot;介绍&quot;&gt;介绍&lt;/h2&gt;&lt;p&gt;SWR 是提供远程数据请求的 React Hooks 库。&lt;/p&gt;&lt;p&gt;SWR 是由 stable-while-revalidate 的首字母组成，是由&lt;a href=&quot;https://tools.ietf.org/html/rfc5861&quot;&gt;HTTP RFC 5861&lt;/a&gt;普及的缓存失效策略。SWR 优先返回缓存数据(stable)，然后再发送远程请求(revalidate)，最后更新最新的数据。&lt;/p&gt;&lt;p&gt;特性：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;数据请求与传输协议无关&lt;/li&gt;&lt;li&gt;快速页面导航&lt;/li&gt;&lt;li&gt;聚焦时自动请求数据&lt;/li&gt;&lt;li&gt;轮询&lt;/li&gt;&lt;li&gt;请求去重&lt;/li&gt;&lt;li&gt;本地数据变化&lt;/li&gt;&lt;li&gt;分页&lt;/li&gt;&lt;li&gt;支持 TS&lt;/li&gt;&lt;li&gt;支持 SSR&lt;/li&gt;&lt;li&gt;支持 React Suspense&lt;/li&gt;&lt;li&gt;支持 React Native&lt;/li&gt;&lt;li&gt;少量 API 等等等......&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;使用 SWR，组件可以持续自动更新数据。因此 UI 总是可以快速展示并且保持响应。&lt;/p&gt;&lt;h2 id=&quot;快速开始&quot;&gt;快速开始&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import useSWR from &amp;#x27;swr&amp;#x27;;
 
 function Profile() {
   const { data, error } = useSWR(&amp;#x27;/api/user&amp;#x27;, fetcher);
@@ -306,7 +315,7 @@ let text1 = count || &amp;#x27;-&amp;#x27;; // &amp;#x27;-&amp;#x27;
 let text2 = typeof count === &amp;#x27;number&amp;#x27; ? count : &amp;#x27;-&amp;#x27;; // 0
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;前端万古如长夜：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// ?? 只会拦下 null 和 undefined
 let text3 = count ?? &amp;#x27;-&amp;#x27;; // 0
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;-安全链式调用&quot;&gt;?. 安全链式调用&lt;/h1&gt;&lt;p&gt;一个菜鸡前端，每天要处理大量的&lt;code&gt;error: can&amp;#x27;t call method on an undefined value&lt;/code&gt;这种报错，尤其是使用 hooks 的时候。工具对象尚未实例化就调用他的函数，或者后端数据还没拿到，就想去拿数据（&lt;code&gt;null&lt;/code&gt;）里的值。如果每个调用的地方都去做一下空值判断当然也不是不可以。但有了&lt;code&gt;?.&lt;/code&gt;之后就 dark 不必。&lt;/p&gt;&lt;p&gt;&lt;code&gt;?.&lt;/code&gt;会判断问号前的对象如果为&lt;code&gt;null&lt;/code&gt;或&lt;code&gt;undefined&lt;/code&gt;就直接返回&lt;code&gt;undefined&lt;/code&gt;，结束链式调用。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;let data = null;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;-安全链式调用&quot;&gt;?. 安全链式调用&lt;/h2&gt;&lt;p&gt;一个菜鸡前端，每天要处理大量的&lt;code&gt;error: can&amp;#x27;t call method on an undefined value&lt;/code&gt;这种报错，尤其是使用 hooks 的时候。工具对象尚未实例化就调用他的函数，或者后端数据还没拿到，就想去拿数据（&lt;code&gt;null&lt;/code&gt;）里的值。如果每个调用的地方都去做一下空值判断当然也不是不可以。但有了&lt;code&gt;?.&lt;/code&gt;之后就 dark 不必。&lt;/p&gt;&lt;p&gt;&lt;code&gt;?.&lt;/code&gt;会判断问号前的对象如果为&lt;code&gt;null&lt;/code&gt;或&lt;code&gt;undefined&lt;/code&gt;就直接返回&lt;code&gt;undefined&lt;/code&gt;，结束链式调用。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;let data = null;
 console.log(data?.value); // null
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你还可以和&lt;code&gt;??&lt;/code&gt;配合&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;let data = null;
 console.log(data?.value ?? &amp;#x27;-&amp;#x27;);
