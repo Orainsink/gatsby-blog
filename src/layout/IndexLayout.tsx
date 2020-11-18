@@ -46,20 +46,18 @@ const Layout = ({ children }: Props) => {
           Click to slide
         </div>
       )}
-      {hasMounted && (
-        <main className={styles.main}>
-          <Row justify="space-between" gutter={8}>
-            <Col flex="1 1 800px" className={styles.mainWrap}>
-              {children}
-            </Col>
-            <SideBar>
-              <Info />
-              <TagsBlock />
-              <Comment />
-            </SideBar>
-          </Row>
-        </main>
-      )}
+      <main className={styles.main}>
+        <Row justify="space-between" gutter={8}>
+          <Col flex="1 1 800px" className={styles.mainWrap}>
+            {children}
+          </Col>
+          <SideBar>
+            <Info />
+            <TagsBlock />
+            <Comment />
+          </SideBar>
+        </Row>
+      </main>
       <Footer />
     </div>
   );

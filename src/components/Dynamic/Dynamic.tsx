@@ -22,10 +22,9 @@ import classnames from 'classnames';
 import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 import { arr, random } from '../../utils/utils';
-import loadable from '@loadable/component';
 import { useStaticQuery, graphql } from 'gatsby';
-const Text = loadable(() => import('./TextComponent'));
-const Moon = loadable(() => import('./Moon'));
+import Text from './TextComponent';
+import Moon from './Moon';
 
 let cameraShakeY = 0;
 let mouseX = 0;

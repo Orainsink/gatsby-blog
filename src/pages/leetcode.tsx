@@ -48,6 +48,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
     {
       title: 'INDEX',
       dataIndex: 'index',
+      align: 'center',
       width: 100,
       render: (text: string) => <div>{text ? `#${text}` : '-'}</div>,
       sorter: (a: any, b: any) => a.index - b.index,

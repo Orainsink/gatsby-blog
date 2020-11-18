@@ -9,6 +9,7 @@ import Trigger from '../components/Trigger';
 import Poem from '../components/Poem';
 import PostList from '../components/PostList';
 import useBackgroundColor from '../hooks/useBackgroundColor';
+import useHasMounted from '../hooks/useHasMounted';
 const Dynamic = loadable(() => import('../components/Dynamic/Dynamic'), {
   fallback: null,
 });
@@ -36,10 +37,11 @@ const Index = ({ data }: PageProps<Data>) => {
   const { skip, scene } = useSelector((state: any) => state);
 
   useBackgroundColor();
+  const hasMounted = useHasMounted();
 
   return (
     <>
-      <Dynamic />
+      {hasMounted && <Dynamic />}
       {!skip && scene && <Trigger />}
       <Layout>
         <SEO title={siteTitle} />

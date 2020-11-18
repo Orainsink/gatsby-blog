@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 
 const colorNames = [
-  '--magic-color-mag-0',
-  '--magic-color-mag-1',
-  '--magic-color-mag-2',
+  '--magic-color-demo-0',
+  '--magic-color-demo-1',
+  '--magic-color-demo-2',
 ];
 const colorArr = [
   'hsl(0deg, 77%, 40%)',
