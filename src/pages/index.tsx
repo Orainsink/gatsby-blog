@@ -42,12 +42,11 @@ const Index = ({ data }: PageProps<Data>) => {
   return (
     <>
       {hasMounted && <Dynamic />}
-      {!skip && scene && <Trigger />}
+      {hasMounted && !skip && scene && <Trigger />}
       <Layout>
         <SEO title={siteTitle} />
         <Poem />
         <CateSnippet />
-
         <h5
           style={{
             textAlign: 'center',

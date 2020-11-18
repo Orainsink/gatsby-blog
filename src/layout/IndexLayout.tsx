@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useMemo, useState } from 'react';
 import classnames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { Row, Col } from 'antd';
@@ -8,7 +8,6 @@ import SideBar from '../components/SideBlocks/SideBar';
 import TagsBlock from '../components/SideBlocks/TagsBlock';
 import Comment from '../components/SideBlocks/Comment';
 import styles from '../styles/Indexlayout.module.less';
-import useHasMounted from '../hooks/useHasMounted';
 interface Props {
   children?: any;
 }
@@ -18,24 +17,26 @@ const Layout = ({ children }: Props) => {
   const { scene, trigger, skip } = useSelector((state: any) => state);
   const dispatch = useDispatch();
   const wrapperRef = useRef(null);
+  const [wrapperClass, setWrapperClass] = useState('');
 
   useEffect(() => {
     dispatch({ type: 'HAS_ARROW', payload: true });
     dispatch({ type: 'CUR_TAG', payload: '' });
   }, [dispatch]);
 
-  const hasMounted = useHasMounted();
+  useEffect(() => {
+    setWrapperClass(
+      !scene || skip
+        ? styles.disActive
+        : trigger
+        ? styles.trigger
+        : styles.active
+    );
+  }, [scene, skip, trigger]);
 
   return (
     <div
-      className={classnames(
-        styles.wrapper,
-        !scene || skip
-          ? styles.disActive
-          : trigger
-          ? styles.trigger
-          : styles.active
-      )}
+      className={classnames(styles.wrapper, wrapperClass)}
       id="markdownBody"
       ref={wrapperRef}
     >
