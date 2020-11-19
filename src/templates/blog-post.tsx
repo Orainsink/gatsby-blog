@@ -89,11 +89,7 @@ const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
         </header>
         {!!tableOfContents && is1110 && (
           <div className={styles.tableContents}>
-            <Anchor
-              getContainer={() => document.body as HTMLElement}
-              targetOffset={200}
-              affix={false}
-            >
+            <Anchor targetOffset={200} affix={false}>
               {renderLinks(tableOfContents)}
             </Anchor>
           </div>

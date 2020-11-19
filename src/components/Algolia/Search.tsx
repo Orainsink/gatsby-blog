@@ -1,5 +1,5 @@
 import algoliasearch from 'algoliasearch/lite';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { InstantSearch } from 'react-instantsearch-dom';
 import SearchBox from './SearchBox';
 import SearchResult from './SearchResult';
@@ -25,34 +25,41 @@ const Search = () => {
   `);
   const { sharkSearch } = data;
   const maxHeight = useSelector((state) => state.maxHeight);
+  const [client, setClient] = useState(null);
   useMaxHeight();
 
-  const searchClient = algoliasearch(
-    process.env.GATSBY_ALGOLIA_APP_ID,
-    process.env.GATSBY_ALGOLIA_SEARCH_KEY
-  );
+  useEffect(() => {
+    setClient(
+      algoliasearch(
+        process.env.GATSBY_ALGOLIA_APP_ID,
+        process.env.GATSBY_ALGOLIA_SEARCH_KEY
+      )
+    );
+  }, []);
   const indices = [{ name: `Pages`, title: `Pages` }];
 
   return (
     <div ref={rootRef}>
-      <InstantSearch
-        searchClient={searchClient}
-        indexName={indices[0].name}
-        onSearchStateChange={({ query }) => setQuery(query)}
-      >
-        <SearchBox />
-        {query && query.length > 0 ? (
-          <SearchResult indices={indices} />
-        ) : (
-          <div
-            className={styles.shashaWrap}
-            style={{ top: `${maxHeight / 2 - 130}px` }}
-          >
-            <Image fixed={sharkSearch.childImageSharp.fixed} alt="" />
-            <div className={styles.noResultText}>Input to start search</div>
-          </div>
-        )}
-      </InstantSearch>
+      {!!client && (
+        <InstantSearch
+          searchClient={client}
+          indexName={indices[0].name}
+          onSearchStateChange={({ query }) => setQuery(query)}
+        >
+          <SearchBox />
+          {query && query.length > 0 ? (
+            <SearchResult indices={indices} />
+          ) : (
+            <div
+              className={styles.shashaWrap}
+              style={{ top: `${maxHeight / 2 - 130}px` }}
+            >
+              <Image fixed={sharkSearch.childImageSharp.fixed} alt="" />
+              <div className={styles.noResultText}>Input to start search</div>
+            </div>
+          )}
+        </InstantSearch>
+      )}
     </div>
   );
 };

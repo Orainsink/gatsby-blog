@@ -11,7 +11,7 @@ import PostList from '../components/PostList';
 import useHasMounted from '../hooks/useHasMounted';
 import Loading from '../components/Loading';
 const Dynamic = loadable(() => import('../components/Dynamic/Dynamic'), {
-  fallback: <Loading />,
+  fallback: <Loading debounce={0} />,
 });
 
 interface Data {
@@ -40,7 +40,7 @@ const Index = ({ data }: PageProps<Data>) => {
 
   return (
     <>
-      {hasMounted && <Dynamic />}
+      {hasMounted && !skip && <Dynamic />}
       {hasMounted && !skip && scene && <Trigger />}
       <Layout>
         <SEO title={siteTitle} />
