@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { Row, Col } from 'antd';
@@ -8,6 +8,7 @@ import SideBar from '../components/SideBlocks/SideBar';
 import TagsBlock from '../components/SideBlocks/TagsBlock';
 import Comment from '../components/SideBlocks/Comment';
 import styles from '../styles/Indexlayout.module.less';
+import useBackgroundColor from '../hooks/useBackgroundColor';
 interface Props {
   children?: any;
 }
@@ -18,6 +19,8 @@ const Layout = ({ children }: Props) => {
   const dispatch = useDispatch();
   const wrapperRef = useRef(null);
   const [wrapperClass, setWrapperClass] = useState('');
+
+  useBackgroundColor(skip);
 
   useEffect(() => {
     dispatch({ type: 'HAS_ARROW', payload: true });

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import '../styles/global.less';
 import { useSelector } from 'react-redux';
 import Header from '../components/Header';
-import useBackgroundColor from '../hooks/useBackgroundColor';
 import Bg from '../components/Bg';
 import BackTop from '../components/BackTop';
 import useHasMounted from '../hooks/useHasMounted';
@@ -16,7 +15,6 @@ const GlobalLayout = ({ children }) => {
     body.style.overflowY = scene ? 'hidden' : 'auto';
   }, [scene]);
   const hasMounted = useHasMounted();
-  useBackgroundColor();
 
   return (
     <>

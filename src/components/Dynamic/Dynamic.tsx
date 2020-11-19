@@ -25,6 +25,7 @@ import { arr, random } from '../../utils/utils';
 import { useStaticQuery, graphql } from 'gatsby';
 import Text from './TextComponent';
 import Moon from './Moon';
+import useBackgroundColor from '../../hooks/useBackgroundColor';
 
 let cameraShakeY = 0;
 let mouseX = 0;
@@ -52,6 +53,7 @@ const Modal = React.memo((props: ModalProps) => {
   const camera = useRef(null);
   const stripsGroup = useRef(null);
   const [words, setWords] = useState(null);
+  useBackgroundColor();
 
   // set default camera, and scene fog
   useEffect(() => {

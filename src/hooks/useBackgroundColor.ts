@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 /**
  * set background color to #efefef
  */
-const useBackgroundColor = () => {
+const useBackgroundColor = (trigger: boolean = true) => {
   useEffect(() => {
-    document.body.style.background = '#efefef';
-  }, []);
+    if (trigger) document.body.style.background = '#efefef';
+  }, [trigger]);
 };
 export default useBackgroundColor;

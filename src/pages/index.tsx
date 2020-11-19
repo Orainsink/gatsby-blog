@@ -8,10 +8,10 @@ import CateSnippet from '../components/Cards';
 import Trigger from '../components/Trigger';
 import Poem from '../components/Poem';
 import PostList from '../components/PostList';
-import useBackgroundColor from '../hooks/useBackgroundColor';
 import useHasMounted from '../hooks/useHasMounted';
+import Loading from '../components/Loading';
 const Dynamic = loadable(() => import('../components/Dynamic/Dynamic'), {
-  fallback: null,
+  fallback: <Loading />,
 });
 
 interface Data {
@@ -36,7 +36,6 @@ const Index = ({ data }: PageProps<Data>) => {
   }));
   const { skip, scene } = useSelector((state: any) => state);
 
-  useBackgroundColor();
   const hasMounted = useHasMounted();
 
   return (

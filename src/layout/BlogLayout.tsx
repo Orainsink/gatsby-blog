@@ -6,6 +6,7 @@ import SideBar from '../components/SideBlocks/SideBar';
 import Footer from '../components/Footer';
 import styles from '../styles/Bloglayout.module.less';
 import isClient from '../utils/isClient';
+import useBackgroundColor from '../hooks/useBackgroundColor';
 
 interface Props {
   content?: any;
@@ -17,6 +18,7 @@ interface Props {
 const Layout = (props: Props) => {
   const { sideBlocks, children } = props;
   const dispatch = useDispatch();
+  useBackgroundColor();
 
   useEffect(() => {
     dispatch({ type: 'SKIP', payload: true });
