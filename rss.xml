@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 18 Nov 2020 18:24:09 GMT</lastBuildDate><item><title><![CDATA[CSS变量实现动态变化的背景色]]></title><description><![CDATA[实现效果 实现原理 之前我写过一篇简单学习 CSS 变量的文章 里面提到了css变量可以通过js改变，以达到动态改变颜色值的效果。 这篇文章就是css变量的实践应用。 话不多说直接上代码： 简单封装的 useMagicColor 使用 color hook…]]></description><link>https://blog.foolishrobot.xyz/CSS变量实现动态变化的背景色/CSS变量实现动态变化的背景色</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/CSS变量实现动态变化的背景色/CSS变量实现动态变化的背景色</guid><pubDate>Tue, 17 Nov 2020 20:27:50 GMT</pubDate><content:encoded>&lt;h2 id=&quot;实现效果&quot;&gt;实现效果&lt;/h2&gt;&lt;div style=&quot;background:#000;width:300px;height:100px;border-radius:10px;margin:auto&quot;&gt;&lt;/div&gt;&lt;h2 id=&quot;实现原理&quot;&gt;实现原理&lt;/h2&gt;&lt;p&gt;之前我写过一篇简单学习&lt;a href=&quot;https://blog.foolishrobot.xyz/CSS%E5%87%BD%E6%95%B0&quot;&gt;CSS 变量的文章&lt;/a&gt;&lt;/p&gt;&lt;p&gt;里面提到了css变量可以通过js改变，以达到动态改变颜色值的效果。&lt;/p&gt;&lt;p&gt;这篇文章就是css变量的实践应用。&lt;/p&gt;&lt;p&gt;话不多说直接上代码：&lt;/p&gt;&lt;h2 id=&quot;简单封装的-usemagiccolor&quot;&gt;简单封装的 useMagicColor&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-tsx&quot;&gt;import { useEffect } from &amp;#x27;react&amp;#x27;;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 19 Nov 2020 20:48:11 GMT</lastBuildDate><item><title><![CDATA[CSS变量实现动态变化的背景色]]></title><description><![CDATA[实现效果 实现原理 之前我写过一篇简单学习 CSS 变量的文章 里面提到了css变量可以通过js改变，以达到动态改变颜色值的效果。 这篇文章就是css变量的实践应用。 话不多说直接上代码： 简单封装的 useMagicColor 使用 color hook…]]></description><link>https://blog.foolishrobot.xyz/CSS变量实现动态变化的背景色/CSS变量实现动态变化的背景色</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/CSS变量实现动态变化的背景色/CSS变量实现动态变化的背景色</guid><pubDate>Tue, 17 Nov 2020 20:27:50 GMT</pubDate><content:encoded>&lt;h2 id=&quot;实现效果&quot;&gt;实现效果&lt;/h2&gt;&lt;div style=&quot;background:#000;width:300px;height:100px;border-radius:10px;margin:auto&quot;&gt;&lt;/div&gt;&lt;h2 id=&quot;实现原理&quot;&gt;实现原理&lt;/h2&gt;&lt;p&gt;之前我写过一篇简单学习&lt;a href=&quot;https://blog.foolishrobot.xyz/CSS%E5%87%BD%E6%95%B0&quot;&gt;CSS 变量的文章&lt;/a&gt;&lt;/p&gt;&lt;p&gt;里面提到了css变量可以通过js改变，以达到动态改变颜色值的效果。&lt;/p&gt;&lt;p&gt;这篇文章就是css变量的实践应用。&lt;/p&gt;&lt;p&gt;话不多说直接上代码：&lt;/p&gt;&lt;h2 id=&quot;简单封装的-usemagiccolor&quot;&gt;简单封装的 useMagicColor&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-tsx&quot;&gt;import { useEffect } from &amp;#x27;react&amp;#x27;;
 
 // 定义三个颜色css变量, 放到数组中
 const colorNames = [
@@ -16,7 +16,7 @@ const colorArr = [
   &amp;#x27;hsl(224deg, 12%, 9%)&amp;#x27;,
 ];
 // 封装的钩子, 传入真实的DOM或者react的DOM ref引用, active作为控制动画启动的开关
-const useMagicColor = (node: any, active: boolean = true) =&amp;gt; {
+const useMagicColor = (node: any, active: boolean = false) =&amp;gt; {
   useEffect(() =&amp;gt; {
     // css变量存在兼容性问题
     if (window.CSS &amp;amp;&amp;amp; window.CSS.hasOwnProperty(&amp;#x27;registerProperty&amp;#x27;)) {
@@ -78,13 +78,20 @@ const useMagicColor = (node: any, active: boolean = true) =&amp;gt; {
   }, [node, active]);
 };
 export default useMagicColor;
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;使用-color-hook-的组件&quot;&gt;使用 color hook 的组件&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-tsx&quot;&gt;import React, { useRef } from &amp;#x27;react&amp;#x27;;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;使用-color-hook-的组件&quot;&gt;使用 color hook 的组件&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-tsx&quot;&gt;import React, { useRef, useCallback, useState } from &amp;#x27;react&amp;#x27;;
 import useMagicColor from &amp;#x27;./useMagicColor&amp;#x27;;
 
 const MagicComponent = () =&amp;gt; {
-  const nodeRef = useRef();
-  // 传入DOM的ref
-  useMagicColor(nodeRef.current);
+  const magicRef = useRef(null);
+  const [active, setActive] = useState(false);
+  useMagicColor(magicRef.current, active);
+  // 使用refCallback, 可以避免获取到的node为null
+  const refCallback = useCallback((node) =&amp;gt; {
+    if (node !== null) {
+      magicRef.current = node;
+      setActive(true);
+    }
+  }, []);
 
   return (
     &amp;lt;div
@@ -95,7 +102,7 @@ const MagicComponent = () =&amp;gt; {
         borderRadius: &amp;#x27;10px&amp;#x27;,
         margin: &amp;#x27;auto&amp;#x27;,
       }}
-      ref={nodeRef}
+      ref={refCallback}
     &amp;gt;&amp;lt;/div&amp;gt;
   );
 };
