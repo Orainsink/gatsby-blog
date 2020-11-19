@@ -14,7 +14,7 @@ const colorArr = [
   'hsl(235deg, 77%, 40%)',
 ];
 
-const useMagicColor = (node: any, active: boolean = true) => {
+const useMagicColor = (node: any, active: boolean = false) => {
   useEffect(() => {
     if (window.CSS && window.CSS.hasOwnProperty('registerProperty')) {
       colorNames.forEach((name, index) => {

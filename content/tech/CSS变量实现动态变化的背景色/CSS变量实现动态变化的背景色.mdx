@@ -43,7 +43,7 @@ const colorArr = [
   'hsl(224deg, 12%, 9%)',
 ];
 // 封装的钩子, 传入真实的DOM或者react的DOM ref引用, active作为控制动画启动的开关
-const useMagicColor = (node: any, active: boolean = true) => {
+const useMagicColor = (node: any, active: boolean = false) => {
   useEffect(() => {
     // css变量存在兼容性问题
     if (window.CSS && window.CSS.hasOwnProperty('registerProperty')) {
@@ -110,13 +110,20 @@ export default useMagicColor;
 ## 使用 color hook 的组件
 
 ```tsx
-import React, { useRef } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import useMagicColor from './useMagicColor';
 
 const MagicComponent = () => {
-  const nodeRef = useRef();
-  // 传入DOM的ref
-  useMagicColor(nodeRef.current);
+  const magicRef = useRef(null);
+  const [active, setActive] = useState(false);
+  useMagicColor(magicRef.current, active);
+  // 使用refCallback, 可以避免获取到的node为null
+  const refCallback = useCallback((node) => {
+    if (node !== null) {
+      magicRef.current = node;
+      setActive(true);
+    }
+  }, []);
 
   return (
     <div
@@ -127,7 +134,7 @@ const MagicComponent = () => {
         borderRadius: '10px',
         margin: 'auto',
       }}
-      ref={nodeRef}
+      ref={refCallback}
     ></div>
   );
 };

@@ -1,9 +1,17 @@
-import React, { useRef } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import useMagicColor from './useMagicColor';
 
 const MagicComponent = () => {
-  const nodeRef = useRef(null);
-  useMagicColor(nodeRef.current);
+  const magicRef = useRef(null);
+  const [active, setActive] = useState(false);
+  useMagicColor(magicRef.current, active);
+
+  const refCallback = useCallback((node) => {
+    if (node !== null) {
+      magicRef.current = node;
+      setActive(true);
+    }
+  }, []);
 
   return (
     <div
@@ -14,7 +22,7 @@ const MagicComponent = () => {
         borderRadius: '10px',
         margin: 'auto',
       }}
-      ref={nodeRef}
+      ref={refCallback}
     ></div>
   );
 };
