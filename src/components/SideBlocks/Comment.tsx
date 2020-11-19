@@ -1,24 +1,15 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import { Col } from 'antd';
-import useWindowSize from '../../hooks/useWindowSize';
 import styles from '../../styles/SideBar.module.less';
 import MyGitalk from '../MyGitalk';
+import useColFlex from './useColFlex';
 
 const Comment = () => {
-  const [width] = useWindowSize();
-
-  const secondFlex = useMemo(() => {
-    if (width > 1110) return '0 0 300px';
-    if (width <= 1110 && width > 600) return '1 1 800px';
-    return '1 1 300px';
-  }, [width]);
+  const colFlex = useColFlex();
 
   return (
-    <Col
-      flex={secondFlex}
-      className={classnames(styles.col, styles.commentWrap)}
-    >
+    <Col flex={colFlex} className={classnames(styles.col, styles.commentWrap)}>
       <MyGitalk title="首页评论" />
     </Col>
   );

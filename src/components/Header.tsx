@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useCallback,
-  useState,
-  useMemo,
-  useRef,
-} from 'react';
+import React, { useEffect, useCallback, useState, useRef } from 'react';
 import classnames from 'classnames';
 import { Row, Col, Dropdown } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
@@ -16,14 +10,14 @@ import {
 } from '@ant-design/icons';
 import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import useWindowSize from '../hooks/useWindowSize';
+import useMedia from '../hooks/useMedia';
 import useMagicColor from '../hooks/useMagicColor';
 import loadable from '@loadable/component';
 import styles from '../styles/Header.module.less';
+import isClient from '../utils/isClient';
 const MyPlayer = loadable(() => import('../components/MyPlayer'));
 const MenuDrawer = loadable(() => import('../components/MenuDrawer'));
 const SearchDrawer = loadable(() => import('../components/Algolia/Index'));
-const isBrowser = typeof window !== `undefined`;
 
 const ArchivesMenu = React.memo(({ visible }: { visible: boolean }) => {
   const magicRef = useRef(null);
@@ -109,7 +103,10 @@ const Header = () => {
   const [drawer, setDrawer] = useState(false);
   const [searchVisible, setSearchVisible] = useState(false);
   const [titleVisible, setTitleVisible] = useState(true);
-  const [width] = useWindowSize();
+  const is1024 = useMedia('(max-width: 1024px)');
+  const is600 = useMedia('(max-width: 600px)');
+  const is768 = useMedia('(max-width: 768px)');
+
   const { hasArrow, scene, title, headerDrop } = useSelector(
     (state: any) => state
   );
@@ -120,22 +117,22 @@ const Header = () => {
   );
 
   useEffect(() => {
-    if (width < 1024) {
+    if (is1024) {
       setTitleVisible(false);
     } else {
       setTitleVisible(true);
     }
 
-    if (width < 600) {
+    if (is600) {
       setDrawer(true);
     } else {
       setDrawer(false);
     }
-  }, [width]);
+  }, [is1024, is600]);
 
   useEffect(() => {
     const _handleScroll = () => {
-      if (width < 768) return setActive(false);
+      if (is768) return setActive(false);
       if (document.body.scrollTop > 0) {
         setActive(true);
       } else {
@@ -144,7 +141,7 @@ const Header = () => {
     };
 
     /** change active status when component mounted */
-    if (document.body.scrollTop > 0 && width >= 768) {
+    if (document.body.scrollTop > 0 && !is768) {
       setActive(true);
     }
 
@@ -154,12 +151,12 @@ const Header = () => {
     return () => {
       document.body.removeEventListener('scroll', _handleScroll);
     };
-  }, [width, setActive]);
+  }, [setActive, is768]);
 
   const _handleArrow = useCallback(() => {
     dispatch({ type: 'SKIP', payload: false });
     dispatch({ type: 'SCENE', payload: true });
-    isBrowser && localStorage.setItem('SCENE', '1');
+    isClient && localStorage.setItem('SCENE', '1');
   }, [dispatch]);
 
   return (

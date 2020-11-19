@@ -2,8 +2,8 @@ import React, { useRef, useMemo, useCallback, useEffect } from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { useDispatch } from 'react-redux';
 import styles from '../styles/WordCloud.module.less';
-const WordCloud =
-  typeof window !== 'undefined' ? require('wordcloud') : undefined;
+import isClient from '../utils/isClient';
+const WordCloud = isClient ? require('wordcloud') : undefined;
 
 interface Data {
   allFile: {

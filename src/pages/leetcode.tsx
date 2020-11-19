@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ReloadOutlined } from '@ant-design/icons';
 import styles from '../styles/archives.module.less';
 import useResetKey from '../hooks/useResetKey';
-import useWindowSize from '../hooks/useWindowSize';
+import useMedia from '../hooks/useMedia';
 import dayjs from 'dayjs';
 import { ReactComponent as LeetcodeSvg } from '../assets/img/leetcode.svg';
 
@@ -30,8 +30,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
   }, [data]);
 
   useResetKey();
-  const [width] = useWindowSize();
-
+  const is768 = useMedia('(max-width: 768px)');
   const datas = useMemo(() => {
     return posts.map(({ node: { childMdx: mdx } }) => ({
       title: mdx.frontmatter?.title,
@@ -158,11 +157,11 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
       </Divider>
       <Table
         rowClassName={styles.clsRow}
-        columns={width > 768 ? columns : smallColumns}
+        columns={is768 ? smallColumns : columns}
         dataSource={datas}
         rowKey="slug"
         showSorterTooltip={false}
-        size={width > 768 ? 'large' : 'middle'}
+        size={columns ? 'middle' : 'large'}
         pagination={{ pageSize: 16 }}
         onRow={(row) => ({
           onClick: () => navigate(row.slug ?? '/'),

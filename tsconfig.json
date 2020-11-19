@@ -1,13 +1,20 @@
 {
   "compilerOptions": {
-    "target": "ES2018",
-    "module": "ESNext",
-    "lib": ["dom"],
-    "jsx": "preserve",
-    "moduleResolution": "node",
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "outDir": "./public",
-    "allowSyntheticDefaultImports": true
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react",
+    "downlevelIteration": true
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./typings"]
+  "include": ["src", "typings", "content"]
 }

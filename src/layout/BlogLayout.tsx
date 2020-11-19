@@ -5,13 +5,14 @@ import Info from '../components/SideBlocks/Info';
 import SideBar from '../components/SideBlocks/SideBar';
 import Footer from '../components/Footer';
 import styles from '../styles/Bloglayout.module.less';
+import isClient from '../utils/isClient';
 
 interface Props {
   content?: any;
   sideBlocks?: React.ReactNode;
   children?: any;
 }
-const isBrowser = typeof window !== `undefined`;
+
 /** blog posts Layout */
 const Layout = (props: Props) => {
   const { sideBlocks, children } = props;
@@ -21,7 +22,7 @@ const Layout = (props: Props) => {
     dispatch({ type: 'SKIP', payload: true });
     dispatch({ type: 'HAS_ARROW', payload: false });
     dispatch({ type: 'SCENE', payload: false });
-    isBrowser && localStorage.setItem('SCENE', '');
+    isClient && localStorage.setItem('SCENE', '');
   }, [dispatch]);
 
   return (

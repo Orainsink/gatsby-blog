@@ -2,23 +2,17 @@ import React, { useMemo, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { Col, Row, Select } from 'antd';
 import Calendar from './CustomCalendar';
-import useWindowSize from '../../hooks/useWindowSize';
 import classnames from 'classnames';
 import dayjs from 'dayjs';
 import styles from '../../styles/SideBar.module.less';
+import useColFlex from './useColFlex';
 
 interface Props {
   posts: ChildMdxItem[];
 }
 const CalendarBlock = ({ posts }: Props) => {
   const dispatch = useDispatch();
-  const [width] = useWindowSize();
-
-  const secondFlex = useMemo(() => {
-    if (width > 1110) return '0 0 300px';
-    if (width <= 1110 && width > 600) return '1 1 800px';
-    return '1 1 300px';
-  }, [width]);
+  const colFlex = useColFlex();
 
   const allMonths = useMemo(() => {
     const obj = {};
@@ -96,10 +90,7 @@ const CalendarBlock = ({ posts }: Props) => {
   }, []);
 
   return (
-    <Col
-      flex={secondFlex}
-      className={classnames(styles.col, styles.calendarWrap)}
-    >
+    <Col flex={colFlex} className={classnames(styles.col, styles.calendarWrap)}>
       <div className={styles.title}>Calendar</div>
       <Calendar
         fullscreen={false}

@@ -12,6 +12,7 @@ declare module 'algoliasearch/lite';
 declare module 'react-redux';
 declare module '@loadable/component';
 declare module 'classnames';
+declare module '@mdx-js/react';
 
 interface MdxItem extends MarkdownRemark {
   body?: string;

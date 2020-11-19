@@ -3,7 +3,6 @@ import { Link, graphql } from 'gatsby';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import Tags from '../components/Tags';
-import useWindowSize from '../hooks/useWindowSize';
 import styles from '../styles/Blog.module.less';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
@@ -11,6 +10,7 @@ import { Anchor } from 'antd';
 import Contents from '../components/SideBlocks/Contents';
 import CodeBlock from '../components/CodeBlock';
 import MyGitalk from '../components/MyGitalk';
+import useMedia from '../hooks/useMedia';
 
 interface Props {
   data: {
@@ -34,7 +34,7 @@ const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
     tableOfContents,
   } = mdx;
   const { previous, next } = pageContext;
-  const [width] = useWindowSize();
+  const is1110 = useMedia('(max-width: 1110px)');
 
   /**
    * Recursion Links
@@ -53,9 +53,7 @@ const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
   }, []);
 
   return (
-    <Layout
-      sideBlocks={width > 1110 ? <Contents content={tableOfContents} /> : null}
-    >
+    <Layout sideBlocks={is1110 ? null : <Contents content={tableOfContents} />}>
       <SEO title={title} description={description || excerpt} />
       <article>
         <header>
@@ -73,7 +71,7 @@ const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
             <a
               className={styles.licence}
               rel="license"
-              // eslint-disable-next-line react/jsx-no-target-blank
+              // eslint-disable-next-line
               target="_blank"
               href="http://creativecommons.org/licenses/by-nc/4.0/"
               title="This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
@@ -89,7 +87,7 @@ const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
             </a>
           </p>
         </header>
-        {!!tableOfContents && width < 1110 && (
+        {!!tableOfContents && is1110 && (
           <div className={styles.tableContents}>
             <Anchor
               getContainer={() => document.body as HTMLElement}

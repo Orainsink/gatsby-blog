@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-const isBrowser = typeof window !== `undefined`;
+import isClient from '../utils/isClient';
 
 function getScrollPosition() {
-  return isBrowser ? document.body.scrollTop : 0;
+  return isClient ? document.body.scrollTop : 0;
 }
 
 /**
@@ -14,11 +14,11 @@ const useScrollY = (): number => {
   const [scrollY, setScrollY] = useState(getScrollPosition());
 
   useEffect(() => {
-    if (!isBrowser) return;
+    if (!isClient) return;
 
     let requestRunning: number | null = null;
     function handleScroll() {
-      if (isBrowser && requestRunning === null) {
+      if (isClient && requestRunning === null) {
         requestRunning = window.requestAnimationFrame(() => {
           setScrollY(getScrollPosition());
           requestRunning = null;

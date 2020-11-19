@@ -9,7 +9,7 @@ import Icon, {
 } from '@ant-design/icons';
 import { ReactComponent as SteamSvg } from '../../assets/img/steam.svg';
 import classnames from 'classnames';
-import useWindowSize from '../../hooks/useWindowSize';
+import useMedia from '../../hooks/useMedia';
 import styles from '../../styles/SideBar.module.less';
 
 interface Data {
@@ -46,7 +46,7 @@ const Info = () => {
   `);
 
   const { avatar, wechat, moogle } = data;
-  const [width] = useWindowSize();
+  const is1100 = useMedia('(max-width: 1100px)');
 
   const weChatContent = useMemo(() => {
     return (
@@ -75,7 +75,7 @@ const Info = () => {
 
   return (
     <Col
-      flex={width > 1110 ? '0 0 300px' : '1 1 300px'}
+      flex={is1100 ? '1 1 300px' : '0 0 300px'}
       className={classnames(styles.InfoWrap, styles.col)}
     >
       <Image

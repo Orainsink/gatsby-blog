@@ -3,13 +3,13 @@ import { Link, graphql } from 'gatsby';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import Tags from '../components/Tags';
-import useWindowSize from '../hooks/useWindowSize';
 import styles from '../styles/Blog.module.less';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Anchor } from 'antd';
 import Comment from '../components/SideBlocks/Comment';
 import CodeBlock from '../components/CodeBlock';
+import useMedia from '../hooks/useMedia';
 
 interface Props {
   data: {
@@ -33,7 +33,7 @@ const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
     tableOfContents,
   } = mdx;
   const { previous, next } = pageContext;
-  const [width] = useWindowSize();
+  const is1110 = useMedia('(max-width: 1110px)');
 
   /**
    * Recursion Links
@@ -86,7 +86,7 @@ const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
             </a>
           </p>
         </header>
-        {!!tableOfContents && width < 1110 && (
+        {!!tableOfContents && is1110 && (
           <div className={styles.tableContents}>
             <Anchor
               getContainer={() => document.body as HTMLElement}

@@ -4,12 +4,21 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-// You can delete this file if you're not using it
-// exports.onCreateWebpackConfig = ({ actions }) => {
-//   actions.setWebpackConfig({
-//     node: { fs: 'empty' },
-//   });
-// };
+/**
+ * fix React-Hot-Loader: react-🔥-dom patch is not detected. React 16.6+ features may not work
+ * see: https://github.com/gatsbyjs/gatsby/issues/11934#issuecomment-469046186
+ */
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+  if (stage.startsWith('develop')) {
+    actions.setWebpackConfig({
+      resolve: {
+        alias: {
+          'react-dom': '@hot-loader/react-dom',
+        },
+      },
+    });
+  }
+};
 module.exports = {
   createPages: require('./scripts/createPages'),
   onCreateNode: require('./scripts/onCreateNode'),

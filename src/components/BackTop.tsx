@@ -5,4 +5,4 @@ const BackTopComponent = () => {
   return <BackTop target={() => document.body} />;
 };
 
-export default BackTopComponent;
+export default React.memo(BackTopComponent);

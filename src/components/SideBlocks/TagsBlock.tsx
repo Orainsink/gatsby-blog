@@ -1,17 +1,17 @@
 import React from 'react';
 import { Col } from 'antd';
 import classnames from 'classnames';
-import useWindowSize from '../../hooks/useWindowSize';
+import useMedia from '../../hooks/useMedia';
 import styles from '../../styles/SideBar.module.less';
 import WordCloud from '../WordCloud';
 
 /* wordCloud */
 const TagsBlock = () => {
-  const [width] = useWindowSize();
+  const is1110 = useMedia('(max-width: 1110px)');
 
   return (
     <Col
-      flex={width > 1110 ? '0 0 300px' : '1 1 300px'}
+      flex={is1110 ? '1 1 300px' : '0 0 300px'}
       className={classnames(styles.wordCloudWrap, styles.col)}
     >
       <div className={styles.title}>TAGS</div>

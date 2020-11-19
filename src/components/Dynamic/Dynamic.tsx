@@ -86,7 +86,8 @@ const Modal = React.memo((props: ModalProps) => {
           data.now.tmp + '℃ ' + data.now.cond_txt, // temperature
         ];
         setWords(words);
-      });
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   useEffect(() => {
@@ -136,12 +137,6 @@ const Modal = React.memo((props: ModalProps) => {
         position={[0, 0, 40]}
         ref={camera}
       />
-      {/* 更新three版本过后突然变得超级亮. 头皮发麻. 所以把平行光屏蔽了
-       <directionalLight
-        attach="light"
-        args={['#ffffff', 0.5]}
-        position={[0.2, 1, 0.5]}
-      /> */}
       {/* moon light */}
       <Moon onCloseScene={onCloseScene} />
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Drawer } from 'antd';
 import AlgoliaSearch from './Search';
-import useWindowSize from '../../hooks/useWindowSize';
+import useMedia from '../../hooks/useMedia';
 import useDrawerCloseEffect from '../../hooks/useDrawerCloseEffect';
 import { useLocation } from '@reach/router';
 
@@ -11,15 +11,14 @@ interface Props {
 }
 const SearchDrawer = (props: Props) => {
   const { visible, onClose } = props;
-  const [width] = useWindowSize();
   useDrawerCloseEffect(visible);
+  const is600 = useMedia('(max-width: 600px)');
   const location = useLocation();
 
   /** close menu when location changes */
   useEffect(() => {
-    onClose && onClose();
-    // eslint-disable-next-line
-  }, [location]);
+    onClose();
+  }, [location, onClose]);
 
   return (
     <Drawer
@@ -28,7 +27,7 @@ const SearchDrawer = (props: Props) => {
       // maskClosable={false}
       onClose={onClose}
       visible={visible}
-      width={width < 600 ? '100%' : 600}
+      width={is600 ? '100%' : 600}
       bodyStyle={{ padding: '12px' }}
     >
       <AlgoliaSearch />
