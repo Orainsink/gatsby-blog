@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import useScrollY from '../../hooks/useScrollY';
 import styles from '../../styles/SideBar.module.less';
 import { Anchor } from 'antd';
+import isClient from '../../utils/isClient';
 const { Link } = Anchor;
 
 interface Props {
@@ -18,11 +19,12 @@ const Contents = (props: Props) => {
 
   const isFixed = useMemo(() => scrollY > 333, [scrollY]);
 
-  const isHide = useMemo(
-    () =>
-      scrollY > document.body.scrollHeight - document.body.clientHeight - 400,
-    [scrollY]
-  );
+  const isHide = useMemo(() => {
+    if (!isClient) return false;
+    return (
+      scrollY > document.body.scrollHeight - document.body.clientHeight - 400
+    );
+  }, [scrollY]);
 
   /**
    * Recursion Links

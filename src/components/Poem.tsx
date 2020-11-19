@@ -16,13 +16,10 @@ interface Poem {
 
 const Poem = () => {
   const [poem, setPoem] = useState<null | Poem>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
     jinrishici.load((res) => {
       setPoem(res.data);
-      setLoading(false);
     });
   }, []);
 
