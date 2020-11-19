@@ -51,7 +51,8 @@ const Contents = (props: Props) => {
       <div className={styles.title}>Contents</div>
       <div ref={contentsRef} className={classnames(styles.contents)}>
         <Anchor
-          getContainer={() => document.body as HTMLElement}
+          // ban animate. animate cause page blink.
+          // getContainer={() => document.body as HTMLElement}
           targetOffset={200}
         >
           {renderLinks}
