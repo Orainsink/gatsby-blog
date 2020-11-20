@@ -15,6 +15,11 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
     redirectInBrowser: true,
     toPath: '/archives',
   });
+  createRedirect({
+    fromPath: '/about',
+    redirectInBrowser: true,
+    toPath: '/about/-2056610857',
+  });
 
   const Template = path.resolve(`src/templates/blog-post.tsx`);
   const SnippetTemplate = path.resolve(`src/templates/snippet-post.tsx`);

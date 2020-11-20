@@ -105,7 +105,7 @@ const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
             marginBottom: '1.6em',
           }}
         />
-        <Tags tags={tags} />
+        <Tags tags={tags} categories={categories} />
       </article>
 
       <nav>

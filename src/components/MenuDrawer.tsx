@@ -72,7 +72,7 @@ const MenuDrawer = () => {
             </ul>
           </div>
           <li>
-            <Link to="/about">about</Link>
+            <Link to="/about/-2056610857">about</Link>
           </li>
         </ul>
         <div className={styles.menuShasha}>
