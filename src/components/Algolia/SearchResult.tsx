@@ -16,7 +16,6 @@ import { useSelector } from 'react-redux';
 import generatePath from '../../utils/generatePath';
 
 const HitCount = connectStateResults(({ searchResults }) => {
-  console.log(searchResults);
   const hitCount = searchResults && searchResults.nbHits;
   const data = useStaticQuery(graphql`
     query shasha2Query {
