@@ -10,6 +10,7 @@ import useResetKey from '../hooks/useResetKey';
 import useMedia from '../hooks/useMedia';
 import dayjs from 'dayjs';
 import { ReactComponent as LeetcodeSvg } from '../assets/img/leetcode.svg';
+import generatePath from '../utils/generatePath';
 
 interface Data {
   allFile: {
@@ -40,6 +41,8 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
       index: mdx.frontmatter?.index,
       slug: mdx.fields?.slug,
       url: mdx.frontmatter?.url,
+      categories: mdx.frontmatter?.categories,
+      id: mdx.id,
     }));
   }, [posts]);
 
@@ -164,7 +167,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
         size={columns ? 'middle' : 'large'}
         pagination={{ pageSize: 16 }}
         onRow={(row) => ({
-          onClick: () => navigate(row.slug ?? '/'),
+          onClick: () => navigate(generatePath(row.categories, row.id)),
         })}
       ></Table>
     </Layout>
@@ -185,10 +188,12 @@ export const pageQuery = graphql`
       edges {
         node {
           childMdx {
+            id
             frontmatter {
               date(formatString: "YYYY/MM/DD")
               title
               description
+              categories
               tags
               url
               index

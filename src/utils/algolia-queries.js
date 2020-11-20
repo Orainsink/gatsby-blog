@@ -12,6 +12,7 @@ const pageQuery = `{
         id
         frontmatter {
           title
+          categories
         }
         fields {
           slug

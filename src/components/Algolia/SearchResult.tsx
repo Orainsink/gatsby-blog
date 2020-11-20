@@ -13,8 +13,10 @@ import styles from '../../styles/Algolia.module.less';
 import { graphql, useStaticQuery } from 'gatsby';
 import Image from 'gatsby-image';
 import { useSelector } from 'react-redux';
+import generatePath from '../../utils/generatePath';
 
 const HitCount = connectStateResults(({ searchResults }) => {
+  console.log(searchResults);
   const hitCount = searchResults && searchResults.nbHits;
   const data = useStaticQuery(graphql`
     query shasha2Query {
@@ -47,7 +49,7 @@ const HitCount = connectStateResults(({ searchResults }) => {
 
 const PageHit = ({ hit }) => (
   <div>
-    <Link to={hit.slug}>
+    <Link to={generatePath(hit.categories, hit.objectID)}>
       <h4>
         <Highlight attribute="title" hit={hit} tagName="mark" />
       </h4>

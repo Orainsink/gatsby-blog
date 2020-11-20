@@ -9,6 +9,7 @@ import styles from '../styles/archives.module.less';
 import useResetKey from '../hooks/useResetKey';
 import dayjs from 'dayjs';
 import useMedia from '../hooks/useMedia';
+import generatePath from '../utils/generatePath';
 
 interface Data {
   allFile: {
@@ -30,8 +31,10 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
       description: mdx.frontmatter?.description ?? mdx.excerpt,
       //@ts-ignore
       tag: mdx.frontmatter?.tags[0],
+      categories: mdx.frontmatter.categories,
       date: mdx.frontmatter?.date,
       slug: mdx.fields?.slug,
+      id: mdx.id,
     }));
   }, [posts]);
 
@@ -107,7 +110,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
         size={is768 ? 'middle' : 'large'}
         pagination={{ pageSize: 16 }}
         onRow={(row) => ({
-          onClick: () => navigate(row.slug ?? '/'),
+          onClick: () => navigate(generatePath(row.categories, row.id)),
         })}
       ></Table>
     </Layout>
@@ -125,10 +128,12 @@ export const pageQuery = graphql`
       edges {
         node {
           childMdx {
+            id
             frontmatter {
               date(formatString: "YYYY/MM/DD")
               title
               description
+              categories
               tags
             }
             fields {

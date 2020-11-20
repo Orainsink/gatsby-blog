@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'gatsby';
 import { useSelector } from 'react-redux';
 import Tags from '../components/Tags';
-
+import generatePath from '../utils/generatePath';
 interface Props {
   posts: ChildMdxItem[];
   hideMore?: boolean;
@@ -74,7 +74,10 @@ const PostList = ({ posts, hideMore = false }: Props) => {
               >
                 <Link
                   style={{ boxShadow: `none` }}
-                  to={node.childMdx.fields.slug}
+                  to={generatePath(
+                    node.childMdx.frontmatter.categories,
+                    node.childMdx.id
+                  )}
                 >
                   {title}
                 </Link>

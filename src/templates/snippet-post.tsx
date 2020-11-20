@@ -10,6 +10,7 @@ import { Anchor } from 'antd';
 import Comment from '../components/SideBlocks/Comment';
 import CodeBlock from '../components/CodeBlock';
 import useMedia from '../hooks/useMedia';
+import generatePath from '../utils/generatePath';
 
 interface Props {
   data: {
@@ -114,14 +115,20 @@ const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
         <ul className={styles.lead}>
           <li style={{ textAlign: 'left' }}>
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
+              <Link
+                to={generatePath(previous.frontmatter.categories, previous.id)}
+                rel="prev"
+              >
                 ← {previous.frontmatter.title}
               </Link>
             )}
           </li>
           <li style={{ textAlign: 'right' }}>
             {next && (
-              <Link to={next.fields.slug} rel="next">
+              <Link
+                to={generatePath(next.frontmatter.categories, next.id)}
+                rel="next"
+              >
                 {next.frontmatter.title} →
               </Link>
             )}

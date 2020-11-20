@@ -73,6 +73,7 @@ export const pageQuery = graphql`
     allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 5) {
       edges {
         node {
+          id
           fields {
             slug
           }

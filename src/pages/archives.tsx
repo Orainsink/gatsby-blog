@@ -51,10 +51,12 @@ export const pageQuery = graphql`
       edges {
         node {
           childMdx {
+            id
             frontmatter {
               date(formatString: "YYYY/MM/DD")
               title
               description
+              categories
               tags
             }
             fields {

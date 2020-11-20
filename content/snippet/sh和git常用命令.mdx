@@ -1,0 +1,47 @@
+---
+title: sh和git常用命令
+date: 2020-11-20 09:27:19
+description: 懒得背
+tags: [sh]
+categories: snippet
+
+---
+
+## 1.scp上传文件到服务器
+
+```sh
+scp /path/filename username@servername:/path/
+```
+
+例如scp /var/www/test.php root@192.168.0.101:/var/www/ 把本机/var/www/目录下的test.php文件上传到192.168.0.101这台服务器上的/var/www/目录中
+
+## 2.git删除远程分支
+
+```sh
+git push -d origin branch-name
+```
+
+## 3.git 设置用户信息
+
+```sh
+git config [--global] user.name "[name]"
+git config [--global] user.email "[email address]"
+```
+
+## 4.git删除工作区文件
+
+```sh
+git rm [file1] [file2] ...
+```
+
+## 5.git 撤销
+
+```sh
+#重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变
+git reset [commit]
+#重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致
+$ git reset --hard [commit]
+# 重置当前HEAD为指定commit，但保持暂存区和工作区不变
+$ git reset --keep [commit]
+```
+

@@ -8,6 +8,7 @@ import { ReloadOutlined } from '@ant-design/icons';
 import styles from '../styles/archives.module.less';
 import useResetKey from '../hooks/useResetKey';
 import Image from 'gatsby-image';
+import generatePath from '../utils/generatePath';
 
 interface Data {
   allFile: {
@@ -55,7 +56,9 @@ const EssayPage = ({ data }: PageProps<Data>) => {
         <div className={styles.essayCards}>
           {posts.map(({ node: { childMdx: item } }) => (
             <Card
-              onClick={() => navigate(item.fields.slug ?? '/')}
+              onClick={() =>
+                navigate(generatePath(item.frontmatter.categories, item.id))
+              }
               key={item.frontmatter.title}
               hoverable
               className={styles.essayItem}
@@ -88,10 +91,12 @@ export const pageQuery = graphql`
       edges {
         node {
           childMdx {
+            id
             frontmatter {
               date(formatString: "YYYY/MM/DD")
               title
               description
+              categories
               tags
             }
             fields {
@@ -121,10 +126,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-/* relativeDirectory
-          childImageSharp {
-            fixed(width: 370, height: 210) {
-              ...GatsbyImageSharpFixed
-            }
-          } */

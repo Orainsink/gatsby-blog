@@ -1,8 +1,20 @@
 const replacePath = require('./utils');
 const path = require('path');
+const hashString = require('../src/utils/hashString');
 
 module.exports = exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
+
+  createRedirect({
+    fromPath: '/tech/',
+    redirectInBrowser: true,
+    toPath: '/archives',
+  });
+  createRedirect({
+    fromPath: '/tech',
+    redirectInBrowser: true,
+    toPath: '/archives',
+  });
 
   const Template = path.resolve(`src/templates/blog-post.tsx`);
   const SnippetTemplate = path.resolve(`src/templates/snippet-post.tsx`);
@@ -43,7 +55,8 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
       const next = index === 0 ? null : posts[index - 1].node;
 
       createPage({
-        path: replacePath(node.fields.slug),
+        path:
+          node.frontmatter.categories + '/' + replacePath(hashString(node.id)),
         component: componentTemplate[node.frontmatter.categories] || Template,
         context: { id: node.id, previous, next },
       });
