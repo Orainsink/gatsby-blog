@@ -10,7 +10,7 @@ export default connectSearchBox(({ refine, currentRefinement, onFocus }) => {
     () => {
       refine(val);
     },
-    300,
+    500,
     [val]
   );
 

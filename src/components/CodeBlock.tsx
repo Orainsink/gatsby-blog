@@ -126,4 +126,4 @@ const CodeBlock = ({
   );
 };
 
-export default CodeBlock;
+export default React.memo(CodeBlock);

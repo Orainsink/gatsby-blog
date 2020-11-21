@@ -36,6 +36,10 @@ body {
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
+  @media (max-width: 768px) {
+    width: 5px;
+    height: 5px;
+  }
 }
 ::-webkit-scrollbar-track-piece {
   background-color: @main-background;

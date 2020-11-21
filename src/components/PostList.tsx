@@ -98,7 +98,7 @@ const PostList = ({ posts, hideMore = false }: Props) => {
       })}
       {hideMore && filteredPosts?.length > 6 && (
         <div
-          onClick={() => setFold(false)}
+          onClick={() => setFold(!fold)}
           style={{
             textAlign: 'center',
             fontSize: '18px',
@@ -106,7 +106,7 @@ const PostList = ({ posts, hideMore = false }: Props) => {
             cursor: 'pointer',
           }}
         >
-          <span>展开所有</span>
+          <span>{fold ? '展开所有' : '收起'}</span>
         </div>
       )}
     </>

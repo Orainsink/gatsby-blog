@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 
-# Orainsink's Blog - Quick, Responsive, WebGL
+# Orainsink's Blog - SSR, Responsive, WebGL
 
 **Site url: [blog.foolishrobot.xyz](https://blog.foolishrobot.xyz/)**
 
@@ -18,7 +18,7 @@
 
 ## :sparkle:Quick Start
 
-```shell
+```sh
 # install Gatsby-CLI
 yarn add -g gatsby-cli
 # clone repo
@@ -29,15 +29,21 @@ yarn
 yarn start
 # build project
 yarn build
-# write a new post
+# write a new post, default category is "tech"
 yarn new your-post-name
 # or if your post contains imgs, use
 yarn new /your-post-folder-name
+# new post with category in ["tehc","essay","leetcode"]
+yarn new your-post-name##essay
+#or
+yarn new /your-postfolder-name##essay
 ```
 
 > This blog is a personal project for practicing, so there are no special optimizations for extensibility or customization.
 >
 > But if you are interested in it , you can clone this repo and then follow the steps above.
+
+**Warning:** Due to firewalls, gatsby may fail to install, you need to change the host. see: https://www.ioiox.com/archives/62.html, may help.
 
 ## :hammer:Custimize​
 
@@ -60,13 +66,13 @@ yarn new /your-post-folder-name
    yarn new aaa
    ```
 
-   this command will create a `aaa.md` file in `/content/blog`
+   this command will create a `aaa.md` file in `/content/tech`
 
    ```shell
    yarn new /aaa
    ```
 
-   this will create a path `/content/blog/aaa/` and generate a `aaa.md` file.
+   this will create a path `/content/tech/aaa/` and generate a `aaa.md` file.
 
 3. How to change styles and components
 

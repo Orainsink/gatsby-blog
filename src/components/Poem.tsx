@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Skeleton } from 'antd';
 import styles from '../styles/Poem.module.less';
 const jinrishici = require('jinrishici');
 
@@ -14,7 +13,7 @@ interface Poem {
   [key: string]: any;
 }
 
-const Poem = () => {
+const PoemComponent = () => {
   const [poem, setPoem] = useState<null | Poem>(null);
 
   useEffect(() => {
@@ -32,4 +31,4 @@ const Poem = () => {
   );
 };
 
-export default React.memo(Poem);
+export default React.memo(PoemComponent);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Row } from 'antd';
+import useHasMounted from '../../hooks/useHasMounted';
 
 interface Props {
   children: any;
@@ -12,12 +13,16 @@ const SideBar = (props: Props) => {
     padding: 0,
   };
 
+  const hasMounted = useHasMounted();
+
   return (
-    <Col flex="1 1 300px" style={sideWrap}>
-      <Row align="top" justify="center">
-        {children}
-      </Row>
-    </Col>
+    hasMounted && (
+      <Col flex="1 1 300px" style={sideWrap}>
+        <Row align="top" justify="center">
+          {children}
+        </Row>
+      </Col>
+    )
   );
 };
 export default React.memo(SideBar);

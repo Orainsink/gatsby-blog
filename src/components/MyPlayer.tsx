@@ -20,7 +20,7 @@ import { arr } from '../utils/utils';
 import styles from '../styles/MyPlayer.module.less';
 
 /**Controller */
-const Controller = () => {
+const Controller = React.memo(() => {
   const dispatch = useDispatch();
   const { playing, volume, loop } = useSelector((state) => state.music);
   /** stop/start playing */
@@ -70,10 +70,10 @@ const Controller = () => {
       </Row>
     </div>
   );
-};
+});
 
 /** Controller panel */
-const Panel = () => {
+const Panel = React.memo(() => {
   const { playing, volume, mute, loop, id } = useSelector(
     (state) => state.music
   );
@@ -209,7 +209,7 @@ const Panel = () => {
       </div>
     </>
   );
-};
+});
 
 /** myPlayer wrap */
 const MyPlayer = () => {
