@@ -5,7 +5,8 @@ import useScrollY from '../../hooks/useScrollY';
 import styles from '../../styles/SideBar.module.less';
 import { Anchor } from 'antd';
 import isClient from '../../utils/isClient';
-const { Link } = Anchor;
+// const { Link } = Anchor;
+import { Link } from 'gatsby';
 
 interface Props {
   content: any;
@@ -34,8 +35,18 @@ const Contents = (props: Props) => {
 
     function renderLink(items) {
       return items.map((item) => (
-        <Link href={item.url} title={item.title} key={item.url}>
-          {item.items ? renderLink(item.items) : null}
+        <Link
+          to={item.url}
+          onClickCapture={(e) => {
+            // https://stackoverflow.com/questions/56051736/gatsby-clicking-in-route-anchor-element-leads-to-re-render
+            // antd Link will lead to unexpected rerender
+            // use gatsby Link, then catch click event can help
+            e.stopPropagation();
+          }}
+        >
+          <Anchor.Link href={item.url} title={item.title} key={item.url}>
+            {item.items ? renderLink(item.items) : null}
+          </Anchor.Link>
         </Link>
       ));
     }
@@ -54,7 +65,7 @@ const Contents = (props: Props) => {
       <div ref={contentsRef} className={classnames(styles.contents)}>
         <Anchor
           // ban animate. animate cause page blink.
-          // getContainer={() => document.body as HTMLElement}
+          getContainer={() => document.body as HTMLElement}
           targetOffset={200}
         >
           {renderLinks}
