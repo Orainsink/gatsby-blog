@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 21 Nov 2020 10:28:54 GMT</lastBuildDate><item><title><![CDATA[sh和git常用命令]]></title><description><![CDATA[1.scp上传文件到服务器 例如scp /var/www/test.php  root@192.168.0.101 :/var/www/ 把本机/var/www/目录下的test.php文件上传到192.168.0.101这台服务器上的/var/www/目录中 2.git…]]></description><link>https://blog.foolishrobot.xyz/sh和git常用命令</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/sh和git常用命令</guid><pubDate>Fri, 20 Nov 2020 09:27:19 GMT</pubDate><content:encoded>&lt;h2 id=&quot;1scp上传文件到服务器&quot;&gt;1.scp上传文件到服务器&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;scp /path/filename username@servername:/path/
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;例如scp /var/www/test.php &lt;a href=&quot;mailto:root@192.168.0.101&quot;&gt;root@192.168.0.101&lt;/a&gt;:/var/www/ 把本机/var/www/目录下的test.php文件上传到192.168.0.101这台服务器上的/var/www/目录中&lt;/p&gt;&lt;h2 id=&quot;2git删除远程分支&quot;&gt;2.git删除远程分支&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;git push -d origin branch-name
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;3git-设置用户信息&quot;&gt;3.git 设置用户信息&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;git config [--global] user.name &amp;quot;[name]&amp;quot;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 22 Nov 2020 15:54:00 GMT</lastBuildDate><item><title><![CDATA[sh和git常用命令]]></title><description><![CDATA[scp上传文件到服务器 例如scp /var/www/test.php  root@192.168.0.101 :/var/www/ 把本机/var/www/目录下的test.php文件上传到192.168.0.101这台服务器上的/var/www/目录中 git…]]></description><link>https://blog.foolishrobot.xyz/sh和git常用命令</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/sh和git常用命令</guid><pubDate>Fri, 20 Nov 2020 09:27:19 GMT</pubDate><content:encoded>&lt;h2 id=&quot;scp上传文件到服务器&quot;&gt;scp上传文件到服务器&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;scp /path/filename username@servername:/path/
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;例如scp /var/www/test.php &lt;a href=&quot;mailto:root@192.168.0.101&quot;&gt;root@192.168.0.101&lt;/a&gt;:/var/www/ 把本机/var/www/目录下的test.php文件上传到192.168.0.101这台服务器上的/var/www/目录中&lt;/p&gt;&lt;h2 id=&quot;git删除远程分支&quot;&gt;git删除远程分支&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;git push -d origin branch-name
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;git-设置用户信息&quot;&gt;git 设置用户信息&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;git config [--global] user.name &amp;quot;[name]&amp;quot;
 git config [--global] user.email &amp;quot;[email address]&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;4git删除工作区文件&quot;&gt;4.git删除工作区文件&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;git rm [file1] [file2] ...
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;5git-撤销&quot;&gt;5.git 撤销&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;#重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;git删除工作区文件&quot;&gt;git删除工作区文件&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;git rm [file1] [file2] ...
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;git-撤销&quot;&gt;git 撤销&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;#重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变
 git reset [commit]
 #重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致
 $ git reset --hard [commit]
@@ -4040,7 +4040,7 @@ animate();
     &amp;lt;div id=&amp;quot;canvas-frame&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
   &amp;lt;/body&amp;gt;
 &amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title><![CDATA[常用正则表]]></title><description><![CDATA[来源于知乎专栏： https://zhuanlan.zhihu.com/p/29619457 1. 校验数字的表达式 2. 校验字符的表达式 3. 特殊需求表达式 正则表附图]]></description><link>https://blog.foolishrobot.xyz/常用正则表</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/常用正则表</guid><pubDate>Sat, 08 Dec 2018 22:50:01 GMT</pubDate><content:encoded>&lt;blockquote&gt;&lt;p&gt;来源于知乎专栏：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/29619457&quot;&gt;https://zhuanlan.zhihu.com/p/29619457&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;h2 id=&quot;1-校验数字的表达式&quot;&gt;1. 校验数字的表达式&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;1 数字：^[0-9]*$
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title><![CDATA[常用正则表]]></title><description><![CDATA[来源于知乎专栏： https://zhuanlan.zhihu.com/p/29619457 校验数字的表达式 校验字符的表达式 特殊需求表达式 正则表附图]]></description><link>https://blog.foolishrobot.xyz/常用正则表</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/常用正则表</guid><pubDate>Sat, 08 Dec 2018 22:50:01 GMT</pubDate><content:encoded>&lt;blockquote&gt;&lt;p&gt;来源于知乎专栏：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/29619457&quot;&gt;https://zhuanlan.zhihu.com/p/29619457&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;h2 id=&quot;校验数字的表达式&quot;&gt;校验数字的表达式&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;1 数字：^[0-9]*$
 
 2 n位的数字：^\d{n}$
 
@@ -4077,7 +4077,7 @@ animate();
 18 负浮点数：^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$ 或 ^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$
 
 19 浮点数：^(-?\d+)(\.\d+)?$ 或 ^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$12345678910111213141516171819202122232425262728293031323334353637
-&lt;/code&gt;&lt;/pre&gt;&lt;hr/&gt;&lt;h2 id=&quot;2-校验字符的表达式&quot;&gt;&lt;strong&gt;2. 校验字符的表达式&lt;/strong&gt;&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;1 汉字：^[\u4e00-\u9fa5]{0,}$
+&lt;/code&gt;&lt;/pre&gt;&lt;hr/&gt;&lt;h2 id=&quot;校验字符的表达式&quot;&gt;校验字符的表达式&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;1 汉字：^[\u4e00-\u9fa5]{0,}$
 
 2 英文和数字：^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]{4,40}$
 
@@ -4100,7 +4100,7 @@ animate();
 11 可以输入含有^%&amp;amp;&amp;#x27;,;=?$\&amp;quot;等字符：[^%&amp;amp;&amp;#x27;,;=?$\x22]+
 
 12 禁止输入含有~的字符：[^~\x22]+123456789101112131415161718192021222324
-&lt;/code&gt;&lt;/pre&gt;&lt;hr/&gt;&lt;h2 id=&quot;3-特殊需求表达式&quot;&gt;&lt;strong&gt;3. 特殊需求表达式&lt;/strong&gt;&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;1 Email地址：^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$
+&lt;/code&gt;&lt;/pre&gt;&lt;hr/&gt;&lt;h2 id=&quot;特殊需求表达式&quot;&gt;特殊需求表达式&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;1 Email地址：^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$
 
 2 域名：[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?
 
@@ -4167,7 +4167,7 @@ animate();
 33 IP地址：\d+\.\d+\.\d+\.\d+ (提取IP地址时有用)
 
 34 IP地址：((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;正则表附图&quot;&gt;&lt;strong&gt;正则表附图&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://img.my.csdn.net/uploads/201712/03/1512313400_3286.png&quot; alt=&quot;正则&quot;/&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[使用Karma+Mocha进行单元测试]]></title><description><![CDATA[自动化测试 来源: 使用 Karma + Mocha 做单元测试 Karma（ [ˈkɑrmə]  卡玛）是一个测试运行器，它可以呼起浏览器，加载测试脚本，然后运行测试用例 Mocha（ [ˈmoʊkə]  摩卡）是一个单元测试框架/库，它可以用来写测试用例 Sinon…]]></description><link>https://blog.foolishrobot.xyz/使用Karma-Mocha进行单元测试</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/使用Karma-Mocha进行单元测试</guid><pubDate>Sat, 25 Aug 2018 12:47:17 GMT</pubDate><content:encoded>&lt;h1 id=&quot;自动化测试&quot;&gt;自动化测试&lt;/h1&gt;&lt;blockquote&gt;&lt;p&gt;来源:&lt;/p&gt;&lt;/blockquote&gt;&lt;h1 id=&quot;使用-karma--mocha-做单元测试&quot;&gt;使用 Karma + Mocha 做单元测试&lt;/h1&gt;&lt;ol&gt;&lt;li&gt;&lt;p&gt;Karma（&lt;code&gt;[ˈkɑrmə]&lt;/code&gt; 卡玛）是一个测试运行器，它可以呼起浏览器，加载测试脚本，然后运行测试用例&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Mocha（&lt;code&gt;[ˈmoʊkə]&lt;/code&gt; 摩卡）是一个单元测试框架/库，它可以用来写测试用例&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Sinon（西农）是一个 spy / stub / mock 库，用以辅助测试（使用后才能理解）&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;h2 id=&quot;步骤&quot;&gt;步骤&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;p&gt;安装各种工具
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;正则表附图&quot;&gt;正则表附图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://img.my.csdn.net/uploads/201712/03/1512313400_3286.png&quot; alt=&quot;正则&quot;/&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[使用Karma+Mocha进行单元测试]]></title><description><![CDATA[自动化测试 来源: 使用 Karma + Mocha 做单元测试 Karma（ [ˈkɑrmə]  卡玛）是一个测试运行器，它可以呼起浏览器，加载测试脚本，然后运行测试用例 Mocha（ [ˈmoʊkə]  摩卡）是一个单元测试框架/库，它可以用来写测试用例 Sinon…]]></description><link>https://blog.foolishrobot.xyz/使用Karma-Mocha进行单元测试</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/使用Karma-Mocha进行单元测试</guid><pubDate>Sat, 25 Aug 2018 12:47:17 GMT</pubDate><content:encoded>&lt;h1 id=&quot;自动化测试&quot;&gt;自动化测试&lt;/h1&gt;&lt;blockquote&gt;&lt;p&gt;来源:&lt;/p&gt;&lt;/blockquote&gt;&lt;h1 id=&quot;使用-karma--mocha-做单元测试&quot;&gt;使用 Karma + Mocha 做单元测试&lt;/h1&gt;&lt;ol&gt;&lt;li&gt;&lt;p&gt;Karma（&lt;code&gt;[ˈkɑrmə]&lt;/code&gt; 卡玛）是一个测试运行器，它可以呼起浏览器，加载测试脚本，然后运行测试用例&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Mocha（&lt;code&gt;[ˈmoʊkə]&lt;/code&gt; 摩卡）是一个单元测试框架/库，它可以用来写测试用例&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Sinon（西农）是一个 spy / stub / mock 库，用以辅助测试（使用后才能理解）&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;h2 id=&quot;步骤&quot;&gt;步骤&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;p&gt;安装各种工具
 &lt;code&gt;npm i -D karma karma-chrome-launcher karma-mocha karma-sinon-chai mocha sinon sinon-chai karma-chai karma-chai-spies&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;创建 karma 配置&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt; // 新建 karma.conf.js，内容如下
  module.exports = function (config) {
      config.set({
