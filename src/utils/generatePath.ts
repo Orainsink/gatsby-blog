@@ -5,7 +5,6 @@ import hashString from './hashString';
  * @param id
  */
 const generatePath = (categories: string, id: string) => {
-  if (!categories || !id) return '/404';
   return `/${categories}/${hashString(id)}`;
 };
 export default generatePath;
