@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 24 Nov 2020 12:21:28 GMT</lastBuildDate><item><title><![CDATA[SSR-注水(Rehydration)的危险]]></title><description><![CDATA[前段时间我发现自己的博客网站 html 结构发生了错位, 一些组件，比如 footer 跑到了奇奇怪怪的地方，这个 bug 一度让我手足无措，因为检查 react 代码我并没有发现任何错误。找了很久的资料， 才发现是 SSR…]]></description><link>https://blog.foolishrobot.xyz/SSR-注水Rehydration的危害/SSR-注水Rehydration的危害</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/SSR-注水Rehydration的危害/SSR-注水Rehydration的危害</guid><pubDate>Mon, 23 Nov 2020 22:43:27 GMT</pubDate><content:encoded>&lt;blockquote&gt;&lt;p&gt;前段时间我发现自己的博客网站 html 结构发生了错位, 一些组件，比如 footer 跑到了奇奇怪怪的地方，这个 bug 一度让我手足无措，因为检查 react 代码我并没有发现任何错误。找了很久的资料， 才发现是 SSR 的问题。这&lt;/p&gt;&lt;p&gt;翻译一篇解释得比较好点的文章，原文： &lt;a href=&quot;https://www.joshwcomeau.com/react/the-perils-of-rehydration/&quot;&gt;https://www.joshwcomeau.com/react/the-perils-of-rehydration/&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;h1 id=&quot;the-perils-of-rehydration注水的危险&quot;&gt;The Perils of Rehydration(注水的危险)&lt;/h1&gt;&lt;blockquote&gt;&lt;p&gt;An Eye-Opening Realization about Gatsby and React&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;​ 我最近遇到了一个很奇怪的问题。在开发过程中，一切都是那么顺畅，但在生产打包过后中，我博客的底部却发生了一些……意想不到的事情：&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position:relative;display:block;margin-left:auto;margin-right:auto;max-width:1035px&quot;&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 24 Nov 2020 17:48:49 GMT</lastBuildDate><item><title><![CDATA[SSG-注水(Rehydration)的危险]]></title><description><![CDATA[前段时间我发现自己的博客网站 html 结构发生了错位, 一些组件，比如 footer 跑到了奇奇怪怪的地方，这个 bug 一度让我手足无措，因为检查 react 代码我并没有发现任何错误。找了很久的资料， 才发现是 SSR…]]></description><link>https://blog.foolishrobot.xyz/SSR-注水Rehydration的危害/SSR-注水Rehydration的危害</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/SSR-注水Rehydration的危害/SSR-注水Rehydration的危害</guid><pubDate>Mon, 23 Nov 2020 22:43:27 GMT</pubDate><content:encoded>&lt;blockquote&gt;&lt;p&gt;前段时间我发现自己的博客网站 html 结构发生了错位, 一些组件，比如 footer 跑到了奇奇怪怪的地方，这个 bug 一度让我手足无措，因为检查 react 代码我并没有发现任何错误。找了很久的资料， 才发现是 SSR 的问题。这&lt;/p&gt;&lt;p&gt;翻译一篇解释得比较好点的文章，原文： &lt;a href=&quot;https://www.joshwcomeau.com/react/the-perils-of-rehydration/&quot;&gt;https://www.joshwcomeau.com/react/the-perils-of-rehydration/&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;h1 id=&quot;the-perils-of-rehydration注水的危险&quot;&gt;The Perils of Rehydration(注水的危险)&lt;/h1&gt;&lt;blockquote&gt;&lt;p&gt;An Eye-Opening Realization about Gatsby and React&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;我最近遇到了一个很奇怪的问题。在开发过程中，一切都是那么顺畅，但在生产环境打包过后中，我博客的底部却发生了一些……意想不到的事情：&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position:relative;display:block;margin-left:auto;margin-right:auto;max-width:1035px&quot;&gt;
       &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/5086a3eb17b14f9b69157510a7e6be9a/e7c5b/ssr1.png&quot; style=&quot;display:block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
     &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom:50.57915057915058%;position:relative;bottom:0;left:0;background-image:url(&amp;#x27;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsSAAALEgHS3X78AAABLUlEQVQoz4WRO04DMRCGcysKLsA5KKDkDjkElEhcgQZRIkQVFClW0CqCDmUfsT3r167XrzCLorBZBeXXFPbY3/j3zGQ7UAiBMVZVFWMcRSnF7YbWlCoMIez2UJPhxoeAZJ4XnIPSGqNpjDFe66RUxEgp/QuPFCMCWikppdBYICW01rT2BIwPxJiapiVkuSAfeV4C1Jj/Wi6eHm6PwAjsTeHCOW9MM5vNZ+/zLFsRQqRxURJL7oK3p22jT8YBQFDGy2qDmefH++nNxecq609j3MEAriy7tk2jP3MQG8r7YNA5n3+v315e923bwUJoxqXzIaW/liJcC1VWtCgLAKaN7ifi3RiOvbCXoetcCHHo3HuvlQfo5O+crbVj+KiwljH4nr26FOdn1fQatvHgwg/HiT4l/GpHWgAAAABJRU5ErkJggg==&amp;#x27;);background-size:cover;display:block&quot;&gt;&lt;/span&gt;
   &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;ssr1&quot; title=&quot;ssr1&quot; src=&quot;/static/5086a3eb17b14f9b69157510a7e6be9a/e3189/ssr1.png&quot; srcSet=&quot;/static/5086a3eb17b14f9b69157510a7e6be9a/a2ead/ssr1.png 259w,/static/5086a3eb17b14f9b69157510a7e6be9a/6b9fd/ssr1.png 518w,/static/5086a3eb17b14f9b69157510a7e6be9a/e3189/ssr1.png 1035w,/static/5086a3eb17b14f9b69157510a7e6be9a/44d59/ssr1.png 1553w,/static/5086a3eb17b14f9b69157510a7e6be9a/a6d66/ssr1.png 2070w,/static/5086a3eb17b14f9b69157510a7e6be9a/e7c5b/ssr1.png 2642w&quot; sizes=&quot;(max-width: 1035px) 100vw, 1035px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0&quot; loading=&quot;lazy&quot;/&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;&lt;center&gt;乱成一锅粥的UI&lt;/center&gt;&lt;center&gt;(译者: 哈哈哈, 如你所见, html 错位了, 我的博客错位得更彻底, 完全面目全非)&lt;/center&gt;&lt;p&gt;​ 我在 devtools 中的 Elements 选项卡进行了一点挖掘，发现了罪魁祸首…我的 React 组件呈现在错误的位置：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;&amp;lt;!-- 测试环境下一切正常 --&amp;gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;center&gt;乱成一锅粥的UI&lt;/center&gt;&lt;center&gt;(译者: 哈哈哈, 如你所见, html 错位了, 我的博客错位得更彻底, 完全面目全非, 为此我提了好几个commit尝试来修改这个问题, 结果都是徒劳)&lt;/center&gt;&lt;p&gt;我在 devtools 中的 Elements 选项卡进行了一点挖掘，发现了罪魁祸首…我的 React 组件呈现在错误的位置：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;&amp;lt;!-- 测试环境下一切正常 --&amp;gt;
 
 &amp;lt;main&amp;gt;
   &amp;lt;div class=&amp;quot;ContentFooter&amp;quot;&amp;gt;
@@ -27,7 +27,7 @@
     &amp;lt;/div&amp;gt;
   &amp;lt;/div&amp;gt;
 &amp;lt;/main&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;​ 怎么会这样？难道我发现了 React 中的一个 Bug？我检查了 React Devtools 的 &amp;quot;⚛️Components &amp;quot; 选项卡，它告诉了我一个不同的故事，在这个故事里，一切都很好，所有的部件都躺在它们应该在的地方。骗子啊!&lt;/p&gt;&lt;p&gt;​ 原来，我对 React 在 SSR 下的工作方式有了根本性的误解。而我想&lt;strong&gt;很多&lt;/strong&gt;React 开发人员都有这样的误解! 而且它可能会带来一些很严重的影响。&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;作者在出了个视频教程, 教程内容就是复现 gatsby 在 ssr 生产环境产生的错误渲染, 及其原因和解决办法&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://egghead.io/lessons/react-avoiding-state-flickers-in-gatsby-applications?pl=undefined&amp;amp;af=49agrw&quot;&gt;视频链接&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;h2 id=&quot;一些有问题的代码&quot;&gt;一些有问题的代码&lt;/h2&gt;&lt;p&gt;​ 下面这个是一段会导致错误渲染的问题代码, 你能找到问题在哪吗?&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;function Navigation() {
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;怎么会这样？难道我发现了 React 中的一个 Bug？我检查了 React Devtools 的 &amp;quot;⚛️Components &amp;quot; 选项卡，它告诉了我一个不同的故事，在这个故事里，一切都很好，所有的组件都躺在它们应该在的地方。骗子啊!&lt;/p&gt;&lt;p&gt;原来，我对 React 在 SSR 下的工作方式有根本性的误解。而我想&lt;strong&gt;很多&lt;/strong&gt;React 开发人员都有这样的误解! 而且它可能会带来一些很严重的影响。&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;作者在出了个视频教程, 教程内容就是复现 gatsby 在 ssr 生产环境产生的错误渲染, 及其原因和解决办法&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://egghead.io/lessons/react-avoiding-state-flickers-in-gatsby-applications?pl=undefined&amp;amp;af=49agrw&quot;&gt;视频链接&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;h2 id=&quot;一些有问题的代码&quot;&gt;一些有问题的代码&lt;/h2&gt;&lt;p&gt;下面这个是一段会导致错误渲染的问题代码, 你能找到问题在哪吗?&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;function Navigation() {
   if (typeof window === &amp;#x27;undefined&amp;#x27;) {
     return null;
   }
@@ -43,7 +43,7 @@
     &amp;lt;/nav&amp;gt;
   );
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;​ 很长一段时间，我都会认为这个代码是 OK 的。直到有一天我的博客变成了毕加索的画。&lt;/p&gt;&lt;p&gt;​ 本教程找到幕后的原因，使我们了解服务器端渲染的工作原理。我们将知道为什么这段代码的逻辑会有问题，以及我们如何用不同的方法来实现避免出现这样的错误。&lt;/p&gt;&lt;h2 id=&quot;server-side-rendering-101101-是个什么梗&quot;&gt;Server-side rendering 101(101 是个什么梗?)&lt;/h2&gt;&lt;p&gt;​ 想要理解这个问题，我们需要先了解一下 Gatsby 或 Next.js 这种 SSR 框架和普通的 client-side 通过 react 构建的应用之间的区别。&lt;/p&gt;&lt;p&gt;​ 当你通过 create-react-app 这种脚手架构建 react 应用的时候，所有的渲染都发生在浏览器中。不管你的应用有多大，浏览器都将收到一个初始的 HTML 文档，看起来就像这样：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;很长一段时间，我都会认为这个代码是 OK 的。直到有一天我的博客扭曲成了毕加索的画。&lt;/p&gt;&lt;p&gt;本教程旨在找到幕后的原因，使我们了解服务器端渲染的工作原理。我们将知道为什么这段代码的逻辑会有问题，以及我们如何用不同的方法来实现避免出现这样的错误。&lt;/p&gt;&lt;h2 id=&quot;server-side-rendering-的第-101-件事&quot;&gt;Server-side rendering 的第 101 件事&lt;/h2&gt;&lt;p&gt;想要理解这个问题，我们需要先了解一下 Gatsby 或 Next.js 这种 SSR 框架和普通的 client-side 通过 react 构建的应用之间的区别。&lt;/p&gt;&lt;p&gt;当你通过 create-react-app 这种脚手架构建 react 应用的时候，所有的渲染都发生在浏览器中。不管你的应用有多大，浏览器都将收到一个初始的 HTML 文档，看起来就像这样：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;
 &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
   &amp;lt;head&amp;gt;
     &amp;lt;!-- Maybe some stuff here --&amp;gt;
@@ -55,8 +55,8 @@
     &amp;lt;script src=&amp;quot;/static/main.chunk.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
   &amp;lt;/body&amp;gt;
 &amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;​ 这个页面基本上是空的，但它包括几个 JS 脚本。一旦浏览器下载并解析了这些脚本，React 就会建立一个页面应该是什么样子的切片，并注入一堆 DOM 节点使之成为这样的切片。这就是所谓的客户端渲染(client-side-render)，因为所有的渲染都发生在客户端（用户的浏览器）中。&lt;/p&gt;&lt;p&gt;​ 但所有这些过程都会耗时，当浏览器和 React 在施展魔法时，屏幕前用户却只能盯着空白的屏幕。这不是最好的体验。&lt;/p&gt;&lt;p&gt;​ 聪明的人意识到，如果我们能在服务器上进行渲染，我们就能给用户发送一个完整的 HTML 文档。这样一来，当浏览器下载、解析和执行 JS 的时候，他们就有东西可看了。这就是所谓的服务器端渲染（SSR）。&lt;/p&gt;&lt;p&gt;​ 服务器端渲染可以在性能上取胜，但问题是，这些工作仍然需要按需完成。当你请求 your-website.com 时，React 必须将你的 React 组件转化为 HTML，而你在等待的过程中仍然会盯着一个空白的屏幕。只是这些工作是在服务器上完成的，而不是在用户的电脑上。&lt;/p&gt;&lt;p&gt;​ 更机智的人发现，许多网站和应用的一些大的代码 chunk 是静态的，它们可以在编译时构建。我们可以提前在我们的开发机器上生成初始 HTML，并在用户请求时立即分发。我们的 React 应用可以像普通的 HTML 网站一样快速加载！这正是 Gatsby 所做的。&lt;/p&gt;&lt;p&gt;​ 这正是 Gatsby 所做的事情（以及 Next.js，在某些配置下）。当你运行 yarn 构建时，它会为你网站上的每一条路径生成一个 HTML 文档。每一个侧页、每一篇博客文章、每一个商店项目--都会为它们创建一个 HTML 文件，并准备好立即提供。&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;​ 这一切只是服务器端的渲染吗？
-​ 不幸的是，这种进行了多次语言转换，而且这个过程可能非常难以理解。从技术上讲，Gatsby 所做的是服务器端渲染，因为它在 Node.js 上使用相同的 ReactDOMServer API 来渲染 React 应用，就像一个传统的服务器端渲染一样。不过在我看来，这两者在概念上是不同的。&amp;quot;服务器端渲染 &amp;quot;是在你的实时生产服务器上实时发生的，是对请求的响应，而 Gatsby 在编译时即进行渲染则发生得更早，是构建过程的一部分。&lt;/p&gt;&lt;p&gt;​ 有些人开始把它称为 SSG，它要么代表 &amp;quot;Static Site Generation&amp;quot;，要么代表 &amp;quot;Server-Side Generate&amp;quot;，这取决于你问谁。&lt;/p&gt;&lt;/blockquote&gt;&lt;h3 id=&quot;客户端上的代码&quot;&gt;客户端上的代码&lt;/h3&gt;&lt;p&gt;​ 现在我们构建的应用都是交互式、动态的---用户已经习惯了单靠 HTML 和 CSS 无法完成的网页体验！所以我们仍然需要运行客户端的 JS。&lt;/p&gt;&lt;p&gt;​ 客户端 JS 包括在编译时生成的相同的 React 代码。它在用户的设备上运行，并建立一个整个网页应该是什么样子的切片。然后，它将其与文档中构建的 HTML 进行比较。这是一个被称为补水(&lt;code&gt;rehydration&lt;/code&gt;)的过程。（译者：在 ssr 中，没有添加 react 脚本的 dom tree 就像干巴巴的枯枝，把 js 代码注入进去的过程就像给干海绵注水，所以才叫&lt;code&gt;rehydration&lt;/code&gt;）&lt;/p&gt;&lt;p&gt;​ 关键的是，&lt;code&gt;rehydration&lt;/code&gt;与渲染不是一回事。在典型的渲染中，当&lt;code&gt;props&lt;/code&gt;或&lt;code&gt;state&lt;/code&gt;发生变化时，React 会比对差异并更新 DOM。在&lt;code&gt;rehydration&lt;/code&gt;中，React 假设 DOM 不会改变。它只是试图采用现有的 DOM。&lt;/p&gt;&lt;h2 id=&quot;动态变化的-sections&quot;&gt;动态变化的 Sections&lt;/h2&gt;&lt;p&gt;让我们重回代码：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;const Navigation = () =&amp;gt; {
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个页面基本上是空的，但它包括几个 JS 脚本。一旦浏览器下载并解析了这些脚本，React 就会建立一个页面应该是什么样子的切片，并注入一堆 DOM 节点使之成为这样的切片。这就是所谓的客户端渲染(client-side-render)，因为所有的渲染都发生在客户端（用户的浏览器）中。&lt;/p&gt;&lt;p&gt;但所有的这些过程都会耗时，当浏览器和 React 在进程中施展魔法时，屏幕前用户却只能盯着空白的屏幕。这不是最好的体验。&lt;/p&gt;&lt;p&gt;聪明的人意识到，如果我们能在服务器上进行渲染，我们就能给用户发送一个完整的 HTML 文档。这样一来，当浏览器下载、解析和执行 JS 的时候，他们就有东西可看了。这就是所谓的服务器端渲染（SSR）。&lt;/p&gt;&lt;p&gt;服务器端渲染可以在性能上取胜，但问题是，这些工作仍然需要按需完成。当你请求 your-website.com 时，React 必须将你的 React 组件转化为 HTML，而你在等待的过程中仍然会盯着一个空白的屏幕。只是这些工作是在服务器上完成的，而不是在用户的电脑上。&lt;/p&gt;&lt;p&gt;更机智的人发现，许多网站和应用的一些大的代码 chunk 是静态的，它们可以在编译时构建。我们可以提前在我们的开发机器上生成初始 HTML，并在用户请求时立即分发。我们的 React 应用可以像普通的 HTML 网站一样快速加载！而这正是 Gatsby 所做的事情（以及 Next.js，在某些配置下）。当你运行&lt;code&gt;yarn build&lt;/code&gt;构建时，它会为你网站上的每一条路径生成一个 HTML 文档。每一个侧页、每一篇博客文章、每一个商店项目---都会为它们创建一个 HTML 文件。&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;这一切只是服务器端的渲染吗？
+​ 不幸的是，这个过程中进行了多次语义转换，而且这个过程可能非常难以理解。从技术上讲，Gatsby 所做的是服务器端渲染，因为它在 Node.js 上使用相同的 ReactDOMServer API 来渲染 React 应用，就像一个传统的服务器端渲染一样。不过在我看来，这两者在概念上是不同的。&amp;quot;服务器端渲染 &amp;quot;是在你的实时生产服务器上实时发生的，是对请求的响应，而 Gatsby 在编译时即进行渲染则发生得更早，是构建过程的一部分。&lt;/p&gt;&lt;p&gt;有些人开始把它称为 SSG，它要么代表 &amp;quot;Static Site Generation&amp;quot;，要么代表 &amp;quot;Server-Side Generate&amp;quot;，这取决于你问谁。&lt;/p&gt;&lt;/blockquote&gt;&lt;h3 id=&quot;客户端上的代码&quot;&gt;客户端上的代码&lt;/h3&gt;&lt;p&gt;现在我们构建的应用都是交互式的，动态的---用户已经习惯了单靠 HTML 和 CSS 无法完成的网页体验！所以我们仍然需要运行客户端的 JS。&lt;/p&gt;&lt;p&gt;客户端 JS 包括在编译时生成的相同的 React 代码。它在用户的设备上运行，并建立一个整个网页应该是什么样子的切片。然后，它将其与文档中构建的 HTML 进行比较。这是一个被称为补水(&lt;code&gt;rehydration&lt;/code&gt;)的过程。（译者：在 ssr 中，没有添加 react 脚本的 dom tree 就像干巴巴的枯枝，把 js 代码注入进去的过程就像给干海绵注水，所以才叫&lt;code&gt;rehydration&lt;/code&gt;）&lt;/p&gt;&lt;p&gt;关键的是，&lt;code&gt;rehydration&lt;/code&gt;与渲染不是一回事。在典型的渲染中，当&lt;code&gt;props&lt;/code&gt;或&lt;code&gt;state&lt;/code&gt;发生变化时，React 会比对差异并更新 DOM。在&lt;code&gt;rehydration&lt;/code&gt;中，React 假设 DOM 不会改变。它只是试图采用现有的 DOM。&lt;/p&gt;&lt;h2 id=&quot;动态变化的-sections&quot;&gt;动态变化的 Sections&lt;/h2&gt;&lt;p&gt;让我们重回代码：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;const Navigation = () =&amp;gt; {
   if (typeof window === &amp;#x27;undefined&amp;#x27;) {
     return null;
   }
@@ -72,7 +72,114 @@
     &amp;lt;/nav&amp;gt;
   );
 };
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;按逻辑，这个组件会返回三种可能的结果：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;如果 user 登录了， 渲染&lt;code&gt;&amp;lt;AuthenticatedNav&amp;gt;&lt;/code&gt;组件&lt;/li&gt;&lt;li&gt;如果 user 不登录，渲染&lt;code&gt;&amp;lt;UnauthenticatedNav&amp;gt;&lt;/code&gt;组件&lt;/li&gt;&lt;li&gt;如果我们不知道 user 登录与否, 什么都不渲染。&lt;/li&gt;&lt;/ul&gt;&lt;h3 id=&quot;薛定谔的-user&quot;&gt;薛定谔的 user&lt;/h3&gt;&lt;p&gt;​ 对于我们的 app 而言， 在用户进入往后的前几分钟，我们并不知道他们是否已经登录， 就像薛定谔的猫。&lt;/p&gt;&lt;p&gt;​ 这是因为 HTML 文件是在编译时建立的。无论他们是否登录，每个用户都会得到一份相同的 HTML 副本。一旦 JS bundle 被解析和执行，我们就可以更新 UI 来反映用户的状态，但在这之前有一个很大的时间差。请记住，SSG 的目的是在我们下载、解析和&lt;code&gt;rehydration&lt;/code&gt;应用时给用户一些东西看，这在 3G 冲浪的设备上可能是一个漫长的过程。&lt;/p&gt;&lt;p&gt;​ 许多 webapps 选择默认显示 &amp;quot;注销 &amp;quot;状态，这就导致了你之前可能遇到的闪烁情况(作者的视频，我搬不了)。&lt;/p&gt;&lt;video style=&quot;width:100%&quot; controls=&quot;&quot;&gt;&lt;source src=&quot;https://www.joshwcomeau.com/_next/static/media/guardian-with-effect-5c8e3ed088ad6d3b9efa334a4dd7f62b.mp4&quot; type=&quot;video/mp4&quot;/&gt;&lt;/video&gt;</content:encoded></item><item><title><![CDATA[sh和git常用命令]]></title><description><![CDATA[scp上传文件到服务器 例如scp /var/www/test.php  root@192.168.0.101 :/var/www/ 把本机/var/www/目录下的test.php文件上传到192.168.0.101这台服务器上的/var/www/目录中 git…]]></description><link>https://blog.foolishrobot.xyz/sh和git常用命令</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/sh和git常用命令</guid><pubDate>Fri, 20 Nov 2020 09:27:19 GMT</pubDate><content:encoded>&lt;h2 id=&quot;scp上传文件到服务器&quot;&gt;scp上传文件到服务器&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;scp /path/filename username@servername:/path/
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;按逻辑，这个组件会返回三种可能的结果：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;如果 user 登录了， 渲染&lt;code&gt;&amp;lt;AuthenticatedNav&amp;gt;&lt;/code&gt;组件&lt;/li&gt;&lt;li&gt;如果 user 不登录，渲染&lt;code&gt;&amp;lt;UnauthenticatedNav&amp;gt;&lt;/code&gt;组件&lt;/li&gt;&lt;li&gt;如果我们不知道 user 登录与否, 什么都不渲染。&lt;/li&gt;&lt;/ul&gt;&lt;h3 id=&quot;薛定谔的-user&quot;&gt;薛定谔的 user&lt;/h3&gt;&lt;p&gt;对于我们的 app 而言， 在用户进入往后的前几分钟，我们并不知道他们是否已经登录， 就像薛定谔的猫。&lt;/p&gt;&lt;p&gt;这是因为 HTML 文件是在编译时建立的。无论他们是否登录，每个用户都会得到一份相同的 HTML 副本。一旦 JS bundle 被解析和执行，我们就可以更新 UI 来反映用户的状态，但在这之前有一个很大的时间差。请记住，SSG 的目的是在我们下载、解析和&lt;code&gt;rehydration&lt;/code&gt;应用时给用户一些东西看，这在 3G 冲浪的设备上可能是一个漫长的过程。&lt;/p&gt;&lt;p&gt;许多 webapps 选择默认显示 &amp;quot;注销 &amp;quot;状态，这就导致了你之前可能遇到的闪烁情况。&lt;/p&gt;&lt;video style=&quot;width:100%&quot; controls=&quot;&quot;&gt;&lt;source src=&quot;https://www.joshwcomeau.com/_next/static/media/guardian-with-effect-5c8e3ed088ad6d3b9efa334a4dd7f62b.mp4&quot; type=&quot;video/mp4&quot;/&gt;&lt;/video&gt;&lt;video style=&quot;width:100%&quot; controls=&quot;&quot;&gt;&lt;source src=&quot;https://www.joshwcomeau.com/_next/static/media/airbnb-243d77013adf202e2a581a262a1c7fe8.mp4&quot; type=&quot;video/mp4&quot;/&gt;&lt;/video&gt;&lt;center&gt;Airbnb也犯了同样的错误，默认切换到了未登录的navigation bar&lt;/center&gt;&lt;p&gt;我创建了一个小的 gatsby 应用，用来复现这个问题：&lt;/p&gt;&lt;video style=&quot;width:100%&quot; controls=&quot;&quot;&gt;&lt;source src=&quot;https://www.joshwcomeau.com/_next/static/media/the-problem-c1dacc92a2a2cc3b25463b8d785a732f.mp4&quot; type=&quot;video/mp4&quot;/&gt;&lt;/video&gt;&lt;center&gt;在3G网速下，错误的状态会维持一长段时间&lt;/center&gt;&lt;blockquote&gt;&lt;p&gt;如果你愿意，你可以自己试一试。点击 &amp;quot;登录 &amp;quot;链接进行假登录，再点击就可以退出。&lt;/p&gt;&lt;/blockquote&gt;&lt;h3 id=&quot;一个想法很好，但是有缺陷的尝试&quot;&gt;一个想法很好，但是有缺陷的尝试&lt;/h3&gt;&lt;p&gt;在以下分享的代码片段中， 我们尝试通过这几行代码解决这个问题：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;const Navigation = () =&amp;gt; {
+  if (typeof window === &amp;#x27;undefined&amp;#x27;) {
+    return null;
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这么做的想法是合理的。我们初始的&lt;code&gt;compile-time&lt;/code&gt;构建发生在 Node.js，一个服务器运行时。我们可以通过检查&lt;code&gt;window&lt;/code&gt;对象是否存在来检测我们是否在服务器上渲染。如果不存在，我们可以提前中止渲染。&lt;/p&gt;&lt;p&gt;问题是，这样做，我们就违反了规则。😬&lt;/p&gt;&lt;h2 id=&quot;rehydration-≠-render&quot;&gt;Rehydration ≠ render&lt;/h2&gt;&lt;p&gt;当 React 应用补水时，它假设 DOM 结构会固定不变。&lt;/p&gt;&lt;p&gt;当 React 应用第一次在客户端上运行时，它通过挂载你的所有组件，建立起 DOM 应该是什么样子的切片。然后，它眯着眼睛看页面上已有的 DOM 节点，并试图将两者匹配在一起。它不是在玩 &amp;quot;大家来找茬 &amp;quot;的游戏，它只是想把两个节点拼接在一起，以便将来的更新能够正确处理。&lt;/p&gt;&lt;p&gt;服务器端渲染这些不同的东西的过程，我们就像黑进整个系统的黑客。我们打算在服务器上渲染一个东西，但却告诉 React 让他在客户端上期待另一件事。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;&amp;lt;!-- The initial HTML
+     generated at compile-time --&amp;gt;
+
+&amp;lt;header&amp;gt;
+  &amp;lt;h1&amp;gt;Your Site&amp;lt;/h1&amp;gt;
+&amp;lt;/header&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;&amp;lt;!-- What React expects
+     after rehydration --&amp;gt;
+
+&amp;lt;header&amp;gt;
+  &amp;lt;h1&amp;gt;Your Site&amp;lt;/h1&amp;gt;
+  &amp;lt;nav&amp;gt;
+    &amp;lt;a href=&amp;quot;/login&amp;quot;&amp;gt;Login&amp;lt;/a&amp;gt;
+  &amp;lt;/nav&amp;gt;
+&amp;lt;/header&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;有点值得注意的是，React 有时候还是可以处理这种情况的。你可能自己也做过，而且还能逃过一劫。但你这是在玩火。补水过程的优化是为了 ⚡️ 快速 ⚡️，而不是为了捕捉和修复不匹配。&lt;/p&gt;&lt;h3 id=&quot;gatsby-独有的一个问题&quot;&gt;gatsby 独有的一个问题&lt;/h3&gt;&lt;p&gt;React 团队知道补水不匹配可能会导致时髦的问题，他们已经确保用控制台信息来强调不匹配：&lt;/p&gt;&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position:relative;display:block;margin-left:auto;margin-right:auto;max-width:1035px&quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/8ad37233287724b2a199c1ce8abbe26f/f3abf/ssr2.png&quot; style=&quot;display:block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom:13.513513513513512%;position:relative;bottom:0;left:0;background-image:url(&amp;#x27;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAIAAAAcOLh5AAAACXBIWXMAAAsSAAALEgHS3X78AAAAjElEQVQI1yWIywqDMBQF/f+fsuLOdNPuJChxkVofeWGipsaeeikchjmTJWOgNc05KIVpIl5uNMYRLwlrqQxvzDOWZTXGK7VZG53LPlX1zXMUBRhDcQOrcGcoSzwfEAKcQ0q0LeoaTYO+10IMnNuuC1JmWFeEAO+Jl8eIfUPwJCkhnTgO2nnSvYRi+scfutmopgOBZckAAAAASUVORK5CYII=&amp;#x27;);background-size:cover;display:block&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;ssr2&quot; title=&quot;ssr2&quot; src=&quot;/static/8ad37233287724b2a199c1ce8abbe26f/e3189/ssr2.png&quot; srcSet=&quot;/static/8ad37233287724b2a199c1ce8abbe26f/a2ead/ssr2.png 259w,/static/8ad37233287724b2a199c1ce8abbe26f/6b9fd/ssr2.png 518w,/static/8ad37233287724b2a199c1ce8abbe26f/e3189/ssr2.png 1035w,/static/8ad37233287724b2a199c1ce8abbe26f/f3abf/ssr2.png 1474w&quot; sizes=&quot;(max-width: 1035px) 100vw, 1035px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0&quot; loading=&quot;lazy&quot;/&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;不幸的是，Gatsby 只有在为生产构建时才会使用服务器端的渲染 API。而且由于 React 警告一般只在开发过程中发生，这意味着当使用 Gatsby😱 构建时，这些警告永远不会被显示出来。&lt;/p&gt;&lt;p&gt;这是一种权衡。通过在开发中选择不使用服务器端渲染，Gatsby 正在优化一个短暂的反馈循环。能够快速看到你所做的更改是&lt;a href=&quot;https://vimeo.com/36579366&quot;&gt;非常非常重要的&lt;/a&gt;。Gatsby 优先考虑的是速度，而不是准确性。&lt;/p&gt;&lt;p&gt;这是个很重要的问题，不过；在&lt;a href=&quot;https://github.com/gatsbyjs/gatsby/issues/17914&quot;&gt;一个公开的问题&lt;/a&gt;中，人们正在倡导改变，我们可能会开始看到水合警告。&lt;/p&gt;&lt;p&gt;不过在那之前，在使用 Gatsby 开发时，注意这一点尤为重要!&lt;/p&gt;&lt;h2 id=&quot;解决办法&quot;&gt;解决办法&lt;/h2&gt;&lt;p&gt;为了避免问题的发生，我们需要确保补水后的应用与原始 HTML 相匹配。那么我们如何管理 &amp;quot;动态 &amp;quot;数据呢？&lt;/p&gt;&lt;p&gt;下面是解决方案的样子。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;function Navigation() {
+  const [hasMounted, setHasMounted] = React.useState(false);
+  React.useEffect(() =&amp;gt; {
+    setHasMounted(true);
+  }, []);
+  if (!hasMounted) {
+    return null;
+  }
+  const user = getUser();
+  if (user) {
+    return &amp;lt;AuthenticatedNav user={user} /&amp;gt;;
+  }
+  return (
+    &amp;lt;nav&amp;gt;
+      &amp;lt;a href=&amp;quot;/login&amp;quot;&amp;gt;Login&amp;lt;/a&amp;gt;
+    &amp;lt;/nav&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们初始化一块状态，&lt;code&gt;hasMounted&lt;/code&gt;，为&lt;code&gt;false&lt;/code&gt;。当它为&lt;code&gt;false&lt;/code&gt;时，我们就不会去渲染 &amp;quot;真实 &amp;quot;内容。&lt;/p&gt;&lt;p&gt;在&lt;code&gt;useEffect&lt;/code&gt;调用里面，我们立即触发重新渲染，将&lt;code&gt;hasMounted&lt;/code&gt;设置为&lt;code&gt;true&lt;/code&gt;。当这个值为真时，&amp;quot;真实 &amp;quot;内容就会被渲染。&lt;/p&gt;&lt;p&gt;与我们之前的解决方案不同的是：&lt;code&gt;useEffect&lt;/code&gt;只有在组件挂载后才会启动。当 React 应用在补水过程中采用 DOM 时，&lt;code&gt;useEffect&lt;/code&gt;还没有被调用，因此我们满足了 React 的期望。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;&amp;lt;!-- The initial HTML
+     generated at compile-time --&amp;gt;
+
+&amp;lt;header&amp;gt;
+  &amp;lt;h1&amp;gt;Your Site&amp;lt;/h1&amp;gt;
+&amp;lt;/header&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;&amp;lt;!-- What React expects
+     after rehydration --&amp;gt;
+
+&amp;lt;header&amp;gt;
+  &amp;lt;h1&amp;gt;Your Site&amp;lt;/h1&amp;gt;
+&amp;lt;/header&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在这个比较之后，我们立即触发一个重新渲染，这让 React 可以做一个适当的调节。它会注意到这里有一些新的内容需要渲染--要么是一个认证的菜单，要么是一个登录链接，然后相应地更新 DOM。&lt;/p&gt;&lt;p&gt;我们的重现案例中，这个解决方案是这样的。&lt;/p&gt;&lt;video style=&quot;width:100%&quot; controls=&quot;&quot;&gt;&lt;source src=&quot;https://www.joshwcomeau.com/_next/static/media/the-initial-solution-83aaef44bf7c39a4f53761ac58e230ce.mp4&quot; type=&quot;video/mp4&quot;/&gt;&lt;/video&gt;&lt;center&gt;在初始渲染时，会显示一个空白点。挂载后，重新渲染会以真实状态更新它。&lt;/center&gt;&lt;h2 id=&quot;二次渲染&quot;&gt;二次渲染&lt;/h2&gt;&lt;p&gt;你有没有注意到，麦片上的有效期显然不是和盒子的其他部分同时印上去的？是印上去的，事后才印上去的。&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position:relative;display:block;margin-left:auto;margin-right:auto;max-width:662px&quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/9870150c60490f69c79899829efa18c2/7bfef/ssr3.jpg&quot; style=&quot;display:block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom:103.08880308880308%;position:relative;bottom:0;left:0;background-image:url(&amp;#x27;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAVABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAECAwT/xAAWAQEBAQAAAAAAAAAAAAAAAAADAgD/2gAMAwEAAhADEAAAAcZpSV6mQVQIeg0f/8QAHBAAAgICAwAAAAAAAAAAAAAAAQIAEgMhMTJC/9oACAEBAAEFAlXGpD1IUkHt6oxmbkaa0//EABgRAAMBAQAAAAAAAAAAAAAAAAABERAh/9oACAEDAQE/AU1Ycys//8QAGREAAgMBAAAAAAAAAAAAAAAAABEQEiGB/9oACAECAQE/Aa4zsI//xAAdEAACAQQDAAAAAAAAAAAAAAAAARECECFBElGR/9oACAEBAAY/AsyTTyRJDeeyDZS9u2/T/8QAHBABAAIDAQEBAAAAAAAAAAAAAQARITFRQZGx/9oACAEBAAE/IUe8dEtqTjVTTmcx0l+8txHAXXrAmvxBhUBaxL97Gu7fE//aAAwDAQACAAMAAAAQY8AC/8QAHBEBAAIBBQAAAAAAAAAAAAAAAQARIWGRseHw/9oACAEDAQE/EEDA365ZfhAKua0//8QAFhEBAQEAAAAAAAAAAAAAAAAAAREA/9oACAECAQE/EIEq3TKpHAm//8QAHxABAQADAAEFAQAAAAAAAAAAAREAITFRQWGBkaGx/9oACAEBAAE/EBwqs++OIBqrsPbmGi90zbW113eIOE2qhCN9XGNg6R7hFGDRyPhcGcmCb8fzJE0k85lcKdo/xn//2Q==&amp;#x27;);background-size:cover;display:block&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;ssr3&quot; title=&quot;ssr3&quot; src=&quot;/static/9870150c60490f69c79899829efa18c2/7bfef/ssr3.jpg&quot; srcSet=&quot;/static/9870150c60490f69c79899829efa18c2/8356d/ssr3.jpg 259w,/static/9870150c60490f69c79899829efa18c2/bc760/ssr3.jpg 518w,/static/9870150c60490f69c79899829efa18c2/7bfef/ssr3.jpg 662w&quot; sizes=&quot;(max-width: 662px) 100vw, 662px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0&quot; loading=&quot;lazy&quot;/&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position:relative;display:block;margin-left:auto;margin-right:auto;max-width:662px&quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/69053b8156d5b446e16b676195eeebf4/7bfef/ssr4.jpg&quot; style=&quot;display:block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom:103.08880308880308%;position:relative;bottom:0;left:0;background-image:url(&amp;#x27;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAVABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAECBAP/xAAWAQEBAQAAAAAAAAAAAAAAAAACAQP/2gAMAwEAAhADEAAAAe8574LYzBbQa3iEf//EABoQAQEBAQADAAAAAAAAAAAAAAIBABEDEjH/2gAIAQEAAQUCAvCBpRNaTJ5Wt6vIy35lO3//xAAYEQEBAAMAAAAAAAAAAAAAAAAAEQEhYf/aAAgBAwEBPwG7XjKv/8QAGBEAAgMAAAAAAAAAAAAAAAAAABIBEGL/2gAIAQIBAT8BlhdX/8QAHhAAAgEDBQAAAAAAAAAAAAAAAAERAiEyECIxYZH/2gAIAQEABj8CltIzksXSTNtMLsy0hHL9P//EAB4QAAMAAgEFAAAAAAAAAAAAAAABESFBgTFRYXGx/9oACAEBAAE/IbNtjohBytsC2fBrMXPAoigUzXBdP0PPsGVfGP/aAAwDAQACAAMAAAAQrMh//8QAGhEAAwADAQAAAAAAAAAAAAAAAAERITGR8P/aAAgBAwEBPxCnT37hQwVKP//EABsRAQADAAMBAAAAAAAAAAAAAAEAESGBkaHw/9oACAECAQE/EDRBa4DvV8n1sAXZRP/EAB0QAQADAAIDAQAAAAAAAAAAAAEAESExcUFhkVH/2gAIAQEAAT8QyGTQL7nqaNrVUA+ERsoO03YBciAUFrzlz8SV5J74DqF2nfgtHUahoHCyuohSAJrsRgEzQJ//2Q==&amp;#x27;);background-size:cover;display:block&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;ssr4&quot; title=&quot;ssr4&quot; src=&quot;/static/69053b8156d5b446e16b676195eeebf4/7bfef/ssr4.jpg&quot; srcSet=&quot;/static/69053b8156d5b446e16b676195eeebf4/8356d/ssr4.jpg 259w,/static/69053b8156d5b446e16b676195eeebf4/bc760/ssr4.jpg 518w,/static/69053b8156d5b446e16b676195eeebf4/7bfef/ssr4.jpg 662w&quot; sizes=&quot;(max-width: 662px) 100vw, 662px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0&quot; loading=&quot;lazy&quot;/&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;这其中有一个逻辑：麦片盒印刷是一个两步走的过程。首先，所有 &amp;quot;通用 &amp;quot;的东西都会被印刷出来：logo、卡通小精灵、放大到显示纹理的照片、智能手表的随机图片。因为这些东西都是静态的，所以可以大规模生产，一次印刷几百万张，提前几个月就可以完成。&lt;/p&gt;&lt;p&gt;不过他们不能做到有有效期。在那个时候，制造商根本不知道有效期应该是什么；装满这些盒子的麦片可能还不存在呢！所以他们印上一个空的蓝色长方形。所以他们就印了一个空的蓝色长方形来代替。很久以后，当麦片生产出来并注入盒子后，他们就可以在白色的有效期上盖章，然后打包发货。&lt;/p&gt;&lt;p&gt;两段式渲染也是同样的想法。第一遍，在编译时，产生所有的静态非个人内容，并在动态内容的地方留下漏洞。然后，在React应用挂载到用户的设备上后，第二次传递将所有依赖于客户端状态的动态位盖章。&lt;/p&gt;&lt;h3 id=&quot;涉及的问题&quot;&gt;涉及的问题&lt;/h3&gt;&lt;p&gt;两次渲染的缺点是它会延迟交互时间。一般来说，在挂载后就强制渲染是不可取的。&lt;/p&gt;&lt;p&gt;尽管如此，对于大多数应用来说，这应该不会有太大的影响。通常动态内容的数量相对较少，并且可以快速调节。如果你的应用中有大块的内容是动态的，你就会错过预渲染的许多好处，但这是不可避免的，动态部分无法提前定义制作。&lt;/p&gt;&lt;p&gt;和以往一样，如果你对性能有顾虑，最好自己做一些实验。&lt;/p&gt;&lt;h2 id=&quot;抽象理解&quot;&gt;抽象理解&lt;/h2&gt;&lt;p&gt;在这个博客上，我最终需要将一些渲染决定推迟到第二遍，我已经厌倦了一遍又一遍地写同样的逻辑。我创建了一个&lt;code&gt;&amp;lt;ClientOnly&amp;gt;&lt;/code&gt;组件来抽象它：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;function ClientOnly({ children, ...delegated }) {
+  const [hasMounted, setHasMounted] = React.useState(false);
+  React.useEffect(() =&amp;gt; {
+    setHasMounted(true);
+  }, []);
+  if (!hasMounted) {
+    return null;
+  }
+  return (
+    &amp;lt;div {...delegated}&amp;gt;
+      {children}
+    &amp;lt;/div&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后，你可以将它包裹在你想推迟的任何元素上。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;&amp;lt;ClientOnly&amp;gt;
+  &amp;lt;Navigation /&amp;gt;
+&amp;lt;/ClientOnly&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们也可以使用一个定制的钩子：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;function useHasMounted() {
+  const [hasMounted, setHasMounted] = React.useState(false);
+  React.useEffect(() =&amp;gt; {
+    setHasMounted(true);
+  }, []);
+  return hasMounted;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;function Navigation() {
+  const hasMounted = useHasMounted();
+  if (!hasMounted) {
+    return null;
+  }
+  const user = getUser();
+  if (user) {
+    return (
+      &amp;lt;AuthenticatedNav
+        user={user}
+      /&amp;gt;
+    );
+  }
+  return (
+    &amp;lt;nav&amp;gt;
+      &amp;lt;a href=&amp;quot;/login&amp;quot;&amp;gt;Login&amp;lt;/a&amp;gt;
+    &amp;lt;/nav&amp;gt;
+  );
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;有了这一招，我就能解决我的渲染问题了。这一天被拯救了! &lt;/p&gt;&lt;h2 id=&quot;思维模型&quot;&gt;思维模型&lt;/h2&gt;&lt;p&gt;虽然整洁，但抽象的东西并不是本教程最重要的部分。关键的一点是心理模型。&lt;/p&gt;&lt;p&gt;在Gatsby应用程序中工作时，我发现用两段式渲染的方式思考真的很有帮助。第一次渲染发生在编译时，提前了很久，为页面奠定了基础，填入了所有用户通用的内容。然后，在很久以后，第二次渲染将填入因人而异的状态位。&lt;/p&gt;&lt;p&gt;Gatsby有时被称为 &amp;quot;静态网站生成器&amp;quot;，但这个名字感觉很有局限性--你可以用Gatsby构建丰富的、动态的Web应用！它确实需要一点特别的考虑。它确实需要一点特殊的考虑，但有了正确的心理模型，任何事情都有可能发生💫。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[sh和git常用命令]]></title><description><![CDATA[scp上传文件到服务器 例如scp /var/www/test.php  root@192.168.0.101 :/var/www/ 把本机/var/www/目录下的test.php文件上传到192.168.0.101这台服务器上的/var/www/目录中 git…]]></description><link>https://blog.foolishrobot.xyz/sh和git常用命令</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/sh和git常用命令</guid><pubDate>Fri, 20 Nov 2020 09:27:19 GMT</pubDate><content:encoded>&lt;h2 id=&quot;scp上传文件到服务器&quot;&gt;scp上传文件到服务器&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;scp /path/filename username@servername:/path/
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;例如scp /var/www/test.php &lt;a href=&quot;mailto:root@192.168.0.101&quot;&gt;root@192.168.0.101&lt;/a&gt;:/var/www/ 把本机/var/www/目录下的test.php文件上传到192.168.0.101这台服务器上的/var/www/目录中&lt;/p&gt;&lt;h2 id=&quot;git删除远程分支&quot;&gt;git删除远程分支&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;git push -d origin branch-name
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;git-设置用户信息&quot;&gt;git 设置用户信息&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;git config [--global] user.name &amp;quot;[name]&amp;quot;
 git config [--global] user.email &amp;quot;[email address]&amp;quot;
