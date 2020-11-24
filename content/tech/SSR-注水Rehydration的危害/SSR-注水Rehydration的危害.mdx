@@ -1,5 +1,5 @@
 ---
-title: SSR-重复注水Rehydration的危险
+title: SSR-注水(Rehydration)的危险
 date: 2020-11-23 22:43:27
 description: 深入了解gatsby和react
 tags: [ssr, react, gatsby]
@@ -10,7 +10,7 @@ categories: tech
 >
 > 翻译一篇解释得比较好点的文章，原文： https://www.joshwcomeau.com/react/the-perils-of-rehydration/
 
-# The Perils of Rehydration(重复注水的危害)
+# The Perils of Rehydration(注水的危险)
 
 > An Eye-Opening Realization about Gatsby and React
 
@@ -174,4 +174,4 @@ const Navigation = () => {
 
 import VideoComponent from '../../../src/components/Video.tsx';
 
-<VideoComponent url="https://www.joshwcomeau.com/_next/static/media/guardian-with-effect-5c8e3ed088ad6d3b9efa334a4dd7f62b.mp4" />
+<VideoComponent src="https://www.joshwcomeau.com/_next/static/media/guardian-with-effect-5c8e3ed088ad6d3b9efa334a4dd7f62b.mp4" />

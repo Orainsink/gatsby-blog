@@ -1,8 +1,7 @@
-import React, { CSSProperties, useEffect, useRef } from 'react';
-import flvjs from 'flv.js';
+import React, { CSSProperties } from 'react';
 
 interface Props {
-  url: string;
+  src: string;
   name?: string;
   jump?: boolean;
   type?: string;
@@ -14,22 +13,12 @@ interface Props {
  * @param props
  */
 const VideoComponent = (props: Props) => {
-  const { url, name = '', jump = false, type = 'mp4', ...rest } = props;
-  const flvRef = useRef(null);
+  const { src, name = '', jump = false, type = 'video/mp4', ...rest } = props;
 
-  useEffect(() => {
-    if (flvjs.isSupported()) {
-      const videoElement = flvRef.current!;
-      var flvPlayer = flvjs.createPlayer({
-        type,
-        url,
-      });
-      flvPlayer.attachMediaElement(videoElement as HTMLMediaElement);
-      flvPlayer.load();
-      flvPlayer.play();
-    }
-  }, [url, type]);
-
-  return <video ref={flvRef} style={{ width: '100%' }} {...rest}></video>;
+  return (
+    <video style={{ width: '100%' }} controls {...rest}>
+      <source src={src} type={type} />
+    </video>
+  );
 };
 export default React.memo(VideoComponent);
