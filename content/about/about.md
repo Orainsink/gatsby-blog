@@ -7,7 +7,7 @@ categories: about
 
 该博客使用 TypeScript + less 开发。
 
-以静态网站生成器 [GatsbyJS](https://gatsbyjs.org/) 和 [GraphQL](https://graphql.org/) 为基础开发，托管于 GithubPages。
+以静态网站生成器 [GatsbyJS](https://gatsbyjs.org/) 和 [GraphQL](https://graphql.org/) 为基础，托管于 GithubPages。
 
 部分 UI 组件基于 [Antd 4.0](https://ant.design/index-cn)，首页使用 [react-three-fiber](https://github.com/react-spring/react-three-fiber) 构建 webGl 元素，音乐播放器基于 [howler.js](https://howlerjs.com/) 开发。
 
