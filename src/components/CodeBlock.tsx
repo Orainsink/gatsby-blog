@@ -63,7 +63,7 @@ const CodeBlock = ({
             <div
               style={{
                 padding: '2px 12px 0px',
-                background: '#efefef',
+                background: '#f6f6f6',
                 borderRadius: '8px 8px 0px 0px',
                 pointerEvents: 'none',
                 margin: '0 5px',
@@ -81,7 +81,7 @@ const CodeBlock = ({
               }}
               style={{
                 padding: '2px 12px 0px',
-                background: '#efefef',
+                background: '#f6f6f6',
                 color: '#3d4451',
                 borderRadius: '8px 8px 0px 0px',
               }}
