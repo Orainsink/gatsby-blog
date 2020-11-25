@@ -74,7 +74,7 @@ const MenuComponent = React.memo(({ drawer }: { drawer: boolean }) => {
           </Dropdown>
         </li>
         <li>
-          <Link to="/about/-2056610857">about</Link>
+          <Link to="/about">about</Link>
         </li>
       </ul>
     );

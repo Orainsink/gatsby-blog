@@ -15,11 +15,6 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
     redirectInBrowser: true,
     toPath: '/archives',
   });
-  createRedirect({
-    fromPath: '/about',
-    redirectInBrowser: true,
-    toPath: '/about/-2056610857',
-  });
 
   const Template = path.resolve(`src/templates/blog-post.tsx`);
   const SnippetTemplate = path.resolve(`src/templates/snippet-post.tsx`);
@@ -61,7 +56,11 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
 
       createPage({
         path:
-          node.frontmatter.categories + '/' + replacePath(hashString(node.id)),
+          node.frontmatter.categories === 'about'
+            ? replacePath(node.fields.slug)
+            : node.frontmatter.categories +
+              '/' +
+              replacePath(hashString(node.id)),
         component: componentTemplate[node.frontmatter.categories] || Template,
         context: { id: node.id, previous, next },
       });
