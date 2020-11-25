@@ -2,7 +2,7 @@
 title: React-three-fiber API文档翻译
 date: 2020-10-09 11:42:54
 description: react-three-fiber的api文档翻译
-tags: [react, three]
+tags: [react, three, 文档]
 categories: tech
 ---
 
