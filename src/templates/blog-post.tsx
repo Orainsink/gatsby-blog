@@ -8,10 +8,11 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Anchor } from 'antd';
 import Contents from '../components/SideBlocks/Contents';
-import CodeBlock from '../components/CodeBlock';
+import CodeBlock from '../components/MDXComponents/CodeBlock';
 import MyGitalk from '../components/MyGitalk';
 import useMedia from '../hooks/useMedia';
 import generatePath from '../utils/generatePath';
+import ImgBlock from '../components/MDXComponents/ImgBlock';
 
 interface Props {
   data: {
@@ -96,7 +97,7 @@ const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
           </div>
         )}
         <section className={styles.container}>
-          <MDXProvider components={{ code: CodeBlock }}>
+          <MDXProvider components={{ code: CodeBlock, img: ImgBlock }}>
             <MDXRenderer>{mdx.body}</MDXRenderer>
           </MDXProvider>
         </section>

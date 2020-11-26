@@ -8,7 +8,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Anchor } from 'antd';
 import Comment from '../components/SideBlocks/Comment';
-import CodeBlock from '../components/CodeBlock';
+import CodeBlock from '../components/MDXComponents/CodeBlock';
 import useMedia from '../hooks/useMedia';
 import generatePath from '../utils/generatePath';
 

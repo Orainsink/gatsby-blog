@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
-import theme from '../assets/theme/customPrism';
+import theme from '../../assets/theme/customPrism';
 import { Button } from 'antd';
 import { CopyOutlined, SmileOutlined } from '@ant-design/icons';
 interface Props {

@@ -1,5 +1,5 @@
 ---
-title: SSG-补水(Rehydration)的危险
+title: SSG-补水(Rehydration)的风险
 date: 2020-11-23 22:43:27
 description: 深入了解gatsby和react
 tags: [ssr, react, gatsby]
@@ -10,7 +10,7 @@ categories: tech
 >
 > 翻译一篇解释得比较好点的文章，原文： https://www.joshwcomeau.com/react/the-perils-of-rehydration/
 
-# The Perils of Rehydration(补水的危险)
+# The Perils of Rehydration(补水的风险)
 
 > An Eye-Opening Realization about Gatsby and React
 
@@ -58,6 +58,8 @@ categories: tech
 怎么会这样？难道我发现了 React 中的一个 Bug？我检查了 React Devtools 的 "⚛️Components " 选项卡，它告诉了我一个不同的故事，在这个故事里，一切都很好，所有的组件都躺在它们应该在的地方。骗子啊!
 
 原来，我对 React 在 SSR 下的工作方式有根本性的误解。而我想**很多**React 开发人员都有这样的误解! 而且它可能会带来一些很严重的影响。
+
+这里贴上 React 官方对于服务器端渲染可能出现的不匹配给出的[解释](https://zh-hans.reactjs.org/docs/react-dom.html#hydrate)。
 
 > 作者在出了个视频教程, 教程内容就是复现 gatsby 在 ssr 生产环境产生的错误渲染, 及其原因和解决办法
 >
@@ -206,9 +208,9 @@ const Navigation = () => {
 
 当 React 应用补水时，它会假设 DOM 结构固定不变。
 
-当 React 应用第一次在客户端上运行时，React通过挂载你的所有组件，建立起 DOM 应该是什么样子的切片。然后，它眯着眼睛看页面上已有的 DOM 节点，并试图将两者匹配在一起。它不是在玩 "大家来找茬 "的游戏，它只是想把两个节点拼接在一起，以便将来的更新能够正确处理。
+当 React 应用第一次在客户端上运行时，React 通过挂载你的所有组件，建立起 DOM 应该是什么样子的切片。然后，它眯着眼睛看页面上已有的 DOM 节点，并试图将两者匹配在一起。它不是在玩 "大家来找茬 "的游戏，它只是想把两个节点拼接在一起，以便将来的更新能够正确处理。
 
-服务器端渲染这些不同的东西的过程，我们就像黑进整个系统的黑客。我们丢给了React一坨 html代码，然后让React自己去见缝插针生成另外的html。
+服务器端渲染这些不同的东西的过程，我们就像黑进整个系统的黑客。我们丢给了 React 一坨 html 代码，然后让 React 自己去见缝插针生成另外的 html。
 
 ```jsx
 <!-- 构建过程中生成的初始html -->
@@ -233,7 +235,7 @@ const Navigation = () => {
 
 ### gatsby 的问题
 
-React 团队知道补水不匹配可能会导致页面显示错误的问题，他们选择在控制台抛出错误来提醒你构建出来的html可能不匹配：
+React 团队知道补水不匹配可能会导致页面显示错误的问题，他们选择在控制台抛出错误来提醒你构建出来的 html 可能不匹配：
 
 ![ssr2](ssr2.png)
 
@@ -300,9 +302,11 @@ function Navigation() {
 
 <VideoComponent src="https://www.joshwcomeau.com/_next/static/media/the-initial-solution-83aaef44bf7c39a4f53761ac58e230ce.mp4" />
 
-<center>在初始渲染时，会显示一个空白点。挂载后，重新渲染会以真实状态更新它。</center>
+<center>
+  在初始渲染时，会显示一个空白点。挂载后，重新渲染会以真实状态更新它。
+</center>
 
-## 两步渲染
+## 双重(two-pass)渲染
 
 你有没有注意到，麦片上的有效期显然不是和盒子的其他部分同时印上去的？是印上去的，事后才印上去的。![ssr3](ssr3.jpg)
 
@@ -312,7 +316,7 @@ function Navigation() {
 
 但是有效期的标签并不能这么做。在批量生产的时候，制造商根本不知道有效期应该是多少；装满这些盒子的麦片可能还不存在呢！所以他们印上一个空的蓝色长方形。很久以后，当麦片生产出来并注入盒子后，他们就可以在白色的有效期上盖章，然后打包发货。
 
-两步式渲染也是同样的想法。第一遍，在编译时，产生所有的静态非个人内容，并在动态内容的地方留下漏洞。然后，在React应用挂载到用户的设备上后，第二次传递将所有依赖于客户端状态的动态内容像标签一样贴上去。
+双重渲染也是同样的想法。第一遍，在编译时，产生所有的静态非个人内容，并在动态内容的地方留下漏洞。然后，在 React 应用挂载到用户的设备上后，第二次传递将所有依赖于客户端状态的动态内容像标签一样贴上去。
 
 ### 涉及的问题
 
@@ -335,11 +339,7 @@ function ClientOnly({ children, ...delegated }) {
   if (!hasMounted) {
     return null;
   }
-  return (
-    <div {...delegated}>
-      {children}
-    </div>
-  );
+  return <div {...delegated}>{children}</div>;
 }
 ```
 
@@ -371,26 +371,22 @@ function Navigation() {
   }
   const user = getUser();
   if (user) {
-    return (
-      <AuthenticatedNav
-        user={user}
-      />
-    );
+    return <AuthenticatedNav user={user} />;
   }
   return (
     <nav>
       <a href="/login">Login</a>
     </nav>
   );
-};
+}
 ```
 
-有了这一招，我就能解决我的渲染问题了。我的一天被拯救了!（译者：👴的 n 天也被拯救了） 
+有了这一招，我就能解决我的渲染问题了。我的一天被拯救了!（译者：👴 的 n 天也被拯救了）
 
 ## 心智模型
 
 虽然整洁，但抽象的东西并不是本教程最重要的部分。关键的一点是心智模型。
 
-在Gatsby应用程序中工作时，我发现用两段式渲染的方式思考真的很有帮助。第一次渲染发生在编译时，时间提前了很久，为页面奠定了基础，填入了所有用户通用的内容。然后，在很久以后，在用户打开网页的时候，第二次渲染将填入因人而异的状态。
+在 Gatsby 应用程序中工作时，我发现用两段式渲染的方式思考真的很有帮助。第一次渲染发生在编译时，时间提前了很久，为页面奠定了基础，填入了所有用户通用的内容。然后，在很久以后，在用户打开网页的时候，第二次渲染将填入因人而异的状态。
 
-Gatsby有时被称为 "静态网站生成器"，但这个名字感觉很有局限性--你可以用Gatsby构建丰富的、动态的Web应用！它确实需要一点特别的考虑。它确实需要一点特殊的考虑，但有了正确的心理模型，任何事情都有可能发生💫。
+Gatsby 有时被称为 "静态网站生成器"，但这个名字感觉很有局限性--你可以用 Gatsby 构建丰富的、动态的 Web 应用！它确实需要一点特别的考虑。它确实需要一点特殊的考虑，但有了正确的心理模型，任何事情都有可能发生 💫。
