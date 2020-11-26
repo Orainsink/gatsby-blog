@@ -60,7 +60,7 @@ const CalendarBlock = ({ posts }: Props) => {
     const year = value?.year();
     const options = [];
 
-    for (let i = 2018; i < dayjs().year() + 1; i += 1) {
+    for (let i = 2019; i < dayjs().year() + 1; i += 1) {
       options.push(
         <Select.Option key={i} value={i}>
           {i}
