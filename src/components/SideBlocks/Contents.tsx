@@ -5,7 +5,6 @@ import useScrollY from '../../hooks/useScrollY';
 import styles from '../../styles/SideBar.module.less';
 import { Anchor } from 'antd';
 import isClient from '../../utils/isClient';
-// const { Link } = Anchor;
 import { Link } from 'gatsby';
 
 interface Props {
@@ -53,6 +52,8 @@ const Contents = (props: Props) => {
     return renderLink(content.items);
   }, [content]);
 
+  if (!content.items) return null;
+
   return (
     <Col
       flex="0 0 300px"
@@ -64,7 +65,6 @@ const Contents = (props: Props) => {
       <div className={styles.title}>Contents</div>
       <div ref={contentsRef} className={classnames(styles.contents)}>
         <Anchor
-          // ban animate. animate cause page blink.
           getContainer={() => document.body as HTMLElement}
           targetOffset={200}
         >
