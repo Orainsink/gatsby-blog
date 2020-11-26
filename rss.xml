@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 26 Nov 2020 12:42:20 GMT</lastBuildDate><item><title><![CDATA[web workers学习及其应用场景探索]]></title><description><![CDATA[Web Workers介绍 web workers是独立于js主线程之外的线程, 可以在不堵塞主线程的情况下执行一些有限制的js脚本, web workers无法操纵DOM但是可以调用一些浏览器提供的DOM方法，workers…]]></description><link>https://blog.foolishrobot.xyz/webworker及其使用场景分析/webworker及其使用场景分析</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/webworker及其使用场景分析/webworker及其使用场景分析</guid><pubDate>Thu, 26 Nov 2020 09:33:25 GMT</pubDate><content:encoded>&lt;h2 id=&quot;web-workers介绍&quot;&gt;Web Workers介绍&lt;/h2&gt;&lt;p&gt;web workers是独立于js主线程之外的线程, 可以在不堵塞主线程的情况下执行一些有限制的js脚本, web workers无法操纵DOM但是可以调用一些浏览器提供的DOM方法，workers在统计或计算数据方面运用得当的话可以极大地提升页面性能。&lt;/p&gt;&lt;p&gt;workers和主线程间的数据传递通过这样的消息机制进行——双方都使用&lt;code&gt;postMessage()&lt;/code&gt;方法发送各自的消息，使用&lt;code&gt;onmessage&lt;/code&gt;事件处理函数来响应消息（消息被包含在&lt;code&gt;Message&lt;/code&gt;事件的data属性中）。这个过程中数据并不是被共享而是被复制。&lt;/p&gt;&lt;p&gt;关于其更多特性和限制，话不多说，直接上&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers&quot;&gt;MDN文档&lt;/a&gt; &lt;/p&gt;&lt;p&gt;使用web workers之前，有必要认真读一次文档，因为web workers在不同浏览器支持的API不一样。&lt;/p&gt;&lt;h2 id=&quot;写一个最简单的worker&quot;&gt;写一个最简单的worker&lt;/h2&gt;&lt;p&gt;照着MDN文档撸一个worker&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;...
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 26 Nov 2020 15:15:43 GMT</lastBuildDate><item><title><![CDATA[web workers学习及其应用场景探索]]></title><description><![CDATA[Web Workers介绍 web workers是独立于js主线程之外的线程, 可以在不堵塞主线程的情况下执行一些有限制的js脚本, web workers无法操纵DOM但是可以调用一些浏览器提供的DOM方法，workers…]]></description><link>https://blog.foolishrobot.xyz/webworker及其使用场景分析/webworker及其使用场景分析</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/webworker及其使用场景分析/webworker及其使用场景分析</guid><pubDate>Thu, 26 Nov 2020 09:33:25 GMT</pubDate><content:encoded>&lt;h2 id=&quot;web-workers介绍&quot;&gt;Web Workers介绍&lt;/h2&gt;&lt;p&gt;web workers是独立于js主线程之外的线程, 可以在不堵塞主线程的情况下执行一些有限制的js脚本, web workers无法操纵DOM但是可以调用一些浏览器提供的DOM方法，workers在统计或计算数据方面运用得当的话可以极大地提升页面性能。&lt;/p&gt;&lt;p&gt;workers和主线程间的数据传递通过这样的消息机制进行——双方都使用&lt;code&gt;postMessage()&lt;/code&gt;方法发送各自的消息，使用&lt;code&gt;onmessage&lt;/code&gt;事件处理函数来响应消息（消息被包含在&lt;code&gt;Message&lt;/code&gt;事件的data属性中）。这个过程中数据并不是被共享而是被复制。&lt;/p&gt;&lt;p&gt;关于其更多特性和限制，话不多说，直接上&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers&quot;&gt;MDN文档&lt;/a&gt; &lt;/p&gt;&lt;p&gt;使用web workers之前，有必要认真读一次文档，因为web workers在不同浏览器支持的API不一样。&lt;/p&gt;&lt;h2 id=&quot;写一个最简单的worker&quot;&gt;写一个最简单的worker&lt;/h2&gt;&lt;p&gt;照着MDN文档撸一个worker&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;...
 // 实例化一个worker
 const myWorker = Worker()
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title><![CDATA[SSG-补水(Rehydration)的风险]]></title><description><![CDATA[前段时间我发现自己的博客网站 html 结构发生了错位, 一些组件，比如 footer 跑到了奇奇怪怪的地方，这个 bug 一度让我手足无措，因为检查 react 代码我并没有发现任何错误。找了很久的资料， 才发现是 SSR…]]></description><link>https://blog.foolishrobot.xyz/SSR-注水Rehydration的危害/SSR-注水Rehydration的危害</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/SSR-注水Rehydration的危害/SSR-注水Rehydration的危害</guid><pubDate>Mon, 23 Nov 2020 22:43:27 GMT</pubDate><content:encoded>&lt;blockquote&gt;&lt;p&gt;前段时间我发现自己的博客网站 html 结构发生了错位, 一些组件，比如 footer 跑到了奇奇怪怪的地方，这个 bug 一度让我手足无措，因为检查 react 代码我并没有发现任何错误。找了很久的资料， 才发现是 SSR 的问题。这&lt;/p&gt;&lt;p&gt;翻译一篇解释得比较好点的文章，原文： &lt;a href=&quot;https://www.joshwcomeau.com/react/the-perils-of-rehydration/&quot;&gt;https://www.joshwcomeau.com/react/the-perils-of-rehydration/&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;h1 id=&quot;the-perils-of-rehydration补水的风险&quot;&gt;The Perils of Rehydration(补水的风险)&lt;/h1&gt;&lt;blockquote&gt;&lt;p&gt;An Eye-Opening Realization about Gatsby and React&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;我最近遇到了一个很奇怪的问题。在开发过程中，一切都是那么顺畅，但在生产环境打包过后中，我博客的底部却发生了一些……意想不到的事情：&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position:relative;display:block;margin-left:auto;margin-right:auto;max-width:1035px&quot;&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;未完待续&lt;/p&gt;</content:encoded></item><item><title><![CDATA[SSG-补水(Rehydration)的风险]]></title><description><![CDATA[前段时间我发现自己的博客网站 html 结构发生了错位, 一些组件，比如 footer 跑到了奇奇怪怪的地方，这个 bug 一度让我手足无措，因为检查 react 代码我并没有发现任何错误。找了很久的资料， 才发现是 SSR…]]></description><link>https://blog.foolishrobot.xyz/SSR-注水Rehydration的危害/SSR-注水Rehydration的危害</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/SSR-注水Rehydration的危害/SSR-注水Rehydration的危害</guid><pubDate>Mon, 23 Nov 2020 22:43:27 GMT</pubDate><content:encoded>&lt;blockquote&gt;&lt;p&gt;前段时间我发现自己的博客网站 html 结构发生了错位, 一些组件，比如 footer 跑到了奇奇怪怪的地方，这个 bug 一度让我手足无措，因为检查 react 代码我并没有发现任何错误。找了很久的资料， 才发现是 SSR 的问题。这&lt;/p&gt;&lt;p&gt;翻译一篇解释得比较好点的文章，原文： &lt;a href=&quot;https://www.joshwcomeau.com/react/the-perils-of-rehydration/&quot;&gt;https://www.joshwcomeau.com/react/the-perils-of-rehydration/&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;h1 id=&quot;the-perils-of-rehydration补水的风险&quot;&gt;The Perils of Rehydration(补水的风险)&lt;/h1&gt;&lt;blockquote&gt;&lt;p&gt;An Eye-Opening Realization about Gatsby and React&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;我最近遇到了一个很奇怪的问题。在开发过程中，一切都是那么顺畅，但在生产环境打包过后中，我博客的底部却发生了一些……意想不到的事情：&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position:relative;display:block;margin-left:auto;margin-right:auto;max-width:1035px&quot;&gt;
       &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/5086a3eb17b14f9b69157510a7e6be9a/e7c5b/ssr1.png&quot; style=&quot;display:block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
     &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom:50.57915057915058%;position:relative;bottom:0;left:0;background-image:url(&amp;#x27;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsSAAALEgHS3X78AAABLUlEQVQoz4WRO04DMRCGcysKLsA5KKDkDjkElEhcgQZRIkQVFClW0CqCDmUfsT3r167XrzCLorBZBeXXFPbY3/j3zGQ7UAiBMVZVFWMcRSnF7YbWlCoMIez2UJPhxoeAZJ4XnIPSGqNpjDFe66RUxEgp/QuPFCMCWikppdBYICW01rT2BIwPxJiapiVkuSAfeV4C1Jj/Wi6eHm6PwAjsTeHCOW9MM5vNZ+/zLFsRQqRxURJL7oK3p22jT8YBQFDGy2qDmefH++nNxecq609j3MEAriy7tk2jP3MQG8r7YNA5n3+v315e923bwUJoxqXzIaW/liJcC1VWtCgLAKaN7ifi3RiOvbCXoetcCHHo3HuvlQfo5O+crbVj+KiwljH4nr26FOdn1fQatvHgwg/HiT4l/GpHWgAAAABJRU5ErkJggg==&amp;#x27;);background-size:cover;display:block&quot;&gt;&lt;/span&gt;
   &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;ssr1&quot; title=&quot;ssr1&quot; src=&quot;/static/5086a3eb17b14f9b69157510a7e6be9a/e3189/ssr1.png&quot; srcSet=&quot;/static/5086a3eb17b14f9b69157510a7e6be9a/a2ead/ssr1.png 259w,/static/5086a3eb17b14f9b69157510a7e6be9a/6b9fd/ssr1.png 518w,/static/5086a3eb17b14f9b69157510a7e6be9a/e3189/ssr1.png 1035w,/static/5086a3eb17b14f9b69157510a7e6be9a/44d59/ssr1.png 1553w,/static/5086a3eb17b14f9b69157510a7e6be9a/a6d66/ssr1.png 2070w,/static/5086a3eb17b14f9b69157510a7e6be9a/e7c5b/ssr1.png 2642w&quot; sizes=&quot;(max-width: 1035px) 100vw, 1035px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0&quot; loading=&quot;lazy&quot;/&gt;
@@ -2956,48 +2956,7 @@ Page({
   height: 100px;
   background: #000;
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;按道理来说由于伪元素的&lt;code&gt;z-index&lt;/code&gt;比宿主元素低, 伪元素应该被宿主元素覆盖, 但是实际上的效果刚好相反.&lt;/p&gt;&lt;h2 id=&quot;解决办法&quot;&gt;解决办法&lt;/h2&gt;&lt;p&gt;伪元素被视为其相关元素的后代。&lt;/p&gt;&lt;p&gt;如果未在宿主元素上指定&lt;code&gt;z-index&lt;/code&gt;(默认为 auto)，则宿主元素和伪元素将出现在同一堆叠上下文中。这时如果伪元素的&lt;code&gt;z-index&lt;/code&gt;比宿主元素低, 就可以正确出现在宿主元素下方。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;当你在宿主元素上指定&lt;code&gt;z-index&lt;/code&gt;时，该元素会为伪元素(实际上是它的所有后代)创建一个新的堆叠上下文，防止伪元素出现在它下面,即使你给它一个负&lt;code&gt;z-index&lt;/code&gt;。&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;简单总结就是：&lt;/p&gt;&lt;p&gt;&lt;strong&gt;想让伪元素置于宿主元素下方，就不要给宿主元素设置 z-index(默认为 auto)&lt;/strong&gt;&lt;/p&gt;&lt;h2 id=&quot;层叠上下文关系一网打尽&quot;&gt;层叠上下文关系一网打尽&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/&quot;&gt;张鑫旭的文章&lt;/a&gt;&lt;/p&gt;&lt;p&gt;有点长. 看完算是对 z-index 和层叠上下文更加了解了&lt;/p&gt;</content:encoded></item><item><title><![CDATA[微信小程序-eventBus]]></title><description><![CDATA[状态较少的小程序一般用不到大型的状态管理工具,所以 eventBus 就行了 eventBus.js 使用时先在 app.js 实例化 然后在其他文件使用]]></description><link>https://blog.foolishrobot.xyz/微信小程序-eventBus</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/微信小程序-eventBus</guid><pubDate>Wed, 24 Jul 2019 22:26:22 GMT</pubDate><content:encoded>&lt;blockquote&gt;&lt;p&gt;状态较少的小程序一般用不到大型的状态管理工具,所以 eventBus 就行了&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;eventBus.js&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;class EventBus {
-  constructor() {
-    this.EventCache = {};
-  }
-
-  on(type, self, handler) {
-    let cache = this.EventCache[type] || (this.EventCache[type] = {});
-
-    cache[self.__wxExparserNodeId__] = handler;
-  }
-
-  emit(type, ...param) {
-    let cache = this.EventCache[type];
-
-    if (!cache) return;
-
-    for (let key in cache) cache[key] &amp;amp;&amp;amp; cache[key].call(this, ...param);
-  }
-
-  off(type, self) {
-    let cache = this.EventCache[type];
-
-    for (let key in cache)
-      key === self.__wxExparserNodeId__ &amp;amp;&amp;amp; delete this.EventCache[type][key];
-  }
-}
-module.exports = { EventBus };
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;使用时先在 app.js 实例化&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;App({
-    ...
-    event: new EventBus(),
-    ...
-})
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后在其他文件使用&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;// 获取app实例
-const app = getApp();
-// 注册监听,传this是为了绑定this对象
-app.event.on(&amp;#x27;reLoad&amp;#x27;, this, (payload) =&amp;gt; {
-  // do something
-});
-const payload = true;
-app.event.emit(&amp;#x27;reload&amp;#x27;, payload);
-app.event.off(&amp;#x27;reload&amp;#x27;, this);
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title><![CDATA[微信小程序-sessionkey失效检测]]></title><description><![CDATA[参考官方文档: 检查登录态是否过期。 通过 wx.login 接口获得的用户登录态拥有一定的时效性。用户越久未使用小程序，用户登录态越有可能失效。反之如果用户一直在使用小程序，则用户登录态一直保持有效。具体时效逻辑由微信维护，对开发者透明。开发者只需要调用 wx…]]></description><link>https://blog.foolishrobot.xyz/微信小程序-sessionkey失效检测</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/微信小程序-sessionkey失效检测</guid><pubDate>Wed, 24 Jul 2019 22:03:24 GMT</pubDate><content:encoded>&lt;blockquote&gt;&lt;p&gt;参考官方文档:&lt;/p&gt;&lt;p&gt;检查登录态是否过期。&lt;/p&gt;&lt;p&gt;通过 wx.login 接口获得的用户登录态拥有一定的时效性。用户越久未使用小程序，用户登录态越有可能失效。反之如果用户一直在使用小程序，则用户登录态一直保持有效。具体时效逻辑由微信维护，对开发者透明。开发者只需要调用 wx.checkSession 接口检测当前用户登录态是否有效。&lt;/p&gt;&lt;p&gt;登录态过期后开发者可以再调用 wx.login 获取新的用户登录态。调用成功说明当前 session_key 未过期，调用失败说明 session_key 已过期。更多使用方法详见 &lt;a href=&quot;https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html&quot;&gt;小程序登录&lt;/a&gt;。&lt;/p&gt;&lt;/blockquote&gt;&lt;h2 id=&quot;为何要检测-sessionkey&quot;&gt;为何要检测 sessionkey&lt;/h2&gt;&lt;p&gt;如上官方文档, 官方文档说明了三件事&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;p&gt;sessionkey 会过期&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;过期时间不固定&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;sessionkey 只有在重新登录的时候会刷新&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;存在一种情况: sessionkey 在登录的时候传给后端, 前端 session_key 已失效, 调用需要用到 session_key 的接口, 后端不知道已经过期, 操作失败&lt;/p&gt;&lt;h2 id=&quot;检测写法&quot;&gt;检测写法&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;const app = getApp();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;按道理来说由于伪元素的&lt;code&gt;z-index&lt;/code&gt;比宿主元素低, 伪元素应该被宿主元素覆盖, 但是实际上的效果刚好相反.&lt;/p&gt;&lt;h2 id=&quot;解决办法&quot;&gt;解决办法&lt;/h2&gt;&lt;p&gt;伪元素被视为其相关元素的后代。&lt;/p&gt;&lt;p&gt;如果未在宿主元素上指定&lt;code&gt;z-index&lt;/code&gt;(默认为 auto)，则宿主元素和伪元素将出现在同一堆叠上下文中。这时如果伪元素的&lt;code&gt;z-index&lt;/code&gt;比宿主元素低, 就可以正确出现在宿主元素下方。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;当你在宿主元素上指定&lt;code&gt;z-index&lt;/code&gt;时，该元素会为伪元素(实际上是它的所有后代)创建一个新的堆叠上下文，防止伪元素出现在它下面,即使你给它一个负&lt;code&gt;z-index&lt;/code&gt;。&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;简单总结就是：&lt;/p&gt;&lt;p&gt;&lt;strong&gt;想让伪元素置于宿主元素下方，就不要给宿主元素设置 z-index(默认为 auto)&lt;/strong&gt;&lt;/p&gt;&lt;h2 id=&quot;层叠上下文关系一网打尽&quot;&gt;层叠上下文关系一网打尽&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/&quot;&gt;张鑫旭的文章&lt;/a&gt;&lt;/p&gt;&lt;p&gt;有点长. 看完算是对 z-index 和层叠上下文更加了解了&lt;/p&gt;</content:encoded></item><item><title><![CDATA[微信小程序-sessionkey失效检测]]></title><description><![CDATA[参考官方文档: 检查登录态是否过期。 通过 wx.login 接口获得的用户登录态拥有一定的时效性。用户越久未使用小程序，用户登录态越有可能失效。反之如果用户一直在使用小程序，则用户登录态一直保持有效。具体时效逻辑由微信维护，对开发者透明。开发者只需要调用 wx…]]></description><link>https://blog.foolishrobot.xyz/微信小程序-sessionkey失效检测</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/微信小程序-sessionkey失效检测</guid><pubDate>Wed, 24 Jul 2019 22:03:24 GMT</pubDate><content:encoded>&lt;blockquote&gt;&lt;p&gt;参考官方文档:&lt;/p&gt;&lt;p&gt;检查登录态是否过期。&lt;/p&gt;&lt;p&gt;通过 wx.login 接口获得的用户登录态拥有一定的时效性。用户越久未使用小程序，用户登录态越有可能失效。反之如果用户一直在使用小程序，则用户登录态一直保持有效。具体时效逻辑由微信维护，对开发者透明。开发者只需要调用 wx.checkSession 接口检测当前用户登录态是否有效。&lt;/p&gt;&lt;p&gt;登录态过期后开发者可以再调用 wx.login 获取新的用户登录态。调用成功说明当前 session_key 未过期，调用失败说明 session_key 已过期。更多使用方法详见 &lt;a href=&quot;https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html&quot;&gt;小程序登录&lt;/a&gt;。&lt;/p&gt;&lt;/blockquote&gt;&lt;h2 id=&quot;为何要检测-sessionkey&quot;&gt;为何要检测 sessionkey&lt;/h2&gt;&lt;p&gt;如上官方文档, 官方文档说明了三件事&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;p&gt;sessionkey 会过期&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;过期时间不固定&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;sessionkey 只有在重新登录的时候会刷新&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;存在一种情况: sessionkey 在登录的时候传给后端, 前端 session_key 已失效, 调用需要用到 session_key 的接口, 后端不知道已经过期, 操作失败&lt;/p&gt;&lt;h2 id=&quot;检测写法&quot;&gt;检测写法&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;const app = getApp();
 wx.checkSession({
   fail: () =&amp;gt; {
     //fail 即为登录态失效, 在回调内写重新登录的逻辑
@@ -3104,24 +3063,7 @@ bindGetUserInfo(e) {
     const formId = e.detail.formId
     console.log(&amp;#x27;formId&amp;#x27;,formId)
 },
-&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&quot;3&quot;&gt;&lt;li&gt;&lt;code&gt;prepay_id&lt;/code&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;参考&lt;a href=&quot;https://developers.weixin.qq.com/miniprogram/dev/api/open-api/payment/wx.requestPayment.html&quot;&gt;官方文档&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;h2 id=&quot;版本兼容&quot;&gt;版本兼容&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html&quot;&gt;官方文档&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[前端优化-雪碧图及base64]]></title><description><![CDATA[微信的开发工具真机调试功能限制包的大小不能超过 2MB, 为了减少包的体积同时优化用户体验, 对图片的优化相当重要。 图片压缩 鄙人的公司，UI 文件并不会直接给前端，而是由 UI…]]></description><link>https://blog.foolishrobot.xyz/前端优化-雪碧图及base64</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/前端优化-雪碧图及base64</guid><pubDate>Mon, 17 Jun 2019 13:29:21 GMT</pubDate><content:encoded>&lt;blockquote&gt;&lt;p&gt;微信的开发工具真机调试功能限制包的大小不能超过 2MB, 为了减少包的体积同时优化用户体验, 对图片的优化相当重要。&lt;/p&gt;&lt;/blockquote&gt;&lt;h2 id=&quot;图片压缩&quot;&gt;图片压缩&lt;/h2&gt;&lt;p&gt;鄙人的公司，UI 文件并不会直接给前端，而是由 UI 小姐姐切好再给我，虽然省了我的事，但是有时候自己想切点图还是挺麻烦的。&lt;/p&gt;&lt;p&gt;小姐姐一般发图都会通过 &lt;a href=&quot;https://tinypng.com/&quot;&gt;tinypng&lt;/a&gt; 压缩之后再给我，所以图片压缩这一步别人都帮我做好了。&lt;/p&gt;&lt;h2 id=&quot;雪碧图&quot;&gt;雪碧图&lt;/h2&gt;&lt;p&gt;雪碧图就是将多个图标放在一张 png 图像上，利用 css 的 background-position 属性，达到裁剪图片的特定区域，然后生成背景的效果。&lt;/p&gt;&lt;p&gt;雪碧图并不能减少包的大小，但是可以极大地减少请求次数，同时图片不会出现一个一个加载的情况。&lt;/p&gt;&lt;p&gt;在线生成雪碧图的网站很多。之前用过这个 &lt;a href=&quot;https://www.fedrobots.com/&quot;&gt;CSS 图片精灵&lt;/a&gt;&lt;/p&gt;&lt;h2 id=&quot;base64&quot;&gt;base64&lt;/h2&gt;&lt;p&gt;将图片转为 base64 编码的字符串，浏览器可以不发送网络请求直接解析，这样就可以减少网络请求。但是 base64 转码会导致打包出来的图片比原大小大近一倍，base64 的代码本身也不太好看。在一些临时的页面内可以使用，或者非常小的图标可以使用，其他时候慎用。&lt;/p&gt;&lt;p&gt;在线转换工具 &lt;a href=&quot;http://imgbase64.duoshitong.com/&quot;&gt;图片转 base64&lt;/a&gt;&lt;/p&gt;&lt;p&gt;或者使用 webpack 的 url-loader，举个例子：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: &amp;#x27;url-loader&amp;#x27;,
-            options: {
-              limit: 8192,
-            },
-          },
-        ],
-      },
-    ],
-  },
-};
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;上面的这个配置就是把 8k 以下的 png|jpg|gif 通过 url-loader 进行 base64 编码，转换成一串 DataUrl&lt;/p&gt;&lt;h2 id=&quot;阿里-iconfont&quot;&gt;阿里 iconfont&lt;/h2&gt;&lt;p&gt;尽可能的将图片换成 iconfont ，这样不但减少了包的大小，也方面对 icon 图标进行自定义操作&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://www.iconfont.cn/&quot;&gt;iconfont&lt;/a&gt;&lt;/p&gt;&lt;h2 id=&quot;webpack-图片压缩，雪碧图&quot;&gt;webpack 图片压缩，雪碧图&lt;/h2&gt;&lt;p&gt;这一块没怎么用，用到的时候再说。&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;参考资料： &lt;a href=&quot;https://segmentfault.com/a/1190000017481260&quot;&gt;william 的文章&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[移动端开发-踩坑]]></title><description><![CDATA[跨浏览器的问题,涉及到性能优化和样式统一. 参考网上资料和日常积累,总结一些必要的解决办法. 1. 前缀 CSS3 样式 由于浏览器厂商众多,并且各怀鬼胎,所以早期 CSS…]]></description><link>https://blog.foolishrobot.xyz/跨浏览器开发</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/跨浏览器开发</guid><pubDate>Fri, 29 Mar 2019 23:38:02 GMT</pubDate><content:encoded>&lt;blockquote&gt;&lt;p&gt;跨浏览器的问题,涉及到性能优化和样式统一.&lt;/p&gt;&lt;p&gt;参考网上资料和日常积累,总结一些必要的解决办法.&lt;/p&gt;&lt;/blockquote&gt;&lt;h2 id=&quot;1-前缀-css3-样式&quot;&gt;1. 前缀 CSS3 样式&lt;/h2&gt;&lt;p&gt;由于浏览器厂商众多,并且各怀鬼胎,所以早期 CSS3 属性的支持情况在各大浏览器都不一样,虽然现在绝大部分浏览器都不需要写前缀,但是考虑到可能遇到旧浏览器的情况(比如互联网电视等终端浏览器),为了使 CSS3 动画等样式的渲染性能最大化,我们需要在样式属性前添加相对应的前缀:&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot;&gt;-moz- /* Firefox and other browsers using Mozilla&amp;#x27;s browser engine */
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&quot;3&quot;&gt;&lt;li&gt;&lt;code&gt;prepay_id&lt;/code&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;参考&lt;a href=&quot;https://developers.weixin.qq.com/miniprogram/dev/api/open-api/payment/wx.requestPayment.html&quot;&gt;官方文档&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;h2 id=&quot;版本兼容&quot;&gt;版本兼容&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html&quot;&gt;官方文档&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[移动端开发-踩坑]]></title><description><![CDATA[跨浏览器的问题,涉及到性能优化和样式统一. 参考网上资料和日常积累,总结一些必要的解决办法. 1. 前缀 CSS3 样式 由于浏览器厂商众多,并且各怀鬼胎,所以早期 CSS…]]></description><link>https://blog.foolishrobot.xyz/跨浏览器开发</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/跨浏览器开发</guid><pubDate>Fri, 29 Mar 2019 23:38:02 GMT</pubDate><content:encoded>&lt;blockquote&gt;&lt;p&gt;跨浏览器的问题,涉及到性能优化和样式统一.&lt;/p&gt;&lt;p&gt;参考网上资料和日常积累,总结一些必要的解决办法.&lt;/p&gt;&lt;/blockquote&gt;&lt;h2 id=&quot;1-前缀-css3-样式&quot;&gt;1. 前缀 CSS3 样式&lt;/h2&gt;&lt;p&gt;由于浏览器厂商众多,并且各怀鬼胎,所以早期 CSS3 属性的支持情况在各大浏览器都不一样,虽然现在绝大部分浏览器都不需要写前缀,但是考虑到可能遇到旧浏览器的情况(比如互联网电视等终端浏览器),为了使 CSS3 动画等样式的渲染性能最大化,我们需要在样式属性前添加相对应的前缀:&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot;&gt;-moz- /* Firefox and other browsers using Mozilla&amp;#x27;s browser engine */
 -webkit- /* Safari, Chrome and browsers using the Webkit engine */
 -o- /* Opera */
 -ms- /* Internet Explorer (but not always) */
@@ -4339,158 +4281,4 @@ animate();
 33 IP地址：\d+\.\d+\.\d+\.\d+ (提取IP地址时有用)
 
 34 IP地址：((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title><![CDATA[使用Karma+Mocha进行单元测试]]></title><description><![CDATA[自动化测试 来源: 使用 Karma + Mocha 做单元测试 Karma（ [ˈkɑrmə]  卡玛）是一个测试运行器，它可以呼起浏览器，加载测试脚本，然后运行测试用例 Mocha（ [ˈmoʊkə]  摩卡）是一个单元测试框架/库，它可以用来写测试用例 Sinon…]]></description><link>https://blog.foolishrobot.xyz/使用Karma-Mocha进行单元测试</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/使用Karma-Mocha进行单元测试</guid><pubDate>Sat, 25 Aug 2018 12:47:17 GMT</pubDate><content:encoded>&lt;h1 id=&quot;自动化测试&quot;&gt;自动化测试&lt;/h1&gt;&lt;blockquote&gt;&lt;p&gt;来源:&lt;/p&gt;&lt;/blockquote&gt;&lt;h1 id=&quot;使用-karma--mocha-做单元测试&quot;&gt;使用 Karma + Mocha 做单元测试&lt;/h1&gt;&lt;ol&gt;&lt;li&gt;&lt;p&gt;Karma（&lt;code&gt;[ˈkɑrmə]&lt;/code&gt; 卡玛）是一个测试运行器，它可以呼起浏览器，加载测试脚本，然后运行测试用例&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Mocha（&lt;code&gt;[ˈmoʊkə]&lt;/code&gt; 摩卡）是一个单元测试框架/库，它可以用来写测试用例&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Sinon（西农）是一个 spy / stub / mock 库，用以辅助测试（使用后才能理解）&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;h2 id=&quot;步骤&quot;&gt;步骤&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;p&gt;安装各种工具
-&lt;code&gt;npm i -D karma karma-chrome-launcher karma-mocha karma-sinon-chai mocha sinon sinon-chai karma-chai karma-chai-spies&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;创建 karma 配置&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt; // 新建 karma.conf.js，内容如下
- module.exports = function (config) {
-     config.set({
-
-         // base path that will be used to resolve all patterns (eg. files, exclude)
-         basePath: &amp;#x27;&amp;#x27;,
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;&lt;/ol&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;            // frameworks to use
-            // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-            frameworks: [&amp;#x27;mocha&amp;#x27;, &amp;#x27;sinon-chai&amp;#x27;],
-            client: {
-                chai: {
-                    includeStack: true
-                }
-            },
-
-
-            // list of files / patterns to load in the browser
-            files: [
-                &amp;#x27;dist/**/*.test.js&amp;#x27;,
-                &amp;#x27;dist/**/*.test.css&amp;#x27;
-            ],
-
-
-            // list of files / patterns to exclude
-            exclude: [],
-
-
-            // preprocess matching files before serving them to the browser
-            // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-            preprocessors: {},
-
-
-            // test results reporter to use
-            // possible values: &amp;#x27;dots&amp;#x27;, &amp;#x27;progress&amp;#x27;
-            // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-            reporters: [&amp;#x27;progress&amp;#x27;],
-
-
-            // web server port
-            port: 9876,
-
-
-            // enable / disable colors in the output (reporters and logs)
-            colors: true,
-
-
-            // level of logging
-            // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-            logLevel: config.LOG_INFO,
-
-
-            // enable / disable watching file and executing tests whenever any file changes
-            autoWatch: true,
-
-
-            // start these browsers
-            // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-            browsers: [&amp;#x27;ChromeHeadless&amp;#x27;],
-
-
-            // Continuous Integration mode
-            // if true, Karma captures browsers, runs the tests and exits
-            singleRun: false,
-
-            // Concurrency level
-            // how many browser should be started simultaneous
-            concurrency: Infinity
-        })
-    }
-&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;&lt;li&gt;&lt;p&gt;创建 test/button.test.js 文件&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;const expect = chai.expect;
-import Vue from &amp;#x27;vue&amp;#x27;;
-import Button from &amp;#x27;../src/button&amp;#x27;;
-
-Vue.config.productionTip = false;
-Vue.config.devtools = false;
-
-describe(&amp;#x27;Button&amp;#x27;, () =&amp;gt; {
-  it(&amp;#x27;存在.&amp;#x27;, () =&amp;gt; {
-    expect(Button).to.be.ok;
-  });
-  it(&amp;#x27;可以设置icon.&amp;#x27;, () =&amp;gt; {
-    const Constructor = Vue.extend(Button);
-    const vm = new Constructor({
-      propsData: {
-        icon: &amp;#x27;settings&amp;#x27;,
-      },
-    }).$mount();
-    const useElement = vm.$el.querySelector(&amp;#x27;use&amp;#x27;);
-    expect(useElement.getAttribute(&amp;#x27;xlink:href&amp;#x27;)).to.equal(&amp;#x27;#i-settings&amp;#x27;);
-    vm.$destroy();
-  });
-  it(&amp;#x27;可以设置loading.&amp;#x27;, () =&amp;gt; {
-    const Constructor = Vue.extend(Button);
-    const vm = new Constructor({
-      propsData: {
-        icon: &amp;#x27;settings&amp;#x27;,
-        loading: true,
-      },
-    }).$mount();
-    const useElements = vm.$el.querySelectorAll(&amp;#x27;use&amp;#x27;);
-    expect(useElements.length).to.equal(1);
-    expect(useElements[0].getAttribute(&amp;#x27;xlink:href&amp;#x27;)).to.equal(&amp;#x27;#i-loading&amp;#x27;);
-    vm.$destroy();
-  });
-  it(&amp;#x27;icon 默认的 order 是 1&amp;#x27;, () =&amp;gt; {
-    const div = document.createElement(&amp;#x27;div&amp;#x27;);
-    document.body.appendChild(div);
-    const Constructor = Vue.extend(Button);
-    const vm = new Constructor({
-      propsData: {
-        icon: &amp;#x27;settings&amp;#x27;,
-      },
-    }).$mount(div);
-    const icon = vm.$el.querySelector(&amp;#x27;svg&amp;#x27;);
-    expect(getComputedStyle(icon).order).to.eq(&amp;#x27;1&amp;#x27;);
-    vm.$el.remove();
-    vm.$destroy();
-  });
-  it(&amp;#x27;设置 iconPosition 可以改变 order&amp;#x27;, () =&amp;gt; {
-    const div = document.createElement(&amp;#x27;div&amp;#x27;);
-    document.body.appendChild(div);
-    const Constructor = Vue.extend(Button);
-    const vm = new Constructor({
-      propsData: {
-        icon: &amp;#x27;settings&amp;#x27;,
-        iconPosition: &amp;#x27;right&amp;#x27;,
-      },
-    }).$mount(div);
-    const icon = vm.$el.querySelector(&amp;#x27;svg&amp;#x27;);
-    expect(getComputedStyle(icon).order).to.eq(&amp;#x27;2&amp;#x27;);
-    vm.$el.remove();
-    vm.$destroy();
-  });
-  it(&amp;#x27;点击 button 触发 click 事件&amp;#x27;, () =&amp;gt; {
-    const Constructor = Vue.extend(Button);
-    const vm = new Constructor({
-      propsData: {
-        icon: &amp;#x27;settings&amp;#x27;,
-      },
-    }).$mount();
-
-    const callback = sinon.fake();
-    vm.$on(&amp;#x27;click&amp;#x27;, callback);
-    vm.$el.click();
-    expect(callback).to.have.been.called;
-  });
-});
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;创建测试脚本
-在 package.json 里面找到 scripts 并改写 scripts&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt; &amp;quot;scripts&amp;quot;: {
-     &amp;quot;dev-test&amp;quot;: &amp;quot;parcel watch test/* --no-cache &amp;amp; karma start&amp;quot;,
-     &amp;quot;test&amp;quot;: &amp;quot;parcel build test/* --no-minify &amp;amp;&amp;amp; karma start --single-run&amp;quot;
- },
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;运行测试脚本&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;p&gt;要么使用 &lt;code&gt;npm run test&lt;/code&gt; 一次性运行&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/assets/2018-6-30-18-25-41.png&quot; alt=&quot;2018-6-30-18-25-41&quot;/&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;要么使用 &lt;code&gt;npm run dev-test&lt;/code&gt; 进行 watch 运行&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/assets/2018-6-30-18-26-13.png&quot; alt=&quot;2018-6-30-18-26-13&quot;/&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/li&gt;&lt;/ol&gt;&lt;h2 id=&quot;成果&quot;&gt;成果&lt;/h2&gt;&lt;p&gt;如此一来，你开发的时候新开一个命令行窗口运行 &lt;code&gt;npm run dev-test&lt;/code&gt; 就可以实时查看测试结果。
-如果你只想看一次结果，就只用运行 &lt;code&gt;npm run test&lt;/code&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[No title]]></title><description><![CDATA[关于本博客 该博客使用 TypeScript + less 开发。 以静态网站生成器  GatsbyJS  和  GraphQL  为基础，托管于 GithubPages。 部分 UI 组件基于  Antd 4.0 ，首页使用  react-three-fiber…]]></description><link>https://blog.foolishrobot.xyz/about</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/about</guid><pubDate>Fri, 29 Mar 1996 17:10:09 GMT</pubDate><content:encoded>&lt;h1 id=&quot;关于本博客&quot;&gt;关于本博客&lt;/h1&gt;&lt;p&gt;该博客使用 TypeScript + less 开发。&lt;/p&gt;&lt;p&gt;以静态网站生成器 &lt;a href=&quot;https://gatsbyjs.org/&quot;&gt;GatsbyJS&lt;/a&gt; 和 &lt;a href=&quot;https://graphql.org/&quot;&gt;GraphQL&lt;/a&gt; 为基础，托管于 GithubPages。&lt;/p&gt;&lt;p&gt;部分 UI 组件基于 &lt;a href=&quot;https://ant.design/index-cn&quot;&gt;Antd 4.0&lt;/a&gt;，首页使用 &lt;a href=&quot;https://github.com/react-spring/react-three-fiber&quot;&gt;react-three-fiber&lt;/a&gt; 构建 webGl 元素，音乐播放器基于 &lt;a href=&quot;https://howlerjs.com/&quot;&gt;howler.js&lt;/a&gt; 开发。&lt;/p&gt;&lt;p&gt;Svg 动画来自 &lt;a href=&quot;https://loading.io/&quot;&gt;loading.io&lt;/a&gt;。&lt;/p&gt;&lt;p&gt;搜索页面和 menu 的鲨鱼叫鲨鲨, 来源于微博, 原型是 FF14 的宠物。&lt;/p&gt;&lt;h1 id=&quot;关于作者&quot;&gt;关于作者&lt;/h1&gt;&lt;p&gt;作者是个写 TS 经常写 Any（在改了在改了）的菜鸡前端。&lt;/p&gt;&lt;p&gt;目前就职于网红城市成都， 从事网红服务行业。&lt;/p&gt;&lt;p&gt;想法很多，但是时间有限，挖了很多坑没时间填。&lt;/p&gt;&lt;p&gt;爱好用 steam 理财， 用 NS 健身，通过育碧旅游，&lt;del&gt;通过 Illusion 找到女朋友&lt;/del&gt;。&lt;/p&gt;&lt;p&gt;混迹于 nga 学习补锌，经常逛知乎和 v2ex 感受和人上人的差距，逛土木吧看看老同行们的现状&lt;/p&gt;&lt;p&gt;活到老学到死。&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title><![CDATA[No title]]></title><description><![CDATA[关于本博客 该博客使用 TypeScript + less 开发。 以静态网站生成器  GatsbyJS  和  GraphQL  为基础，托管于 GithubPages。 部分 UI 组件基于  Antd 4.0 ，首页使用  react-three-fiber…]]></description><link>https://blog.foolishrobot.xyz/about</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/about</guid><pubDate>Fri, 29 Mar 1996 17:10:09 GMT</pubDate><content:encoded>&lt;h1 id=&quot;关于本博客&quot;&gt;关于本博客&lt;/h1&gt;&lt;p&gt;该博客使用 TypeScript + less 开发。&lt;/p&gt;&lt;p&gt;以静态网站生成器 &lt;a href=&quot;https://gatsbyjs.org/&quot;&gt;GatsbyJS&lt;/a&gt; 和 &lt;a href=&quot;https://graphql.org/&quot;&gt;GraphQL&lt;/a&gt; 为基础，托管于 GithubPages。&lt;/p&gt;&lt;p&gt;部分 UI 组件基于 &lt;a href=&quot;https://ant.design/index-cn&quot;&gt;Antd 4.0&lt;/a&gt;，首页使用 &lt;a href=&quot;https://github.com/react-spring/react-three-fiber&quot;&gt;react-three-fiber&lt;/a&gt; 构建 webGl 元素，音乐播放器基于 &lt;a href=&quot;https://howlerjs.com/&quot;&gt;howler.js&lt;/a&gt; 开发。&lt;/p&gt;&lt;p&gt;Svg 动画来自 &lt;a href=&quot;https://loading.io/&quot;&gt;loading.io&lt;/a&gt;。&lt;/p&gt;&lt;p&gt;搜索页面和 menu 的鲨鱼叫鲨鲨, 来源于微博, 原型是 FF14 的宠物。&lt;/p&gt;&lt;h1 id=&quot;关于作者&quot;&gt;关于作者&lt;/h1&gt;&lt;p&gt;作者是个写 TS 经常写 Any（在改了在改了）的菜鸡前端。&lt;/p&gt;&lt;p&gt;目前就职于网红城市成都， 从事网红服务行业。&lt;/p&gt;&lt;p&gt;想法很多，但是时间有限，挖了很多坑没时间填。&lt;/p&gt;&lt;p&gt;爱好用 steam 理财， 用 NS 健身，通过育碧旅游，&lt;del&gt;通过 Illusion 找到女朋友&lt;/del&gt;。&lt;/p&gt;&lt;p&gt;混迹于 nga 学习补锌，经常逛知乎和 v2ex 感受和人上人的差距，逛土木吧看看老同行们的现状&lt;/p&gt;&lt;p&gt;活到老学到死。&lt;/p&gt;</content:encoded></item></channel></rss>
