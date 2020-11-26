@@ -1,0 +1,28 @@
+---
+title: web workers学习及其应用场景探索
+date: 2020-11-26 09:33:25
+description: web worker是独立于js主线程之外的独立线程, 可以在不堵塞主线程的情况下执行一些有限制的js脚本, 运用得当的话可以极大地提升页面性能
+tags: [性能,js]
+categories: tech
+---
+
+## Web Workers介绍
+
+web workers是独立于js主线程之外的线程, 可以在不堵塞主线程的情况下执行一些有限制的js脚本, web workers无法操纵DOM但是可以调用一些浏览器提供的DOM方法，workers在统计或计算数据方面运用得当的话可以极大地提升页面性能。
+
+workers和主线程间的数据传递通过这样的消息机制进行——双方都使用`postMessage()`方法发送各自的消息，使用`onmessage`事件处理函数来响应消息（消息被包含在`Message`事件的data属性中）。这个过程中数据并不是被共享而是被复制。
+
+关于其更多特性和限制，话不多说，直接上[MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers) 
+
+使用web workers之前，有必要认真读一次文档，因为web workers在不同浏览器支持的API不一样。
+
+## 写一个最简单的worker
+
+照着MDN文档撸一个worker
+
+```js
+...
+// 实例化一个worker
+const myWorker = Worker()
+```
+
