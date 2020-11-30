@@ -55,3 +55,63 @@ if ( 'transferControlToOffscreen' in canvas ) {
 
 因为使用`offscreenCanvas`过后一些DOM API就不能使用了，而且在react-three-fiber中使用会有一点麻烦，所以我放弃了在博客中使用。
 
+## Service worker
+
+[MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API)
+
+通过脚手架构建的前端项目一般都自带一个 serviceWorker.js 文件，但这个worker默认是没有使用的。
+
+Service workers 本质上充当 Web 应用程序、浏览器与网络（可用时）之间的代理服务器。这个 API 旨在创建有效的离线体验，它会拦截网络请求并根据网络是否可用采取来适当的动作、更新来自服务器的的资源。它还提供入口以推送通知和访问后台同步 API。
+
+它的好处是可以给用户提供更好的离线体验，但是相应的，对开发者来说，我们如果想看到最新的更新，得关掉所有的tab才行，有利有弊。
+
+使用方法，场景和注意事项看mdn就行了。
+
+## Audio worker
+
+我在博客里做了一个功能简陋的音乐播放器，但是这个播放器有一个很大的问题，就是它在开启的时候cpu占用率很高（对于我的辣鸡笔记本来说），当我开启音乐播放器的时候，页面的滚动会有轻微的卡顿，虽然在正常的电脑上这个影响并不明显，但是我想找到一个比较好的解决办法。
+
+我找到了 audio worker 方案。但是可惜，这个方案目前只是一个大饼。
+
+[MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Audio_API#Audio_Workers)
+
+如文档所说， 截至目前2020年11月，这个worker还只有接口的定义，没有一个浏览器对这些接口进行了实现。先留个坑吧，万一不久之后就能用了呢。
+
+## 用于复杂运算的worker
+
+我们可以把复杂运算的函数放在worker.js：
+
+worker.js
+
+```js
+onmessage = function(e) {
+  console.log('Worker: Message received from main script');
+  const param = e.data
+  // do some complex calculate
+  const result = param * 2
+  postMessage(result);
+}
+```
+
+main.js
+
+```js
+if (window.Worker) {
+	const myWorker = new Worker("worker.js");
+    
+	myWorker.postMessage(996);
+
+	myWorker.onmessage = function(e) {
+		const result = e.data;
+		console.log(`result is ${result}`);
+	}
+} else {
+	console.log('Your browser doesn\'t support web workers.')
+}
+```
+
+## 总结
+
+web workers 在前端越来越复杂的当下，一定会变得越来越重要，但是目前来说应用场景比较局限，我在负责的几个项目里尝试使用web worker，发现都比较难直接使用，大多数对性能有直接影响的地方基本都和DOM耦合，解耦比较困难，特别想使用的audio部分，浏览器却根本不支持。
+
+计算量特别大的地方，直接让后端仔去处理了，其他地方又不值得上牛刀，比较尴尬，希望以后能遇到可以使用worker的场景。
