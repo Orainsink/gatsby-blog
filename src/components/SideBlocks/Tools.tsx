@@ -5,16 +5,14 @@ import useMedia from '../../hooks/useMedia';
 import styles from '../../styles/SideBar.module.less';
 import tools from '../../assets/js/tools';
 import Icon from '@ant-design/icons';
+import useColFlex from './useColFlex';
 
 /* Tools url */
 const Tools = () => {
-  const is1110 = useMedia('(max-width: 1110px)');
+  const colFlex = useColFlex();
 
   return (
-    <Col
-      flex={is1110 ? '1 1 300px' : '0 0 300px'}
-      className={classnames(styles.col, styles.toolsWrapper)}
-    >
+    <Col flex={colFlex} className={classnames(styles.col, styles.toolsWrapper)}>
       <div className={styles.title}>Tools</div>
       {tools.map((tool) => (
         <a
@@ -23,6 +21,7 @@ const Tools = () => {
           rel="noreferrer"
           title={tool.url}
           key={tool.name}
+          className={styles.toolLink}
         >
           <span className={styles.tool}>
             <div className={styles.iconBox}>
