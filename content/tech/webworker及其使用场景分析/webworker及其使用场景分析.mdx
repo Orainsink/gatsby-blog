@@ -16,16 +16,42 @@ workers和主线程间的数据传递通过这样的消息机制进行——双�
 
 使用web workers之前，有必要认真读一次文档，因为web workers在不同浏览器支持的API不一样。
 
-## 写一个最简单的worker
+> 以下的应用场景, 默认你已经读过MDN文档, 对 web workers 有初步的了解
 
-照着MDN文档撸一个worker
+## OffscreenCanvas(离屏canvas)
 
-```js
-...
-// 实例化一个worker
-const myWorker = Worker()
+[MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/API/OffscreenCanvas)
+
+`OffscreenCanvas`提供了一个可以脱离屏幕渲染的canvas对象。它在窗口环境和web worker环境均有效。他与DOM中的canvas对象用法基本相同。
+
+即我们可以在web worker里面对`offscreenCanvas`进行计算和渲染，计算过程和渲染主线程分开，这样就不会阻塞主线程。
+
+一般计算量较小的canvas当然用不到，但是`offscreenCanvas`可以和`three.js`配合进行一些教复杂的动画渲染：
+
+效果就像这样：[threejs example](https://threejs.org/examples/webgl_worker_offscreencanvas.html)
+
+[完整代码](https://github.com/mrdoob/three.js/blob/master/examples/webgl_worker_offscreencanvas.html)
+
+```html
+<canvas id="canvas"></canvas>
 ```
 
+```js
+const canvas = document.getElementById( 'canvas' );
+if ( 'transferControlToOffscreen' in canvas ) {
 
+				const offscreen = canvas.transferControlToOffscreen();
+				const worker = new Worker( 'jsm/offscreen/offscreen.js', { type: 'module' } );
+				worker.postMessage( {
+					drawingSurface: offscreen,
+					width: canvas.clientWidth,
+					height: canvas.clientHeight,
+					pixelRatio: window.devicePixelRatio,
+					path: '../../'
+				}, [ offscreen ] );
 
-未完待续
+			}
+```
+
+因为使用`offscreenCanvas`过后一些DOM API就不能使用了，而且在react-three-fiber中使用会有一点麻烦，所以我放弃了在博客中使用。
+

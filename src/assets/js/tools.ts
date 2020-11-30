@@ -3,7 +3,7 @@ import { ReactComponent as ColorSvg } from '../img/color.svg';
 import { ReactComponent as ReactUseSvg } from '../img/hook.svg';
 import { ReactComponent as ShadowSvg } from '../img/shadow.svg';
 import { ReactComponent as RegxSvg } from '../img/regx.svg';
-import { ReactComponent as IconfontSvg } from '../img/iconfont.svg';
+import { ReactComponent as IconfontSvg } from '../img/icon.svg';
 import { ReactComponent as LoadingIoSvg } from '../img/loadingIo.svg';
 import { ReactComponent as SvgSvg } from '../img/svg.svg';
 import { ReactComponent as HslSvg } from '../img/colorWheel.svg';
