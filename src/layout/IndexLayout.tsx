@@ -6,9 +6,12 @@ import Info from '../components/SideBlocks/Info';
 import Footer from '../components/Footer';
 import SideBar from '../components/SideBlocks/SideBar';
 import TagsBlock from '../components/SideBlocks/TagsBlock';
-import Comment from '../components/SideBlocks/Comment';
 import styles from '../styles/Indexlayout.module.less';
 import useBackgroundColor from '../hooks/useBackgroundColor';
+import loadable from '@loadable/component';
+const Tools = loadable(() => import('../components/SideBlocks/Tools'));
+const MyGitalk = loadable(() => import('../components/MyGitalk'));
+
 interface Props {
   children?: any;
 }
@@ -54,11 +57,12 @@ const Layout = ({ children }: Props) => {
         <Row justify="space-between" gutter={8}>
           <Col flex="1 1 800px" className={styles.mainWrap}>
             {children}
+            <MyGitalk title="首页评论" />
           </Col>
           <SideBar>
             <Info />
             <TagsBlock />
-            <Comment />
+            <Tools />
           </SideBar>
         </Row>
       </main>

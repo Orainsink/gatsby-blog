@@ -10,7 +10,12 @@ interface Props {
 }
 /**
  * flv video player
- * @param props
+ * @prop src src url
+ * @prop [name] video title
+ * @prop [jump] jump url
+ * @prop [type] video type, default 'video/mp4'
+ * @prop [style]
+ * @prop [className]
  */
 const VideoComponent = (props: Props) => {
   const { src, name = '', jump = false, type = 'video/mp4', ...rest } = props;

@@ -172,3 +172,48 @@
     }
   }
 }
+.toolsWrapper {
+  display: flex;
+  flex-flow: row wrap;
+  height: auto;
+  * {
+    z-index: 1;
+  }
+  .toolName {
+    line-height: 40px;
+    color: @text-color;
+  }
+  .tool {
+    height: 40px;
+    border-radius: 20px;
+    line-height: 40px;
+    background: @main-background;
+    padding: 3px 8px 3px 2px;
+    margin: 6px;
+    &:hover {
+      .toolName {
+        color: @link-hover-color;
+      }
+    }
+  }
+  .iconBox {
+    display: inline-block;
+    border-radius: 50%;
+    background: #fff;
+    position: relative;
+    height: 40px;
+    width: 40px;
+    margin-right: 2px;
+  }
+  .toolIcon {
+    border-radius: 50%;
+    font-size: 36px;
+    overflow: hidden;
+    position: absolute;
+    margin: auto;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+  }
+}

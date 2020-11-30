@@ -5,12 +5,12 @@ import styles from '../../styles/SideBar.module.less';
 import MyGitalk from '../MyGitalk';
 import useColFlex from './useColFlex';
 
-const Comment = () => {
+const Comment = ({ title = '首页评论' }: { title?: string }) => {
   const colFlex = useColFlex();
 
   return (
     <Col flex={colFlex} className={classnames(styles.col, styles.commentWrap)}>
-      <MyGitalk title="首页评论" />
+      <MyGitalk title={title} />
     </Col>
   );
 };

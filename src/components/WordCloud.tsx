@@ -18,7 +18,11 @@ interface Props {
   jump?: boolean;
   height?: number;
 }
-
+/**
+ * word cloud
+ * @prop [jump] either can jump to "/archives", default false
+ * @prop [height] div height, default 150
+ */
 const WordCloudItem = (props: Props) => {
   const data: Data = useStaticQuery(graphql`
     query {
