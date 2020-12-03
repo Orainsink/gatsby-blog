@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Row, Col } from 'antd';
+import { Col, Row } from 'antd';
 import Info from '../components/SideBlocks/Info';
 import SideBar from '../components/SideBlocks/SideBar';
 import Footer from '../components/Footer';

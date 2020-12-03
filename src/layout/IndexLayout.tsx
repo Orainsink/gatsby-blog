@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
-import { Row, Col } from 'antd';
+import { Col, Row } from 'antd';
 import Info from '../components/SideBlocks/Info';
 import Footer from '../components/Footer';
 import SideBar from '../components/SideBlocks/SideBar';

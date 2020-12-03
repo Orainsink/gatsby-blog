@@ -8,14 +8,16 @@
  * fix React-Hot-Loader: react-🔥-dom patch is not detected. React 16.6+ features may not work
  * see: https://github.com/gatsbyjs/gatsby/issues/11934#issuecomment-469046186
  */
-exports.onCreateWebpackConfig = ({ stage, actions }) => {
-  if (stage.startsWith('develop')) {
+const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
+
+exports.onCreateWebpackConfig = ({ actions, stage }) => {
+  if (stage === 'build-javascript') {
     actions.setWebpackConfig({
-      resolve: {
-        alias: {
-          'react-dom': '@hot-loader/react-dom',
-        },
-      },
+      plugins: [
+        new FilterWarningsPlugin({
+          exclude: /Conflicting order/,
+        }),
+      ],
     });
   }
 };

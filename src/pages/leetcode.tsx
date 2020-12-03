@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
-import { Divider, Table, Tag, Button } from 'antd';
+import { Button, Divider, Table, Tag } from 'antd';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import { useSelector, useDispatch } from 'react-redux';

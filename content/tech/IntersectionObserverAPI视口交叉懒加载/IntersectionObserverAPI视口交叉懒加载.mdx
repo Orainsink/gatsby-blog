@@ -1,0 +1,17 @@
+---
+title: IntersectionObserver API-可视区域懒加载
+date: 2020-12-01 10:03:46
+description: 懒加载的第一步是通过loadable将代码从bundle里面拆分出去, 第二步就是选择在合适的时候加载这段代码, 我们可以什么都不管以延迟加载，或者选择通过state状态来按需加载,或者是使用IntersectionObserver API, 在视口滚动到相应区域的时候再加载，选择哪一个取决于实际的业务场景。
+tags: [性能,js,react]
+categories: tech
+---
+
+## 性能优化遇到的问题
+
+普通的性能优化是有极限的，不管你再怎么优化计算方式，压缩静态资源，如果你要在一个页面里渲染十几二十个`Table`组件，该卡还是卡。
+
+这个问题和长列表渲染的性能问题一样。可以看看关于长列表的[这篇文章](https://zhuanlan.zhihu.com/p/26022258)。
+
+通过上面的文章我们可以知道长列表对性能影响最大的不是js的执行，而是DOM的渲染以及重排。所以我们优化性能的思路，就变成了如何减少同一时间页面渲染的DOM节点。
+
+如果技术栈是react，对于长列表，可以让后端分页，前端用 [react-infinite-scroller](https://www.npmjs.com/package/react-infinite-scroller)进行分页加载，

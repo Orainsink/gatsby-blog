@@ -5,7 +5,7 @@ import React, {
   useCallback,
   useRef,
 } from 'react';
-import { Tooltip, Row, Col, Slider } from 'antd';
+import { Col, Row, Slider, Tooltip } from 'antd';
 import SiriWave from 'siriwave';
 import ReactHowler from 'react-howler';
 import { songs, Song } from '../assets/js/songs';

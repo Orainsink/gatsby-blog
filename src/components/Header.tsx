@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback, useState, useRef } from 'react';
 import classnames from 'classnames';
-import { Row, Col, Dropdown } from 'antd';
+import { Col, Dropdown, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { Link } from 'gatsby';
 import {

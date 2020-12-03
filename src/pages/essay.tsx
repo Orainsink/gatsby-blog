@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
-import { Divider, Card } from 'antd';
+import { Card, Divider } from 'antd';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import { useSelector, useDispatch } from 'react-redux';

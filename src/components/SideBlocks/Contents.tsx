@@ -1,9 +1,8 @@
 import React, { useRef, useMemo } from 'react';
-import { Col } from 'antd';
+import { Anchor, Col } from 'antd';
 import classnames from 'classnames';
 import useScrollY from '../../hooks/useScrollY';
 import styles from '../../styles/SideBar.module.less';
-import { Anchor } from 'antd';
 import isClient from '../../utils/isClient';
 import { Link } from 'gatsby';
 

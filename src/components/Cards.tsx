@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Row, Col, Card } from 'antd';
+import { Card, Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import Image from 'gatsby-image';
 import { ReactComponent as MarkSvg } from '../assets/img/mark.svg';
