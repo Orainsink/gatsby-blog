@@ -10,8 +10,54 @@ categories: tech
 
 普通的性能优化是有极限的，不管你再怎么优化计算方式，压缩静态资源，如果你要在一个页面里渲染十几二十个`Table`组件，该卡还是卡。
 
-这个问题和长列表渲染的性能问题一样。可以看看关于长列表的[这篇文章](https://zhuanlan.zhihu.com/p/26022258)。
+这个问题和[长列表渲染](https://zhuanlan.zhihu.com/p/26022258)的性能问题一样。
 
-通过上面的文章我们可以知道长列表对性能影响最大的不是js的执行，而是DOM的渲染以及重排。所以我们优化性能的思路，就变成了如何减少同一时间页面渲染的DOM节点。
+长列表渲染对性能影响最大的不是js的执行，而是DOM的渲染以及重排。所以我们优化性能的思路，就变成了如何减少同一时间页面渲染的DOM节点。
 
-如果技术栈是react，对于长列表，可以让后端分页，前端用 [react-infinite-scroller](https://www.npmjs.com/package/react-infinite-scroller)进行分页加载，
+如果技术栈是react，对于长列表，可以让后端分页，前端用 [react-infinite-scroller](https://www.npmjs.com/package/react-infinite-scroller)进行分页加载，这样在首次加载的时候只会渲染较短长度的列表，列表滚动到底部时再向后端发请求拿下一页的列表。但是当滚动加载多次，列表长度越来越长了过后，长列表的滚动也会变得非常的卡，因为无限滚动插件只解决了首次渲染的卡顿问题，没有解决DOM过多过后的卡顿问题。于是就有了更进一步的优化办法：[虚拟滚动列表](https://zhuanlan.zhihu.com/p/34585166)
+
+回到最开始的问题上，假如我在这个页面上放了20多个长列表，即便用了滚动分页和虚拟列表，由于列表数量过多，这个网页在首屏渲染的时候还是会卡爆。
+
+我们优化的思路自然就变成了如何减少同时间渲染的列表数量。
+
+## IntersectionObserver API
+
+> 阮一峰 [IntersectionObserver API 使用教程](http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html)
+
+阮大佬写的比MDN详细，这个API目前已经被广泛运用了，只有IE不兼容。
+
+## 懒加载
+
+降低首屏白屏时间的重要方法就是懒加载。
+
+React 懒加载常用办法就是通过React自己的 `React.lazy` API（暂不支持SSR）或者 `@loadable-component`(第三方插件，支持ssr) 拆分组件代码，然后选择合适的时机获取并执行这段代码。根据不同的场景我们可以选择不同的加载方式。
+
+这里我们选择配合`IntersectionObserver API`实现视口交叉懒加载，当组件暴露在视口区域的时候渲染该组件，当组件移出视口区域的时候卸载该组件。
+
+思路是这么个简单的思路，但是肯定还有一些 UI 过渡上的问题需要处理。
+
+优化前的代码：
+
+页面容器 index.tsx
+
+```tsx
+import React from 'react';
+// 表格组件， 未使用懒加载，20个表格组件足够让你的页面卡爆
+import TableComponent from './TableComponent';
+
+const Index = () => {
+  return (
+    new Array(20).fill(1).map((item,index)=> <div>
+      <TableComponent />
+    </div> )
+  );
+};
+export default React.memo(Index);
+```
+
+未优化的 TableComponnet：
+
+```
+
+```
+
