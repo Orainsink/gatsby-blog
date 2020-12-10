@@ -1,7 +1,6 @@
 import React from 'react';
 import { Col } from 'antd';
 import classnames from 'classnames';
-import useMedia from '../../hooks/useMedia';
 import styles from '../../styles/SideBar.module.less';
 import tools from '../../assets/js/tools';
 import Icon from '@ant-design/icons';

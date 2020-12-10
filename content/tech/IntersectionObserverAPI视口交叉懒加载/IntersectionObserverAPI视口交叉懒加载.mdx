@@ -40,7 +40,7 @@ React 懒加载常用办法就是通过React自己的 `React.lazy` API（暂不�
 
 页面容器 index.tsx
 
-```tsx
+```jsx
 import React from 'react';
 // 表格组件， 未使用懒加载，20个表格组件足够让你的页面卡爆
 import TableComponent from './TableComponent';
@@ -55,7 +55,26 @@ const Index = () => {
 export default React.memo(Index);
 ```
 
-未优化的 TableComponnet：
+未优化的 TableComponent.tsx：
+
+```jsx
+import React from 'react';
+// 用antd更方便地实现演示demo
+import { Table, Tooltip } from 'antd';
+
+const TableComponent = () => {
+	const columns = [...] //省略
+	const data = [...] //省略
+  return <Table columns={columns} dataSource={data}></Table>;
+};
+export default React.memo(TableComponent);
+```
+
+[code sandbox](https://codesandbox.io/s/old-rain-xftwc?file=/src/App.js) 案例
+
+400个简单表格的情况下，白屏时间是5s左右。
+
+用 `IntersectionObserver` API 优化
 
 ```
 
