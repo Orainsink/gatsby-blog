@@ -2,7 +2,7 @@
 title: IntersectionObserver API-可视区域懒加载
 date: 2020-12-01 10:03:46
 description: 懒加载的第一步是通过loadable将代码从bundle里面拆分出去, 第二步就是选择在合适的时候加载这段代码, 我们可以什么都不管以延迟加载，或者选择通过state状态来按需加载,或者是使用IntersectionObserver API, 在视口滚动到相应区域的时候再加载，选择哪一个取决于实际的业务场景。
-tags: [性能,js,react]
+tags: [性能, js, react]
 categories: tech
 ---
 
@@ -12,11 +12,11 @@ categories: tech
 
 这个问题和[长列表渲染](https://zhuanlan.zhihu.com/p/26022258)的性能问题一样。
 
-长列表渲染对性能影响最大的不是js的执行，而是DOM的渲染以及重排。所以我们优化性能的思路，就变成了如何减少同一时间页面渲染的DOM节点。
+长列表渲染对性能影响最大的不是 js 的执行，而是 DOM 的渲染以及重排。所以我们优化性能的思路，就变成了如何减少同一时间页面渲染的 DOM 节点。
 
-如果技术栈是react，对于长列表，可以让后端分页，前端用 [react-infinite-scroller](https://www.npmjs.com/package/react-infinite-scroller)进行分页加载，这样在首次加载的时候只会渲染较短长度的列表，列表滚动到底部时再向后端发请求拿下一页的列表。但是当滚动加载多次，列表长度越来越长了过后，长列表的滚动也会变得非常的卡，因为无限滚动插件只解决了首次渲染的卡顿问题，没有解决DOM过多过后的卡顿问题。于是就有了更进一步的优化办法：[虚拟滚动列表](https://zhuanlan.zhihu.com/p/34585166)
+如果技术栈是 react，对于长列表，可以让后端分页，前端用 [react-infinite-scroller](https://www.npmjs.com/package/react-infinite-scroller)进行分页加载，这样在首次加载的时候只会渲染较短长度的列表，列表滚动到底部时再向后端发请求拿下一页的列表。但是当滚动加载多次，列表长度越来越长了过后，长列表的滚动也会变得非常的卡，因为无限滚动插件只解决了首次渲染的卡顿问题，没有解决 DOM 过多过后的卡顿问题。于是就有了更进一步的优化办法：[虚拟滚动列表](https://zhuanlan.zhihu.com/p/34585166)
 
-回到最开始的问题上，假如我在这个页面上放了20多个长列表，即便用了滚动分页和虚拟列表，由于列表数量过多，这个网页在首屏渲染的时候还是会卡爆。
+回到最开始的问题上，假如我在这个页面上放了 20 多个长列表，即便用了滚动分页和虚拟列表，由于列表数量过多，这个网页在首屏渲染的时候还是会卡爆。
 
 我们优化的思路自然就变成了如何减少同时间渲染的列表数量。
 
@@ -24,38 +24,41 @@ categories: tech
 
 > 阮一峰 [IntersectionObserver API 使用教程](http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html)
 
-阮大佬写的比MDN详细，这个API目前已经被广泛运用了，只有IE不兼容。
+阮大佬写的比 MDN 详细，这个 API 目前已经被广泛运用了，只有 IE 不兼容。
 
-## 懒加载
+## 在 React 中使用
 
 降低首屏白屏时间的重要方法就是懒加载。
 
-React 懒加载常用办法就是通过React自己的 `React.lazy` API（暂不支持SSR）或者 `@loadable-component`(第三方插件，支持ssr) 拆分组件代码，然后选择合适的时机获取并执行这段代码。根据不同的场景我们可以选择不同的加载方式。
+React 懒加载常用办法就是通过 React 自己的 `React.lazy` API（暂不支持 SSR）或者 `@loadable-component`(第三方插件，支持 ssr) 拆分组件代码，然后选择合适的时机获取并执行这段代码。根据不同的场景我们可以选择不同的加载方式。
 
 这里我们选择配合`IntersectionObserver API`实现视口交叉懒加载，当组件暴露在视口区域的时候渲染该组件，当组件移出视口区域的时候卸载该组件。
 
 思路是这么个简单的思路，但是肯定还有一些 UI 过渡上的问题需要处理。
 
-优化前的代码：
+### 优化前的代码
 
-页面容器 index.tsx
+**页面容器 index.jsx**
 
 ```jsx
 import React from 'react';
-// 表格组件， 未使用懒加载，20个表格组件足够让你的页面卡爆
+// 表格组件， 未使用懒加载，400个表格组件足够让你的页面卡爆
 import TableComponent from './TableComponent';
 
 const Index = () => {
+  const arr = React.useMemo(() => new Array(400).fill(1), []);
   return (
-    new Array(20).fill(1).map((item,index)=> <div>
-      <TableComponent />
-    </div> )
+    <div className="App">
+      {arr.map((item, index) => (
+        <TableComponent key={index} />
+      ))}
+    </div>
   );
 };
 export default React.memo(Index);
 ```
 
-未优化的 TableComponent.tsx：
+**未优化的 TableComponent.jsx：**
 
 ```jsx
 import React from 'react';
@@ -70,13 +73,213 @@ const TableComponent = () => {
 export default React.memo(TableComponent);
 ```
 
-[code sandbox](https://codesandbox.io/s/old-rain-xftwc?file=/src/App.js) 案例
+[code sandbox](https://codesandbox.io/s/old-rain-xftwc?file=/src/App.js) demo
 
-400个简单表格的情况下，白屏时间是5s左右。
+400 个简单表格的情况下，白屏时间是 5s 左右。
 
 用 `IntersectionObserver` API 优化
 
+### 优化后
+
+**TableComponent.jsx（有点问题）**
+
+> 注意：这段代码是从某个人的博客里抄的， 但是我发现有性能问题，IntersectionObserver API 会随滚动事件反复调用回调函数，而这段代码在回调函数里反复地执行`updateEntry()`更新组件的 state，这会导致函数组件反复执行，当组件个数很多的时候会产生明显的阻塞。
+
+```jsx
+import React from 'react';
+import { Table, Tooltip } from 'antd';
+
+const TableComponent = () => {
+  // 用ref保存实例化的io对象
+  const ioRef = React.useRef(null);
+	// table 容器的dom引用
+  const wrapperRef = React.useRef(null);
+  // 储存IntersectionObserver callback的参数
+  const [entry, updateEntry] = React.useState({});
+  // 控制table是否显示
+  const [visible, setVisible] = React.useState(false);
+
+  const columns = [...];
+  const data = [...];
+
+  //进行视口交叉监听
+  React.useEffect(() => {
+    if (ioRef.current) ioRef.current.disconnect();
+    ioRef.current = new window.IntersectionObserver(([entry]: any) =>
+      updateEntry(entry)
+    );
+
+    const wrapper = wrapperRef.current
+    if (wrapperRef) {
+      ioRef.current.observe(wrapper);
+    }
+    return () => ioRef.current.disconnect(wrapper);
+  }, []);
+
+  // 控制table显示
+  React.useEffect(() => {
+    if (entry.intersectionRatio) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  }, [entry]);
+
+  return (
+    <div ref={wrapperRef} style={{ height: '400px', background: '#efefef' }}>
+      {visible ? <Table columns={columns} dataSource={data}></Table> : null}
+    </div>
+  );
+};
+export default React.memo(TableComponent);
 ```
 
+**TableComponent.jsx（解决反复执行的问题）**
+
+```jsx
+import React from 'react';
+import { Table, Tooltip } from 'antd';
+
+const TableComponent = () => {
+  // 用ref保存实例化的io对象
+  const ioRef = React.useRef(null);
+	// table 容器的dom引用
+  const wrapperRef = React.useRef(null);
+  // 不要将经常变化的变量存在state里
+  // const [entry, updateEntry] = React.useState({});
+  // 控制table是否显示
+  const [visible, setVisible] = React.useState(false);
+
+  const columns = [...];
+  const data = [...];
+
+  //进行视口交叉监听
+  React.useEffect(() => {
+    if (ioRef.current) ioRef.current.disconnect();
+    ioRef.current = new window.IntersectionObserver(([entry]: any) =>{
+      if (entry.intersectionRatio) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+    	}
+    );
+
+    const wrapper = wrapperRef.current
+    if (wrapperRef) {
+      ioRef.current.observe(wrapper);
+    }
+    return () => ioRef.current.disconnect(wrapper);
+  }, []);
+
+  return (
+    <div ref={wrapperRef} style={{ height: '400px', background: '#efefef' }}>
+      {visible ? <Table columns={columns} dataSource={data}></Table> : null}
+    </div>
+  );
+};
+export default React.memo(TableComponent);
 ```
 
+[codesandbox](https://codesandbox.io/s/dazzling-einstein-gj1c5) demo
+
+demo 中为了更明显，我添加了一个`setTimeout`，对比两个 demo 可以明显地看出页面加载速度地差别，这种差异在组件个数上百的时候更明显。
+
+> `IntersectionObserver`支持传入`option`,可以自定义视图的`**root**` ，`**rootMargin**`，`**threshold**`，详细介绍看 mdn 文档
+
+## 配合懒加载
+
+上面我们用 React 成功减少了首次绘制的 DOM 数量， 但是从服务器下载的代码文件并没有变小，接下来用`@loadable-component`进行代码拆分和懒加载。
+
+封装一个简单的 **IoWrapper.jsx**, 没处理 option 的传入
+
+```jsx
+import React from 'react';
+
+const IoWrapper = ({ option = {}, children }) => {
+  // 用ref保存实例化的io对象
+  const ioRef = React.useRef(null);
+  const wrapperRef = React.useRef(null);
+  // 储存IntersectionObserver callback的参数
+  const [entry, updateEntry] = React.useState({});
+  const [visible, setVisible] = React.useState(false);
+
+  //进行视口交叉监听
+  React.useEffect(() => {
+    if (ioRef.current) ioRef.current.disconnect();
+    ioRef.current = new window.IntersectionObserver(([entry]) => {
+      if (entry.intersectionRatio) {
+        setVisible(true);
+      } else {
+        setVisible(false);
+      }
+    }, option);
+
+    const wrapper = wrapperRef.current;
+    if (wrapperRef) {
+      ioRef.current.observe(wrapper);
+    }
+    return () => ioRef.current.disconnect(wrapper);
+  }, [option]);
+
+  React.useEffect(() => {
+    if (entry.intersectionRatio) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  }, [entry]);
+
+  return (
+    <div ref={wrapperRef} style={{ height: '400px', background: '#efefef' }}>
+      {children?.(visible)}
+    </div>
+  );
+};
+export default React.memo(IoWrapper);
+```
+
+**index.jsx**
+
+```jsx
+import React from 'react';
+import IoWrapper from './IoWrapper';
+import loadable from '@loadable/component';
+const TableComponent = loadable(() => import('./TableComponent'));
+
+const Index = () => {
+  const arr = React.useMemo(() => new Array(400).fill(1), []);
+  // renderfunction，配合loadable实现按需加载
+  const renderNode = React.useCallback(
+    (visible) => (visible ? <TableComponent /> : null),
+    []
+  );
+  return (
+    <div className="App">
+      {arr.map((item, index) => (
+        <IoWrapper key={index}>{renderNode}</IoWrapper>
+      ))}
+    </div>
+  );
+};
+export default React.memo(Index);
+```
+
+[codesandbox](https://codesandbox.io/s/pensive-sunset-p7ujb) demo
+
+> **封装的 InWrapper.jsx 存在的问题：**
+>
+> 1. 每个容器都会重新实例化一个`IntersectionObserver`对象，400 个容器就得实例化 400 个对象，这在一定程度上会造成性能问题。理想情况下`IntersectionObserver`只需要实例化一次，然后通过`IntersectionObserver.observe()`将需要监听的几百个元素添加进去，再在回调函数的`entries`参数里过滤相应的`target`来实现监听，不过实现起来就稍微复杂点了。
+> 2. 需要预先知道组件的长宽
+
+## 可用的轮子
+
+了解原理只是为了在遇到问题的时候知道是哪里出了问题。
+
+实际工作中当然还是用别人的轮子比较好。
+
+npm 上下载量较高的是：
+
+[react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer)
+
+看了下源码，这个库确实只实例化了一个`IntersectionObserver`对象，比我上面的实现方式性能更好。
