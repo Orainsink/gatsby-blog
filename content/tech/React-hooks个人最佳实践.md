@@ -119,6 +119,29 @@ const handleClick = useCallback(() => {
 
 `useCallback` 第二个参数必须写，[eslint-plugin-react-hooks](https://link.zhihu.com/?target=https%3A//www.npmjs.com/package/eslint-plugin-react-hooks) 插件会自动填写依赖项。
 
+## 初始化
+
+避免将过大的对象和函数直接传给组件，传之前用`useCallbakc`或`useMemo`处理。
+
+理由和常数函数部分一样，每次函数组件执行，这部分都会重新生成，如果传入的函数或者对象占用内存过大会带来性能问题：
+
+```jsx
+// 不好
+<Button
+  value={[/*9x9的数组*/]}
+  onClick={() => { /* 上百行的函数 */}}
+/>
+// 好
+const value = useMemo(()=>[/*9x9的数组*/], [])
+const handleFn = useCallback(() => { /* 上百行的函数 */}, [])
+<Button
+  value={value}
+  onClick={handleFn}
+/>
+```
+
+这一条只是建议。实际上对性能的影响很有限。
+
 ## useContext
 
 当组件上层最近的 `<MyContext.Provider>` 更新时，该 Hook 会触发重渲染，并使用最新传递给 `MyContext` provider 的 context `value` 值。即使祖先使用 `React.memo` ，也会在组件本身使用 `useContext` 时重新渲染。
