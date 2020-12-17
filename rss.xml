@@ -1,4 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 16 Dec 2020 15:31:41 GMT</lastBuildDate><item><title><![CDATA[TS-用enum杜绝魔数]]></title><description><![CDATA[什么是 enum enum 是 typescript 提供的枚举数据类型，是 js 中没有的概念，而 typescript 是 js 的超集，换言之如果你只把 typescript 当 js 用，那可能永远不会用到 enum 。大多前端都是从 js 过渡到 ts…]]></description><link>https://blog.foolishrobot.xyz/TS-用enum杜绝魔法数字</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/TS-用enum杜绝魔法数字</guid><pubDate>Wed, 16 Dec 2020 17:04:03 GMT</pubDate><content:encoded>&lt;h2 id=&quot;什么是-enum&quot;&gt;什么是 enum&lt;/h2&gt;&lt;p&gt;&lt;code&gt;enum&lt;/code&gt;是 typescript 提供的枚举数据类型，是 js 中没有的概念，而 typescript 是 js 的超集，换言之如果你只把 typescript 当 js 用，那可能永远不会用到&lt;code&gt;enum&lt;/code&gt;。大多前端都是从 js 过渡到 ts 的，导致&lt;code&gt;enum&lt;/code&gt;很少人使用，很多人也不推荐使用。&lt;/p&gt;&lt;h2 id=&quot;为什么要用-enum&quot;&gt;为什么要用 enum&lt;/h2&gt;&lt;p&gt;一段代码：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;interface Props {
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 17 Dec 2020 13:59:58 GMT</lastBuildDate><item><title><![CDATA[埋点,错误监控,用户数据统计]]></title><description><![CDATA[pv和uv可以指导产品的设计方向，浏览器数据可以方便前端做兼容处理。 数据统计和埋点对前端来说非常重要，虽然百度谷歌以及hotjar能提供一定程度上的统计，但是这完全支撑不了运营和产品的需求。 很多数据需要前端自行统计并储存在后端，有了数据，自然而然就有了UI…]]></description><link>https://blog.foolishrobot.xyz/埋点监控数据统计</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/埋点监控数据统计</guid><pubDate>Thu, 17 Dec 2020 15:24:36 GMT</pubDate><content:encoded>&lt;blockquote&gt;&lt;p&gt;pv和uv可以指导产品的设计方向，浏览器数据可以方便前端做兼容处理。&lt;/p&gt;&lt;p&gt;数据统计和埋点对前端来说非常重要，虽然百度谷歌以及hotjar能提供一定程度上的统计，但是这完全支撑不了运营和产品的需求。&lt;/p&gt;&lt;p&gt;很多数据需要前端自行统计并储存在后端，有了数据，自然而然就有了UI需求，这是可持续发展。&lt;/p&gt;&lt;/blockquote&gt;&lt;h2 id=&quot;浏览器基本信息&quot;&gt;浏览器基本信息&lt;/h2&gt;&lt;p&gt;具体统计哪些东西还是看具体的需求。这里列出几个对前端比较重要的浏览器基本信息。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// 当前页面路径
+window.location.href
+// 用户代理
+window.navigator.userAgent
+// 浏览器语言
+window.navigator.language
+// 用户网络基本情况[兼容性不好]
+window.navigator.connection
+// 文档显示区域宽高
+document.documentElement.clientWidth
+document.documentElement.clientHeight
+// 统计时间，浏览器本地时间
+new Date()
+// 设备像素比
+window.devicePixelRatio
+// referrer 返回链接
+document.referrer
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;浏览器的标识&quot;&gt;浏览器的标识&lt;/h2&gt;&lt;p&gt;为了甄别用户浏览器，还需要对用户浏览器进行标识。由于对精准度和安全性要求并没有那么高，且需要长久存在，所以使用&lt;code&gt;localstorage&lt;/code&gt;存下一个唯一key&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;/**
+ * generateUUID 生成UUID
+ * @returns {string} 返回字符串
+ */
+function generateUUID():string{
+    var d = new Date().getTime();
+    var uuid = &amp;#x27;xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx&amp;#x27;.replace(/[xy]/g, function(c) {
+        var r = (d + Math.random()*16)%16 | 0;
+        d = Math.floor(d/16);
+        return (c==&amp;#x27;x&amp;#x27; ? r : (r&amp;amp;0x7|0x8)).toString(16);
+    });
+    return uuid;
+}
+const getUid = (): string =&amp;gt; {
+  let uid = window.localStorage.getItem(&amp;#x27;FOOLISH_ROBOT_BLOG_UID&amp;#x27;);
+  if (!uid) {
+    uid = generateUUID();
+    window.localStorage.setItem(&amp;#x27;FOOLISH_ROBOT_BLOG_UID&amp;#x27;, uid);
+  }
+  return uid;
+};
+
+const uid = getUid(); // 用于上传的uid
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;性能指标&quot;&gt;性能指标&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Godiswill/blog/issues/19&quot;&gt;前端监控性能指标&lt;/a&gt;&lt;/p&gt;&lt;p&gt;performance api: &lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/API/Window/performance&quot;&gt;MDN&lt;/a&gt;&lt;/p&gt;&lt;h3 id=&quot;&quot;&gt;&lt;/h3&gt;&lt;h2 id=&quot;错误监听&quot;&gt;错误监听&lt;/h2&gt;&lt;p&gt;在window对象上绑定监听器&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// 监听被reject处理器处理了的错误
+window.addEventListener(&amp;#x27;error&amp;#x27;, e=&amp;gt;{}, true);
+// 监听被reject但没有reject处理器时的错误
+window.addEventListener(&amp;#x27;unhandledrejection&amp;#x27;, e=&amp;gt;{}, false);
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title><![CDATA[TS-用enum杜绝魔数]]></title><description><![CDATA[什么是 enum enum 是 typescript 提供的枚举数据类型，是 js 中没有的概念，而 typescript 是 js 的超集，换言之如果你只把 typescript 当 js 用，那可能永远不会用到 enum 。大多数前端都是从 js 过渡到 ts…]]></description><link>https://blog.foolishrobot.xyz/TS-用enum杜绝魔法数字</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/TS-用enum杜绝魔法数字</guid><pubDate>Wed, 16 Dec 2020 17:04:03 GMT</pubDate><content:encoded>&lt;h2 id=&quot;什么是-enum&quot;&gt;什么是 enum&lt;/h2&gt;&lt;p&gt;&lt;code&gt;enum&lt;/code&gt;是 typescript 提供的枚举数据类型，是 js 中没有的概念，而 typescript 是 js 的超集，换言之如果你只把 typescript 当 js 用，那可能永远不会用到&lt;code&gt;enum&lt;/code&gt;。大多数前端都是从 js 过渡到 ts 的，导致&lt;code&gt;enum&lt;/code&gt;很少人使用，很多人也不推荐使用。&lt;/p&gt;&lt;h2 id=&quot;为什么要用-enum&quot;&gt;为什么要用 enum&lt;/h2&gt;&lt;p&gt;一段代码：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;interface Props {
     status?: 1 | 2 | 3 | 4 | 5
 }
 const App = ({ status = 1 }: Props) =&amp;gt; {
@@ -8,7 +52,7 @@ const App = ({ status = 1 }: Props) =&amp;gt; {
     if(status === 4) return ...
     if(status === 5) return ...
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这是从业务代码里抽离出来，删除了很多干扰代码的魔法代码雏形，这段代码的恐怖程度随业务复杂度和程序员慵懒程度上升。&lt;/p&gt;&lt;p&gt;魔数就是，一堆数字常量，除了没人知道每个数字代表什么，但是这段代码居然能够跑起来。&lt;/p&gt;&lt;p&gt;在类型定义的地方，如果有暖心的备注还好。但是如果这个备注在不起眼的地方，或者备注在另一个文件，那维护的人看到这段代码的时候就很尴尬了。&lt;/p&gt;&lt;p&gt;上面这段代码使用&lt;code&gt;enum&lt;/code&gt;实现&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;enum StatusEnum {
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这是从业务代码里抽离出来的，删除了很多干扰代码的魔法代码雏形，这段代码的恐怖程度随业务复杂度和程序员慵懒程度上升。&lt;/p&gt;&lt;p&gt;魔数就是，一堆只有当时写这段代码的人知道其含义的数字常量，没人知道每个数字代表什么，但是这段代码居然能够跑起来。魔数越多的代码维护起来越困难。&lt;/p&gt;&lt;p&gt;在类型定义的地方，如果有暖心的备注还好。但是如果这个备注在不起眼的地方，或者备注在另一个文件，那维护的人看到这段代码的时候就很尴尬了。&lt;/p&gt;&lt;p&gt;上面这段代码使用&lt;code&gt;enum&lt;/code&gt;实现&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;enum StatusEnum {
     /** 分享 */
     share = 1,
     /** 导出 */
@@ -30,7 +74,15 @@ const App = ({ status = 1 }: Props) =&amp;gt; {
     if(status === StatusEnum.dislike) return ...
     if(status === StatusEnum.delete) return ...
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这么做的好处是我可以在阅读代码的的时候知道这个数字代表的什么。这在进行&lt;code&gt;switch&lt;/code&gt;和&lt;code&gt;if&lt;/code&gt;判断的时候非常有用。&lt;/p&gt;&lt;h2 id=&quot;enum-的问题&quot;&gt;enum 的问题&lt;/h2&gt;&lt;p&gt;使用&lt;code&gt;enum&lt;/code&gt;对我来说是一个仅供选择的选项，在大部分场景都用不到他，乱用反而会降低代码的阅读效率增加维护难度。&lt;/p&gt;&lt;p&gt;像官网上的字符串枚举类型的用法，就完全没有用的必要。&lt;/p&gt;&lt;p&gt;比如上面的场景，我们可以直接用字符串而不是数字，这样也可以避免日后完全没办法维护的问题。&lt;/p&gt;&lt;p&gt;例如：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;type StatusType = &amp;#x27;share&amp;#x27;| &amp;#x27;export&amp;#x27;| &amp;#x27;private&amp;#x27; | &amp;#x27;dislike&amp;#x27;| &amp;#x27;delete&amp;#x27;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这么做的好处是我可以在阅读代码的的时候知道这个数字代表的什么。这在进行&lt;code&gt;switch&lt;/code&gt;和&lt;code&gt;if&lt;/code&gt;判断的时候非常有用。&lt;/p&gt;&lt;p&gt;或者这样&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// 114514代表什么没人知道
+const val = 114514
+-------
+// 使用枚举常量
+enum Enum {
+  ghost = 114514
+}
+const val = Enum.ghost
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;enum-的问题&quot;&gt;enum 的问题&lt;/h2&gt;&lt;p&gt;使用&lt;code&gt;enum&lt;/code&gt;对我来说是一个仅供选择的选项，在大部分场景都用不到他，乱用反而会降低代码的阅读效率增加维护难度。&lt;/p&gt;&lt;p&gt;像官网上的字符串枚举类型的用法，就完全没有用的必要。&lt;/p&gt;&lt;p&gt;比如上面的场景，我们可以直接用字符串而不是数字，这样也可以避免日后完全没办法维护的问题。&lt;/p&gt;&lt;p&gt;例如：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;type StatusType = &amp;#x27;share&amp;#x27;| &amp;#x27;export&amp;#x27;| &amp;#x27;private&amp;#x27; | &amp;#x27;dislike&amp;#x27;| &amp;#x27;delete&amp;#x27;
 interface Props {
     status?: StatusType;
 }
