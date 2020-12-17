@@ -1,0 +1,87 @@
+---
+title: 埋点,错误监控,用户数据统计
+date: 2020-12-17 15:24:36
+description: 总结通过浏览器api获取用户浏览器数据，uv/pv及一些错误监控的方法
+tags: [性能,js]
+categories: tech
+---
+
+> pv和uv可以指导产品的设计方向，浏览器数据可以方便前端做兼容处理。
+>
+> 数据统计和埋点对前端来说非常重要，虽然百度谷歌以及hotjar能提供一定程度上的统计，但是这完全支撑不了运营和产品的需求。
+>
+> 很多数据需要前端自行统计并储存在后端，有了数据，自然而然就有了UI需求，这是可持续发展。
+
+## 浏览器基本信息
+
+具体统计哪些东西还是看具体的需求。这里列出几个对前端比较重要的浏览器基本信息。
+
+```typescript
+// 当前页面路径
+window.location.href
+// 用户代理
+window.navigator.userAgent
+// 浏览器语言
+window.navigator.language
+// 用户网络基本情况[兼容性不好]
+window.navigator.connection
+// 文档显示区域宽高
+document.documentElement.clientWidth
+document.documentElement.clientHeight
+// 统计时间，浏览器本地时间
+new Date()
+// 设备像素比
+window.devicePixelRatio
+// referrer 返回链接
+document.referrer
+```
+
+## 浏览器的标识
+
+为了甄别用户浏览器，还需要对用户浏览器进行标识。由于对精准度和安全性要求并没有那么高，且需要长久存在，所以使用`localstorage`存下一个唯一key
+
+```typescript
+/**
+ * generateUUID 生成UUID
+ * @returns {string} 返回字符串
+ */
+function generateUUID():string{
+    var d = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (d + Math.random()*16)%16 | 0;
+        d = Math.floor(d/16);
+        return (c=='x' ? r : (r&0x7|0x8)).toString(16);
+    });
+    return uuid;
+}
+const getUid = (): string => {
+  let uid = window.localStorage.getItem('FOOLISH_ROBOT_BLOG_UID');
+  if (!uid) {
+    uid = generateUUID();
+    window.localStorage.setItem('FOOLISH_ROBOT_BLOG_UID', uid);
+  }
+  return uid;
+};
+
+const uid = getUid(); // 用于上传的uid
+```
+
+## 性能指标
+
+[前端监控性能指标](https://github.com/Godiswill/blog/issues/19)
+
+performance api: [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/performance)
+
+### 
+
+## 错误监听
+
+在window对象上绑定监听器
+
+```typescript
+// 监听被reject处理器处理了的错误
+window.addEventListener('error', e=>{}, true);
+// 监听被reject但没有reject处理器时的错误
+window.addEventListener('unhandledrejection', e=>{}, false);
+```
+
