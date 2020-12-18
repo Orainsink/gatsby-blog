@@ -60,7 +60,7 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
             ? replacePath(node.fields.slug)
             : node.frontmatter.categories +
               '/' +
-              replacePath(hashString(node.id)),
+              replacePath(hashString(node.fields.slug)),
         component: componentTemplate[node.frontmatter.categories] || Template,
         context: { id: node.id, previous, next },
       });

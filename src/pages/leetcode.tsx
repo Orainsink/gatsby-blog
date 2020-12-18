@@ -167,7 +167,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
         size={columns ? 'middle' : 'large'}
         pagination={{ pageSize: 16 }}
         onRow={(row) => ({
-          onClick: () => navigate(generatePath(row.categories, row.id)),
+          onClick: () => navigate(generatePath(row.categories, row.slug)),
         })}
       ></Table>
     </Layout>

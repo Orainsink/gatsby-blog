@@ -19,7 +19,11 @@ export function yoyo() {
  * @param {Boolean} [round=false] Floor the value?
  * @return {Number} Random value
  */
-export function random(low, high, round = false) {
+export function random(
+  low: number,
+  high: number,
+  round: boolean = false
+): number {
   round = round || false;
 
   let randomValue = Math.random() * (high - low) + low;

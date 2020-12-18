@@ -57,7 +57,9 @@ const EssayPage = ({ data }: PageProps<Data>) => {
           {posts.map(({ node: { childMdx: item } }) => (
             <Card
               onClick={() =>
-                navigate(generatePath(item.frontmatter.categories, item.id))
+                navigate(
+                  generatePath(item.frontmatter.categories, item.fields.slug)
+                )
               }
               key={item.frontmatter.title}
               hoverable

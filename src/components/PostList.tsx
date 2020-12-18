@@ -76,7 +76,7 @@ const PostList = ({ posts, hideMore = false }: Props) => {
                   style={{ boxShadow: `none` }}
                   to={generatePath(
                     node.childMdx.frontmatter.categories,
-                    node.childMdx.id
+                    node.childMdx.fields.slug
                   )}
                 >
                   {title}

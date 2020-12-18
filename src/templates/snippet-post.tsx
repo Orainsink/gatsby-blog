@@ -110,7 +110,10 @@ const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
           <li style={{ textAlign: 'left' }}>
             {previous && (
               <Link
-                to={generatePath(previous.frontmatter.categories, previous.id)}
+                to={generatePath(
+                  previous.frontmatter.categories,
+                  previous.fields.slug
+                )}
                 rel="prev"
               >
                 ← {previous.frontmatter.title}
@@ -120,7 +123,7 @@ const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
           <li style={{ textAlign: 'right' }}>
             {next && (
               <Link
-                to={generatePath(next.frontmatter.categories, next.id)}
+                to={generatePath(next.frontmatter.categories, next.fields.slug)}
                 rel="next"
               >
                 {next.frontmatter.title} →
@@ -151,6 +154,9 @@ export const pageQuery = graphql`
         description
         tags
         categories
+      }
+      fields {
+        slug
       }
       body
       excerpt

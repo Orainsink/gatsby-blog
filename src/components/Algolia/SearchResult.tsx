@@ -45,10 +45,17 @@ const HitCount = connectStateResults(({ searchResults }) => {
     </div>
   );
 });
-
-const PageHit = ({ hit }) => (
+interface HitProp {
+  hit: {
+    categories: string;
+    slug: string;
+    objectId: string;
+    [key: string]: any;
+  };
+}
+const PageHit = ({ hit }: HitProp) => (
   <div>
-    <Link to={generatePath(hit.categories, hit.objectID)}>
+    <Link to={generatePath(hit.categories, hit.slug)}>
       <h4>
         <Highlight attribute="title" hit={hit} tagName="mark" />
       </h4>
