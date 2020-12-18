@@ -64,6 +64,7 @@ const Text = (props: Props) => {
     });
     let texture = new Texture(canvas);
     texture.needsUpdate = true;
+
     setMap(texture);
   }, [words]);
 

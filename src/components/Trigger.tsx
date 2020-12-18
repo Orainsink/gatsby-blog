@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styles from '../styles/Trigger.module.less';
 import { useDispatch } from 'react-redux';
 
@@ -8,18 +8,19 @@ import { useDispatch } from 'react-redux';
 const Trigger = () => {
   const dispatch = useDispatch();
 
+  const setTrigger = useCallback(
+    (boo: boolean) => dispatch({ type: 'TRIGGER', payload: boo }),
+    [dispatch]
+  );
+
   return (
     <div
       className={styles.trigger}
-      onMouseEnter={() => {
-        dispatch({ type: 'TRIGGER', payload: true });
-      }}
-      onMouseLeave={() => {
-        dispatch({ type: 'TRIGGER', payload: false });
-      }}
+      onMouseEnter={() => setTrigger(true)}
+      onMouseLeave={() => setTrigger(false)}
       onClick={() => {
         dispatch({ type: 'SCENE', payload: false });
-        dispatch({ type: 'TRIGGER', payload: false });
+        setTrigger(false);
       }}
     />
   );

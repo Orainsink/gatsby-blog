@@ -7,9 +7,8 @@ interface Props {
 /**
  * img with noReferer
  */
-const ImgBlock = (props: Props) => {
-  // eslint-disable-next-line
-  return <img {...props} referrerPolicy="no-referrer" />;
-};
+const ImgBlock = ({ src, alt, ...rest }: Props) => (
+  <img src={src} alt={alt || ''} referrerPolicy="no-referrer" {...rest} />
+);
 
 export default React.memo(ImgBlock);

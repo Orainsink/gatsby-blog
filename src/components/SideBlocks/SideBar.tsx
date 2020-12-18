@@ -3,7 +3,7 @@ import { Col, Row } from 'antd';
 import useHasMounted from '../../hooks/useHasMounted';
 
 interface Props {
-  children: any;
+  children: React.ReactNode;
 }
 /**侧边栏 */
 const SideBar = (props: Props) => {

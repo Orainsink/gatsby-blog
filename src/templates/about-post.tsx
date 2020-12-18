@@ -5,7 +5,7 @@ import SEO from '../components/seo';
 import styles from '../styles/Blog.module.less';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Poem from '../components/Poem';
-import Comment from '../components/SideBlocks/Comment';
+import { Comment } from '../components/SideBlocks';
 
 interface Data {
   mdx: {

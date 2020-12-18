@@ -2,10 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { Col, Row } from 'antd';
-import Info from '../components/SideBlocks/Info';
 import Footer from '../components/Footer';
-import SideBar from '../components/SideBlocks/SideBar';
-import TagsBlock from '../components/SideBlocks/TagsBlock';
+import SideBar, { TagsBlock, Info } from '../components/SideBlocks';
 import styles from '../styles/Indexlayout.module.less';
 import useBackgroundColor from '../hooks/useBackgroundColor';
 import loadable from '@loadable/component';
@@ -13,7 +11,7 @@ const Tools = loadable(() => import('../components/SideBlocks/Tools'));
 const MyGitalk = loadable(() => import('../components/MyGitalk'));
 
 interface Props {
-  children?: any;
+  children?: React.ReactNode;
 }
 
 /**index Layout */

@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Col, Row } from 'antd';
-import Info from '../components/SideBlocks/Info';
-import SideBar from '../components/SideBlocks/SideBar';
+import SideBar, { Info } from '../components/SideBlocks';
 import Footer from '../components/Footer';
 import styles from '../styles/Bloglayout.module.less';
 import isClient from '../utils/isClient';
 import useBackgroundColor from '../hooks/useBackgroundColor';
 
 interface Props {
-  content?: any;
+  content?: React.ReactNode;
   sideBlocks?: React.ReactNode;
-  children?: any;
+  children?: React.ReactNode;
 }
 
 /** blog posts Layout */

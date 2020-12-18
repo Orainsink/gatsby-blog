@@ -6,7 +6,7 @@ import { ReactComponent as LoadingSvg } from '../assets/img/loading.svg';
  */
 interface Props {
   debounce?: number;
-  children?: any;
+  children?: React.ReactNode;
 }
 const Loading = (props: Props) => {
   const { debounce = 500, children } = props;

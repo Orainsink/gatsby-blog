@@ -9,7 +9,7 @@ import styles from '../styles/Header.module.less';
 import { useLocation } from '@reach/router';
 
 /**
- * menu drawer for phone
+ * menu drawer for mobile phone
  **/
 const MenuDrawer = () => {
   const [visible, setVisible] = useState(false);

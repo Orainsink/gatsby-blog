@@ -4,6 +4,7 @@ import React, {
   useRef,
   useCallback,
   useState,
+  useMemo,
 } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -193,15 +194,16 @@ const Dynamic = () => {
   `);
   const url = data?.file.publicURL;
 
+  const curStyle = useMemo(
+    () =>
+      !scene ? styles.disActive : trigger ? styles.trigger : styles.active,
+    [scene, trigger]
+  );
+
   return (
     <>
       <ReactScrollWheelHandler downHandler={_handleScene}>
-        <div
-          className={classnames(
-            styles.wrapper,
-            !scene ? styles.disActive : trigger ? styles.trigger : styles.active
-          )}
-        >
+        <div className={classnames(styles.wrapper, curStyle)}>
           <Canvas>
             <Suspense fallback={null}>
               <Modal isScene={scene} onCloseScene={_handleScene} url={url} />

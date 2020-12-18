@@ -19,15 +19,13 @@ interface Data {
   dialogImg: any;
   snippetImg: any;
 }
-
+const cates = [
+  { category: 'leetcode', name: 'leetcode', path: '/leetcode' },
+  { category: 'snippet', name: 'snippet', path: '/snippet' },
+  { category: 'essay', name: '随笔', path: '/essay' },
+  { category: 'tech', name: '技术', path: '/archives' },
+];
 const CategoryComponent = () => {
-  const cates = [
-    { category: 'leetcode', name: 'leetcode', path: '/leetcode' },
-    { category: 'snippet', name: 'snippet', path: '/snippet' },
-    { category: 'essay', name: '随笔', path: '/essay' },
-    { category: 'tech', name: '技术', path: '/archives' },
-  ];
-
   const data: Data = useStaticQuery(graphql`
     query TagsQuery {
       allFile {

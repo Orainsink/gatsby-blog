@@ -7,10 +7,10 @@ import styles from '../styles/Blog.module.less';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Anchor } from 'antd';
-import CodeBlock from '../components/MDXComponents/CodeBlock';
+import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
 import useMedia from '../hooks/useMedia';
 import generatePath from '../utils/generatePath';
-import Contents from '../components/SideBlocks/Contents';
+import { Contents } from '../components/SideBlocks';
 import MyGitalk from '../components/MyGitalk';
 import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
 interface Props {
@@ -93,7 +93,9 @@ const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
           </div>
         )}
         <section className={styles.container}>
-          <MDXProvider components={{ code: CodeBlock }}>
+          <MDXProvider
+            components={{ code: CodeBlock, img: ImgBlock, a: AnchorBlock }}
+          >
             <MDXRenderer>{mdx.body}</MDXRenderer>
           </MDXProvider>
         </section>

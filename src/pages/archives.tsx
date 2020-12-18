@@ -8,7 +8,7 @@ import loadable from '@loadable/component';
 import { ReloadOutlined } from '@ant-design/icons';
 import styles from '../styles/archives.module.less';
 import PostList from '../components/PostList';
-import Calendar from '../components/SideBlocks/Calendar';
+import { Calendar } from '../components/SideBlocks';
 const WordCloud = loadable(() => import('../components/WordCloud'));
 
 interface Data {

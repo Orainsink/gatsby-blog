@@ -4,7 +4,7 @@ import theme from '../../assets/theme/customPrism';
 import { Button } from 'antd';
 import { CopyOutlined, SmileOutlined } from '@ant-design/icons';
 interface Props {
-  children: any;
+  children: string;
   className?: string;
 }
 /**
