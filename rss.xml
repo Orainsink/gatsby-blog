@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 18 Dec 2020 10:13:46 GMT</lastBuildDate><item><title><![CDATA[埋点,错误监控,用户数据统计]]></title><description><![CDATA[pv 和 uv 可以指导产品的设计方向，浏览器数据可以方便前端做兼容处理。 数据统计和埋点对前端来说非常重要，虽然百度谷歌以及 hotjar 能提供一定程度上的统计，但是这完全支撑不了运营和产品的需求。 很多数据需要前端自行统计并储存在后端，有了数据，自然而然就有了 UI…]]></description><link>https://blog.foolishrobot.xyz/埋点监控数据统计</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/埋点监控数据统计</guid><pubDate>Thu, 17 Dec 2020 15:24:36 GMT</pubDate><content:encoded>&lt;blockquote&gt;&lt;p&gt;pv 和 uv 可以指导产品的设计方向，浏览器数据可以方便前端做兼容处理。&lt;/p&gt;&lt;p&gt;数据统计和埋点对前端来说非常重要，虽然百度谷歌以及 hotjar 能提供一定程度上的统计，但是这完全支撑不了运营和产品的需求。&lt;/p&gt;&lt;p&gt;很多数据需要前端自行统计并储存在后端，有了数据，自然而然就有了 UI 需求，这是可持续发展。&lt;/p&gt;&lt;/blockquote&gt;&lt;h2 id=&quot;浏览器基本信息&quot;&gt;浏览器基本信息&lt;/h2&gt;&lt;p&gt;具体统计哪些东西还是看具体的需求。这里列出几个对前端比较重要的浏览器基本信息。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// 当前页面路径
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 21 Dec 2020 13:29:48 GMT</lastBuildDate><item><title><![CDATA[埋点,错误监控和用户数据统计]]></title><description><![CDATA[pv 和 uv 可以指导产品的设计方向，浏览器数据可以方便前端做兼容处理。 数据统计和埋点对前端来说非常重要，虽然百度谷歌以及 hotjar 能提供一定程度上的统计，但是这完全支撑不了运营和产品的需求。 很多数据需要前端自行统计并储存在后端，有了数据，自然而然就有了 UI…]]></description><link>https://blog.foolishrobot.xyz/埋点监控数据统计</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/埋点监控数据统计</guid><pubDate>Thu, 17 Dec 2020 15:24:36 GMT</pubDate><content:encoded>&lt;blockquote&gt;&lt;p&gt;pv 和 uv 可以指导产品的设计方向，浏览器数据可以方便前端做兼容处理。&lt;/p&gt;&lt;p&gt;数据统计和埋点对前端来说非常重要，虽然百度谷歌以及 hotjar 能提供一定程度上的统计，但是这完全支撑不了运营和产品的需求。&lt;/p&gt;&lt;p&gt;很多数据需要前端自行统计并储存在后端，有了数据，自然而然就有了 UI 需求，这是可持续发展😓。&lt;/p&gt;&lt;/blockquote&gt;&lt;h2 id=&quot;浏览器信息&quot;&gt;浏览器信息&lt;/h2&gt;&lt;h3 id=&quot;基本信息&quot;&gt;基本信息&lt;/h3&gt;&lt;p&gt;监听用户浏览器的基本信息主要是为了前端有针对性地做 UI 兼容及 bug 复现。&lt;/p&gt;&lt;p&gt;列出几个对前端比较重要的浏览器基本信息。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// 当前页面路径
 window.location.href;
 // 用户代理
 window.navigator.userAgent;
@@ -15,7 +15,7 @@ new Date();
 window.devicePixelRatio;
 // referrer 返回链接
 document.referrer;
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;浏览器的标识&quot;&gt;浏览器的标识&lt;/h2&gt;&lt;p&gt;为了甄别用户浏览器，还需要对用户浏览器进行标识。由于对精准度和安全性要求并没有那么高，且需要长久存在，所以使用&lt;code&gt;localstorage&lt;/code&gt;存下一个唯一 key&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;/**
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;浏览器的标识&quot;&gt;浏览器的标识&lt;/h3&gt;&lt;p&gt;为了甄别用户浏览器，还需要对用户浏览器进行标识。由于对精准度和安全性要求并没有那么高，且需要长久存在，所以使用&lt;code&gt;localstorage&lt;/code&gt;存下一个唯一 key&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;/**
  * generateUUID 生成UUID
  * @returns {string} 返回字符串
  */
@@ -40,11 +40,168 @@ const getUid = (): string =&amp;gt; {
 };
 
 const uid = getUid(); // 用于上传的uid
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;性能指标&quot;&gt;性能指标&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Godiswill/blog/issues/19&quot;&gt;前端监控性能指标&lt;/a&gt;&lt;/p&gt;&lt;p&gt;performance api: &lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/API/Window/performance&quot;&gt;MDN&lt;/a&gt;&lt;/p&gt;&lt;h2 id=&quot;错误监听&quot;&gt;错误监听&lt;/h2&gt;&lt;p&gt;在 window 对象上绑定监听器&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// 监听被reject处理器处理了的错误
-window.addEventListener(&amp;#x27;error&amp;#x27;, (e) =&amp;gt; {}, true);
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;性能指标&quot;&gt;性能指标&lt;/h2&gt;&lt;p&gt;performance api: &lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/API/Window/performance&quot;&gt;MDN&lt;/a&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// 针对html文档
+window.performance.getEntriesByType(&amp;#x27;navigation&amp;#x27;) as PerformanceNavigationTiming[]
+// 针对其他资源
+window.performance.getEntriesByType(&amp;#x27;resource&amp;#x27;) as PerformanceResourceTiming[]
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;资源基本信息&quot;&gt;资源基本信息&lt;/h3&gt;&lt;p&gt;获取网页加载过程中请求的所有网络资源的信息，在开发的时候我们已经可以知道css和js的大小了, 最值得我们监控的就是网络图片和业务接口, 所以要通过&lt;code&gt;initiatorType&lt;/code&gt;字段过滤一次。&lt;/p&gt;&lt;p&gt;按照自己的实际需求选择合适的过滤：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;const res: PerformanceResourceTiming[] = window.performance.getEntriesByType(&amp;#x27;resource&amp;#x27;)
+const filterConfig = [/* &amp;#x27;img&amp;#x27;,&amp;#x27;xmlhttprequest&amp;#x27;,&amp;#x27;fetch&amp;#x27;, */,&amp;#x27;script&amp;#x27;, &amp;#x27;css&amp;#x27; ]
+// 过滤
+const currentRes = res.filter(item =&amp;gt; !filterConfig.includes(item.initiatorType))
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们可以选择性地上报体积过大的图片或者加载耗时过长的资源。&lt;/p&gt;&lt;p&gt;比较重要的资源信息：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;const performanceData = currentRes.map(item =&amp;gt; ({
+  // 资源名称
+    name: typeof item.name === &amp;#x27;string&amp;#x27; ? item.name : item.name.split(&amp;#x27;?&amp;#x27;)[0],
+  // 资源类型
+  initiatorType: item.initiatorType,
+  // 耗时
+  duration: item.duration,
+  // 获取资源的网络协议
+  nextHopProtocol: item.nextHopProtocol,
+  // 解码后资源大小
+  decodedBodySize: item.decodedBodySize,
+  // 编码后资源大小
+  encodedBodySize: item.encodedBodySize,
+}))
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;网页性能指标&quot;&gt;网页性能指标&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Godiswill/blog/issues/19&quot;&gt;前端监控性能指标&lt;/a&gt;&lt;/p&gt;&lt;p&gt;可以参考上文，获取一些文档的关键性能指标。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;const timing: PerformanceNavigationTiming = window.performance.getEntriesByType(
+        &amp;#x27;navigation&amp;#x27;
+      )[0];
+
+const performanceData = {
+    // dns查询时间
+    dns: timing.domainLookupEnd - timing.domainLookupStart,
+    // tcp连接耗时
+    tcp: timing.connectEnd - timing.connectStart,
+    // 读取页面第一个字节的时间
+    ttfb: timing.responseStart - timing.fetchStart,
+    // 白屏时间
+    bt: timing.domInteractive - timing.fetchStart,
+    // 解析dom树耗时
+    dt: timing.domComplete - timing.domInteractive,
+    // dom完成时间
+    drt: timing.domContentLoadedEventEnd - timing.fetchStart,
+    // request请求耗时
+    rt: timing.responseEnd - timing.responseStart,
+    lt: timing.loadEventEnd - timing.fetchStart,
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;内存&quot;&gt;内存&lt;/h3&gt;&lt;p&gt;&lt;code&gt;perfomance&lt;/code&gt;的&lt;code&gt;memory&lt;/code&gt;属性不支持firefox，IE和safari&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;const {
+    // 上下文内可用堆的最大体积，以字节计算。
+    jsHeapSizeLimit,
+  // 已分配的堆体积，以字节计算。
+    totalJSHeapSize,
+  // 当前 JS 堆活跃段（segment）的体积，以字节计算。
+    usedJSHeapSize
+} = window.performance.memory
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;错误监控&quot;&gt;错误监控&lt;/h2&gt;&lt;p&gt;在 window 对象上绑定监听器&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// 监听被reject处理器处理了的错误
+window.addEventListener(&amp;#x27;error&amp;#x27;, handleError, true);
 // 监听被reject但没有reject处理器时的错误
-window.addEventListener(&amp;#x27;unhandledrejection&amp;#x27;, (e) =&amp;gt; {}, false);
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title><![CDATA[TS-用enum杜绝魔数]]></title><description><![CDATA[什么是 enum enum 是 typescript 提供的枚举数据类型，是 js 中没有的概念，而 typescript 是 js 的超集，换言之如果你只把 typescript 当 js 用，那可能永远不会用到 enum 。大多数前端都是从 js 过渡到 ts…]]></description><link>https://blog.foolishrobot.xyz/TS-用enum杜绝魔法数字</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/TS-用enum杜绝魔法数字</guid><pubDate>Wed, 16 Dec 2020 17:04:03 GMT</pubDate><content:encoded>&lt;h2 id=&quot;什么是-enum&quot;&gt;什么是 enum&lt;/h2&gt;&lt;p&gt;&lt;code&gt;enum&lt;/code&gt;是 typescript 提供的枚举数据类型，是 js 中没有的概念，而 typescript 是 js 的超集，换言之如果你只把 typescript 当 js 用，那可能永远不会用到&lt;code&gt;enum&lt;/code&gt;。大多数前端都是从 js 过渡到 ts 的，导致&lt;code&gt;enum&lt;/code&gt;很少人使用，很多人也不推荐使用。&lt;/p&gt;&lt;h2 id=&quot;为什么要用-enum&quot;&gt;为什么要用 enum&lt;/h2&gt;&lt;p&gt;一段代码：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;interface Props {
+window.addEventListener(&amp;#x27;unhandledrejection&amp;#x27;, handlePromiseError, false);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;error的回调：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// 处理被reject处理器处理了的错误
+const handleError = (e: any) =&amp;gt; {
+  const error = {
+    type: &amp;#x27;error&amp;#x27;,
+    st: &amp;#x27;js/resource&amp;#x27;
+    filename: e.filename,
+    // file: e.target.src  
+    // lineno: e.lineno,
+    // colno: e.colno,
+    msg: e.message,
+    stack: e.error?.stack?.substring(0, 1e3),
+  }
+    // 可以储存在浏览器，在页面卸载的时候上报，也可以选择实时上报，参考上报一节
+  console.log(error)
+};
+
+// 处理被reject但没有reject处理器时的错误
+const handlePromiseError = (e: any) =&amp;gt; {
+  const error = {
+    type: &amp;#x27;error&amp;#x27;,
+    st: &amp;#x27;promise&amp;#x27;,
+    msg: e.reason,
+    stack: &amp;#x27;&amp;#x27;,
+    file: &amp;#x27;&amp;#x27;,
+  }
+  console.log(error)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;用户行为记录&quot;&gt;用户行为记录&lt;/h2&gt;&lt;h3 id=&quot;pv&quot;&gt;pv&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;pv.js&lt;/strong&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;interface PvItem {
+  // 上一个path
+    prevPath: string,
+  // 当前path
+  curPath: string,
+  // 停留时间
+  time: number,
+    // 是否是第一次进入页面
+  first： boolean，
+}
+// 是否是第一次进入页面
+let isFirst = true;
+// 上一个页面
+let prevPath = document.referrer ?? &amp;#x27;&amp;#x27;;
+let prevTime = Date.now();
+
+/* 通过闭包暴露出去的pv数组 */
+let data: PvItem[] = [];
+
+/* 添加pv数据的函数 */
+const setPage = (): PvItem[] =&amp;gt; {
+  // 浏览器本地时间
+  const curTime = Date.now();
+  // 当前页面地址
+  const curPath = window.location.href;
+  
+  data.push({
+      prevPath,
+      curPath,
+      time: isFirst ? -1 : curTime - prevTime,
+        first： isFirst
+    });
+  
+  isFirst = false;
+  prev_time = curTime;
+  prev_pathname = curPageUrl;
+
+  return data;
+};
+
+const pv = {
+  data,
+  setPage,
+};
+export defalut pv;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;记录pv&quot;&gt;记录pv&lt;/h3&gt;&lt;p&gt;web应用的路由模式不同，选择记录pv的时间点也不。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;hash mode：&lt;/strong&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;import pv from &amp;#x27;./pv&amp;#x27;;
+
+const listener = () =&amp;gt; {
+    pv.setPage();
+  };
+
+window.addEventListener(&amp;#x27;hashchange&amp;#x27;, listener, false)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;history mode：&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;MDN &lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/API/Window/popstate_event&quot;&gt;popstate&lt;/a&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;调用&lt;code&gt;history.pushState()&lt;/code&gt;或&lt;code&gt;history.replaceState()&lt;/code&gt;不会触发&lt;code&gt;popstate&lt;/code&gt;事件。只有在做出浏览器动作时，才会触发该事件，如用户点击浏览器的回退按钮（或者在Javascript代码中调用&lt;code&gt;history.back()&lt;/code&gt;或者&lt;code&gt;history.forward()&lt;/code&gt;方法）&lt;/p&gt;&lt;/blockquote&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;import pv from &amp;#x27;./pv&amp;#x27;;
+
+const win = document.defaultView;
+
+const handlePop = () =&amp;gt; {
+  pv.setPage();
+};
+win.addEventListener(&amp;#x27;popstate&amp;#x27;, handlePop, false);
+
+/**
+ * 为了统计不出遗漏，把pv统计添加进history对象的这两个方法中
+ * hack history各个方法
+ */
+const __history__ = win.history;
+const __pushState__ = __history__.pushState;
+const __replaceState__ = __history__.replaceState;
+
+win.history.pushState = (...args) =&amp;gt; {
+  __pushState__.apply(__history__, args);
+  pv.setPage();
+};
+
+win.history.replaceState = (...args) =&amp;gt; {
+  __replaceState__.apply(__history__, args);
+  pv.setPage();
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;埋点&quot;&gt;埋点&lt;/h3&gt;&lt;p&gt;。。。爱咋埋咋埋，记得上传就是了&lt;/p&gt;&lt;h2 id=&quot;上报&quot;&gt;上报&lt;/h2&gt;&lt;h3 id=&quot;实时上报&quot;&gt;实时上报&lt;/h3&gt;&lt;p&gt;适用于特定的需求，直接通过post请求上报数据。&lt;/p&gt;&lt;p&gt;上报的时间可以选择监听到错误，或者切换路由的时候。&lt;/p&gt;&lt;p&gt;不多赘述。&lt;/p&gt;&lt;h3 id=&quot;关闭刷新页面时上报&quot;&gt;关闭/刷新页面时上报&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Navigator.sendBeacon()&lt;/code&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/sendBeacon&quot;&gt;MDN&lt;/a&gt;&lt;/p&gt;&lt;p&gt;通过试用&lt;code&gt;sendBeacon()&lt;/code&gt;，我们可以让浏览器在页面卸载时发送可靠的请求。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;window.navigator.sendBeacon(&amp;#x27;请求地址&amp;#x27;, data)
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;定时上报&quot;&gt;定时上报&lt;/h3&gt;&lt;p&gt;可以把上报的逻辑放到web worker中，在web worker 中设一个定时器，每隔一段时间上报一次。&lt;/p&gt;&lt;p&gt;详细代码略了。没遇到这种奇葩需求。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[TS-用enum杜绝魔数]]></title><description><![CDATA[什么是 enum enum 是 typescript 提供的枚举数据类型，是 js 中没有的概念，而 typescript 是 js 的超集，换言之如果你只把 typescript 当 js 用，那可能永远不会用到 enum 。大多数前端都是从 js 过渡到 ts…]]></description><link>https://blog.foolishrobot.xyz/TS-用enum杜绝魔法数字</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/TS-用enum杜绝魔法数字</guid><pubDate>Wed, 16 Dec 2020 17:04:03 GMT</pubDate><content:encoded>&lt;h2 id=&quot;什么是-enum&quot;&gt;什么是 enum&lt;/h2&gt;&lt;p&gt;&lt;code&gt;enum&lt;/code&gt;是 typescript 提供的枚举数据类型，是 js 中没有的概念，而 typescript 是 js 的超集，换言之如果你只把 typescript 当 js 用，那可能永远不会用到&lt;code&gt;enum&lt;/code&gt;。大多数前端都是从 js 过渡到 ts 的，导致&lt;code&gt;enum&lt;/code&gt;很少人使用，很多人也不推荐使用。&lt;/p&gt;&lt;h2 id=&quot;为什么要用-enum&quot;&gt;为什么要用 enum&lt;/h2&gt;&lt;p&gt;一段代码：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;interface Props {
     status?: 1 | 2 | 3 | 4 | 5
 }
 const App = ({ status = 1 }: Props) =&amp;gt; {
