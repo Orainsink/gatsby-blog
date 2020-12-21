@@ -5,7 +5,7 @@ import SideBar, { Info } from '../components/SideBlocks';
 import Footer from '../components/Footer';
 import styles from '../styles/Bloglayout.module.less';
 import isClient from '../utils/isClient';
-import useBackgroundColor from '../hooks/useBackgroundColor';
+import { useBackgroundColor } from '../hooks';
 
 interface Props {
   content?: React.ReactNode;

@@ -5,7 +5,7 @@ import { Col, Row } from 'antd';
 import Footer from '../components/Footer';
 import SideBar, { TagsBlock, Info } from '../components/SideBlocks';
 import styles from '../styles/Indexlayout.module.less';
-import useBackgroundColor from '../hooks/useBackgroundColor';
+import { useBackgroundColor } from '../hooks';
 import loadable from '@loadable/component';
 const Tools = loadable(() => import('../components/SideBlocks/Tools'));
 const MyGitalk = loadable(() => import('../components/MyGitalk'));

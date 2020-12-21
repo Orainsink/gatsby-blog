@@ -7,7 +7,7 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
-import useCustomTitle from '../hooks/useCustomTitle';
+import { useCustomTitle } from '../hooks';
 
 interface Props {
   description?: string;

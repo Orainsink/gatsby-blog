@@ -6,7 +6,7 @@ import SEO from '../components/seo';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReloadOutlined } from '@ant-design/icons';
 import styles from '../styles/archives.module.less';
-import useResetKey from '../hooks/useResetKey';
+import { useResetKey } from '../hooks';
 import Image from 'gatsby-image';
 import generatePath from '../utils/generatePath';
 

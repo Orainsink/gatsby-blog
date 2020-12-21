@@ -4,7 +4,7 @@ import { Button, Drawer } from 'antd';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import { UnorderedListOutlined } from '@ant-design/icons';
 import Image from 'gatsby-image';
-import useDrawerCloseEffect from '../hooks/useDrawerCloseEffect';
+import { useDrawerCloseEffect } from '../hooks';
 import styles from '../styles/Header.module.less';
 import { useLocation } from '@reach/router';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col } from 'antd';
 import classnames from 'classnames';
-import useMedia from '../../hooks/useMedia';
+import { useMedia } from '../../hooks';
 import styles from '../../styles/SideBar.module.less';
 import WordCloud from '../WordCloud';
 

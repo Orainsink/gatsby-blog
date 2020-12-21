@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import Header from '../components/Header';
 import Bg from '../components/Bg';
 import BackTop from '../components/BackTop';
-import useHasMounted from '../hooks/useHasMounted';
+import { useHasMounted, useBackTop } from '../hooks';
 
 /**global PageElement */
 const GlobalLayout = ({ children }) => {
@@ -15,6 +15,7 @@ const GlobalLayout = ({ children }) => {
     body.style.overflowY = scene ? 'hidden' : 'auto';
   }, [scene]);
   const hasMounted = useHasMounted();
+  useBackTop();
 
   return (
     <>

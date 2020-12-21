@@ -6,7 +6,7 @@ import SearchResult from './SearchResult';
 import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import styles from '../../styles/Algolia.module.less';
-import useMaxHeight from '../../hooks/useMaxHeight';
+import { useMaxHeight } from '../../hooks';
 import { useSelector } from 'react-redux';
 
 const Search = () => {

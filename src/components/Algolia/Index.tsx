@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { Drawer } from 'antd';
 import AlgoliaSearch from './Search';
-import useMedia from '../../hooks/useMedia';
-import useDrawerCloseEffect from '../../hooks/useDrawerCloseEffect';
+import { useMedia, useDrawerCloseEffect } from '../../hooks';
 import { useLocation } from '@reach/router';
 
 interface Props {

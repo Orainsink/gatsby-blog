@@ -8,7 +8,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Anchor } from 'antd';
 import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
-import useMedia from '../hooks/useMedia';
+import { useMedia } from '../hooks';
 import generatePath from '../utils/generatePath';
 import { Contents } from '../components/SideBlocks';
 import MyGitalk from '../components/MyGitalk';

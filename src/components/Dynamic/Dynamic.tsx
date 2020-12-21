@@ -26,7 +26,7 @@ import { arr, random } from '../../utils/utils';
 import { useStaticQuery, graphql } from 'gatsby';
 import Text from './TextComponent';
 import Moon from './Moon';
-import useBackgroundColor from '../../hooks/useBackgroundColor';
+import { useBackgroundColor } from '../../hooks';
 
 let cameraShakeY = 0;
 let mouseX = 0;

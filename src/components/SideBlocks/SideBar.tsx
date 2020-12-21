@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Row } from 'antd';
-import useHasMounted from '../../hooks/useHasMounted';
+import { useHasMounted } from '../../hooks';
 
 interface Props {
   children: React.ReactNode;

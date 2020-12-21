@@ -8,7 +8,7 @@ import CateSnippet from '../components/Cards';
 import Trigger from '../components/Trigger';
 import Poem from '../components/Poem';
 import PostList from '../components/PostList';
-import useHasMounted from '../hooks/useHasMounted';
+import { useHasMounted } from '../hooks';
 import Loading from '../components/Loading';
 const Dynamic = loadable(() => import('../components/Dynamic'), {
   fallback: <Loading debounce={0} />,

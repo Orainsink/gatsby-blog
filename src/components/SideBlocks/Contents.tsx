@@ -1,10 +1,9 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useCallback } from 'react';
 import { Anchor, Col } from 'antd';
 import classnames from 'classnames';
-import useScrollY from '../../hooks/useScrollY';
+import { useScrollY } from '../../hooks';
 import styles from '../../styles/SideBar.module.less';
 import isClient from '../../utils/isClient';
-import { Link } from 'gatsby';
 
 interface Props {
   content: any;
@@ -25,6 +24,10 @@ const Contents = (props: Props) => {
     );
   }, [scrollY]);
 
+  const _handleClick = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+  }, []);
+
   /**
    * Recursion Links
    */
@@ -33,19 +36,9 @@ const Contents = (props: Props) => {
 
     function renderLink(items) {
       return items.map((item) => (
-        <Link
-          to={item.url}
-          onClickCapture={(e) => {
-            // https://stackoverflow.com/questions/56051736/gatsby-clicking-in-route-anchor-element-leads-to-re-render
-            // antd Link will lead to unexpected rerender
-            // use gatsby Link, then catch click event can help
-            e.stopPropagation();
-          }}
-        >
-          <Anchor.Link href={item.url} title={item.title} key={item.url}>
-            {item.items ? renderLink(item.items) : null}
-          </Anchor.Link>
-        </Link>
+        <Anchor.Link href={item.url} title={item.title} key={item.url}>
+          {item.items ? renderLink(item.items) : null}
+        </Anchor.Link>
       ));
     }
     return renderLink(content.items);
@@ -66,6 +59,7 @@ const Contents = (props: Props) => {
         <Anchor
           getContainer={() => document.body as HTMLElement}
           targetOffset={200}
+          onClick={_handleClick}
         >
           {renderLinks}
         </Anchor>

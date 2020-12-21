@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connectSearchBox } from 'react-instantsearch-dom';
 import { Input } from 'antd';
-import useDebounce from '../../hooks/useDebounce';
+import { useDebounce } from '../../hooks';
 const { Search } = Input;
 
 export default connectSearchBox(({ refine, currentRefinement, onFocus }) => {

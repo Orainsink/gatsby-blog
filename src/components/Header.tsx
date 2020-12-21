@@ -10,8 +10,7 @@ import {
 } from '@ant-design/icons';
 import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import useMedia from '../hooks/useMedia';
-import useMagicColor from '../hooks/useMagicColor';
+import { useMedia, useMagicColor } from '../hooks';
 import loadable from '@loadable/component';
 import styles from '../styles/Header.module.less';
 import isClient from '../utils/isClient';

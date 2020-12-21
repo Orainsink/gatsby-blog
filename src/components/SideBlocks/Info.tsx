@@ -9,7 +9,7 @@ import Icon, {
 } from '@ant-design/icons';
 import { ReactComponent as SteamSvg } from '../../assets/img/steam.svg';
 import classnames from 'classnames';
-import useMedia from '../../hooks/useMedia';
+import { useMedia } from '../../hooks';
 import styles from '../../styles/SideBar.module.less';
 
 interface Data {
