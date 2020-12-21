@@ -1,7 +1,7 @@
 ---
-title: 埋点,错误监控,用户数据统计
+title: 埋点,错误监控和用户数据统计
 date: 2020-12-17 15:24:36
-description: 总结通过浏览器api获取用户浏览器数据，uv/pv及一些错误监控的方法
+description: 总结通过浏览器api获取用户浏览器数据，pv及一些错误监控的方法
 tags: [性能, js]
 categories: tech
 ---
@@ -10,11 +10,15 @@ categories: tech
 >
 > 数据统计和埋点对前端来说非常重要，虽然百度谷歌以及 hotjar 能提供一定程度上的统计，但是这完全支撑不了运营和产品的需求。
 >
-> 很多数据需要前端自行统计并储存在后端，有了数据，自然而然就有了 UI 需求，这是可持续发展。
+> 很多数据需要前端自行统计并储存在后端，有了数据，自然而然就有了 UI 需求，这是可持续发展😓。
 
-## 浏览器基本信息
+## 浏览器信息
 
-具体统计哪些东西还是看具体的需求。这里列出几个对前端比较重要的浏览器基本信息。
+### 基本信息
+
+监听用户浏览器的基本信息主要是为了前端有针对性地做 UI 兼容及 bug 复现。
+
+列出几个对前端比较重要的浏览器基本信息。
 
 ```typescript
 // 当前页面路径
@@ -36,7 +40,7 @@ window.devicePixelRatio;
 document.referrer;
 ```
 
-## 浏览器的标识
+### 浏览器的标识
 
 为了甄别用户浏览器，还需要对用户浏览器进行标识。由于对精准度和安全性要求并没有那么高，且需要长久存在，所以使用`localstorage`存下一个唯一 key
 
@@ -70,17 +74,270 @@ const uid = getUid(); // 用于上传的uid
 
 ## 性能指标
 
-[前端监控性能指标](https://github.com/Godiswill/blog/issues/19)
-
 performance api: [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/performance)
 
-## 错误监听
+```typescript
+// 针对html文档
+window.performance.getEntriesByType('navigation') as PerformanceNavigationTiming[]
+// 针对其他资源
+window.performance.getEntriesByType('resource') as PerformanceResourceTiming[]
+```
+
+### 资源基本信息
+
+获取网页加载过程中请求的所有网络资源的信息，在开发的时候我们已经可以知道css和js的大小了, 最值得我们监控的就是网络图片和业务接口, 所以要通过`initiatorType`字段过滤一次。
+
+按照自己的实际需求选择合适的过滤：
+
+```typescript
+const res: PerformanceResourceTiming[] = window.performance.getEntriesByType('resource')
+const filterConfig = [/* 'img','xmlhttprequest','fetch', */,'script', 'css' ]
+// 过滤
+const currentRes = res.filter(item => !filterConfig.includes(item.initiatorType))
+```
+
+我们可以选择性地上报体积过大的图片或者加载耗时过长的资源。
+
+比较重要的资源信息：
+
+```js
+const performanceData = currentRes.map(item => ({
+  // 资源名称
+	name: typeof item.name === 'string' ? item.name : item.name.split('?')[0],
+  // 资源类型
+  initiatorType: item.initiatorType,
+  // 耗时
+  duration: item.duration,
+  // 获取资源的网络协议
+  nextHopProtocol: item.nextHopProtocol,
+  // 解码后资源大小
+  decodedBodySize: item.decodedBodySize,
+  // 编码后资源大小
+  encodedBodySize: item.encodedBodySize,
+}))
+```
+
+### 网页性能指标
+
+[前端监控性能指标](https://github.com/Godiswill/blog/issues/19)
+
+可以参考上文，获取一些文档的关键性能指标。
+
+```typescript
+const timing: PerformanceNavigationTiming = window.performance.getEntriesByType(
+        'navigation'
+      )[0];
+
+const performanceData = {
+    // dns查询时间
+    dns: timing.domainLookupEnd - timing.domainLookupStart,
+    // tcp连接耗时
+    tcp: timing.connectEnd - timing.connectStart,
+    // 读取页面第一个字节的时间
+    ttfb: timing.responseStart - timing.fetchStart,
+    // 白屏时间
+    bt: timing.domInteractive - timing.fetchStart,
+    // 解析dom树耗时
+    dt: timing.domComplete - timing.domInteractive,
+    // dom完成时间
+    drt: timing.domContentLoadedEventEnd - timing.fetchStart,
+    // request请求耗时
+    rt: timing.responseEnd - timing.responseStart,
+    lt: timing.loadEventEnd - timing.fetchStart,
+}
+```
+
+### 内存
+
+`perfomance`的`memory`属性不支持firefox，IE和safari
+
+```js
+const {
+	// 上下文内可用堆的最大体积，以字节计算。
+	jsHeapSizeLimit,
+  // 已分配的堆体积，以字节计算。
+	totalJSHeapSize,
+  // 当前 JS 堆活跃段（segment）的体积，以字节计算。
+	usedJSHeapSize
+} = window.performance.memory
+```
+
+## 错误监控
 
 在 window 对象上绑定监听器
 
 ```typescript
 // 监听被reject处理器处理了的错误
-window.addEventListener('error', (e) => {}, true);
+window.addEventListener('error', handleError, true);
 // 监听被reject但没有reject处理器时的错误
-window.addEventListener('unhandledrejection', (e) => {}, false);
+window.addEventListener('unhandledrejection', handlePromiseError, false);
 ```
+
+error的回调：
+
+```typescript
+// 处理被reject处理器处理了的错误
+const handleError = (e: any) => {
+  const error = {
+    type: 'error',
+    st: 'js/resource'
+    filename: e.filename,
+  	// file: e.target.src  
+    // lineno: e.lineno,
+    // colno: e.colno,
+    msg: e.message,
+    stack: e.error?.stack?.substring(0, 1e3),
+  }
+	// 可以储存在浏览器，在页面卸载的时候上报，也可以选择实时上报，参考上报一节
+  console.log(error)
+};
+
+// 处理被reject但没有reject处理器时的错误
+const handlePromiseError = (e: any) => {
+  const error = {
+    type: 'error',
+    st: 'promise',
+    msg: e.reason,
+    stack: '',
+    file: '',
+  }
+  console.log(error)
+}
+```
+
+## 用户行为记录
+
+### pv
+
+**pv.js**
+
+```typescript
+interface PvItem {
+  // 上一个path
+	prevPath: string,
+  // 当前path
+  curPath: string,
+  // 停留时间
+  time: number,
+	// 是否是第一次进入页面
+  first： boolean，
+}
+// 是否是第一次进入页面
+let isFirst = true;
+// 上一个页面
+let prevPath = document.referrer ?? '';
+let prevTime = Date.now();
+
+/* 通过闭包暴露出去的pv数组 */
+let data: PvItem[] = [];
+
+/* 添加pv数据的函数 */
+const setPage = (): PvItem[] => {
+  // 浏览器本地时间
+  const curTime = Date.now();
+  // 当前页面地址
+  const curPath = window.location.href;
+  
+  data.push({
+      prevPath,
+      curPath,
+      time: isFirst ? -1 : curTime - prevTime,
+    	first： isFirst
+    });
+  
+  isFirst = false;
+  prev_time = curTime;
+  prev_pathname = curPageUrl;
+
+  return data;
+};
+
+const pv = {
+  data,
+  setPage,
+};
+export defalut pv;
+```
+
+### 记录pv
+
+web应用的路由模式不同，选择记录pv的时间点也不。
+
+**hash mode：**
+
+```js
+import pv from './pv';
+
+const listener = () => {
+    pv.setPage();
+  };
+
+window.addEventListener('hashchange', listener, false)
+```
+
+**history mode：**
+
+MDN [popstate](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/popstate_event)
+
+> 调用`history.pushState()`或`history.replaceState()`不会触发`popstate`事件。只有在做出浏览器动作时，才会触发该事件，如用户点击浏览器的回退按钮（或者在Javascript代码中调用`history.back()`或者`history.forward()`方法）
+
+```js
+import pv from './pv';
+
+const win = document.defaultView;
+
+const handlePop = () => {
+  pv.setPage();
+};
+win.addEventListener('popstate', handlePop, false);
+
+/**
+ * 为了统计不出遗漏，把pv统计添加进history对象的这两个方法中
+ * hack history各个方法
+ */
+const __history__ = win.history;
+const __pushState__ = __history__.pushState;
+const __replaceState__ = __history__.replaceState;
+
+win.history.pushState = (...args) => {
+  __pushState__.apply(__history__, args);
+  pv.setPage();
+};
+
+win.history.replaceState = (...args) => {
+  __replaceState__.apply(__history__, args);
+  pv.setPage();
+};
+```
+
+### 埋点
+
+。。。爱咋埋咋埋，记得上传就是了
+
+## 上报
+
+### 实时上报
+
+适用于特定的需求，直接通过post请求上报数据。
+
+上报的时间可以选择监听到错误，或者切换路由的时候。
+
+不多赘述。
+
+### 关闭/刷新页面时上报
+
+`Navigator.sendBeacon()`
+
+[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/sendBeacon)
+
+通过试用`sendBeacon()`，我们可以让浏览器在页面卸载时发送可靠的请求。
+
+```js
+window.navigator.sendBeacon('请求地址', data)
+```
+
+### 定时上报
+
+可以把上报的逻辑放到web worker中，在web worker 中设一个定时器，每隔一段时间上报一次。
+
+详细代码略了。没遇到这种奇葩需求。
