@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { Button, Drawer } from 'antd';
-import { Link, useStaticQuery, graphql } from 'gatsby';
+import { Link } from 'gatsby';
 import { UnorderedListOutlined } from '@ant-design/icons';
-import Image from 'gatsby-image';
 import { useDrawerCloseEffect } from '../hooks';
 import styles from '../styles/Header.module.less';
 import { useLocation } from '@reach/router';
+import { ReactComponent as SharkMenuSvg } from '../assets/img/menu.svg';
 
 /**
  * menu drawer for mobile phone
@@ -15,18 +15,6 @@ const MenuDrawer = () => {
   const [visible, setVisible] = useState(false);
   useDrawerCloseEffect(visible);
 
-  const data = useStaticQuery(graphql`
-    query shasha3Query {
-      sharkMenu: file(absolutePath: { regex: "/menu.jpg/" }) {
-        childImageSharp {
-          fixed(width: 220) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
-  `);
-  const { sharkMenu } = data;
   const location = useLocation();
 
   /** close menu when location changes */
@@ -76,7 +64,7 @@ const MenuDrawer = () => {
           </li>
         </ul>
         <div className={styles.menuShasha}>
-          <Image fixed={sharkMenu.childImageSharp.fixed} alt="" />
+          <SharkMenuSvg />
         </div>
       </Drawer>
     </>

@@ -91,7 +91,11 @@ const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
         )}
         <section className={styles.container}>
           <MDXProvider
-            components={{ code: CodeBlock, img: ImgBlock, a: AnchorBlock }}
+            components={{
+              code: CodeBlock,
+              img: ImgBlock,
+              a: AnchorBlock,
+            }}
           >
             <MDXRenderer>{mdx.body}</MDXRenderer>
           </MDXProvider>

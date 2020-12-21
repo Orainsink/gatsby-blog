@@ -3,27 +3,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import { InstantSearch } from 'react-instantsearch-dom';
 import SearchBox from './SearchBox';
 import SearchResult from './SearchResult';
-import { useStaticQuery, graphql } from 'gatsby';
-import Image from 'gatsby-image';
 import styles from '../../styles/Algolia.module.less';
 import { useMaxHeight } from '../../hooks';
 import { useSelector } from 'react-redux';
+import { ReactComponent as SearchSvg } from '../../assets/img/search.svg';
 
 const Search = () => {
   const rootRef = useRef();
   const [query, setQuery] = useState<any>();
-  const data = useStaticQuery(graphql`
-    query shashaQuery {
-      sharkSearch: file(absolutePath: { regex: "/search.jpg/" }) {
-        childImageSharp {
-          fixed(width: 265, height: 227) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
-  `);
-  const { sharkSearch } = data;
   const maxHeight = useSelector((state) => state.maxHeight);
   const [client, setClient] = useState(null);
   useMaxHeight();
@@ -54,7 +41,7 @@ const Search = () => {
               className={styles.shashaWrap}
               style={{ top: `${maxHeight / 2 - 130}px` }}
             >
-              <Image fixed={sharkSearch.childImageSharp.fixed} alt="" />
+              <SearchSvg />
               <div className={styles.noResultText}>Input to start search</div>
             </div>
           )}

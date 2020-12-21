@@ -10,25 +10,13 @@ import {
 } from 'react-instantsearch-dom';
 import { Divider } from 'antd';
 import styles from '../../styles/Algolia.module.less';
-import { graphql, useStaticQuery } from 'gatsby';
 import Image from 'gatsby-image';
 import { useSelector } from 'react-redux';
 import generatePath from '../../utils/generatePath';
+import { ReactComponent as NoResultSvg } from '../../assets/img/noResult.svg';
 
 const HitCount = connectStateResults(({ searchResults }) => {
   const hitCount = searchResults && searchResults.nbHits;
-  const data = useStaticQuery(graphql`
-    query shasha2Query {
-      sharkNoResult: file(absolutePath: { regex: "/noResult.jpg/" }) {
-        childImageSharp {
-          fixed(width: 235, height: 206) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
-  `);
-  const { sharkNoResult } = data;
   const maxHeight = useSelector((state) => state.maxHeight);
 
   return hitCount > 0 ? (
@@ -40,7 +28,7 @@ const HitCount = connectStateResults(({ searchResults }) => {
       className={styles.shashaWrap}
       style={{ top: `${maxHeight / 2 - 118}px` }}
     >
-      <Image fixed={sharkNoResult.childImageSharp.fixed} alt="" />
+      <NoResultSvg />
       <div className={styles.noResultText}>Whe, where's the results?</div>
     </div>
   );
