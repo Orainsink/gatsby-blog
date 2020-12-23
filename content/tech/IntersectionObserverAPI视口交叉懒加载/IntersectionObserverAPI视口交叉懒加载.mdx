@@ -85,7 +85,7 @@ export default React.memo(TableComponent);
 
 > 注意：这段代码是从某个人的博客里抄的， 但是我发现有性能问题，IntersectionObserver API 会随滚动事件反复调用回调函数，而这段代码在回调函数里反复地执行`updateEntry()`更新组件的 state，这会导致函数组件反复执行，当组件个数很多的时候会产生明显的阻塞。
 
-```jsx
+```jsx {17-19}
 import React from 'react';
 import { Table, Tooltip } from 'antd';
 
