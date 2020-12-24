@@ -89,8 +89,7 @@ const CategoryComponent = () => {
           return { count: getCount('essay'), img: dialogImg };
       }
     },
-    // eslint-disable-next-line
-    [group, totalCount]
+    [FEImg, dialogImg, group, leetcodeImg, snippetImg]
   );
 
   return (

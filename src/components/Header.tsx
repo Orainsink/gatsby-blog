@@ -158,6 +158,8 @@ const Header = () => {
     isClient && localStorage.setItem('SCENE', '1');
   }, [dispatch]);
 
+  const _handleClose = useCallback(() => setSearchVisible(false), []);
+
   return (
     <header
       style={{
@@ -210,10 +212,7 @@ const Header = () => {
         </Col>
       </Row>
 
-      <SearchDrawer
-        visible={searchVisible}
-        onClose={() => setSearchVisible(false)}
-      />
+      <SearchDrawer visible={searchVisible} onClose={_handleClose} />
     </header>
   );
 };

@@ -17,8 +17,7 @@ const SearchDrawer = (props: Props) => {
   /** close menu when location changes */
   useEffect(() => {
     onClose();
-    // eslint-disable-next-line
-  }, [location]);
+  }, [location, onClose]);
 
   return (
     <Drawer
