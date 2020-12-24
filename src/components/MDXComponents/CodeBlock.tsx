@@ -3,7 +3,6 @@ import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import theme from '../../assets/theme/customPrism';
 import { Button } from 'antd';
 import { CopyOutlined, SmileOutlined } from '@ant-design/icons';
-import Prism from '../../assets/theme/prism';
 interface Props {
   children: string;
   className?: string;
@@ -39,7 +38,6 @@ const CodeBlock = ({
       code={children}
       language={language}
       theme={theme}
-      Prism={Prism}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <div
