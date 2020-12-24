@@ -38,7 +38,6 @@ interface HitProp {
     categories: string;
     slug: string;
     objectId: string;
-    [key: string]: any;
   };
 }
 const PageHit = ({ hit }: HitProp) => (

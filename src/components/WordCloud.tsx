@@ -55,7 +55,7 @@ const WordCloudItem = (props: Props) => {
     [weighted]
   );
 
-  const allTags: any[] = useMemo(() => {
+  const allTags: [string, number][] = useMemo(() => {
     return group.map((item) => [item.fieldValue, getFontSize(item.totalCount)]);
   }, [group, getFontSize]);
 

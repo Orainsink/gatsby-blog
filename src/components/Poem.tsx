@@ -8,9 +8,7 @@ interface Poem {
     title: string;
     dynasty: string;
     author: string;
-    [key: string]: any;
   };
-  [key: string]: any;
 }
 
 const PoemComponent = () => {
