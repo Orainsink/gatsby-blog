@@ -197,6 +197,7 @@ module.exports = {
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-css-modules`,
     'gatsby-plugin-cname',
+    'gatsby-plugin-dark-mode',
     'gatsby-plugin-svgr',
     {
       resolve: 'gatsby-plugin-antd',

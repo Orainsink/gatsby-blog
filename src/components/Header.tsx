@@ -14,6 +14,7 @@ import { useMedia, useMagicColor } from '../hooks';
 import loadable from '@loadable/component';
 import styles from '../styles/Header.module.less';
 import isClient from '../utils/isClient';
+import ThemeBtn from './ThemeBtn';
 const MyPlayer = loadable(() => import('../components/MyPlayer'));
 const MenuDrawer = loadable(() => import('../components/MenuDrawer'));
 const SearchDrawer = loadable(() => import('../components/Algolia/Index'));
@@ -192,6 +193,9 @@ const Header = () => {
 
         <Col flex={1} style={{ textAlign: 'right' }}>
           <MenuComponent drawer={drawer} />
+        </Col>
+        <Col>
+          <ThemeBtn />
         </Col>
         <Col style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <SearchOutlined

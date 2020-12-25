@@ -181,7 +181,7 @@
       color: rgba(255, 255, 255, 0.7);
       padding: 0;
       margin: 0;
-      border-radius: @border-radius-base;
+      border-radius: var(--border-radius-base);
       background: linear-gradient(135deg, #141619 0%, #c7d2db 100%);
       overflow: hidden;
       @supports (backdrop-filter: blur(20px)) {
@@ -200,7 +200,7 @@
 }
 .headerDrop {
   & :global(.ant-tooltip-inner) {
-    color: @text-color;
+    color: var(--text-color);
     @supports (backdrop-filter: blur(20px)) {
       background: rgba(239, 239, 239, 0.8);
       backdrop-filter: blur(20px);
@@ -208,7 +208,7 @@
   }
   .playingImg {
     & > div {
-      background-color: @text-color;
+      background-color: var(--text-color);
     }
   }
   .liWrap {

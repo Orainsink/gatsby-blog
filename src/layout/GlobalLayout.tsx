@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import '../styles/global.less';
 import { useSelector } from 'react-redux';
+import '../assets/css/variables.less';
+import '../styles/global.less';
 import Header from '../components/Header';
 import Bg from '../components/Bg';
 import BackTop from '../components/BackTop';

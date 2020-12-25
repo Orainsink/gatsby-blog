@@ -37,7 +37,7 @@
     margin: 0 10px;
   }
   .icon {
-    color: @text-color;
+    color: var(--text-color);
   }
 }
 
@@ -48,7 +48,7 @@
   justify-content: center;
   padding: 10px;
   del {
-    color: @text-color-secondary;
+    color: var(--text-color-secondary);
     font-size: 12px;
   }
 }
@@ -59,7 +59,7 @@
   align-items: center;
   padding: 10px;
   del {
-    color: @text-color-secondary;
+    color: var(--text-color-secondary);
     font-size: 12px;
   }
 }
@@ -69,7 +69,7 @@
   .header {
     font-weight: bold;
     font-size: 16px;
-    color: @text-color;
+    color: var(--text-color);
   }
 }
 .calendarCell {
@@ -80,11 +80,11 @@
 }
 .col {
   background: #fff;
-  border-radius: @border-radius-base;
+  border-radius: var(--border-radius-base);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 14px;
-  box-shadow: @box-shadow-base;
+  box-shadow: var(--box-shadow-base);
   margin-bottom: 10px;
   height: 250px;
   position: relative;
@@ -107,7 +107,7 @@
     bottom: 10%;
     right: 10px;
     font-weight: bold;
-    color: @transparent-color;
+    color: var(--text-color-fourth);
     z-index: 0;
   }
 }
@@ -158,7 +158,7 @@
   height: unset;
 
   & :global(.ant-picker-cell-disabled) {
-    color: @text-color-secondary !important;
+    color: var(--text-color-secondary) !important;
   }
   & :global(.ant-picker-cell-disabled::before) {
     background: none;
@@ -166,7 +166,7 @@
 
   & :global(.ant-picker-cell-in-view) {
     transition: all 0.3s linear;
-    color: @primary-color;
+    color: var(--primary-color);
     &:hover {
       background: #e6f7ff;
     }
@@ -181,7 +181,7 @@
   }
   .toolName {
     line-height: 40px;
-    color: @text-color;
+    color: var(--text-color);
   }
   .toolLink {
     margin: 6px;
@@ -190,11 +190,11 @@
     height: 40px;
     border-radius: 20px;
     line-height: 40px;
-    background: @main-background;
+    background: var(--body-background);
     padding: 3px 8px 3px 2px;
     &:hover {
       .toolName {
-        color: @link-hover-color;
+        color: var(--link-hover-color);
       }
     }
   }

@@ -66,7 +66,7 @@ const CategoryComponent = () => {
     }
   `);
 
-  const { group, totalCount } = data.allFile;
+  const { group } = data.allFile;
   const { FEImg, leetcodeImg, dialogImg, snippetImg } = data;
 
   const cateFilter = useCallback(

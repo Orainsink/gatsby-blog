@@ -20,9 +20,9 @@ body {
     padding: 1em;
     color: #666;
     border-left: 4px solid #ddd;
-    background: @main-background;
+    background: var(--text-color-fourth);
     line-height: 2;
-    border-radius: @border-radius-base;
+    border-radius: var(--border-radius-base);
   }
   h1,
   h2,
@@ -60,7 +60,7 @@ body {
   position: relative;
   z-index: auto;
   border-left: 4px solid #ddd;
-  border-radius: @border-radius-base;
+  border-radius: var(--border-radius-base);
   & :global(.ant-anchor-wrapper) {
     background: unset;
   }

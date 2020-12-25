@@ -7243,6 +7243,13 @@ gatsby-plugin-cname@1.0.0:
   resolved "https://registry.npm.taobao.org/gatsby-plugin-cname/download/gatsby-plugin-cname-1.0.0.tgz#5752d006c476a3c7897fca5c307901df5501747a"
   integrity sha1-V1LQBsR2o8eJf8pcMHkB31UBdHo=
 
+gatsby-plugin-dark-mode@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.npm.taobao.org/gatsby-plugin-dark-mode/download/gatsby-plugin-dark-mode-1.1.2.tgz#9bab271da9f913cd64687a2b2d85b1d62a3605d8"
+  integrity sha1-m6snHan5E81kaHorLYWx1io2Bdg=
+  dependencies:
+    prop-types "^15.5.7"
+
 gatsby-plugin-feed@^2.5.1:
   version "2.7.0"
   resolved "https://registry.npm.taobao.org/gatsby-plugin-feed/download/gatsby-plugin-feed-2.7.0.tgz#2650b7d475c5689faaa811695d6d1b5f0cd35319"
@@ -12887,7 +12894,7 @@ prompts@^2.3.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.5.10, prop-types@^15.5.6, prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.npm.taobao.org/prop-types/download/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha1-UsQedbjIfnK52TYOAga5ncv/psU=

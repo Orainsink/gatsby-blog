@@ -4,7 +4,7 @@
   margin-top: 0.5em;
   mark {
     background-color: rgb(244, 246, 253);
-    color: @primary-color;
+    color: var(--primary-color);
   }
   & :global(.ais-Hits-item) {
     border-left: 4px solid #efefef;
@@ -16,7 +16,7 @@
   & :global(.ais-Highlight) {
     font-weight: bold;
     &:hover {
-      color: @primary-color;
+      color: var(--primary-color);
     }
   }
   & :global(.ais-PoweredBy) {
@@ -42,7 +42,7 @@
   li.ais-Hits-item {
     margin-bottom: 1em;
     a {
-      color: @link-color;
+      color: var(--link-color);
       h4 {
         margin-bottom: 0.2em;
       }
@@ -60,7 +60,7 @@
 /** Box */
 .open {
   width: 10em;
-  background: @main-background;
+  background: var(--body-background);
   cursor: text;
   margin-left: -1.6em;
   padding-left: 1.6em;
