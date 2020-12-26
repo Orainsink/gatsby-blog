@@ -3,10 +3,10 @@ import classnames from 'classnames';
 import { Button, Drawer } from 'antd';
 import { Link } from 'gatsby';
 import { UnorderedListOutlined } from '@ant-design/icons';
-import { useDrawerCloseEffect } from '../hooks';
-import styles from '../styles/Header.module.less';
+import { useDrawerCloseEffect } from '../../hooks';
+import styles from '../../styles/Header.module.less';
 import { useLocation } from '@reach/router';
-import { ReactComponent as SharkMenuSvg } from '../assets/img/menu.svg';
+import { ReactComponent as SharkMenuSvg } from '../../assets/img/menu.svg';
 
 /**
  * menu drawer for mobile phone

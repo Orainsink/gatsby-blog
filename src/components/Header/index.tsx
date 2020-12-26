@@ -1,84 +1,18 @@
-import React, { useEffect, useCallback, useState, useRef } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import classnames from 'classnames';
-import { Col, Dropdown, Row } from 'antd';
+import { Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
-import { Link } from 'gatsby';
-import {
-  GithubOutlined,
-  SearchOutlined,
-  DownOutlined,
-} from '@ant-design/icons';
-import { ReactComponent as ArrowSvg } from '../assets/img/arrow.svg';
+import { GithubOutlined, SearchOutlined } from '@ant-design/icons';
+import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { useMedia, useMagicColor } from '../hooks';
+import { useMedia } from '../../hooks';
 import loadable from '@loadable/component';
-import styles from '../styles/Header.module.less';
-import isClient from '../utils/isClient';
+import styles from '../../styles/Header.module.less';
+import isClient from '../../utils/isClient';
 import ThemeBtn from './ThemeBtn';
-const MyPlayer = loadable(() => import('../components/MyPlayer'));
-const MenuDrawer = loadable(() => import('../components/MenuDrawer'));
-const SearchDrawer = loadable(() => import('../components/Algolia/Index'));
-
-const ArchivesMenu = React.memo(({ visible }: { visible: boolean }) => {
-  const magicRef = useRef(null);
-  useMagicColor(magicRef.current, visible);
-
-  const refCallback = useCallback((node) => {
-    if (node !== null) {
-      magicRef.current = node;
-    }
-  }, []);
-
-  return (
-    <div className={styles.dropMenu} ref={refCallback}>
-      <Row align="middle" justify="space-between">
-        <Col span={12} className={styles.cls}>
-          <Link to="/archives">技术</Link>
-        </Col>
-        <Col span={12} className={styles.cls}>
-          <Link to="/leetcode">Leetcode</Link>
-        </Col>
-      </Row>
-      <Row align="middle" justify="space-between">
-        <Col span={12} className={styles.cls}>
-          <Link to="/snippet">Snippet</Link>
-        </Col>
-        <Col span={12} className={styles.cls}>
-          <Link to="/essay">随笔</Link>
-        </Col>
-      </Row>
-    </div>
-  );
-});
-
-const MenuComponent = React.memo(({ drawer }: { drawer: boolean }) => {
-  const [visible, setVisible] = useState(false);
-  if (drawer) {
-    return <MenuDrawer />;
-  } else
-    return (
-      <ul className={styles.nav}>
-        <li>
-          <Link to="/">home</Link>
-        </li>
-        <li>
-          <Dropdown
-            overlay={<ArchivesMenu visible={visible} />}
-            arrow
-            overlayClassName={styles.dropWrapper}
-            onVisibleChange={(visible) => setVisible(visible)}
-          >
-            <span>
-              archives <DownOutlined />
-            </span>
-          </Dropdown>
-        </li>
-        <li>
-          <Link to="/about">about</Link>
-        </li>
-      </ul>
-    );
-});
+import MenuComponent from './MenuComponent';
+const MyPlayer = loadable(() => import('../../components/MyPlayer'));
+const SearchDrawer = loadable(() => import('../../components/Algolia/Index'));
 
 /**Header */
 const Header = () => {

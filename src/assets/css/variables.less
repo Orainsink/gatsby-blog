@@ -13,9 +13,9 @@
   --item-hover-bg: rgba(0, 0, 0, 0.1);
   // Background color for `<body>`
   --body-background: #efefef;
-
   // Base background color for most components
   --component-background: #fff;
+  --main-background: #fff;
   // text
   --text-color: #3d4451;
   --text-color-secondary: #666666;
@@ -28,14 +28,22 @@
   --link-hover-color: #4aa8ff;
   --link-active-color: #1789f2;
   --border-color: #e1e1e6;
-  --border-color-split: #e1e1e6;
   // Disabled states
   --disabled-color: #babfbf;
   --disabled-bg: #ececee;
   // input
+  --input-background: var(--component-background);
   --input-border-color: #e1e1e6;
   // tooltip
-  --tooltip-bg: #fff;
+  --tooltip-bg: var(--component-background);
+  // border
+  --border-color: #f0f0f0;
+  // tag
+  --tag-color: var(--info-color);
+  // box-shadow
+  --box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16),
+    0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+  // tooltip
 }
 
 :root body.dark {
@@ -47,24 +55,24 @@
   --warning-color: #faad14;
   --info-color: #1890ff;
   --success-color: #52c41a;
-  --border-color-base: #6d6d6d;
-  --border-color-split: #6d6d6d;
-  --heading-color: #fff;
+  --heading-color: #e8edee;
+  // text
   --text-color: #e8edee;
   --text-color-secondary: #cdcfcf;
   --text-color-third: #787a7a;
-  --text-color-fifth: #c8c8cc;
-  --link-hover-color: #ff8b1d;
-  --link-active-color: #ff6600;
+  --text-color-fourth: #434343;
+  --link-color: #e8edee;
+  --link-hover-color: #6190e8;
+  --link-active-color: #668fdb;
   --disabled-color: #6b6d6d;
   --disabled-bg: #3e3e3e;
   --item-hover-bg: rgba(255, 255, 255, 0.1);
 
   // Background color for `<body>`
-  --body-background: #2b2b2e;
+  --body-background: #141619;
   // --component-background: #5a5a5a;
-  --component-background: #2b2b2e;
-
+  --component-background: #3a3a3e;
+  --main-background: #2b2b2e;
   // table
   --table-header-bg: #3a3a3e;
   --table-header-color: #cdcfcf;
@@ -72,18 +80,19 @@
   --table-header-sort-bg: rgba(126, 126, 126, 0.1);
   --table-border-radius-base: 6px;
   --table-selected-row-bg: rgba(255, 255, 255, 0.08);
-
   // select
   --select-item-selected-bg: rgba(255, 255, 255, 0.1);
   --select-item-active-bg: rgba(255, 255, 255, 0.1);
   --select-dropdown-bg: #5a5a5a;
-
   // tag
-  --tag-default-color: #787a7a;
-
+  --tag-color: #787a7a;
   // input
-  --input-bg: #2b2b2e;
-
+  --input-background: var(--component-background);
   // tooltip
-  --tooltip-bg: #55555a;
+  --tooltip-bg: var(--component-background);
+  // border
+  --border-color: #49494f;
+  // box-shadow
+  --box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16),
+    0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
 }

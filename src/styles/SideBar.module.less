@@ -79,12 +79,12 @@
   }
 }
 .col {
-  background: #fff;
+  background: var(--main-background);
   border-radius: var(--border-radius-base);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 14px;
-  box-shadow: var(--box-shadow-base);
+  box-shadow: var(--box-shadow);
   margin-bottom: 10px;
   height: 250px;
   position: relative;
@@ -190,7 +190,7 @@
     height: 40px;
     border-radius: 20px;
     line-height: 40px;
-    background: var(--body-background);
+    background: var(--component-background);
     padding: 3px 8px 3px 2px;
     &:hover {
       .toolName {

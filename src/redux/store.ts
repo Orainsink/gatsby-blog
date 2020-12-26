@@ -1,6 +1,26 @@
 import { createStore as reduxCreateStore } from 'redux';
 const windowGlobal: any = typeof window !== 'undefined' && window;
 
+interface iRootState {
+  scene: boolean;
+  trigger: boolean;
+  hasArrow: boolean;
+  skip: boolean;
+  curTag: string;
+  curDate: string;
+  maxHeight: number;
+  headerDrop: boolean;
+  theme: null | boolean;
+  music: {
+    playing: boolean;
+    volume: number;
+    mute: boolean;
+    loop: boolean;
+    id: number | null;
+    title: string;
+  };
+}
+
 const reducer = (state: any, action: { type: string; payload: any }) => {
   switch (action.type) {
     case 'SCENE': {
@@ -38,6 +58,9 @@ const reducer = (state: any, action: { type: string; payload: any }) => {
     case 'HEADER_DROP': {
       return { ...state, headerDrop: action.payload };
     }
+    case 'THEME': {
+      return { ...state, theme: action.payload };
+    }
   }
   return state;
 };
@@ -57,15 +80,16 @@ const initialState = {
   curDate: '',
   maxHeight: 0,
   headerDrop: false,
+  theme: null,
   music: {
     playing: false,
     volume: 0.5,
     mute: false,
     loop: false,
-    id: 2 as number | null,
+    id: 2,
     title: '',
   },
-};
+} as iRootState;
 
 const createStore = () =>
   reduxCreateStore(
@@ -75,4 +99,4 @@ const createStore = () =>
       windowGlobal?.__REDUX_DEVTOOLS_EXTENSION__()
   );
 export default createStore;
-export type RootState = ReturnType<typeof reducer>;
+export type IRootState = iRootState;

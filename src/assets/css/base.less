@@ -1,0 +1,42 @@
+:root {
+  // gitalk
+  .gt-container {
+    .gt-meta {
+      border-bottom: 1px solid var(--border-color);
+    }
+    .gt-header {
+      .gt-header-comment {
+        .gt-header-textarea {
+          background-color: var(--input-background);
+          &:hover,
+          &:active,
+          &:focus-within {
+            background-color: var(--input-background);
+          }
+        }
+      }
+    }
+
+    .gt-comment-admin {
+      .gt-comment-content {
+        background-color: var(--component-background);
+        &:hover {
+          box-shadow: unset;
+        }
+        .gt-comment-body {
+          color: var(--text-color) !important;
+        }
+      }
+    }
+    .gt-header-preview {
+      background-color: var(--component-background);
+    }
+    .gt-user {
+      .gt-ico {
+        svg {
+          fill: currentColor;
+        }
+      }
+    }
+  }
+}

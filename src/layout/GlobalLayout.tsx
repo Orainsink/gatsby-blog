@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import Bg from '../components/Bg';
 import BackTop from '../components/BackTop';
 import { useHasMounted, useBackTop } from '../hooks';
+import '../assets/css/base.less';
 
 /**global PageElement */
 const GlobalLayout = ({ children }) => {

@@ -1,6 +1,6 @@
 import React, { useRef, useMemo, useCallback, useEffect } from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from '../styles/WordCloud.module.less';
 import isClient from '../utils/isClient';
 const WordCloud = isClient ? require('wordcloud') : undefined;
@@ -38,6 +38,7 @@ const WordCloudItem = (props: Props) => {
   const group = data.allFile.group;
   const wordRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
+  const theme = useSelector((state) => state.theme);
 
   const weighted = useMemo(() => {
     let arr = group.map((item) => item.totalCount);
@@ -72,14 +73,14 @@ const WordCloudItem = (props: Props) => {
         ellipticity: 1.5,
         backgroundColor: 'transparent',
         fontFamily: 'Finger Paint, sans-serif',
-        color: 'random-dark',
+        color: theme === 'dark' ? 'random-light' : 'random-dark',
         click: (item) => {
           dispatch({ type: 'CUR_TAG', payload: item[0] });
           jump && navigate('/archives/');
         },
       });
     }
-  }, [allTags, jump, dispatch]);
+  }, [allTags, jump, dispatch, theme]);
 
   return (
     <div className={styles.wrap}>

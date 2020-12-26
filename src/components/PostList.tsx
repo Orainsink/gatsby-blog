@@ -86,7 +86,7 @@ const PostList = ({ posts, hideMore = false }: Props) => {
             </header>
             <section>
               <p
-                style={{ color: 'rgb(0,0,0,0.45)' }}
+                style={{ color: 'var(--text-color-secondary)' }}
                 dangerouslySetInnerHTML={{
                   __html: description || node.childMdx.excerpt,
                 }}

@@ -18,7 +18,7 @@ var modifyVars = {
   /* input */
   'input-border-color': 'var(--input-border-color)',
   /* tooltip */
-  'tooltip-bg': 'var(--white)',
-  'tooltip-color': '@text-color',
+  'tooltip-bg': 'var(--tooltip-bg)',
+  'tooltip-color': 'var(--text-color)',
 };
 module.exports = modifyVars;

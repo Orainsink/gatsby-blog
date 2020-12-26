@@ -56,7 +56,7 @@ const Tags = ({ tags, categories }: Props) => {
     <p className="tags">
       {tags.map((tag) => (
         <Link key={tag} onClick={() => onTagClicked(tag)} to={`/archives`}>
-          <Tag color="blue" style={{ cursor: 'pointer' }}>
+          <Tag color="var(--tag-color)" style={{ cursor: 'pointer' }}>
             #{tag}
           </Tag>
         </Link>

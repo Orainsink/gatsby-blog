@@ -53,7 +53,7 @@ const Index = ({ data }: PageProps<Data>) => {
             margin: 0,
           }}
         >
-          最近五篇文章：
+          最近五篇文章
         </h5>
         <PostList posts={posts} />
       </Layout>

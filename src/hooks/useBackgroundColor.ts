@@ -5,7 +5,7 @@ import { useEffect } from 'react';
  */
 const useBackgroundColor = (trigger: boolean = true) => {
   useEffect(() => {
-    if (trigger) document.body.style.background = '#efefef';
+    if (trigger) document.body.style.background = 'var(--body-background)';
   }, [trigger]);
 };
 export default useBackgroundColor;

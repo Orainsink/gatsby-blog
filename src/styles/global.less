@@ -61,7 +61,10 @@ article {
   transition: background-color 0.2s ease-in;
   a {
     &:hover {
-      color: rgb(50, 124, 228);
+      color: var(--link-hover-color);
+    }
+    &:active {
+      color: var(--link-active-color);
     }
   }
 }
