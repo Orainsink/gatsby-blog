@@ -3,18 +3,19 @@
   height: 100%;
   margin-top: 0.5em;
   mark {
-    background-color: rgb(244, 246, 253);
+    background-color: var(--component-hover);
     color: var(--primary-color);
   }
   & :global(.ais-Hits-item) {
-    border-left: 4px solid #efefef;
+    border-left: 4px solid var(--border-color);
     padding: 10px;
     &:hover {
-      background-color: rgb(246, 249, 253);
+      background-color: var(--component-hover);
     }
   }
   & :global(.ais-Highlight) {
     font-weight: bold;
+    color: var(--link-hover-color);
     &:hover {
       color: var(--primary-color);
     }
@@ -84,5 +85,16 @@
     line-height: 1.8;
     text-align: center;
     font-weight: bold;
+  }
+}
+/** Drawer */
+.drawerWrap {
+  & :global {
+    .ant-input-group-addon {
+      background-color: var(--main-background);
+    }
+    .ant-btn {
+      background: var(--main-background);
+    }
   }
 }

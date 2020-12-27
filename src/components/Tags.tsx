@@ -1,13 +1,14 @@
 import React, { useCallback } from 'react';
 import { Link } from 'gatsby';
 import { Tag } from 'antd';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 interface Props {
   tags: string[];
   categories?: string;
 }
 const Tags = ({ tags, categories }: Props) => {
   const dispatch = useDispatch();
+  const theme = useSelector((state) => state.theme);
 
   const onTagClicked = useCallback(
     (tag) => {
@@ -56,7 +57,10 @@ const Tags = ({ tags, categories }: Props) => {
     <p className="tags">
       {tags.map((tag) => (
         <Link key={tag} onClick={() => onTagClicked(tag)} to={`/archives`}>
-          <Tag color="var(--tag-color)" style={{ cursor: 'pointer' }}>
+          <Tag
+            color={theme === 'dark' ? 'var(--tag-color)' : 'blue'}
+            style={{ cursor: 'pointer' }}
+          >
             #{tag}
           </Tag>
         </Link>

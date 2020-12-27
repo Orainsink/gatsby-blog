@@ -11,7 +11,7 @@ import styles from '../../styles/Header.module.less';
 import isClient from '../../utils/isClient';
 import ThemeBtn from './ThemeBtn';
 import MenuComponent from './MenuComponent';
-const MyPlayer = loadable(() => import('../../components/MyPlayer'));
+const MyPlayer = loadable(() => import('../MyPlayer'));
 const SearchDrawer = loadable(() => import('../../components/Algolia/Index'));
 
 /**Header */
@@ -113,7 +113,7 @@ const Header = () => {
               <span>{title}</span>
             ) : (
               <span
-                style={{ cursor: 'pointer' }}
+                className={styles.ora}
                 onClick={(event) => {
                   event.preventDefault();
                   navigate('/');

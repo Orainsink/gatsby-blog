@@ -3,6 +3,7 @@ import { Drawer } from 'antd';
 import AlgoliaSearch from './Search';
 import { useMedia, useDrawerCloseEffect } from '../../hooks';
 import { useLocation } from '@reach/router';
+import styles from '../../styles/Algolia.module.less';
 
 interface Props {
   visible: boolean;
@@ -27,6 +28,7 @@ const SearchDrawer = (props: Props) => {
       visible={visible}
       width={is600 ? '100%' : 600}
       bodyStyle={{ padding: '12px' }}
+      className={styles.drawerWrap}
     >
       <AlgoliaSearch />
     </Drawer>

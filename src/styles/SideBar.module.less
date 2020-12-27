@@ -157,18 +157,36 @@
 .calendarWrap {
   height: unset;
 
-  & :global(.ant-picker-cell-disabled) {
-    color: var(--text-color-secondary) !important;
-  }
-  & :global(.ant-picker-cell-disabled::before) {
-    background: none;
-  }
-
-  & :global(.ant-picker-cell-in-view) {
-    transition: all 0.3s linear;
-    color: var(--primary-color);
-    &:hover {
-      background: #e6f7ff;
+  & :global {
+    .ant-picker-calendar {
+      background: var(--main-background);
+    }
+    .ant-picker-cell-disabled {
+      color: var(--text-color-secondary) !important;
+    }
+    .ant-picker-cell-disabled::before {
+      background: none;
+    }
+    .ant-picker-cell-in-view {
+      transition: all 0.3s linear;
+      color: var(--primary-color);
+      &:hover {
+        background: var(--component-background);
+      }
+    }
+    .ant-picker-calendar .ant-picker-panel {
+      background: var(--main-background);
+      border-top: 1px solid var(--border-color);
+    }
+    .ant-select {
+      background-color: 1px solid var(--main-background) !important;
+      border: var(--border-color) !important;
+    }
+    .ant-select-arrow {
+      color: var(--text-color);
+    }
+    .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+      background-color: var(--component-background);
     }
   }
 }

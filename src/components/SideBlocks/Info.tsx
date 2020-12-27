@@ -11,17 +11,26 @@ import { ReactComponent as SteamSvg } from '../../assets/img/steam.svg';
 import classnames from 'classnames';
 import { useMedia } from '../../hooks';
 import styles from '../../styles/SideBar.module.less';
+import { useSelector } from 'react-redux';
 
 interface Data {
   avatar: any;
   moogle: any;
   wechat: any;
+  avatarD: any;
 }
 /**个人信息块 */
 const Info = () => {
   const data: Data = useStaticQuery(graphql`
     query sideQuery {
       avatar: file(absolutePath: { regex: "/avatar.png/" }) {
+        childImageSharp {
+          fixed(width: 100, height: 100) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      avatarD: file(absolutePath: { regex: "/gatsby-icon.png/" }) {
         childImageSharp {
           fixed(width: 100, height: 100) {
             ...GatsbyImageSharpFixed
@@ -45,7 +54,8 @@ const Info = () => {
     }
   `);
 
-  const { avatar, wechat, moogle } = data;
+  const { avatar, avatarD, wechat, moogle } = data;
+  const theme = useSelector((state) => state.theme);
   const is1100 = useMedia('(max-width: 1100px)');
 
   const weChatContent = useMemo(() => {
@@ -79,7 +89,11 @@ const Info = () => {
       className={classnames(styles.InfoWrap, styles.col)}
     >
       <Image
-        fixed={avatar.childImageSharp.fixed}
+        fixed={
+          theme === 'dark'
+            ? avatarD.childImageSharp.fixed
+            : avatar.childImageSharp.fixed
+        }
         alt=""
         className={styles.avatar}
       />

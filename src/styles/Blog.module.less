@@ -18,8 +18,8 @@ body {
   }
   blockquote {
     padding: 1em;
-    color: #666;
-    border-left: 4px solid #ddd;
+    color: var(--text-color-secondary);
+    border-left: 4px solid var(--border-color);
     background: var(--text-color-fourth);
     line-height: 2;
     border-radius: var(--border-radius-base);
@@ -31,11 +31,11 @@ body {
   h5 {
     margin: 0.67em 0;
     padding: 0;
-    color: inherit;
     font-weight: 700;
     text-rendering: optimizeLegibility;
     line-height: 1.1;
     pointer-events: none;
+    color: var(--mdx-header);
   }
   h2 {
     &::before {
@@ -59,7 +59,7 @@ body {
   margin-bottom: 1em;
   position: relative;
   z-index: auto;
-  border-left: 4px solid #ddd;
+  border-left: 4px solid var(--border-color);
   border-radius: var(--border-radius-base);
   & :global(.ant-anchor-wrapper) {
     background: unset;
@@ -70,7 +70,7 @@ body {
     top: -20px;
     right: 10%;
     font-size: 42px;
-    color: #efefef;
+    color: var(--text-color-fourth);
     font-weight: 700;
     z-index: 0;
   }

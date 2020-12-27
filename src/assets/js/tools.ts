@@ -10,7 +10,12 @@ import { ReactComponent as HslSvg } from '../img/colorWheel.svg';
 import { ReactComponent as EmojiSvg } from '../img/horseFace.svg';
 import { ReactComponent as CubicBezierSvg } from '../img/bezier.svg';
 import { ReactComponent as GridSvg } from '../img/grid.svg';
-const tools: { name: string; icon: React.ReactNode; url: string }[] = [
+import { ComponentType, SVGProps } from 'react';
+const tools: {
+  name: string;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
+  url: string;
+}[] = [
   {
     name: 'can-I-use',
     icon: CanIUseSvg,

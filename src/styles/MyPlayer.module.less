@@ -198,7 +198,16 @@
   padding: 1em 1em;
   background-color: rgba(255, 255, 255, 0.1);
 }
-.headerDrop {
+.dark {
+  & :global(.ant-tooltip-inner) {
+    color: var(--text-color);
+    @supports (backdrop-filter: blur(20px)) {
+      background: rgba(58, 58, 58, 0.8);
+      backdrop-filter: blur(20px);
+    }
+  }
+}
+.headerDrop:not(.dark) {
   & :global(.ant-tooltip-inner) {
     color: var(--text-color);
     @supports (backdrop-filter: blur(20px)) {
@@ -219,7 +228,5 @@
   .active {
     padding: 1em 1em;
     background-color: rgba(0, 0, 0, 0.1);
-  }
-  .controller {
   }
 }

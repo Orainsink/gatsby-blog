@@ -19,7 +19,7 @@ interface Data {
 }
 
 const SnippetPage = ({ data }: PageProps<Data>) => {
-  const { curDate } = useSelector((state: any) => state);
+  const { curDate, theme } = useSelector((state: any) => state);
   const dispatch = useDispatch();
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
   const options = useMemo(() => {
@@ -65,7 +65,9 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
       title: 'TAG',
       dataIndex: 'tag',
       width: 80,
-      render: (text: string) => <Tag>{text}</Tag>,
+      render: (text: string) => (
+        <Tag color={theme === 'dark' ? 'var(--tag-color)' : 'blue'}>{text}</Tag>
+      ),
       onFilter: (value, record) => record.tag.indexOf(value) === 0,
       filters: options,
     },
@@ -82,13 +84,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
       width: 100,
       render: (text: string) =>
         text ? (
-          <Button
-            onClick={(e) => {
-              e.stopPropagation();
-              e.preventDefault();
-              window.open(text);
-            }}
-          >
+          <Button ghost={theme === 'dark' ? true : false} href={text}>
             <LeetcodeSvg
               style={{
                 width: '18px',
@@ -117,7 +113,9 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
           <div style={{ fontWeight: 'bold' }}>{text}</div>
           <div>date：{row.date}</div>
           <div>
-            <Tag>{row.tag}</Tag>
+            <Tag color={theme === 'dark' ? 'var(--tag-color)' : 'blue'}>
+              {row.tag}
+            </Tag>
           </div>
         </div>
       ),
@@ -131,11 +129,8 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
             <Button
               type="link"
               size="large"
-              onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-                window.open(text);
-              }}
+              ghost={theme === 'dark' ? true : false}
+              href={text}
             >
               <LeetcodeSvg style={{ width: '18px', height: '18px' }} />
             </Button>

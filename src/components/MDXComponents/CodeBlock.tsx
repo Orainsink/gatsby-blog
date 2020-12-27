@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
-import theme from '../../assets/theme/customPrism';
+import vsDark from 'prism-react-renderer/themes/vsDark';
+import lightTheme from '../../assets/theme/customPrism';
+import { useSelector } from 'react-redux';
 import { Button } from 'antd';
 import { CopyOutlined, SmileOutlined } from '@ant-design/icons';
 interface Props {
@@ -18,6 +20,7 @@ const CodeBlock = ({
 }: Props) => {
   const language = langClass.replace(/language-/, '') as Language;
   const [copied, setCopied] = useState(false);
+  const theme = useSelector((state) => state.theme);
 
   const copyToClipboard = useCallback((code: string) => {
     if (typeof code !== 'string') return;
@@ -37,7 +40,7 @@ const CodeBlock = ({
       {...defaultProps}
       code={children}
       language={language}
-      theme={theme}
+      theme={theme === 'dark' ? vsDark : lightTheme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <div
@@ -63,11 +66,12 @@ const CodeBlock = ({
             <div
               style={{
                 padding: '2px 12px 0px',
-                background: '#f6f6f6',
+                background: 'var(--code-bg)',
                 borderRadius: '8px 8px 0px 0px',
                 pointerEvents: 'none',
                 margin: '0 5px',
-                border: '1px solid #efefef',
+                height: '32px',
+                lineHeight: '32px',
               }}
             >
               {language}
@@ -81,9 +85,10 @@ const CodeBlock = ({
               }}
               style={{
                 padding: '2px 12px 0px',
-                background: '#f6f6f6',
+                background: 'var(--code-bg)',
                 color: '#3d4451',
                 borderRadius: '8px 8px 0px 0px',
+                transition: 'none',
               }}
             >
               {copied ? <SmileOutlined /> : <CopyOutlined />}

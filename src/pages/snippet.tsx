@@ -17,7 +17,7 @@ interface Data {
 }
 
 const SnippetPage = ({ data }: PageProps<Data>) => {
-  const { curDate } = useSelector((state: any) => state);
+  const { curDate, theme } = useSelector((state) => state);
   const dispatch = useDispatch();
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
 
@@ -28,7 +28,6 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
     return posts.map(({ node: { childMdx: mdx } }) => ({
       title: mdx.frontmatter?.title,
       description: mdx.frontmatter?.description ?? mdx.excerpt,
-      //@ts-ignore
       tag: mdx.frontmatter?.tags[0],
       categories: mdx.frontmatter.categories,
       date: mdx.frontmatter?.date,
@@ -54,7 +53,9 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
       title: 'TAG',
       dataIndex: 'tag',
       width: 80,
-      render: (text: string) => <Tag>{text}</Tag>,
+      render: (text: string) => (
+        <Tag color={theme === 'dark' ? 'var(--tag-color)' : 'blue'}>{text}</Tag>
+      ),
     },
     {
       title: 'DATE',
@@ -74,7 +75,9 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
           <div style={{ fontWeight: 'bold' }}>{text}</div>
           <div>{row.description}</div>
           <div>
-            <Tag>{row.tag}</Tag>
+            <Tag color={theme === 'dark' ? 'var(--tag-color)' : 'blue'}>
+              {row.tag}
+            </Tag>
           </div>
         </div>
       ),

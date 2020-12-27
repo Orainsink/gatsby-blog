@@ -58,7 +58,7 @@ const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
       <SEO title={title} description={description || excerpt} />
       <article>
         <header>
-          <h1 style={{ textAlign: 'center' }}>{title}</h1>
+          <h1 style={{ textAlign: 'center', fontWeight: 700 }}>{title}</h1>
           <p
             style={{
               display: 'block',

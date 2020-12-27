@@ -6,8 +6,8 @@ li {
   list-style: none;
 }
 :not(pre) > code {
-  color: #db4c69;
-  background: #f9f2f4;
+  color: var(--code-color);
+  background: var(--code-bg);
   padding: 0.1em 0.3em;
   border-radius: 0.3em;
   text-shadow: none;
@@ -57,7 +57,7 @@ body {
 article {
   padding: 1.5rem 0.7rem;
   border-radius: 2px;
-  border-bottom: 1px solid rgba(202, 202, 202, 0.6);
+  border-bottom: 1px solid var(--border-color);
   transition: background-color 0.2s ease-in;
   a {
     &:hover {
