@@ -60,7 +60,7 @@ const CodeBlock = ({
               transform: 'translateY(-98%)',
               fontSize: '18px',
               textTransform: 'uppercase',
-              color: '#3d4451',
+              color: 'var(--text-color)',
             }}
           >
             <div
@@ -86,7 +86,7 @@ const CodeBlock = ({
               style={{
                 padding: '2px 12px 0px',
                 background: 'var(--code-bg)',
-                color: '#3d4451',
+                color: 'var(--text-color)',
                 borderRadius: '8px 8px 0px 0px',
                 transition: 'none',
               }}

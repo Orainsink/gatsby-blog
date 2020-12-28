@@ -38,7 +38,7 @@ const Header = () => {
   const [searchVisible, setSearchVisible] = useState(false);
   const [titleVisible, setTitleVisible] = useState(true);
   const is1024 = useMedia('(max-width: 1024px)');
-  const is600 = useMedia('(max-width: 600px)');
+  const is650 = useMedia('(max-width: 650px)');
   const is768 = useMedia('(max-width: 768px)');
 
   const { hasArrow, scene, title, headerDrop } = useSelector(
@@ -57,12 +57,12 @@ const Header = () => {
       setTitleVisible(true);
     }
 
-    if (is600) {
+    if (is650) {
       setDrawer(true);
     } else {
       setDrawer(false);
     }
-  }, [is1024, is600]);
+  }, [is1024, is650]);
 
   useEffect(() => {
     const _handleScroll = () => {
@@ -128,9 +128,6 @@ const Header = () => {
         <Col flex={1} style={{ textAlign: 'right' }}>
           <MenuComponent drawer={drawer} />
         </Col>
-        <Col>
-          <ThemeBtn />
-        </Col>
         <Col style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <SearchOutlined
             className={classnames(styles.icon, styles.search)}
@@ -147,6 +144,9 @@ const Header = () => {
           {!headerDrop && hasArrow && (
             <ArrowSvg className={styles.arrow} onClick={_handleArrow} />
           )}
+        </Col>
+        <Col>
+          <ThemeBtn />
         </Col>
       </Row>
 

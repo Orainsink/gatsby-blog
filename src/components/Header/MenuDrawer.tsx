@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { Button, Drawer } from 'antd';
 import { Link } from 'gatsby';
 import { UnorderedListOutlined } from '@ant-design/icons';
-import { useDrawerCloseEffect } from '../../hooks';
+import { useDrawerCloseEffect, useMedia } from '../../hooks';
 import styles from '../../styles/Header.module.less';
 import { useLocation } from '@reach/router';
 import { ReactComponent as SharkMenuSvg } from '../../assets/img/menu.svg';
@@ -14,6 +14,7 @@ import { ReactComponent as SharkMenuSvg } from '../../assets/img/menu.svg';
 const MenuDrawer = () => {
   const [visible, setVisible] = useState(false);
   useDrawerCloseEffect(visible);
+  const is520 = useMedia('(max-width: 520px)');
 
   const location = useLocation();
 
@@ -28,10 +29,10 @@ const MenuDrawer = () => {
         size="middle"
         ghost
         className={styles.drawerBtn}
-        icon={<UnorderedListOutlined />}
+        icon={<UnorderedListOutlined style={{ fontSize: '26px' }} />}
         onClick={() => setVisible(true)}
       >
-        MENU
+        {is520 ? null : <span style={{ fontSize: '24px' }}>MENU</span>}
       </Button>
       <Drawer
         title={<span className={styles.drawerTitle}>MENU</span>}
