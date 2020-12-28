@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { Col, Row } from 'antd';
-import Footer from '../components/Footer';
 import SideBar, { TagsBlock, Info } from '../components/SideBlocks';
 import styles from '../styles/Indexlayout.module.less';
 import { useBackgroundColor } from '../hooks';
 import loadable from '@loadable/component';
 const Tools = loadable(() => import('../components/SideBlocks/Tools'));
 const MyGitalk = loadable(() => import('../components/MyGitalk'));
+const Footer = loadable(() => import('../components/Footer'));
 
 interface Props {
   children?: React.ReactNode;

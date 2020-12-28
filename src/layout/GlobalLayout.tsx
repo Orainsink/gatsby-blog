@@ -3,21 +3,23 @@ import { useSelector } from 'react-redux';
 import '../assets/css/variables.less';
 import '../styles/global.less';
 import Header from '../components/Header';
-import Bg from '../components/Bg';
 import BackTop from '../components/BackTop';
 import { useHasMounted, useBackTop } from '../hooks';
 import '../assets/css/base.less';
+import loadable from '@loadable/component';
+const Bg = loadable(() => import('../components/Bg'));
 
 /**global PageElement */
 const GlobalLayout = ({ children }) => {
   const { scene } = useSelector((state: any) => state);
 
+  const hasMounted = useHasMounted();
+  useBackTop();
+
   useEffect(() => {
     const body = document.getElementsByTagName('body')[0];
     body.style.overflowY = scene ? 'hidden' : 'auto';
   }, [scene]);
-  const hasMounted = useHasMounted();
-  useBackTop();
 
   return (
     <>

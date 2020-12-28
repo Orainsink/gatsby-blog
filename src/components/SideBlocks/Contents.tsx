@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import { useScrollY } from '../../hooks';
 import styles from '../../styles/SideBar.module.less';
 import isClient from '../../utils/isClient';
-
 interface Props {
   content: any;
 }
