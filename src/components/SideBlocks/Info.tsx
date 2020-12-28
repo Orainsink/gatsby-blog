@@ -116,7 +116,7 @@ const Info = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <GithubOutlined />
+            <GithubOutlined className={styles.icon} />
           </a>
           <Tooltip title={weChatContent}>
             <WechatOutlined />
