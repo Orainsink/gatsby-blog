@@ -99,8 +99,10 @@ const Info = () => {
       />
       <div className={styles.titleWrap}>
         <div className={styles.title}>ABOUT</div>
-        <div>莫沉</div>
-        <div>倾听, 感受, 思考</div>
+        <div>{theme === 'dark' ? 'Orainsink' : '莫沉'}</div>
+        <div>
+          {theme === 'dark' ? 'listen, feel, think' : '倾听, 感受, 思考'}
+        </div>
         <div className={styles.iconWrap}>
           <a
             href="https://www.zhihu.com/people/f6e5b2cbbe6e9535239e41b51305bf2c?utm_source=qq&utm_medium=social&utm_oi=586439395150794752"
