@@ -1,0 +1,72 @@
+---
+title: 单页应用首页SEO-反向代理到爬虫专用的SSR
+date: 2021-01-11 12:01:15
+description: 通过nginx代理的方式，让爬虫访问SSR页面而不是SPA页面
+tags: [seo]
+categories: tech
+---
+
+> 前几天公司的网站被恶意流量攻击了，服务器挂了几个小时，一天到晚玩爬虫的公司网站被 DDoS 搞挂了还是挺有趣的。乘着这波时间，顺便学习了一些反爬虫和负载均衡的知识。
+>
+> 不过这里总结的是利用搜索引擎的爬虫优化 SPA 页面 SEO 的方法。
+
+## SPA 的 SEO 问题
+
+现在前端的趋势是单页应用（SPA），单页应用有一个缺点就是不利于 SEO。
+
+SPA 页面的数据是通过接口请求动态渲染的，搜索引擎的爬虫在爬取网页的时候获取不到这部分数据，只能爬取直接渲染在 html 内的数据。
+
+为了解决使用 Vue 或者 React 构建的应用的 SEO 问题，后来的人又开发了 Nuxt 和 Next 这两个 SSR（server-side-render）框架。
+
+但是对于已经成型并且规模量不小的项目，这时候我们想提升项目的 SEO 效果，选择用 SSR 重构是不可能的，只能选择对项目本身改动最小的方案。
+
+那么如何在最小化影响项目的前提下，让爬虫能爬到完整的网页信息呢？
+
+## 搜索引擎爬虫的 UA 标识
+
+浏览器在发送请求的时候，在请求头会带上一个`user-agent`用户标识，它携带了用户使用的操作系统，浏览器，用户自己的身份等信息。
+
+常见的搜索引擎爬虫为了表明自己的身份好让网站给自己开绿灯（为了防止恶意爬虫，网站都会有一定的屏蔽规则），都会给自己设置特殊的 UA 标识，常见的搜索引擎 UA 表在网上到处都能查到。
+
+[常见搜索引擎爬虫介绍及屏蔽垃圾爬虫](https://tlanyan.me/common-bot-ua-and-block-bad-bots/)
+
+## nginx UA 转发，让爬虫爬特供的 SSR 页面站点
+
+通过上面我们可以知道，用户的 UA 标识和搜索引擎的 UA 标识相差很多，即我们可以通过 UA 标识判断调取接口的对象是用户还是爬虫。
+
+接下来到了投机取巧的时候了，当我们拿到请求头的 UA 信息过后，判断该请求是否来自爬虫，再通过 nginx 反向代理转发，把爬虫引导到特供的 SSR 页面。
+
+nginx 配置示例：
+
+```shell
+server {
+    list 80 default_server;
+    server_name www.default.com default.com;
+
+    # 重定向到www域名
+    if ($host = default.com) {
+        rewrite ^/(.*)$ http://www.default.com/$1 permanent; # permanent表示永久重定向
+    }
+
+    # 根据ua判断，如果是爬虫(以谷歌和百度为例)访问www.default.com时，重定向到ssr.default.com
+    if ( $http_user_agent ~* Googlebot | Baiduspider) {
+        rewrite ^/(.*)$ https://ssr.default.com/$1 permanent;
+    }
+
+    location / {
+        proxy_pass http://wwwproxy;
+        proxy_read_timeout 300;
+        proxy_set_header   Host             $host;
+        proxy_set_header   X-Real-IP        $remote_addr;
+        proxy_set_header X-Forwarded-For 		$proxy_add_x_forwarded_for;
+    }
+}
+```
+
+这样用户和爬虫在访问`www.default.com`的时候就会进入两个不同的网页，一个 CSR，一个 SSR。在不影响原有项目的情况下强化首页的 SEO 效果。
+
+## 如何同步 SPA 和 SSR 页面
+
+以上方案基本上是需要分别在服务器部署两个前端应用，如果首页经常会有改动，那么我们如何同步页面的改动呢？
+
+目前没有想到更好的解决办法，初步想法是把首页分离成一个单独的 npm 包，将首页内需要调用的接口提取出去，这样在 SPA 和 SSR 中都能使用，然后在两个项目可以通过直接更新 npm 包的版本同步代码。
