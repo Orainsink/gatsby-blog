@@ -7,6 +7,7 @@ interface Props {
   posts: ChildMdxItem[];
   hideMore?: boolean;
 }
+
 const PostList = ({ posts, hideMore = false }: Props) => {
   const { curTag, curDate } = useSelector((state: any) => state);
   const [filteredPosts, setFilteredPosts] = useState(posts);
