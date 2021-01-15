@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { Card, Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import Image from 'gatsby-image';
@@ -19,12 +19,7 @@ interface Data {
   dialogImg: any;
   snippetImg: any;
 }
-const cates = [
-  { category: 'leetcode', name: 'leetcode', path: '/leetcode' },
-  { category: 'snippet', name: 'snippet', path: '/snippet' },
-  { category: 'essay', name: '随笔', path: '/essay' },
-  { category: 'tech', name: '技术', path: '/archives' },
-];
+
 const CategoryComponent = () => {
   const data: Data = useStaticQuery(graphql`
     query TagsQuery {
@@ -69,28 +64,47 @@ const CategoryComponent = () => {
   const { group } = data.allFile;
   const { FEImg, leetcodeImg, dialogImg, snippetImg } = data;
 
-  const cateFilter = useCallback(
+  const getCount = useCallback(
     (category: string) => {
-      const getCount = (category: string) => {
-        return (
-          group.filter((item) => item.fieldValue === category)[0]?.totalCount ||
-          0
-        );
-      };
-      // Use switch instated of object
-      switch (category) {
-        case 'tech':
-          return { count: getCount('tech'), img: FEImg };
-        case 'leetcode':
-          return { count: getCount('leetcode'), img: leetcodeImg };
-        case 'snippet':
-          return { count: getCount('snippet'), img: snippetImg };
-        case 'essay':
-          return { count: getCount('essay'), img: dialogImg };
-      }
+      return (
+        group.filter((item) => item.fieldValue === category)[0]?.totalCount || 0
+      );
     },
-    [FEImg, dialogImg, group, leetcodeImg, snippetImg]
+    [group]
   );
+
+  const cateColumn = useMemo(() => {
+    return [
+      {
+        category: 'leetcode',
+        name: 'leetcode',
+        path: '/leetcode',
+        count: getCount('leetcode'),
+        img: FEImg,
+      },
+      {
+        category: 'snippet',
+        name: 'snippet',
+        path: '/snippet',
+        count: getCount('snippet'),
+        img: leetcodeImg,
+      },
+      {
+        category: 'essay',
+        name: '随笔',
+        path: '/essay',
+        count: getCount('essay'),
+        img: snippetImg,
+      },
+      {
+        category: 'tech',
+        name: '技术',
+        path: '/archives',
+        count: getCount('tech'),
+        img: dialogImg,
+      },
+    ];
+  }, [FEImg, dialogImg, leetcodeImg, snippetImg, getCount]);
 
   return (
     <section className={styles.wrap}>
@@ -99,7 +113,7 @@ const CategoryComponent = () => {
         欢迎光临！博主 莫沉 是个前端菜狗，龟速学习中。
       </div>
       <Row gutter={16} justify="space-around">
-        {cates.map((item) => (
+        {cateColumn.map((item) => (
           <Col
             xs={{ span: 24 }}
             sm={{ span: 12 }}
@@ -112,7 +126,7 @@ const CategoryComponent = () => {
               onClick={() => navigate(item.path)}
               cover={
                 <Image
-                  fixed={cateFilter(item.category).img.childImageSharp.fixed}
+                  fixed={item.img.childImageSharp.fixed}
                   alt=""
                   style={{
                     width: '100%',
@@ -124,10 +138,7 @@ const CategoryComponent = () => {
                 />
               }
             >
-              <Meta
-                title={item.name}
-                description={`${cateFilter(item.category).count}篇文章`}
-              />
+              <Meta title={item.name} description={`${item.count}篇文章`} />
             </Card>
           </Col>
         ))}

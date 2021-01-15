@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import { useSelector } from 'react-redux';
 import Tags from '../components/Tags';
 import generatePath from '../utils/generatePath';
+import styles from '../styles/PostList.module.less';
 interface Props {
   posts: ChildMdxItem[];
   hideMore?: boolean;
@@ -68,13 +69,8 @@ const PostList = ({ posts, hideMore = false }: Props) => {
         return index < 6 || !fold ? (
           <article key={node.childMdx.fields.slug}>
             <header>
-              <h3
-                style={{
-                  marginBottom: '0.4em',
-                }}
-              >
+              <h3 className={styles.title}>
                 <Link
-                  style={{ boxShadow: `none` }}
                   to={generatePath(
                     node.childMdx.frontmatter.categories,
                     node.childMdx.fields.slug
@@ -87,7 +83,7 @@ const PostList = ({ posts, hideMore = false }: Props) => {
             </header>
             <section>
               <p
-                style={{ color: 'var(--text-color-secondary)' }}
+                className={styles.phrase}
                 dangerouslySetInnerHTML={{
                   __html: description || node.childMdx.excerpt,
                 }}
@@ -98,15 +94,7 @@ const PostList = ({ posts, hideMore = false }: Props) => {
         ) : null;
       })}
       {hideMore && filteredPosts?.length > 6 && (
-        <div
-          onClick={() => setFold(!fold)}
-          style={{
-            textAlign: 'center',
-            fontSize: '18px',
-            padding: '1em 0',
-            cursor: 'pointer',
-          }}
-        >
+        <div onClick={() => setFold(!fold)} className={styles.moreBtn}>
           <span>{fold ? '展开所有' : '收起'}</span>
         </div>
       )}
