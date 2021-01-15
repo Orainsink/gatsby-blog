@@ -26,7 +26,7 @@ interface ToolItemProp {
 const ToolItem = React.memo(({ data }: ToolItemProp) => {
   const [props, setProps] = useSpring(() => ({
     xys: [0, 0, 1],
-    config: { mass: 5, tension: 350, friction: 40 },
+    config: { mass: 5, tension: 550, friction: 40 },
   }));
 
   return (
