@@ -16,6 +16,7 @@ const Loading = (props: Props) => {
     const timer = setTimeout(() => setActive(true), debounce);
     return () => clearTimeout(timer);
   }, [debounce]);
+
   return (
     active && (
       <div

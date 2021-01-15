@@ -14,6 +14,12 @@ import { arr } from '../../utils/utils';
 import styles from '../../styles/MyPlayer.module.less';
 import Controller from './Controller';
 
+/**伪随机数组 */
+const getRandomList = () =>
+  arr(songs.length)
+    .map((item, index) => index + 1)
+    .sort(() => Math.random() - 0.5);
+
 /** Controller panel */
 const Panel = () => {
   const { playing, volume, mute, loop, id } = useSelector(
@@ -21,7 +27,7 @@ const Panel = () => {
   );
   const dispatch = useDispatch();
 
-  const [randomList, setRandomList] = useState([]);
+  const [randomList, setRandomList] = useState<number[]>([]);
   const siriWaveRef = useRef(null);
 
   const waveRefCallback = useCallback((node) => {
@@ -49,12 +55,6 @@ const Panel = () => {
     };
   }, [playing]);
 
-  const generateRandom = useMemo(() => {
-    return arr(songs.length)
-      .map((item, index) => index + 1)
-      .sort(() => Math.random() - 0.5);
-  }, []);
-
   /**
    * change play status
    * @param {Song} song - song detail
@@ -64,14 +64,14 @@ const Panel = () => {
       if (song.id === id) {
         dispatch({ type: 'MUSIC', payload: { playing: !playing } });
       } else {
-        !loop && setRandomList(generateRandom);
+        !loop && setRandomList(getRandomList());
         dispatch({
           type: 'MUSIC',
           payload: { id: song.id, playing: true },
         });
       }
     },
-    [dispatch, id, playing, generateRandom, loop]
+    [dispatch, id, playing, loop]
   );
 
   const renderSongItem = useCallback(
@@ -79,10 +79,9 @@ const Panel = () => {
       <li
         key={song.id}
         onClick={() => _handleClick(song)}
-        className={classnames(
-          styles.liWrap,
-          song.id === id ? styles.active : null
-        )}
+        className={classnames(styles.liWrap, {
+          [styles.active]: song.id === id,
+        })}
       >
         <span className={styles.name}>{song.name}</span>
         {song.id === id ? (
@@ -113,21 +112,21 @@ const Panel = () => {
    */
   useEffect(() => {
     if (!loop) {
-      setRandomList(generateRandom);
+      setRandomList(getRandomList());
     }
-  }, [loop, generateRandom]);
+  }, [loop]);
 
   /**onEnd, loop or random play */
   const _handleMusicEnd = useCallback(() => {
     if (!loop) {
       let tmpList = randomList.filter((item) => item !== id);
       if (tmpList.length < 1) {
-        tmpList = generateRandom.filter((item) => item !== id);
+        tmpList = getRandomList().filter((item) => item !== id);
       }
       setRandomList(tmpList);
       dispatch({ type: 'MUSIC', payload: { id: tmpList[0] } });
     }
-  }, [id, loop, generateRandom, randomList, dispatch]);
+  }, [id, loop, randomList, dispatch]);
 
   return (
     <>
