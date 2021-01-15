@@ -3,6 +3,7 @@ import GitalkComponent from 'gitalk/dist/gitalk-component';
 import { gittalkOptions } from '../assets/js/gittalk';
 import 'gitalk/dist/gitalk.css';
 import { useHasMounted } from '../hooks';
+import isClient from '../utils/isClient';
 
 interface Props {
   title?: string;
@@ -17,11 +18,14 @@ const MyGitalk = (props: Props) => {
   const hasMounted = useHasMounted();
 
   const gitalkConfig = useMemo(
-    () => ({
-      ...gittalkOptions,
-      id: decodeURIComponent(window.location.pathname).substring(0, 49),
-      title,
-    }),
+    () =>
+      isClient
+        ? {
+            ...gittalkOptions,
+            id: decodeURIComponent(window?.location.pathname).substring(0, 49),
+            title,
+          }
+        : null,
     [title]
   );
 
