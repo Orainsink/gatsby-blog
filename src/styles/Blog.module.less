@@ -6,11 +6,14 @@ body {
 }
 .container {
   a {
-    color: #0593d3;
+    color: var(--primary-color);
     border-bottom: none;
     text-decoration: none;
     outline: none;
     pointer-events: auto;
+    &:hover {
+      color: var(--link-hover-color);
+    }
   }
   li {
     list-style-type: decimal;
