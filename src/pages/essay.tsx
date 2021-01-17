@@ -87,7 +87,10 @@ export default EssayPage;
 export const pageQuery = graphql`
   query essayQuery {
     allFile(
-      filter: { sourceInstanceName: { eq: "essay" }, extension: { glob: "md" } }
+      filter: {
+        sourceInstanceName: { eq: "essay" }
+        extension: { in: ["md", "mdx"] }
+      }
       sort: { fields: childMdx___frontmatter___date, order: DESC }
     ) {
       edges {
@@ -112,7 +115,7 @@ export const pageQuery = graphql`
     images: allFile(
       filter: {
         sourceInstanceName: { eq: "essay" }
-        extension: { glob: "png" }
+        extension: { in: ["png", "jpg"] }
       }
     ) {
       edges {
