@@ -3,6 +3,10 @@ date: 1996-03-29 17:10:09
 categories: about
 ---
 
+import Avatar from './Avatar'
+
+<Avatar />
+
 # 关于本博客
 
 该博客使用 TypeScript + less 开发。
@@ -17,9 +21,7 @@ Svg 动画来自 [loading.io](https://loading.io/)。
 
 # 关于作者
 
-作者是个写 TS 经常写 Any（在改了在改了）的菜鸡前端。
-
-目前就职于网红城市成都， 从事网红服务行业。
+作者目前就职于网红城市成都， 从事新媒体大数据 SaaS 平台及其生态的前端开发。
 
 想法很多，但是时间有限，挖了很多坑没时间填。
 
