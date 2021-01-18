@@ -64,13 +64,14 @@ const WordCloudItem = (props: Props) => {
     if (wordRef.current) {
       WordCloud(wordRef.current, {
         list: allTags,
-        gridSize: 12,
+        gridSize: 18,
         shape: 'square',
         shrinkToFit: true,
         weightFactor: 1,
         drawOutOfBound: false,
         rotateRatio: 0,
         ellipticity: 1.5,
+        classes: styles.cloud,
         backgroundColor: 'transparent',
         fontFamily: 'Finger Paint, sans-serif',
         color: theme === 'dark' ? 'random-light' : 'random-dark',
