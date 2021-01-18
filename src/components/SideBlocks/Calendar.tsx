@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Col, Row, Select } from 'antd';
 import Calendar from './CustomCalendar';
 import classnames from 'classnames';
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import styles from '../../styles/SideBar.module.less';
 import useColFlex from './useColFlex';
 
@@ -14,7 +14,7 @@ const CalendarBlock = ({ posts }: Props) => {
   const dispatch = useDispatch();
   const colFlex = useColFlex();
 
-  const allMonths = useMemo(() => {
+  const allMonths: { [month: string]: number | undefined } = useMemo(() => {
     const obj = {};
     posts.forEach(({ node }) => {
       let date = node.childMdx.frontmatter.date.substring(0, 7);
@@ -28,14 +28,14 @@ const CalendarBlock = ({ posts }: Props) => {
   }, [posts]);
 
   const disableDate = useCallback(
-    (currentDate: dayjs.Dayjs) => {
+    (currentDate: Dayjs) => {
       return !allMonths[dayjs(currentDate).format('YYYY/MM')];
     },
     [allMonths]
   );
 
   const monthCellRender = useCallback(
-    (currentDate: dayjs.Dayjs) => {
+    (currentDate: Dayjs) => {
       if (allMonths[dayjs(currentDate).format('YYYY/MM')]) {
         const count = allMonths[dayjs(currentDate).format('YYYY/MM')];
         return (
@@ -96,12 +96,14 @@ const CalendarBlock = ({ posts }: Props) => {
         fullscreen={false}
         mode="year"
         headerRender={headerRender}
-        onChange={(date) =>
+        onSelect={(date) => {
+          if (!allMonths[dayjs(date).format('YYYY/MM')]) return;
           dispatch({
             type: 'CUR_DATE',
             payload: dayjs(date).format('YYYY/MM'),
-          })
-        }
+          });
+        }}
+        defaultValue={dayjs()}
         disabledDate={disableDate}
         monthFullCellRender={monthCellRender}
       />
