@@ -10,12 +10,13 @@
  */
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 
-exports.onCreateWebpackConfig = ({ actions, stage }) => {
+const onCreateWebpackConfig = ({ actions, stage }) => {
+  // antd的问题,css顺序冲突,目前没有找到更好的解决办法,只能过滤
   if (stage === 'build-javascript') {
     actions.setWebpackConfig({
       plugins: [
         new FilterWarningsPlugin({
-          exclude: /Conflicting order/,
+          exclude: /Conflicting order./,
         }),
       ],
     });
@@ -24,4 +25,5 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
 module.exports = {
   createPages: require('./scripts/createPages'),
   onCreateNode: require('./scripts/onCreateNode'),
+  onCreateWebpackConfig,
 };
