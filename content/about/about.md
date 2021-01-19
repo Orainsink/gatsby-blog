@@ -3,10 +3,6 @@ date: 1996-03-29 17:10:09
 categories: about
 ---
 
-import Avatar from './Avatar'
-
-<Avatar />
-
 # 关于本博客
 
 该博客使用 TypeScript + less 开发。
