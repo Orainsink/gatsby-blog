@@ -6,14 +6,15 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions;
 
   createRedirect({
-    fromPath: '/tech/',
-    redirectInBrowser: true,
-    toPath: '/archives',
-  });
-  createRedirect({
     fromPath: '/tech',
     redirectInBrowser: true,
     toPath: '/archives',
+  });
+
+  createRedirect({
+    fromPath: '/about',
+    redirectInBrowser: true,
+    toPath: '/about/1438181566',
   });
 
   const Template = path.resolve(`src/templates/blog-post.tsx`);
@@ -53,14 +54,15 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
       const previous =
         index === posts.length - 1 ? null : posts[index + 1].node;
       const next = index === 0 ? null : posts[index - 1].node;
-
-      createPage({
-        path:
+      /*
           node.frontmatter.categories === 'about'
             ? replacePath(node.fields.slug)
-            : node.frontmatter.categories +
-              '/' +
-              replacePath(hashString(node.fields.slug)),
+            : */
+      createPage({
+        path:
+          node.frontmatter.categories +
+          '/' +
+          replacePath(hashString(node.fields.slug)),
         component: componentTemplate[node.frontmatter.categories] || Template,
         context: { id: node.id, previous, next },
       });

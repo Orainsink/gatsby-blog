@@ -1,38 +1,15 @@
 import React from 'react';
-import Image from 'gatsby-image';
-import { useStaticQuery, graphql } from 'gatsby';
 import styles from '../styles/Bg.module.less';
 import { useSelector } from 'react-redux';
+import mainBg from '../../content/assets/mainBg.svg';
 
 const Bg = () => {
-  const data = useStaticQuery(graphql`
-    query BgQuery {
-      bg: file(absolutePath: { regex: "/mainBg.png/" }) {
-        childImageSharp {
-          fixed(width: 1280, height: 800) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
-  `);
-
   const { scene } = useSelector((state: any) => state);
 
   return (
-    <Image
-      fixed={data.bg.childImageSharp.fixed}
-      alt={'bg'}
-      style={{
-        width: '100%',
-        height: '270px',
-        top: scene ? '100vh' : '0',
-        transition: 'top 0.5s ease-out',
-        zIndex: 0,
-        position: 'absolute',
-      }}
-      className={styles.bg}
-    />
+    <div className={styles.bg} style={{ top: scene ? '100vh' : '0' }}>
+      <img src={mainBg} alt="" className={styles.bgSvg} />
+    </div>
   );
 };
 export default React.memo(Bg);
