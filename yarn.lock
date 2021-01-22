@@ -8275,10 +8275,10 @@ gray-percentage@^2.0.0:
   resolved "https://registry.npm.taobao.org/gray-percentage/download/gray-percentage-2.0.0.tgz#b72a274d1b1379104a0050b63b207dc53fe56f99"
   integrity sha1-tyonTRsTeRBKAFC2OyB9xT/lb5k=
 
-gsap@3.5.1:
-  version "3.5.1"
-  resolved "https://registry.npm.taobao.org/gsap/download/gsap-3.5.1.tgz#36cf76787d1758e749469d5e9cbe365c186544c4"
-  integrity sha1-Ns92eH0XWOdJRp1enL42XBhlRMQ=
+gsap@3.6.0:
+  version "3.6.0"
+  resolved "https://registry.npm.taobao.org/gsap/download/gsap-3.6.0.tgz#925f25370c698ce0f6ea563522da8f6b5ed21b0a"
+  integrity sha1-kl8lNwxpjOD26lY1ItqPa17SGwo=
 
 gud@^1.0.0:
   version "1.0.0"
