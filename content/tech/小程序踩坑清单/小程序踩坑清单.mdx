@@ -1,7 +1,7 @@
 ---
 title: Taro-小程序踩坑清单
 date: 2021-01-22 10:17:46
-description: IOS, WCNM
+description: Happy mini app
 tags: [小程序]
 categories: tech
 ---
@@ -144,6 +144,6 @@ Echarts 是一个大的对象，所以我们在使用 echarts 的时候要注意
 
 ## 使用 Modal 中的 Input 自动聚焦功能的 bug
 
-使用 Taro UI 时遇到的问题，
+使用 Taro UI 时遇到的问题，如果给`Modal`内的`Input`组件默认设置`focus`属性，会导致`Modal`在隐藏的状态下，`Input`却显示在了界面上。并且有时候`focus`自动聚焦会失效。
 
-## Modal 中的值在 onCancel 回调中不能清空
+解决办法是`setTimeout`，不要一开始就聚焦到`Input`组件上，而是选择在`Modal`打开后约`300ms`再将`focus`设为`true`
