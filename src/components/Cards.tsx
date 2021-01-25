@@ -80,28 +80,28 @@ const CategoryComponent = () => {
         name: 'leetcode',
         path: '/leetcode',
         count: getCount('leetcode'),
-        img: FEImg,
+        img: leetcodeImg,
       },
       {
         category: 'snippet',
         name: 'snippet',
         path: '/snippet',
         count: getCount('snippet'),
-        img: leetcodeImg,
+        img: snippetImg,
       },
       {
         category: 'essay',
         name: '随笔',
         path: '/essay',
         count: getCount('essay'),
-        img: snippetImg,
+        img: dialogImg,
       },
       {
         category: 'tech',
         name: '技术',
         path: '/archives',
         count: getCount('tech'),
-        img: dialogImg,
+        img: FEImg,
       },
     ];
   }, [FEImg, dialogImg, leetcodeImg, snippetImg, getCount]);
