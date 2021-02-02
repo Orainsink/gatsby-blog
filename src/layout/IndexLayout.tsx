@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { Col, Row } from 'antd';
@@ -6,8 +6,9 @@ import SideBar, { TagsBlock, Info } from '../components/SideBlocks';
 import styles from '../styles/Indexlayout.module.less';
 import { useBackgroundColor } from '../hooks';
 import loadable from '@loadable/component';
+import MyGitalk from '../components/MyGitalk';
 const Tools = loadable(() => import('../components/SideBlocks/Tools'));
-const MyGitalk = loadable(() => import('../components/MyGitalk'));
+// const MyGitalk = loadable(() => import('../components/MyGitalk'));
 const Footer = loadable(() => import('../components/Footer'));
 
 interface Props {
@@ -19,7 +20,6 @@ const Layout = ({ children }: Props) => {
   const { scene, trigger, skip } = useSelector((state: any) => state);
   const dispatch = useDispatch();
   const wrapperRef = useRef(null);
-  const [wrapperClass, setWrapperClass] = useState('');
 
   useBackgroundColor(skip);
 
@@ -28,14 +28,12 @@ const Layout = ({ children }: Props) => {
     dispatch({ type: 'CUR_TAG', payload: '' });
   }, [dispatch]);
 
-  useEffect(() => {
-    setWrapperClass(
-      !scene || skip
-        ? styles.disActive
-        : trigger
-        ? styles.trigger
-        : styles.active
-    );
+  const wrapperClass = useMemo(() => {
+    return !scene || skip
+      ? styles.disActive
+      : trigger
+      ? styles.trigger
+      : styles.active;
   }, [scene, skip, trigger]);
 
   return (
