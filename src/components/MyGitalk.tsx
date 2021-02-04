@@ -24,6 +24,6 @@ const MyGitalk = (props: Props) => {
     [title]
   );
 
-  return isClient ? <GitalkComponent options={gitalkConfig} /> : <></>;
+  return <GitalkComponent options={gitalkConfig} />;
 };
 export default React.memo(MyGitalk);
