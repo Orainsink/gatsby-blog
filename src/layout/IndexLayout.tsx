@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { Col, Row } from 'antd';
@@ -18,6 +18,7 @@ interface Props {
 const Layout = ({ children }: Props) => {
   const { scene, trigger, skip } = useSelector((state: any) => state);
   const dispatch = useDispatch();
+  const [wrapperClass, setWrapperClass] = useState('');
   const wrapperRef = useRef(null);
 
   useBackgroundColor(skip);
@@ -27,12 +28,14 @@ const Layout = ({ children }: Props) => {
     dispatch({ type: 'CUR_TAG', payload: '' });
   }, [dispatch]);
 
-  const wrapperClass = useMemo(() => {
-    return !scene || skip
-      ? styles.disActive
-      : trigger
-      ? styles.trigger
-      : styles.active;
+  useEffect(() => {
+    setWrapperClass(
+      !scene || skip
+        ? styles.disActive
+        : trigger
+        ? styles.trigger
+        : styles.active
+    );
   }, [scene, skip, trigger]);
 
   return (
