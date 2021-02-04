@@ -11,7 +11,7 @@ import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
 import { useMedia } from '../hooks';
 import generatePath from '../utils/generatePath';
 import { Contents } from '../components/SideBlocks';
-import MyGitalk from '../components/MyGitalk';
+import Comment from '../components/Comment';
 import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
 interface Props {
   data: {
@@ -134,7 +134,7 @@ const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
           </li>
         </ul>
       </nav>
-      {mdx && <MyGitalk title={title} />}
+      {mdx && <Comment />}
     </Layout>
   );
 };

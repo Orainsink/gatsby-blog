@@ -8,11 +8,11 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Anchor } from 'antd';
 import { Contents } from '../components/SideBlocks';
-import MyGitalk from '../components/MyGitalk';
 import { useMedia } from '../hooks';
 import generatePath from '../utils/generatePath';
 import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
 import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
+import Comment from '../components/Comment';
 
 interface Props {
   data: {
@@ -135,7 +135,7 @@ const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
           </li>
         </ul>
       </nav>
-      {mdx && <MyGitalk title={title} />}
+      {mdx && <Comment />}
     </Layout>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import classnames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { Col, Row } from 'antd';
@@ -6,9 +6,8 @@ import SideBar, { TagsBlock, Info } from '../components/SideBlocks';
 import styles from '../styles/Indexlayout.module.less';
 import { useBackgroundColor } from '../hooks';
 import loadable from '@loadable/component';
-import MyGitalk from '../components/MyGitalk';
+import Comment from '../components/Comment';
 const Tools = loadable(() => import('../components/SideBlocks/Tools'));
-// const MyGitalk = loadable(() => import('../components/MyGitalk'));
 const Footer = loadable(() => import('../components/Footer'));
 
 interface Props {
@@ -53,7 +52,7 @@ const Layout = ({ children }: Props) => {
         <Row justify="space-between" gutter={8}>
           <Col flex="1 1 800px" className={styles.mainWrap}>
             {children}
-            <MyGitalk title="首页评论" />
+            <Comment />
           </Col>
           <SideBar>
             <Info />

@@ -42,7 +42,6 @@
     "gatsby-remark-responsive-iframe": "^2.4.2",
     "gatsby-source-filesystem": "^2.3.4",
     "gatsby-transformer-sharp": "^2.5.2",
-    "gitalk": "1.7.0",
     "gsap": "3.6.0",
     "jinrishici": "1.0.6",
     "less": "^3.11.2",

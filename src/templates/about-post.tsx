@@ -5,7 +5,7 @@ import SEO from '../components/seo';
 import styles from '../styles/Blog.module.less';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Poem from '../components/Poem';
-import { Comment } from '../components/SideBlocks';
+import Comment from '../components/Comment';
 
 interface Data {
   mdx: {
@@ -16,12 +16,13 @@ const AboutPostTemplate = ({ data }: PageProps<Data>) => {
   const { mdx } = data;
 
   return (
-    <Layout sideBlocks={<Comment />}>
+    <Layout>
       <SEO title="About" />
       <Poem />
       <section className={styles.container} style={{ padding: '1em' }}>
         {<MDXRenderer>{mdx.body}</MDXRenderer>}
       </section>
+      <Comment />
     </Layout>
   );
 };
