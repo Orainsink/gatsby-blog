@@ -1161,7 +1161,7 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.0", "@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.3.1", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.7", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2", "@babel/runtime@^7.9.6":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.0", "@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.3.1", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.7", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.6":
   version "7.12.5"
   resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.12.5.tgz?cache=0&sync_timestamp=1604441331796&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
   integrity sha1-QQ5+SHRB4bNgwpvnFdhw2bmFiC4=
@@ -1713,11 +1713,6 @@
   dependencies:
     "@babel/runtime" "^7.7.2"
     regenerator-runtime "^0.13.3"
-
-"@juggle/resize-observer@^3.1.3":
-  version "3.2.0"
-  resolved "https://registry.npm.taobao.org/@juggle/resize-observer/download/@juggle/resize-observer-3.2.0.tgz#5e0b448d27fe3091bae6216456512c5904d05661"
-  integrity sha1-XgtEjSf+MJG65iFkVlEsWQTQVmE=
 
 "@loadable/babel-plugin@^5.12.0":
   version "5.13.2"
@@ -6682,12 +6677,7 @@ extsprintf@^1.2.0:
   resolved "https://registry.npm.taobao.org/extsprintf/download/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
   integrity sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
 
-fast-deep-equal@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.npm.taobao.org/fast-deep-equal/download/fast-deep-equal-2.0.1.tgz#7b05218ddf9667bf7f370bf7fdb2cb15fdd0aa49"
-  integrity sha1-ewUhjd+WZ79/Nwv3/bLLFf3Qqkk=
-
-fast-deep-equal@^3.1.1:
+fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   version "3.1.3"
   resolved "https://registry.npm.taobao.org/fast-deep-equal/download/fast-deep-equal-3.1.3.tgz?cache=0&sync_timestamp=1593793877314&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ffast-deep-equal%2Fdownload%2Ffast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha1-On1WtVnWy8PrUSMlJE5hmmXGxSU=
@@ -13744,27 +13734,19 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.npm.taobao.org/react-lifecycles-compat/download/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha1-TxonOv38jzSIqMUWv9p4+HI1I2I=
 
-react-merge-refs@^1.0.0:
+react-merge-refs@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npm.taobao.org/react-merge-refs/download/react-merge-refs-1.1.0.tgz#73d88b892c6c68cbb7a66e0800faa374f4c38b06"
   integrity sha1-c9iLiSxsaMu3pm4IAPqjdPTDiwY=
 
-react-promise-suspense@^0.3.2:
-  version "0.3.3"
-  resolved "https://registry.npm.taobao.org/react-promise-suspense/download/react-promise-suspense-0.3.3.tgz#b085c7e0ac22b85fd3d605b1c4f181cda4310bc9"
-  integrity sha1-sIXH4KwiuF/T1gWxxPGBzaQxC8k=
-  dependencies:
-    fast-deep-equal "^2.0.1"
-
-react-reconciler@0.25.1:
-  version "0.25.1"
-  resolved "https://registry.npm.taobao.org/react-reconciler/download/react-reconciler-0.25.1.tgz?cache=0&sync_timestamp=1603367887733&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-reconciler%2Fdownload%2Freact-reconciler-0.25.1.tgz#f9814d59d115e1210762287ce987801529363aaa"
-  integrity sha1-+YFNWdEV4SEHYih86YeAFSk2Oqo=
+react-reconciler@0.26.1:
+  version "0.26.1"
+  resolved "https://registry.npm.taobao.org/react-reconciler/download/react-reconciler-0.26.1.tgz#860952dd359fd870f94895c254271e3a9de3b2d6"
+  integrity sha1-hglS3TWf2HD5SJXCVCceOp3jstY=
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "^0.19.1"
+    scheduler "^0.20.1"
 
 react-redux@7.2.2:
   version "7.2.2"
@@ -13800,20 +13782,19 @@ react-spring@8.0.27:
     "@babel/runtime" "^7.3.1"
     prop-types "^15.5.8"
 
-react-three-fiber@4.2.21:
-  version "4.2.21"
-  resolved "https://registry.npm.taobao.org/react-three-fiber/download/react-three-fiber-4.2.21.tgz#bb335fee090a44f2ba48762a8c42308c31f4238f"
-  integrity sha1-uzNf7gkKRPK6SHYqjEIwjDH0I48=
+react-three-fiber@5.3.18:
+  version "5.3.18"
+  resolved "https://registry.npm.taobao.org/react-three-fiber/download/react-three-fiber-5.3.18.tgz#50a37d344b631bc932ec0b22ddc8e678e5c9590b"
+  integrity sha1-UKN9NEtjG8ky7Asi3cjmeOXJWQs=
   dependencies:
-    "@babel/runtime" "^7.9.2"
-    "@juggle/resize-observer" "^3.1.3"
-    react-merge-refs "^1.0.0"
-    react-promise-suspense "^0.3.2"
-    react-reconciler "0.25.1"
-    react-use-measure "^2.0.0"
+    "@babel/runtime" "^7.12.1"
+    react-merge-refs "^1.1.0"
+    react-reconciler "0.26.1"
+    react-use-measure "^2.0.3"
     resize-observer-polyfill "^1.5.1"
-    scheduler "0.19.1"
+    scheduler "0.20.1"
     tiny-emitter "^2.1.0"
+    use-asset "^1.0.2"
     utility-types "^3.10.0"
 
 react-typography@^0.16.19:
@@ -13821,7 +13802,7 @@ react-typography@^0.16.19:
   resolved "https://registry.npm.taobao.org/react-typography/download/react-typography-0.16.19.tgz#5736b47961dcf6b9605b6fa38d41980db2588e28"
   integrity sha1-Vza0eWHc9rlgW2+jjUGYDbJYjig=
 
-react-use-measure@^2.0.0:
+react-use-measure@^2.0.3:
   version "2.0.3"
   resolved "https://registry.npm.taobao.org/react-use-measure/download/react-use-measure-2.0.3.tgz#7b56ae3ca19ccf62326933678625a8ff6b3f90a3"
   integrity sha1-e1auPKGcz2IyaTNnhiWo/2s/kKM=
@@ -14540,18 +14521,18 @@ sax@>=0.6.0, sax@~1.2.4:
   resolved "https://registry.npm.taobao.org/sax/download/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
   integrity sha1-KBYjTiN4vdxOU1T6tcqold9xANk=
 
-scheduler@0.19.1, scheduler@^0.19.1:
-  version "0.19.1"
-  resolved "https://registry.npm.taobao.org/scheduler/download/scheduler-0.19.1.tgz?cache=0&sync_timestamp=1603367591660&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fscheduler%2Fdownload%2Fscheduler-0.19.1.tgz#4f3e2ed2c1a7d65681f4c854fa8c5a1ccb40f196"
-  integrity sha1-Tz4u0sGn1laB9MhU+oxaHMtA8ZY=
+scheduler@0.20.1, scheduler@^0.20.1:
+  version "0.20.1"
+  resolved "https://registry.npm.taobao.org/scheduler/download/scheduler-0.20.1.tgz?cache=0&sync_timestamp=1610381285685&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fscheduler%2Fdownload%2Fscheduler-0.20.1.tgz#da0b907e24026b01181ecbc75efdc7f27b5a000c"
+  integrity sha1-2guQfiQCawEYHsvHXv3H8ntaAAw=
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-scheduler@^0.20.1:
-  version "0.20.1"
-  resolved "https://registry.npm.taobao.org/scheduler/download/scheduler-0.20.1.tgz?cache=0&sync_timestamp=1610381285685&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fscheduler%2Fdownload%2Fscheduler-0.20.1.tgz#da0b907e24026b01181ecbc75efdc7f27b5a000c"
-  integrity sha1-2guQfiQCawEYHsvHXv3H8ntaAAw=
+scheduler@^0.19.1:
+  version "0.19.1"
+  resolved "https://registry.npm.taobao.org/scheduler/download/scheduler-0.19.1.tgz?cache=0&sync_timestamp=1603367591660&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fscheduler%2Fdownload%2Fscheduler-0.19.1.tgz#4f3e2ed2c1a7d65681f4c854fa8c5a1ccb40f196"
+  integrity sha1-Tz4u0sGn1laB9MhU+oxaHMtA8ZY=
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -16649,6 +16630,13 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
+
+use-asset@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npm.taobao.org/use-asset/download/use-asset-1.0.2.tgz#d98a506ba480d113639de60631f89907794ead84"
+  integrity sha1-2YpQa6SA0RNjneYGMfiZB3lOrYQ=
+  dependencies:
+    fast-deep-equal "^3.1.3"
 
 use@^3.1.0:
   version "3.1.1"

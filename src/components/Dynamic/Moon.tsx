@@ -32,8 +32,8 @@ const Moon = (props: Props) => {
 
       lightRef.current = gsap.to(node, {
         duration: 0.5,
-        intensity: 20,
-        distance: 80,
+        intensity: 10,
+        distance: 70,
         paused: true,
       });
     }
@@ -80,7 +80,7 @@ const Moon = (props: Props) => {
   return (
     <pointLight
       attach="light"
-      args={['#ffffff', 10, 70, 2]}
+      args={['#ffffff', 5, 60, 2]}
       position={[0, 20, -40]}
       ref={lightRefCallback}
     >

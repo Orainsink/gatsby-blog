@@ -49,12 +49,14 @@ interface Data {
 /**Modal for Dynamic component */
 const Modal = React.memo((props: ModalProps) => {
   const { isScene, onCloseScene, url } = props;
-  const gltf = useLoader<any>(GLTFLoader, url);
+  const gltf = useLoader(GLTFLoader, url);
   const { camera: defaultCamera, setDefaultCamera, scene } = useThree();
   const camera = useRef(null);
   const stripsGroup = useRef(null);
   const [words, setWords] = useState(null);
   useBackgroundColor();
+
+  console.log(gltf);
 
   // set default camera, and scene fog
   useEffect(() => {
@@ -162,6 +164,7 @@ const Modal = React.memo((props: ModalProps) => {
       </group>
       {/* floor */}
       <mesh position={[-70, -20, -30]} rotation={[0.3, 0, 0]}>
+        {/* @ts-ignore */}
         <bufferGeometry attach="geometry" {...gltf.nodes.mesh_0.geometry} />
         <meshLambertMaterial
           attach="material"
