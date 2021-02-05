@@ -6,7 +6,11 @@ import { useEffect } from 'react';
  * @param {Number} ms time
  * @param {Array} args useEffect arguments
  */
-const useDebounce = (fn: () => any, ms: number = 0, args: any[] = []) => {
+export const useDebounce = (
+  fn: () => any,
+  ms: number = 0,
+  args: any[] = []
+) => {
   useEffect(() => {
     const handle = setTimeout(fn.bind(null, args), ms);
 
@@ -17,5 +21,3 @@ const useDebounce = (fn: () => any, ms: number = 0, args: any[] = []) => {
     // eslint-disable-next-line
   }, args);
 };
-
-export default useDebounce;

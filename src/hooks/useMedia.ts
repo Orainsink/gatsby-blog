@@ -16,7 +16,7 @@ const Demo = () => {
   );
 };
  */
-const useMedia = (query: string, defaultState: boolean = false) => {
+export const useMedia = (query: string, defaultState: boolean = false) => {
   const [state, setState] = useState(
     isClient ? () => window.matchMedia(query).matches : defaultState
   );
@@ -42,5 +42,3 @@ const useMedia = (query: string, defaultState: boolean = false) => {
 
   return state;
 };
-
-export default useMedia;

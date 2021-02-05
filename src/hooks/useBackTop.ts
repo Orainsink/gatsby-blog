@@ -4,7 +4,7 @@ import { useLocation } from '@reach/router';
 /**
  * back top when path change
  */
-const useBackTop = () => {
+export const useBackTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -12,4 +12,3 @@ const useBackTop = () => {
     document?.body.scrollTo(0, 0);
   }, [pathname]);
 };
-export default useBackTop;

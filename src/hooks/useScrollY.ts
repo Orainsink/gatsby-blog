@@ -10,7 +10,7 @@ function getScrollPosition() {
  * @function useScrollY
  * @returns {number} scrollY
  */
-const useScrollY = (): number => {
+export const useScrollY = (): number => {
   const [scrollY, setScrollY] = useState(getScrollPosition());
 
   useEffect(() => {
@@ -32,5 +32,3 @@ const useScrollY = (): number => {
 
   return scrollY;
 };
-
-export default useScrollY;

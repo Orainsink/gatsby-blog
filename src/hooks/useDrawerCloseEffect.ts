@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
  * @function useDrawerCloseEffect
  * @param {Boolean} visible
  **/
-const useDrawerCloseEffect = (visible: boolean) => {
+export const useDrawerCloseEffect = (visible: boolean) => {
   const scene = useSelector((state) => state.scene);
 
   useEffect(() => {
@@ -17,4 +17,3 @@ const useDrawerCloseEffect = (visible: boolean) => {
     }
   }, [visible, scene]);
 };
-export default useDrawerCloseEffect;

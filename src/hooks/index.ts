@@ -1,27 +1,12 @@
-import useBackTop from './useBackTop';
-import useBackgroundColor from './useBackgroundColor';
-import useCustomTitle from './useCustomTitle';
-import useDebounce from './useDebounce';
-import useDrawerCloseEffect from './useDrawerCloseEffect';
-import useHasMounted from './useHasMounted';
-import useMagicColor from './useMagicColor';
-import useMaxHeight from './useMaxHeight';
-import useMedia from './useMedia';
-import useScrollY from './useScrollY';
-import useWindowSize from './useWindowSize';
-import useResetKey from './useResetKey';
-
-export {
-  useBackTop,
-  useBackgroundColor,
-  useCustomTitle,
-  useDebounce,
-  useDrawerCloseEffect,
-  useHasMounted,
-  useMagicColor,
-  useMaxHeight,
-  useMedia,
-  useScrollY,
-  useWindowSize,
-  useResetKey,
-};
+export { useBackTop } from './useBackTop';
+export { useBackgroundColor } from './useBackgroundColor';
+export { useCustomTitle } from './useCustomTitle';
+export { useDebounce } from './useDebounce';
+export { useDrawerCloseEffect } from './useDrawerCloseEffect';
+export { useHasMounted } from './useHasMounted';
+export { useMagicColor } from './useMagicColor';
+export { useMaxHeight } from './useMaxHeight';
+export { useMedia } from './useMedia';
+export { useScrollY } from './useScrollY';
+export { useWindowSize } from './useWindowSize';
+export { useResetKey } from './useResetKey';
