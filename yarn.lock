@@ -10830,6 +10830,11 @@ mime@1.6.0, mime@^1.3.4, mime@^1.4.1:
   resolved "https://registry.npm.taobao.org/mime/download/mime-1.6.0.tgz?cache=0&sync_timestamp=1590596706367&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmime%2Fdownload%2Fmime-1.6.0.tgz#32cd9e5c64553bd58d19a568af452acff04981b1"
   integrity sha1-Ms2eXGRVO9WNGaVor0Uqz/BJgbE=
 
+mime@>=2.4.6:
+  version "2.5.0"
+  resolved "https://registry.npm.taobao.org/mime/download/mime-2.5.0.tgz?cache=0&sync_timestamp=1610756323605&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmime%2Fdownload%2Fmime-2.5.0.tgz#2b4af934401779806ee98026bb42e8c1ae1876b1"
+  integrity sha1-K0r5NEAXeYBu6YAmu0Lowa4YdrE=
+
 mime@^2.0.3, mime@^2.4.4, mime@^2.4.6:
   version "2.4.6"
   resolved "https://registry.npm.taobao.org/mime/download/mime-2.4.6.tgz?cache=0&sync_timestamp=1590596706367&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmime%2Fdownload%2Fmime-2.4.6.tgz#e5b407c90db442f2beb5b162373d07b69affa4d1"
@@ -11563,6 +11568,11 @@ opencollective-postinstall@^2.0.2:
   version "2.0.3"
   resolved "https://registry.npm.taobao.org/opencollective-postinstall/download/opencollective-postinstall-2.0.3.tgz#7a0fff978f6dbfa4d006238fbac98ed4198c3259"
   integrity sha1-eg//l49tv6TQBiOPusmO1BmMMlk=
+
+opener@1:
+  version "1.5.2"
+  resolved "https://registry.npm.taobao.org/opener/download/opener-1.5.2.tgz#5d37e1f35077b9dcac4301372271afdeb2a13598"
+  integrity sha1-XTfh81B3udysQwE3InGv3rKhNZg=
 
 opentracing@^0.14.4:
   version "0.14.5"
@@ -13941,7 +13951,7 @@ redux-thunk@^2.3.0:
   resolved "https://registry.npm.taobao.org/redux-thunk/download/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
   integrity sha1-UcLBmhhe1Rh6qpotCLZm0NZGdiI=
 
-redux@4.0.5, redux@^4.0.5:
+redux@^4.0.5:
   version "4.0.5"
   resolved "https://registry.npm.taobao.org/redux/download/redux-4.0.5.tgz#4db5de5816e17891de8a80c424232d06f051d93f"
   integrity sha1-TbXeWBbheJHeioDEJCMtBvBR2T8=
@@ -14450,6 +14460,14 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+rollup-plugin-serve@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npm.taobao.org/rollup-plugin-serve/download/rollup-plugin-serve-1.1.0.tgz#0654a57021a21b903340c69940f7463706e8288d"
+  integrity sha1-BlSlcCGiG5AzQMaZQPdGNwboKI0=
+  dependencies:
+    mime ">=2.4.6"
+    opener "1"
+
 rss@^1.2.2:
   version "1.2.2"
   resolved "https://registry.npm.taobao.org/rss/download/rss-1.2.2.tgz#50a1698876138133a74f9a05d2bdc8db8d27a921"
@@ -14878,10 +14896,12 @@ single-trailing-newline@^1.0.0:
   dependencies:
     detect-newline "^1.0.3"
 
-siriwave@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.npm.taobao.org/siriwave/download/siriwave-2.0.3.tgz#f1868f68995bf2589733289eff18e03baa35ac4a"
-  integrity sha1-8YaPaJlb8liXMyie/xjgO6o1rEo=
+siriwave@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.npm.taobao.org/siriwave/download/siriwave-2.2.0.tgz#a9d3195ccdffafbbc9c9517ccf51c1e3081391b7"
+  integrity sha1-qdMZXM3/r7vJyVF8z1HB4wgTkbc=
+  dependencies:
+    rollup-plugin-serve "^1.1.0"
 
 sisteransi@^1.0.5:
   version "1.0.5"
@@ -15848,7 +15868,7 @@ text-table@0.2.0, text-table@^0.2.0:
 
 three@^0.122.0:
   version "0.122.0"
-  resolved "https://registry.npm.taobao.org/three/download/three-0.122.0.tgz?cache=0&sync_timestamp=1603886217885&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fthree%2Fdownload%2Fthree-0.122.0.tgz#bd9ed8a8820074856e8ba7b63fe0a65176e01aeb"
+  resolved "https://registry.npm.taobao.org/three/download/three-0.122.0.tgz?cache=0&sync_timestamp=1611924035187&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fthree%2Fdownload%2Fthree-0.122.0.tgz#bd9ed8a8820074856e8ba7b63fe0a65176e01aeb"
   integrity sha1-vZ7YqIIAdIVui6e2P+CmUXbgGus=
 
 through2@^2.0.0, through2@^2.0.1:

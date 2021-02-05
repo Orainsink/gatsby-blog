@@ -34,6 +34,9 @@ let mouseY = 0;
 const hfUrl =
   'https://free-api.heweather.net/s6/weather/now?&location=auto_ip&key=' +
   process.env.GATSBY_HEWEATHER_KEY;
+const fiveHundredStars = arr(500).map(
+  () => new Vector3(random(-50, 50), random(-100, 100), random(-50, 100))
+);
 
 interface ModalProps {
   isScene: boolean;
@@ -54,9 +57,8 @@ const Modal = React.memo((props: ModalProps) => {
   const camera = useRef(null);
   const stripsGroup = useRef(null);
   const [words, setWords] = useState(null);
-  useBackgroundColor();
 
-  console.log(gltf);
+  useBackgroundColor();
 
   // set default camera, and scene fog
   useEffect(() => {
@@ -74,25 +76,30 @@ const Modal = React.memo((props: ModalProps) => {
    * 天气API
    * https://dev.heweather.com/docs/api/overview
    */
+  const fetchWeather = useCallback(async () => {
+    try {
+      const promise = await fetch(hfUrl, {
+        headers: {
+          'content-type': 'application/json',
+        },
+        method: 'GET',
+      });
+      const res = await promise.json();
+
+      const data = res.HeWeather6[0];
+      const words = [
+        data.basic.location, //city
+        data.now.tmp + '℃ ' + data.now.cond_txt, // temperature
+      ];
+      setWords(words);
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
+
   useEffect(() => {
-    fetch(hfUrl, {
-      headers: {
-        'content-type': 'application/json',
-      },
-      method: 'GET',
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        const data = res.HeWeather6[0];
-        const words = [
-          data.basic.location, //city
-          data.now.tmp + '℃ ' + data.now.cond_txt, // temperature
-        ];
-        setWords(words);
-      })
-      .catch((error) => console.log(error));
+    fetchWeather();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -149,17 +156,7 @@ const Modal = React.memo((props: ModalProps) => {
       <group ref={stripsGroup}>
         <points attach="points">
           <pointsMaterial attach="material" color="#ffffff" size={0.5} />
-          <geometry
-            attach="geometry"
-            vertices={arr(500).map(
-              () =>
-                new Vector3(
-                  random(-50, 50),
-                  random(-100, 100),
-                  random(-50, 100)
-                )
-            )}
-          />
+          <geometry attach="geometry" vertices={fiveHundredStars} />
         </points>
       </group>
       {/* floor */}

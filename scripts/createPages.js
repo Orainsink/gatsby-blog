@@ -54,10 +54,7 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
       const previous =
         index === posts.length - 1 ? null : posts[index + 1].node;
       const next = index === 0 ? null : posts[index - 1].node;
-      /*
-          node.frontmatter.categories === 'about'
-            ? replacePath(node.fields.slug)
-            : */
+
       createPage({
         path:
           node.frontmatter.categories +

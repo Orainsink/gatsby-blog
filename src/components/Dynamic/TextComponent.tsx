@@ -7,6 +7,14 @@ interface Props {
   rotation?: [number, number, number];
 }
 
+const params = {
+  size: 50,
+  font: 'Futura, Trebuchet MS, Arial, sans-serif',
+  style: 'Bold',
+  lineSpacing: 40,
+  color: '#C7C7C7',
+};
+
 /** three.js text component */
 const Text = (props: Props) => {
   const { words, position, rotation } = props;
@@ -16,14 +24,6 @@ const Text = (props: Props) => {
 
   useEffect(() => {
     if (!words) return;
-
-    const params = {
-      size: 50,
-      font: 'Futura, Trebuchet MS, Arial, sans-serif',
-      style: 'Bold',
-      lineSpacing: 40,
-      color: '#C7C7C7',
-    };
 
     let canvas = document.createElement('canvas');
     let context = canvas.getContext('2d');
