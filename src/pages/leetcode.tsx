@@ -10,6 +10,7 @@ import { useResetKey, useMedia } from '../hooks';
 import dayjs from 'dayjs';
 import { ReactComponent as LeetcodeSvg } from '../assets/img/leetcode.svg';
 import generatePath from '../utils/generatePath';
+import { ColumnsType } from 'antd/lib/table';
 
 interface Data {
   allFile: {
@@ -17,7 +18,17 @@ interface Data {
     edges: ChildMdxItem[];
   };
 }
-
+interface ColumnItemType {
+  title: string;
+  description: string;
+  tag: string;
+  date: any;
+  index: number;
+  slug: string;
+  url: string;
+  categories: string;
+  id: string;
+}
 const SnippetPage = ({ data }: PageProps<Data>) => {
   const { curDate, theme } = useSelector((state: any) => state);
   const dispatch = useDispatch();
@@ -45,7 +56,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
     }));
   }, [posts]);
 
-  const columns: any = [
+  const columns: ColumnsType<ColumnItemType> = [
     {
       title: 'INDEX',
       dataIndex: 'index',
@@ -68,7 +79,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
       render: (text: string) => (
         <Tag color={theme === 'dark' ? 'var(--tag-color)' : 'blue'}>{text}</Tag>
       ),
-      onFilter: (value, record) => record.tag.indexOf(value) === 0,
+      onFilter: (value, record) => record.tag.indexOf(value + '') === 0,
       filters: options,
     },
     {
@@ -98,7 +109,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
         ) : null,
     },
   ];
-  const smallColumns: any = [
+  const smallColumns: ColumnsType<ColumnItemType> = [
     {
       title: 'INDEX',
       dataIndex: 'index',
@@ -152,7 +163,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
           />
         ) : null}
       </Divider>
-      <Table
+      <Table<ColumnItemType>
         rowClassName={styles.clsRow}
         columns={is768 ? smallColumns : columns}
         dataSource={datas}
