@@ -1,7 +1,7 @@
 import { createStore as reduxCreateStore } from 'redux';
 const windowGlobal: any = typeof window !== 'undefined' && window;
 
-interface iRootState {
+export interface RootState {
   scene: boolean;
   trigger: boolean;
   hasArrow: boolean;
@@ -11,6 +11,7 @@ interface iRootState {
   maxHeight: number;
   headerDrop: boolean;
   theme: null | boolean;
+  title: string;
   music: {
     playing: boolean;
     volume: number;
@@ -21,7 +22,10 @@ interface iRootState {
   };
 }
 
-const reducer = (state: any, action: { type: string; payload: any }) => {
+const reducer = (
+  state: RootState,
+  action: { type: string; payload: any }
+): RootState => {
   switch (action.type) {
     case 'SCENE': {
       return { ...state, scene: action.payload };
@@ -89,7 +93,7 @@ const initialState = {
     id: 2,
     title: '',
   },
-} as iRootState;
+} as RootState;
 
 const createStore = () =>
   reduxCreateStore(
@@ -99,4 +103,3 @@ const createStore = () =>
       windowGlobal?.__REDUX_DEVTOOLS_EXTENSION__()
   );
 export default createStore;
-export type IRootState = iRootState;
