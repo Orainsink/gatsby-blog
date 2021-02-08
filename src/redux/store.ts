@@ -1,4 +1,5 @@
 import { createStore as reduxCreateStore } from 'redux';
+import produce from 'immer';
 const windowGlobal: any = typeof window !== 'undefined' && window;
 
 export interface RootState {
@@ -22,52 +23,66 @@ export interface RootState {
   };
 }
 
-const reducer = (
-  state: RootState,
-  action: { type: string; payload: any }
-): RootState => {
-  switch (action.type) {
-    case 'SCENE': {
-      return { ...state, scene: action.payload };
-    }
-    case 'TRIGGER': {
-      return { ...state, trigger: action.payload };
-    }
-    case 'HAS_ARROW': {
-      return { ...state, hasArrow: action.payload };
-    }
-    case 'SKIP': {
-      windowGlobal?.localStorage.setItem('SKIP', action.payload ? '1' : '');
-      return { ...state, skip: action.payload };
-    }
-    case 'RESET_SEARCH': {
-      return { ...state, curTag: '', curDate: '' };
-    }
-    case 'CUR_TAG': {
-      return { ...state, curTag: action.payload.trim(), curDate: '' };
-    }
-    case 'CUR_DATE': {
-      return { ...state, curTag: '', curDate: action.payload };
-    }
-    case 'MUSIC': {
-      state.music = { ...state.music, ...action.payload };
-      return state;
-    }
-    case 'TITLE': {
-      return { ...state, title: action.payload };
-    }
-    case 'MAX_HEIGHT': {
-      return { ...state, maxHeight: action.payload };
-    }
-    case 'HEADER_DROP': {
-      return { ...state, headerDrop: action.payload };
-    }
-    case 'THEME': {
-      return { ...state, theme: action.payload };
+const reducer = produce(
+  (draft: RootState, action: { type: string; payload: any }): RootState => {
+    const { type, payload } = action;
+    switch (type) {
+      case 'SCENE': {
+        draft.scene = payload;
+        return draft;
+      }
+      case 'TRIGGER': {
+        draft.trigger = payload;
+        return draft;
+      }
+      case 'HAS_ARROW': {
+        draft.hasArrow = payload;
+        return draft;
+      }
+      case 'SKIP': {
+        windowGlobal?.localStorage.setItem('SKIP', action.payload ? '1' : '');
+        draft.skip = payload;
+        return draft;
+      }
+      case 'RESET_SEARCH': {
+        draft.curTag = '';
+        draft.curDate = '';
+        return draft;
+      }
+      case 'CUR_TAG': {
+        draft.curTag = payload.trim();
+        draft.curDate = '';
+        return draft;
+      }
+      case 'CUR_DATE': {
+        draft.curDate = payload;
+        return draft;
+      }
+      case 'MUSIC': {
+        draft.music = { ...draft.music, ...action.payload };
+        return draft;
+      }
+      case 'TITLE': {
+        draft.title = payload;
+        return draft;
+      }
+      case 'MAX_HEIGHT': {
+        draft.maxHeight = payload;
+        return draft;
+      }
+      case 'HEADER_DROP': {
+        draft.headerDrop = payload;
+        return draft;
+      }
+      case 'THEME': {
+        draft.theme = payload;
+        return draft;
+      }
+      default:
+        return draft;
     }
   }
-  return state;
-};
+);
 
 const initialState = {
   scene:
