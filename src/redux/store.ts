@@ -40,7 +40,7 @@ const reducer = produce(
         return draft;
       }
       case 'SKIP': {
-        windowGlobal?.localStorage.setItem('SKIP', action.payload ? '1' : '');
+        windowGlobal?.localStorage.setItem('SKIP', payload ? '1' : '');
         draft.skip = payload;
         return draft;
       }

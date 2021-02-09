@@ -61,7 +61,7 @@ const Tools = () => {
     <Col flex={colFlex} className={classnames(styles.col, styles.toolsWrapper)}>
       <div className={styles.title}>Tools</div>
       {tools.map((tool) => (
-        <ToolItem data={tool} />
+        <ToolItem data={tool} key={tool.name} />
       ))}
     </Col>
   );
