@@ -10,7 +10,6 @@
     "@mdx-js/mdx": "1.6.21",
     "@mdx-js/react": "1.6.21",
     "@svgr/webpack": "5.5.0",
-    "@types/react-redux": "7.1.16",
     "algoliasearch": "4.7.0",
     "antd": "4.11.2",
     "classnames": "2.2.6",
