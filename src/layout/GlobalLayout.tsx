@@ -7,11 +7,12 @@ import BackTop from '../components/BackTop';
 import { useHasMounted, useBackTop } from '../hooks';
 import '../assets/css/base.less';
 import loadable from '@loadable/component';
+import { iRootState } from '../redux/store';
 const Bg = loadable(() => import('../components/Bg'));
 
 /**global PageElement */
 const GlobalLayout = ({ children }) => {
-  const { scene } = useSelector((state: any) => state);
+  const { scene } = useSelector((state: iRootState) => state);
 
   const hasMounted = useHasMounted();
   useBackTop();

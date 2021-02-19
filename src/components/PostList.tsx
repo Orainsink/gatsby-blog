@@ -4,13 +4,14 @@ import { useSelector } from 'react-redux';
 import Tags from '../components/Tags';
 import generatePath from '../utils/generatePath';
 import styles from '../styles/PostList.module.less';
+import { iRootState } from '../redux/store';
 interface Props {
   posts: ChildMdxItem[];
   hideMore?: boolean;
 }
 
 const PostList = ({ posts, hideMore = false }: Props) => {
-  const { curTag, curDate } = useSelector((state: any) => state);
+  const { curTag, curDate } = useSelector((state: iRootState) => state);
   const [filteredPosts, setFilteredPosts] = useState(posts);
   const [fold, setFold] = useState(true);
 

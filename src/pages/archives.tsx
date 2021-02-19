@@ -9,6 +9,7 @@ import { ReloadOutlined } from '@ant-design/icons';
 import styles from '../styles/archives.module.less';
 import PostList from '../components/PostList';
 import { Calendar } from '../components/SideBlocks';
+import { iRootState } from '../redux/store';
 const WordCloud = loadable(() => import('../components/WordCloud'));
 
 interface Data {
@@ -18,7 +19,7 @@ interface Data {
 }
 
 const ArchivesPage = ({ data }: PageProps<Data>) => {
-  const { curTag, curDate } = useSelector((state: any) => state);
+  const { curTag, curDate } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
 

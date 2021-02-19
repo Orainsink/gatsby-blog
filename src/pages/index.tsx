@@ -10,6 +10,7 @@ import Poem from '../components/Poem';
 import PostList from '../components/PostList';
 import { useHasMounted } from '../hooks';
 import Loading from '../components/Loading';
+import { iRootState } from '../redux/store';
 const Dynamic = loadable(() => import('../components/Dynamic'), {
   fallback: <Loading debounce={0} />,
 });
@@ -34,7 +35,7 @@ const Index = ({ data }: PageProps<Data>) => {
       childMdx: edge.node,
     },
   }));
-  const { skip, scene } = useSelector((state: any) => state);
+  const { skip, scene } = useSelector((state: iRootState) => state);
 
   const hasMounted = useHasMounted();
 

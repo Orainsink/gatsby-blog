@@ -7,6 +7,7 @@ import styles from '../styles/Indexlayout.module.less';
 import { useBackgroundColor } from '../hooks';
 import loadable from '@loadable/component';
 import Comment from '../components/Comment';
+import { iRootState } from '../redux/store';
 const Tools = loadable(() => import('../components/SideBlocks/Tools'));
 const Footer = loadable(() => import('../components/Footer'));
 
@@ -16,7 +17,7 @@ interface Props {
 
 /**index Layout */
 const Layout = ({ children }: Props) => {
-  const { scene, trigger, skip } = useSelector((state: any) => state);
+  const { scene, trigger, skip } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
   const [wrapperClass, setWrapperClass] = useState('');
   const wrapperRef = useRef(null);

@@ -11,6 +11,7 @@ import dayjs from 'dayjs';
 import { ReactComponent as LeetcodeSvg } from '../assets/img/leetcode.svg';
 import generatePath from '../utils/generatePath';
 import { ColumnsType } from 'antd/lib/table';
+import { iRootState } from '../redux/store';
 
 interface Data {
   allFile: {
@@ -30,7 +31,7 @@ interface ColumnItemType {
   id: string;
 }
 const SnippetPage = ({ data }: PageProps<Data>) => {
-  const { curDate, theme } = useSelector((state: any) => state);
+  const { curDate, theme } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
   const options = useMemo(() => {

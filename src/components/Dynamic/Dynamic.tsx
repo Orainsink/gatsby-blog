@@ -27,6 +27,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Text from './TextComponent';
 import Moon from './Moon';
 import { useBackgroundColor } from '../../hooks';
+import { iRootState } from '../../redux/store';
 
 let cameraShakeY = 0;
 let mouseX = 0;
@@ -178,7 +179,7 @@ const Modal = React.memo((props: ModalProps) => {
 });
 /** webGl wrapper  */
 const Dynamic = () => {
-  const { scene, trigger } = useSelector((state: any) => state);
+  const { scene, trigger } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
 
   const _handleScene = useCallback(() => {

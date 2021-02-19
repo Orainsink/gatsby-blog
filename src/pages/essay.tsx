@@ -9,6 +9,7 @@ import styles from '../styles/archives.module.less';
 import { useResetKey } from '../hooks';
 import Image from 'gatsby-image';
 import generatePath from '../utils/generatePath';
+import { iRootState } from '../redux/store';
 
 interface Data {
   allFile: {
@@ -25,7 +26,7 @@ interface Data {
 }
 
 const EssayPage = ({ data }: PageProps<Data>) => {
-  const { curDate } = useSelector((state: any) => state);
+  const { curDate } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
 
