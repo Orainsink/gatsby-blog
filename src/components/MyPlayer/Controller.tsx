@@ -7,11 +7,14 @@ import { ReactComponent as RandomSvg } from '../../assets/img/random.svg';
 import { ReactComponent as LoopSvg } from '../../assets/img/loop.svg';
 import { ReactComponent as VolumeSvg } from '../../assets/img/volume.svg';
 import styles from '../../styles/MyPlayer.module.less';
+import { iRootState } from '../../redux/store';
 
 /**Controller */
 const Controller = () => {
   const dispatch = useDispatch();
-  const { playing, volume, loop } = useSelector((state) => state.music);
+  const { playing, volume, loop } = useSelector(
+    (state: iRootState) => state.music
+  );
   /** stop/start playing */
   const _handleClick = useCallback(() => {
     dispatch({ type: 'MUSIC', payload: { playing: !playing } });

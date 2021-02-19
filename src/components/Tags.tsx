@@ -2,13 +2,14 @@ import React, { useCallback } from 'react';
 import { Link } from 'gatsby';
 import { Tag } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
+import { iRootState } from '../redux/store';
 interface Props {
   tags: string[];
   categories?: string;
 }
 const Tags = ({ tags, categories }: Props) => {
   const dispatch = useDispatch();
-  const theme = useSelector((state) => state.theme);
+  const theme = useSelector((state: iRootState) => state.theme);
 
   const onTagClicked = useCallback(
     (tag) => {

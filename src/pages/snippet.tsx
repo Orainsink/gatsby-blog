@@ -9,6 +9,7 @@ import styles from '../styles/archives.module.less';
 import { useResetKey, useMedia } from '../hooks';
 import dayjs from 'dayjs';
 import generatePath from '../utils/generatePath';
+import { iRootState } from '../redux/store';
 
 interface Data {
   allFile: {
@@ -17,7 +18,7 @@ interface Data {
 }
 
 const SnippetPage = ({ data }: PageProps<Data>) => {
-  const { curDate, theme } = useSelector((state) => state);
+  const { curDate, theme } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
 

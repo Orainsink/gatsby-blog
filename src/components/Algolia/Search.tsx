@@ -7,11 +7,12 @@ import styles from '../../styles/Algolia.module.less';
 import { useMaxHeight } from '../../hooks';
 import { useSelector } from 'react-redux';
 import { ReactComponent as SearchSvg } from '../../assets/img/search.svg';
+import { iRootState } from '../../redux/store';
 
 const Search = () => {
   const rootRef = useRef();
   const [query, setQuery] = useState<any>();
-  const maxHeight = useSelector((state) => state.maxHeight);
+  const maxHeight = useSelector((state: iRootState) => state.maxHeight);
   const [client, setClient] = useState(null);
   useMaxHeight();
 

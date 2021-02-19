@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { iRootState } from '../redux/store';
 
 /**
  * fix bug.
@@ -8,7 +9,7 @@ import { useSelector } from 'react-redux';
  * @param {Boolean} visible
  **/
 export const useDrawerCloseEffect = (visible: boolean) => {
-  const scene = useSelector((state) => state.scene);
+  const scene = useSelector((state: iRootState) => state.scene);
 
   useEffect(() => {
     if (!visible) {

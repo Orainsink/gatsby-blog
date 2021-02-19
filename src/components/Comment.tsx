@@ -1,9 +1,10 @@
 import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { iRootState } from '../redux/store';
 
 const Comment = () => {
   const commentBox = useRef(null);
-  const theme = useSelector((state) => state.theme);
+  const theme = useSelector((state: iRootState) => state.theme);
 
   useLayoutEffect(() => {
     const scriptEl = document.createElement('script');
@@ -30,7 +31,7 @@ const Comment = () => {
   useEffect(() => {
     document
       .querySelector('iframe.utterances-frame')
-      // eslint-disable-next-line
+      // @ts-ignore
       ?.contentWindow.postMessage(
         {
           type: 'set-theme',

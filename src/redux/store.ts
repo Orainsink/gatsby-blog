@@ -11,7 +11,7 @@ export interface RootState {
   curDate: string;
   maxHeight: number;
   headerDrop: boolean;
-  theme: null | boolean;
+  theme: null | 'dark' | 'light';
   title: string;
   music: {
     playing: boolean;
@@ -118,3 +118,4 @@ const createStore = () =>
       windowGlobal?.__REDUX_DEVTOOLS_EXTENSION__()
   );
 export default createStore;
+export type iRootState = RootState;

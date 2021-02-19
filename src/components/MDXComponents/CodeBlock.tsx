@@ -5,6 +5,7 @@ import lightTheme from '../../assets/theme/customPrism';
 import { useSelector } from 'react-redux';
 import { Button } from 'antd';
 import { CopyOutlined, SmileOutlined } from '@ant-design/icons';
+import { iRootState } from '../../redux/store';
 interface Props {
   children: string;
   className?: string;
@@ -20,7 +21,7 @@ const CodeBlock = ({
 }: Props) => {
   const language = langClass.replace(/language-/, '') as Language;
   const [copied, setCopied] = useState(false);
-  const theme = useSelector((state) => state.theme);
+  const theme = useSelector((state: iRootState) => state.theme);
 
   const copyToClipboard = useCallback((code: string) => {
     if (typeof code !== 'string') return;

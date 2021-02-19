@@ -12,6 +12,7 @@ import classnames from 'classnames';
 import { useMedia } from '../../hooks';
 import styles from '../../styles/SideBar.module.less';
 import { useSelector } from 'react-redux';
+import { iRootState } from '../../redux/store';
 
 interface Data {
   avatar: any;
@@ -55,7 +56,7 @@ const Info = () => {
   `);
 
   const { avatar, avatarD, wechat, moogle } = data;
-  const theme = useSelector((state) => state.theme);
+  const theme = useSelector((state: iRootState) => state.theme);
   const is1100 = useMedia('(max-width: 1100px)');
 
   const weChatContent = useMemo(() => {

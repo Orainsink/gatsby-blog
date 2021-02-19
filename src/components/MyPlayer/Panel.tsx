@@ -13,6 +13,7 @@ import classnames from 'classnames';
 import { arr } from '../../utils/utils';
 import styles from '../../styles/MyPlayer.module.less';
 import Controller from './Controller';
+import { iRootState } from '../../redux/store';
 
 /**伪随机数组 */
 const getRandomList = () =>
@@ -23,7 +24,7 @@ const getRandomList = () =>
 /** Controller panel */
 const Panel = () => {
   const { playing, volume, mute, loop, id } = useSelector(
-    (state) => state.music
+    (state: iRootState) => state.music
   );
   const dispatch = useDispatch();
 
@@ -84,7 +85,7 @@ const Panel = () => {
         })}
       >
         <span className={styles.name}>{song.name}</span>
-        {song.id === id ? (
+        {song.id === id && (
           <div
             className={classnames(
               styles.playingImg,
@@ -97,7 +98,7 @@ const Panel = () => {
             <div />
             <div />
           </div>
-        ) : null}
+        )}
       </li>
     ),
     [id, playing, _handleClick]

@@ -67,6 +67,7 @@
     "wordcloud": "1.1.1"
   },
   "devDependencies": {
+    "@types/react-redux": "7.1.16",
     "@typescript-eslint/eslint-plugin": "4.8.0",
     "@typescript-eslint/parser": "4.8.0",
     "babel-eslint": "10.1.0",

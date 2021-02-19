@@ -3,6 +3,7 @@ import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../styles/WordCloud.module.less';
 import isClient from '../utils/isClient';
+import { iRootState } from '../redux/store';
 const WordCloud = isClient ? require('wordcloud') : undefined;
 
 interface Data {
@@ -38,7 +39,7 @@ const WordCloudItem = (props: Props) => {
   const group = data.allFile.group;
   const wordRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
-  const theme = useSelector((state) => state.theme);
+  const theme = useSelector((state: iRootState) => state.theme);
 
   const weighted = useMemo(() => {
     let arr = group.map((item) => item.totalCount);

@@ -9,7 +9,6 @@ declare module '*.module.less' {
 declare module '*.gltf';
 declare module '*.svg';
 declare module 'algoliasearch/lite';
-declare module 'react-redux';
 declare module '@loadable/component';
 declare module 'classnames';
 declare module '@mdx-js/react';

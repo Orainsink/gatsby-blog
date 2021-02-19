@@ -7,7 +7,7 @@ import styles from '../../styles/ThemeBtn.module.less';
 const ThemeBtn = () => {
   const dispatch = useDispatch();
   const setTheme = useCallback(
-    (payload: boolean | null) => {
+    (payload: string | null) => {
       dispatch({ type: 'THEME', payload });
     },
     [dispatch]

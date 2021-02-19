@@ -13,10 +13,11 @@ import styles from '../../styles/Algolia.module.less';
 import { useSelector } from 'react-redux';
 import generatePath from '../../utils/generatePath';
 import { ReactComponent as NoResultSvg } from '../../assets/img/noResult.svg';
+import { iRootState } from '../../redux/store';
 
 const HitCount = connectStateResults(({ searchResults }) => {
   const hitCount = searchResults && searchResults.nbHits;
-  const maxHeight = useSelector((state) => state.maxHeight);
+  const maxHeight = useSelector((state: iRootState) => state.maxHeight);
 
   return hitCount > 0 ? (
     <Divider orientation="center">

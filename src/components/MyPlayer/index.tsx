@@ -4,11 +4,12 @@ import { useSelector } from 'react-redux';
 import classnames from 'classnames';
 import styles from '../../styles/MyPlayer.module.less';
 import Panel from './Panel';
+import { iRootState } from '../../redux/store';
 
 /** myPlayer wrap */
 const MyPlayer = () => {
-  const { headerDrop, theme } = useSelector((state) => state);
-  const { playing } = useSelector((state) => state.music);
+  const { headerDrop, theme } = useSelector((state: iRootState) => state);
+  const { playing } = useSelector((state: iRootState) => state.music);
 
   return (
     <Tooltip
