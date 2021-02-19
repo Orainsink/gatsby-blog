@@ -1,4 +1,4 @@
-const replacePath = require('./utils');
+const replacePath = require('../src/utils/replacePath');
 const path = require('path');
 const hashString = require('../src/utils/hashString');
 
@@ -20,6 +20,7 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
   const Template = path.resolve(`src/templates/blog-post.tsx`);
   const SnippetTemplate = path.resolve(`src/templates/snippet-post.tsx`);
   const AboutTemplate = path.resolve(`src/templates/about-post.tsx`);
+  /**set your Template here */
   const componentTemplate = {
     tech: Template,
     leetcode: Template,

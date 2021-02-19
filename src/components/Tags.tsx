@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import { Tag } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { iRootState } from '../redux/store';
+import { categoryColumn } from '../assets/config/categories';
 interface Props {
   tags: string[];
   categories?: string;
@@ -20,54 +21,41 @@ const Tags = ({ tags, categories }: Props) => {
     },
     [dispatch]
   );
-  if (categories === 'leetcode') {
-    return (
-      <p className="tags">
-        <Link key="leetcode" to={`/leetcode`}>
-          <Tag color="#F57109" style={{ cursor: 'pointer' }}>
-            leetcode
-          </Tag>
-        </Link>
-      </p>
-    );
-  }
-  if (categories === 'snippet') {
-    return (
-      <p className="tags">
-        <Link key="snippet" to={`/snippet`}>
-          <Tag color="#2db7f5" style={{ cursor: 'pointer' }}>
-            snippet
-          </Tag>
-        </Link>
-      </p>
-    );
-  }
-  if (categories === 'essay') {
-    return (
-      <p className="tags">
-        <Link key="essay" to={`/essay`}>
-          <Tag color="#87d068" style={{ cursor: 'pointer' }}>
-            随笔
-          </Tag>
-        </Link>
-      </p>
-    );
+
+  if (categories !== 'tech') {
+    let curCategory = null;
+    categoryColumn.forEach((item) => {
+      if (item.key === categories) curCategory = item;
+    });
+
+    if (curCategory)
+      return (
+        <p className="tags">
+          <Link key={curCategory.key} to={curCategory.path}>
+            <Tag color={curCategory.tag} style={{ cursor: 'pointer' }}>
+              {curCategory.name}
+            </Tag>
+          </Link>
+        </p>
+      );
   }
 
-  return tags && tags.length ? (
-    <p className="tags">
-      {tags.map((tag) => (
-        <Link key={tag} onClick={() => onTagClicked(tag)} to={`/archives`}>
-          <Tag
-            color={theme === 'dark' ? 'var(--tag-color)' : 'blue'}
-            style={{ cursor: 'pointer' }}
-          >
-            #{tag}
-          </Tag>
-        </Link>
-      ))}
-    </p>
-  ) : null;
+  return (
+    tags?.length && (
+      <p className="tags">
+        {tags.map((tag) => (
+          <Link key={tag} onClick={() => onTagClicked(tag)} to={`/archives`}>
+            <Tag
+              color={theme === 'dark' ? 'var(--tag-color)' : 'blue'}
+              style={{ cursor: 'pointer' }}
+            >
+              #{tag}
+            </Tag>
+          </Link>
+        ))}
+      </p>
+    )
+  );
 };
 
 export default React.memo(Tags);

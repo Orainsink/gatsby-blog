@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import SiriWave from 'siriwave';
 import ReactHowler from 'react-howler';
-import { songs, Song } from '../../assets/js/songs';
+import { songs, Song } from '../../assets/config/songs';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
 import { arr } from '../../utils/utils';

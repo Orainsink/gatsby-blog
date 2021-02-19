@@ -1,5 +1,15 @@
 require('dotenv').config();
 const modifyVars = require('./scripts/less-vars');
+const { categoryColumn } = require('./src/assets/config/categories');
+
+/**categories filesystem config */
+const categoryFileConfig = categoryColumn.map((item) => ({
+  resolve: `gatsby-source-filesystem`,
+  options: {
+    path: `${__dirname}/content/${item.key}`,
+    name: item.key,
+  },
+}));
 
 module.exports = {
   siteMetadata: {
@@ -15,39 +25,12 @@ module.exports = {
     },
   },
   plugins: [
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/tech`,
-        name: `tech`,
-      },
-    },
+    ...categoryFileConfig,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/about`,
         name: `about`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/snippet`,
-        name: `snippet`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/leetcode`,
-        name: `leetcode`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/essay`,
-        name: `essay`,
       },
     },
     {
@@ -145,13 +128,13 @@ module.exports = {
         name: `Orainsink's Blog`,
         short_name: `Orainsink`,
         start_url: `/`,
-        background_color: `#efefef`,
+        background_color: `#0a0a0a`,
         theme_color: `#3d4451`,
         display: `standalone`,
         icon: `content/assets/gatsby-icon.png`,
       },
     },
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-typography`,
