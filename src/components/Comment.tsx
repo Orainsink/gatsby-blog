@@ -13,6 +13,7 @@ const Comment = () => {
     scriptEl.setAttribute('repo', 'Orainsink/gatsby-blog');
     scriptEl.setAttribute('issue-term', 'title');
     scriptEl.setAttribute('id', 'utterances');
+    scriptEl.setAttribute('label', 'comment');
     scriptEl.setAttribute('crossorigin', 'anonymous');
     scriptEl.setAttribute(
       'theme',
