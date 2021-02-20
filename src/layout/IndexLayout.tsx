@@ -20,7 +20,7 @@ const Layout = ({ children }: Props) => {
   const { scene, trigger, skip } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
   const [wrapperClass, setWrapperClass] = useState('');
-  const wrapperRef = useRef(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useBackgroundColor(skip);
 

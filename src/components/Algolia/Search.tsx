@@ -10,7 +10,7 @@ import { ReactComponent as SearchSvg } from '../../assets/img/search.svg';
 import { iRootState } from '../../redux/store';
 
 const Search = () => {
-  const rootRef = useRef();
+  const rootRef = useRef<HTMLDivElement>(null);
   const [query, setQuery] = useState<any>();
   const maxHeight = useSelector((state: iRootState) => state.maxHeight);
   const [client, setClient] = useState(null);
@@ -35,7 +35,7 @@ const Search = () => {
           onSearchStateChange={({ query }) => setQuery(query)}
         >
           <SearchBox />
-          {query && query.length > 0 ? (
+          {query?.length > 0 ? (
             <SearchResult indices={indices} />
           ) : (
             <div

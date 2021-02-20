@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { iRootState } from '../redux/store';
 
 const Comment = () => {
-  const commentBox = useRef(null);
+  const commentBox = useRef<HTMLDivElement>(null);
   const theme = useSelector((state: iRootState) => state.theme);
 
   useLayoutEffect(() => {
