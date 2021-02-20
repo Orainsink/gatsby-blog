@@ -1,13 +1,13 @@
 require('dotenv').config();
 const modifyVars = require('./scripts/less-vars');
-const { categoryColumn } = require('./src/assets/config/categories');
+const { categories } = require('./src/assets/config/categories');
 
 /**categories filesystem config */
-const categoryFileConfig = categoryColumn.map((item) => ({
+const categoryFileConfig = categories.map((item) => ({
   resolve: `gatsby-source-filesystem`,
   options: {
-    path: `${__dirname}/content/${item.key}`,
-    name: item.key,
+    path: `${__dirname}/content/${item}`,
+    name: item,
   },
 }));
 

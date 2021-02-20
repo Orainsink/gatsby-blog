@@ -22,22 +22,17 @@ const Tags = ({ tags, categories }: Props) => {
     [dispatch]
   );
 
-  if (categories !== 'tech') {
-    let curCategory = null;
-    categoryColumn.forEach((item) => {
-      if (item.key === categories) curCategory = item;
-    });
-
-    if (curCategory)
-      return (
-        <p className="tags">
-          <Link key={curCategory.key} to={curCategory.path}>
-            <Tag color={curCategory.tag} style={{ cursor: 'pointer' }}>
-              {curCategory.name}
-            </Tag>
-          </Link>
-        </p>
-      );
+  if (categories !== 'tech' && categoryColumn.hasOwnProperty(categories)) {
+    let curCategory = categoryColumn[categories];
+    return (
+      <p className="tags">
+        <Link key={categories} to={curCategory.path}>
+          <Tag color={curCategory.tag} style={{ cursor: 'pointer' }}>
+            {curCategory.name}
+          </Tag>
+        </Link>
+      </p>
+    );
   }
 
   return (
