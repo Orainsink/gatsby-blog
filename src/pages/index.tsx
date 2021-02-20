@@ -1,19 +1,13 @@
 import React from 'react';
-import loadable from '@loadable/component';
 import { PageProps, graphql } from 'gatsby';
 import Layout from '../layout/IndexLayout';
 import SEO from '../components/seo';
-import { useSelector } from 'react-redux';
 import CateSnippet from '../components/Cards';
 import Trigger from '../components/Trigger';
 import Poem from '../components/Poem';
 import PostList from '../components/PostList';
+import Dynamic from '../components/Dynamic';
 import { useHasMounted } from '../hooks';
-import Loading from '../components/Loading';
-import { iRootState } from '../redux/store';
-const Dynamic = loadable(() => import('../components/Dynamic'), {
-  fallback: <Loading debounce={0} />,
-});
 
 interface Data {
   site: {
@@ -35,14 +29,13 @@ const Index = ({ data }: PageProps<Data>) => {
       childMdx: edge.node,
     },
   }));
-  const { skip, scene } = useSelector((state: iRootState) => state);
 
   const hasMounted = useHasMounted();
 
   return (
     <>
-      {hasMounted && !skip && <Dynamic />}
-      {hasMounted && !skip && scene && <Trigger />}
+      {hasMounted && <Dynamic />}
+      {hasMounted && <Trigger />}
       <Layout>
         <SEO title={siteTitle} />
         <Poem />

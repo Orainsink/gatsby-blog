@@ -4,7 +4,6 @@ import React, {
   useRef,
   useCallback,
   useState,
-  useMemo,
 } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -18,10 +17,6 @@ import {
 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Canvas, useLoader, useFrame, useThree } from 'react-three-fiber';
-import styles from '../../styles/Dynamic.module.less';
-import classnames from 'classnames';
-import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
-import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 import { arr, random } from '../../utils/utils';
 import { useStaticQuery, graphql } from 'gatsby';
 import Text from './TextComponent';
@@ -179,7 +174,7 @@ const Modal = React.memo((props: ModalProps) => {
 });
 /** webGl wrapper  */
 const Dynamic = () => {
-  const { scene, trigger } = useSelector((state: iRootState) => state);
+  const { scene } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
 
   const _handleScene = useCallback(() => {
@@ -195,25 +190,12 @@ const Dynamic = () => {
   `);
   const url = data?.file.publicURL;
 
-  const curStyle = useMemo(
-    () =>
-      !scene ? styles.disActive : trigger ? styles.trigger : styles.active,
-    [scene, trigger]
-  );
-
   return (
-    <>
-      <ReactScrollWheelHandler downHandler={_handleScene}>
-        <div className={classnames(styles.wrapper, curStyle)}>
-          <Canvas>
-            <Suspense fallback={null}>
-              <Modal isScene={scene} onCloseScene={_handleScene} url={url} />
-            </Suspense>
-          </Canvas>
-          <ArrowSvg className={styles.arrow} onClick={_handleScene} />
-        </div>
-      </ReactScrollWheelHandler>
-    </>
+    <Canvas>
+      <Suspense fallback={null}>
+        <Modal isScene={scene} onCloseScene={_handleScene} url={url} />
+      </Suspense>
+    </Canvas>
   );
 };
 
