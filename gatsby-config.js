@@ -135,7 +135,7 @@ module.exports = {
       },
     },
     // offline plugin makes loading strange
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-typography`,

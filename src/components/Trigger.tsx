@@ -15,7 +15,7 @@ const Trigger = () => {
     [dispatch]
   );
 
-  if (!skip && scene) return null;
+  if (skip || !scene) return null;
 
   return (
     <div
