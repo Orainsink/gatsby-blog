@@ -2,8 +2,8 @@ import React, { CSSProperties } from 'react';
 
 interface Props {
   src: string;
-  name?: string;
-  jump?: boolean;
+  // name?: string;
+  // jump?: boolean;
   type?: string;
   style?: CSSProperties;
   className?: string;
@@ -18,7 +18,7 @@ interface Props {
  * @prop [className]
  */
 const VideoComponent = (props: Props) => {
-  const { src, name = '', jump = false, type = 'video/mp4', ...rest } = props;
+  const { src, type = 'video/mp4', ...rest } = props;
 
   return (
     <video style={{ width: '100%' }} controls {...rest}>

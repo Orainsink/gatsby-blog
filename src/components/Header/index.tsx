@@ -11,6 +11,7 @@ import styles from '../../styles/Header.module.less';
 import isClient from '../../utils/isClient';
 import ThemeBtn from './ThemeBtn';
 import MenuComponent from './MenuComponent';
+import { iRootState } from '../../redux/store';
 const MyPlayer = loadable(() => import('../MyPlayer'));
 const SearchDrawer = loadable(() => import('../../components/Algolia/Index'));
 
@@ -42,7 +43,7 @@ const Header = () => {
   const is768 = useMedia('(max-width: 768px)');
 
   const { hasArrow, scene, title, headerDrop } = useSelector(
-    (state: any) => state
+    (state: iRootState) => state
   );
 
   const setActive = useCallback(
@@ -65,7 +66,7 @@ const Header = () => {
   }, [is1024, is650]);
 
   useEffect(() => {
-    const _handleScroll = () => {
+    const _handleScroll: () => void = () => {
       if (is768) return setActive(false);
       if (document.body.scrollTop > 0) {
         setActive(true);

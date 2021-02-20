@@ -14,6 +14,7 @@ import {
   PlaneGeometry,
   MeshLambertMaterial,
   Mesh,
+  PerspectiveCamera,
 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Canvas, useLoader, useFrame, useThree } from 'react-three-fiber';
@@ -48,11 +49,11 @@ interface Data {
 /**Modal for Dynamic component */
 const Modal = React.memo((props: ModalProps) => {
   const { isScene, onCloseScene, url } = props;
-  const gltf = useLoader(GLTFLoader, url);
+  const { nodes, materials } = useLoader(GLTFLoader, url);
   const { camera: defaultCamera, setDefaultCamera, scene } = useThree();
-  const camera = useRef(null);
-  const stripsGroup = useRef(null);
-  const [words, setWords] = useState(null);
+  const camera = useRef<PerspectiveCamera>(null);
+  const stripsGroup = useRef<Mesh>(null);
+  const [words, setWords] = useState<string[]>(null);
 
   useBackgroundColor();
 
@@ -132,7 +133,7 @@ const Modal = React.memo((props: ModalProps) => {
   }, 1);
 
   // shake camera
-  const _handlePointerMove = (e) => {
+  const _handlePointerMove = (e: React.PointerEvent) => {
     mouseX = (e.clientX / window.innerWidth) * 2 - 1;
     mouseY = (e.clientY / window.innerHeight) * 2 - 1;
   };
@@ -158,10 +159,10 @@ const Modal = React.memo((props: ModalProps) => {
       {/* floor */}
       <mesh position={[-70, -20, -30]} rotation={[0.3, 0, 0]}>
         {/* @ts-ignore */}
-        <bufferGeometry attach="geometry" {...gltf.nodes.mesh_0.geometry} />
+        <bufferGeometry attach="geometry" {...nodes.mesh_0.geometry} />
         <meshLambertMaterial
           attach="material"
-          {...gltf.materials['']}
+          {...materials['']}
           flatShading
           side={DoubleSide}
         />

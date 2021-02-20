@@ -13,7 +13,7 @@ const Tags = ({ tags, categories }: Props) => {
   const theme = useSelector((state: iRootState) => state.theme);
 
   const onTagClicked = useCallback(
-    (tag) => {
+    (tag: string) => {
       dispatch({
         type: 'CUR_TAG',
         payload: tag.trim(),

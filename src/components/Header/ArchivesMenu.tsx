@@ -11,10 +11,10 @@ for (let i = 0; i < categories.length; i += 2) {
 }
 
 const ArchivesMenu = React.memo(({ visible }: { visible: boolean }) => {
-  const magicRef = useRef(null);
+  const magicRef = useRef<HTMLDivElement>(null);
   useMagicColor(magicRef.current, visible);
 
-  const refCallback = useCallback((node) => {
+  const refCallback = useCallback((node: HTMLDivElement) => {
     if (node !== null) {
       magicRef.current = node;
     }

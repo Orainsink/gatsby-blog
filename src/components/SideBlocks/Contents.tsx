@@ -11,7 +11,7 @@ interface Props {
 /** 侧边栏 目录块 */
 const Contents = (props: Props) => {
   const { content } = props;
-  const contentsRef = useRef(null);
+  const contentsRef = useRef<HTMLDivElement>(null);
   const scrollY = useScrollY();
 
   const isFixed = useMemo(() => scrollY > 333, [scrollY]);

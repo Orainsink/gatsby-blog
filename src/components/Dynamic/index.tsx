@@ -32,7 +32,7 @@ const Wrapper = () => {
     dispatch({ type: 'SCENE', payload: false });
   }, [dispatch]);
 
-  const curStyle = useMemo(
+  const curStyle = useMemo<string>(
     () =>
       !scene ? styles.disActive : trigger ? styles.trigger : styles.active,
     [scene, trigger]

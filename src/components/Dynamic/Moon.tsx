@@ -8,10 +8,10 @@ interface Props {
 /** three.js moon */
 const Moon = (props: Props) => {
   const { onCloseScene } = props;
-  const [active, setActive] = useState(false);
-  const tweenRef = useRef(null);
-  const moonRef = useRef(null);
-  const lightRef = useRef(null);
+  const [active, setActive] = useState<boolean>(false);
+  const tweenRef = useRef<GSAPTween>(null);
+  const moonRef = useRef<GSAPTween>(null);
+  const lightRef = useRef<GSAPTween>(null);
 
   const lightRefCallback = useCallback((node) => {
     if (node !== null) {

@@ -19,8 +19,8 @@ const params = {
 const Text = (props: Props) => {
   const { words, position, rotation } = props;
 
-  const [size, setSize] = useState([0, 0]);
-  const [map, setMap] = useState(null);
+  const [size, setSize] = useState<[number, number]>([0, 0]);
+  const [map, setMap] = useState<Texture>(null);
 
   useEffect(() => {
     if (!words) return;
