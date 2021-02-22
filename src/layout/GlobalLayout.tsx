@@ -8,6 +8,7 @@ import { useHasMounted, useBackTop } from '../hooks';
 import '../assets/css/base.less';
 import loadable from '@loadable/component';
 import { iRootState } from '../redux/store';
+import ErrorBoundary from '../components/ErrorBoundary';
 const Bg = loadable(() => import('../components/Bg'));
 
 /**global PageElement */
@@ -23,12 +24,12 @@ const GlobalLayout = ({ children }) => {
   }, [scene]);
 
   return (
-    <>
+    <ErrorBoundary>
       <div>{children}</div>
       {hasMounted && <Header />}
       {hasMounted && <Bg />}
       {hasMounted && <BackTop />}
-    </>
+    </ErrorBoundary>
   );
 };
 
