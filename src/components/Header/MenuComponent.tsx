@@ -30,7 +30,7 @@ const MenuComponent = ({ drawer }: { drawer: boolean }) => {
           </Dropdown>
         </li>
         <li>
-          <Link to="/about">about</Link>
+          <Link to="/about/1438181566">about</Link>
         </li>
       </ul>
     );
