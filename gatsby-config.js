@@ -213,8 +213,7 @@ module.exports = {
     {
       resolve: '@sentry/gatsby',
       options: {
-        dsn:
-          'https://ac590fc8533b45f8b54048bf128cf40a@o528909.ingest.sentry.io/5646570',
+        dsn: process.env.GATSBY_SENTRY_DSN,
         sampleRate: 0.7,
       },
     },
