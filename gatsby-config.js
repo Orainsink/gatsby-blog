@@ -210,5 +210,13 @@ module.exports = {
         showSpinner: true,
       },
     },
+    {
+      resolve: '@sentry/gatsby',
+      options: {
+        dsn:
+          'https://ac590fc8533b45f8b54048bf128cf40a@o528909.ingest.sentry.io/5646570',
+        sampleRate: 0.7,
+      },
+    },
   ],
 };

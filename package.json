@@ -9,6 +9,7 @@
     "@loadable/component": "5.14.1",
     "@mdx-js/mdx": "1.6.21",
     "@mdx-js/react": "1.6.21",
+    "@sentry/gatsby": "6.2.0",
     "@svgr/webpack": "5.5.0",
     "algoliasearch": "4.7.0",
     "antd": "4.11.2",

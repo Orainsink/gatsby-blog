@@ -1849,6 +1849,89 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
+"@sentry/browser@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.npm.taobao.org/@sentry/browser/download/@sentry/browser-6.2.0.tgz#4113a92bc82f55e63f30cb16a94f717bd0b95817"
+  integrity sha1-QROpK8gvVeY/MMsWqU9xe9C5WBc=
+  dependencies:
+    "@sentry/core" "6.2.0"
+    "@sentry/types" "6.2.0"
+    "@sentry/utils" "6.2.0"
+    tslib "^1.9.3"
+
+"@sentry/core@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.npm.taobao.org/@sentry/core/download/@sentry/core-6.2.0.tgz#be1c33854fc94e1a4d867f7c2c311cf1cefb8ee9"
+  integrity sha1-vhwzhU/JThpNhn98LDEc8c77juk=
+  dependencies:
+    "@sentry/hub" "6.2.0"
+    "@sentry/minimal" "6.2.0"
+    "@sentry/types" "6.2.0"
+    "@sentry/utils" "6.2.0"
+    tslib "^1.9.3"
+
+"@sentry/gatsby@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.npm.taobao.org/@sentry/gatsby/download/@sentry/gatsby-6.2.0.tgz#37474bf653fdd99be7f66b9efe1eb604dd0bb54d"
+  integrity sha1-N0dL9lP92Zvn9mue/h62BN0LtU0=
+  dependencies:
+    "@sentry/react" "6.2.0"
+    "@sentry/tracing" "6.2.0"
+
+"@sentry/hub@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.npm.taobao.org/@sentry/hub/download/@sentry/hub-6.2.0.tgz#e7502652bc9608cf8fb63e43cd49df9019a28f29"
+  integrity sha1-51AmUryWCM+Ptj5DzUnfkBmijyk=
+  dependencies:
+    "@sentry/types" "6.2.0"
+    "@sentry/utils" "6.2.0"
+    tslib "^1.9.3"
+
+"@sentry/minimal@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.npm.taobao.org/@sentry/minimal/download/@sentry/minimal-6.2.0.tgz#718b70babb55912eeb38babaf7823d1bcdd77d1e"
+  integrity sha1-cYtwurtVkS7rOLq694I9G83XfR4=
+  dependencies:
+    "@sentry/hub" "6.2.0"
+    "@sentry/types" "6.2.0"
+    tslib "^1.9.3"
+
+"@sentry/react@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.npm.taobao.org/@sentry/react/download/@sentry/react-6.2.0.tgz#bf46c38762554f246ca9dec527e6a5b3168fb0b0"
+  integrity sha1-v0bDh2JVTyRsqd7FJ+alsxaPsLA=
+  dependencies:
+    "@sentry/browser" "6.2.0"
+    "@sentry/minimal" "6.2.0"
+    "@sentry/types" "6.2.0"
+    "@sentry/utils" "6.2.0"
+    hoist-non-react-statics "^3.3.2"
+    tslib "^1.9.3"
+
+"@sentry/tracing@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.npm.taobao.org/@sentry/tracing/download/@sentry/tracing-6.2.0.tgz#76c17e5dd3f1e61c8a4e3bd090f904a63d674765"
+  integrity sha1-dsF+XdPx5hyKTjvQkPkEpj1nR2U=
+  dependencies:
+    "@sentry/hub" "6.2.0"
+    "@sentry/minimal" "6.2.0"
+    "@sentry/types" "6.2.0"
+    "@sentry/utils" "6.2.0"
+    tslib "^1.9.3"
+
+"@sentry/types@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.npm.taobao.org/@sentry/types/download/@sentry/types-6.2.0.tgz#ca020ff42913c6b9f88a9d0c375b5ee3965a2590"
+  integrity sha1-ygIP9CkTxrn4ip0MN1te45ZaJZA=
+
+"@sentry/utils@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.npm.taobao.org/@sentry/utils/download/@sentry/utils-6.2.0.tgz#39c81ad5ba92cec54d690e3fa8ea4e777d8e9c2b"
+  integrity sha1-Ocga1bqSzsVNaQ4/qOpOd32OnCs=
+  dependencies:
+    "@sentry/types" "6.2.0"
+    tslib "^1.9.3"
+
 "@sideway/address@^4.1.0":
   version "4.1.0"
   resolved "https://registry.npm.taobao.org/@sideway/address/download/@sideway/address-4.1.0.tgz#0b301ada10ac4e0e3fa525c90615e0b61a72b78d"
@@ -16205,7 +16288,7 @@ tsconfig-paths@^3.9.0:
     minimist "^1.2.0"
     strip-bom "^3.0.0"
 
-tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0:
+tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.14.1"
   resolved "https://registry.npm.taobao.org/tslib/download/tslib-1.14.1.tgz?cache=0&sync_timestamp=1602286730817&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftslib%2Fdownload%2Ftslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha1-zy04vcNKE0vK8QkcQfZhni9nLQA=
