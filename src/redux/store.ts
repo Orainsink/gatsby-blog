@@ -50,7 +50,7 @@ const reducer = produce(
         return draft;
       }
       case 'CUR_TAG': {
-        draft.curTag = payload.trim();
+        draft.curTag = payload?.trim();
         draft.curDate = '';
         return draft;
       }

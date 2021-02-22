@@ -16,7 +16,7 @@ const Tags = ({ tags, categories }: Props) => {
     (tag: string) => {
       dispatch({
         type: 'CUR_TAG',
-        payload: tag.trim(),
+        payload: tag?.trim(),
       });
     },
     [dispatch]
