@@ -24,6 +24,7 @@ import Text from './TextComponent';
 import Moon from './Moon';
 import { useBackgroundColor } from '../../hooks';
 import { iRootState } from '../../redux/store';
+import isClient from '../../utils/isClient';
 
 let cameraShakeY = 0;
 let mouseX = 0;
@@ -190,6 +191,8 @@ const Dynamic = () => {
     }
   `);
   const url = data?.file.publicURL;
+
+  if (!isClient) return null;
 
   return (
     <Canvas>
