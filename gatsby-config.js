@@ -1,3 +1,4 @@
+import { Integrations as TracingIntegrations } from '@sentry/tracing';
 require('dotenv').config();
 const modifyVars = require('./scripts/less-vars');
 const { categories } = require('./src/assets/config/categories');
@@ -215,6 +216,8 @@ module.exports = {
       options: {
         dsn: process.env.GATSBY_SENTRY_DSN,
         sampleRate: 0.7,
+        integrations: [new TracingIntegrations.BrowserTracing()],
+        tracesSampleRate: 0.2,
       },
     },
   ],

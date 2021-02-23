@@ -3,20 +3,27 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
-
-/**
- * fix React-Hot-Loader: react-🔥-dom patch is not detected. React 16.6+ features may not work
- * see: https://github.com/gatsbyjs/gatsby/issues/11934#issuecomment-469046186
- */
+const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 
 const onCreateWebpackConfig = ({ actions, stage }) => {
-  // antd的问题,css顺序冲突,目前没有找到更好的解决办法,只能过滤
   if (stage === 'build-javascript') {
     actions.setWebpackConfig({
       plugins: [
+        // antd的问题,css顺序冲突,目前没有找到更好的解决办法,只能过滤
         new FilterWarningsPlugin({
           exclude: /Conflicting order./,
+        }),
+        /**
+         * sentry source map
+         * https://docs.sentry.io/platforms/javascript/guides/gatsby/sourcemaps/
+         */
+        new SentryWebpackPlugin({
+          authToken: process.env.GATSBY_SENTRY_AUTH,
+          org: 'orainsink',
+          project: 'orainsink',
+          include: 'src',
+          ignore: ['node_modules', 'webpack.config.js', 'assets'],
         }),
       ],
     });
