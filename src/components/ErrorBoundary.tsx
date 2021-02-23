@@ -28,7 +28,7 @@ class ErrorBoundary extends React.Component<any, StateType> {
     if (this.state.error) {
       return (
         <div style={{ textAlign: 'center' }}>
-          <h1>Oops!!网站加载发生了错误! </h1>
+          <h1>Oops!! Something went wrong! </h1>
           <h2>桌面端访问请重新加载或者挂代理</h2>
           <h2>移动端访问请升级浏览器, 您的浏览器可能不支持网站的一些新特性</h2>
           <h2>

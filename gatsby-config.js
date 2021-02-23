@@ -215,7 +215,7 @@ module.exports = {
       options: {
         dsn: process.env.GATSBY_SENTRY_DSN,
         sampleRate: 0.7,
-        tracesSampleRate: 0.2,
+        tracesSampleRate: 0.8,
       },
     },
   ],
