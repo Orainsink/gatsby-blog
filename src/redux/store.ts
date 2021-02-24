@@ -99,7 +99,7 @@ const initialState = {
   curDate: '',
   maxHeight: 0,
   headerDrop: false,
-  theme: null,
+  theme: windowGlobal && localStorage.getItem('theme'),
   music: {
     playing: false,
     volume: 0.5,

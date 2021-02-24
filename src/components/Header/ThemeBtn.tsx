@@ -18,14 +18,17 @@ const ThemeBtn = () => {
       {({ theme, toggleTheme }) => {
         if (!theme) return;
 
-        setTheme(theme);
         return (
           <div className={classnames(styles.toggle, styles.daynight)}>
             <input
               type="checkbox"
               id="toggle--daynight"
               className={styles.checkbox}
-              onChange={(e) => toggleTheme(e.target.checked ? 'light' : 'dark')}
+              onChange={(e) => {
+                const curTheme = e.target.checked ? 'light' : 'dark';
+                toggleTheme(curTheme);
+                setTheme(curTheme);
+              }}
               checked={theme !== 'dark'}
             />
             <label className={styles.btn} htmlFor="toggle--daynight">

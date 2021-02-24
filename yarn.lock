@@ -1721,6 +1721,11 @@
     "@babel/runtime" "^7.7.2"
     regenerator-runtime "^0.13.3"
 
+"@juggle/resize-observer@3.2.0":
+  version "3.2.0"
+  resolved "https://registry.npm.taobao.org/@juggle/resize-observer/download/@juggle/resize-observer-3.2.0.tgz#5e0b448d27fe3091bae6216456512c5904d05661"
+  integrity sha1-XgtEjSf+MJG65iFkVlEsWQTQVmE=
+
 "@loadable/babel-plugin@^5.12.0":
   version "5.13.2"
   resolved "https://registry.npm.taobao.org/@loadable/babel-plugin/download/@loadable/babel-plugin-5.13.2.tgz#373cddc64ee5437814f7dca1c1b6a7b2c1665a9f"

@@ -6,6 +6,7 @@
   "author": "Orainsink <ywt1250066597@gmail.com>",
   "dependencies": {
     "@ant-design/icons": "4.3.0",
+    "@juggle/resize-observer": "3.2.0",
     "@loadable/component": "5.14.1",
     "@mdx-js/mdx": "1.6.21",
     "@mdx-js/react": "1.6.21",

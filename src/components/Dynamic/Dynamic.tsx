@@ -25,6 +25,7 @@ import Moon from './Moon';
 import { useBackgroundColor } from '../../hooks';
 import { iRootState } from '../../redux/store';
 import isClient from '../../utils/isClient';
+import { ResizeObserver } from '@juggle/resize-observer';
 
 let cameraShakeY = 0;
 let mouseX = 0;
@@ -195,7 +196,7 @@ const Dynamic = () => {
   if (!isClient) return null;
 
   return (
-    <Canvas>
+    <Canvas resize={{ polyfill: ResizeObserver }}>
       <Suspense fallback={null}>
         <Modal isScene={scene} onCloseScene={_handleScene} url={url} />
       </Suspense>
