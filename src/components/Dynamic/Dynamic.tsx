@@ -135,13 +135,13 @@ const Modal = React.memo((props: ModalProps) => {
   }, 1);
 
   // shake camera
-  const _handlePointerMove = (e: React.PointerEvent) => {
+  const handlePointerMove = (e: React.PointerEvent) => {
     mouseX = (e.clientX / window.innerWidth) * 2 - 1;
     mouseY = (e.clientY / window.innerHeight) * 2 - 1;
   };
 
   return (
-    <group onPointerMove={_handlePointerMove}>
+    <group onPointerMove={handlePointerMove}>
       <perspectiveCamera
         attach="camera"
         args={[60, 1, 1, 4000]}
@@ -180,7 +180,7 @@ const Dynamic = () => {
   const { scene } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
 
-  const _handleScene = useCallback(() => {
+  const handleScene = useCallback(() => {
     dispatch({ type: 'SCENE', payload: false });
   }, [dispatch]);
 
@@ -198,7 +198,7 @@ const Dynamic = () => {
   return (
     <Canvas resize={{ polyfill: ResizeObserver }}>
       <Suspense fallback={null}>
-        <Modal isScene={scene} onCloseScene={_handleScene} url={url} />
+        <Modal isScene={scene} onCloseScene={handleScene} url={url} />
       </Suspense>
     </Canvas>
   );

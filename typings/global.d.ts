@@ -1,9 +1,12 @@
 declare const __PATH_PREFIX__: string;
 declare const __REDUX_DEVTOOLS_EXTENSION__: string;
-declare module '*.less';
 declare module '*.json';
+declare module '*.css' {
+  const classes: { [key: string]: string };
+  export default classes;
+}
 declare module '*.module.less' {
-  const classes: { [className: string]: string };
+  const classes: { [key: string]: string };
   export default classes;
 }
 declare module '*.gltf';

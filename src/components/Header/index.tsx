@@ -66,7 +66,7 @@ const Header = () => {
   }, [is1024, is650]);
 
   useEffect(() => {
-    const _handleScroll: () => void = () => {
+    const handleScroll: () => void = () => {
       if (is768) return setActive(false);
       if (document.body.scrollTop > 0) {
         setActive(true);
@@ -80,21 +80,21 @@ const Header = () => {
       setActive(true);
     }
 
-    document.body.addEventListener('scroll', _handleScroll, {
+    document.body.addEventListener('scroll', handleScroll, {
       passive: false,
     });
     return () => {
-      document.body.removeEventListener('scroll', _handleScroll);
+      document.body.removeEventListener('scroll', handleScroll);
     };
   }, [setActive, is768]);
 
-  const _handleArrow = useCallback(() => {
+  const handleArrow = useCallback(() => {
     dispatch({ type: 'SKIP', payload: false });
     dispatch({ type: 'SCENE', payload: true });
     isClient && localStorage.setItem('SCENE', '1');
   }, [dispatch]);
 
-  const _handleClose = useCallback(() => setSearchVisible(false), []);
+  const handleClose = useCallback(() => setSearchVisible(false), []);
 
   return (
     <header
@@ -143,7 +143,7 @@ const Header = () => {
             }}
           />
           {!headerDrop && hasArrow && (
-            <ArrowSvg className={styles.arrow} onClick={_handleArrow} />
+            <ArrowSvg className={styles.arrow} onClick={handleArrow} />
           )}
         </Col>
         <Col>
@@ -151,7 +151,7 @@ const Header = () => {
         </Col>
       </Row>
 
-      <SearchDrawer visible={searchVisible} onClose={_handleClose} />
+      <SearchDrawer visible={searchVisible} onClose={handleClose} />
     </header>
   );
 };

@@ -8,7 +8,11 @@ import { iRootState } from '../../redux/store';
 
 /** myPlayer wrap */
 const MyPlayer = () => {
-  const { headerDrop, theme } = useSelector((state: iRootState) => state);
+  const {
+    headerDrop,
+    theme,
+    music: { loaded },
+  } = useSelector((state: iRootState) => state);
   const { playing } = useSelector((state: iRootState) => state.music);
 
   return (
@@ -25,7 +29,7 @@ const MyPlayer = () => {
         <svg
           className={classnames(
             styles.svg,
-            playing ? styles.running : styles.paused
+            playing && loaded ? styles.running : styles.paused
           )}
           xmlSpace="preserve"
           viewBox="0 0 100 100"

@@ -16,7 +16,7 @@ const Controller = () => {
     (state: iRootState) => state.music
   );
   /** stop/start playing */
-  const _handleClick = useCallback(() => {
+  const handleClick = useCallback(() => {
     dispatch({ type: 'MUSIC', payload: { playing: !playing } });
   }, [playing, dispatch]);
 
@@ -25,7 +25,7 @@ const Controller = () => {
    * true: single track loop
    * false: list random
    */
-  const _handleClickLoop = useCallback(() => {
+  const handleLoop = useCallback(() => {
     dispatch({ type: 'MUSIC', payload: { loop: !loop } });
   }, [loop, dispatch]);
 
@@ -34,16 +34,16 @@ const Controller = () => {
       <Row className={styles.controller} gutter={8} align="middle">
         <Col className={styles.start}>
           {playing ? (
-            <PausedSvg onClick={_handleClick} />
+            <PausedSvg onClick={handleClick} />
           ) : (
-            <StartSvg onClick={_handleClick} />
+            <StartSvg onClick={handleClick} />
           )}
         </Col>
         <Col className={styles.loop}>
           {loop ? (
-            <LoopSvg style={{ width: '24px' }} onClick={_handleClickLoop} />
+            <LoopSvg style={{ width: '24px' }} onClick={handleLoop} />
           ) : (
-            <RandomSvg style={{ width: '18px' }} onClick={_handleClickLoop} />
+            <RandomSvg style={{ width: '18px' }} onClick={handleLoop} />
           )}
         </Col>
         <Col className={styles.volume} flex={1}>

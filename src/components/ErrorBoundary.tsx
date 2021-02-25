@@ -5,7 +5,7 @@ interface StateType {
   error: Error;
 }
 /**
- * ErrorBoundary with Sentry
+ * Sentry ErrorBoundary
  * https://zh-hans.reactjs.org/docs/error-boundaries.html
  */
 class ErrorBoundary extends React.Component<any, StateType> {
@@ -34,8 +34,8 @@ class ErrorBoundary extends React.Component<any, StateType> {
           <h2>
             已知在UC, 老版本夸克浏览器上会报错, 在Firefox手机浏览器上动画会出错
           </h2>
-          <h2>作者比较懒, 没做向下兼容, 改是不可能改的</h2>
           <h2>建议使用chrome手机浏览器</h2>
+          <h2>作者比较懒, 没做向下兼容, 改是不可能改的</h2>
         </div>
       );
     } else {

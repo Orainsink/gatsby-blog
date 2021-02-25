@@ -14,6 +14,7 @@ import { arr } from '../../utils/utils';
 import styles from '../../styles/MyPlayer.module.less';
 import Controller from './Controller';
 import { iRootState } from '../../redux/store';
+import { ReactComponent as MusicLoadingSvg } from '../../assets/img/musicLoading.svg';
 
 /**伪随机数组 */
 const getRandomList = () =>
@@ -23,15 +24,22 @@ const getRandomList = () =>
 
 /** Controller panel */
 const Panel = () => {
-  const { playing, volume, mute, loop, id } = useSelector(
+  const { playing, volume, mute, loop, id, loaded } = useSelector(
     (state: iRootState) => state.music
   );
   const dispatch = useDispatch();
 
   const [randomList, setRandomList] = useState<number[]>([]);
-  const siriWaveRef = useRef(null);
+  const siriWaveRef = useRef<SiriWave>(null);
 
-  const waveRefCallback = useCallback((node) => {
+  const setLoaded = useCallback(
+    (loaded: boolean) => {
+      dispatch({ type: 'MUSIC', payload: { loaded } });
+    },
+    [dispatch]
+  );
+
+  const waveRefCallback = useCallback((node: HTMLDivElement) => {
     if (node !== null) {
       const wave = new SiriWave({
         container: document.getElementById('wave'),
@@ -47,20 +55,20 @@ const Panel = () => {
 
   useEffect(() => {
     if (playing) {
-      siriWaveRef.current?.start();
+      loaded && siriWaveRef.current?.start();
     } else {
       siriWaveRef.current?.stop();
     }
     return () => {
       siriWaveRef.current?.stop();
     };
-  }, [playing]);
+  }, [playing, loaded]);
 
   /**
    * change play status
    * @param {Song} song - song detail
    */
-  const _handleClick = useCallback(
+  const handleClick = useCallback(
     (song: Song) => {
       if (song.id === id) {
         dispatch({ type: 'MUSIC', payload: { playing: !playing } });
@@ -79,13 +87,13 @@ const Panel = () => {
     (song: Song) => (
       <li
         key={song.id}
-        onClick={() => _handleClick(song)}
+        onClick={() => handleClick(song)}
         className={classnames(styles.liWrap, {
           [styles.active]: song.id === id,
         })}
       >
         <span className={styles.name}>{song.name}</span>
-        {song.id === id && (
+        {song.id === id && loaded && (
           <div
             className={classnames(
               styles.playingImg,
@@ -101,9 +109,10 @@ const Panel = () => {
         )}
       </li>
     ),
-    [id, playing, _handleClick]
+    [id, playing, loaded, handleClick]
   );
 
+  /** current song id */
   const songUrl = useMemo(() => {
     return songs.filter((song) => song.id === id)[0]?.url;
   }, [id]);
@@ -118,7 +127,7 @@ const Panel = () => {
   }, [loop]);
 
   /**onEnd, loop or random play */
-  const _handleMusicEnd = useCallback(() => {
+  const handleMusicEnd = useCallback(() => {
     if (!loop) {
       let tmpList = randomList.filter((item) => item !== id);
       if (tmpList.length < 1) {
@@ -139,13 +148,17 @@ const Panel = () => {
         loop={loop}
         src={songUrl}
         format={['mp3']}
-        onEnd={_handleMusicEnd}
+        onEnd={handleMusicEnd}
+        onLoad={() => setLoaded(true)}
+        onLoadError={() => setLoaded(false)}
       />
       <div ref={waveRefCallback}>
         <Controller />
         <ul className={styles.list}>
           {songs.map((song) => renderSongItem(song))}
         </ul>
+
+        {!loaded && <MusicLoadingSvg className={styles.loadingSvg} />}
       </div>
     </>
   );

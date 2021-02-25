@@ -23,7 +23,7 @@ const Contents = (props: Props) => {
     );
   }, [scrollY]);
 
-  const _handleClick = useCallback((e: React.MouseEvent<HTMLElement>) => {
+  const handleClick = useCallback((e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
   }, []);
 
@@ -58,7 +58,7 @@ const Contents = (props: Props) => {
         <Anchor
           getContainer={() => document.body as HTMLElement}
           targetOffset={200}
-          onClick={_handleClick}
+          onClick={handleClick}
         >
           {renderLinks}
         </Anchor>

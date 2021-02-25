@@ -28,7 +28,7 @@ const Wrapper = () => {
   const { scene, trigger } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
 
-  const _handleScene = useCallback(() => {
+  const handleScene = useCallback(() => {
     dispatch({ type: 'SCENE', payload: false });
   }, [dispatch]);
 
@@ -39,10 +39,10 @@ const Wrapper = () => {
   );
 
   return (
-    <ReactScrollWheelHandler downHandler={_handleScene}>
+    <ReactScrollWheelHandler downHandler={handleScene}>
       <div className={classnames(styles.wrapper, curStyle)}>
         <Dynamic />
-        <ArrowSvg className={styles.arrow} onClick={_handleScene} />
+        <ArrowSvg className={styles.arrow} onClick={handleScene} />
       </div>
     </ReactScrollWheelHandler>
   );

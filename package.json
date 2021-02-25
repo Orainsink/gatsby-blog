@@ -87,6 +87,7 @@
     "husky": "4.2.5",
     "lint-staged": "10.2.11",
     "prettier": "2.0.5",
+    "typescript-plugin-css-modules": "3.2.0",
     "webpack-filter-warnings-plugin": "1.2.1"
   },
   "homepage": "https://blog.foolishrobot.xyz",

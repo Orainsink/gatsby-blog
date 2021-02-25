@@ -20,6 +20,7 @@ export interface RootState {
     loop: boolean;
     id: number | null;
     title: string;
+    loaded: boolean;
   };
 }
 
@@ -107,6 +108,7 @@ const initialState = {
     loop: false,
     id: 2,
     title: '',
+    loaded: false,
   },
 } as RootState;
 
