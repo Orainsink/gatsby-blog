@@ -6,7 +6,7 @@
  * => '/name' means folder, use it when you need imgs or other assets
  * => '/name##category' add category
  */
-import { categories } from '../src/assets/config/categories';
+const { categories } = require('../src/assets/config/categories');
 const fs = require('fs');
 const moment = require('moment');
 const exec = require('child_process').exec;
@@ -27,16 +27,24 @@ try {
     throw new Error('wrong category');
   }
 
-  let output = `---
-  title: ${title}
-  date: ${date}
-  description:
-  tags: []
-  categories: ${category}
-  ${category === 'leetcode' ? 'url' : ''}
-  ${category === 'leetcode' ? 'index:' : ''}
-  ---
-  `;
+  let output =
+    category === 'leetcode'
+      ? `---
+title: ${title}
+date: ${date}
+description:
+tags: []
+categories: ${category}
+${category === 'leetcode' ? 'url' : ''}
+${category === 'leetcode' ? 'index:' : ''}
+---`
+      : `---
+title: ${title}
+date: ${date}
+description:
+tags: []
+categories: ${category}
+---`;
 
   if (isFolder) {
     fs.mkdirSync(`./content/${category}/${title}`);
