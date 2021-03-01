@@ -35,8 +35,8 @@ date: ${date}
 description:
 tags: []
 categories: ${category}
-${category === 'leetcode' ? 'url' : ''}
-${category === 'leetcode' ? 'index:' : ''}
+url: ''
+index: ''
 ---`
       : `---
 title: ${title}

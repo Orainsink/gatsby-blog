@@ -3,7 +3,7 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
-const SentryWebpackPlugin = require('@sentry/webpack-plugin');
+const SentryPlugin = require('webpack-sentry-plugin');
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 
 const onCreateWebpackConfig = ({ actions, stage }) => {
@@ -18,12 +18,15 @@ const onCreateWebpackConfig = ({ actions, stage }) => {
          * sentry source map
          * https://docs.sentry.io/platforms/javascript/guides/gatsby/sourcemaps/
          */
-        new SentryWebpackPlugin({
-          authToken: process.env.GATSBY_SENTRY_AUTH,
-          org: 'orainsink',
+        new SentryPlugin({
+          apiKey: process.env.GATSBY_SENTRY_AUTH,
+          organization: 'orainsink',
           project: 'orainsink',
-          include: './public',
-          ignore: ['node_modules', 'webpack.config.js', 'assets'],
+          include: /public/,
+          release: function (hash) {
+            return hash;
+          },
+          deleteAfterCompile: true,
         }),
       ],
     });
