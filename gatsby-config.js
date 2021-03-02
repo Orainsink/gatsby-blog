@@ -213,7 +213,7 @@ module.exports = {
     {
       resolve: '@sentry/gatsby',
       options: {
-        release: process.env.RELEASE_VERSION,
+        release: 'blog',
         dsn: process.env.GATSBY_SENTRY_DSN,
         sampleRate: 0.7,
         tracesSampleRate: 0.8,

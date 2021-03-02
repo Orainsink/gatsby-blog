@@ -2,7 +2,7 @@
   "name": "gatsby-blog",
   "private": true,
   "description": "my blog",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Orainsink <ywt1250066597@gmail.com>",
   "dependencies": {
     "@ant-design/icons": "4.3.0",

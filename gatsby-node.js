@@ -23,6 +23,7 @@ const onCreateWebpackConfig = ({ actions, stage }) => {
           org: 'orainsink',
           project: 'orainsink',
           include: './public',
+          release: 'blog',
           ignore: ['node_modules', 'webpack.config.js', 'assets'],
         }),
       ],
