@@ -1,0 +1,25 @@
+---
+title: 踩坑错误监控工具-sentry
+date: 2021-03-02 14:39:19
+description: 记录sentry开源工具在react和gatsby中使用的过程中踩的坑
+tags: [性能]
+categories: tech
+---
+
+> 很久之前我记录了常用的错误统计方法 [埋点,错误监控和用户数据统计](https://blog.foolishrobot.xyz/tech/2132011539/)，但仅仅统计了错误是不够的，错误定位/追踪/归档及数据的可视化展示令人头痛，人力短缺的情况下很难把这些东西挨个挨个自己实现。
+>
+> sentry 是一个开源的错误监控工具, 他提供了错误统计，性能分析，错误追踪，sourcemap 及可视化等一系列功能。
+
+## 准备工作
+
+项目准备：公司项目 react，个人博客 gatsby
+
+官网： [https://sentry.io](https://sentry.io/)
+
+## 自行部署（可选）
+
+> 如果担心自己的代码安全，可以自行部署 sentry 服务
+
+官网： [Self-Hosted Sentry](https://develop.sentry.dev/self-hosted/)
+
+其他人的总结： [从零开始部署错误报告系统-Sentry](https://github.com/qsz/blog/blob/master/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/Sentry%E9%83%A8%E7%BD%B2.md)
