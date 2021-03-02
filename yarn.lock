@@ -13172,10 +13172,10 @@ prism-react-renderer@1.1.1:
   resolved "https://registry.npm.taobao.org/prism-react-renderer/download/prism-react-renderer-1.1.1.tgz#1c1be61b1eb9446a146ca7a50b7bcf36f2a70a44"
   integrity sha1-HBvmGx65RGoUbKelC3vPNvKnCkQ=
 
-prismjs@1.22.0:
-  version "1.22.0"
-  resolved "https://registry.npm.taobao.org/prismjs/download/prismjs-1.22.0.tgz?cache=0&sync_timestamp=1602355090286&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fprismjs%2Fdownload%2Fprismjs-1.22.0.tgz#73c3400afc58a823dd7eed023f8e1ce9fd8977fa"
-  integrity sha1-c8NACvxYqCPdfu0CP44c6f2Jd/o=
+prismjs@1.23.0:
+  version "1.23.0"
+  resolved "https://registry.npm.taobao.org/prismjs/download/prismjs-1.23.0.tgz#d3b3967f7d72440690497652a9d40ff046067f33"
+  integrity sha1-07OWf31yRAaQSXZSqdQP8EYGfzM=
   optionalDependencies:
     clipboard "^2.0.0"
 
