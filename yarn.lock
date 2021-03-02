@@ -14142,10 +14142,10 @@ react-spring@8.0.27:
     "@babel/runtime" "^7.3.1"
     prop-types "^15.5.8"
 
-react-three-fiber@5.3.18:
-  version "5.3.18"
-  resolved "https://registry.npm.taobao.org/react-three-fiber/download/react-three-fiber-5.3.18.tgz#50a37d344b631bc932ec0b22ddc8e678e5c9590b"
-  integrity sha1-UKN9NEtjG8ky7Asi3cjmeOXJWQs=
+react-three-fiber@5.3.19:
+  version "5.3.19"
+  resolved "https://registry.npm.taobao.org/react-three-fiber/download/react-three-fiber-5.3.19.tgz#aa74078dfd9e2739241a1e2e2957d015059fa9da"
+  integrity sha1-qnQHjf2eJzkkGh4uKVfQFQWfqdo=
   dependencies:
     "@babel/runtime" "^7.12.1"
     react-merge-refs "^1.1.0"
@@ -16250,10 +16250,10 @@ text-table@0.2.0, text-table@^0.2.0:
   resolved "https://registry.npm.taobao.org/text-table/download/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-three@^0.125.0:
-  version "0.125.0"
-  resolved "https://registry.npm.taobao.org/three/download/three-0.125.0.tgz#19e922b9dc51ad0b706893aeee888de68e99850a"
-  integrity sha1-GekiudxRrQtwaJOu7oiN5o6ZhQo=
+three@0.122.0:
+  version "0.122.0"
+  resolved "https://registry.npm.taobao.org/three/download/three-0.122.0.tgz#bd9ed8a8820074856e8ba7b63fe0a65176e01aeb"
+  integrity sha1-vZ7YqIIAdIVui6e2P+CmUXbgGus=
 
 through2@^2.0.0, through2@^2.0.1:
   version "2.0.5"

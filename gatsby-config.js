@@ -55,6 +55,8 @@ module.exports = {
         apiKey: process.env.ALGOLIA_ADMIN_KEY,
         indexName: process.env.ALGOLIA_INDEX_NAME,
         queries: require('./src/utils/algolia-queries'),
+        enablePartialUpdates: true,
+        matchFields: ['slug'],
       },
     },
     {
@@ -135,7 +137,12 @@ module.exports = {
       },
     },
     // offline plugin makes loading strange
-    `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [`/pages/*`],
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-typography`,

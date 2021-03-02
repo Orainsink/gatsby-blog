@@ -5,6 +5,8 @@
  */
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
+const glob = require('glob');
+const { removeSync } = require('fs-extra');
 
 const onCreateWebpackConfig = ({ actions, stage }) => {
   if (stage === 'build-javascript') {
@@ -26,6 +28,13 @@ const onCreateWebpackConfig = ({ actions, stage }) => {
           release: 'blog',
           ignore: ['node_modules', 'webpack.config.js', 'assets'],
         }),
+        {
+          apply: (compiler) =>
+            compiler.hooks.done.tap('CleanJsMapPlugin', (compilation, cb) => {
+              glob.sync('./public/**/*.js.map').forEach((f) => removeSync(f));
+              cb && cb();
+            }),
+        },
       ],
     });
   }
