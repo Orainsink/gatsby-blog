@@ -9,7 +9,6 @@ const ThemeBtn = () => {
   const setTheme = useCallback(
     (payload: string | null) => {
       dispatch({ type: 'THEME', payload });
-      throw new Error('test source map');
     },
     [dispatch]
   );
