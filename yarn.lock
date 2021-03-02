@@ -16250,7 +16250,7 @@ text-table@0.2.0, text-table@^0.2.0:
   resolved "https://registry.npm.taobao.org/text-table/download/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-three@0.122.0:
+three@^0.122.0:
   version "0.122.0"
   resolved "https://registry.npm.taobao.org/three/download/three-0.122.0.tgz#bd9ed8a8820074856e8ba7b63fe0a65176e01aeb"
   integrity sha1-vZ7YqIIAdIVui6e2P+CmUXbgGus=
