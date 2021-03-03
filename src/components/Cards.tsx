@@ -1,9 +1,13 @@
 import React, { useCallback, useMemo } from 'react';
 import { Card, Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
-import Image from 'gatsby-image';
+import { StaticImage } from 'gatsby-plugin-image';
 import { ReactComponent as MarkSvg } from '../assets/img/mark.svg';
 import styles from '../styles/Cards.module.less';
+import FEImg from '../assets/img/javascript.png';
+import leetcodeImg from '../assets/img/leetcode.png';
+import dialogImg from '../assets/img/随笔.png';
+import snippetImg from '../assets/img/snippet.png';
 const { Meta } = Card;
 
 interface Data {
@@ -14,10 +18,6 @@ interface Data {
       fieldValue: string;
     }[];
   };
-  FEImg: any;
-  leetcodeImg: any;
-  dialogImg: any;
-  snippetImg: any;
 }
 
 const CategoryComponent = () => {
@@ -30,39 +30,10 @@ const CategoryComponent = () => {
           fieldValue
         }
       }
-      FEImg: file(absolutePath: { regex: "/javascript.png/" }) {
-        childImageSharp {
-          fixed(width: 320, height: 180) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      leetcodeImg: file(absolutePath: { regex: "/leetcode.png/" }) {
-        childImageSharp {
-          fixed(width: 320, height: 180) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      dialogImg: file(absolutePath: { regex: "/随笔.png/" }) {
-        childImageSharp {
-          fixed(width: 320, height: 180) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      snippetImg: file(absolutePath: { regex: "/snippet.png/" }) {
-        childImageSharp {
-          fixed(width: 320, height: 180) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
     }
   `);
 
   const { group } = data.allFile;
-  const { FEImg, leetcodeImg, dialogImg, snippetImg } = data;
 
   const getCount = useCallback(
     (category: string) => {
@@ -87,7 +58,7 @@ const CategoryComponent = () => {
         name: 'snippet',
         path: '/snippet',
         count: getCount('snippet'),
-        img: snippetImg,
+        img: '../assets/img/snippet.png',
       },
       {
         category: 'essay',
@@ -104,7 +75,7 @@ const CategoryComponent = () => {
         img: FEImg,
       },
     ];
-  }, [FEImg, dialogImg, leetcodeImg, snippetImg, getCount]);
+  }, [getCount]);
 
   return (
     <section className={styles.wrap}>
@@ -125,8 +96,8 @@ const CategoryComponent = () => {
               className={styles.cardWrap}
               onClick={() => navigate(item.path)}
               cover={
-                <Image
-                  fixed={item.img.childImageSharp.fixed}
+                <StaticImage
+                  src={item.img}
                   alt=""
                   style={{
                     width: '100%',

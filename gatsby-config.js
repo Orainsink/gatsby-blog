@@ -144,21 +144,22 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    `gatsby-plugin-postcss`,
+    'gatsby-plugin-postcss',
     {
       resolve: `gatsby-plugin-less`,
       options: {
         lessOptions: {
           javascriptEnabled: true,
+          // strictMath: true,
           cssLoaderOptions: {
             camelCase: false,
-            strictMath: true,
           },
           modifyVars,
         },
@@ -186,7 +187,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-typescript`,
-    `gatsby-plugin-react-css-modules`,
+    // `gatsby-plugin-react-css-modules`,
     'gatsby-plugin-cname',
     'gatsby-plugin-dark-mode',
     'gatsby-plugin-svgr',

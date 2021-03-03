@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ReloadOutlined } from '@ant-design/icons';
 import styles from '../styles/archives.module.less';
 import { useResetKey } from '../hooks';
-import Image from 'gatsby-image';
+import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 import generatePath from '../utils/generatePath';
 import { iRootState } from '../redux/store';
 
@@ -32,9 +32,12 @@ const EssayPage = ({ data }: PageProps<Data>) => {
 
   const getImg = useCallback(
     (relativeDirectory: string) => {
-      return data.images.edges.find(
+      const node: any = data.images.edges.find(
         (image) => image.node.relativeDirectory === relativeDirectory
-      )?.node.childImageSharp.fixed;
+      )?.node;
+      if (node) {
+        return getImage(node);
+      } else return null;
     },
     [data]
   );
@@ -66,9 +69,10 @@ const EssayPage = ({ data }: PageProps<Data>) => {
               hoverable
               className={styles.essayItem}
               cover={
-                <Image
-                  fixed={getImg(item.frontmatter.title)}
+                <GatsbyImage
+                  image={getImg(item.frontmatter.title)}
                   style={{ width: '100%' }}
+                  alt=""
                 />
               }
             >
@@ -123,9 +127,7 @@ export const pageQuery = graphql`
         node {
           relativeDirectory
           childImageSharp {
-            fixed(width: 370, height: 210) {
-              ...GatsbyImageSharpFixed
-            }
+            gatsbyImageData(width: 370, height: 210)
           }
         }
       }

@@ -11,6 +11,7 @@ declare module '*.module.less' {
 }
 declare module '*.gltf';
 declare module '*.svg';
+declare module '*.png';
 declare module 'algoliasearch/lite';
 declare module '@loadable/component';
 declare module 'classnames';

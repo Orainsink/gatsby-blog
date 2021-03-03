@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import { Col, Tooltip } from 'antd';
-import { useStaticQuery, graphql } from 'gatsby';
-import Image from 'gatsby-image';
+import { StaticImage } from 'gatsby-plugin-image';
 import Icon, {
   ZhihuOutlined,
   GithubOutlined,
@@ -13,49 +12,13 @@ import { useMedia } from '../../hooks';
 import styles from '../../styles/SideBar.module.less';
 import { useSelector } from 'react-redux';
 import { iRootState } from '../../redux/store';
+import wechat from '../../assets/img/wechat.png';
+import moogle from '../../assets/img/moogle.png';
+import avatarD from '../../assets/img/avatarD.png';
+import avatar from '../../assets/img/avatar.png';
 
-interface Data {
-  avatar: any;
-  moogle: any;
-  wechat: any;
-  avatarD: any;
-}
 /**个人信息块 */
 const Info = () => {
-  const data: Data = useStaticQuery(graphql`
-    query sideQuery {
-      avatar: file(absolutePath: { regex: "/avatar.png/" }) {
-        childImageSharp {
-          fixed(width: 100, height: 100) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      avatarD: file(absolutePath: { regex: "/gatsby-icon.png/" }) {
-        childImageSharp {
-          fixed(width: 100, height: 100) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      moogle: file(absolutePath: { regex: "/moogle.png/" }) {
-        childImageSharp {
-          fixed(width: 100, height: 100) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      wechat: file(absolutePath: { regex: "/wechat.png/" }) {
-        childImageSharp {
-          fixed(width: 100, height: 100) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
-  `);
-
-  const { avatar, avatarD, wechat, moogle } = data;
   const theme = useSelector((state: iRootState) => state.theme);
   const is1100 = useMedia('(max-width: 1100px)');
 
@@ -63,38 +26,36 @@ const Info = () => {
     return (
       <div className={styles.wechatWrap}>
         <h3>ID：Orainsink</h3>
-        <Image fixed={wechat.childImageSharp.fixed} alt="" />
+        <StaticImage src={wechat} alt="" width={100} height={100} />
         <div>
           微信在线<del className={styles.delText}>相亲</del>交友
         </div>
       </div>
     );
-  }, [wechat]);
+  }, []);
 
   const steamContent = useMemo(() => {
     return (
       <div className={styles.steamWrap}>
         <h3>ID：Moogle Knight</h3>
-        <Image fixed={moogle.childImageSharp.fixed} alt="" />
+        <StaticImage src={moogle} alt="" width={100} height={100} />
         <div>重度RPG玩家，受苦爱好者</div>
         <div>
           <del>你玩手游吗？什么你居然不玩游戏？</del>
         </div>
       </div>
     );
-  }, [moogle]);
+  }, []);
 
   return (
     <Col
       flex={is1100 ? '1 1 300px' : '0 0 300px'}
       className={classnames(styles.InfoWrap, styles.col)}
     >
-      <Image
-        fixed={
-          theme === 'dark'
-            ? avatarD.childImageSharp.fixed
-            : avatar.childImageSharp.fixed
-        }
+      <StaticImage
+        src={theme === 'dark' ? avatarD : avatar}
+        width={100}
+        height={100}
         alt=""
         className={styles.avatar}
       />
