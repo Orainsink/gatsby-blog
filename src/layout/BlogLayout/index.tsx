@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Col, Row } from 'antd';
-import SideBar, { Info } from '../components/SideBlocks';
-import styles from '../styles/Bloglayout.module.less';
-import isClient from '../utils/isClient';
-import { useBackgroundColor } from '../hooks';
+import SideBar, { Info } from '../../components/SideBlocks';
+import * as styles from './index.module.less';
+import isClient from '../../utils/isClient';
+import { useBackgroundColor } from '../../hooks';
 import loadable from '@loadable/component';
-const Footer = loadable(() => import('../components/Footer'));
+const Footer = loadable(() => import('../../components/Footer'));
 interface Props {
   content?: React.ReactNode;
   sideBlocks?: React.ReactNode;

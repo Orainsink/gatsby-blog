@@ -6,8 +6,11 @@ declare module '*.css' {
   export default classes;
 }
 declare module '*.module.less' {
-  const classes: { [key: string]: string };
-  export default classes;
+  interface ClassNames {
+    [className: string]: string;
+  }
+  const classNames: ClassNames;
+  export = classNames;
 }
 declare module '*.gltf';
 declare module '*.svg';

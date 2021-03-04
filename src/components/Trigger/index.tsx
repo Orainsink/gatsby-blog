@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
-import styles from '../styles/Trigger.module.less';
+import * as styles from './index.module.less';
 import { useDispatch, useSelector } from 'react-redux';
-import { iRootState } from '../redux/store';
+import { iRootState } from '../../redux/store';
 
 /**
  * scene Trigger

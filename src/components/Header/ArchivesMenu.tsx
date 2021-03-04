@@ -2,7 +2,7 @@ import React, { useCallback, useRef } from 'react';
 import { Col, Row } from 'antd';
 import { Link } from 'gatsby';
 import { useMagicColor } from '../../hooks';
-import styles from '../../styles/Header.module.less';
+import * as styles from './index.module.less';
 import { categoryColumn, categories } from '../../assets/config/categories';
 
 let column: string[][] = [];
@@ -25,7 +25,7 @@ const ArchivesMenu = React.memo(({ visible }: { visible: boolean }) => {
       {column.map((item, index) => (
         <Row align="middle" justify="space-between" key={index}>
           {item.map((category) => (
-            <Col span={12} className={styles.cls} key={category}>
+            <Col span={12} /* className={styles.cls} */ key={category}>
               <Link to={categoryColumn[category].path}>
                 {categoryColumn[category].name}
               </Link>

@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 import loadable from '@loadable/component';
 import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
-import styles from '../../styles/Dynamic.module.less';
+import * as styles from './index.module.less';
 import { ReactComponent as LoadingSvg } from '../../assets/img/loading.svg';
 const Dynamic = loadable(() => import('./Dynamic'), {
   fallback: (

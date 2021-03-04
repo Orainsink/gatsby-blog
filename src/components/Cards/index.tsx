@@ -2,12 +2,9 @@ import React, { useCallback, useMemo } from 'react';
 import { Card, Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
-import { ReactComponent as MarkSvg } from '../assets/img/mark.svg';
-import styles from '../styles/Cards.module.less';
-import FEImg from '../assets/img/javascript.png';
-import leetcodeImg from '../assets/img/leetcode.png';
-import dialogImg from '../assets/img/随笔.png';
-import snippetImg from '../assets/img/snippet.png';
+import { ReactComponent as MarkSvg } from '../../assets/img/mark.svg';
+import * as styles from './index.module.less';
+
 const { Meta } = Card;
 
 interface Data {
@@ -51,28 +48,56 @@ const CategoryComponent = () => {
         name: 'leetcode',
         path: '/leetcode',
         count: getCount('leetcode'),
-        img: leetcodeImg,
+        img: (
+          <StaticImage
+            src="../../../content/assets/leetcode.png"
+            alt="leetcode"
+            className={styles.imgWrap}
+            placeholder="blurred"
+          />
+        ),
       },
       {
         category: 'snippet',
         name: 'snippet',
         path: '/snippet',
         count: getCount('snippet'),
-        img: '../assets/img/snippet.png',
+        img: (
+          <StaticImage
+            src="../../../content/assets/snippet.png"
+            alt="snippet"
+            className={styles.imgWrap}
+            placeholder="blurred"
+          />
+        ),
       },
       {
         category: 'essay',
         name: '随笔',
         path: '/essay',
         count: getCount('essay'),
-        img: dialogImg,
+        img: (
+          <StaticImage
+            src="../../../content/assets/随笔.png"
+            alt="essay"
+            className={styles.imgWrap}
+            placeholder="blurred"
+          />
+        ),
       },
       {
         category: 'tech',
         name: '技术',
         path: '/archives',
         count: getCount('tech'),
-        img: FEImg,
+        img: (
+          <StaticImage
+            src="../../../content/assets/javascript.png"
+            alt="tech"
+            className={styles.imgWrap}
+            placeholder="blurred"
+          />
+        ),
       },
     ];
   }, [getCount]);
@@ -95,19 +120,7 @@ const CategoryComponent = () => {
               hoverable
               className={styles.cardWrap}
               onClick={() => navigate(item.path)}
-              cover={
-                <StaticImage
-                  src={item.img}
-                  alt=""
-                  style={{
-                    width: '100%',
-                    paddingBottom: '56.25%',
-                    height: 0,
-                    transition: 'all 500ms ease',
-                  }}
-                  className={styles.imgWrap}
-                />
-              }
+              cover={item.img}
             >
               <Meta title={item.name} description={`${item.count}篇文章`} />
             </Card>

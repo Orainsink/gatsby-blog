@@ -7529,14 +7529,6 @@ gatsby-plugin-page-creator@^3.0.0:
     globby "^11.0.2"
     lodash "^4.17.20"
 
-gatsby-plugin-postcss@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npm.taobao.org/gatsby-plugin-postcss/download/gatsby-plugin-postcss-4.0.0.tgz#1d8f41c06aac788bb380e0ae555df4aeee7d7ab8"
-  integrity sha1-HY9BwGqseIuzgOCuVV30ru59erg=
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    postcss-loader "^4.1.0"
-
 gatsby-plugin-react-helmet@4.0.0:
   version "4.0.0"
   resolved "https://registry.npm.taobao.org/gatsby-plugin-react-helmet/download/gatsby-plugin-react-helmet-4.0.0.tgz#6d4fddc51a271859b21ec93645cdd0d3ad03b02c"
@@ -12317,17 +12309,6 @@ postcss-load-config@^2.1.0:
   dependencies:
     cosmiconfig "^5.0.0"
     import-cwd "^2.0.0"
-
-postcss-loader@^4.1.0:
-  version "4.2.0"
-  resolved "https://registry.npm.taobao.org/postcss-loader/download/postcss-loader-4.2.0.tgz?cache=0&sync_timestamp=1612277672592&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fpostcss-loader%2Fdownload%2Fpostcss-loader-4.2.0.tgz#f6993ea3e0f46600fb3ee49bbd010448123a7db4"
-  integrity sha1-9pk+o+D0ZgD7PuSbvQEESBI6fbQ=
-  dependencies:
-    cosmiconfig "^7.0.0"
-    klona "^2.0.4"
-    loader-utils "^2.0.0"
-    schema-utils "^3.0.0"
-    semver "^7.3.4"
 
 postcss-loader@^5.0.0:
   version "5.0.0"

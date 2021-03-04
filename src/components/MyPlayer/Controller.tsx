@@ -6,7 +6,7 @@ import { ReactComponent as StartSvg } from '../../assets/img/start.svg';
 import { ReactComponent as RandomSvg } from '../../assets/img/random.svg';
 import { ReactComponent as LoopSvg } from '../../assets/img/loop.svg';
 import { ReactComponent as VolumeSvg } from '../../assets/img/volume.svg';
-import styles from '../../styles/MyPlayer.module.less';
+import * as styles from './index.module.less';
 import { iRootState } from '../../redux/store';
 
 /**Controller */

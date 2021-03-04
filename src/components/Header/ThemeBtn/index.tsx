@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { ThemeToggler } from 'gatsby-plugin-dark-mode';
 import { useDispatch } from 'react-redux';
 import classnames from 'classnames';
-import styles from '../../styles/ThemeBtn.module.less';
+import * as styles from './index.module.less';
 
 const ThemeBtn = () => {
   const dispatch = useDispatch();

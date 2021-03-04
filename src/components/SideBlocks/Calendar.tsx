@@ -4,7 +4,7 @@ import { Col, Row, Select } from 'antd';
 import Calendar from './CustomCalendar';
 import classnames from 'classnames';
 import dayjs, { Dayjs } from 'dayjs';
-import styles from '../../styles/SideBar.module.less';
+import * as styles from './index.module.less';
 import useColFlex from './useColFlex';
 
 interface Props {
@@ -75,7 +75,7 @@ const CalendarBlock = ({ posts }: Props) => {
           <Select
             size="small"
             dropdownMatchSelectWidth={false}
-            className={styles.select}
+            // className={styles.select}
             onChange={(newYear) => {
               const now = value.clone().year(newYear);
               onChange(now);

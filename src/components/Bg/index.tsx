@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from '../styles/Bg.module.less';
+import * as styles from './index.module.less';
 import { useSelector } from 'react-redux';
-import mainBg from '../../content/assets/mainBg.svg';
-import { iRootState } from '../redux/store';
+import mainBg from '../../../content/assets/mainBg.svg';
+import { iRootState } from '../../redux/store';
 
 const Bg = () => {
   const { scene } = useSelector((state: iRootState) => state);

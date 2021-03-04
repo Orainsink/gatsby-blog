@@ -2,7 +2,7 @@ import React from 'react';
 import { Tooltip } from 'antd';
 import { useSelector } from 'react-redux';
 import classnames from 'classnames';
-import styles from '../../styles/MyPlayer.module.less';
+import * as styles from './index.module.less';
 import Panel from './Panel';
 import { iRootState } from '../../redux/store';
 

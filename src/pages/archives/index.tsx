@@ -1,16 +1,16 @@
 import React from 'react';
 import { PageProps, graphql } from 'gatsby';
 import { Divider } from 'antd';
-import Layout from '../layout/BlogLayout';
-import SEO from '../components/seo';
+import Layout from '../../layout/BlogLayout';
+import SEO from '../../components/seo';
 import { useSelector, useDispatch } from 'react-redux';
 import loadable from '@loadable/component';
 import { ReloadOutlined } from '@ant-design/icons';
-import styles from '../styles/archives.module.less';
-import PostList from '../components/PostList';
-import { Calendar } from '../components/SideBlocks';
-import { iRootState } from '../redux/store';
-const WordCloud = loadable(() => import('../components/WordCloud'));
+import * as styles from './index.module.less';
+import PostList from '../../components/PostList';
+import { Calendar } from '../../components/SideBlocks';
+import { iRootState } from '../../redux/store';
+const WordCloud = loadable(() => import('../../components/WordCloud'));
 
 interface Data {
   allFile: {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from '../styles/Poem.module.less';
+import * as styles from './index.module.less';
 const jinrishici = require('jinrishici');
 
 interface Poem {

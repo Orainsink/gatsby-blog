@@ -1,6 +1,6 @@
 import React from 'react';
 import { GithubOutlined, MailOutlined } from '@ant-design/icons';
-import styles from '../styles/Footer.module.less';
+import * as styles from './index.module.less';
 import classnames from 'classnames';
 
 /**Footer */

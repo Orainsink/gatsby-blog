@@ -1,9 +1,9 @@
 import React, { useRef, useMemo, useCallback, useEffect } from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from '../styles/WordCloud.module.less';
-import isClient from '../utils/isClient';
-import { iRootState } from '../redux/store';
+import * as styles from './index.module.less';
+import isClient from '../../utils/isClient';
+import { iRootState } from '../../redux/store';
 const WordCloud = isClient ? require('wordcloud') : undefined;
 
 interface Data {

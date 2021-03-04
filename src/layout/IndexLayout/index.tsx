@@ -2,14 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { Col, Row } from 'antd';
-import SideBar, { TagsBlock, Info } from '../components/SideBlocks';
-import styles from '../styles/Indexlayout.module.less';
-import { useBackgroundColor } from '../hooks';
+import SideBar, { TagsBlock, Info } from '../../components/SideBlocks';
+import * as styles from './index.module.less';
+import { useBackgroundColor } from '../../hooks';
 import loadable from '@loadable/component';
-import Comment from '../components/Comment';
-import { iRootState } from '../redux/store';
-const Tools = loadable(() => import('../components/SideBlocks/Tools'));
-const Footer = loadable(() => import('../components/Footer'));
+import Comment from '../../components/Comment';
+import { iRootState } from '../../redux/store';
+const Tools = loadable(() => import('../../components/SideBlocks/Tools'));
+const Footer = loadable(() => import('../../components/Footer'));
 
 interface Props {
   children?: React.ReactNode;

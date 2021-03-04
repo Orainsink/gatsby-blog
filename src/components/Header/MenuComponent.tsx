@@ -3,7 +3,7 @@ import { Dropdown } from 'antd';
 import { Link } from 'gatsby';
 import { DownOutlined } from '@ant-design/icons';
 import loadable from '@loadable/component';
-import styles from '../../styles/Header.module.less';
+import * as styles from './index.module.less';
 import ArchivesMenu from './ArchivesMenu';
 const MenuDrawer = loadable(() => import('./MenuDrawer'));
 

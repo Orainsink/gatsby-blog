@@ -1,10 +1,10 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'gatsby';
 import { useSelector } from 'react-redux';
-import Tags from '../components/Tags';
-import generatePath from '../utils/generatePath';
-import styles from '../styles/PostList.module.less';
-import { iRootState } from '../redux/store';
+import Tags from '../Tags';
+import generatePath from '../../utils/generatePath';
+import * as styles from './index.module.less';
+import { iRootState } from '../../redux/store';
 interface Props {
   posts: ChildMdxItem[];
   hideMore?: boolean;

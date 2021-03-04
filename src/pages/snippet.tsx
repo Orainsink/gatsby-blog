@@ -5,7 +5,7 @@ import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReloadOutlined } from '@ant-design/icons';
-import styles from '../styles/archives.module.less';
+import * as styles from './archives/index.module.less';
 import { useResetKey, useMedia } from '../hooks';
 import dayjs from 'dayjs';
 import generatePath from '../utils/generatePath';

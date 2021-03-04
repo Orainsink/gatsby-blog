@@ -2,7 +2,7 @@ import React from 'react';
 import { PageProps, graphql } from 'gatsby';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
-import styles from '../styles/Blog.module.less';
+import * as styles from './index.module.less';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Poem from '../components/Poem';
 import Comment from '../components/Comment';
