@@ -151,7 +151,7 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    'gatsby-plugin-postcss',
+    // 'gatsby-plugin-postcss',
     {
       resolve: `gatsby-plugin-less`,
       options: {
@@ -163,6 +163,7 @@ module.exports = {
           },
           modifyVars,
         },
+        postCssPlugins: [require('autoprefixer'), require('cssnano')],
       },
     },
     {
