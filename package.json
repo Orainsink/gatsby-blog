@@ -7,7 +7,10 @@
   "dependencies": {
     "@ant-design/icons": "4.5.0",
     "@juggle/resize-observer": "3.3.0 ",
+    "@loadable/babel-plugin": "^5.13.2",
     "@loadable/component": "5.14.1",
+    "@loadable/server": "^5.14.2",
+    "@loadable/webpack-plugin": "^5.14.2",
     "@mdx-js/mdx": "1.6.22",
     "@mdx-js/react": "1.6.22",
     "@sentry/gatsby": "6.2.1",
