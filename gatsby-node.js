@@ -8,6 +8,7 @@ const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 const glob = require('glob');
 const { removeSync } = require('fs-extra');
 
+/**inject webpack config */
 const onCreateWebpackConfig = ({ actions, stage }) => {
   actions.setWebpackConfig({
     plugins: [
@@ -28,6 +29,7 @@ const onCreateWebpackConfig = ({ actions, stage }) => {
           release: 'blog',
           ignore: ['node_modules', 'webpack.config.js', 'assets'],
         }),
+      /**delete sourcemap before deploy*/
       stage === 'build-javascript' && {
         apply: (compiler) =>
           compiler.hooks.done.tap('CleanJsMapPlugin', (compilation, cb) => {
@@ -38,6 +40,7 @@ const onCreateWebpackConfig = ({ actions, stage }) => {
     ].filter(Boolean),
   });
 };
+
 module.exports = {
   createPages: require('./scripts/createPages'),
   onCreateNode: require('./scripts/onCreateNode'),

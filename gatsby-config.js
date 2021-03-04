@@ -120,12 +120,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-loadable-components-ssr`,
-      options: {
-        useHydrate: true,
-      },
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Orainsink's Blog`,
@@ -189,7 +183,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-typescript`,
-    // `gatsby-plugin-react-css-modules`,
     'gatsby-plugin-cname',
     'gatsby-plugin-dark-mode',
     'gatsby-plugin-svgr',
@@ -218,6 +211,12 @@ module.exports = {
       options: {
         color: `#3390ff`,
         showSpinner: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-loadable-components-ssr`,
+      options: {
+        useHydrate: true,
       },
     },
     {

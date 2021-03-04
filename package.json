@@ -2,7 +2,7 @@
   "name": "gatsby-blog",
   "private": true,
   "description": "my blog",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Orainsink <ywt1250066597@gmail.com>",
   "dependencies": {
     "@ant-design/icons": "4.5.0",
@@ -27,7 +27,6 @@
     "gatsby-plugin-image": "1.0.0",
     "gatsby-plugin-layout": "2.0.0",
     "gatsby-plugin-less": "5.0.0",
-    "gatsby-plugin-loadable-components-ssr": "2.1.0",
     "gatsby-plugin-manifest": "3.0.0",
     "gatsby-plugin-mdx": "2.0.0",
     "gatsby-plugin-nprogress": "3.0.0",
