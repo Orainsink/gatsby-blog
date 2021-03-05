@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import '../assets/css/variables.less';
-import '../styles/global.less';
+import '../assets/css/global.less';
 import Header from '../components/Header';
 import BackTop from '../components/BackTop';
 import { useHasMounted, useBackTop } from '../hooks';

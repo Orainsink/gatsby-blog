@@ -11,7 +11,7 @@ import { songs, Song } from '../../assets/config/songs';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
 import { arr } from '../../utils/utils';
-import styles from '../../styles/MyPlayer.module.less';
+import * as styles from './index.module.less';
 import Controller from './Controller';
 import { iRootState } from '../../redux/store';
 import { ReactComponent as MusicLoadingSvg } from '../../assets/img/musicLoading.svg';

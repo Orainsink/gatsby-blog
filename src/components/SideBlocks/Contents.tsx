@@ -2,7 +2,7 @@ import React, { useRef, useMemo, useCallback } from 'react';
 import { Anchor, Col } from 'antd';
 import classnames from 'classnames';
 import { useScrollY } from '../../hooks';
-import styles from '../../styles/SideBar.module.less';
+import * as styles from './index.module.less';
 import isClient from '../../utils/isClient';
 interface Props {
   content: any;

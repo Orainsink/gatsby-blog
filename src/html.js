@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const loadingSvg = `<svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="260px" height="260px" viewBox="0 0 40 40"><path fill="transparent" stroke="transparent" stroke-width="0.1" stroke-opacity="0"  d="m0.27143,-0.2878c-9.20089,0 -16.6606,3.28421 -16.6606,7.335c0,4.05128 7.4597,7.335 16.6606,7.335s16.6606,-3.28372 16.6606,-7.335c-0.00111,-4.05079 -7.4597,-7.335 -16.6606,-7.335z" id="orbit"/><circle id="mun" r="1" cx="20" cy="16" fill="#fff"><animateMotion id="animation" dur="2s" repeatCount="indefinite"><mpath xlink:href="#orbit"></mpath></animateMotion></circle><circle cx="20" cy="20" r="5" fill="#fff"></circle></svg>`;
+/**
+ * svg animations always started after the page is fully loaded,
+ * I tried many solutions, but only iframe work.
+ */
+const loadingIframe = `<iframe width="261px" height="261px" style="border:0;margin:0;padding:0;overflow:hidden;" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjI2MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBmaWxsPSJ0cmFuc3BhcmVudCIgc3Ryb2tlPSJ0cmFuc3BhcmVudCIgc3Ryb2tlLXdpZHRoPSIuMSIgc3Ryb2tlLW9wYWNpdHk9IjAiIGQ9Ik0uMjcxLS4yODhjLTkuMiAwLTE2LjY2IDMuMjg0LTE2LjY2IDcuMzM1czcuNDYgNy4zMzUgMTYuNjYgNy4zMzUgMTYuNjYxLTMuMjg0IDE2LjY2MS03LjMzNUMxNi45MzEgMi45OTcgOS40NzItLjI4OC4yNzItLjI4OHoiIGlkPSJhIi8+PGNpcmNsZSByPSIxIiBjeD0iMjAiIGN5PSIxNiIgZmlsbD0iI2ZmZiI+PGFuaW1hdGVNb3Rpb24gZHVyPSIycyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjxtcGF0aCB4bGluazpocmVmPSIjYSIvPjwvYW5pbWF0ZU1vdGlvbj48L2NpcmNsZT48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSI1IiBmaWxsPSIjZmZmIi8+PC9zdmc+"></iframe>`;
 
 export default function HTML(props) {
   return (
@@ -19,11 +23,10 @@ export default function HTML(props) {
         {...props.bodyAttributes}
         style={{ background: '#0a0a0a', overflowY: 'hidden' }}
       >
-        {props.preBodyComponents}
         <div
           id="___loader"
           dangerouslySetInnerHTML={{
-            __html: loadingSvg,
+            __html: loadingIframe,
           }}
           style={{
             position: 'fixed',
@@ -41,6 +44,7 @@ export default function HTML(props) {
             zIndex: 9999,
           }}
         />
+        {props.preBodyComponents}
         <div
           key={`body`}
           id="___gatsby"

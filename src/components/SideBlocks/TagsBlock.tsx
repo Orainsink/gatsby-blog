@@ -2,7 +2,7 @@ import React from 'react';
 import { Col } from 'antd';
 import classnames from 'classnames';
 import { useMedia } from '../../hooks';
-import styles from '../../styles/SideBar.module.less';
+import * as styles from './index.module.less';
 import WordCloud from '../WordCloud';
 
 /* wordCloud */

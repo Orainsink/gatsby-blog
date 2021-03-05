@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 
-# Orainsink's Blog - SSR, Responsive, WebGL
+# Orainsink's Blog - SSR, Responsive, WebGL, Dark Mode, Typescript, loadable
 
 **Site url: [blog.foolishrobot.xyz](https://blog.foolishrobot.xyz/)**
 
@@ -11,7 +11,7 @@
 ## 👷Built with
 
 - Typescript + less modules
-- [gatsbyjs](https://www.gatsbyjs.org/)
+- [gatsby 3.0](https://www.gatsbyjs.org/)
 - [react-three-fiber](https://github.com/react-spring/react-three-fiber)
 - [howler.js](https://howlerjs.com/)
 - [Antd 4.0](https://ant.design/)
@@ -33,7 +33,7 @@ yarn build
 yarn new your-post-name
 # or if your post contains imgs, use
 yarn new /your-post-folder-name
-# new post with category in ["tehc","essay","leetcode"]
+# new post with category in ["tech","essay","leetcode","snippet"]
 yarn new your-post-name##essay
 #or
 yarn new /your-postfolder-name##essay
@@ -47,39 +47,83 @@ yarn new /your-postfolder-name##essay
 
 ## :hammer:Custimize​
 
-1. how to deploy
+### How to write posts
 
-   change package.json
+```shell
+yarn new aaa
+```
 
-   ```json
-   "scripts": {
-   	...
-   	"deploy": "gatsby build --prefix-paths && gh-pages -d public -r https:......",
-   }
-   ```
+this command will create a `aaa.mdx` file in `/content/tech`
 
-   Maybe you need to read [this article](https://www.gatsbyjs.org/docs/deploying-and-hosting/)
+```shell
+yarn new /aaa
+```
 
-2. How to write posts
+this will create a path `/content/tech/aaa/` and generate a `aaa.mdx` file.
 
-   ```shell
-   yarn new aaa
-   ```
+### How to change styles and components
 
-   this command will create a `aaa.md` file in `/content/tech`
+You can change global styles by modifying `scripts/less-vars.js` and `src/assets/css/`
 
-   ```shell
-   yarn new /aaa
-   ```
+### Enviroment variables
 
-   this will create a path `/content/tech/aaa/` and generate a `aaa.md` file.
+List of environment variables and associated plugins, which can be removed if not needed.
 
-3. How to change styles and components
+.env
 
-   This blog isn't complex at all, each component has a `less` module file in `styles/` corresponding to it. You can easily change them if you know how to write react hooks.
+```.env
+TRACKING_ID=xxx
+GATSBY_ALGOLIA_APP_ID=xxx
+GATSBY_ALGOLIA_SEARCH_KEY=xxx
+ALGOLIA_INDEX_NAME=xxx
+ALGOLIA_ADMIN_KEY=xxx
+GATSBY_HEWEATHER_KEY=xxx
+GATSBY_SENTRY_DSN=xxx
+GATSBY_SENTRY_AUTH=xxx
+```
 
-   You can change global less vars by modifying `gatsby-config.js`
+#### Google analytics
 
-4. You need to change details yourself .
+`TRACKING_ID` : Google analytics tracking id
+
+#### Algolia search
+
+https://www.algolia.com/
+
+`GATSBY_ALGOLIA_APP_ID`
+
+`GATSBY_ALGOLIA_SEARCH_KEY`
+
+`ALGOLIA_ADMIN_KEY`
+
+`ALGOLIA_INDEX_NAME`
+
+Used by `gatsby-plugin-algolia` option.
+
+#### 和风天气
+
+https://dev.qweather.com/docs/start/get-key/
+
+`GATSBY_HEWEATHER_KEY`
+
+Used by index animation
+
+#### SENTRY
+
+https://docs.sentry.io/platforms/javascript/guides/gatsby/
+
+`GATSBY_SENTRY_DSN`: sentry dsn
+
+`GATSBY_SENTRY_AUTH`: sentry auth id
+
+Used by `@sentry/gatsby` plugin
+
+#### Github
+
+https://docs.github.com/en/actions/reference/authentication-in-a-workflow
+
+`GH_TOKEN`: GITHUB_TOKEN
+
+Used by `gh-pages` plugin.
 
 <!-- AUTO-GENERATED-CONTENT:END -->

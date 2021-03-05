@@ -1,0 +1,4 @@
+{
+  "name": "gatsby-plugin-loadable-components-ssr",
+  "description": "Server-side rendering loadable components in your gatsby application"
+}

@@ -40,6 +40,7 @@ module.exports = {
         name: `assets`,
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -89,7 +90,7 @@ module.exports = {
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ 'content:encoded': edge.node.html }],
+                  custom_elements: [{ 'content:encoded': edge.node.body }],
                 });
               });
             },
@@ -101,7 +102,7 @@ module.exports = {
                   edges {
                     node {
                       excerpt
-                      html
+                      body
                       fields { slug }
                       frontmatter {
                         title
@@ -116,12 +117,6 @@ module.exports = {
             title: "Orainsink's RSS Feed",
           },
         ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-loadable-components-ssr`,
-      options: {
-        useHydrate: true,
       },
     },
     {
@@ -144,14 +139,12 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-image`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    // 'gatsby-plugin-postcss',
     {
       resolve: `gatsby-plugin-less`,
       options: {
@@ -162,6 +155,9 @@ module.exports = {
             camelCase: false,
           },
           modifyVars,
+          postCssPlugins: [require('autoprefixer'), require('cssnano')].filter(
+            Boolean
+          ),
         },
         postCssPlugins: [require('autoprefixer'), require('cssnano')],
       },
@@ -174,7 +170,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1035,
+              maxWidth: 890,
             },
           },
           'gatsby-remark-responsive-iframe',
@@ -188,7 +184,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-typescript`,
-    // `gatsby-plugin-react-css-modules`,
     'gatsby-plugin-cname',
     'gatsby-plugin-dark-mode',
     'gatsby-plugin-svgr',
@@ -220,10 +215,19 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-loadable-components-ssr`,
+      options: {
+        useHydrate: true,
+      },
+    },
+    {
       resolve: '@sentry/gatsby',
       options: {
         release: 'blog',
         dsn: process.env.GATSBY_SENTRY_DSN,
+        environment: process.env.NODE_ENV,
+        enabled: (() =>
+          ['production', 'stage'].indexOf(process.env.NODE_ENV) !== -1)(),
         sampleRate: 0.7,
         tracesSampleRate: 0.8,
       },

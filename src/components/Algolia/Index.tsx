@@ -3,7 +3,7 @@ import { Drawer } from 'antd';
 import AlgoliaSearch from './Search';
 import { useMedia, useDrawerCloseEffect } from '../../hooks';
 import { useLocation } from '@reach/router';
-import styles from '../../styles/Algolia.module.less';
+import * as styles from './index.module.less';
 
 interface Props {
   visible: boolean;

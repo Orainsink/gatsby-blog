@@ -9,7 +9,7 @@ import {
   PoweredBy,
 } from 'react-instantsearch-dom';
 import { Divider } from 'antd';
-import styles from '../../styles/Algolia.module.less';
+import * as styles from './index.module.less';
 import { useSelector } from 'react-redux';
 import generatePath from '../../utils/generatePath';
 import { ReactComponent as NoResultSvg } from '../../assets/img/noResult.svg';

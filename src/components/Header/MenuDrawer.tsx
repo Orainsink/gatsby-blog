@@ -4,7 +4,7 @@ import { Button, Drawer } from 'antd';
 import { Link } from 'gatsby';
 import { UnorderedListOutlined } from '@ant-design/icons';
 import { useDrawerCloseEffect, useMedia } from '../../hooks';
-import styles from '../../styles/Header.module.less';
+import * as styles from './index.module.less';
 import { useLocation } from '@reach/router';
 import { ReactComponent as SharkMenuSvg } from '../../assets/img/menu.svg';
 import { categoryColumn, categories } from '../../assets/config/categories';

@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { InstantSearch } from 'react-instantsearch-dom';
 import SearchBox from './SearchBox';
 import SearchResult from './SearchResult';
-import styles from '../../styles/Algolia.module.less';
+import * as styles from './index.module.less';
 import { useMaxHeight } from '../../hooks';
 import { useSelector } from 'react-redux';
 import { ReactComponent as SearchSvg } from '../../assets/img/search.svg';
