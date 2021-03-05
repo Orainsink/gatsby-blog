@@ -35,5 +35,5 @@
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "cSpell.words": ["prismjs"]
+  "cSpell.words": ["GLTF", "prismjs"]
 }

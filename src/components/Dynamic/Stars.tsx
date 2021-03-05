@@ -36,8 +36,8 @@ const Stars = () => {
   return (
     <group ref={stripsGroup}>
       <points attach="points">
-        <pointsMaterial attach="material" color="#ffffff" size={0.5} />
-        <geometry attach="geometry" vertices={fiveHundredStars} />
+        <pointsMaterial color="#ffffff" size={0.5} />
+        <geometry vertices={fiveHundredStars} />
       </points>
     </group>
   );

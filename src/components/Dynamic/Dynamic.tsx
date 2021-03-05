@@ -8,7 +8,6 @@ import React, {
 import { useSelector, useDispatch } from 'react-redux';
 import { Canvas, useFrame, useThree } from 'react-three-fiber';
 import { FogExp2, PerspectiveCamera } from 'three';
-import { useStaticQuery, graphql } from 'gatsby';
 import Text from './TextComponent';
 import Moon from './Moon';
 import { useBackgroundColor } from '../../hooks';
@@ -18,18 +17,19 @@ import { ResizeObserver } from '@juggle/resize-observer';
 import Stars from './Stars';
 import Floor from './Floor';
 import gsap from 'gsap';
-
+import { useStaticQuery, graphql } from 'gatsby';
+interface Data {
+  file: {
+    publicURL: string;
+  };
+}
 const hfUrl =
   'https://free-api.heweather.net/s6/weather/now?&location=auto_ip&key=' +
   process.env.GATSBY_HEWEATHER_KEY;
 let cameraShakeY = 0;
 let mouseX = 0;
 let mouseY = 0;
-interface Data {
-  file: {
-    publicURL: string;
-  };
-}
+
 // shake camera
 const handlePointerMove = (e: React.PointerEvent) => {
   mouseX = (e.clientX / window.innerWidth) * 2 - 1;
@@ -93,7 +93,6 @@ const Dynamic = () => {
   const url = data?.file.publicURL;
   const { scene } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
-
   const [words, setWords] = useState<string[]>(null);
 
   useBackgroundColor();

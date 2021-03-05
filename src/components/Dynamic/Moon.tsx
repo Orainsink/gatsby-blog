@@ -85,14 +85,13 @@ const Moon = (props: Props) => {
       ref={lightRefCallback}
     >
       <mesh
-        attach="mesh"
         onPointerOver={() => setActive(true)}
         onPointerOut={() => setActive(false)}
         onClick={onCloseScene}
         ref={moonRefCallback}
       >
-        <meshBasicMaterial attach="material" color="#ffffff" />
-        <sphereGeometry attach="geometry" args={[5, 20, 20]} />
+        <meshBasicMaterial color="#ffffff" />
+        <sphereGeometry args={[5, 20, 20]} />
       </mesh>
     </pointLight>
   );

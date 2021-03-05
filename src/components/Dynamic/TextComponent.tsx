@@ -72,9 +72,8 @@ const Text = (props: Props) => {
     map && (
       <group name="text" position={position} rotation={rotation}>
         <mesh>
-          <planeGeometry attach="geometry" args={[size[0], size[1]]} />
+          <planeGeometry args={[size[0], size[1]]} />
           <meshBasicMaterial
-            attach="material"
             transparent
             depthTest
             opacity={1}
