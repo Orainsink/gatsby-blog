@@ -239,3 +239,12 @@
     transform: translateY(-50%);
   }
 }
+.canvasWrap {
+  padding: 0;
+  canvas {
+    &:focus,
+    &:focus-within {
+      outline: none;
+    }
+  }
+}

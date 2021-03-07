@@ -5,6 +5,7 @@ import Info from './Info';
 import TagsBlock from './TagsBlock';
 import Tools from './Tools';
 import SideBar from './SideBar';
+import Moogle from './Moogle';
 
-export { Calendar, Contents, Info, TagsBlock, Tools };
+export { Calendar, Contents, Info, TagsBlock, Tools, Moogle };
 export default SideBar;

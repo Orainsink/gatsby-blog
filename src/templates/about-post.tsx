@@ -6,7 +6,8 @@ import * as styles from './index.module.less';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Poem from '../components/Poem';
 import Comment from '../components/Comment';
-import Moogle from '../components/Moogle';
+import loadable from '@loadable/component';
+const Moogle = loadable(() => import('../components/SideBlocks/Moogle'));
 
 interface Data {
   mdx: {
@@ -17,10 +18,9 @@ const AboutPostTemplate = ({ data }: PageProps<Data>) => {
   const { mdx } = data;
 
   return (
-    <Layout>
+    <Layout sideBlocks={<Moogle />}>
       <SEO title="About" />
       <Poem />
-      <Moogle />
       <section className={styles.container} style={{ padding: '1em' }}>
         {<MDXRenderer>{mdx.body}</MDXRenderer>}
       </section>
