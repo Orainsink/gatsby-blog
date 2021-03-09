@@ -79,14 +79,16 @@ const Modal = React.memo(({ url, theme }: { url: string; theme: string }) => {
 
     // 开启位置数据更新
     curArr.onUpdate = function () {
+      if (!geomRef.current) return;
       geomRef.current.attributes.position.needsUpdate = true;
     };
     // 渐变动画
-    gsap.to(positions.array, {
-      duration: 5,
+    const tween = gsap.to(positions.array, {
+      duration: 4,
       ease: 'power4.out',
       ...curArr,
     });
+    return () => tween.kill();
   }, [nodes]);
 
   // 实例化视角控制器, 需要useFrame更新
