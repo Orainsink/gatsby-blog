@@ -21,6 +21,7 @@ import { col, canvasWrap } from './index.module.less';
 import { iRootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
 import classnames from 'classnames';
+import cloneDeep from 'lodash/cloneDeep';
 
 interface Data {
   file: {
@@ -66,15 +67,16 @@ const Modal = React.memo(({ url, theme }: { url: string; theme: string }) => {
     // eslint-disable-next-line
   }, []);
 
+  // 莫古莫古动画
   useEffect(() => {
     if (!nodes) return;
     const geometry = nodes.mesh_0.geometry as any;
     const positions = geometry.attributes.position;
     // 深拷贝存储莫古利模型数据
-    const curArr = JSON.parse(JSON.stringify(positions.array));
+    const curArr = cloneDeep(positions.array);
     // 位置乱序
     positions.array.sort(() => Math.random() - 0.5);
-    // 添加乱序过后的粒子模型到canvas对象
+    // 添加乱序过后的粒子geometry到mesh对象
     geomRef.current = geometry;
 
     // 开启位置数据更新
