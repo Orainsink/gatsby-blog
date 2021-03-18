@@ -6,27 +6,29 @@
     background-color: var(--component-hover);
     color: var(--highlight-color);
   }
-  & :global(.ais-Hits-item) {
-    border-left: 4px solid var(--border-color);
-    padding: 10px;
-    &:hover {
-      background-color: var(--component-hover);
+  & :global {
+    .ais-Hits-item {
+      border-left: 4px solid var(--border-color);
+      padding: 10px;
+      &:hover {
+        background-color: var(--component-hover);
+      }
     }
-  }
-  & :global(.ais-Highlight) {
-    font-weight: bold;
-    color: var(--post-title);
-    &:hover {
-      color: var(--post-title-hover);
+    .ais-Highlight {
+      font-weight: bold;
+      color: var(--post-title);
+      &:hover {
+        color: var(--post-title-hover);
+      }
     }
-  }
-  & :global(.ais-PoweredBy) {
-    display: flex;
-    align-content: center;
-    justify-content: flex-end;
-  }
-  & :global(.ais-PoweredBy-link) {
-    margin-left: 10px;
+    .ais-PoweredBy {
+      display: flex;
+      align-content: center;
+      justify-content: flex-end;
+    }
+    .ais-PoweredBy-link {
+      margin-left: 10px;
+    }
   }
 }
 .HitCount {
