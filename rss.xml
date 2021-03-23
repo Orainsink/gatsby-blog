@@ -1,4 +1,116 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 18 Mar 2021 04:04:36 GMT</lastBuildDate><item><title><![CDATA[Taro-小程序踩坑清单]]></title><description><![CDATA[诡异的 column flex flex  布局的方向为  column 的情况下，会出现个别机型布局失效。 建议不要使用  column 布局，转而直接用 padding 撑开间距，用 margin…]]></description><link>https://blog.foolishrobot.xyz/小程序踩坑清单/小程序踩坑清单</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/小程序踩坑清单/小程序踩坑清单</guid><pubDate>Fri, 22 Jan 2021 10:17:46 GMT</pubDate><content:encoded>function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 23 Mar 2021 08:13:07 GMT</lastBuildDate><item><title><![CDATA[globalThis及其应用]]></title><description><![CDATA[何为 globalThis globalThis 是一个纳入 ES2020 规范的新的获取全局对象的方式。目前的兼容性并不好，支持 Chrome 71 以上版本，nodejs 12 及以上版本。 globalThis  提供了一个标准的方式来获取不同环境下的全局  this…]]></description><link>https://blog.foolishrobot.xyz/globalThis及其应用</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/globalThis及其应用</guid><pubDate>Tue, 23 Mar 2021 15:19:06 GMT</pubDate><content:encoded>function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i &lt; sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) &gt;= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i &lt; sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) &gt;= 0) continue; target[key] = source[key]; } return target; }
+
+/* @jsxRuntime classic */
+
+/* @jsx mdx */
+var _frontmatter = {
+  &quot;title&quot;: &quot;globalThis及其应用&quot;,
+  &quot;date&quot;: &quot;2021-03-23T15:19:06.000Z&quot;,
+  &quot;description&quot;: &quot;globalThis是一个可用于多个环境的全局对象，合理使用globalThis可以减少一些环境判断的代码量。&quot;,
+  &quot;tags&quot;: [&quot;js&quot;],
+  &quot;categories&quot;: &quot;tech&quot;
+};
+var layoutProps = {
+  _frontmatter: _frontmatter
+};
+var MDXLayout = &quot;wrapper&quot;;
+return function MDXContent(_ref) {
+  var components = _ref.components,
+      props = _objectWithoutProperties(_ref, [&quot;components&quot;]);
+
+  return mdx(MDXLayout, _extends({}, layoutProps, props, {
+    components: components,
+    mdxType: &quot;MDXLayout&quot;
+  }), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;何为-globalthis&quot;
+  }, &quot;\u4F55\u4E3A globalThis&quot;), mdx(&quot;p&quot;, null, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;globalThis&quot;), &quot;\u662F\u4E00\u4E2A\u7EB3\u5165 ES2020 \u89C4\u8303\u7684\u65B0\u7684\u83B7\u53D6\u5168\u5C40\u5BF9\u8C61\u7684\u65B9\u5F0F\u3002\u76EE\u524D\u7684\u517C\u5BB9\u6027\u5E76\u4E0D\u597D\uFF0C\u652F\u6301 Chrome 71 \u4EE5\u4E0A\u7248\u672C\uFF0Cnodejs 12 \u53CA\u4EE5\u4E0A\u7248\u672C\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;globalThis&quot;), &quot; \u63D0\u4F9B\u4E86\u4E00\u4E2A\u6807\u51C6\u7684\u65B9\u5F0F\u6765\u83B7\u53D6\u4E0D\u540C\u73AF\u5883\u4E0B\u7684\u5168\u5C40 &quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;this&quot;), &quot; \u5BF9\u8C61\uFF08\u4E5F\u5C31\u662F\u5168\u5C40\u5BF9\u8C61\u81EA\u8EAB\uFF09\u3002\u4E0D\u50CF &quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;window&quot;), &quot; \u6216\u8005 &quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;self&quot;), &quot; \u8FD9\u4E9B\u5C5E\u6027\uFF0C\u5B83\u786E\u4FDD\u53EF\u4EE5\u5728\u6709\u65E0\u7A97\u53E3\u7684\u5404\u79CD\u73AF\u5883\u4E0B\u6B63\u5E38\u5DE5\u4F5C\u3002\u6240\u4EE5\uFF0C\u4F60\u53EF\u4EE5\u5B89\u5FC3\u7684\u4F7F\u7528 &quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;globalThis&quot;), &quot;\uFF0C\u4E0D\u5FC5\u62C5\u5FC3\u5B83\u7684\u8FD0\u884C\u73AF\u5883\u3002\u4E3A\u4FBF\u4E8E\u8BB0\u5FC6\uFF0C\u4F60\u53EA\u9700\u8981\u8BB0\u4F4F\uFF0C\u5168\u5C40\u4F5C\u7528\u57DF\u4E2D\u7684 &quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;this&quot;), &quot; \u5C31\u662F &quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;globalThis&quot;), &quot;\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u7B80\u5355\u6765\u8BF4\uFF0C \u5728 client \u73AF\u5883&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, _extends({
+    parentName: &quot;pre&quot;
+  }, {
+    &quot;className&quot;: &quot;language-js&quot;
+  }), &quot;globalThis === window; // true\n&quot;)), mdx(&quot;p&quot;, null, &quot;\u5728 webworker \u548C node \u4E2D&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;globalThis&quot;), &quot;\u90FD\u4F1A\u81EA\u52A8\u4EE3\u8868\u76F8\u5E94\u7684\u5168\u5C40\u5BF9\u8C61\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u4E00\u4E2A\u7B80\u5355\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;globalThis&quot;), &quot; polyfill \u5B9E\u73B0:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, _extends({
+    parentName: &quot;pre&quot;
+  }, {
+    &quot;className&quot;: &quot;language-js&quot;
+  }), &quot;function getGlobalObject() {\n  if (typeof globalThis !== &apos;undefined&apos;) {\n    return globalThis;\n  }\n  if (typeof self !== &apos;undefined&apos;) {\n    return self;\n  }\n  if (typeof window !== &apos;undefined&apos;) {\n    return window;\n  }\n  if (typeof global !== &apos;undefined&apos;) {\n    return global;\n  }\n  throw new Error(&apos;cannot find the global object&apos;);\n}\n\nif (typeof getGlobalObject().Promise.allSettled !== &apos;function&apos;) {\n  // the Promise.allSettled() method is not available in this environment\n}\n&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;ssr-打包的时候-window-对象报错&quot;
+  }, &quot;SSR \u6253\u5305\u7684\u65F6\u5019 window \u5BF9\u8C61\u62A5\u9519&quot;), mdx(&quot;p&quot;, null, &quot;\u5E38\u89C4\u524D\u7AEF\u5F00\u53D1\u8FC7\u7A0B\u4E2D\u6211\u4EEC\u901A\u5E38\u76F4\u63A5\u901A\u8FC7&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;window&quot;), &quot;\u8C03\u7528\u5168\u5C40\u65B9\u6CD5\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u4F46\u662F\u5982\u679C\u6211\u4EEC\u7684\u4EE3\u7801\u4E0D\u5728\u6D4F\u89C8\u5668\u4E0A\u8DD1\uFF0C\u76F4\u63A5\u8C03\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;window&quot;), &quot;\u5C31\u4F1A\u62A5\u9519\uFF0C\u8FD9\u65F6\u5019\u5C31\u9700\u8981\u505A\u4E00\u4E9B\u7C7B\u4F3C\u7684\u5224\u65AD\uFF1A&quot;), mdx(&quot;p&quot;, null, &quot;\u7528\u65B0\u7684\u53D8\u91CF\u6765\u66FF\u4EE3 window\uFF1A&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, _extends({
+    parentName: &quot;pre&quot;
+  }, {
+    &quot;className&quot;: &quot;language-js&quot;
+  }), &quot;const windowGlobal = typeof window !== &apos;undefined&apos; &amp;&amp; window;\n&quot;)), mdx(&quot;p&quot;, null, &quot;\u6216\u8005\u7528\u4E00\u4E2A\u5E03\u5C14\u503C\u6765\u5224\u65AD\u662F\u4E0D\u662F\u6D4F\u89C8\u5668\u73AF\u5883\uFF1A&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, _extends({
+    parentName: &quot;pre&quot;
+  }, {
+    &quot;className&quot;: &quot;language-js&quot;
+  }), &quot;const isClient = typeof window === &apos;object&apos;;\n&quot;)), mdx(&quot;p&quot;, null, &quot;\u6216\u8005\u7528\u53EF\u9009\u94FE\u64CD\u4F5C\u7B26\u5B89\u5168\u6267\u884C\u65B9\u6CD5\uFF1A&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, _extends({
+    parentName: &quot;pre&quot;
+  }, {
+    &quot;className&quot;: &quot;language-js&quot;
+  }), &quot;window?.localStorage.getItem(&apos;key&apos;);\n&quot;)), mdx(&quot;blockquote&quot;, null, mdx(&quot;p&quot;, {
+    parentName: &quot;blockquote&quot;
+  }, &quot;window \u5BF9\u8C61\u62A5\u9519\u7684\u95EE\u9898\u5728 gatsby \u6216\u8005\u5176\u4ED6 ssr \u5F00\u53D1\u8FC7\u7A0B\u4E2D\u5F88\u5E38\u89C1\uFF0C&quot;), mdx(&quot;p&quot;, {
+    parentName: &quot;blockquote&quot;
+  }, &quot;\u56E0\u4E3A\u672C\u5730\u8C03\u8BD5\u7684\u65F6\u5019\u662F client \u73AF\u5883\uFF0C\u4F46\u662F ssr \u6253\u5305 html \u7684\u65F6\u5019\u662F node \u73AF\u5883\uFF0C\u6240\u4EE5\u5982\u679C\u5728\u6784\u5EFA\u4EE3\u7801\u4E2D\u76F4\u63A5\u8C03\u7528 window \u5BF9\u8C61\u65B9\u6CD5\u4F1A\u62A5\u9519\u3002&quot;)), mdx(&quot;p&quot;, null, &quot;\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;globalThis&quot;), &quot;\u53EF\u4EE5\u66FF\u4EE3\u6240\u6709\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;window&quot;), &quot;\uFF0C\u7136\u540E\u518D&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;window&quot;), &quot;\u7684\u65B9\u6CD5\u540E\u9762\u7528\u53EF\u9009\u94FE\u8DEF\u64CD\u4F5C\u5C31\u884C\u4E86\uFF0C\u53EF\u4EE5\u4E00\u5B9A\u7A0B\u5EA6\u4E0A\u51CF\u5C11\u4EE3\u7801\u91CF\uFF1A&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, _extends({
+    parentName: &quot;pre&quot;
+  }, {
+    &quot;className&quot;: &quot;language-js&quot;
+  }), &quot;globalThis.localStorage?.getItem(&apos;key&apos;);\n&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;当我想用一段代码访问不同环境下的全局对象时&quot;
+  }, &quot;\u5F53\u6211\u60F3\u7528\u4E00\u6BB5\u4EE3\u7801\u8BBF\u95EE\u4E0D\u540C\u73AF\u5883\u4E0B\u7684\u5168\u5C40\u5BF9\u8C61\u65F6&quot;), mdx(&quot;p&quot;, null, &quot;\u4E0D\u540C\u7684\u73AF\u5883\u60F3\u83B7\u53D6\u5168\u5C40\u5BF9\u8C61\u8981\u7528\u4E0D\u540C\u7684\u4EE3\u7801\uFF1A&quot;), mdx(&quot;p&quot;, null, &quot;\u5728 Web \u4E2D\uFF0C\u53EF\u4EE5\u901A\u8FC7 &quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;window&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;self&quot;), &quot; \u6216\u8005 &quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;frames&quot;), &quot; \u53D6\u5230\u5168\u5C40\u5BF9\u8C61\uFF0C\u4F46\u662F\u5728 &quot;, mdx(&quot;a&quot;, _extends({
+    parentName: &quot;p&quot;
+  }, {
+    &quot;href&quot;: &quot;https://developer.mozilla.org/zh-CN/docs/Web/API/Worker&quot;
+  }), &quot;Web Workers&quot;), &quot; \u4E2D\uFF0C\u53EA\u6709 &quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;self&quot;), &quot; \u53EF\u4EE5\u3002\u5728 Node.js \u4E2D\uFF0C\u5B83\u4EEC\u90FD\u65E0\u6CD5\u83B7\u53D6\uFF0C\u5FC5\u987B\u4F7F\u7528 &quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;global&quot;), &quot;\u3002&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, _extends({
+    parentName: &quot;pre&quot;
+  }, {
+    &quot;className&quot;: &quot;language-js&quot;
+  }), &quot;if (typeof globalThis.setTimeout !== &apos;function&apos;) {\n  //  \u6B64\u73AF\u5883\u4E2D\u6CA1\u6709 setTimeout \u65B9\u6CD5\uFF01\n}\n&quot;)));
+}
+;
+MDXContent.isMDXComponent = true;</content:encoded></item><item><title><![CDATA[Taro-小程序踩坑清单]]></title><description><![CDATA[诡异的 column flex flex  布局的方向为  column 的情况下，会出现个别机型布局失效。 建议不要使用  column 布局，转而直接用 padding 撑开间距，用 margin…]]></description><link>https://blog.foolishrobot.xyz/小程序踩坑清单/小程序踩坑清单</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/小程序踩坑清单/小程序踩坑清单</guid><pubDate>Fri, 22 Jan 2021 10:17:46 GMT</pubDate><content:encoded>function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i &lt; sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) &gt;= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
@@ -621,7 +733,9 @@ return function MDXContent(_ref) {
     parentName: &quot;p&quot;
   }, &quot;www.default.com&quot;), &quot;\u7684\u65F6\u5019\u5C31\u4F1A\u8FDB\u5165\u4E24\u4E2A\u4E0D\u540C\u7684\u7F51\u9875\uFF0C\u4E00\u4E2A CSR\uFF0C\u4E00\u4E2A SSR\u3002\u5728\u4E0D\u5F71\u54CD\u539F\u6709\u9879\u76EE\u7684\u60C5\u51B5\u4E0B\u5F3A\u5316\u9996\u9875\u7684 SEO \u6548\u679C\u3002&quot;), mdx(&quot;h2&quot;, {
     &quot;id&quot;: &quot;如何同步-spa-和-ssr-页面&quot;
-  }, &quot;\u5982\u4F55\u540C\u6B65 SPA \u548C SSR \u9875\u9762&quot;), mdx(&quot;p&quot;, null, &quot;\u4EE5\u4E0A\u65B9\u6848\u57FA\u672C\u4E0A\u662F\u9700\u8981\u5206\u522B\u5728\u670D\u52A1\u5668\u90E8\u7F72\u4E24\u4E2A\u524D\u7AEF\u5E94\u7528\uFF0C\u5982\u679C\u9996\u9875\u7ECF\u5E38\u4F1A\u6709\u6539\u52A8\uFF0C\u90A3\u4E48\u6211\u4EEC\u5982\u4F55\u540C\u6B65\u9875\u9762\u7684\u6539\u52A8\u5462\uFF1F&quot;), mdx(&quot;p&quot;, null, &quot;\u76EE\u524D\u6CA1\u6709\u60F3\u5230\u66F4\u597D\u7684\u89E3\u51B3\u529E\u6CD5\uFF0C\u521D\u6B65\u60F3\u6CD5\u662F\u628A\u9996\u9875\u5206\u79BB\u6210\u4E00\u4E2A\u5355\u72EC\u7684 npm \u5305\uFF0C\u5C06\u9996\u9875\u5185\u9700\u8981\u8C03\u7528\u7684\u63A5\u53E3\u63D0\u53D6\u51FA\u53BB\uFF0C\u8FD9\u6837\u5728 SPA \u548C SSR \u4E2D\u90FD\u80FD\u4F7F\u7528\uFF0C\u7136\u540E\u5728\u4E24\u4E2A\u9879\u76EE\u53EF\u4EE5\u901A\u8FC7\u76F4\u63A5\u66F4\u65B0 npm \u5305\u7684\u7248\u672C\u540C\u6B65\u4EE3\u7801\u3002&quot;));
+  }, &quot;\u5982\u4F55\u540C\u6B65 SPA \u548C SSR \u9875\u9762&quot;), mdx(&quot;p&quot;, null, &quot;\u4EE5\u4E0A\u65B9\u6848\u57FA\u672C\u4E0A\u662F\u9700\u8981\u5206\u522B\u5728\u670D\u52A1\u5668\u90E8\u7F72\u4E24\u4E2A\u524D\u7AEF\u5E94\u7528\uFF0C\u5982\u679C\u9996\u9875\u7ECF\u5E38\u4F1A\u6709\u6539\u52A8\uFF0C\u90A3\u4E48\u6211\u4EEC\u5982\u4F55\u540C\u6B65\u9875\u9762\u7684\u6539\u52A8\u5462\uFF1F&quot;), mdx(&quot;p&quot;, null, &quot;\u76EE\u524D\u6CA1\u6709\u60F3\u5230\u66F4\u597D\u7684\u89E3\u51B3\u529E\u6CD5\uFF0C\u521D\u6B65\u60F3\u6CD5\u662F\u628A\u9996\u9875\u5206\u79BB\u6210\u4E00\u4E2A\u5355\u72EC\u7684 npm \u5305\uFF0C\u5C06\u9996\u9875\u5185\u9700\u8981\u8C03\u7528\u7684\u63A5\u53E3\u63D0\u53D6\u51FA\u53BB\uFF0C\u8FD9\u6837\u5728 SPA \u548C SSR \u4E2D\u90FD\u80FD\u4F7F\u7528\uFF0C\u7136\u540E\u5728\u4E24\u4E2A\u9879\u76EE\u53EF\u4EE5\u901A\u8FC7\u76F4\u63A5\u66F4\u65B0 npm \u5305\u7684\u7248\u672C\u540C\u6B65\u4EE3\u7801\u3002&quot;), mdx(&quot;blockquote&quot;, null, mdx(&quot;p&quot;, {
+    parentName: &quot;blockquote&quot;
+  }, &quot;\u540E\u7EED&quot;)), mdx(&quot;p&quot;, null, &quot;\u6700\u540E\u76F4\u63A5\u7528 puppeteer \u622A\u4E86\u4E00\u4E2A html \u63D0\u4F9B\u7ED9\u722C\u866B\u3002&quot;));
 }
 ;
 MDXContent.isMDXComponent = true;</content:encoded></item><item><title><![CDATA[Puppeteer headless chrome学习及应用场景分析]]></title><description><![CDATA[Puppeteer 可以模拟 Chrome 浏览器的运行，让我们可以在服务器环境调用浏览器提供的方法。 因为我也是从头开始学习，所以本文大量参考知乎的分享 结合项目来谈谈 Puppeteer - 知乎 (zhihu.com…]]></description><link>https://blog.foolishrobot.xyz/Puppeteer无界面chrome学习及应用</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/Puppeteer无界面chrome学习及应用</guid><pubDate>Wed, 30 Dec 2020 17:01:41 GMT</pubDate><content:encoded>function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
