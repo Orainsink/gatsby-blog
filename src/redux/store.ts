@@ -1,7 +1,5 @@
 import { createStore as reduxCreateStore } from 'redux';
 import produce from 'immer';
-const windowGlobal: any = typeof window !== 'undefined' && window;
-
 export interface RootState {
   scene: boolean;
   trigger: boolean;
@@ -41,7 +39,7 @@ const reducer = produce(
         return draft;
       }
       case 'SKIP': {
-        windowGlobal?.localStorage.setItem('SKIP', payload ? '1' : '');
+        globalThis.localStorage?.setItem('SKIP', payload ? '1' : '');
         draft.skip = payload;
         return draft;
       }
@@ -87,20 +85,20 @@ const reducer = produce(
 
 const initialState = {
   scene:
-    windowGlobal && localStorage.getItem('SCENE') !== null
-      ? Boolean(localStorage.getItem('SCENE'))
+    globalThis.localStorage?.getItem('SCENE') !== null
+      ? Boolean(globalThis.localStorage?.getItem('SCENE'))
       : true,
   trigger: false,
   hasArrow: true,
   skip:
-    windowGlobal && localStorage.getItem('SKIP') !== null
-      ? Boolean(localStorage.getItem('SKIP'))
+    globalThis.localStorage?.getItem('SKIP') !== null
+      ? Boolean(globalThis.localStorage?.getItem('SKIP'))
       : false,
   curTag: '',
   curDate: '',
   maxHeight: 0,
   headerDrop: false,
-  theme: windowGlobal && localStorage.getItem('theme'),
+  theme: globalThis.localStorage?.getItem('theme'),
   music: {
     playing: false,
     volume: 0.5,
@@ -116,8 +114,8 @@ const createStore = () =>
   reduxCreateStore(
     reducer,
     initialState,
-    windowGlobal?.__REDUX_DEVTOOLS_EXTENSION__ &&
-      windowGlobal?.__REDUX_DEVTOOLS_EXTENSION__()
+    // @ts-ignore
+    globalThis?.__REDUX_DEVTOOLS_EXTENSION__?.()
   );
 export default createStore;
 export type iRootState = RootState;

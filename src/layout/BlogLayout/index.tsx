@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { Col, Row } from 'antd';
 import SideBar, { Info } from '../../components/SideBlocks';
 import * as styles from './index.module.less';
-import isClient from '../../utils/isClient';
 import { useBackgroundColor } from '../../hooks';
 import loadable from '@loadable/component';
 const Footer = loadable(() => import('../../components/Footer'));
@@ -23,7 +22,7 @@ const Layout = (props: Props) => {
     dispatch({ type: 'SKIP', payload: true });
     dispatch({ type: 'HAS_ARROW', payload: false });
     dispatch({ type: 'SCENE', payload: false });
-    isClient && localStorage.setItem('SCENE', '');
+    globalThis.localStorage?.setItem('SCENE', '');
   }, [dispatch]);
 
   return (

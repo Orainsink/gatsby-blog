@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useMedia } from '../../hooks';
 import loadable from '@loadable/component';
 import * as styles from './index.module.less';
-import isClient from '../../utils/isClient';
 import ThemeBtn from './ThemeBtn';
 import MenuComponent from './MenuComponent';
 import { iRootState } from '../../redux/store';
@@ -91,7 +90,7 @@ const Header = () => {
   const handleArrow = useCallback(() => {
     dispatch({ type: 'SKIP', payload: false });
     dispatch({ type: 'SCENE', payload: true });
-    isClient && localStorage.setItem('SCENE', '1');
+    globalThis.localStorage?.setItem('SCENE', '1');
   }, [dispatch]);
 
   const handleClose = useCallback(() => setSearchVisible(false), []);
