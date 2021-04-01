@@ -1,20 +1,26 @@
 import React, { useEffect, useRef } from 'react';
 import { arr, random } from '../../utils/utils';
 import {
-  Vector3,
-  Geometry,
+  BufferGeometry,
   PlaneGeometry,
   MeshLambertMaterial,
   Mesh,
+  BufferAttribute,
 } from 'three';
-const fiveHundredStars = arr(500).map(
-  () => new Vector3(random(-50, 50), random(-100, 100), random(-50, 100))
-);
+
+const fiveHundredStars: number[] = [];
+arr(500).forEach(() => {
+  fiveHundredStars.push(random(-50, 50));
+  fiveHundredStars.push(random(-100, 100));
+  fiveHundredStars.push(random(-50, 100));
+});
+const vertices = new BufferAttribute(new Float32Array(fiveHundredStars), 3);
+
 const Stars = () => {
   const stripsGroup = useRef<Mesh>(null);
 
   useEffect(() => {
-    const stripsGeometry = new Geometry();
+    const stripsGeometry = new BufferGeometry();
     const stripGeometry = new PlaneGeometry(5, 2);
     const stripMaterial = new MeshLambertMaterial({ color: '#666666' });
     for (let i = 0; i < 20; i++) {
@@ -26,7 +32,7 @@ const Stars = () => {
       );
       stripMesh.scale.set(random(0.5, 1), random(0.1, 1), 1);
       stripMesh.updateMatrix();
-      stripsGeometry.merge(stripMesh.geometry, stripMesh.matrix);
+      stripsGeometry.merge(stripMesh.geometry /* , stripMesh.matrix */);
     }
     const totalMesh = new Mesh(stripsGeometry, stripMaterial);
 
@@ -37,7 +43,11 @@ const Stars = () => {
     <group ref={stripsGroup}>
       <points attach="points">
         <pointsMaterial color="#ffffff" size={0.5} />
-        <geometry vertices={fiveHundredStars} />
+        <bufferGeometry
+          attributes={{
+            position: vertices,
+          }}
+        />
       </points>
     </group>
   );

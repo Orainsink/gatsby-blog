@@ -4,6 +4,7 @@ import React, {
   useCallback,
   useState,
   useRef,
+  useLayoutEffect,
 } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Canvas, useFrame, useThree } from 'react-three-fiber';
@@ -18,6 +19,7 @@ import Stars from './Stars';
 import Floor from './Floor';
 import gsap from 'gsap';
 import { useStaticQuery, graphql } from 'gatsby';
+import { ThreeEvent } from 'react-three-fiber/dist/declarations/src/core/events';
 interface Data {
   file: {
     publicURL: string;
@@ -31,17 +33,18 @@ let mouseX = 0;
 let mouseY = 0;
 
 // shake camera
-const handlePointerMove = (e: React.PointerEvent) => {
+const handlePointerMove = (e: ThreeEvent<PointerEvent>) => {
   mouseX = (e.clientX / window.innerWidth) * 2 - 1;
   mouseY = (e.clientY / window.innerHeight) * 2 - 1;
 };
 
 const Camera = React.memo(({ isScene }: { isScene: boolean }) => {
   const camera = useRef<PerspectiveCamera>(null);
-  const { setDefaultCamera, scene } = useThree();
+  const set = useThree(({ set }) => set);
+  const scene = useThree(({ scene }) => scene);
   // set default camera, and scene fog
-  useEffect(() => {
-    setDefaultCamera(camera.current);
+  useLayoutEffect(() => {
+    set(() => ({ camera: camera.current }));
     scene.fog = new FogExp2('#0a0a0a', 0.0025);
     // camera slide in
     gsap.to(
@@ -60,10 +63,9 @@ const Camera = React.memo(({ isScene }: { isScene: boolean }) => {
   }, []);
 
   // animation frame: camera shake
-  useFrame(({ gl, scene, camera }) => {
+  useFrame(({ scene, gl, camera }) => {
     // Stop all animations when scene is hidden
     if (!isScene) return;
-
     camera.position.y +=
       Math.cos(cameraShakeY) / 50 - (mouseY * 5 + camera.position.y) * 0.03;
     camera.position.x += (mouseX * 5 - camera.position.x) * 0.03;
@@ -106,29 +108,27 @@ const Dynamic = () => {
    * 天气API
    * https://dev.heweather.com/docs/api/overview
    */
-  const fetchWeather = useCallback(async () => {
-    try {
-      const promise = await fetch(hfUrl, {
-        headers: {
-          'content-type': 'application/json',
-        },
-        method: 'GET',
-      });
-      const res = await promise.json();
-
-      const data = res.HeWeather6[0];
-      const words: string[] = [
-        data.basic.location, //city
-        data.now.tmp + '℃ ' + data.now.cond_txt, // temperature
-      ];
-      setWords(words);
-    } catch (err) {
-      console.log(err);
-    }
-  }, []);
-
-  /**fetch weather */
   useEffect(() => {
+    const fetchWeather = async () => {
+      try {
+        const promise = await fetch(hfUrl, {
+          headers: {
+            'content-type': 'application/json',
+          },
+          method: 'GET',
+        });
+        const res = await promise.json();
+
+        const data = res.HeWeather6[0];
+        const words: string[] = [
+          data.basic.location, //city
+          data.now.tmp + '℃ ' + data.now.cond_txt, // temperature
+        ];
+        setWords(words);
+      } catch (err) {
+        console.log(err);
+      }
+    };
     fetchWeather();
     // eslint-disable-next-line
   }, []);
@@ -136,7 +136,7 @@ const Dynamic = () => {
   if (!isClient) return null;
 
   return (
-    <Canvas resize={{ polyfill: ResizeObserver }}>
+    <Canvas /* resize={{ polyfill: ResizeObserver }} */>
       <group onPointerMove={handlePointerMove}>
         <Camera isScene={scene} />
         {/* moon && light */}
@@ -144,7 +144,7 @@ const Dynamic = () => {
         {/* Floor */}
         <Suspense fallback={null}>
           <Floor url={url} />
-          <Stars />
+          {/* <Stars /> */}
         </Suspense>
         {/* text */}
         {words && <Text words={words} position={[0, -5, 0]} />}
