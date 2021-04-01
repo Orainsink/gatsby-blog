@@ -17,7 +17,7 @@ const Comment = () => {
     scriptEl.setAttribute('crossorigin', 'anonymous');
     scriptEl.setAttribute(
       'theme',
-      window?.localStorage.getItem('theme') === 'dark'
+      globalThis.localStorage?.getItem('theme') === 'dark'
         ? 'github-dark'
         : 'github-light'
     );

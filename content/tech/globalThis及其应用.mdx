@@ -1,0 +1,91 @@
+---
+title: globalThis及其应用
+date: 2021-03-23 15:19:06
+description: globalThis是一个可用于多个环境的全局对象，合理使用globalThis可以减少一些环境判断的代码量。
+tags: [js]
+categories: tech
+---
+
+## 何为 globalThis
+
+`globalThis`是一个纳入 ES2020 规范的新的获取全局对象的方式。目前的兼容性并不好，支持 Chrome 71 以上版本，nodejs 12 及以上版本。
+
+`globalThis` 提供了一个标准的方式来获取不同环境下的全局 `this` 对象（也就是全局对象自身）。不像 `window` 或者 `self` 这些属性，它确保可以在有无窗口的各种环境下正常工作。所以，你可以安心的使用 `globalThis`，不必担心它的运行环境。为便于记忆，你只需要记住，全局作用域中的 `this` 就是 `globalThis`。
+
+简单来说， 在 client 环境
+
+```js
+globalThis === window; // true
+```
+
+在 webworker 和 node 中`globalThis`都会自动代表相应的全局对象。
+
+一个简单的`globalThis` polyfill 实现:
+
+```js
+function getGlobalObject() {
+  if (typeof globalThis !== 'undefined') {
+    return globalThis;
+  }
+  if (typeof self !== 'undefined') {
+    return self;
+  }
+  if (typeof window !== 'undefined') {
+    return window;
+  }
+  if (typeof global !== 'undefined') {
+    return global;
+  }
+  throw new Error('cannot find the global object');
+}
+
+if (typeof getGlobalObject().Promise.allSettled !== 'function') {
+  // the Promise.allSettled() method is not available in this environment
+}
+```
+
+## SSR 打包的时候 window 对象报错
+
+常规前端开发过程中我们通常直接通过`window`调用全局方法。
+
+但是如果我们的代码不在浏览器上跑，直接调用`window`就会报错，这时候就需要做一些类似的判断：
+
+用新的变量来替代 window：
+
+```js
+const windowGlobal = typeof window !== 'undefined' && window;
+```
+
+或者用一个布尔值来判断是不是浏览器环境：
+
+```js
+const isClient = typeof window === 'object';
+```
+
+或者用可选链操作符安全执行方法：
+
+```js
+window?.localStorage.getItem('key');
+```
+
+> window 对象报错的问题在 gatsby 或者其他 ssr 开发过程中很常见，
+>
+> 因为本地调试的时候是 client 环境，但是 ssr 打包 html 的时候是 node 环境，所以如果在构建代码中直接调用 window 对象方法会报错。
+
+用`globalThis`可以替代所有的`window`，然后再`window`的方法后面用可选链路操作就行了，可以一定程度上减少代码量：
+
+```js
+globalThis.localStorage?.getItem('key');
+```
+
+## 当我想用一段代码访问不同环境下的全局对象时
+
+不同的环境想获取全局对象要用不同的代码：
+
+在 Web 中，可以通过 `window`、`self` 或者 `frames` 取到全局对象，但是在 [Web Workers](https://developer.mozilla.org/zh-CN/docs/Web/API/Worker) 中，只有 `self` 可以。在 Node.js 中，它们都无法获取，必须使用 `global`。
+
+```js
+if (typeof globalThis.setTimeout !== 'function') {
+  //  此环境中没有 setTimeout 方法！
+}
+```

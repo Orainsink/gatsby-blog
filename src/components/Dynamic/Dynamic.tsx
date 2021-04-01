@@ -47,18 +47,20 @@ const Camera = React.memo(({ isScene }: { isScene: boolean }) => {
     set(() => ({ camera: camera.current }));
     scene.fog = new FogExp2('#0a0a0a', 0.0025);
     // camera slide in
-    gsap.to(
+    const tween = gsap.to(
       { fov: 40 },
       {
         duration: 2,
         fov: 60,
         ease: 'power4.out',
         onUpdate: function () {
+          if (!camera.current) return;
           camera.current.fov = this.targets()[0].fov;
           camera.current.updateProjectionMatrix();
         },
       }
     );
+    return () => tween.kill();
     // eslint-disable-next-line
   }, []);
 
