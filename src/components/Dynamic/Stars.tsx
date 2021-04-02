@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import { arr, random } from '../../utils/utils';
 import {
   BufferGeometry,
@@ -19,7 +19,7 @@ const vertices = new BufferAttribute(new Float32Array(fiveHundredStars), 3);
 const Stars = () => {
   const stripsGroup = useRef<Mesh>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const stripsGeometry = new BufferGeometry();
     const stripGeometry = new PlaneGeometry(5, 2);
     const stripMaterial = new MeshLambertMaterial({ color: '#666666' });
@@ -32,7 +32,7 @@ const Stars = () => {
       );
       stripMesh.scale.set(random(0.5, 1), random(0.1, 1), 1);
       stripMesh.updateMatrix();
-      stripsGeometry.merge(stripMesh.geometry /* , stripMesh.matrix */);
+      stripsGeometry.merge(stripMesh.geometry /* stripMesh.matrix */);
     }
     const totalMesh = new Mesh(stripsGeometry, stripMaterial);
 

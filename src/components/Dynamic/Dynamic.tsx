@@ -14,12 +14,11 @@ import Moon from './Moon';
 import { useBackgroundColor } from '../../hooks';
 import { iRootState } from '../../redux/store';
 import isClient from '../../utils/isClient';
-import { ResizeObserver } from '@juggle/resize-observer';
 import Stars from './Stars';
 import Floor from './Floor';
 import gsap from 'gsap';
 import { useStaticQuery, graphql } from 'gatsby';
-import { ThreeEvent } from 'react-three-fiber/dist/declarations/src/core/events';
+
 interface Data {
   file: {
     publicURL: string;
@@ -29,14 +28,6 @@ const hfUrl =
   'https://free-api.heweather.net/s6/weather/now?&location=auto_ip&key=' +
   process.env.GATSBY_HEWEATHER_KEY;
 let cameraShakeY = 0;
-let mouseX = 0;
-let mouseY = 0;
-
-// shake camera
-const handlePointerMove = (e: ThreeEvent<PointerEvent>) => {
-  mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-  mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-};
 
 const Camera = React.memo(({ isScene }: { isScene: boolean }) => {
   const camera = useRef<PerspectiveCamera>(null);
@@ -65,12 +56,12 @@ const Camera = React.memo(({ isScene }: { isScene: boolean }) => {
   }, []);
 
   // animation frame: camera shake
-  useFrame(({ scene, gl, camera }) => {
+  useFrame(({ scene, gl, camera, mouse }) => {
     // Stop all animations when scene is hidden
     if (!isScene) return;
     camera.position.y +=
-      Math.cos(cameraShakeY) / 50 - (mouseY * 5 + camera.position.y) * 0.03;
-    camera.position.x += (mouseX * 5 - camera.position.x) * 0.03;
+      Math.cos(cameraShakeY) / 50 - (mouse.y * 5 + camera.position.y) * 0.03;
+    camera.position.x += (mouse.x * 5 - camera.position.x) * 0.03;
     cameraShakeY += 0.02;
 
     gl.render(scene, camera);
@@ -138,15 +129,15 @@ const Dynamic = () => {
   if (!isClient) return null;
 
   return (
-    <Canvas /* resize={{ polyfill: ResizeObserver }} */>
-      <group onPointerMove={handlePointerMove}>
+    <Canvas>
+      <group>
         <Camera isScene={scene} />
         {/* moon && light */}
         <Moon onCloseScene={handleScene} />
         {/* Floor */}
         <Suspense fallback={null}>
           <Floor url={url} />
-          {/* <Stars /> */}
+          <Stars />
         </Suspense>
         {/* text */}
         {words && <Text words={words} position={[0, -5, 0]} />}
