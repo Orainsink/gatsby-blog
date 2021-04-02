@@ -1,53 +1,45 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useMemo } from 'react';
 import { arr, random } from '../../utils/utils';
-import {
-  BufferGeometry,
-  PlaneGeometry,
-  MeshLambertMaterial,
-  Mesh,
-  BufferAttribute,
-} from 'three';
-
-const fiveHundredStars: number[] = [];
-arr(500).forEach(() => {
-  fiveHundredStars.push(random(-50, 50));
-  fiveHundredStars.push(random(-100, 100));
-  fiveHundredStars.push(random(-50, 100));
-});
-const vertices = new BufferAttribute(new Float32Array(fiveHundredStars), 3);
+import { Vector3 } from 'three';
 
 const Stars = () => {
-  const stripsGroup = useRef<Mesh>(null);
+  const blocks = useMemo(
+    () =>
+      arr(20).map(() => (
+        <mesh
+          position={
+            new Vector3(random(-50, 50), random(-100, 100), random(-50, 0))
+          }
+          scale={new Vector3(random(0.5, 1), random(0.1, 1), 1)}
+        >
+          <planeGeometry args={[5, 2]}></planeGeometry>
+          <meshLambertMaterial color="#666666"></meshLambertMaterial>
+        </mesh>
+      )),
+    []
+  );
 
-  useLayoutEffect(() => {
-    const stripsGeometry = new BufferGeometry();
-    const stripGeometry = new PlaneGeometry(5, 2);
-    const stripMaterial = new MeshLambertMaterial({ color: '#666666' });
-    for (let i = 0; i < 20; i++) {
-      const stripMesh = new Mesh(stripGeometry, stripMaterial);
-      stripMesh.position.set(
-        random(-50, 50),
-        random(-100, 100),
-        random(-50, 0)
-      );
-      stripMesh.scale.set(random(0.5, 1), random(0.1, 1), 1);
-      stripMesh.updateMatrix();
-      stripsGeometry.merge(stripMesh.geometry /* stripMesh.matrix */);
-    }
-    const totalMesh = new Mesh(stripsGeometry, stripMaterial);
-
-    stripsGroup.current.add(totalMesh);
+  const fiveHundredStars = useMemo(() => {
+    let tmpArr = [];
+    arr(500).forEach(() => {
+      tmpArr.push(random(-50, 50));
+      tmpArr.push(random(-100, 100));
+      tmpArr.push(random(-50, 100));
+    });
+    return new Float32Array(tmpArr);
   }, []);
 
   return (
-    <group ref={stripsGroup}>
+    <group>
+      {blocks}
       <points attach="points">
         <pointsMaterial color="#ffffff" size={0.5} />
-        <bufferGeometry
-          attributes={{
-            position: vertices,
-          }}
-        />
+        <bufferGeometry>
+          <bufferAttribute
+            attachObject={['attributes', 'position']}
+            args={[fiveHundredStars, 3]}
+          />
+        </bufferGeometry>
       </points>
     </group>
   );
