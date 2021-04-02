@@ -16,10 +16,6 @@ body {
 }
 .disActive {
   top: -100vh;
-  // 解决react-three-fiber的一个bug
-  // 该bug导致切换scene过后, geometry无法通过光线追踪绑定事件
-  // 虽然不知道原理, 但是重新计算宽度就解决了-_-||
-  width: calc(100% - 1px);
   visibility: hidden;
 }
 .trigger {
