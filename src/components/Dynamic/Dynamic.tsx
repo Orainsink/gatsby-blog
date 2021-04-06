@@ -17,12 +17,23 @@ interface Data {
     publicURL: string;
   };
 }
+/**
+ * some default values
+ */
 const hfUrl =
   'https://free-api.heweather.net/s6/weather/now?&location=auto_ip&key=' +
   process.env.GATSBY_HEWEATHER_KEY;
 let cameraShakeY = 0;
-const position = new Vector3(0, 0, 40);
-
+const cameraProps = {
+  fov: 40,
+  aspect: 1,
+  near: 1,
+  far: 4000,
+  position: new Vector3(0, 0, 40),
+};
+/**
+ * shake camera
+ */
 const CameraTween = React.memo(({ isScene }: { isScene: boolean }) => {
   const camera = useThree(({ camera }) => camera) as PerspectiveCamera;
   const scene = useThree(({ scene }) => scene);
@@ -114,15 +125,7 @@ const Dynamic = () => {
   if (!isClient) return null;
 
   return (
-    <Canvas
-      camera={{
-        fov: 40,
-        aspect: 1,
-        near: 1,
-        far: 4000,
-        position: position,
-      }}
-    >
+    <Canvas camera={cameraProps}>
       <group>
         <CameraTween isScene={scene} />
         {/* moon && light */}

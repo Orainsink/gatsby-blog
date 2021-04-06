@@ -19,14 +19,14 @@ const Stars = () => {
     []
   );
 
-  const fiveHundredStars = useMemo(() => {
+  const fiveHundredStars = useMemo<[ArrayLike<number>, number]>(() => {
     let tmpArr = [];
     arr(500).forEach(() => {
       tmpArr.push(random(-50, 50));
       tmpArr.push(random(-100, 100));
       tmpArr.push(random(-50, 100));
     });
-    return new Float32Array(tmpArr);
+    return [new Float32Array(tmpArr), 3];
   }, []);
 
   return (
@@ -37,7 +37,7 @@ const Stars = () => {
         <bufferGeometry>
           <bufferAttribute
             attachObject={['attributes', 'position']}
-            args={[fiveHundredStars, 3]}
+            args={fiveHundredStars}
           />
         </bufferGeometry>
       </points>
