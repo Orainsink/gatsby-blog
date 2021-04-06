@@ -1,14 +1,7 @@
-import React, {
-  Suspense,
-  useEffect,
-  useCallback,
-  useState,
-  useRef,
-  useLayoutEffect,
-} from 'react';
+import React, { Suspense, useEffect, useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Canvas, useFrame, useThree } from 'react-three-fiber';
-import { FogExp2, PerspectiveCamera } from 'three';
+import { FogExp2, PerspectiveCamera, Vector3 } from 'three';
 import Text from './TextComponent';
 import Moon from './Moon';
 import { useBackgroundColor } from '../../hooks';
@@ -28,14 +21,13 @@ const hfUrl =
   'https://free-api.heweather.net/s6/weather/now?&location=auto_ip&key=' +
   process.env.GATSBY_HEWEATHER_KEY;
 let cameraShakeY = 0;
+const position = new Vector3(0, 0, 40);
 
-const Camera = React.memo(({ isScene }: { isScene: boolean }) => {
-  const camera = useRef<PerspectiveCamera>(null);
-  const set = useThree(({ set }) => set);
+const CameraTween = React.memo(({ isScene }: { isScene: boolean }) => {
+  const camera = useThree(({ camera }) => camera) as PerspectiveCamera;
   const scene = useThree(({ scene }) => scene);
   // set default camera, and scene fog
-  useLayoutEffect(() => {
-    set(() => ({ camera: camera.current }));
+  useEffect(() => {
     scene.fog = new FogExp2('#0a0a0a', 0.0025);
     // camera slide in
     const tween = gsap.to(
@@ -45,15 +37,13 @@ const Camera = React.memo(({ isScene }: { isScene: boolean }) => {
         fov: 60,
         ease: 'power4.out',
         onUpdate: function () {
-          if (!camera.current) return;
-          camera.current.fov = this.targets()[0].fov;
-          camera.current.updateProjectionMatrix();
+          camera.fov = this.targets()[0].fov;
+          camera.updateProjectionMatrix();
         },
       }
     );
     return () => tween.kill();
-    // eslint-disable-next-line
-  }, []);
+  }, [scene, camera]);
 
   // animation frame: camera shake
   useFrame(({ scene, gl, camera, mouse }) => {
@@ -67,15 +57,9 @@ const Camera = React.memo(({ isScene }: { isScene: boolean }) => {
     gl.render(scene, camera);
   }, 1);
 
-  return (
-    <perspectiveCamera
-      attach="camera"
-      args={[40, 1, 1, 4000]}
-      position={[0, 0, 40]}
-      ref={camera}
-    />
-  );
+  return null;
 });
+
 /** webGl wrapper  */
 const Dynamic = () => {
   const data: Data = useStaticQuery(graphql`
@@ -129,9 +113,17 @@ const Dynamic = () => {
   if (!isClient) return null;
 
   return (
-    <Canvas>
+    <Canvas
+      camera={{
+        fov: 40,
+        aspect: 1,
+        near: 1,
+        far: 4000,
+        position: position,
+      }}
+    >
       <group>
-        <Camera isScene={scene} />
+        <CameraTween isScene={scene} />
         {/* moon && light */}
         <Moon onCloseScene={handleScene} />
         {/* Floor */}
