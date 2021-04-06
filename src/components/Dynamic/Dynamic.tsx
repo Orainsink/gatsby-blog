@@ -43,7 +43,8 @@ const CameraTween = React.memo(({ isScene }: { isScene: boolean }) => {
       }
     );
     return () => tween.kill();
-  }, [scene, camera]);
+    // eslint-disable-next-line
+  }, []);
 
   // animation frame: camera shake
   useFrame(({ scene, gl, camera, mouse }) => {
