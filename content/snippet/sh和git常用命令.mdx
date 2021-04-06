@@ -4,18 +4,17 @@ date: 2020-11-20 09:27:19
 description: 懒得背
 tags: [sh]
 categories: snippet
-
 ---
 
-## scp上传文件到服务器
+## scp 上传文件到服务器
 
 ```sh
 scp /path/filename username@servername:/path/
 ```
 
-例如scp /var/www/test.php root@192.168.0.101:/var/www/ 把本机/var/www/目录下的test.php文件上传到192.168.0.101这台服务器上的/var/www/目录中
+例如 scp /var/www/test.php root@192.168.0.101:/var/www/ 把本机/var/www/目录下的 test.php 文件上传到 192.168.0.101 这台服务器上的/var/www/目录中
 
-## git删除远程分支
+## git 删除远程分支
 
 ```sh
 git push -d origin branch-name
@@ -28,7 +27,7 @@ git config [--global] user.name "[name]"
 git config [--global] user.email "[email address]"
 ```
 
-## git删除工作区文件
+## git 删除工作区文件
 
 ```sh
 git rm [file1] [file2] ...
@@ -45,3 +44,8 @@ $ git reset --hard [commit]
 $ git reset --keep [commit]
 ```
 
+## yarn 升级包
+
+```
+yarn upgrade-interactive --latest
+```

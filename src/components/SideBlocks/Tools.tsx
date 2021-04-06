@@ -24,7 +24,7 @@ interface ToolItemProp {
 }
 
 const ToolItem = React.memo(({ data }: ToolItemProp) => {
-  const [props, setProps] = useSpring(() => ({
+  const [props, spring] = useSpring(() => ({
     xys: [0, 0, 1],
     config: { mass: 5, tension: 550, friction: 40 },
   }));
@@ -32,10 +32,10 @@ const ToolItem = React.memo(({ data }: ToolItemProp) => {
   return (
     <animated.a
       href={data.url}
-      onMouseMove={({ clientX: x, clientY: y }) =>
-        setProps({ xys: calc(x, y) })
-      }
-      onMouseLeave={() => setProps({ xys: [0, 0, 1] })}
+      onMouseMove={({ clientX: x, clientY: y }) => {
+        spring.update({ xys: calc(x, y) });
+      }}
+      onMouseLeave={() => spring.update({ xys: [0, 0, 1] })}
       style={{ transform: props.xys.interpolate(trans) }}
       target="_blank"
       rel="noreferrer"
