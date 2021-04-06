@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 31 Mar 2021 18:57:09 GMT</lastBuildDate><item><title><![CDATA[globalThis及其应用]]></title><description><![CDATA[何为 globalThis globalThis 是一个纳入 ES2020 规范的新的获取全局对象的方式。目前的兼容性并不好，支持 Chrome 71 以上版本，nodejs 12 及以上版本。 globalThis  提供了一个标准的方式来获取不同环境下的全局  this…]]></description><link>https://blog.foolishrobot.xyz/globalThis及其应用</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/globalThis及其应用</guid><pubDate>Tue, 23 Mar 2021 15:19:06 GMT</pubDate><content:encoded>function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 06 Apr 2021 07:30:45 GMT</lastBuildDate><item><title><![CDATA[globalThis及其应用]]></title><description><![CDATA[何为 globalThis globalThis 是一个纳入 ES2020 规范的新的获取全局对象的方式。目前的兼容性并不好，支持 Chrome 71 以上版本，nodejs 12 及以上版本。 globalThis  提供了一个标准的方式来获取不同环境下的全局  this…]]></description><link>https://blog.foolishrobot.xyz/globalThis及其应用</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/globalThis及其应用</guid><pubDate>Tue, 23 Mar 2021 15:19:06 GMT</pubDate><content:encoded>function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i &lt; sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) &gt;= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
@@ -1824,7 +1824,7 @@ return function MDXContent(_ref) {
   }, &quot;\u5FC3\u667A\u6A21\u578B&quot;), mdx(&quot;p&quot;, null, &quot;\u867D\u7136\u6574\u6D01\uFF0C\u4F46\u62BD\u8C61\u7684\u4E1C\u897F\u5E76\u4E0D\u662F\u672C\u6559\u7A0B\u6700\u91CD\u8981\u7684\u90E8\u5206\u3002\u5173\u952E\u7684\u4E00\u70B9\u662F\u5FC3\u667A\u6A21\u578B\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u5728 Gatsby \u5E94\u7528\u7A0B\u5E8F\u4E2D\u5DE5\u4F5C\u65F6\uFF0C\u6211\u53D1\u73B0\u7528\u4E24\u6BB5\u5F0F\u6E32\u67D3\u7684\u65B9\u5F0F\u601D\u8003\u771F\u7684\u5F88\u6709\u5E2E\u52A9\u3002\u7B2C\u4E00\u6B21\u6E32\u67D3\u53D1\u751F\u5728\u7F16\u8BD1\u65F6\uFF0C\u65F6\u95F4\u63D0\u524D\u4E86\u5F88\u4E45\uFF0C\u4E3A\u9875\u9762\u5960\u5B9A\u4E86\u57FA\u7840\uFF0C\u586B\u5165\u4E86\u6240\u6709\u7528\u6237\u901A\u7528\u7684\u5185\u5BB9\u3002\u7136\u540E\uFF0C\u5728\u5F88\u4E45\u4EE5\u540E\uFF0C\u5728\u7528\u6237\u6253\u5F00\u7F51\u9875\u7684\u65F6\u5019\uFF0C\u7B2C\u4E8C\u6B21\u6E32\u67D3\u5C06\u586B\u5165\u56E0\u4EBA\u800C\u5F02\u7684\u72B6\u6001\u3002&quot;), mdx(&quot;p&quot;, null, &quot;Gatsby \u6709\u65F6\u88AB\u79F0\u4E3A \&quot;\u9759\u6001\u7F51\u7AD9\u751F\u6210\u5668\&quot;\uFF0C\u4F46\u8FD9\u4E2A\u540D\u5B57\u611F\u89C9\u5F88\u6709\u5C40\u9650\u6027--\u4F60\u53EF\u4EE5\u7528 Gatsby \u6784\u5EFA\u4E30\u5BCC\u7684\u3001\u52A8\u6001\u7684 Web \u5E94\u7528\uFF01\u5B83\u786E\u5B9E\u9700\u8981\u4E00\u70B9\u7279\u522B\u7684\u8003\u8651\u3002\u5B83\u786E\u5B9E\u9700\u8981\u4E00\u70B9\u7279\u6B8A\u7684\u8003\u8651\uFF0C\u4F46\u6709\u4E86\u6B63\u786E\u7684\u5FC3\u7406\u6A21\u578B\uFF0C\u4EFB\u4F55\u4E8B\u60C5\u90FD\u6709\u53EF\u80FD\u53D1\u751F \uD83D\uDCAB\u3002&quot;));
 }
 ;
-MDXContent.isMDXComponent = true;</content:encoded></item><item><title><![CDATA[sh和git常用命令]]></title><description><![CDATA[scp上传文件到服务器 例如scp /var/www/test.php  root@192.168.0.101 :/var/www/ 把本机/var/www/目录下的test.php文件上传到192.168.0.101这台服务器上的/var/www/目录中 git…]]></description><link>https://blog.foolishrobot.xyz/sh和git常用命令</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/sh和git常用命令</guid><pubDate>Fri, 20 Nov 2020 09:27:19 GMT</pubDate><content:encoded>function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+MDXContent.isMDXComponent = true;</content:encoded></item><item><title><![CDATA[sh和git常用命令]]></title><description><![CDATA[scp 上传文件到服务器 例如 scp /var/www/test.php  root@192.168.0.101 :/var/www/ 把本机/var/www/目录下的 test.php 文件上传到 192.168.0.101 这台服务器上的/var/www/目录中 git…]]></description><link>https://blog.foolishrobot.xyz/sh和git常用命令</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/sh和git常用命令</guid><pubDate>Fri, 20 Nov 2020 09:27:19 GMT</pubDate><content:encoded>function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i &lt; sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) &gt;= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
@@ -1852,18 +1852,18 @@ return function MDXContent(_ref) {
     components: components,
     mdxType: &quot;MDXLayout&quot;
   }), mdx(&quot;h2&quot;, {
-    &quot;id&quot;: &quot;scp上传文件到服务器&quot;
-  }, &quot;scp\u4E0A\u4F20\u6587\u4EF6\u5230\u670D\u52A1\u5668&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, _extends({
+    &quot;id&quot;: &quot;scp-上传文件到服务器&quot;
+  }, &quot;scp \u4E0A\u4F20\u6587\u4EF6\u5230\u670D\u52A1\u5668&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, _extends({
     parentName: &quot;pre&quot;
   }, {
     &quot;className&quot;: &quot;language-sh&quot;
-  }), &quot;scp /path/filename username@servername:/path/\n&quot;)), mdx(&quot;p&quot;, null, &quot;\u4F8B\u5982scp /var/www/test.php &quot;, mdx(&quot;a&quot;, _extends({
+  }), &quot;scp /path/filename username@servername:/path/\n&quot;)), mdx(&quot;p&quot;, null, &quot;\u4F8B\u5982 scp /var/www/test.php &quot;, mdx(&quot;a&quot;, _extends({
     parentName: &quot;p&quot;
   }, {
     &quot;href&quot;: &quot;mailto:root@192.168.0.101&quot;
-  }), &quot;root@192.168.0.101&quot;), &quot;:/var/www/ \u628A\u672C\u673A/var/www/\u76EE\u5F55\u4E0B\u7684test.php\u6587\u4EF6\u4E0A\u4F20\u5230192.168.0.101\u8FD9\u53F0\u670D\u52A1\u5668\u4E0A\u7684/var/www/\u76EE\u5F55\u4E2D&quot;), mdx(&quot;h2&quot;, {
-    &quot;id&quot;: &quot;git删除远程分支&quot;
-  }, &quot;git\u5220\u9664\u8FDC\u7A0B\u5206\u652F&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, _extends({
+  }), &quot;root@192.168.0.101&quot;), &quot;:/var/www/ \u628A\u672C\u673A/var/www/\u76EE\u5F55\u4E0B\u7684 test.php \u6587\u4EF6\u4E0A\u4F20\u5230 192.168.0.101 \u8FD9\u53F0\u670D\u52A1\u5668\u4E0A\u7684/var/www/\u76EE\u5F55\u4E2D&quot;), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;git-删除远程分支&quot;
+  }, &quot;git \u5220\u9664\u8FDC\u7A0B\u5206\u652F&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, _extends({
     parentName: &quot;pre&quot;
   }, {
     &quot;className&quot;: &quot;language-sh&quot;
@@ -1874,8 +1874,8 @@ return function MDXContent(_ref) {
   }, {
     &quot;className&quot;: &quot;language-sh&quot;
   }), &quot;git config [--global] user.name \&quot;[name]\&quot;\ngit config [--global] user.email \&quot;[email address]\&quot;\n&quot;)), mdx(&quot;h2&quot;, {
-    &quot;id&quot;: &quot;git删除工作区文件&quot;
-  }, &quot;git\u5220\u9664\u5DE5\u4F5C\u533A\u6587\u4EF6&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, _extends({
+    &quot;id&quot;: &quot;git-删除工作区文件&quot;
+  }, &quot;git \u5220\u9664\u5DE5\u4F5C\u533A\u6587\u4EF6&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, _extends({
     parentName: &quot;pre&quot;
   }, {
     &quot;className&quot;: &quot;language-sh&quot;
@@ -1885,7 +1885,11 @@ return function MDXContent(_ref) {
     parentName: &quot;pre&quot;
   }, {
     &quot;className&quot;: &quot;language-sh&quot;
-  }), &quot;#\u91CD\u7F6E\u5F53\u524D\u5206\u652F\u7684\u6307\u9488\u4E3A\u6307\u5B9Acommit\uFF0C\u540C\u65F6\u91CD\u7F6E\u6682\u5B58\u533A\uFF0C\u4F46\u5DE5\u4F5C\u533A\u4E0D\u53D8\ngit reset [commit]\n#\u91CD\u7F6E\u5F53\u524D\u5206\u652F\u7684HEAD\u4E3A\u6307\u5B9Acommit\uFF0C\u540C\u65F6\u91CD\u7F6E\u6682\u5B58\u533A\u548C\u5DE5\u4F5C\u533A\uFF0C\u4E0E\u6307\u5B9Acommit\u4E00\u81F4\n$ git reset --hard [commit]\n# \u91CD\u7F6E\u5F53\u524DHEAD\u4E3A\u6307\u5B9Acommit\uFF0C\u4F46\u4FDD\u6301\u6682\u5B58\u533A\u548C\u5DE5\u4F5C\u533A\u4E0D\u53D8\n$ git reset --keep [commit]\n&quot;)));
+  }), &quot;#\u91CD\u7F6E\u5F53\u524D\u5206\u652F\u7684\u6307\u9488\u4E3A\u6307\u5B9Acommit\uFF0C\u540C\u65F6\u91CD\u7F6E\u6682\u5B58\u533A\uFF0C\u4F46\u5DE5\u4F5C\u533A\u4E0D\u53D8\ngit reset [commit]\n#\u91CD\u7F6E\u5F53\u524D\u5206\u652F\u7684HEAD\u4E3A\u6307\u5B9Acommit\uFF0C\u540C\u65F6\u91CD\u7F6E\u6682\u5B58\u533A\u548C\u5DE5\u4F5C\u533A\uFF0C\u4E0E\u6307\u5B9Acommit\u4E00\u81F4\n$ git reset --hard [commit]\n# \u91CD\u7F6E\u5F53\u524DHEAD\u4E3A\u6307\u5B9Acommit\uFF0C\u4F46\u4FDD\u6301\u6682\u5B58\u533A\u548C\u5DE5\u4F5C\u533A\u4E0D\u53D8\n$ git reset --keep [commit]\n&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;yarn-升级包&quot;
+  }, &quot;yarn \u5347\u7EA7\u5305&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, _extends({
+    parentName: &quot;pre&quot;
+  }, {}), &quot;yarn upgrade-interactive --latest\n&quot;)));
 }
 ;
 MDXContent.isMDXComponent = true;</content:encoded></item><item><title><![CDATA[CSS变量实现动态变化的背景色]]></title><description><![CDATA[实现效果 实现原理 之前我写过一篇简单学习  CSS 变量的文章 里面提到了 css 变量可以通过 js 改变，以达到动态改变颜色值的效果。 这篇文章就是 css 变量的实践应用。 话不多说直接上代码： 简单封装的 useMagicColor 使用 color hook…]]></description><link>https://blog.foolishrobot.xyz/CSS变量实现动态变化的背景色/CSS变量实现动态变化的背景色</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/CSS变量实现动态变化的背景色/CSS变量实现动态变化的背景色</guid><pubDate>Tue, 17 Nov 2020 20:27:50 GMT</pubDate><content:encoded>function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
