@@ -5,8 +5,9 @@ import { Vector3 } from 'three';
 const Stars = () => {
   const blocks = useMemo(
     () =>
-      arr(20).map(() => (
+      arr(20).map((e, i) => (
         <mesh
+          key={i}
           position={
             new Vector3(random(-50, 50), random(-100, 100), random(-50, 0))
           }

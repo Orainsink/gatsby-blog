@@ -5,15 +5,15 @@ import * as styles from './index.module.less';
 import tools from '../../assets/config/tools';
 import Icon from '@ant-design/icons';
 import useColFlex from './useColFlex';
-import { useSpring, animated } from 'react-spring';
+// import { useSpring, animated } from 'react-spring';
 
-const calc = (x: number, y: number) => [
-  -(y - window?.innerHeight / 2) / 20,
-  (x - window?.innerWidth / 2) / 20,
-  1.1,
-];
-const trans: any = (x: number, y: number, s: number) =>
-  `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
+// const calc = (x: number, y: number) => [
+//   -(y - window?.innerHeight / 2) / 20,
+//   (x - window?.innerWidth / 2) / 20,
+//   1.1,
+// ];
+// const trans: any = (x: number, y: number, s: number) =>
+//   `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
 interface ToolItemProp {
   data: {
@@ -24,19 +24,19 @@ interface ToolItemProp {
 }
 
 const ToolItem = React.memo(({ data }: ToolItemProp) => {
-  const [props, spring] = useSpring(() => ({
-    xys: [0, 0, 1],
-    config: { mass: 5, tension: 550, friction: 40 },
-  }));
+  // const [props, spring] = useSpring(() => ({
+  //   xys: [0, 0, 1],
+  //   config: { mass: 5, tension: 550, friction: 40 },
+  // }));
 
   return (
-    <animated.a
+    <a
       href={data.url}
-      onMouseMove={({ clientX: x, clientY: y }) => {
-        spring.update({ xys: calc(x, y) });
-      }}
-      onMouseLeave={() => spring.update({ xys: [0, 0, 1] })}
-      style={{ transform: props.xys.interpolate(trans) }}
+      // onMouseMove={({ clientX: x, clientY: y }) => {
+      //   spring.update({ xys: calc(x, y) });
+      // }}
+      // onMouseLeave={() => spring.update({ xys: [0, 0, 1] })}
+      // style={{ transform: props.xys.interpolate(trans) }}
       target="_blank"
       rel="noreferrer"
       title={data.url}
@@ -49,7 +49,7 @@ const ToolItem = React.memo(({ data }: ToolItemProp) => {
         </div>
         <span className={styles.toolName}>{data.name}</span>
       </span>
-    </animated.a>
+    </a>
   );
 });
 
