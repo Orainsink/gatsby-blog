@@ -33,7 +33,7 @@ const Stars = () => {
   return (
     <group>
       {blocks}
-      <points attach="points">
+      <points>
         <pointsMaterial color="#ffffff" size={0.5} />
         <bufferGeometry>
           <bufferAttribute

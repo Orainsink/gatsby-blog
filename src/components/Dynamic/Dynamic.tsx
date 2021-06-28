@@ -53,7 +53,9 @@ const CameraTween = React.memo(({ isScene }: { isScene: boolean }) => {
         },
       }
     );
-    return () => tween.kill();
+    return () => {
+      tween.kill();
+    };
     // eslint-disable-next-line
   }, []);
 
@@ -126,10 +128,12 @@ const Dynamic = () => {
 
   return (
     <Canvas camera={cameraProps}>
+      {/* <pointLight position={[10, 10, 10]} /> */}
       <group>
         <CameraTween isScene={scene} />
         {/* moon && light */}
         <Moon onCloseScene={handleScene} />
+
         {/* Floor */}
         <Suspense fallback={null}>
           <Floor url={url} />

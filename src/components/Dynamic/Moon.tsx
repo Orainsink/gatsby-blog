@@ -79,8 +79,7 @@ const Moon = (props: Props) => {
 
   return (
     <pointLight
-      attach="light"
-      args={['#ffffff', 5, 60, 2]}
+      args={['#ffffff', 8, 62, 2]}
       position={[0, 20, -40]}
       ref={lightRefCallback}
     >
