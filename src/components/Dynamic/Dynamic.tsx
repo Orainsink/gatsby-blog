@@ -133,7 +133,6 @@ const Dynamic = () => {
         <CameraTween isScene={scene} />
         {/* moon && light */}
         <Moon onCloseScene={handleScene} />
-
         {/* Floor */}
         <Suspense fallback={null}>
           <Floor url={url} />
