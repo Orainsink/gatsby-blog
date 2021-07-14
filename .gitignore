@@ -73,3 +73,5 @@ yarn-error.log
 .yarnrc
 # husky
 .husky/
+# vscode
+.vscode/

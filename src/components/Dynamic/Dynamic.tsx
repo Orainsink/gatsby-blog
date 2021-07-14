@@ -109,7 +109,6 @@ const Dynamic = () => {
           method: 'GET',
         });
         const res = await promise.json();
-
         const data = res.HeWeather6[0];
         const words: string[] = [
           data.basic.location, //city
@@ -128,7 +127,6 @@ const Dynamic = () => {
 
   return (
     <Canvas camera={cameraProps}>
-      {/* <pointLight position={[10, 10, 10]} /> */}
       <group>
         <CameraTween isScene={scene} />
         {/* moon && light */}
