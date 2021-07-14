@@ -1,6 +1,7 @@
 require('dotenv').config();
 const modifyVars = require('./scripts/less-vars');
 const { categories } = require('./src/assets/config/categories');
+const isProduction = require('./scripts/env');
 
 /**categories filesystem config */
 const categoryFileConfig = categories.map((item) => ({
@@ -43,13 +44,13 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
+    isProduction && {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: process.env.TRACKING_ID,
       },
     },
-    {
+    isProduction && {
       resolve: `gatsby-plugin-algolia`,
       options: {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
@@ -220,7 +221,7 @@ module.exports = {
         useHydrate: true,
       },
     },
-    {
+    isProduction && {
       resolve: '@sentry/gatsby',
       options: {
         release: 'blog',
@@ -232,5 +233,5 @@ module.exports = {
         tracesSampleRate: 0.8,
       },
     },
-  ],
+  ].filter(Boolean),
 };
