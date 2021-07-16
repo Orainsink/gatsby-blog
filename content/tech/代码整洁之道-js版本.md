@@ -40,8 +40,6 @@ var yyyymmdstr = moment().format('YYYY/MM/DD');
 var yearMonthDay = moment().format('YYYY/MM/DD');
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### 使用 ES6 的 const 定义常量
 
 反例中使用"var"定义的"常量"是可变的。
@@ -60,8 +58,6 @@ var FIRST_US_PRESIDENT = 'George Washington';
 const FIRST_US_PRESIDENT = 'George Washington';
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### 对功能类似的变量名采用统一的命名风格
 
 **反例**:
@@ -77,8 +73,6 @@ getCustomerRecord();
 ```js
 getUser();
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 使用易于检索名称
 
@@ -103,8 +97,6 @@ for (var i = 0; i < MINUTES_IN_A_YEAR; i++) {
 }
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### 使用说明变量(即有意义的变量名)
 
 **反例**:
@@ -127,8 +119,6 @@ var city = match[1];
 var state = match[2];
 saveCityState(city, state);
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 不要绕太多的弯子
 
@@ -163,8 +153,6 @@ locations.forEach((location) => {
 });
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### 避免重复的描述
 
 当类/对象名已经有意义时，对其变量进行命名不需要再次重复。
@@ -197,8 +185,6 @@ function paintCar(car) {
 }
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### 避免无意义的条件判断
 
 **反例**:
@@ -221,8 +207,6 @@ function createMicrobrewery(name) {
   var breweryName = name || 'Hipster Brew Co.';
 }
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ## **函数**
 
@@ -256,8 +240,6 @@ function createMenu(menuConfig) {
   ...
 }
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 函数功能的单一性
 
@@ -299,8 +281,6 @@ function isClientActive(client) {
 }
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### 函数名应明确表明其功能
 
 **反例**:
@@ -326,8 +306,6 @@ function dateAddMonth(date, month) {
 let date = new Date();
 dateAddMonth(date, 1);
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 函数应该只做一层抽象
 
@@ -397,8 +375,6 @@ function parseBetterJSAlternative(code) {
 }
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### 移除重复的代码
 
 永远、永远、永远不要在任何循环下有重复的代码。
@@ -465,8 +441,6 @@ function showList(employees) {
 }
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### 采用默认参数精简代码
 
 **反例**:
@@ -485,8 +459,6 @@ function writeForumComment(subject = 'No subject', body = 'No text') {
   ...
 }
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 使用 Object.assign 设置默认对象
 
@@ -539,8 +511,6 @@ function createMenu(config) {
 createMenu(menuConfig);
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### 不要使用标记(Flag)作为函数参数
 
 这通常意味着函数的功能的单一性已经被破坏。此时应考虑对函数进行再次划分。
@@ -568,8 +538,6 @@ function createTempFile(name) {
   fs.create(name);
 };
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 避免副作用
 
@@ -606,8 +574,6 @@ var newName = splitIntoFirstAndLastName(name);
 console.log(name); // 'Ryan McDermott';
 console.log(newName); // ['Ryan', 'McDermott'];
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 不要写全局函数
 
@@ -664,8 +630,6 @@ class SuperArray extends Array {
   }
 }
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 采用函数式编程
 
@@ -727,8 +691,6 @@ var totalOutput = programmerOutput
   .reduce((acc, linesOfCode) => acc + linesOfCode, 0);
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### 封装判断条件
 
 **反例**:
@@ -750,8 +712,6 @@ if (shouldShowSpinner(fsmInstance, listNodeInstance)) {
   // ...
 }
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 避免“否定情况”的判断
 
@@ -778,8 +738,6 @@ if (isDOMNodePresent(node)) {
   // ...
 }
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 避免条件判断
 
@@ -836,8 +794,6 @@ class Cessna extends Airplane {
 }
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### 避免类型判断(part 1)
 
 JS 是弱类型语言，这意味着函数可接受任意类型的参数。
@@ -863,8 +819,6 @@ function travelToTexas(vehicle) {
   vehicle.move(this.currentLocation, new Location('texas'));
 }
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 避免类型判断(part 2)
 
@@ -893,8 +847,6 @@ function combine(val1, val2) {
 }
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### 避免过度优化
 
 现代的浏览器在运行时会对代码自动进行优化。有时人为对代码进行优化可能是在浪费时间。
@@ -919,8 +871,6 @@ for (var i = 0; i < list.length; i++) {
   // ...
 }
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 删除无效的代码
 
@@ -951,8 +901,6 @@ function newRequestModule(url) {
 var req = newRequestModule;
 inventoryTracker('apples', req, 'www.inventory-awesome.io');
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ## **对象和数据结构**
 
@@ -1006,8 +954,6 @@ let bankAccount = new BankAccount();
 bankAccount.withdraw(100);
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### 让对象拥有私有成员
 
 可以通过闭包完成
@@ -1047,8 +993,6 @@ console.log('Employee name: ' + employee.getName()); // Employee name: John Doe
 delete employee.name;
 console.log('Employee name: ' + employee.getName()); // Employee name: John Doe
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ## **类**
 
@@ -1107,8 +1051,6 @@ class UserSettings {
 }
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### 开/闭原则 (OCP)
 
 “代码实体(类，模块，函数等)应该易于扩展，难于修改。”
@@ -1148,8 +1090,6 @@ class AjaxRequester {
   }
 }
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 利斯科夫替代原则 (LSP)
 
@@ -1285,8 +1225,6 @@ let shapes = [new Rectangle(), new Rectangle(), new Square()];
 renderLargeShapes(shapes);
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### 接口隔离原则 (ISP)
 
 “客户端不应该依赖它不需要的接口；一个类对另一个类的依赖应该建立在最小的接口上。”
@@ -1352,8 +1290,6 @@ let $ = new DOMTraverser({
   },
 });
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 依赖反转原则 (DIP)
 
@@ -1440,8 +1376,6 @@ let inventoryTracker = new InventoryTracker(
 inventoryTracker.requestItems();
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### 使用 ES6 的 classes 而不是 ES5 的 Function
 
 典型的 ES5 的类(function)在继承、构造和方法定义方面可读性较差。
@@ -1519,8 +1453,6 @@ class Human extends Mammal {
   speak() {}
 }
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 使用方法链
 
@@ -1600,8 +1532,6 @@ class Car {
 let car = new Car().setColor('pink').setMake('Ford').setModel('F-150').save();
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### 优先使用组合模式而非继承
 
 在著名的[设计模式](https://en.wikipedia.org/wiki/Design_Patterns)一书中提到，应多使用组合模式而非继承。
@@ -1663,8 +1593,6 @@ class EmployeeTaxData {
 }
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ## **测试**
 
 [一些好的覆盖工具](http://gotwarlost.github.io/istanbul/)。
@@ -1723,8 +1651,6 @@ describe('MakeMomentJSGreatAgain', function () {
 });
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ## **并发**
 
 ### 用 Promises 替代回调
@@ -1768,8 +1694,6 @@ require('request-promise')
   });
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### Async/Await 是较 Promises 更好的选择
 
 Promises 是较回调而言更好的一种选择，但 ES7 中的 async 和 await 更胜过 Promises。
@@ -1810,8 +1734,6 @@ async function getCleanCodeArticle() {
   }
 }
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ## **错误处理**
 
@@ -1883,8 +1805,6 @@ getdata()
   });
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ## **格式化**
 
 格式化是一件主观的事。如同这里的许多规则一样，这里并没有一定/立刻需要遵守的规则。可以在[这里](http://standardjs.com/rules.html)完成格式的自动化。
@@ -1926,8 +1846,6 @@ function restoreDatabase() {}
 class Animal {}
 class Alpaca {}
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 调用函数的函数和被调函数应放在较近的位置
 
@@ -2015,8 +1933,6 @@ let review = new PerformanceReview(employee);
 review.perfReview();
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ## **注释**
 
 ### 只对存在一定业务逻辑复杂性的代码进行注释
@@ -2062,8 +1978,6 @@ function hashIt(data) {
 }
 ```
 
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
-
 ### 不要在代码库中遗留被注释掉的代码
 
 版本控制的存在是有原因的。让旧代码存在于你的 history 里吧。
@@ -2082,8 +1996,6 @@ doStuff();
 ```js
 doStuff();
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 不需要版本更新类型注释
 
@@ -2112,8 +2024,6 @@ function combine(a, b) {
   return a + b;
 }
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 避免位置标记
 
@@ -2150,8 +2060,6 @@ let actions = function() {
   // ...
 }
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
 
 ### 避免在源文件中写入法律评论
 
@@ -2196,5 +2104,3 @@ function calculateBill() {
   // ...
 }
 ```
-
-**[回到目录](https://github.com/alivebao/clean-code-js#目录)**
