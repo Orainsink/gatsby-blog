@@ -1,4 +1,1523 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 16 Jul 2021 02:03:52 GMT</lastBuildDate><item><title><![CDATA[非功能性需求]]></title><description><![CDATA[参考资料： Thoughtworks 洞见 后续会作为一个非功能性需求的清单文档来维护 交互体验相关 Loading…]]></description><link>https://blog.foolishrobot.xyz/非功能性需求/非功能性需求</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/非功能性需求/非功能性需求</guid><pubDate>Thu, 15 Jul 2021 14:56:36 GMT</pubDate><content:encoded>var _excluded = [&quot;components&quot;];
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 16 Jul 2021 03:32:24 GMT</lastBuildDate><item><title><![CDATA[前端自检清单【转载】]]></title><description><![CDATA[原文链接：  https://segmentfault.com/a/1190000018992363 一、JavaScript基础 前端工程师吃饭的家伙，深度、广度一样都不能差。 变量和类型 1. JavaScript 规定了几种语言类型 2. JavaScript…]]></description><link>https://blog.foolishrobot.xyz/前端自检清单【转载】</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/前端自检清单【转载】</guid><pubDate>Fri, 16 Jul 2021 10:29:36 GMT</pubDate><content:encoded>var _excluded = [&quot;components&quot;];
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i &lt; sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) &gt;= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i &lt; sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) &gt;= 0) continue; target[key] = source[key]; } return target; }
+
+/* @jsxRuntime classic */
+
+/* @jsx mdx */
+var _frontmatter = {
+  &quot;title&quot;: &quot;前端自检清单【转载】&quot;,
+  &quot;date&quot;: &quot;2021-07-16T10:29:36.000Z&quot;,
+  &quot;description&quot;: &quot;审查自己遗漏的方面，每隔一段时间重新看一次复习一下。&quot;,
+  &quot;tags&quot;: [&quot;文档&quot;],
+  &quot;categories&quot;: &quot;tech&quot;
+};
+var layoutProps = {
+  _frontmatter: _frontmatter
+};
+var MDXLayout = &quot;wrapper&quot;;
+return function MDXContent(_ref) {
+  var components = _ref.components,
+      props = _objectWithoutProperties(_ref, _excluded);
+
+  return mdx(MDXLayout, _extends({}, layoutProps, props, {
+    components: components,
+    mdxType: &quot;MDXLayout&quot;
+  }), mdx(&quot;blockquote&quot;, null, mdx(&quot;p&quot;, {
+    parentName: &quot;blockquote&quot;
+  }, &quot;\u539F\u6587\u94FE\u63A5\uFF1A &quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;p&quot;,
+    &quot;href&quot;: &quot;https://segmentfault.com/a/1190000018992363&quot;
+  }, &quot;https://segmentfault.com/a/1190000018992363&quot;))), mdx(&quot;p&quot;, null, mdx(&quot;img&quot;, {
+    parentName: &quot;p&quot;,
+    &quot;src&quot;: &quot;https://segmentfault.com/img/remote/1460000018992366&quot;,
+    &quot;alt&quot;: &quot;img&quot;
+  })), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;一、javascript基础&quot;
+  }, &quot;\u4E00\u3001JavaScript\u57FA\u7840&quot;), mdx(&quot;blockquote&quot;, null, mdx(&quot;p&quot;, {
+    parentName: &quot;blockquote&quot;
+  }, &quot;\u524D\u7AEF\u5DE5\u7A0B\u5E08\u5403\u996D\u7684\u5BB6\u4F19\uFF0C\u6DF1\u5EA6\u3001\u5E7F\u5EA6\u4E00\u6837\u90FD\u4E0D\u80FD\u5DEE\u3002&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;变量和类型&quot;
+  }, &quot;\u53D8\u91CF\u548C\u7C7B\u578B&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u89C4\u5B9A\u4E86\u51E0\u79CD\u8BED\u8A00\u7C7B\u578B&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u5BF9\u8C61\u7684\u5E95\u5C42\u6570\u636E\u7ED3\u6784\u662F\u4EC0\u4E48&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Symbol&quot;), &quot;\u7C7B\u578B\u5728\u5B9E\u9645\u5F00\u53D1\u4E2D\u7684\u5E94\u7528\u3001\u53EF\u624B\u52A8\u5B9E\u73B0\u4E00\u4E2A\u7B80\u5355\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Symbol&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u4E2D\u7684\u53D8\u91CF\u5728\u5185\u5B58\u4E2D\u7684\u5177\u4F53\u5B58\u50A8\u5F62\u5F0F&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.\u57FA\u672C\u7C7B\u578B\u5BF9\u5E94\u7684\u5185\u7F6E\u5BF9\u8C61\uFF0C\u4EE5\u53CA\u4ED6\u4EEC\u4E4B\u95F4\u7684\u88C5\u7BB1\u62C6\u7BB1\u64CD\u4F5C&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;6.\u7406\u89E3\u503C\u7C7B\u578B\u548C\u5F15\u7528\u7C7B\u578B&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;7.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;null&quot;), &quot;\u548C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;undefined&quot;), &quot;\u7684\u533A\u522B&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;8.\u81F3\u5C11\u53EF\u4EE5\u8BF4\u51FA\u4E09\u79CD\u5224\u65AD&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u6570\u636E\u7C7B\u578B\u7684\u65B9\u5F0F\uFF0C\u4EE5\u53CA\u4ED6\u4EEC\u7684\u4F18\u7F3A\u70B9\uFF0C\u5982\u4F55\u51C6\u786E\u7684\u5224\u65AD\u6570\u7EC4\u7C7B\u578B&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;9.\u53EF\u80FD\u53D1\u751F\u9690\u5F0F\u7C7B\u578B\u8F6C\u6362\u7684\u573A\u666F\u4EE5\u53CA\u8F6C\u6362\u539F\u5219\uFF0C\u5E94\u5982\u4F55\u907F\u514D\u6216\u5DE7\u5999\u5E94\u7528&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;10.\u51FA\u73B0\u5C0F\u6570\u7CBE\u5EA6\u4E22\u5931\u7684\u539F\u56E0\uFF0C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u53EF\u4EE5\u5B58\u50A8\u7684\u6700\u5927\u6570\u5B57\u3001\u6700\u5927\u5B89\u5168\u6570\u5B57\uFF0C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u5904\u7406\u5927\u6570\u5B57\u7684\u65B9\u6CD5\u3001\u907F\u514D\u7CBE\u5EA6\u4E22\u5931\u7684\u65B9\u6CD5&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;原型和原型链&quot;
+  }, &quot;\u539F\u578B\u548C\u539F\u578B\u94FE&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u7406\u89E3\u539F\u578B\u8BBE\u8BA1\u6A21\u5F0F\u4EE5\u53CA&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u4E2D\u7684\u539F\u578B\u89C4\u5219&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;instanceof&quot;), &quot;\u7684\u5E95\u5C42\u5B9E\u73B0\u539F\u7406\uFF0C\u624B\u52A8\u5B9E\u73B0\u4E00\u4E2A&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;instanceof&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.\u5B9E\u73B0\u7EE7\u627F\u7684\u51E0\u79CD\u65B9\u5F0F\u4EE5\u53CA\u4ED6\u4EEC\u7684\u4F18\u7F3A\u70B9&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.\u81F3\u5C11\u8BF4\u51FA\u4E00\u79CD\u5F00\u6E90\u9879\u76EE(\u5982&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Node&quot;), &quot;)\u4E2D\u5E94\u7528\u539F\u578B\u7EE7\u627F\u7684\u6848\u4F8B&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;6.\u53EF\u4EE5\u63CF\u8FF0&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;new&quot;), &quot;\u4E00\u4E2A\u5BF9\u8C61\u7684\u8BE6\u7EC6\u8FC7\u7A0B\uFF0C\u624B\u52A8\u5B9E\u73B0\u4E00\u4E2A&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;new&quot;), &quot;\u64CD\u4F5C\u7B26&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;7.\u7406\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;es6 class&quot;), &quot;\u6784\u9020\u4EE5\u53CA\u7EE7\u627F\u7684\u5E95\u5C42\u5B9E\u73B0\u539F\u7406&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;作用域和闭包&quot;
+  }, &quot;\u4F5C\u7528\u57DF\u548C\u95ED\u5305&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u7406\u89E3\u8BCD\u6CD5\u4F5C\u7528\u57DF\u548C\u52A8\u6001\u4F5C\u7528\u57DF&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u7406\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u7684\u4F5C\u7528\u57DF\u548C\u4F5C\u7528\u57DF\u94FE&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u7406\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u7684\u6267\u884C\u4E0A\u4E0B\u6587\u6808\uFF0C\u53EF\u4EE5\u5E94\u7528\u5806\u6808\u4FE1\u606F\u5FEB\u901F\u5B9A\u4F4D\u95EE\u9898&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;this&quot;), &quot;\u7684\u539F\u7406\u4EE5\u53CA\u51E0\u79CD\u4E0D\u540C\u4F7F\u7528\u573A\u666F\u7684\u53D6\u503C&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.\u95ED\u5305\u7684\u5B9E\u73B0\u539F\u7406\u548C\u4F5C\u7528\uFF0C\u53EF\u4EE5\u5217\u4E3E\u51E0\u4E2A\u5F00\u53D1\u4E2D\u95ED\u5305\u7684\u5B9E\u9645\u5E94\u7528&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;6.\u7406\u89E3\u5806\u6808\u6EA2\u51FA\u548C\u5185\u5B58\u6CC4\u6F0F\u7684\u539F\u7406\uFF0C\u5982\u4F55\u9632\u6B62&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;7.\u5982\u4F55\u5904\u7406\u5FAA\u73AF\u7684\u5F02\u6B65\u64CD\u4F5C&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;8.\u7406\u89E3\u6A21\u5757\u5316\u89E3\u51B3\u7684\u5B9E\u9645\u95EE\u9898\uFF0C\u53EF\u5217\u4E3E\u51E0\u4E2A\u6A21\u5757\u5316\u65B9\u6848\u5E76\u7406\u89E3\u5176\u4E2D\u539F\u7406&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;执行机制&quot;
+  }, &quot;\u6267\u884C\u673A\u5236&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u4E3A\u4F55&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;try&quot;), &quot;\u91CC\u9762\u653E&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;return&quot;), &quot;\uFF0C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;finally&quot;), &quot;\u8FD8\u4F1A\u6267\u884C\uFF0C\u7406\u89E3\u5176\u5185\u90E8\u673A\u5236&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u5982\u4F55\u5B9E\u73B0\u5F02\u6B65\u7F16\u7A0B\uFF0C\u53EF\u4EE5\u8BE6\u7EC6\u63CF\u8FF0&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;EventLoop&quot;), &quot;\u673A\u5236&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u5B8F\u4EFB\u52A1\u548C\u5FAE\u4EFB\u52A1\u5206\u522B\u6709\u54EA\u4E9B&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.\u53EF\u4EE5\u5FEB\u901F\u5206\u6790\u4E00\u4E2A\u590D\u6742\u7684\u5F02\u6B65\u5D4C\u5957\u903B\u8F91\uFF0C\u5E76\u638C\u63E1\u5206\u6790\u65B9\u6CD5&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.\u4F7F\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Promise&quot;), &quot;\u5B9E\u73B0\u4E32\u884C&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;6.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Node&quot;), &quot;\u4E0E\u6D4F\u89C8\u5668&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;EventLoop&quot;), &quot;\u7684\u5DEE\u5F02&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;7.\u5982\u4F55\u5728\u4FDD\u8BC1\u9875\u9762\u8FD0\u884C\u6D41\u7545\u7684\u60C5\u51B5\u4E0B\u5904\u7406\u6D77\u91CF\u6570\u636E&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;语法和api&quot;
+  }, &quot;\u8BED\u6CD5\u548CAPI&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u7406\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;ECMAScript&quot;), &quot;\u548C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u7684\u5173\u7CFB&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u719F\u7EC3\u8FD0\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;es5&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;es6&quot;), &quot;\u63D0\u4F9B\u7684\u8BED\u6CD5\u89C4\u8303\uFF0C&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u719F\u7EC3\u638C\u63E1&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u63D0\u4F9B\u7684\u5168\u5C40\u5BF9\u8C61\uFF08\u4F8B\u5982&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Date&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Math&quot;), &quot;\uFF09\u3001\u5168\u5C40\u51FD\u6570\uFF08\u4F8B\u5982&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;decodeURI&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;isNaN&quot;), &quot;\uFF09\u3001\u5168\u5C40\u5C5E\u6027\uFF08\u4F8B\u5982&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Infinity&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;undefined&quot;), &quot;\uFF09&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.\u719F\u7EC3\u5E94\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;map&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;reduce&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;filter&quot;), &quot; \u7B49\u9AD8\u9636\u51FD\u6570\u89E3\u51B3\u95EE\u9898&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;setInterval&quot;), &quot;\u9700\u8981\u6CE8\u610F\u7684\u70B9\uFF0C\u4F7F\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;settimeout&quot;), &quot;\u5B9E\u73B0&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;setInterval&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;6.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u63D0\u4F9B\u7684\u6B63\u5219\u8868\u8FBE\u5F0F&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;API&quot;), &quot;\u3001\u53EF\u4EE5\u4F7F\u7528\u6B63\u5219\u8868\u8FBE\u5F0F\uFF08\u90AE\u7BB1\u6821\u9A8C\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;URL&quot;), &quot;\u89E3\u6790\u3001\u53BB\u91CD\u7B49\uFF09\u89E3\u51B3\u5E38\u89C1\u95EE\u9898&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;7.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u5F02\u5E38\u5904\u7406\u7684\u65B9\u5F0F\uFF0C\u7EDF\u4E00\u7684\u5F02\u5E38\u5904\u7406\u65B9\u6848&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;二、html和css&quot;
+  }, &quot;\u4E8C\u3001HTML\u548CCSS&quot;), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;html&quot;
+  }, &quot;HTML&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u4ECE\u89C4\u8303\u7684\u89D2\u5EA6\u7406\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;HTML&quot;), &quot;\uFF0C\u4ECE\u5206\u7C7B\u548C\u8BED\u4E49\u7684\u89D2\u5EA6\u4F7F\u7528\u6807\u7B7E&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u5E38\u7528\u9875\u9762\u6807\u7B7E\u7684\u9ED8\u8BA4\u6837\u5F0F\u3001\u81EA\u5E26\u5C5E\u6027\u3001\u4E0D\u540C\u6D4F\u89C8\u5668\u7684\u5DEE\u5F02\u3001\u5904\u7406\u6D4F\u89C8\u5668\u517C\u5BB9\u95EE\u9898\u7684\u65B9\u5F0F&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u5143\u4FE1\u606F\u7C7B\u6807\u7B7E(&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;head&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;title&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;meta&quot;), &quot;)\u7684\u4F7F\u7528\u76EE\u7684\u548C\u914D\u7F6E\u65B9\u6CD5&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;HTML5&quot;), &quot;\u79BB\u7EBF\u7F13\u5B58\u539F\u7406&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.\u53EF\u4EE5\u4F7F\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Canvas API&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;SVG&quot;), &quot;\u7B49\u7ED8\u5236\u9AD8\u6027\u80FD\u7684\u52A8\u753B&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;css&quot;
+  }, &quot;CSS&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CSS&quot;), &quot;\u76D2\u6A21\u578B\uFF0C\u5728\u4E0D\u540C\u6D4F\u89C8\u5668\u7684\u5DEE\u5F02&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CSS&quot;), &quot;\u6240\u6709\u9009\u62E9\u5668\u53CA\u5176\u4F18\u5148\u7EA7\u3001\u4F7F\u7528\u573A\u666F\uFF0C\u54EA\u4E9B\u53EF\u4EE5\u7EE7\u627F\uFF0C\u5982\u4F55\u8FD0\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;at&quot;), &quot;\u89C4\u5219&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CSS&quot;), &quot;\u4F2A\u7C7B\u548C\u4F2A\u5143\u7D20\u6709\u54EA\u4E9B\uFF0C\u5B83\u4EEC\u7684\u533A\u522B\u548C\u5B9E\u9645\u5E94\u7528&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;HTML&quot;), &quot;\u6587\u6863\u6D41\u7684\u6392\u7248\u89C4\u5219\uFF0C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CSS&quot;), &quot;\u51E0\u79CD\u5B9A\u4F4D\u7684\u89C4\u5219\u3001\u5B9A\u4F4D\u53C2\u7167\u7269\u3001\u5BF9\u6587\u6863\u6D41\u7684\u5F71\u54CD\uFF0C\u5982\u4F55\u9009\u62E9\u6700\u597D\u7684\u5B9A\u4F4D\u65B9\u5F0F\uFF0C\u96EA\u78A7\u56FE\u5B9E\u73B0\u539F\u7406&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.\u6C34\u5E73\u5782\u76F4\u5C45\u4E2D\u7684\u65B9\u6848\u3001\u53EF\u4EE5\u5B9E\u73B0&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;6&quot;), &quot;\u79CD\u4EE5\u4E0A\u5E76\u5BF9\u6BD4\u5B83\u4EEC\u7684\u4F18\u7F3A\u70B9&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;6.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;BFC&quot;), &quot;\u5B9E\u73B0\u539F\u7406\uFF0C\u53EF\u4EE5\u89E3\u51B3\u7684\u95EE\u9898\uFF0C\u5982\u4F55\u521B\u5EFA&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;BFC&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;7.\u53EF\u4F7F\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CSS&quot;), &quot;\u51FD\u6570\u590D\u7528\u4EE3\u7801\uFF0C\u5B9E\u73B0\u7279\u6B8A\u6548\u679C&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;8.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;PostCSS&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Sass&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Less&quot;), &quot;\u7684\u5F02\u540C\uFF0C\u4EE5\u53CA\u4F7F\u7528\u914D\u7F6E\uFF0C\u81F3\u5C11\u638C\u63E1\u4E00\u79CD&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;9.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CSS&quot;), &quot;\u6A21\u5757\u5316\u65B9\u6848\u3001\u5982\u4F55\u914D\u7F6E\u6309\u9700\u52A0\u8F7D\u3001\u5982\u4F55\u9632\u6B62&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CSS&quot;), &quot;\u963B\u585E\u6E32\u67D3&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;10.\u719F\u7EC3\u4F7F\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CSS&quot;), &quot;\u5B9E\u73B0\u5E38\u89C1\u52A8\u753B\uFF0C\u5982\u6E10\u53D8\u3001\u79FB\u52A8\u3001\u65CB\u8F6C\u3001\u7F29\u653E\u7B49\u7B49&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;11.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CSS&quot;), &quot;\u6D4F\u89C8\u5668\u517C\u5BB9\u6027\u5199\u6CD5\uFF0C\u4E86\u89E3\u4E0D\u540C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;API&quot;), &quot;\u5728\u4E0D\u540C\u6D4F\u89C8\u5668\u4E0B\u7684\u517C\u5BB9\u6027\u60C5\u51B5&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;12.\u638C\u63E1\u4E00\u5957\u5B8C\u6574\u7684\u54CD\u5E94\u5F0F\u5E03\u5C40\u65B9\u6848&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;手写&quot;
+  }, &quot;\u624B\u5199&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u624B\u5199\u56FE\u7247\u7011\u5E03\u6D41\u6548\u679C&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u4F7F\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CSS&quot;), &quot;\u7ED8\u5236\u51E0\u4F55\u56FE\u5F62\uFF08\u5706\u5F62\u3001\u4E09\u89D2\u5F62\u3001\u6247\u5F62\u3001\u83F1\u5F62\u7B49\uFF09&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u4F7F\u7528\u7EAF&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CSS&quot;), &quot;\u5B9E\u73B0\u66F2\u7EBF\u8FD0\u52A8\uFF08\u8D1D\u585E\u5C14\u66F2\u7EBF\uFF09&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.\u5B9E\u73B0\u5E38\u7528\u5E03\u5C40\uFF08\u4E09\u680F\u3001\u5723\u676F\u3001\u53CC\u98DE\u7FFC\u3001\u5438\u9876\uFF09\uFF0C\u53EF\u662F\u8BF4\u51FA\u591A\u79CD\u65B9\u5F0F\u5E76\u7406\u89E3\u5176\u4F18\u7F3A\u70B9&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;三、计算机基础&quot;
+  }, &quot;\u4E09\u3001\u8BA1\u7B97\u673A\u57FA\u7840&quot;), mdx(&quot;blockquote&quot;, null, mdx(&quot;p&quot;, {
+    parentName: &quot;blockquote&quot;
+  }, &quot;\u5173\u4E8E\u7F16\u8BD1\u539F\u7406\uFF0C\u4E0D\u9700\u8981\u7406\u89E3\u975E\u5E38\u6DF1\u5165\uFF0C\u4F46\u662F\u6700\u57FA\u672C\u7684\u539F\u7406\u548C\u6982\u5FF5\u4E00\u5B9A\u8981\u61C2\uFF0C\u8FD9\u5BF9\u4E8E\u5B66\u4E60\u4E00\u95E8\u7F16\u7A0B\u8BED\u8A00\u975E\u5E38\u91CD\u8981&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;编译原理&quot;
+  }, &quot;\u7F16\u8BD1\u539F\u7406&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u7406\u89E3\u4EE3\u7801\u5230\u5E95\u662F\u4EC0\u4E48\uFF0C\u8BA1\u7B97\u673A\u5982\u4F55\u5C06\u4EE3\u7801\u8F6C\u6362\u4E3A\u53EF\u4EE5\u8FD0\u884C\u7684\u76EE\u6807\u7A0B\u5E8F&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u6B63\u5219\u8868\u8FBE\u5F0F\u7684\u5339\u914D\u539F\u7406\u548C\u6027\u80FD\u4F18\u5316&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u5982\u4F55\u5C06&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u4EE3\u7801\u89E3\u6790\u6210\u62BD\u8C61\u8BED\u6CD5\u6811(&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;AST&quot;), &quot;)&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;base64&quot;), &quot;\u7684\u7F16\u7801\u539F\u7406&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.\u51E0\u79CD\u8FDB\u5236\u7684\u76F8\u4E92\u8F6C\u6362\u8BA1\u7B97\u65B9\u6CD5\uFF0C\u5728&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u4E2D\u5982\u4F55\u8868\u793A\u548C\u8F6C\u6362&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;网络协议&quot;
+  }, &quot;\u7F51\u7EDC\u534F\u8BAE&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u7406\u89E3\u4EC0\u4E48\u662F\u534F\u8BAE\uFF0C\u4E86\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;TCP/IP&quot;), &quot;\u7F51\u7EDC\u534F\u8BAE\u65CF\u7684\u6784\u6210\uFF0C\u6BCF\u5C42\u534F\u8BAE\u5728\u5E94\u7528\u7A0B\u5E8F\u4E2D\u53D1\u6325\u7684\u4F5C\u7528&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u4E09\u6B21\u63E1\u624B\u548C\u56DB\u6B21\u6325\u624B\u8BE6\u7EC6\u539F\u7406\uFF0C\u4E3A\u4EC0\u4E48\u8981\u4F7F\u7528\u8FD9\u79CD\u673A\u5236&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u6709\u54EA\u4E9B\u534F\u8BAE\u662F\u53EF\u9760\uFF0C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;TCP&quot;), &quot;\u6709\u54EA\u4E9B\u624B\u6BB5\u4FDD\u8BC1\u53EF\u9760\u4EA4\u4ED8&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;DNS&quot;), &quot;\u7684\u4F5C\u7528\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;DNS&quot;), &quot;\u89E3\u6790\u7684\u8BE6\u7EC6\u8FC7\u7A0B\uFF0C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;DNS&quot;), &quot;\u4F18\u5316\u539F\u7406&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CDN&quot;), &quot;\u7684\u4F5C\u7528\u548C\u539F\u7406&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;6.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;HTTP&quot;), &quot;\u8BF7\u6C42\u62A5\u6587\u548C\u54CD\u5E94\u62A5\u6587\u7684\u5177\u4F53\u7EC4\u6210\uFF0C\u80FD\u7406\u89E3\u5E38\u89C1\u8BF7\u6C42\u5934\u7684\u542B\u4E49\uFF0C\u6709\u51E0\u79CD\u8BF7\u6C42\u65B9\u5F0F\uFF0C\u533A\u522B\u662F\u4EC0\u4E48&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;7.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;HTTP&quot;), &quot;\u6240\u6709\u72B6\u6001\u7801\u7684\u5177\u4F53\u542B\u4E49\uFF0C\u770B\u5230\u5F02\u5E38\u72B6\u6001\u7801\u80FD\u5FEB\u901F\u5B9A\u4F4D\u95EE\u9898&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;8.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;HTTP1.1&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;HTTP2.0&quot;), &quot;\u5E26\u6765\u7684\u6539\u53D8&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;9.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;HTTPS&quot;), &quot;\u7684\u52A0\u5BC6\u539F\u7406\uFF0C\u5982\u4F55\u5F00\u542F&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;HTTPS&quot;), &quot;\uFF0C\u5982\u4F55\u52AB\u6301&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;HTTPS&quot;), &quot;\u8BF7\u6C42&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;10.\u7406\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;WebSocket&quot;), &quot;\u534F\u8BAE\u7684\u5E95\u5C42\u539F\u7406\u3001\u4E0E&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;HTTP&quot;), &quot;\u7684\u533A\u522B&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;设计模式&quot;
+  }, &quot;\u8BBE\u8BA1\u6A21\u5F0F&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u719F\u7EC3\u4F7F\u7528\u524D\u7AEF\u5E38\u7528\u7684\u8BBE\u8BA1\u6A21\u5F0F\u7F16\u5199\u4EE3\u7801\uFF0C\u5982\u5355\u4F8B\u6A21\u5F0F\u3001\u88C5\u9970\u5668\u6A21\u5F0F\u3001\u4EE3\u7406\u6A21\u5F0F\u7B49&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u53D1\u5E03\u8BA2\u9605\u6A21\u5F0F\u548C\u89C2\u5BDF\u8005\u6A21\u5F0F\u7684\u5F02\u540C\u4EE5\u53CA\u5B9E\u9645\u5E94\u7528&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u53EF\u4EE5\u8BF4\u51FA\u51E0\u79CD\u8BBE\u8BA1\u6A21\u5F0F\u5728\u5F00\u53D1\u4E2D\u7684\u5B9E\u9645\u5E94\u7528\uFF0C\u7406\u89E3\u6846\u67B6\u6E90\u7801\u4E2D\u5BF9\u8BBE\u8BA1\u6A21\u5F0F\u7684\u5E94\u7528&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;四、数据结构和算法&quot;
+  }, &quot;\u56DB\u3001\u6570\u636E\u7ED3\u6784\u548C\u7B97\u6CD5&quot;), mdx(&quot;blockquote&quot;, null, mdx(&quot;p&quot;, {
+    parentName: &quot;blockquote&quot;
+  }, &quot;\u636E\u6211\u4E86\u89E3\u7684\u5927\u90E8\u5206\u524D\u7AEF\u5BF9\u8FD9\u90E8\u5206\u77E5\u8BC6\u6709\u4E9B\u6B20\u7F3A\uFF0C\u751A\u81F3\u62B5\u89E6\uFF0C\u4F46\u662F\uFF0C\u5982\u679C\u7A81\u7834\u66F4\u9AD8\u7684\u5929\u82B1\u677F\uFF0C\u8FD9\u90E8\u5206\u77E5\u8BC6\u662F\u5FC5\u4E0D\u53EF\u5C11\u7684\uFF0C\u800C\u4E14\u6211\u4EB2\u8EAB\u7ECF\u5386\u2014\u2014\u975E\u5E38\u6709\u7528\uFF01&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;javascript编码能力&quot;
+  }, &quot;JavaScript\u7F16\u7801\u80FD\u529B&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u591A\u79CD\u65B9\u5F0F\u5B9E\u73B0\u6570\u7EC4\u53BB\u91CD\u3001\u6241\u5E73\u5316\u3001\u5BF9\u6BD4\u4F18\u7F3A\u70B9&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u591A\u79CD\u65B9\u5F0F\u5B9E\u73B0\u6DF1\u62F7\u8D1D\u3001\u5BF9\u6BD4\u4F18\u7F3A\u70B9&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u624B\u5199\u51FD\u6570\u67EF\u91CC\u5316\u5DE5\u5177\u51FD\u6570\u3001\u5E76\u7406\u89E3\u5176\u5E94\u7528\u573A\u666F\u548C\u4F18\u52BF&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.\u624B\u5199\u9632\u6296\u548C\u8282\u6D41\u5DE5\u5177\u51FD\u6570\u3001\u5E76\u7406\u89E3\u5176\u5185\u90E8\u539F\u7406\u548C\u5E94\u7528\u573A\u666F&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.\u5B9E\u73B0\u4E00\u4E2A&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;sleep&quot;), &quot;\u51FD\u6570&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;手动实现前端轮子&quot;
+  }, &quot;\u624B\u52A8\u5B9E\u73B0\u524D\u7AEF\u8F6E\u5B50&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u624B\u52A8\u5B9E\u73B0&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;call\u3001apply\u3001bind&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u624B\u52A8\u5B9E\u73B0\u7B26\u5408&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Promise/A+&quot;), &quot;\u89C4\u8303\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Promise&quot;), &quot;\u3001\u624B\u52A8\u5B9E\u73B0&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;async await&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u624B\u5199\u4E00\u4E2A&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;EventEmitter&quot;), &quot;\u5B9E\u73B0\u4E8B\u4EF6\u53D1\u5E03\u3001\u8BA2\u9605&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.\u53EF\u4EE5\u8BF4\u51FA\u4E24\u79CD\u5B9E\u73B0\u53CC\u5411\u7ED1\u5B9A\u7684\u65B9\u6848\u3001\u53EF\u4EE5\u624B\u52A8\u5B9E\u73B0&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.\u624B\u5199&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JSON.stringify&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JSON.parse&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;6.\u624B\u5199\u4E00\u4E2A\u6A21\u7248\u5F15\u64CE\uFF0C\u5E76\u80FD\u89E3\u91CA\u5176\u4E2D\u539F\u7406&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;7.\u624B\u5199&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u61D2\u52A0\u8F7D&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u4E0B\u62C9\u5237\u65B0&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u4E0A\u62C9\u52A0\u8F7D&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u9884\u52A0\u8F7D&quot;), &quot;\u7B49\u6548\u679C&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;数据结构&quot;
+  }, &quot;\u6570\u636E\u7ED3\u6784&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u7406\u89E3\u5E38\u89C1\u6570\u636E\u7ED3\u6784\u7684\u7279\u70B9\uFF0C\u4EE5\u53CA\u4ED6\u4EEC\u5728\u4E0D\u540C\u573A\u666F\u4E0B\u4F7F\u7528\u7684\u4F18\u7F3A\u70B9&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u7406\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u6570\u7EC4&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u5B57\u7B26\u4E32&quot;), &quot;\u7684\u5B58\u50A8\u539F\u7406\uFF0C\u5E76\u719F\u7EC3\u5E94\u7528\u4ED6\u4EEC\u89E3\u51B3\u95EE\u9898&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u7406\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u4E8C\u53C9\u6811&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u6808&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u961F\u5217&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u54C8\u5E0C\u8868&quot;), &quot;\u7684\u57FA\u672C\u7ED3\u6784\u548C\u7279\u70B9\uFF0C\u5E76\u53EF\u4EE5\u5E94\u7528\u5B83\u89E3\u51B3\u95EE\u9898&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.\u4E86\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u56FE&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u5806&quot;), &quot;\u7684\u57FA\u672C\u7ED3\u6784\u548C\u4F7F\u7528\u573A\u666F&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;算法&quot;
+  }, &quot;\u7B97\u6CD5&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u53EF\u8BA1\u7B97\u4E00\u4E2A\u7B97\u6CD5\u7684\u65F6\u95F4\u590D\u6742\u5EA6\u548C\u7A7A\u95F4\u590D\u6742\u5EA6\uFF0C\u53EF\u4F30\u8BA1\u4E1A\u52A1\u903B\u8F91\u4EE3\u7801\u7684\u8017\u65F6\u548C\u5185\u5B58\u6D88\u8017&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u81F3\u5C11\u7406\u89E3\u4E94\u79CD\u6392\u5E8F\u7B97\u6CD5\u7684\u5B9E\u73B0\u539F\u7406\u3001\u5E94\u7528\u573A\u666F\u3001\u4F18\u7F3A\u70B9\uFF0C\u53EF\u5FEB\u901F\u8BF4\u51FA\u65F6\u95F4\u3001\u7A7A\u95F4\u590D\u6742\u5EA6&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u4E86\u89E3\u9012\u5F52\u548C\u5FAA\u73AF\u7684\u4F18\u7F3A\u70B9\u3001\u5E94\u7528\u573A\u666F\u3001\u5E76\u53EF\u5728\u5F00\u53D1\u4E2D\u719F\u7EC3\u5E94\u7528&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.\u53EF\u5E94\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u56DE\u6EAF\u7B97\u6CD5&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u8D2A\u5FC3\u7B97\u6CD5&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u5206\u6CBB\u7B97\u6CD5&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u52A8\u6001\u89C4\u5212&quot;), &quot;\u7B49\u89E3\u51B3\u590D\u6742\u95EE\u9898&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.\u524D\u7AEF\u5904\u7406\u6D77\u91CF\u6570\u636E\u7684\u7B97\u6CD5\u65B9\u6848&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;五、运行环境&quot;
+  }, &quot;\u4E94\u3001\u8FD0\u884C\u73AF\u5883&quot;), mdx(&quot;p&quot;, null, &quot;\u6211\u4EEC\u9700\u8981\u7406\u6E05\u8BED\u8A00\u548C\u73AF\u5883\u7684\u5173\u7CFB\uFF1A&quot;), mdx(&quot;blockquote&quot;, null, mdx(&quot;pre&quot;, {
+    parentName: &quot;blockquote&quot;
+  }, mdx(&quot;code&quot;, {
+    parentName: &quot;pre&quot;
+  }, &quot;ECMAScript\n&quot;)), mdx(&quot;p&quot;, {
+    parentName: &quot;blockquote&quot;
+  }, &quot;\u63CF\u8FF0\u4E86&quot;), mdx(&quot;pre&quot;, {
+    parentName: &quot;blockquote&quot;
+  }, mdx(&quot;code&quot;, {
+    parentName: &quot;pre&quot;
+  }, &quot;JavaScript\n&quot;)), mdx(&quot;p&quot;, {
+    parentName: &quot;blockquote&quot;
+  }, &quot;\u8BED\u8A00\u7684\u8BED\u6CD5\u548C\u57FA\u672C\u5BF9\u8C61\u89C4\u8303&quot;), mdx(&quot;p&quot;, {
+    parentName: &quot;blockquote&quot;
+  }, &quot;\u6D4F\u89C8\u5668\u4F5C\u4E3A&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;JavaScript&quot;), &quot;\u7684\u4E00\u79CD\u8FD0\u884C\u73AF\u5883\uFF0C\u4E3A\u5B83\u63D0\u4F9B\u4E86\uFF1A\u6587\u6863\u5BF9\u8C61\u6A21\u578B\uFF08&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;DOM&quot;), &quot;\uFF09\uFF0C\u63CF\u8FF0\u5904\u7406\u7F51\u9875\u5185\u5BB9\u7684\u65B9\u6CD5\u548C\u63A5\u53E3\u3001\u6D4F\u89C8\u5668\u5BF9\u8C61\u6A21\u578B\uFF08&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;BOM&quot;), &quot;\uFF09\uFF0C\u63CF\u8FF0\u4E0E\u6D4F\u89C8\u5668\u8FDB\u884C\u4EA4\u4E92\u7684\u65B9\u6CD5\u548C\u63A5\u53E3&quot;), mdx(&quot;p&quot;, {
+    parentName: &quot;blockquote&quot;
+  }, &quot;Node\u4E5F\u662F&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;JavaScript&quot;), &quot;\u7684\u4E00\u79CD\u8FD0\u884C\u73AF\u5883\uFF0C\u4E3A\u5B83\u63D0\u4F9B\u4E86\u64CD\u4F5C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;I/O&quot;), &quot;\u3001\u7F51\u7EDC\u7B49&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;API&quot;))), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;浏览器api&quot;
+  }, &quot;\u6D4F\u89C8\u5668API&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u6D4F\u89C8\u5668\u63D0\u4F9B\u7684\u7B26\u5408&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;W3C&quot;), &quot;\u6807\u51C6\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;DOM&quot;), &quot;\u64CD\u4F5C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;API&quot;), &quot;\u3001\u6D4F\u89C8\u5668\u5DEE\u5F02\u3001\u517C\u5BB9\u6027&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u6D4F\u89C8\u5668\u63D0\u4F9B\u7684\u6D4F\u89C8\u5668\u5BF9\u8C61\u6A21\u578B (&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;BOM&quot;), &quot;)\u63D0\u4F9B\u7684\u6240\u6709\u5168\u5C40&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;API&quot;), &quot;\u3001\u6D4F\u89C8\u5668\u5DEE\u5F02\u3001\u517C\u5BB9\u6027&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u5927\u91CF&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;DOM&quot;), &quot;\u64CD\u4F5C\u3001\u6D77\u91CF\u6570\u636E\u7684\u6027\u80FD\u4F18\u5316(\u5408\u5E76\u64CD\u4F5C\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Diff&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;requestAnimationFrame&quot;), &quot;\u7B49)&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.\u6D4F\u89C8\u5668\u6D77\u91CF\u6570\u636E\u5B58\u50A8\u3001\u64CD\u4F5C\u6027\u80FD\u4F18\u5316&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;DOM&quot;), &quot;\u4E8B\u4EF6\u6D41\u7684\u5177\u4F53\u5B9E\u73B0\u673A\u5236\u3001\u4E0D\u540C\u6D4F\u89C8\u5668\u7684\u5DEE\u5F02\u3001\u4E8B\u4EF6\u4EE3\u7406&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;6.\u524D\u7AEF\u53D1\u8D77\u7F51\u7EDC\u8BF7\u6C42\u7684\u51E0\u79CD\u65B9\u5F0F\u53CA\u5176\u5E95\u5C42\u5B9E\u73B0\u3001\u53EF\u4EE5\u624B\u5199\u539F\u751F&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;ajax&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;fetch&quot;), &quot;\u3001\u53EF\u4EE5\u719F\u7EC3\u4F7F\u7528\u7B2C\u4E09\u65B9\u5E93&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;7.\u6D4F\u89C8\u5668\u7684\u540C\u6E90\u7B56\u7565\uFF0C\u5982\u4F55\u907F\u514D\u540C\u6E90\u7B56\u7565\uFF0C\u51E0\u79CD\u65B9\u5F0F\u7684\u5F02\u540C\u70B9\u4EE5\u53CA\u5982\u4F55\u9009\u578B&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;8.\u6D4F\u89C8\u5668\u63D0\u4F9B\u7684\u51E0\u79CD\u5B58\u50A8\u673A\u5236\u3001\u4F18\u7F3A\u70B9\u3001\u5F00\u53D1\u4E2D\u6B63\u786E\u7684\u9009\u62E9&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;9.\u6D4F\u89C8\u5668\u8DE8\u6807\u7B7E\u901A\u4FE1&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;浏览器原理&quot;
+  }, &quot;\u6D4F\u89C8\u5668\u539F\u7406&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u5404\u6D4F\u89C8\u5668\u4F7F\u7528\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u5F15\u64CE\u4EE5\u53CA\u5B83\u4EEC\u7684\u5F02\u540C\u70B9\u3001\u5982\u4F55\u5728\u4EE3\u7801\u4E2D\u8FDB\u884C\u533A\u5206&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u8BF7\u6C42\u6570\u636E\u5230\u8BF7\u6C42\u7ED3\u675F\u4E0E\u670D\u52A1\u5668\u8FDB\u884C\u4E86\u51E0\u6B21\u4EA4\u4E92&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u53EF\u8BE6\u7EC6\u63CF\u8FF0\u6D4F\u89C8\u5668\u4ECE\u8F93\u5165&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;URL&quot;), &quot;\u5230\u9875\u9762\u5C55\u73B0\u7684\u8BE6\u7EC6\u8FC7\u7A0B&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.\u6D4F\u89C8\u5668\u89E3\u6790&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;HTML&quot;), &quot;\u4EE3\u7801\u7684\u539F\u7406\uFF0C\u4EE5\u53CA\u6784\u5EFA&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;DOM&quot;), &quot;\u6811\u7684\u6D41\u7A0B&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.\u6D4F\u89C8\u5668\u5982\u4F55\u89E3\u6790&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CSS&quot;), &quot;\u89C4\u5219\uFF0C\u5E76\u5C06\u5176\u5E94\u7528\u5230&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;DOM&quot;), &quot;\u6811\u4E0A&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;6.\u6D4F\u89C8\u5668\u5982\u4F55\u5C06\u89E3\u6790\u597D\u7684\u5E26\u6709\u6837\u5F0F\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;DOM&quot;), &quot;\u6811\u8FDB\u884C\u7ED8\u5236&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;7.\u6D4F\u89C8\u5668\u7684\u8FD0\u884C\u673A\u5236\uFF0C\u5982\u4F55\u914D\u7F6E\u8D44\u6E90\u5F02\u6B65\u540C\u6B65\u52A0\u8F7D&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;8.\u6D4F\u89C8\u5668\u56DE\u6D41\u4E0E\u91CD\u7ED8\u7684\u5E95\u5C42\u539F\u7406\uFF0C\u5F15\u53D1\u539F\u56E0\uFF0C\u5982\u4F55\u6709\u6548\u907F\u514D&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;9.\u6D4F\u89C8\u5668\u7684\u5783\u573E\u56DE\u6536\u673A\u5236\uFF0C\u5982\u4F55\u907F\u514D\u5185\u5B58\u6CC4\u6F0F&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;10.\u6D4F\u89C8\u5668\u91C7\u7528\u7684\u7F13\u5B58\u65B9\u6848\uFF0C\u5982\u4F55\u9009\u62E9\u548C\u63A7\u5236\u5408\u9002\u7684\u7F13\u5B58\u65B9\u6848&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;node&quot;
+  }, &quot;Node&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u7406\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Node&quot;), &quot;\u5728\u5E94\u7528\u7A0B\u5E8F\u4E2D\u7684\u4F5C\u7528\uFF0C\u53EF\u4EE5\u4F7F\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Node&quot;), &quot;\u642D\u5EFA\u524D\u7AEF\u8FD0\u884C\u73AF\u5883\u3001\u4F7F\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Node&quot;), &quot;\u64CD\u4F5C\u6587\u4EF6\u3001\u64CD\u4F5C\u6570\u636E\u5E93\u7B49\u7B49&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u638C\u63E1\u4E00\u79CD&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Node&quot;), &quot;\u5F00\u53D1\u6846\u67B6\uFF0C\u5982&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Express&quot;), &quot;\uFF0C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Express&quot;), &quot;\u548C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Koa&quot;), &quot;\u7684\u533A\u522B&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u719F\u7EC3\u4F7F\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Node&quot;), &quot;\u63D0\u4F9B\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;API&quot;), &quot;\u5982&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Path&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Http&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Child Process&quot;), &quot;\u7B49\u5E76\u7406\u89E3\u5176\u5B9E\u73B0\u539F\u7406&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Node&quot;), &quot;\u7684\u5E95\u5C42\u8FD0\u884C\u539F\u7406\u3001\u548C\u6D4F\u89C8\u5668\u7684\u5F02\u540C&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Node&quot;), &quot;\u4E8B\u4EF6\u9A71\u52A8\u3001\u975E\u963B\u585E\u673A\u5236\u7684\u5B9E\u73B0\u539F\u7406&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;六、框架和类库&quot;
+  }, &quot;\u516D\u3001\u6846\u67B6\u548C\u7C7B\u5E93&quot;), mdx(&quot;blockquote&quot;, null, mdx(&quot;p&quot;, {
+    parentName: &quot;blockquote&quot;
+  }, &quot;\u8F6E\u5B50\u5C42\u51FA\u4E0D\u7A77\uFF0C\u4ECE\u539F\u7406\u4E0A\u7406\u89E3\u624D\u662F\u6B63\u9053&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;typescript&quot;
+  }, &quot;TypeScript&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u7406\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u6CDB\u578B&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u63A5\u53E3&quot;), &quot;\u7B49\u9762\u5411\u5BF9\u8C61\u7684\u76F8\u5173\u6982\u5FF5\uFF0C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;TypeScript&quot;), &quot;\u5BF9\u9762\u5411\u5BF9\u8C61\u7406\u5FF5\u7684\u5B9E\u73B0&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u7406\u89E3\u4F7F\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;TypeScript&quot;), &quot;\u7684\u597D\u5904\uFF0C\u638C\u63E1&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;TypeScript&quot;), &quot;\u57FA\u7840\u8BED\u6CD5&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;TypeScript&quot;), &quot;\u7684\u89C4\u5219\u68C0\u6D4B\u539F\u7406&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.\u53EF\u4EE5\u5728&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;React&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Vue&quot;), &quot;\u7B49\u6846\u67B6\u4E2D\u4F7F\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;TypeScript&quot;), &quot;\u8FDB\u884C\u5F00\u53D1&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;react&quot;
+  }, &quot;React&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;React&quot;), &quot;\u548C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;vue &quot;), &quot;\u9009\u578B\u548C\u4F18\u7F3A\u70B9\u3001\u6838\u5FC3\u67B6\u6784\u7684\u533A\u522B&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;React&quot;), &quot;\u4E2D&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;setState&quot;), &quot;\u7684\u6267\u884C\u673A\u5236\uFF0C\u5982\u4F55\u6709\u6548\u7684\u7BA1\u7406\u72B6\u6001&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;React&quot;), &quot;\u7684\u4E8B\u4EF6\u5E95\u5C42\u5B9E\u73B0\u673A\u5236&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;React&quot;), &quot;\u7684\u865A\u62DF&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;DOM&quot;), &quot;\u548C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Diff&quot;), &quot;\u7B97\u6CD5\u7684\u5185\u90E8\u5B9E\u73B0&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;React&quot;), &quot;\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Fiber&quot;), &quot;\u5DE5\u4F5C\u539F\u7406\uFF0C\u89E3\u51B3\u4E86\u4EC0\u4E48\u95EE\u9898&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;6.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;React Router&quot;), &quot;\u548C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Vue Router&quot;), &quot;\u7684\u5E95\u5C42\u5B9E\u73B0\u539F\u7406\u3001\u52A8\u6001\u52A0\u8F7D\u5B9E\u73B0\u539F\u7406&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;7.\u53EF\u719F\u7EC3\u5E94\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;React API&quot;), &quot;\u3001\u751F\u547D\u5468\u671F\u7B49\uFF0C\u53EF\u5E94\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;HOC&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;render props&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Hooks&quot;), &quot;\u7B49\u9AD8\u9636\u7528\u6CD5\u89E3\u51B3\u95EE\u9898&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;8.\u57FA\u4E8E&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;React&quot;), &quot;\u7684\u7279\u6027\u548C\u539F\u7406\uFF0C\u53EF\u4EE5\u624B\u52A8\u5B9E\u73B0\u4E00\u4E2A\u7B80\u5355\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;React&quot;))), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;vue&quot;
+  }, &quot;Vue&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u719F\u7EC3\u4F7F\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Vue&quot;), &quot;\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;API&quot;), &quot;\u3001\u751F\u547D\u5468\u671F\u3001\u94A9\u5B50\u51FD\u6570&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;MVVM&quot;), &quot;\u6846\u67B6\u8BBE\u8BA1\u7406\u5FF5&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Vue&quot;), &quot;\u53CC\u5411\u7ED1\u5B9A\u5B9E\u73B0\u539F\u7406\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Diff&quot;), &quot;\u7B97\u6CD5\u7684\u5185\u90E8\u5B9E\u73B0&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Vue&quot;), &quot;\u7684\u4E8B\u4EF6\u673A\u5236&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.\u4ECE&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;template&quot;), &quot;\u8F6C\u6362\u6210\u771F\u5B9E&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;DOM&quot;), &quot;\u7684\u5B9E\u73B0\u673A\u5236&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;多端开发&quot;
+  }, &quot;\u591A\u7AEF\u5F00\u53D1&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u5355\u9875\u9762\u5E94\u7528\uFF08&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;SPA&quot;), &quot;\uFF09\u7684\u539F\u7406\u548C\u4F18\u7F3A\u70B9\uFF0C\u638C\u63E1\u4E00\u79CD\u5FEB\u901F\u5F00\u53D1&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;SPA&quot;), &quot;\u7684\u65B9\u6848&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u7406\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Viewport&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;em&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;rem&quot;), &quot;\u7684\u539F\u7406\u548C\u7528\u6CD5\uFF0C\u5206\u8FA8\u7387\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;px&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;ppi&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;dpi&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;dp&quot;), &quot;\u7684\u533A\u522B\u548C\u5B9E\u9645\u5E94\u7528&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u79FB\u52A8\u7AEF\u9875\u9762\u9002\u914D\u89E3\u51B3\u65B9\u6848\u3001\u4E0D\u540C\u673A\u578B\u9002\u914D\u65B9\u6848&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.\u638C\u63E1\u4E00\u79CD&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u79FB\u52A8\u5BA2\u6237\u7AEF\u5F00\u53D1\u6280\u672F\uFF0C\u5982&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;React Native&quot;), &quot;\uFF1A\u53EF\u4EE5\u642D\u5EFA&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;React Native&quot;), &quot;\u5F00\u53D1\u73AF\u5883\uFF0C\u719F\u7EC3\u8FDB\u884C\u5F00\u53D1\uFF0C\u53EF\u7406\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;React Native&quot;), &quot;\u7684\u8FD0\u4F5C\u539F\u7406\uFF0C\u4E0D\u540C\u7AEF\u9002\u914D&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.\u638C\u63E1\u4E00\u79CD&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot; &quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;PC&quot;), &quot;\u5BA2\u6237\u7AEF\u5F00\u53D1\u6280\u672F\uFF0C\u5982&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Electron&quot;), &quot;\uFF1A\u53EF\u642D\u5EFA&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Electron&quot;), &quot;\u5F00\u53D1\u73AF\u5883\uFF0C\u719F\u7EC3\u8FDB\u884C\u5F00\u53D1\uFF0C\u53EF\u7406\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Electron&quot;), &quot;\u7684\u8FD0\u4F5C\u539F\u7406&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;6.\u638C\u63E1\u4E00\u79CD\u5C0F\u7A0B\u5E8F\u5F00\u53D1\u6846\u67B6\u6216\u539F\u751F\u5C0F\u7A0B\u5E8F\u5F00\u53D1&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;7.\u7406\u89E3\u591A\u7AEF\u6846\u67B6\u7684\u5185\u90E8\u5B9E\u73B0\u539F\u7406\uFF0C\u81F3\u5C11\u4E86\u89E3\u4E00\u4E2A\u591A\u7AEF\u6846\u67B6\u7684\u4F7F\u7528&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;数据流管理&quot;
+  }, &quot;\u6570\u636E\u6D41\u7BA1\u7406&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u638C\u63E1&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;React&quot;), &quot;\u548C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Vue&quot;), &quot;\u4F20\u7EDF\u7684\u8DE8\u7EC4\u4EF6\u901A\u4FE1\u65B9\u6848\uFF0C\u5BF9\u6BD4\u91C7\u7528\u6570\u636E\u6D41\u7BA1\u7406\u6846\u67B6\u7684\u5F02\u540C&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u719F\u7EC3\u4F7F\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Redux&quot;), &quot;\u7BA1\u7406\u6570\u636E\u6D41\uFF0C\u5E76\u7406\u89E3\u5176\u5B9E\u73B0\u539F\u7406\uFF0C\u4E2D\u95F4\u4EF6\u5B9E\u73B0\u539F\u7406&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u719F\u7EC3\u4F7F\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Mobx&quot;), &quot;\u7BA1\u7406\u6570\u636E\u6D41\uFF0C\u5E76\u7406\u89E3\u5176\u5B9E\u73B0\u539F\u7406\uFF0C\u76F8\u6BD4&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Redux&quot;), &quot;\u6709\u4EC0\u4E48\u4F18\u52BF&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.\u719F\u7EC3\u4F7F\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Vuex&quot;), &quot;\u7BA1\u7406\u6570\u636E\u6D41\uFF0C\u5E76\u7406\u89E3\u5176\u5B9E\u73B0\u539F\u7406&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.\u4EE5\u4E0A\u6570\u636E\u6D41\u65B9\u6848\u7684\u5F02\u540C\u548C\u4F18\u7F3A\u70B9\uFF0C\u4E0D\u60C5\u51B5\u4E0B\u7684\u6280\u672F\u9009\u578B&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;实用库&quot;
+  }, &quot;\u5B9E\u7528\u5E93&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u81F3\u5C11\u638C\u63E1\u4E00\u79CD&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;UI&quot;), &quot;\u7EC4\u4EF6\u6846\u67B6\uFF0C\u5982&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;antd design&quot;), &quot;\uFF0C\u7406\u89E3\u5176\u8BBE\u8BA1\u7406\u5FF5\u3001\u5E95\u5C42\u5B9E\u73B0&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u638C\u63E1\u4E00\u79CD\u56FE\u8868\u7ED8\u5236\u6846\u67B6\uFF0C\u5982&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Echart&quot;), &quot;\uFF0C\u7406\u89E3\u5176\u8BBE\u8BA1\u7406\u5FF5\u3001\u5E95\u5C42\u5B9E\u73B0\uFF0C\u53EF\u4EE5\u81EA\u5DF1\u5B9E\u73B0\u56FE\u8868&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u638C\u63E1\u4E00\u79CD&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;GIS&quot;), &quot;\u5F00\u53D1\u6846\u67B6\uFF0C\u5982\u767E\u5EA6\u5730\u56FE&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;API&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.\u638C\u63E1\u4E00\u79CD\u53EF\u89C6\u5316\u5F00\u53D1\u6846\u67B6\uFF0C\u5982&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Three.js&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;D3&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.\u5DE5\u5177\u51FD\u6570\u5E93\uFF0C\u5982&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;lodash&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;underscore&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;moment&quot;), &quot;\u7B49\uFF0C\u7406\u89E3\u4F7F\u7528\u7684\u5DE5\u5177\u7C7B\u6216\u5DE5\u5177\u51FD\u6570\u7684\u5177\u4F53\u5B9E\u73B0\u539F\u7406&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;开发和调试&quot;
+  }, &quot;\u5F00\u53D1\u548C\u8C03\u8BD5&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u719F\u7EC3\u4F7F\u7528\u5404\u6D4F\u89C8\u5668\u63D0\u4F9B\u7684\u8C03\u8BD5\u5DE5\u5177&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u719F\u7EC3\u4F7F\u7528\u4E00\u79CD\u4EE3\u7406\u5DE5\u5177\u5B9E\u73B0\u8BF7\u6C42\u4EE3\u7406\u3001\u6293\u5305\uFF0C\u5982&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;charls&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u53EF\u4EE5\u4F7F\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Android&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;IOS&quot;), &quot;\u6A21\u62DF\u5668\u8FDB\u884C\u8C03\u8BD5\uFF0C\u5E76\u638C\u63E1\u4E00\u79CD\u771F\u673A\u8C03\u8BD5\u65B9\u6848&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.\u4E86\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Vue&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;React&quot;), &quot;\u7B49\u6846\u67B6\u8C03\u8BD5\u5DE5\u5177\u7684\u4F7F\u7528&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;七、前端工程&quot;
+  }, &quot;\u4E03\u3001\u524D\u7AEF\u5DE5\u7A0B&quot;), mdx(&quot;blockquote&quot;, null, mdx(&quot;p&quot;, {
+    parentName: &quot;blockquote&quot;
+  }, &quot;\u524D\u7AEF\u5DE5\u7A0B\u5316\uFF1A\u4EE5\u5DE5\u7A0B\u5316\u65B9\u6CD5\u548C\u5DE5\u5177\u63D0\u9AD8\u5F00\u53D1\u751F\u4EA7\u6548\u7387\u3001\u964D\u4F4E\u7EF4\u62A4\u96BE\u5EA6&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;项目构建&quot;
+  }, &quot;\u9879\u76EE\u6784\u5EFA&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u7406\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;npm&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;yarn&quot;), &quot;\u4F9D\u8D56\u5305\u7BA1\u7406\u7684\u539F\u7406\uFF0C\u4E24\u8005\u7684\u533A\u522B&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u53EF\u4EE5\u4F7F\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;npm&quot;), &quot;\u8FD0\u884C\u81EA\u5B9A\u4E49\u811A\u672C&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u7406\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Babel&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;ESLint&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;webpack&quot;), &quot;\u7B49\u5DE5\u5177\u5728\u9879\u76EE\u4E2D\u627F\u62C5\u7684\u4F5C\u7528&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;ESLint&quot;), &quot;\u89C4\u5219\u68C0\u6D4B\u539F\u7406\uFF0C\u5E38\u7528\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;ESLint&quot;), &quot;\u914D\u7F6E&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Babel&quot;), &quot;\u7684\u6838\u5FC3\u539F\u7406\uFF0C\u53EF\u4EE5\u81EA\u5DF1\u7F16\u5199\u4E00\u4E2A&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Babel&quot;), &quot;\u63D2\u4EF6&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;6.\u53EF\u4EE5\u914D\u7F6E\u4E00\u79CD\u524D\u7AEF\u4EE3\u7801\u517C\u5BB9\u65B9\u6848\uFF0C\u5982&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Polyfill&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;7.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Webpack&quot;), &quot;\u7684\u7F16\u8BD1\u539F\u7406\u3001\u6784\u5EFA\u6D41\u7A0B\u3001\u70ED\u66F4\u65B0\u539F\u7406\uFF0C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;chunk&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;bundle&quot;), &quot;\u548C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;module&quot;), &quot;\u7684\u533A\u522B\u548C\u5E94\u7528&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;8.\u53EF\u719F\u7EC3\u914D\u7F6E\u5DF2\u6709\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;loaders&quot;), &quot;\u548C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;plugins&quot;), &quot;\u89E3\u51B3\u95EE\u9898\uFF0C\u53EF\u4EE5\u81EA\u5DF1\u7F16\u5199&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;loaders&quot;), &quot;\u548C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;plugins&quot;))), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;nginx&quot;
+  }, &quot;nginx&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u6B63\u5411\u4EE3\u7406\u4E0E\u53CD\u5411\u4EE3\u7406\u7684\u7279\u70B9\u548C\u5B9E\u4F8B&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u53EF\u624B\u52A8\u642D\u5EFA\u4E00\u4E2A\u7B80\u5355\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;nginx&quot;), &quot;\u670D\u52A1\u5668\u3001&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u719F\u7EC3\u5E94\u7528\u5E38\u7528\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;nginx&quot;), &quot;\u5185\u7F6E\u53D8\u91CF\uFF0C\u638C\u63E1\u5E38\u7528\u7684\u5339\u914D\u89C4\u5219\u5199\u6CD5&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.\u53EF\u4EE5\u7528&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;nginx&quot;), &quot;\u5B9E\u73B0\u8BF7\u6C42\u8FC7\u6EE4\u3001\u914D\u7F6E&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;gzip&quot;), &quot;\u3001\u8D1F\u8F7D\u5747\u8861\u7B49\uFF0C\u5E76\u80FD\u89E3\u91CA\u5176\u5185\u90E8\u539F\u7406&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;开发提速&quot;
+  }, &quot;\u5F00\u53D1\u63D0\u901F&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u719F\u7EC3\u638C\u63E1\u4E00\u79CD\u63A5\u53E3\u7BA1\u7406\u3001\u63A5\u53E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;mock&quot;), &quot;\u5DE5\u5177\u7684\u4F7F\u7528\uFF0C\u5982&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;yapi&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u638C\u63E1\u4E00\u79CD\u9AD8\u6548\u7684\u65E5\u5FD7\u57CB\u70B9\u65B9\u6848\uFF0C\u53EF\u5FEB\u901F\u4F7F\u7528\u65E5\u5FD7\u67E5\u8BE2\u5DE5\u5177\u5B9A\u4F4D\u7EBF\u4E0A\u95EE\u9898&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u7406\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;TDD&quot;), &quot;\u4E0E&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;BDD&quot;), &quot;\u6A21\u5F0F\uFF0C\u81F3\u5C11\u4F1A\u4F7F\u7528\u4E00\u79CD\u524D\u7AEF\u5355\u5143\u6D4B\u8BD5\u6846\u67B6&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;版本控制&quot;
+  }, &quot;\u7248\u672C\u63A7\u5236&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u7406\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Git&quot;), &quot;\u7684\u6838\u5FC3\u539F\u7406\u3001\u5DE5\u4F5C\u6D41\u7A0B\u3001\u548C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;SVN&quot;), &quot;\u7684\u533A\u522B&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u719F\u7EC3\u4F7F\u7528\u5E38\u89C4\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Git&quot;), &quot;\u547D\u4EE4\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;git rebase&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;git stash&quot;), &quot;\u7B49\u8FDB\u9636\u547D\u4EE4&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u53EF\u4EE5\u5FEB\u901F\u89E3\u51B3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u7EBF\u4E0A\u5206\u652F\u56DE\u6EDA&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u7EBF\u4E0A\u5206\u652F\u9519\u8BEF\u5408\u5E76&quot;), &quot;\u7B49\u590D\u6742\u95EE\u9898&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;持续集成&quot;
+  }, &quot;\u6301\u7EED\u96C6\u6210&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u7406\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CI/CD&quot;), &quot;\u6280\u672F\u7684\u610F\u4E49\uFF0C\u81F3\u5C11\u719F\u7EC3\u638C\u63E1\u4E00\u79CD&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CI/CD&quot;), &quot;\u5DE5\u5177\u7684\u4F7F\u7528\uFF0C\u5982&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Jenkins&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u53EF\u4EE5\u72EC\u81EA\u5B8C\u6210\u67B6\u6784\u8BBE\u8BA1\u3001\u6280\u672F\u9009\u578B\u3001\u73AF\u5883\u642D\u5EFA\u3001\u5168\u6D41\u7A0B\u5F00\u53D1\u3001\u90E8\u7F72\u4E0A\u7EBF\u7B49\u4E00\u5957\u5B8C\u6574\u7684\u5F00\u53D1\u6D41\u7A0B\uFF08\u5305\u62EC&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Web&quot;), &quot;\u5E94\u7528\u3001\u79FB\u52A8\u5BA2\u6237\u7AEF\u5E94\u7528\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;PC&quot;), &quot;\u5BA2\u6237\u7AEF\u5E94\u7528\u3001\u5C0F\u7A0B\u5E8F\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;H5&quot;), &quot;\u7B49\u7B49\uFF09&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;八、项目和业务&quot;
+  }, &quot;\u516B\u3001\u9879\u76EE\u548C\u4E1A\u52A1&quot;), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;后端技能&quot;
+  }, &quot;\u540E\u7AEF\u6280\u80FD&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u4E86\u89E3\u540E\u7AEF\u7684\u5F00\u53D1\u65B9\u5F0F\uFF0C\u5728\u5E94\u7528\u7A0B\u5E8F\u4E2D\u7684\u4F5C\u7528\uFF0C\u81F3\u5C11\u4F1A\u4F7F\u7528\u4E00\u79CD\u540E\u7AEF\u8BED\u8A00&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u638C\u63E1\u6570\u636E\u6700\u7EC8\u5728\u6570\u636E\u5E93\u4E2D\u662F\u5982\u4F55\u843D\u5730\u5B58\u50A8\u7684\uFF0C\u80FD\u770B\u61C2\u8868\u7ED3\u6784\u8BBE\u8BA1\u3001\u8868\u4E4B\u95F4\u7684\u5173\u8054\uFF0C\u81F3\u5C11\u4F1A\u4F7F\u7528\u4E00\u79CD\u6570\u636E\u5E93&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;性能优化&quot;
+  }, &quot;\u6027\u80FD\u4F18\u5316&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u4E86\u89E3\u524D\u7AEF\u6027\u80FD\u8861\u91CF\u6307\u6807\u3001\u6027\u80FD\u76D1\u63A7\u8981\u70B9\uFF0C\u638C\u63E1\u4E00\u79CD\u524D\u7AEF\u6027\u80FD\u76D1\u63A7\u65B9\u6848&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u4E86\u89E3\u5E38\u89C1\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Web&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;App&quot;), &quot;\u6027\u80FD\u4F18\u5316\u65B9\u6848&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;SEO&quot;), &quot;\u6392\u540D\u89C4\u5219\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;SEO&quot;), &quot;\u4F18\u5316\u65B9\u6848\u3001\u524D\u540E\u7AEF\u5206\u79BB\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;SEO&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;SSR&quot;), &quot;\u5B9E\u73B0\u65B9\u6848\u3001\u4F18\u7F3A\u70B9\u3001\u53CA\u5176\u6027\u80FD\u4F18\u5316&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Webpack&quot;), &quot;\u7684\u6027\u80FD\u4F18\u5316\u65B9\u6848&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;6.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Canvas&quot;), &quot;\u6027\u80FD\u4F18\u5316\u65B9\u6848&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;7.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;React&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Vue&quot;), &quot;\u7B49\u6846\u67B6\u4F7F\u7528\u6027\u80FD\u4F18\u5316\u65B9\u6848&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;前端安全&quot;
+  }, &quot;\u524D\u7AEF\u5B89\u5168&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;XSS&quot;), &quot;\u653B\u51FB\u7684\u539F\u7406\u3001\u5206\u7C7B\u3001\u5177\u4F53\u6848\u4F8B\uFF0C\u524D\u7AEF\u5982\u4F55\u9632\u5FA1&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CSRF&quot;), &quot;\u653B\u51FB\u7684\u539F\u7406\u3001\u5177\u4F53\u6848\u4F8B\uFF0C\u524D\u7AEF\u5982\u4F55\u9632\u5FA1&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;HTTP&quot;), &quot;\u52AB\u6301\u3001\u9875\u9762\u52AB\u6301\u7684\u539F\u7406\u3001\u9632\u5FA1\u63AA\u65BD&quot;)), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;业务相关&quot;
+  }, &quot;\u4E1A\u52A1\u76F8\u5173&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u80FD\u7406\u89E3\u6240\u5F00\u53D1\u9879\u76EE\u7684\u6574\u4F53\u4E1A\u52A1\u5F62\u6001\u3001\u4E1A\u52A1\u76EE\u6807\u3001\u4E1A\u52A1\u67B6\u6784\uFF0C\u53EF\u4EE5\u5FEB\u901F\u5B9A\u4F4D\u7EBF\u4E0A\u4E1A\u52A1\u95EE\u9898&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u80FD\u7406\u89E3\u6240\u5F00\u53D1\u9879\u76EE\u6574\u4F53\u7684\u6280\u672F\u67B6\u6784\u3001\u80FD\u5FEB\u8BFB\u7684\u6839\u636E\u65B0\u9700\u6C42\u8FDB\u884C\u5F00\u53D1\u89C4\u5212\u3001\u80FD\u5FEB\u901F\u6839\u636E\u4E1A\u52A1\u62A5\u8B66\u3001\u7EBF\u4E0A\u65E5\u5FD7\u7B49\u5B9A\u4F4D\u5E76\u89E3\u51B3\u7EBF\u4E0A\u6280\u672F\u95EE\u9898&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u53EF\u4EE5\u5C06\u81EA\u5DF1\u7684\u60F3\u6CD5\u6216\u65B0\u6280\u672F\u5728\u4E1A\u52A1\u4E2D\u843D\u5730\u5B9E\u8DF5\uFF0C\u5C3D\u91CF\u5728\u56E2\u961F\u4E2D\u62E5\u6709\u4E00\u5B9A\u7684\u4E0D\u53EF\u66FF\u4EE3\u6027&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;九、学习提升&quot;
+  }, &quot;\u4E5D\u3001\u5B66\u4E60\u63D0\u5347&quot;), mdx(&quot;p&quot;, null, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;vczh&quot;), &quot;\u5927\u795E\u5728\u77E5\u4E4E\u95EE\u9898\u3010\u5982\u4F55\u80FD\u4EE5\u540E\u8FBE\u5230\u6E29\u8D75\u8F6E\u4E09\u4F4D\u5927\u795E\u7684\u6C34\u5E73\uFF1F\u3011\u4E0B\u7684\u56DE\u7B54\uFF1A&quot;), mdx(&quot;p&quot;, null, &quot;\u8FD9\u5341\u51E0\u5E74\u6211\u4E00\u5171\u505A\u4E86\u4E09\u4EF6\u4E8B\uFF1A&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1\u3001\u4E0D\u4EE5\u8D5A\u94B1\u4E3A\u76EE\u7684\u9009\u62E9\u5B66\u4E60\u7684\u5185\u5BB9\uFF1B&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2\u3001\u4EE5\u81EA\u5DF1\u662F\u5426\u80FD\u9020\u51FA\u8F6E\u5B50\u6765\u8861\u91CF\u5B66\u4E60\u7684\u6548\u679C\uFF1B&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3\u3001\u575A\u6301\u6BCF\u5929\u5199\u81EA\u5DF1\u7684\u4EE3\u7801\uFF0C\u524D10\u5E74\u6BCF\u5929\u81F3\u5C116\u4E2A\u5C0F\u65F6\uFF0C\u4E0D\u5305\u542B\u5B66\u4E60\u548C\u5DE5\u4F5C\u7684\u65F6\u95F4\u3002&quot;)), mdx(&quot;blockquote&quot;, null, mdx(&quot;p&quot;, {
+    parentName: &quot;blockquote&quot;
+  }, &quot;\u4E0A\u9762\u51E0\u70B9\u53EF\u80FD\u6709\u70B9\u96BE\uFF0C\u7B2C\u4E00\u70B9\u6211\u5C31\u505A\u4E0D\u5230\uFF0C\u4F46\u662F\u505A\u5230\u4E0B\u9762\u7EE9\u70B9\u8FD8\u662F\u6BD4\u8F83\u5BB9\u6613\u7684\u3002&quot;), mdx(&quot;p&quot;, {
+    parentName: &quot;blockquote&quot;
+  }, &quot;\u5173\u4E8E\u5199\u535A\u5BA2\u8BF4\u660E\u4E0B\uFF0C\u80FD\u7ED9\u522B\u4EBA\u8BB2\u660E\u767D\u7684\u77E5\u8BC6\u4F1A\u6BD4\u81EA\u5DF1\u5B66\u4E60\u638C\u63E1\u7684\u8981\u6DF1\u523B\u8BB8\u591A&quot;)), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u62E5\u6709\u81EA\u5DF1\u7684\u6280\u672F\u535A\u5BA2\uFF0C\u6216\u8005\u5728\u4E00\u4E9B\u535A\u5BA2\u5E73\u53F0\u4E0A\u62E5\u6709\u81EA\u5DF1\u7684\u4E13\u680F&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u5B9A\u671F\u7684\u5C06\u77E5\u8BC6\u8FDB\u884C\u603B\u7ED3\uFF0C\u4E0D\u65AD\u5B8C\u5584\u81EA\u5DF1\u7684\u77E5\u8BC6\u4F53\u7CFB&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u5C3D\u91CF\u5C06\u81EA\u5DF1\u7684\u77E5\u8BC6\u8F6C\u6362\u6210\u771F\u5B9E\u7684\u4EA7\u51FA\uFF0C\u4E0D\u8981\u4EC5\u4EC5\u505C\u7559\u5728\u4E66\u9762\u7406\u89E3\u5C42\u9762\uFF0C\u66F4\u91CD\u8981\u7684\u662F\u5B9E\u9645\u5E94\u7528&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.\u575A\u6301\u8F93\u51FA&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\u81EA\u5DF1&quot;), &quot;\u7684\u4EE3\u7801\uFF0C\u4E0D\u8981\u76F2\u76EE\u7684\u624E\u8FDB\u516C\u53F8\u4E1A&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;十、技术之外&quot;
+  }, &quot;\u5341\u3001\u6280\u672F\u4E4B\u5916&quot;), mdx(&quot;blockquote&quot;, null, mdx(&quot;p&quot;, {
+    parentName: &quot;blockquote&quot;
+  }, &quot;\u8FD9\u90E8\u5206\u53EF\u80FD\u6BD4\u4E0A\u9762\u4E5D\u6761\u52A0\u8D77\u6765\u91CD\u8981\uFF01&quot;)), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;1.\u4E86\u89E3\u4E92\u8054\u7F51\u4EBA\u5458\u672F\u8BED\uFF1A&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CEO&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CTO&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;COO&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CFO&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;PM&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;QA&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;UI&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;FE&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;DEV&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;DBA&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;OPS&quot;), &quot;\u7B49&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;2.\u4E86\u89E3\u4E92\u8054\u7F51\u884C\u4E1A\u672F\u8BED\uFF1A&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;B2B&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;B2C&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;C2C&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;O2O&quot;), &quot;\u7B49&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;3.\u638C\u63E1\u4E92\u8054\u7F51\u884C\u4E1A\u6C9F\u901A\u3001\u95EE\u7B54\u3001\u5B66\u4E60\u7684&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;4.\u6709\u4E00\u5B9A\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;\&quot;PPT\&quot;&quot;), &quot;\u80FD\u529B&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;5.\u6709\u4E00\u5B9A\u7684\u7406\u8D22\u610F\u8BC6\uFF0C\u81F3\u5C11\u4E86\u89E3\u50A8\u84C4\u3001\u8D27\u5E01\u57FA\u91D1\u3001\u4FDD\u9669\u3001\u6307\u6570\u57FA\u91D1\u3001\u80A1\u7968\u7B49\u57FA\u672C\u7684\u7406\u8D22\u77E5\u8BC6&quot;), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;6.\u638C\u63E1\u5728\u7E41\u91CD\u7684\u5DE5\u4F5C\u548C\u957F\u671F\u7684\u7535\u8111\u8F90\u5C04\u7684\u60C5\u51B5\u4E0B\u4FDD\u6301\u5065\u5EB7\u7684\u65B9\u6CD5\uFF0C\u5EFA\u7ACB\u6B63\u786E\u7684\u517B\u751F\u77E5\u8BC6\u4F53\u7CFB&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;十一、资源推荐&quot;
+  }, &quot;\u5341\u4E00\u3001\u8D44\u6E90\u63A8\u8350&quot;), mdx(&quot;p&quot;, null, &quot;\u6709\u4E86\u77E5\u8BC6\u4F53\u7CFB\uFF0C\u5728\u9605\u8BFB\u4E00\u7BC7\u6280\u672F\u6587\u7AE0\u7684\u65F6\u5019\u5C31\u5F88\u5BB9\u6613\u628A\u5B83\u5F52\u7C7B\uFF0C\u6211\u4E00\u76F4\u4EE5\u6765\u5C31\u662F\u8FD9\u6837\u505A\u7684\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u4E8B\u5B9E\u8BC1\u660E\uFF0C\u5728\u9605\u8BFB\u6587\u7AE0\u6216\u4E66\u7C4D\u65F6\uFF0C\u6709\u76EE\u7684\u548C\u5F52\u7C7B\u7684\u9605\u8BFB\u6BD4\&quot;\u968F\u4FBF\u770B\u770B\&quot;\u540E\u7684\u53EA\u662F\u7559\u5B58\u7387\u8981\u9AD8\u5F88\u591A\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u6BCF\u9605\u8BFB\u5230\u4E00\u7BC7\u597D\u7684\u6587\u7AE0\u6216\u8005\u4E66\u7C4D\uFF0C\u6211\u90FD\u4F1A\u6536\u85CF\u5E76\u5F52\u7C7B\u5230\u6211\u7684\u77E5\u8BC6\u4F53\u7CFB\u4E2D\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u4E0B\u9762\u662F\u4E00\u4E9B\u6211\u89C9\u5F97\u8FD8\u4E0D\u9519\u7684\u6587\u7AE0\u3001\u535A\u5BA2\u6216\u8005\u4E66\u7C4D\u6559\u7A0B\u7B49\u7B49\uFF0C\u5206\u4EAB\u7ED9\u5927\u5BB6\uFF0C\u8D44\u6E90\u4E0D\u591A\uFF0C\u4F46\u90FD\u662F\u7CBE\u54C1\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u5B66\u4E60\u4E00\u95E8\u77E5\u8BC6\uFF0C\u6700\u597D\u5148\u9605\u8BFB\u5B98\u65B9\u6587\u6863\uFF0C\u628A\u6240\u6709\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;API&quot;), &quot;\u5927\u6982\u6D4F\u89C8\u4E00\u904D\uFF0C\u518D\u7EE7\u7EED\u770B\u5927\u4F6C\u4EEC\u603B\u7ED3\u7684\u8FDB\u9636\u77E5\u8BC6\uFF0C\u4EC0\u4E48\u4E1C\u897F\u662F\u642C\u8FD0\u8FC7\u6765\u7684\uFF0C\u4EC0\u4E48\u662F\u5E72\u8D27\uFF0C\u4E00\u76EE\u4E86\u7136\u3002&quot;), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;语言基础&quot;
+  }, &quot;\u8BED\u8A00\u57FA\u7840&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;[\uD83D\uDCDA]&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u9AD8\u7EA7\u7A0B\u5E8F\u8BBE\u8BA1\uFF08\u5FC5\u770B\uFF09\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fbook.douban.com%2Fsubject%2F10546125%2F&quot;
+  }, &quot;https://book.douban.com/subje...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;[\uD83D\uDCDA]&quot;, &quot;\u9AD8\u6027\u80FD&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fbook.douban.com%2Fsubject%2F5362856%2F&quot;
+  }, &quot;https://book.douban.com/subje...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u73B0\u4EE3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u6559\u7A0B\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fzh.javascript.info%2F&quot;
+  }, &quot;https://zh.javascript.info/&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u962E\u4E00\u5CF0\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;ECMAScript 6&quot;), &quot;\u6559\u7A0B\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=http%3A%2F%2Fes6.ruanyifeng.com%2F&quot;
+  }, &quot;http://es6.ruanyifeng.com/&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;ECMAScript 6&quot;), &quot;\u6807\u51C6\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fwww.ecma-international.org%2Fecma-262%2F6.0%2F&quot;
+  }, &quot;https://www.ecma-internationa...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;HTML meta&quot;), &quot;\u6807\u7B7E\u603B\u7ED3\u4E0E\u5C5E\u6027\u4F7F\u7528\u4ECB\u7ECD\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://segmentfault.com/a/1190000004279791&quot;
+  }, &quot;https://segmentfault.com/a/11...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;CSS&quot;), &quot;\u7F16\u7801\u6307\u5BFC\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fgithub.com%2Fchadluo%2FCSS-Guidelines%2Fblob%2Fmaster%2FREADME.md&quot;
+  }, &quot;https://github.com/chadluo/CS...&quot;))), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;计算机基础&quot;
+  }, &quot;\u8BA1\u7B97\u673A\u57FA\u7840&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u5927\u524D\u7AEF\u5F00\u53D1\u8005\u9700\u8981\u4E86\u89E3\u7684\u57FA\u7840\u7F16\u8BD1\u539F\u7406\u548C\u8BED\u8A00\u77E5\u8BC6\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=http%3A%2F%2Ffullstack.blog%2F2017%2F06%2F24%2F%E5%A4%A7%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%92%8C%E8%AF%AD%E8%A8%80%E7%9F%A5%E8%AF%86&quot;
+  }, &quot;http://fullstack.blog/2017/06...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u56FE\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;HTTP&quot;), &quot;\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fbook.douban.com%2Fsubject%2F25863515%2F&quot;
+  }, &quot;https://book.douban.com/subje...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;[\uD83D\uDCDA]&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u8BBE\u8BA1\u6A21\u5F0F\u4E0E\u5F00\u53D1\u5B9E\u8DF5\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fbook.douban.com%2Fsubject%2F26382780%2F&quot;
+  }, &quot;https://book.douban.com/subje...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u6B63\u5219\u8868\u8FBE\u5F0F30\u5206\u949F\u5165\u95E8\u6559\u7A0B\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Flink.juejin.im%2F%3Ftarget%3Dhttps%3A%2F%2Fdeerchao.net%2Ftutorials%2Fregex%2Fregex.htm&quot;
+  }, &quot;https://link.juejin.im/?targe...&quot;))), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;数据结构和算法&quot;
+  }, &quot;\u6570\u636E\u7ED3\u6784\u548C\u7B97\u6CD5&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u6570\u636E\u7ED3\u6784\u4E0E\u7B97\u6CD5\u4E4B\u7F8E\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Ftime.geekbang.org%2Fcolumn%2Fintro%2F126&quot;
+  }, &quot;https://time.geekbang.org/col...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u7528\u52A8\u753B\u7684\u5F62\u5F0F\u5448\u73B0\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;LeetCode&quot;), &quot;\u9898\u76EE\u7684\u601D\u8DEF\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fgithub.com%2FMisterBooo%2FLeetCodeAnimation&quot;
+  }, &quot;https://github.com/MisterBooo...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;JavaScript&quot;), &quot;\u6570\u636E\u7ED3\u6784\u548C\u7B97\u6CD5\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fgithub.com%2FConardLi%2Fawesome-coding-js&quot;
+  }, &quot;https://github.com/ConardLi/a...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;30-seconds-of-code&quot;), &quot;\uFF08\u91CC\u9762\u6709\u5F88\u591A&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;js&quot;), &quot;\u4EE3\u7801\u975E\u5E38\u5DE7\u5999\uFF0C\u6211\u6B63\u5728\u5C06\u5B83\u7FFB\u8BD1\u6210\u4E2D\u6587\uFF09\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fgithub.com%2FConardLi%2F30-seconds-of-code-Zh-CN&quot;
+  }, &quot;https://github.com/ConardLi/3...&quot;))), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;运行环境&quot;
+  }, &quot;\u8FD0\u884C\u73AF\u5883&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u300A\u91CD\u5B66\u524D\u7AEF\u300B\u4E2D\u7684\u6D4F\u89C8\u5668\u539F\u7406\u7AE0\u8282\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Ftime.geekbang.org%2Fcolumn%2Farticle%2F80240&quot;
+  }, &quot;https://time.geekbang.org/col...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u56FE\u89E3\u6D4F\u89C8\u5668\u7684\u57FA\u672C\u5DE5\u4F5C\u539F\u7406\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F47407398&quot;
+  }, &quot;https://zhuanlan.zhihu.com/p/...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u4E03\u5929\u5B66\u4F1A&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;NodeJS&quot;), &quot;\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fgithub.com%2Fnqdeng%2F7-days-nodejs&quot;
+  }, &quot;https://github.com/nqdeng/7-d...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Node.js&quot;), &quot;\u6A21\u5757\u52A0\u8F7D\u4E0E\u8FD0\u884C\u539F\u7406\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fefe.baidu.com%2Fblog%2Fnodejs-module-analyze%2F&quot;
+  }, &quot;https://efe.baidu.com/blog/no...&quot;))), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;框架和类库&quot;
+  }, &quot;\u6846\u67B6\u548C\u7C7B\u5E93&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;TypeScript Handbook&quot;), &quot;\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fzhongsp.gitbooks.io%2Ftypescript-handbook%2Fcontent%2F&quot;
+  }, &quot;https://zhongsp.gitbooks.io/t...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;React.js&quot;), &quot;\u5C0F\u4E66\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=http%3A%2F%2Fhuziketang.mangojuice.top%2Fbooks%2Freact%2F&quot;
+  }, &quot;http://huziketang.mangojuice....&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;React&quot;), &quot;\u6DF1\u5165\u7CFB\u5217\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fjuejin.im%2Fpost%2F5cad39b3f265da03502b1c0a&quot;
+  }, &quot;https://juejin.im/post/5cad39...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Webpack React&quot;), &quot;\u5C0F\u4E66\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Ffakefish.github.io%2Freact-webpack-cookbook%2Findex.html&quot;
+  }, &quot;https://fakefish.github.io/re...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Vue.js&quot;), &quot;\u6280\u672F\u63ED\u79D8\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fgithub.com%2Fustbhuangyi%2Fvue-analysis&quot;
+  }, &quot;https://github.com/ustbhuangy...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Vuex&quot;), &quot;-\u5728&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Vue&quot;), &quot;\u4E2D\u7BA1\u7406\u72B6\u6001\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fsabe.io%2Ftutorials%2Fgetting-started-with-vuex&quot;
+  }, &quot;https://sabe.io/tutorials/get...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u4F60\u9700\u8981&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Mobx&quot;), &quot;\u8FD8\u662F&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Redux&quot;), &quot;\uFF1F\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fjuejin.im%2Fpost%2F5a7fd72c5188257a766324ae&quot;
+  }, &quot;https://juejin.im/post/5a7fd7...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Underscore&quot;), &quot;\u6E90\u7801\u5206\u6790\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fyoyoyohamapi.gitbooks.io%2Fundersercore-analysis%2Fcontent%2F&quot;
+  }, &quot;https://yoyoyohamapi.gitbooks...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u5FAE\u4FE1\u5C0F\u7A0B\u5E8F\u5F00\u53D1\u8D44\u6E90\u6C47\u603B\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fgithub.com%2Fjustjavac%2Fawesome-wechat-weapp&quot;
+  }, &quot;https://github.com/justjavac/...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u817E\u8BAF\u79FB\u52A8&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Web&quot;), &quot;\u524D\u7AEF\u77E5\u8BC6\u5E93\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fgithub.com%2FAlloyTeam%2FMars&quot;
+  }, &quot;https://github.com/AlloyTeam/...&quot;))), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;前端工程&quot;
+  }, &quot;\u524D\u7AEF\u5DE5\u7A0B&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u4E00\u53E3\uFF08\u5F88\u957F\u7684\uFF09\u6C14\u4E86\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;babel&quot;), &quot;\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F43249121&quot;
+  }, &quot;https://zhuanlan.zhihu.com/p/...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Webpack&quot;), &quot;\u50BB\u74DC\u5F0F\u6307\u5357\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F20367175&quot;
+  }, &quot;https://zhuanlan.zhihu.com/p/...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Webpack&quot;), &quot;\u539F\u7406\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://segmentfault.com/a/1190000015088834?utm_source=tag-newest&quot;
+  }, &quot;https://segmentfault.com/a/11...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u5ED6\u96EA\u5CF0\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;git&quot;), &quot;\u6559\u7A0B\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fwww.liaoxuefeng.com%2Fwiki%2F0013739516305929606dd18361248578c67b8067c8c017b000&quot;
+  }, &quot;https://www.liaoxuefeng.com/w...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u56FE\u89E3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Git&quot;), &quot;\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fmarklodato.github.io%2Fvisual-git-guide%2Findex-zh-cn.html&quot;
+  }, &quot;https://marklodato.github.io/...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u524D\u7AEF\u5F00\u53D1\u8005\u5FC5\u5907\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Nginx&quot;), &quot;\u77E5\u8BC6\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fjuejin.im%2Fpost%2F5c85a64d6fb9a04a0e2e038c&quot;
+  }, &quot;https://juejin.im/post/5c85a6...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u4F7F\u7528Jenkins\u8FDB\u884C\u6301\u7EED\u96C6\u6210\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fwww.liaoxuefeng.com%2Farticle%2F001463233913442cdb2d1bd1b1b42e3b0b29eb1ba736c5e000&quot;
+  }, &quot;https://www.liaoxuefeng.com/a...&quot;))), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;项目和业务&quot;
+  }, &quot;\u9879\u76EE\u548C\u4E1A\u52A1&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u5E38\u89C1\u516D\u5927&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;li&quot;
+  }, &quot;Web&quot;), &quot;\u5B89\u5168\u653B\u9632\u89E3\u6790\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fgithub.com%2Fljianshu%2FBlog%2Fissues%2F56&quot;
+  }, &quot;https://github.com/ljianshu/B...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u6DF1\u5165\u7406\u89E3\u524D\u7AEF\u6027\u80FD\u76D1\u63A7\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fjuejin.im%2Fpost%2F5caaacc0e51d452b45296487%23heading-5&quot;
+  }, &quot;https://juejin.im/post/5caaac...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;[\uD83D\uDCDA]&quot;, &quot;\u9AD8\u6027\u80FD\u7F51\u7AD9\u5EFA\u8BBE\u6307\u5357\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fbook.douban.com%2Fsubject%2F3132277%2F&quot;
+  }, &quot;https://book.douban.com/subje...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u65B0\u4EBA\u5982\u4F55\u5FEB\u901F\u878D\u5165\u6280\u672F\u5B9E\u529B\u5F3A\u7684\u524D\u7AEF\u56E2\u961F\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fjuejin.im%2Fpost%2F5cb860a86fb9a06890705f14&quot;
+  }, &quot;https://juejin.im/post/5cb860...&quot;))), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;学习提升&quot;
+  }, &quot;\u5B66\u4E60\u63D0\u5347&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u5370\u8BB0\u4E2D\u6587\uFF08\u5404\u79CD\u4E2D\u6587\u5F00\u53D1\u6587\u6863\uFF09\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fwww.docschina.org%2F&quot;
+  }, &quot;https://www.docschina.org/&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u524D\u7AEF\u5B66\u4E60\u65B9\u6CD5\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fgithub.com%2Fhelloqingfeng%2FAwsome-Front-End-learning-resource%2Ftree%2Fmaster%2F01-FE-learning-master&quot;
+  }, &quot;https://github.com/helloqingf...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u5982\u4F55\u5728\u5DE5\u4F5C\u5185\u5916\u83B7\u5F97\u6301\u7EED\u7684\u6280\u672F\u6210\u957F\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fjuejin.im%2Fpost%2F5cbd7477f265da039d32834e&quot;
+  }, &quot;https://juejin.im/post/5cbd74...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u4F18\u79C0\u7684\u524D\u7AEF\u535A\u5BA2\u6C47\u603B\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fgithub.com%2Fforu17%2Ffront-end-collect&quot;
+  }, &quot;https://github.com/foru17/fro...&quot;))), mdx(&quot;p&quot;, null, &quot;\u53E6\u5916\u63A8\u8350\u6211\u4E00\u76F4\u5728\u5173\u6CE8\u7684\u51E0\u4F4D\u5927\u4F6C\u7684\u4E2A\u4EBA\u535A\u5BA2\uFF1A&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u51B4\u7FBD\u7684\u535A\u5BA2\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fgithub.com%2Fmqyqingfeng%2FBlog&quot;
+  }, &quot;https://github.com/mqyqingfen...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u5F20\u946B\u65ED\u7684\u535A\u5BA2\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fwww.zhangxinxu.com%2Fwordpress%2F&quot;
+  }, &quot;https://www.zhangxinxu.com/wo...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u5DE6\u8033\u6735\u8017\u5B50\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fcoolshell.cn%2F&quot;
+  }, &quot;https://coolshell.cn/&quot;))), mdx(&quot;h3&quot;, {
+    &quot;id&quot;: &quot;技术之外&quot;
+  }, &quot;\u6280\u672F\u4E4B\u5916&quot;), mdx(&quot;ul&quot;, null, mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u4E92\u8054\u7F51\u672F\u8BED\u5927\u5168\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fwww.jianshu.com%2Fp%2F9a7ca206c1ab&quot;
+  }, &quot;https://www.jianshu.com/p/9a7...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u4E92\u8054\u7F51\u6C9F\u901A\u3001\u95EE\u7B54\u3001\u5B66\u4E60\u7684\u827A\u672F\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F41431775&quot;
+  }, &quot;https://zhuanlan.zhihu.com/p/...&quot;)), mdx(&quot;li&quot;, {
+    parentName: &quot;ul&quot;
+  }, &quot;\u7ECF\u5E38\u52A0\u73ED\u81F3\u6DF1\u591C\uFF0C\u600E\u6837\u624D\u80FD\u4FDD\u6301\u8EAB\u4F53\u5065\u5EB7\uFF1A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;li&quot;,
+    &quot;href&quot;: &quot;https://link.segmentfault.com/?url=https%3A%2F%2Fwww.zhihu.com%2Fquestion%2F21790919&quot;
+  }, &quot;https://www.zhihu.com/questio...&quot;))));
+}
+;
+MDXContent.isMDXComponent = true;</content:encoded></item><item><title><![CDATA[非功能性需求]]></title><description><![CDATA[参考资料： Thoughtworks 洞见 后续会作为一个非功能性需求的清单文档来维护 交互体验相关 Loading…]]></description><link>https://blog.foolishrobot.xyz/非功能性需求/非功能性需求</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/非功能性需求/非功能性需求</guid><pubDate>Thu, 15 Jul 2021 14:56:36 GMT</pubDate><content:encoded>var _excluded = [&quot;components&quot;];
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -34,11 +1553,57 @@ return function MDXContent(_ref) {
     &quot;href&quot;: &quot;https://insights.thoughtworks.cn/the-non-functional-requirements/&quot;
   }, &quot;Thoughtworks \u6D1E\u89C1&quot;)), mdx(&quot;p&quot;, {
     parentName: &quot;blockquote&quot;
-  }, &quot;\u540E\u7EED\u4F1A\u4F5C\u4E3A\u4E00\u4E2A\u975E\u529F\u80FD\u6027\u9700\u6C42\u7684\u6E05\u5355\u6587\u6863\u6765\u7EF4\u62A4&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;img&quot;, {
+  }, &quot;\u540E\u7EED\u4F1A\u4F5C\u4E3A\u4E00\u4E2A\u975E\u529F\u80FD\u6027\u9700\u6C42\u7684\u6E05\u5355\u6587\u6863\u6765\u7EF4\u62A4&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;span&quot;, {
     parentName: &quot;p&quot;,
-    &quot;src&quot;: &quot;/Users/wenting.yi/Documents/Personal/gatsby-blog/content/tech/%E9%9D%9E%E5%8A%9F%E8%83%BD%E6%80%A7%E9%9C%80%E6%B1%82/%E5%86%B0%E5%B1%B1%E5%9B%BE.png&quot;,
-    &quot;alt&quot;: &quot;冰山图&quot;
-  })), mdx(&quot;h2&quot;, {
+    &quot;className&quot;: &quot;gatsby-resp-image-wrapper&quot;,
+    &quot;style&quot;: {
+      &quot;position&quot;: &quot;relative&quot;,
+      &quot;display&quot;: &quot;block&quot;,
+      &quot;marginLeft&quot;: &quot;auto&quot;,
+      &quot;marginRight&quot;: &quot;auto&quot;,
+      &quot;maxWidth&quot;: &quot;890px&quot;
+    }
+  }, &quot;\n      &quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;span&quot;,
+    &quot;className&quot;: &quot;gatsby-resp-image-link&quot;,
+    &quot;href&quot;: &quot;/static/cf5e791e141292a8346cd3d796d030e1/1df5b/iceMountain.png&quot;,
+    &quot;style&quot;: {
+      &quot;display&quot;: &quot;block&quot;
+    },
+    &quot;target&quot;: &quot;_blank&quot;,
+    &quot;rel&quot;: &quot;noopener&quot;
+  }, &quot;\n    &quot;, mdx(&quot;span&quot;, {
+    parentName: &quot;a&quot;,
+    &quot;className&quot;: &quot;gatsby-resp-image-background-image&quot;,
+    &quot;style&quot;: {
+      &quot;paddingBottom&quot;: &quot;68.16143497757847%&quot;,
+      &quot;position&quot;: &quot;relative&quot;,
+      &quot;bottom&quot;: &quot;0&quot;,
+      &quot;left&quot;: &quot;0&quot;,
+      &quot;backgroundImage&quot;: &quot;url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAACy0lEQVQ4y32R2U9TaRjGz59kYIzLXLlcjHEWjcYrE5eJjE5HkYxe6YVbFbiAWKHGhBhUDIKIIFg1tpyWUkqgpwuUrqfL6XIopYPMhKjRi5/5TilBg3Pxy/e9yfM+ed/3kTp6nWxG5xMXD1546R72rr/f025EGnjr53sMOoIMy6F1/k9bQ3L6EtSQZ+I4Bb4E434VZT6DczqKfaqKS0ngUpJr+iQuRd1QV5ECsTwCfzRPWF1gLl0mENUoVVYoroInukAopuGP5girOsF4Ab+hzzETTqNEstQ8BFK2UCZbWCKVK1MpFQkXV5jW/qW0WMJT+IR1+h2x8kcS+n/k9YqhFahZneBchJiqoRUrZPJlMoUlJF+yxExigbi+QmHlPYHiKrHKZ7LLH5jXdDz5j6jLn3FnVvGnygRSi4Ze9PlTSyjqIr5ktRZIO1uc7G5zcfThLI0v8/wxrHGsO0iTLUfjUIozz9OceDzPHouXw/em2NM2zo5mGdG3s0Wu0upcq51IW2+NccA6SUNPANNgknOvCpzoT9IwlOXcyxwn++Ic7lKoN9vZZ5lge7PMlut26m44NkXa2+7m94cKN20RrrzN8qetSOPrImdtBUyjeS6NxDndo7C7bZz9HR5+bHVSb3bww82xTZF+6ZiksS+EZUylz1ek6UWaU0NZ/hrNYRqIc3tM5e+ns4aZ0IoV68wOw1RQ+wsz8UoHrF4uDMxyR07hTpR5oCxy5FGM4/0qzXKe++40F5/N8Zt1kl87J9nRIhuNYrOfLBMGNTNjwp87PJzvC9FuT2Kb1Xka/ofjvXHODKp0TetYZZWm/tDahJ71CbfdktnWXOUrQ5GauOHVkQhdExkGgzqnn6lcfqPRM6VxbTRKQ4+fXWs3FIluXLn+25VFagfvejH1Brg6GqFTVml1pDG/inN9JIzpscKhux62mu3st7iNUOo2CaU24RfR1E5jDkqLmgAAAABJRU5ErkJggg==&apos;)&quot;,
+      &quot;backgroundSize&quot;: &quot;cover&quot;,
+      &quot;display&quot;: &quot;block&quot;
+    }
+  }), &quot;\n  &quot;, mdx(&quot;img&quot;, {
+    parentName: &quot;a&quot;,
+    &quot;className&quot;: &quot;gatsby-resp-image-image&quot;,
+    &quot;alt&quot;: &quot;冰山图&quot;,
+    &quot;title&quot;: &quot;冰山图&quot;,
+    &quot;src&quot;: &quot;/static/cf5e791e141292a8346cd3d796d030e1/4ef49/iceMountain.png&quot;,
+    &quot;srcSet&quot;: [&quot;/static/cf5e791e141292a8346cd3d796d030e1/e92b6/iceMountain.png 223w&quot;, &quot;/static/cf5e791e141292a8346cd3d796d030e1/e66bf/iceMountain.png 445w&quot;, &quot;/static/cf5e791e141292a8346cd3d796d030e1/4ef49/iceMountain.png 890w&quot;, &quot;/static/cf5e791e141292a8346cd3d796d030e1/4e814/iceMountain.png 1335w&quot;, &quot;/static/cf5e791e141292a8346cd3d796d030e1/701e9/iceMountain.png 1780w&quot;, &quot;/static/cf5e791e141292a8346cd3d796d030e1/1df5b/iceMountain.png 1999w&quot;],
+    &quot;sizes&quot;: &quot;(max-width: 890px) 100vw, 890px&quot;,
+    &quot;style&quot;: {
+      &quot;width&quot;: &quot;100%&quot;,
+      &quot;height&quot;: &quot;100%&quot;,
+      &quot;margin&quot;: &quot;0&quot;,
+      &quot;verticalAlign&quot;: &quot;middle&quot;,
+      &quot;position&quot;: &quot;absolute&quot;,
+      &quot;top&quot;: &quot;0&quot;,
+      &quot;left&quot;: &quot;0&quot;
+    },
+    &quot;loading&quot;: &quot;lazy&quot;,
+    &quot;decoding&quot;: &quot;async&quot;
+  }), &quot;\n  &quot;), &quot;\n    &quot;)), mdx(&quot;h2&quot;, {
     &quot;id&quot;: &quot;交互体验相关&quot;
   }, &quot;\u4EA4\u4E92\u4F53\u9A8C\u76F8\u5173&quot;), mdx(&quot;p&quot;, null, &quot;Loading \u52A0\u8F7D\u72B6\u6001\u662F\u6700\u5BB9\u6613\u88AB\u5FFD\u7565\u7684\u4E00\u4E2A\u9700\u6C42\uFF0C\u5C24\u5176\u662F\u5728\u73B0\u5728\u5BCC\u5BA2\u6237\u7AEF\u5F00\u53D1\u7684\u6A21\u5F0F\u4E0B\uFF0C\u6570\u636E\u7684\u83B7\u53D6\u90FD\u662F\u5F02\u6B65\u52A0\u8F7D\u7684\u3002\u5982\u679C\u5FD8\u4E86\u8003\u8651\u8FD9\u6761\u9700\u6C42\uFF0C\u5728\u7F51\u7EDC\u6761\u4EF6\u8F83\u597D\u65F6\u4F1A\u51FA\u73B0\u95EA\u70C1\u7684\u60C5\u51B5\uFF0C\u800C\u5728\u7F51\u7EDC\u60C5\u51B5\u5DEE\u7684\u6761\u4EF6\u4E0B\u53C8\u770B\u8D77\u6765\u4F1A\u5361\u987F\u548C\u6CA1\u6709\u54CD\u5E94\u3002\u5B9E\u73B0\u7EDF\u4E00\u7684 Loading \u53EF\u4EE5\u5728\u524D\u7AEF\u7684\u7F51\u7EDC\u8BF7\u6C42\u5E93\u4E2D\u589E\u52A0\u62E6\u622A\u5668\uFF0C\u4E0D\u8FC7\u9700\u8981\u6CE8\u610F\u4F7F\u7528\u8BA1\u6570\u5668\u8BA9\u591A\u6B21\u7F51\u7EDC\u8BF7\u6C42\u4E2D\u9014\u7684 Loading \u56FE\u6807\u4E0D\u4F1A\u95F4\u65AD\uFF0C\u5426\u5219\u4F1A\u6709\u95EA\u70C1\u7684\u95EE\u9898\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u9009\u62E9\u63A5\u53E3\u62E6\u622A\u6765\u5168\u5C40\u63A7\u5236loading\u8FD8\u662F\u4E0B\u653E\u5230\u7EC4\u4EF6\u5355\u72EC\u63A7\u5236\uFF0C\u4E3B\u8981\u8FD8\u662F\u9879\u76EE\u7684\u9700\u6C42\u3002\u4E2A\u4EBA\u4E0D\u592A\u559C\u6B22\u5168\u5C40\u63A7\u5236\uFF0C\u56E0\u4E3A\u9700\u8981loading\u72B6\u6001\u7684\u63A5\u53E3\u5E76\u4E0D\u662F\u5F88\u591A\u3002&quot;), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;表单的二次提交&quot;
