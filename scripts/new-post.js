@@ -21,12 +21,7 @@ const title = str.replace('/', '').replace(/##.+/, '');
 const date = moment().format('YYYY-MM-DD HH:mm:ss');
 let path = '';
 
-// content/category
-try {
-  if (categories.indexOf(category) === -1) {
-    throw new Error('wrong category');
-  }
-
+function writeFile() {
   let output =
     category === 'leetcode'
       ? `---
@@ -53,11 +48,30 @@ categories: ${category}
     path = `./content/${category}/${title}.mdx`;
   }
   fs.writeFileSync(path, output);
+}
 
-  if (os.platform() === 'win32') {
-    const openPath = _path.normalize(__dirname.slice(0, -7) + path.slice(1));
-    exec(`explorer.exe /select,"${openPath}"`);
+function openFolder() {
+  const openPath = _path.normalize(__dirname.slice(0, -7) + path.slice(1));
+  try {
+    if (os.platform() === 'win32') {
+      exec(`explorer.exe /select,"${openPath}"`);
+    } else if (os.platform() === 'darwin') {
+      exec(`open ${openPath}`);
+    }
+  } catch (err) {
+    console.log(err);
   }
+}
+
+// content/category
+try {
+  if (categories.indexOf(category) === -1) {
+    throw new Error('wrong category');
+  }
+
+  writeFile();
+  openFolder();
+
   console.table([{ title, date, category, isFolder }]);
 } catch (error) {
   console.error(error);
