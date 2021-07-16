@@ -129,7 +129,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "cz-gitmoji-customize"
+      "path": "node_modules/cz-gitmoji-customize"
     }
   }
 }
