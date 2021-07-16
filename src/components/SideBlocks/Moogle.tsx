@@ -120,12 +120,12 @@ const Modal = React.memo(({ url, theme }: { url: string; theme: string }) => {
 const Moogle = () => {
   const data: Data = useStaticQuery(graphql`
     {
-      file(absolutePath: { regex: "/moogle_full.gltf/" }) {
+      file(absolutePath: { regex: "/moogle.gltf/" }) {
         publicURL
       }
     }
   `);
-  const url = data?.file.publicURL;
+  const url = data.file.publicURL;
   const is1100 = useMedia('(max-width: 1100px)');
   const theme = useSelector((state: iRootState) => state.theme);
 
