@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 16 Jul 2021 07:29:25 GMT</lastBuildDate><item><title><![CDATA[前端自检清单【转载】]]></title><description><![CDATA[原文链接：  https://segmentfault.com/a/1190000018992363 一、JavaScript基础 前端工程师吃饭的家伙，深度、广度一样都不能差。 变量和类型 1. JavaScript 规定了几种语言类型 2. JavaScript…]]></description><link>https://blog.foolishrobot.xyz/前端自检清单【转载】</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/前端自检清单【转载】</guid><pubDate>Fri, 16 Jul 2021 10:29:36 GMT</pubDate><content:encoded>var _excluded = [&quot;components&quot;];
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 16 Jul 2021 07:59:04 GMT</lastBuildDate><item><title><![CDATA[前端自检清单【转载】]]></title><description><![CDATA[原文链接：  https://segmentfault.com/a/1190000018992363 一、JavaScript基础 前端工程师吃饭的家伙，深度、广度一样都不能差。 变量和类型 1. JavaScript 规定了几种语言类型 2. JavaScript…]]></description><link>https://blog.foolishrobot.xyz/前端自检清单【转载】</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/前端自检清单【转载】</guid><pubDate>Fri, 16 Jul 2021 10:29:36 GMT</pubDate><content:encoded>var _excluded = [&quot;components&quot;];
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -4524,12 +4524,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;var yearMonthDay = moment().format(&apos;YYYY/MM/DD&apos;);\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;var yearMonthDay = moment().format(&apos;YYYY/MM/DD&apos;);\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;使用-es6-的-const-定义常量&quot;
   }, &quot;\u4F7F\u7528 ES6 \u7684 const \u5B9A\u4E49\u5E38\u91CF&quot;), mdx(&quot;p&quot;, null, &quot;\u53CD\u4F8B\u4E2D\u4F7F\u7528\&quot;var\&quot;\u5B9A\u4E49\u7684\&quot;\u5E38\u91CF\&quot;\u662F\u53EF\u53D8\u7684\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u5728\u58F0\u660E\u4E00\u4E2A\u5E38\u91CF\u65F6\uFF0C\u8BE5\u5E38\u91CF\u5728\u6574\u4E2A\u7A0B\u5E8F\u4E2D\u90FD\u5E94\u8BE5\u662F\u4E0D\u53EF\u53D8\u7684\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4541,12 +4536,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;const FIRST_US_PRESIDENT = &apos;George Washington&apos;;\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;const FIRST_US_PRESIDENT = &apos;George Washington&apos;;\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;对功能类似的变量名采用统一的命名风格&quot;
   }, &quot;\u5BF9\u529F\u80FD\u7C7B\u4F3C\u7684\u53D8\u91CF\u540D\u91C7\u7528\u7EDF\u4E00\u7684\u547D\u540D\u98CE\u683C&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4558,12 +4548,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;getUser();\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;getUser();\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;使用易于检索名称&quot;
   }, &quot;\u4F7F\u7528\u6613\u4E8E\u68C0\u7D22\u540D\u79F0&quot;), mdx(&quot;p&quot;, null, &quot;\u6211\u4EEC\u9700\u8981\u9605\u8BFB\u7684\u4EE3\u7801\u8FDC\u6BD4\u81EA\u5DF1\u5199\u7684\u8981\u591A\uFF0C\u4F7F\u4EE3\u7801\u62E5\u6709\u826F\u597D\u7684\u53EF\u8BFB\u6027\u4E14\u6613\u4E8E\u68C0\u7D22\u975E\u5E38\u91CD\u8981\u3002\u9605\u8BFB\u53D8\u91CF\u540D\u6666\u6DA9\u96BE\u61C2\u7684\u4EE3\u7801\u5BF9\u8BFB\u8005\u6765\u8BF4\u662F\u4E00\u79CD\u76F8\u5F53\u7CDF\u7CD5\u7684\u4F53\u9A8C\u3002 \u8BA9\u4F60\u7684\u53D8\u91CF\u540D\u6613\u4E8E\u68C0\u7D22\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4575,12 +4560,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;// Declare them as capitalized `var` globals.\nvar MINUTES_IN_A_YEAR = 525600;\nfor (var i = 0; i &lt; MINUTES_IN_A_YEAR; i++) {\n  runCronJob();\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;// Declare them as capitalized `var` globals.\nvar MINUTES_IN_A_YEAR = 525600;\nfor (var i = 0; i &lt; MINUTES_IN_A_YEAR; i++) {\n  runCronJob();\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;使用说明变量即有意义的变量名&quot;
   }, &quot;\u4F7F\u7528\u8BF4\u660E\u53D8\u91CF(\u5373\u6709\u610F\u4E49\u7684\u53D8\u91CF\u540D)&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4592,12 +4572,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;const ADDRESS = &apos;One Infinite Loop, Cupertino 95014&apos;;\nvar cityStateRegex = /^(.+)[,\\\\s]+(.+?)\\s*(\\d{5})?$/;\nvar match = ADDRESS.match(cityStateRegex);\nvar city = match[1];\nvar state = match[2];\nsaveCityState(city, state);\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;const ADDRESS = &apos;One Infinite Loop, Cupertino 95014&apos;;\nvar cityStateRegex = /^(.+)[,\\\\s]+(.+?)\\s*(\\d{5})?$/;\nvar match = ADDRESS.match(cityStateRegex);\nvar city = match[1];\nvar state = match[2];\nsaveCityState(city, state);\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;不要绕太多的弯子&quot;
   }, &quot;\u4E0D\u8981\u7ED5\u592A\u591A\u7684\u5F2F\u5B50&quot;), mdx(&quot;p&quot;, null, &quot;\u663E\u5F0F\u4F18\u4E8E\u9690\u5F0F\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4609,12 +4584,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;var locations = [&apos;Austin&apos;, &apos;New York&apos;, &apos;San Francisco&apos;];\nlocations.forEach((location) =&gt; {\n  doStuff();\n  doSomeOtherStuff();\n  ...\n  ...\n  ...\n  dispatch(location);\n});\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;var locations = [&apos;Austin&apos;, &apos;New York&apos;, &apos;San Francisco&apos;];\nlocations.forEach((location) =&gt; {\n  doStuff();\n  doSomeOtherStuff();\n  ...\n  ...\n  ...\n  dispatch(location);\n});\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;避免重复的描述&quot;
   }, &quot;\u907F\u514D\u91CD\u590D\u7684\u63CF\u8FF0&quot;), mdx(&quot;p&quot;, null, &quot;\u5F53\u7C7B/\u5BF9\u8C61\u540D\u5DF2\u7ECF\u6709\u610F\u4E49\u65F6\uFF0C\u5BF9\u5176\u53D8\u91CF\u8FDB\u884C\u547D\u540D\u4E0D\u9700\u8981\u518D\u6B21\u91CD\u590D\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4626,12 +4596,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;var Car = {\n  make: &apos;Honda&apos;,\n  model: &apos;Accord&apos;,\n  color: &apos;Blue&apos;,\n};\n\nfunction paintCar(car) {\n  car.color = &apos;Red&apos;;\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;var Car = {\n  make: &apos;Honda&apos;,\n  model: &apos;Accord&apos;,\n  color: &apos;Blue&apos;,\n};\n\nfunction paintCar(car) {\n  car.color = &apos;Red&apos;;\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;避免无意义的条件判断&quot;
   }, &quot;\u907F\u514D\u65E0\u610F\u4E49\u7684\u6761\u4EF6\u5224\u65AD&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4643,12 +4608,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;function createMicrobrewery(name) {\n  var breweryName = name || &apos;Hipster Brew Co.&apos;;\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h2&quot;, {
+  }, &quot;function createMicrobrewery(name) {\n  var breweryName = name || &apos;Hipster Brew Co.&apos;;\n}\n&quot;)), mdx(&quot;h2&quot;, {
     &quot;id&quot;: &quot;函数&quot;
   }, mdx(&quot;strong&quot;, {
     parentName: &quot;h2&quot;
@@ -4664,12 +4624,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;var menuConfig = {\n  title: &apos;Foo&apos;,\n  body: &apos;Bar&apos;,\n  buttonText: &apos;Baz&apos;,\n  cancellable: true\n}\n\nfunction createMenu(menuConfig) {\n  ...\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;var menuConfig = {\n  title: &apos;Foo&apos;,\n  body: &apos;Bar&apos;,\n  buttonText: &apos;Baz&apos;,\n  cancellable: true\n}\n\nfunction createMenu(menuConfig) {\n  ...\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;函数功能的单一性&quot;
   }, &quot;\u51FD\u6570\u529F\u80FD\u7684\u5355\u4E00\u6027&quot;), mdx(&quot;p&quot;, null, &quot;\u8FD9\u662F\u8F6F\u4EF6\u529F\u80FD\u4E2D\u6700\u91CD\u8981\u7684\u539F\u5219\u4E4B\u4E00\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u529F\u80FD\u4E0D\u5355\u4E00\u7684\u51FD\u6570\u5C06\u5BFC\u81F4\u96BE\u4EE5\u91CD\u6784\u3001\u6D4B\u8BD5\u548C\u7406\u89E3\u3002\u529F\u80FD\u5355\u4E00\u7684\u51FD\u6570\u6613\u4E8E\u91CD\u6784\uFF0C\u5E76\u4F7F\u4EE3\u7801\u66F4\u52A0\u5E72\u51C0\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4681,12 +4636,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;function emailClients(clients) {\n  clients.forEach((client) =&gt; {\n    emailClientIfNeeded(client);\n  });\n}\n\nfunction emailClientIfNeeded(client) {\n  if (isClientActive(client)) {\n    email(client);\n  }\n}\n\nfunction isClientActive(client) {\n  let clientRecord = database.lookup(client);\n  return clientRecord.isActive();\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;function emailClients(clients) {\n  clients.forEach((client) =&gt; {\n    emailClientIfNeeded(client);\n  });\n}\n\nfunction emailClientIfNeeded(client) {\n  if (isClientActive(client)) {\n    email(client);\n  }\n}\n\nfunction isClientActive(client) {\n  let clientRecord = database.lookup(client);\n  return clientRecord.isActive();\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;函数名应明确表明其功能&quot;
   }, &quot;\u51FD\u6570\u540D\u5E94\u660E\u786E\u8868\u660E\u5176\u529F\u80FD&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4698,12 +4648,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;function dateAddMonth(date, month) {\n  // ...\n}\n\nlet date = new Date();\ndateAddMonth(date, 1);\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;function dateAddMonth(date, month) {\n  // ...\n}\n\nlet date = new Date();\ndateAddMonth(date, 1);\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;函数应该只做一层抽象&quot;
   }, &quot;\u51FD\u6570\u5E94\u8BE5\u53EA\u505A\u4E00\u5C42\u62BD\u8C61&quot;), mdx(&quot;p&quot;, null, &quot;\u5F53\u51FD\u6570\u7684\u9700\u8981\u7684\u62BD\u8C61\u591A\u4E8E\u4E00\u5C42\u65F6\u901A\u5E38\u610F\u5473\u7740\u51FD\u6570\u529F\u80FD\u8FC7\u4E8E\u590D\u6742\uFF0C\u9700\u5C06\u5176\u8FDB\u884C\u5206\u89E3\u4EE5\u63D0\u9AD8\u5176\u53EF\u91CD\u7528\u6027\u548C\u53EF\u6D4B\u8BD5\u6027\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4715,12 +4660,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;function tokenize(code) {\n  let REGEXES = [\n    // ...\n  ];\n\n  let statements = code.split(&apos; &apos;);\n  let tokens;\n  REGEXES.forEach((REGEX) =&gt; {\n    statements.forEach((statement) =&gt; {\n      // ...\n    });\n  });\n\n  return tokens;\n}\n\nfunction lexer(tokens) {\n  let ast;\n  tokens.forEach((token) =&gt; {\n    // lex...\n  });\n\n  return ast;\n}\n\nfunction parseBetterJSAlternative(code) {\n  let tokens = tokenize(code);\n  let ast = lexer(tokens);\n  ast.forEach((node) =&gt; {\n    // parse...\n  });\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;function tokenize(code) {\n  let REGEXES = [\n    // ...\n  ];\n\n  let statements = code.split(&apos; &apos;);\n  let tokens;\n  REGEXES.forEach((REGEX) =&gt; {\n    statements.forEach((statement) =&gt; {\n      // ...\n    });\n  });\n\n  return tokens;\n}\n\nfunction lexer(tokens) {\n  let ast;\n  tokens.forEach((token) =&gt; {\n    // lex...\n  });\n\n  return ast;\n}\n\nfunction parseBetterJSAlternative(code) {\n  let tokens = tokenize(code);\n  let ast = lexer(tokens);\n  ast.forEach((node) =&gt; {\n    // parse...\n  });\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;移除重复的代码&quot;
   }, &quot;\u79FB\u9664\u91CD\u590D\u7684\u4EE3\u7801&quot;), mdx(&quot;p&quot;, null, &quot;\u6C38\u8FDC\u3001\u6C38\u8FDC\u3001\u6C38\u8FDC\u4E0D\u8981\u5728\u4EFB\u4F55\u5FAA\u73AF\u4E0B\u6709\u91CD\u590D\u7684\u4EE3\u7801\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u8FD9\u79CD\u505A\u6CD5\u6BEB\u65E0\u610F\u4E49\u4E14\u6F5C\u5728\u5371\u9669\u6781\u5927\u3002\u91CD\u590D\u7684\u4EE3\u7801\u610F\u5473\u7740\u903B\u8F91\u53D8\u5316\u65F6\u9700\u8981\u5BF9\u4E0D\u6B62\u4E00\u5904\u8FDB\u884C\u4FEE\u6539\u3002JS \u5F31\u7C7B\u578B\u7684\u7279\u70B9\u4F7F\u5F97\u51FD\u6570\u62E5\u6709\u66F4\u5F3A\u7684\u666E\u9002\u6027\u3002\u597D\u597D\u5229\u7528\u8FD9\u4E00\u4F18\u70B9\u5427\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4732,12 +4672,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;function showList(employees) {\n  employees.forEach((employee) =&gt; {\n    var expectedSalary = employee.calculateExpectedSalary();\n    var experience = employee.getExperience();\n    var portfolio;\n\n    if (employee.type === &apos;manager&apos;) {\n      portfolio = employee.getMBAProjects();\n    } else {\n      portfolio = employee.getGithubLink();\n    }\n\n    var data = {\n      expectedSalary: expectedSalary,\n      experience: experience,\n      portfolio: portfolio,\n    };\n\n    render(data);\n  });\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;function showList(employees) {\n  employees.forEach((employee) =&gt; {\n    var expectedSalary = employee.calculateExpectedSalary();\n    var experience = employee.getExperience();\n    var portfolio;\n\n    if (employee.type === &apos;manager&apos;) {\n      portfolio = employee.getMBAProjects();\n    } else {\n      portfolio = employee.getGithubLink();\n    }\n\n    var data = {\n      expectedSalary: expectedSalary,\n      experience: experience,\n      portfolio: portfolio,\n    };\n\n    render(data);\n  });\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;采用默认参数精简代码&quot;
   }, &quot;\u91C7\u7528\u9ED8\u8BA4\u53C2\u6570\u7CBE\u7B80\u4EE3\u7801&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4749,12 +4684,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;function writeForumComment(subject = &apos;No subject&apos;, body = &apos;No text&apos;) {\n  ...\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;function writeForumComment(subject = &apos;No subject&apos;, body = &apos;No text&apos;) {\n  ...\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;使用-objectassign-设置默认对象&quot;
   }, &quot;\u4F7F\u7528 Object.assign \u8BBE\u7F6E\u9ED8\u8BA4\u5BF9\u8C61&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4766,12 +4696,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;var menuConfig = {\n  title: &apos;Order&apos;,\n  // User did not include &apos;body&apos; key\n  buttonText: &apos;Send&apos;,\n  cancellable: true,\n};\n\nfunction createMenu(config) {\n  config = Object.assign(\n    {\n      title: &apos;Foo&apos;,\n      body: &apos;Bar&apos;,\n      buttonText: &apos;Baz&apos;,\n      cancellable: true,\n    },\n    config\n  );\n\n  // config now equals: {title: \&quot;Order\&quot;, body: \&quot;Bar\&quot;, buttonText: \&quot;Send\&quot;, cancellable: true}\n  // ...\n}\n\ncreateMenu(menuConfig);\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;var menuConfig = {\n  title: &apos;Order&apos;,\n  // User did not include &apos;body&apos; key\n  buttonText: &apos;Send&apos;,\n  cancellable: true,\n};\n\nfunction createMenu(config) {\n  config = Object.assign(\n    {\n      title: &apos;Foo&apos;,\n      body: &apos;Bar&apos;,\n      buttonText: &apos;Baz&apos;,\n      cancellable: true,\n    },\n    config\n  );\n\n  // config now equals: {title: \&quot;Order\&quot;, body: \&quot;Bar\&quot;, buttonText: \&quot;Send\&quot;, cancellable: true}\n  // ...\n}\n\ncreateMenu(menuConfig);\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;不要使用标记flag作为函数参数&quot;
   }, &quot;\u4E0D\u8981\u4F7F\u7528\u6807\u8BB0(Flag)\u4F5C\u4E3A\u51FD\u6570\u53C2\u6570&quot;), mdx(&quot;p&quot;, null, &quot;\u8FD9\u901A\u5E38\u610F\u5473\u7740\u51FD\u6570\u7684\u529F\u80FD\u7684\u5355\u4E00\u6027\u5DF2\u7ECF\u88AB\u7834\u574F\u3002\u6B64\u65F6\u5E94\u8003\u8651\u5BF9\u51FD\u6570\u8FDB\u884C\u518D\u6B21\u5212\u5206\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4783,12 +4708,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;function createTempFile(name) {\n  fs.create(&apos;./temp/&apos; + name);\n}\n\n----------function createFile(name) {\n  fs.create(name);\n};\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;function createTempFile(name) {\n  fs.create(&apos;./temp/&apos; + name);\n}\n\n----------function createFile(name) {\n  fs.create(name);\n};\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;避免副作用&quot;
   }, &quot;\u907F\u514D\u526F\u4F5C\u7528&quot;), mdx(&quot;p&quot;, null, &quot;\u5F53\u51FD\u6570\u4EA7\u751F\u4E86\u9664\u4E86\u201C\u63A5\u53D7\u4E00\u4E2A\u503C\u5E76\u8FD4\u56DE\u4E00\u4E2A\u7ED3\u679C\u201D\u4E4B\u5916\u7684\u884C\u4E3A\u65F6\uFF0C\u79F0\u8BE5\u51FD\u6570\u4EA7\u751F\u4E86\u526F\u4F5C\u7528\u3002\u6BD4\u5982\u5199\u6587\u4EF6\u3001\u4FEE\u6539\u5168\u5C40\u53D8\u91CF\u6216\u5C06\u4F60\u7684\u94B1\u5168\u8F6C\u7ED9\u4E86\u4E00\u4E2A\u964C\u751F\u4EBA\u7B49\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u7A0B\u5E8F\u5728\u67D0\u4E9B\u60C5\u51B5\u4E0B\u786E\u5B9E\u9700\u8981\u526F\u4F5C\u7528\u8FD9\u4E00\u884C\u4E3A\uFF0C\u5982\u5148\u524D\u4F8B\u5B50\u4E2D\u7684\u5199\u6587\u4EF6\u3002\u8FD9\u65F6\u5E94\u8BE5\u5C06\u8FD9\u4E9B\u529F\u80FD\u96C6\u4E2D\u5728\u4E00\u8D77\uFF0C\u4E0D\u8981\u7528\u591A\u4E2A\u51FD\u6570/\u7C7B\u4FEE\u6539\u67D0\u4E2A\u6587\u4EF6\u3002\u7528\u4E14\u53EA\u7528\u4E00\u4E2A service \u5B8C\u6210\u8FD9\u4E00\u9700\u6C42\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4800,12 +4720,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;function splitIntoFirstAndLastName(name) {\n  return name.split(&apos; &apos;);\n}\n\nvar name = &apos;Ryan McDermott&apos;;\nvar newName = splitIntoFirstAndLastName(name);\n\nconsole.log(name); // &apos;Ryan McDermott&apos;;\nconsole.log(newName); // [&apos;Ryan&apos;, &apos;McDermott&apos;];\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;function splitIntoFirstAndLastName(name) {\n  return name.split(&apos; &apos;);\n}\n\nvar name = &apos;Ryan McDermott&apos;;\nvar newName = splitIntoFirstAndLastName(name);\n\nconsole.log(name); // &apos;Ryan McDermott&apos;;\nconsole.log(newName); // [&apos;Ryan&apos;, &apos;McDermott&apos;];\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;不要写全局函数&quot;
   }, &quot;\u4E0D\u8981\u5199\u5168\u5C40\u51FD\u6570&quot;), mdx(&quot;p&quot;, null, &quot;\u5728 JS \u4E2D\u6C61\u67D3\u5168\u5C40\u662F\u4E00\u4E2A\u975E\u5E38\u4E0D\u597D\u7684\u5B9E\u8DF5\uFF0C\u8FD9\u4E48\u505A\u53EF\u80FD\u548C\u5176\u4ED6\u5E93\u8D77\u51B2\u7A81\uFF0C\u4E14\u8C03\u7528\u4F60\u7684 API \u7684\u7528\u6237\u5728\u5B9E\u9645\u73AF\u5883\u4E2D\u5F97\u5230\u4E00\u4E2A exception \u524D\u5BF9\u8FD9\u4E00\u60C5\u51B5\u662F\u4E00\u65E0\u6240\u77E5\u7684\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u60F3\u8C61\u4EE5\u4E0B\u4F8B\u5B50\uFF1A\u5982\u679C\u4F60\u60F3\u6269\u5C55 JS \u4E2D\u7684 Array\uFF0C\u4E3A\u5176\u6DFB\u52A0\u4E00\u4E2A &quot;, mdx(&quot;inlineCode&quot;, {
     parentName: &quot;p&quot;
@@ -4821,12 +4736,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;class SuperArray extends Array {\n  constructor(...args) {\n    super(...args);\n  }\n\n  diff(comparisonArray) {\n    var values = [];\n    var hash = {};\n\n    for (var i of comparisonArray) {\n      hash[i] = true;\n    }\n\n    for (var i of this) {\n      if (!hash[i]) {\n        values.push(i);\n      }\n    }\n\n    return values;\n  }\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;class SuperArray extends Array {\n  constructor(...args) {\n    super(...args);\n  }\n\n  diff(comparisonArray) {\n    var values = [];\n    var hash = {};\n\n    for (var i of comparisonArray) {\n      hash[i] = true;\n    }\n\n    for (var i of this) {\n      if (!hash[i]) {\n        values.push(i);\n      }\n    }\n\n    return values;\n  }\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;采用函数式编程&quot;
   }, &quot;\u91C7\u7528\u51FD\u6570\u5F0F\u7F16\u7A0B&quot;), mdx(&quot;p&quot;, null, &quot;\u51FD\u6570\u5F0F\u7684\u7F16\u7A0B\u5177\u6709\u66F4\u5E72\u51C0\u4E14\u4FBF\u4E8E\u6D4B\u8BD5\u7684\u7279\u70B9\u3002\u5C3D\u53EF\u80FD\u7684\u4F7F\u7528\u8FD9\u79CD\u98CE\u683C\u5427\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4838,12 +4748,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;const programmerOutput = [\n  {\n    name: &apos;Uncle Bobby&apos;,\n    linesOfCode: 500,\n  },\n  {\n    name: &apos;Suzie Q&apos;,\n    linesOfCode: 1500,\n  },\n  {\n    name: &apos;Jimmy Gosling&apos;,\n    linesOfCode: 150,\n  },\n  {\n    name: &apos;Gracie Hopper&apos;,\n    linesOfCode: 1000,\n  },\n];\n\nvar totalOutput = programmerOutput\n  .map((programmer) =&gt; programmer.linesOfCode)\n  .reduce((acc, linesOfCode) =&gt; acc + linesOfCode, 0);\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;const programmerOutput = [\n  {\n    name: &apos;Uncle Bobby&apos;,\n    linesOfCode: 500,\n  },\n  {\n    name: &apos;Suzie Q&apos;,\n    linesOfCode: 1500,\n  },\n  {\n    name: &apos;Jimmy Gosling&apos;,\n    linesOfCode: 150,\n  },\n  {\n    name: &apos;Gracie Hopper&apos;,\n    linesOfCode: 1000,\n  },\n];\n\nvar totalOutput = programmerOutput\n  .map((programmer) =&gt; programmer.linesOfCode)\n  .reduce((acc, linesOfCode) =&gt; acc + linesOfCode, 0);\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;封装判断条件&quot;
   }, &quot;\u5C01\u88C5\u5224\u65AD\u6761\u4EF6&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4855,12 +4760,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;function shouldShowSpinner(fsm, listNode) {\n  return fsm.state === &apos;fetching&apos; &amp;&amp; isEmpty(listNode);\n}\n\nif (shouldShowSpinner(fsmInstance, listNodeInstance)) {\n  // ...\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;function shouldShowSpinner(fsm, listNode) {\n  return fsm.state === &apos;fetching&apos; &amp;&amp; isEmpty(listNode);\n}\n\nif (shouldShowSpinner(fsmInstance, listNodeInstance)) {\n  // ...\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;避免否定情况的判断&quot;
   }, &quot;\u907F\u514D\u201C\u5426\u5B9A\u60C5\u51B5\u201D\u7684\u5224\u65AD&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4872,12 +4772,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;function isDOMNodePresent(node) {\n  // ...\n}\n\nif (isDOMNodePresent(node)) {\n  // ...\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;function isDOMNodePresent(node) {\n  // ...\n}\n\nif (isDOMNodePresent(node)) {\n  // ...\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;避免条件判断&quot;
   }, &quot;\u907F\u514D\u6761\u4EF6\u5224\u65AD&quot;), mdx(&quot;p&quot;, null, &quot;\u8FD9\u770B\u8D77\u6765\u4F3C\u4E4E\u4E0D\u592A\u53EF\u80FD\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u5927\u591A\u4EBA\u542C\u5230\u8FD9\u7684\u7B2C\u4E00\u53CD\u5E94\u662F\uFF1A\u201C\u600E\u4E48\u53EF\u80FD\u4E0D\u7528 if \u5B8C\u6210\u5176\u4ED6\u529F\u80FD\u5462\uFF1F\u201D\u8BB8\u591A\u60C5\u51B5\u4E0B\u901A\u8FC7\u4F7F\u7528\u591A\u6001(polymorphism)\u53EF\u4EE5\u8FBE\u5230\u540C\u6837\u7684\u76EE\u7684\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u7B2C\u4E8C\u4E2A\u95EE\u9898\u5728\u4E8E\u91C7\u7528\u8FD9\u79CD\u65B9\u5F0F\u7684\u539F\u56E0\u662F\u4EC0\u4E48\u3002\u7B54\u6848\u662F\u6211\u4EEC\u4E4B\u524D\u63D0\u5230\u8FC7\u7684\uFF1A\u4FDD\u6301\u51FD\u6570\u529F\u80FD\u7684\u5355\u4E00\u6027\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4889,12 +4784,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;class Airplane {\n  //...\n}\n\nclass Boeing777 extends Airplane {\n  //...\n  getCruisingAltitude() {\n    return getMaxAltitude() - getPassengerCount();\n  }\n}\n\nclass AirForceOne extends Airplane {\n  //...\n  getCruisingAltitude() {\n    return getMaxAltitude();\n  }\n}\n\nclass Cessna extends Airplane {\n  //...\n  getCruisingAltitude() {\n    return getMaxAltitude() - getFuelExpenditure();\n  }\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;class Airplane {\n  //...\n}\n\nclass Boeing777 extends Airplane {\n  //...\n  getCruisingAltitude() {\n    return getMaxAltitude() - getPassengerCount();\n  }\n}\n\nclass AirForceOne extends Airplane {\n  //...\n  getCruisingAltitude() {\n    return getMaxAltitude();\n  }\n}\n\nclass Cessna extends Airplane {\n  //...\n  getCruisingAltitude() {\n    return getMaxAltitude() - getFuelExpenditure();\n  }\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;避免类型判断part-1&quot;
   }, &quot;\u907F\u514D\u7C7B\u578B\u5224\u65AD(part 1)&quot;), mdx(&quot;p&quot;, null, &quot;JS \u662F\u5F31\u7C7B\u578B\u8BED\u8A00\uFF0C\u8FD9\u610F\u5473\u7740\u51FD\u6570\u53EF\u63A5\u53D7\u4EFB\u610F\u7C7B\u578B\u7684\u53C2\u6570\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u6709\u65F6\u8FD9\u4F1A\u5BF9\u4F60\u5E26\u6765\u9EBB\u70E6\uFF0C\u4F60\u4F1A\u5BF9\u53C2\u6570\u505A\u4E00\u4E9B\u7C7B\u578B\u5224\u65AD\u3002\u6709\u8BB8\u591A\u65B9\u6CD5\u53EF\u4EE5\u907F\u514D\u8FD9\u4E9B\u60C5\u51B5\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4906,12 +4796,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;function travelToTexas(vehicle) {\n  vehicle.move(this.currentLocation, new Location(&apos;texas&apos;));\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;function travelToTexas(vehicle) {\n  vehicle.move(this.currentLocation, new Location(&apos;texas&apos;));\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;避免类型判断part-2&quot;
   }, &quot;\u907F\u514D\u7C7B\u578B\u5224\u65AD(part 2)&quot;), mdx(&quot;p&quot;, null, &quot;\u5982\u679C\u9700\u5904\u7406\u7684\u6570\u636E\u4E3A\u5B57\u7B26\u4E32\uFF0C\u6574\u578B\uFF0C\u6570\u7EC4\u7B49\u7C7B\u578B\uFF0C\u65E0\u6CD5\u4F7F\u7528\u591A\u6001\u5E76\u4ECD\u6709\u5FC5\u8981\u5BF9\u5176\u8FDB\u884C\u7C7B\u578B\u68C0\u6D4B\u65F6\uFF0C\u53EF\u4EE5\u8003\u8651\u4F7F\u7528 TypeScript\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4923,12 +4808,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;function combine(val1, val2) {\n  return val1 + val2;\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;function combine(val1, val2) {\n  return val1 + val2;\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;避免过度优化&quot;
   }, &quot;\u907F\u514D\u8FC7\u5EA6\u4F18\u5316&quot;), mdx(&quot;p&quot;, null, &quot;\u73B0\u4EE3\u7684\u6D4F\u89C8\u5668\u5728\u8FD0\u884C\u65F6\u4F1A\u5BF9\u4EE3\u7801\u81EA\u52A8\u8FDB\u884C\u4F18\u5316\u3002\u6709\u65F6\u4EBA\u4E3A\u5BF9\u4EE3\u7801\u8FDB\u884C\u4F18\u5316\u53EF\u80FD\u662F\u5728\u6D6A\u8D39\u65F6\u95F4\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;a&quot;, {
     parentName: &quot;p&quot;,
@@ -4943,12 +4823,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;for (var i = 0; i &lt; list.length; i++) {\n  // ...\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;for (var i = 0; i &lt; list.length; i++) {\n  // ...\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;删除无效的代码&quot;
   }, &quot;\u5220\u9664\u65E0\u6548\u7684\u4EE3\u7801&quot;), mdx(&quot;p&quot;, null, &quot;\u4E0D\u518D\u88AB\u8C03\u7528\u7684\u4EE3\u7801\u5E94\u53CA\u65F6\u5220\u9664\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -4960,12 +4835,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;function newRequestModule(url) {\n  // ...\n}\n\nvar req = newRequestModule;\ninventoryTracker(&apos;apples&apos;, req, &apos;www.inventory-awesome.io&apos;);\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h2&quot;, {
+  }, &quot;function newRequestModule(url) {\n  // ...\n}\n\nvar req = newRequestModule;\ninventoryTracker(&apos;apples&apos;, req, &apos;www.inventory-awesome.io&apos;);\n&quot;)), mdx(&quot;h2&quot;, {
     &quot;id&quot;: &quot;对象和数据结构&quot;
   }, mdx(&quot;strong&quot;, {
     parentName: &quot;h2&quot;
@@ -4999,12 +4869,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;class BankAccount {\n  constructor() {\n    this.balance = 1000;\n  }\n\n  // It doesn&apos;t have to be prefixed with `get` or `set` to be a getter/setter\n  withdraw(amount) {\n    if (verifyAmountCanBeDeducted(amount)) {\n      this.balance -= amount;\n    }\n  }\n}\n\nlet bankAccount = new BankAccount();\n\n// Buy shoes...\nbankAccount.withdraw(100);\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;class BankAccount {\n  constructor() {\n    this.balance = 1000;\n  }\n\n  // It doesn&apos;t have to be prefixed with `get` or `set` to be a getter/setter\n  withdraw(amount) {\n    if (verifyAmountCanBeDeducted(amount)) {\n      this.balance -= amount;\n    }\n  }\n}\n\nlet bankAccount = new BankAccount();\n\n// Buy shoes...\nbankAccount.withdraw(100);\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;让对象拥有私有成员&quot;
   }, &quot;\u8BA9\u5BF9\u8C61\u62E5\u6709\u79C1\u6709\u6210\u5458&quot;), mdx(&quot;p&quot;, null, &quot;\u53EF\u4EE5\u901A\u8FC7\u95ED\u5305\u5B8C\u6210&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -5016,12 +4881,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;var Employee = (function () {\n  function Employee(name) {\n    this.getName = function () {\n      return name;\n    };\n  }\n\n  return Employee;\n})();\n\nvar employee = new Employee(&apos;John Doe&apos;);\nconsole.log(&apos;Employee name: &apos; + employee.getName()); // Employee name: John Doe\ndelete employee.name;\nconsole.log(&apos;Employee name: &apos; + employee.getName()); // Employee name: John Doe\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h2&quot;, {
+  }, &quot;var Employee = (function () {\n  function Employee(name) {\n    this.getName = function () {\n      return name;\n    };\n  }\n\n  return Employee;\n})();\n\nvar employee = new Employee(&apos;John Doe&apos;);\nconsole.log(&apos;Employee name: &apos; + employee.getName()); // Employee name: John Doe\ndelete employee.name;\nconsole.log(&apos;Employee name: &apos; + employee.getName()); // Employee name: John Doe\n&quot;)), mdx(&quot;h2&quot;, {
     &quot;id&quot;: &quot;类&quot;
   }, mdx(&quot;strong&quot;, {
     parentName: &quot;h2&quot;
@@ -5037,12 +4897,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;class UserAuth {\n  constructor(user) {\n    this.user = user;\n  }\n\n  verifyCredentials() {\n    // ...\n  }\n}\n\nclass UserSettings {\n  constructor(user) {\n    this.user = user;\n    this.auth = new UserAuth(user);\n  }\n\n  changeSettings(settings) {\n    if (this.auth.verifyCredentials()) {\n      // ...\n    }\n  }\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;class UserAuth {\n  constructor(user) {\n    this.user = user;\n  }\n\n  verifyCredentials() {\n    // ...\n  }\n}\n\nclass UserSettings {\n  constructor(user) {\n    this.user = user;\n    this.auth = new UserAuth(user);\n  }\n\n  changeSettings(settings) {\n    if (this.auth.verifyCredentials()) {\n      // ...\n    }\n  }\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;开闭原则-ocp&quot;
   }, &quot;\u5F00/\u95ED\u539F\u5219 (OCP)&quot;), mdx(&quot;p&quot;, null, &quot;\u201C\u4EE3\u7801\u5B9E\u4F53(\u7C7B\uFF0C\u6A21\u5757\uFF0C\u51FD\u6570\u7B49)\u5E94\u8BE5\u6613\u4E8E\u6269\u5C55\uFF0C\u96BE\u4E8E\u4FEE\u6539\u3002\u201D&quot;), mdx(&quot;p&quot;, null, &quot;\u8FD9\u4E00\u539F\u5219\u6307\u7684\u662F\u6211\u4EEC\u5E94\u5141\u8BB8\u7528\u6237\u65B9\u4FBF\u7684\u6269\u5C55\u6211\u4EEC\u4EE3\u7801\u6A21\u5757\u7684\u529F\u80FD\uFF0C\u800C\u4E0D\u9700\u8981\u6253\u5F00 js \u6587\u4EF6\u6E90\u7801\u624B\u52A8\u5BF9\u5176\u8FDB\u884C\u4FEE\u6539\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -5054,12 +4909,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;class AjaxRequester {\n  constructor() {\n    this.HTTP_METHODS = [&apos;POST&apos;, &apos;PUT&apos;, &apos;GET&apos;];\n  }\n\n  get(url) {\n    // ...\n  }\n\n  addHTTPMethod(method) {\n    this.HTTP_METHODS.push(method);\n  }\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;class AjaxRequester {\n  constructor() {\n    this.HTTP_METHODS = [&apos;POST&apos;, &apos;PUT&apos;, &apos;GET&apos;];\n  }\n\n  get(url) {\n    // ...\n  }\n\n  addHTTPMethod(method) {\n    this.HTTP_METHODS.push(method);\n  }\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;利斯科夫替代原则-lsp&quot;
   }, &quot;\u5229\u65AF\u79D1\u592B\u66FF\u4EE3\u539F\u5219 (LSP)&quot;), mdx(&quot;p&quot;, null, &quot;\u201C\u5B50\u7C7B\u5BF9\u8C61\u5E94\u8BE5\u80FD\u591F\u66FF\u6362\u5176\u8D85\u7C7B\u5BF9\u8C61\u88AB\u4F7F\u7528\u201D\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u4E5F\u5C31\u662F\u8BF4\uFF0C\u5982\u679C\u6709\u4E00\u4E2A\u7236\u7C7B\u548C\u4E00\u4E2A\u5B50\u7C7B\uFF0C\u5F53\u91C7\u7528\u5B50\u7C7B\u66FF\u6362\u7236\u7C7B\u65F6\u4E0D\u5E94\u8BE5\u4EA7\u751F\u9519\u8BEF\u7684\u7ED3\u679C\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -5071,12 +4921,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;class Shape {\n  constructor() {}\n\n  setColor(color) {\n    // ...\n  }\n\n  render(area) {\n    // ...\n  }\n}\n\nclass Rectangle extends Shape {\n  constructor() {\n    super();\n    this.width = 0;\n    this.height = 0;\n  }\n\n  setWidth(width) {\n    this.width = width;\n  }\n\n  setHeight(height) {\n    this.height = height;\n  }\n\n  getArea() {\n    return this.width * this.height;\n  }\n}\n\nclass Square extends Shape {\n  constructor() {\n    super();\n    this.length = 0;\n  }\n\n  setLength(length) {\n    this.length = length;\n  }\n\n  getArea() {\n    return this.length * this.length;\n  }\n}\n\nfunction renderLargeShapes(shapes) {\n  shapes.forEach((shape) =&gt; {\n    switch (shape.constructor.name) {\n      case &apos;Square&apos;:\n        shape.setLength(5);\n      case &apos;Rectangle&apos;:\n        shape.setWidth(4);\n        shape.setHeight(5);\n    }\n\n    let area = shape.getArea();\n    shape.render(area);\n  });\n}\n\nlet shapes = [new Rectangle(), new Rectangle(), new Square()];\nrenderLargeShapes(shapes);\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;class Shape {\n  constructor() {}\n\n  setColor(color) {\n    // ...\n  }\n\n  render(area) {\n    // ...\n  }\n}\n\nclass Rectangle extends Shape {\n  constructor() {\n    super();\n    this.width = 0;\n    this.height = 0;\n  }\n\n  setWidth(width) {\n    this.width = width;\n  }\n\n  setHeight(height) {\n    this.height = height;\n  }\n\n  getArea() {\n    return this.width * this.height;\n  }\n}\n\nclass Square extends Shape {\n  constructor() {\n    super();\n    this.length = 0;\n  }\n\n  setLength(length) {\n    this.length = length;\n  }\n\n  getArea() {\n    return this.length * this.length;\n  }\n}\n\nfunction renderLargeShapes(shapes) {\n  shapes.forEach((shape) =&gt; {\n    switch (shape.constructor.name) {\n      case &apos;Square&apos;:\n        shape.setLength(5);\n      case &apos;Rectangle&apos;:\n        shape.setWidth(4);\n        shape.setHeight(5);\n    }\n\n    let area = shape.getArea();\n    shape.render(area);\n  });\n}\n\nlet shapes = [new Rectangle(), new Rectangle(), new Square()];\nrenderLargeShapes(shapes);\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;接口隔离原则-isp&quot;
   }, &quot;\u63A5\u53E3\u9694\u79BB\u539F\u5219 (ISP)&quot;), mdx(&quot;p&quot;, null, &quot;\u201C\u5BA2\u6237\u7AEF\u4E0D\u5E94\u8BE5\u4F9D\u8D56\u5B83\u4E0D\u9700\u8981\u7684\u63A5\u53E3\uFF1B\u4E00\u4E2A\u7C7B\u5BF9\u53E6\u4E00\u4E2A\u7C7B\u7684\u4F9D\u8D56\u5E94\u8BE5\u5EFA\u7ACB\u5728\u6700\u5C0F\u7684\u63A5\u53E3\u4E0A\u3002\u201D&quot;), mdx(&quot;p&quot;, null, &quot;\u5728 JS \u4E2D\uFF0C\u5F53\u4E00\u4E2A\u7C7B\u9700\u8981\u8BB8\u591A\u53C2\u6570\u8BBE\u7F6E\u624D\u80FD\u751F\u6210\u4E00\u4E2A\u5BF9\u8C61\u65F6\uFF0C\u6216\u8BB8\u5927\u591A\u65F6\u5019\u4E0D\u9700\u8981\u8BBE\u7F6E\u8FD9\u4E48\u591A\u7684\u53C2\u6570\u3002\u6B64\u65F6\u51CF\u5C11\u5BF9\u914D\u7F6E\u53C2\u6570\u6570\u91CF\u7684\u9700\u6C42\u662F\u6709\u76CA\u7684\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -5088,12 +4933,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;class DOMTraverser {\n  constructor(settings) {\n    this.settings = settings;\n    this.options = settings.options;\n    this.setup();\n  }\n\n  setup() {\n    this.rootNode = this.settings.rootNode;\n    this.setupOptions();\n  }\n\n  setupOptions() {\n    if (this.options.animationModule) {\n      // ...\n    }\n  }\n\n  traverse() {\n    // ...\n  }\n}\n\nlet $ = new DOMTraverser({\n  rootNode: document.getElementsByTagName(&apos;body&apos;),\n  options: {\n    animationModule: function () {},\n  },\n});\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;class DOMTraverser {\n  constructor(settings) {\n    this.settings = settings;\n    this.options = settings.options;\n    this.setup();\n  }\n\n  setup() {\n    this.rootNode = this.settings.rootNode;\n    this.setupOptions();\n  }\n\n  setupOptions() {\n    if (this.options.animationModule) {\n      // ...\n    }\n  }\n\n  traverse() {\n    // ...\n  }\n}\n\nlet $ = new DOMTraverser({\n  rootNode: document.getElementsByTagName(&apos;body&apos;),\n  options: {\n    animationModule: function () {},\n  },\n});\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;依赖反转原则-dip&quot;
   }, &quot;\u4F9D\u8D56\u53CD\u8F6C\u539F\u5219 (DIP)&quot;), mdx(&quot;p&quot;, null, &quot;\u8BE5\u539F\u5219\u6709\u4E24\u4E2A\u6838\u5FC3\u70B9\uFF1A&quot;), mdx(&quot;ol&quot;, null, mdx(&quot;li&quot;, {
     parentName: &quot;ol&quot;
@@ -5109,12 +4949,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;class InventoryTracker {\n  constructor(items, requester) {\n    this.items = items;\n    this.requester = requester;\n  }\n\n  requestItems() {\n    this.items.forEach((item) =&gt; {\n      this.requester.requestItem(item);\n    });\n  }\n}\n\nclass InventoryRequesterV1 {\n  constructor() {\n    this.REQ_METHODS = [&apos;HTTP&apos;];\n  }\n\n  requestItem(item) {\n    // ...\n  }\n}\n\nclass InventoryRequesterV2 {\n  constructor() {\n    this.REQ_METHODS = [&apos;WS&apos;];\n  }\n\n  requestItem(item) {\n    // ...\n  }\n}\n\n// By constructing our dependencies externally and injecting them, we can easily\n// substitute our request module for a fancy new one that uses WebSockets.\nlet inventoryTracker = new InventoryTracker(\n  [&apos;apples&apos;, &apos;bananas&apos;],\n  new InventoryRequesterV2()\n);\ninventoryTracker.requestItems();\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;class InventoryTracker {\n  constructor(items, requester) {\n    this.items = items;\n    this.requester = requester;\n  }\n\n  requestItems() {\n    this.items.forEach((item) =&gt; {\n      this.requester.requestItem(item);\n    });\n  }\n}\n\nclass InventoryRequesterV1 {\n  constructor() {\n    this.REQ_METHODS = [&apos;HTTP&apos;];\n  }\n\n  requestItem(item) {\n    // ...\n  }\n}\n\nclass InventoryRequesterV2 {\n  constructor() {\n    this.REQ_METHODS = [&apos;WS&apos;];\n  }\n\n  requestItem(item) {\n    // ...\n  }\n}\n\n// By constructing our dependencies externally and injecting them, we can easily\n// substitute our request module for a fancy new one that uses WebSockets.\nlet inventoryTracker = new InventoryTracker(\n  [&apos;apples&apos;, &apos;bananas&apos;],\n  new InventoryRequesterV2()\n);\ninventoryTracker.requestItems();\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;使用-es6-的-classes-而不是-es5-的-function&quot;
   }, &quot;\u4F7F\u7528 ES6 \u7684 classes \u800C\u4E0D\u662F ES5 \u7684 Function&quot;), mdx(&quot;p&quot;, null, &quot;\u5178\u578B\u7684 ES5 \u7684\u7C7B(function)\u5728\u7EE7\u627F\u3001\u6784\u9020\u548C\u65B9\u6CD5\u5B9A\u4E49\u65B9\u9762\u53EF\u8BFB\u6027\u8F83\u5DEE\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u5F53\u9700\u8981\u7EE7\u627F\u65F6\uFF0C\u4F18\u5148\u9009\u7528 classes\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u4F46\u662F\uFF0C\u5F53\u5728\u9700\u8981\u66F4\u5927\u66F4\u590D\u6742\u7684\u5BF9\u8C61\u65F6\uFF0C\u6700\u597D\u4F18\u5148\u9009\u62E9\u66F4\u5C0F\u7684 function \u800C\u975E classes\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -5126,12 +4961,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;class Animal {\n  constructor(age) {\n    this.age = age;\n  }\n\n  move() {}\n}\n\nclass Mammal extends Animal {\n  constructor(age, furColor) {\n    super(age);\n    this.furColor = furColor;\n  }\n\n  liveBirth() {}\n}\n\nclass Human extends Mammal {\n  constructor(age, furColor, languageSpoken) {\n    super(age, furColor);\n    this.languageSpoken = languageSpoken;\n  }\n\n  speak() {}\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;class Animal {\n  constructor(age) {\n    this.age = age;\n  }\n\n  move() {}\n}\n\nclass Mammal extends Animal {\n  constructor(age, furColor) {\n    super(age);\n    this.furColor = furColor;\n  }\n\n  liveBirth() {}\n}\n\nclass Human extends Mammal {\n  constructor(age, furColor, languageSpoken) {\n    super(age, furColor);\n    this.languageSpoken = languageSpoken;\n  }\n\n  speak() {}\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;使用方法链&quot;
   }, &quot;\u4F7F\u7528\u65B9\u6CD5\u94FE&quot;), mdx(&quot;p&quot;, null, &quot;\u8FD9\u91CC\u6211\u4EEC\u7684\u7406\u89E3\u4E0E\u300A\u4EE3\u7801\u6574\u6D01\u4E4B\u9053\u300B\u7684\u5EFA\u8BAE\u6709\u4E9B\u4E0D\u540C\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u6709\u4E89\u8BBA\u8BF4\u65B9\u6CD5\u94FE\u4E0D\u591F\u5E72\u51C0\u4E14\u8FDD\u53CD\u4E86&quot;, mdx(&quot;a&quot;, {
     parentName: &quot;p&quot;,
@@ -5146,12 +4976,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;class Car {\n  constructor() {\n    this.make = &apos;Honda&apos;;\n    this.model = &apos;Accord&apos;;\n    this.color = &apos;white&apos;;\n  }\n\n  setMake(make) {\n    this.name = name;\n    // NOTE: Returning this for chaining\n    return this;\n  }\n\n  setModel(model) {\n    this.model = model;\n    // NOTE: Returning this for chaining\n    return this;\n  }\n\n  setColor(color) {\n    this.color = color;\n    // NOTE: Returning this for chaining\n    return this;\n  }\n\n  save() {\n    console.log(this.make, this.model, this.color);\n  }\n}\n\nlet car = new Car().setColor(&apos;pink&apos;).setMake(&apos;Ford&apos;).setModel(&apos;F-150&apos;).save();\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;class Car {\n  constructor() {\n    this.make = &apos;Honda&apos;;\n    this.model = &apos;Accord&apos;;\n    this.color = &apos;white&apos;;\n  }\n\n  setMake(make) {\n    this.name = name;\n    // NOTE: Returning this for chaining\n    return this;\n  }\n\n  setModel(model) {\n    this.model = model;\n    // NOTE: Returning this for chaining\n    return this;\n  }\n\n  setColor(color) {\n    this.color = color;\n    // NOTE: Returning this for chaining\n    return this;\n  }\n\n  save() {\n    console.log(this.make, this.model, this.color);\n  }\n}\n\nlet car = new Car().setColor(&apos;pink&apos;).setMake(&apos;Ford&apos;).setModel(&apos;F-150&apos;).save();\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;优先使用组合模式而非继承&quot;
   }, &quot;\u4F18\u5148\u4F7F\u7528\u7EC4\u5408\u6A21\u5F0F\u800C\u975E\u7EE7\u627F&quot;), mdx(&quot;p&quot;, null, &quot;\u5728\u8457\u540D\u7684&quot;, mdx(&quot;a&quot;, {
     parentName: &quot;p&quot;,
@@ -5172,12 +4997,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;class Employee {\n  constructor(name, email) {\n    this.name = name;\n    this.email = email;\n  }\n\n  setTaxData(ssn, salary) {\n    this.taxData = new EmployeeTaxData(ssn, salary);\n  }\n  // ...\n}\n\nclass EmployeeTaxData {\n  constructor(ssn, salary) {\n    this.ssn = ssn;\n    this.salary = salary;\n  }\n\n  // ...\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h2&quot;, {
+  }, &quot;class Employee {\n  constructor(name, email) {\n    this.name = name;\n    this.email = email;\n  }\n\n  setTaxData(ssn, salary) {\n    this.taxData = new EmployeeTaxData(ssn, salary);\n  }\n  // ...\n}\n\nclass EmployeeTaxData {\n  constructor(ssn, salary) {\n    this.ssn = ssn;\n    this.salary = salary;\n  }\n\n  // ...\n}\n&quot;)), mdx(&quot;h2&quot;, {
     &quot;id&quot;: &quot;测试&quot;
   }, mdx(&quot;strong&quot;, {
     parentName: &quot;h2&quot;
@@ -5199,12 +5019,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;const assert = require(&apos;assert&apos;);\n\ndescribe(&apos;MakeMomentJSGreatAgain&apos;, function () {\n  it(&apos;handles 30-day months&apos;, function () {\n    let date = new MakeMomentJSGreatAgain(&apos;1/1/2015&apos;);\n    date.addDays(30);\n    date.shouldEqual(&apos;1/31/2015&apos;);\n  });\n\n  it(&apos;handles leap year&apos;, function () {\n    let date = new MakeMomentJSGreatAgain(&apos;2/1/2016&apos;);\n    date.addDays(28);\n    assert.equal(&apos;02/29/2016&apos;, date);\n  });\n\n  it(&apos;handles non-leap year&apos;, function () {\n    let date = new MakeMomentJSGreatAgain(&apos;2/1/2015&apos;);\n    date.addDays(28);\n    assert.equal(&apos;03/01/2015&apos;, date);\n  });\n});\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h2&quot;, {
+  }, &quot;const assert = require(&apos;assert&apos;);\n\ndescribe(&apos;MakeMomentJSGreatAgain&apos;, function () {\n  it(&apos;handles 30-day months&apos;, function () {\n    let date = new MakeMomentJSGreatAgain(&apos;1/1/2015&apos;);\n    date.addDays(30);\n    date.shouldEqual(&apos;1/31/2015&apos;);\n  });\n\n  it(&apos;handles leap year&apos;, function () {\n    let date = new MakeMomentJSGreatAgain(&apos;2/1/2016&apos;);\n    date.addDays(28);\n    assert.equal(&apos;02/29/2016&apos;, date);\n  });\n\n  it(&apos;handles non-leap year&apos;, function () {\n    let date = new MakeMomentJSGreatAgain(&apos;2/1/2015&apos;);\n    date.addDays(28);\n    assert.equal(&apos;03/01/2015&apos;, date);\n  });\n});\n&quot;)), mdx(&quot;h2&quot;, {
     &quot;id&quot;: &quot;并发&quot;
   }, mdx(&quot;strong&quot;, {
     parentName: &quot;h2&quot;
@@ -5220,12 +5035,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;require(&apos;request-promise&apos;)\n  .get(&apos;https://en.wikipedia.org/wiki/Robert_Cecil_Martin&apos;)\n  .then(function (response) {\n    return require(&apos;fs-promise&apos;).writeFile(&apos;article.html&apos;, response);\n  })\n  .then(function () {\n    console.log(&apos;File written&apos;);\n  })\n  .catch(function (err) {\n    console.error(err);\n  });\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;require(&apos;request-promise&apos;)\n  .get(&apos;https://en.wikipedia.org/wiki/Robert_Cecil_Martin&apos;)\n  .then(function (response) {\n    return require(&apos;fs-promise&apos;).writeFile(&apos;article.html&apos;, response);\n  })\n  .then(function () {\n    console.log(&apos;File written&apos;);\n  })\n  .catch(function (err) {\n    console.error(err);\n  });\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;asyncawait-是较-promises-更好的选择&quot;
   }, &quot;Async/Await \u662F\u8F83 Promises \u66F4\u597D\u7684\u9009\u62E9&quot;), mdx(&quot;p&quot;, null, &quot;Promises \u662F\u8F83\u56DE\u8C03\u800C\u8A00\u66F4\u597D\u7684\u4E00\u79CD\u9009\u62E9\uFF0C\u4F46 ES7 \u4E2D\u7684 async \u548C await \u66F4\u80DC\u8FC7 Promises\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u5728\u80FD\u4F7F\u7528 ES7 \u7279\u6027\u7684\u60C5\u51B5\u4E0B\u53EF\u4EE5\u5C3D\u91CF\u4F7F\u7528\u4ED6\u4EEC\u66FF\u4EE3 Promises\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -5237,12 +5047,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;async function getCleanCodeArticle() {\n  try {\n    var request = await require(&apos;request-promise&apos;);\n    var response = await request.get(\n      &apos;https://en.wikipedia.org/wiki/Robert_Cecil_Martin&apos;\n    );\n    var fileHandle = await require(&apos;fs-promise&apos;);\n\n    await fileHandle.writeFile(&apos;article.html&apos;, response);\n    console.log(&apos;File written&apos;);\n  } catch (err) {\n    console.log(err);\n  }\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h2&quot;, {
+  }, &quot;async function getCleanCodeArticle() {\n  try {\n    var request = await require(&apos;request-promise&apos;);\n    var response = await request.get(\n      &apos;https://en.wikipedia.org/wiki/Robert_Cecil_Martin&apos;\n    );\n    var fileHandle = await require(&apos;fs-promise&apos;);\n\n    await fileHandle.writeFile(&apos;article.html&apos;, response);\n    console.log(&apos;File written&apos;);\n  } catch (err) {\n    console.log(err);\n  }\n}\n&quot;)), mdx(&quot;h2&quot;, {
     &quot;id&quot;: &quot;错误处理&quot;
   }, mdx(&quot;strong&quot;, {
     parentName: &quot;h2&quot;
@@ -5274,12 +5079,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;getdata()\n  .then((data) =&gt; {\n    functionThatMightThrow(data);\n  })\n  .catch((error) =&gt; {\n    // One option (more noisy than console.log):\n    console.error(error);\n    // Another option:\n    notifyUserOfError(error);\n    // Another option:\n    reportErrorToService(error);\n    // OR do all three!\n  });\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h2&quot;, {
+  }, &quot;getdata()\n  .then((data) =&gt; {\n    functionThatMightThrow(data);\n  })\n  .catch((error) =&gt; {\n    // One option (more noisy than console.log):\n    console.error(error);\n    // Another option:\n    notifyUserOfError(error);\n    // Another option:\n    reportErrorToService(error);\n    // OR do all three!\n  });\n&quot;)), mdx(&quot;h2&quot;, {
     &quot;id&quot;: &quot;格式化&quot;
   }, mdx(&quot;strong&quot;, {
     parentName: &quot;h2&quot;
@@ -5298,12 +5098,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;var DAYS_IN_WEEK = 7;\nvar DAYS_IN_MONTH = 30;\n\nvar songs = [&apos;Back In Black&apos;, &apos;Stairway to Heaven&apos;, &apos;Hey Jude&apos;];\nvar artists = [&apos;ACDC&apos;, &apos;Led Zeppelin&apos;, &apos;The Beatles&apos;];\n\nfunction eraseDatabase() {}\nfunction restoreDatabase() {}\n\nclass Animal {}\nclass Alpaca {}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;var DAYS_IN_WEEK = 7;\nvar DAYS_IN_MONTH = 30;\n\nvar songs = [&apos;Back In Black&apos;, &apos;Stairway to Heaven&apos;, &apos;Hey Jude&apos;];\nvar artists = [&apos;ACDC&apos;, &apos;Led Zeppelin&apos;, &apos;The Beatles&apos;];\n\nfunction eraseDatabase() {}\nfunction restoreDatabase() {}\n\nclass Animal {}\nclass Alpaca {}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;调用函数的函数和被调函数应放在较近的位置&quot;
   }, &quot;\u8C03\u7528\u51FD\u6570\u7684\u51FD\u6570\u548C\u88AB\u8C03\u51FD\u6570\u5E94\u653E\u5728\u8F83\u8FD1\u7684\u4F4D\u7F6E&quot;), mdx(&quot;p&quot;, null, &quot;\u5F53\u51FD\u6570\u95F4\u5B58\u5728\u76F8\u4E92\u8C03\u7528\u7684\u60C5\u51B5\u65F6\uFF0C\u5E94\u5C06\u4E24\u8005\u7F6E\u4E8E\u8F83\u8FD1\u7684\u4F4D\u7F6E\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u7406\u60F3\u60C5\u51B5\u4E0B\uFF0C\u5E94\u5C06\u8C03\u7528\u5176\u4ED6\u51FD\u6570\u7684\u51FD\u6570\u5199\u5728\u88AB\u8C03\u7528\u51FD\u6570\u7684\u4E0A\u65B9\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -5315,12 +5110,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;class PerformanceReview {\n  constructor(employee) {\n    this.employee = employee;\n  }\n\n  perfReview() {\n    getPeerReviews();\n    getManagerReview();\n    getSelfReview();\n  }\n\n  getPeerReviews() {\n    let peers = this.lookupPeers();\n    // ...\n  }\n\n  lookupPeers() {\n    return db.lookup(this.employee, &apos;peers&apos;);\n  }\n\n  getManagerReview() {\n    let manager = this.lookupManager();\n  }\n\n  lookupMananger() {\n    return db.lookup(this.employee, &apos;manager&apos;);\n  }\n\n  getSelfReview() {\n    // ...\n  }\n}\n\nlet review = new PerformanceReview(employee);\nreview.perfReview();\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h2&quot;, {
+  }, &quot;class PerformanceReview {\n  constructor(employee) {\n    this.employee = employee;\n  }\n\n  perfReview() {\n    getPeerReviews();\n    getManagerReview();\n    getSelfReview();\n  }\n\n  getPeerReviews() {\n    let peers = this.lookupPeers();\n    // ...\n  }\n\n  lookupPeers() {\n    return db.lookup(this.employee, &apos;peers&apos;);\n  }\n\n  getManagerReview() {\n    let manager = this.lookupManager();\n  }\n\n  lookupMananger() {\n    return db.lookup(this.employee, &apos;manager&apos;);\n  }\n\n  getSelfReview() {\n    // ...\n  }\n}\n\nlet review = new PerformanceReview(employee);\nreview.perfReview();\n&quot;)), mdx(&quot;h2&quot;, {
     &quot;id&quot;: &quot;注释&quot;
   }, mdx(&quot;strong&quot;, {
     parentName: &quot;h2&quot;
@@ -5336,12 +5126,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;function hashIt(data) {\n  var hash = 0;\n  var length = data.length;\n\n  for (var i = 0; i &lt; length; i++) {\n    var char = data.charCodeAt(i);\n    hash = (hash &lt;&lt; 5) - hash + char;\n\n    // Convert to 32-bit integer\n    hash = hash &amp; hash;\n  }\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;function hashIt(data) {\n  var hash = 0;\n  var length = data.length;\n\n  for (var i = 0; i &lt; length; i++) {\n    var char = data.charCodeAt(i);\n    hash = (hash &lt;&lt; 5) - hash + char;\n\n    // Convert to 32-bit integer\n    hash = hash &amp; hash;\n  }\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;不要在代码库中遗留被注释掉的代码&quot;
   }, &quot;\u4E0D\u8981\u5728\u4EE3\u7801\u5E93\u4E2D\u9057\u7559\u88AB\u6CE8\u91CA\u6389\u7684\u4EE3\u7801&quot;), mdx(&quot;p&quot;, null, &quot;\u7248\u672C\u63A7\u5236\u7684\u5B58\u5728\u662F\u6709\u539F\u56E0\u7684\u3002\u8BA9\u65E7\u4EE3\u7801\u5B58\u5728\u4E8E\u4F60\u7684 history \u91CC\u5427\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -5353,12 +5138,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;doStuff();\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;doStuff();\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;不需要版本更新类型注释&quot;
   }, &quot;\u4E0D\u9700\u8981\u7248\u672C\u66F4\u65B0\u7C7B\u578B\u6CE8\u91CA&quot;), mdx(&quot;p&quot;, null, &quot;\u8BB0\u4F4F\uFF0C\u6211\u4EEC\u53EF\u4EE5\u4F7F\u7528\u7248\u672C\u63A7\u5236\u3002\u5E9F\u4EE3\u7801\u3001\u88AB\u6CE8\u91CA\u7684\u4EE3\u7801\u53CA\u7528\u6CE8\u91CA\u8BB0\u5F55\u4EE3\u7801\u4E2D\u7684\u7248\u672C\u66F4\u65B0\u8BF4\u660E\u90FD\u662F\u6CA1\u6709\u5FC5\u8981\u7684\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u9700\u8981\u65F6\u53EF\u4EE5\u4F7F\u7528 &quot;, mdx(&quot;inlineCode&quot;, {
     parentName: &quot;p&quot;
@@ -5372,12 +5152,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;function combine(a, b) {\n  return a + b;\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;function combine(a, b) {\n  return a + b;\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;避免位置标记&quot;
   }, &quot;\u907F\u514D\u4F4D\u7F6E\u6807\u8BB0&quot;), mdx(&quot;p&quot;, null, &quot;\u8FD9\u4E9B\u4E1C\u897F\u901A\u5E38\u53EA\u80FD\u4EE3\u7801\u9EBB\u70E6\uFF0C\u91C7\u7528\u9002\u5F53\u7684\u7F29\u8FDB\u5C31\u53EF\u4EE5\u4E86\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
     parentName: &quot;p&quot;
@@ -5389,12 +5164,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;let $scope.model = {\n  menu: &apos;foo&apos;,\n  nav: &apos;bar&apos;\n};\n\nlet actions = function() {\n  // ...\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))), mdx(&quot;h3&quot;, {
+  }, &quot;let $scope.model = {\n  menu: &apos;foo&apos;,\n  nav: &apos;bar&apos;\n};\n\nlet actions = function() {\n  // ...\n}\n&quot;)), mdx(&quot;h3&quot;, {
     &quot;id&quot;: &quot;避免在源文件中写入法律评论&quot;
   }, &quot;\u907F\u514D\u5728\u6E90\u6587\u4EF6\u4E2D\u5199\u5165\u6CD5\u5F8B\u8BC4\u8BBA&quot;), mdx(&quot;p&quot;, null, &quot;\u5C06\u4F60\u7684 &quot;, mdx(&quot;inlineCode&quot;, {
     parentName: &quot;p&quot;
@@ -5408,12 +5178,7 @@ return function MDXContent(_ref) {
   }, &quot;\u6B63\u4F8B&quot;), &quot;:&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
     parentName: &quot;pre&quot;,
     &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;function calculateBill() {\n  // ...\n}\n&quot;)), mdx(&quot;p&quot;, null, mdx(&quot;strong&quot;, {
-    parentName: &quot;p&quot;
-  }, mdx(&quot;a&quot;, {
-    parentName: &quot;strong&quot;,
-    &quot;href&quot;: &quot;https://github.com/alivebao/clean-code-js#%E7%9B%AE%E5%BD%95&quot;
-  }, &quot;\u56DE\u5230\u76EE\u5F55&quot;))));
+  }, &quot;function calculateBill() {\n  // ...\n}\n&quot;)));
 }
 ;
 MDXContent.isMDXComponent = true;</content:encoded></item><item><title><![CDATA[react-three-fiber实用代码案例]]></title><description><![CDATA[翻译的官网的一些实 用代码案例 ，后续会在自己的实践基础上进行添加和修改。 搭配 react-spring 使用 react-spring  对 react-three-fiber 的支持良好，开箱即用不需要额外插件: CodeSandbox…]]></description><link>https://blog.foolishrobot.xyz/react-three-fiber实用代码案例</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/react-three-fiber实用代码案例</guid><pubDate>Sat, 10 Oct 2020 17:07:45 GMT</pubDate><content:encoded>var _excluded = [&quot;components&quot;];
