@@ -1,4 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 19 Jul 2021 01:53:35 GMT</lastBuildDate><item><title><![CDATA[前端自检清单【转载】]]></title><description><![CDATA[原文链接：  https://segmentfault.com/a/1190000018992363 一、JavaScript基础 前端工程师吃饭的家伙，深度、广度一样都不能差。 变量和类型 1. JavaScript 规定了几种语言类型 2. JavaScript…]]></description><link>https://blog.foolishrobot.xyz/前端自检清单【转载】</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/前端自检清单【转载】</guid><pubDate>Fri, 16 Jul 2021 10:29:36 GMT</pubDate><content:encoded>var _excluded = [&quot;components&quot;];
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 19 Jul 2021 03:55:04 GMT</lastBuildDate><item><title><![CDATA[统计函数执行时间]]></title><description><![CDATA[统计函数 修饰器 或者用高阶函数处理。]]></description><link>https://blog.foolishrobot.xyz/统计函数执行时间</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/统计函数执行时间</guid><pubDate>Mon, 19 Jul 2021 11:02:47 GMT</pubDate><content:encoded>var _excluded = [&quot;components&quot;];
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i &lt; sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) &gt;= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i &lt; sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) &gt;= 0) continue; target[key] = source[key]; } return target; }
+
+/* @jsxRuntime classic */
+
+/* @jsx mdx */
+var _frontmatter = {
+  &quot;title&quot;: &quot;统计函数执行时间&quot;,
+  &quot;date&quot;: &quot;2021-07-19T11:02:47.000Z&quot;,
+  &quot;description&quot;: null,
+  &quot;tags&quot;: [&quot;性能&quot;],
+  &quot;categories&quot;: &quot;snippet&quot;
+};
+var layoutProps = {
+  _frontmatter: _frontmatter
+};
+var MDXLayout = &quot;wrapper&quot;;
+return function MDXContent(_ref) {
+  var components = _ref.components,
+      props = _objectWithoutProperties(_ref, _excluded);
+
+  return mdx(MDXLayout, _extends({}, layoutProps, props, {
+    components: components,
+    mdxType: &quot;MDXLayout&quot;
+  }), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;统计函数&quot;
+  }, &quot;\u7EDF\u8BA1\u51FD\u6570&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
+    parentName: &quot;pre&quot;,
+    &quot;className&quot;: &quot;language-js&quot;
+  }, &quot;function time(target, name, descriptor) {\n    const func = descriptor.value;\n    if (typeof func === &apos;function&apos;) {\n        descriptor.value = function(...args) {\n            console.time();\n            const results = func.apply(this, args);\n            console.timeEnd();\n            return results;\n        }\n    }\n}\n&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;修饰器&quot;
+  }, &quot;\u4FEE\u9970\u5668&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
+    parentName: &quot;pre&quot;,
+    &quot;className&quot;: &quot;language-js&quot;
+  }, &quot;class Person {\n    @time\n    say() {\n        console.log(&apos;hello&apos;)\n    }\n}\nconst person = new Person();\nperson.say();\n&quot;)), mdx(&quot;p&quot;, null, &quot;\u6216\u8005\u7528\u9AD8\u9636\u51FD\u6570\u5904\u7406\u3002&quot;));
+}
+;
+MDXContent.isMDXComponent = true;</content:encoded></item><item><title><![CDATA[前端自检清单【转载】]]></title><description><![CDATA[原文链接：  https://segmentfault.com/a/1190000018992363 一、JavaScript基础 前端工程师吃饭的家伙，深度、广度一样都不能差。 变量和类型 1. JavaScript 规定了几种语言类型 2. JavaScript…]]></description><link>https://blog.foolishrobot.xyz/前端自检清单【转载】</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/前端自检清单【转载】</guid><pubDate>Fri, 16 Jul 2021 10:29:36 GMT</pubDate><content:encoded>var _excluded = [&quot;components&quot;];
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
