@@ -1,6 +1,6 @@
 ---
 title: JS新特性-各种符号
-date: 2020-11-04 20:31:14
+date: 2021-07-19 20:31:14
 description: 让没看过ES新特性的人, 压根读不懂你的代码
 tags: [js]
 categories: tech
@@ -80,4 +80,48 @@ new Error().stack!.split('\n');
 let x = 1000000;
 let y = 1_000_000;
 x === y; // true
+```
+
+## :: 双冒号运算符
+
+箭头函数可以绑定`this`对象，大大减少了显式绑定`this`对象的写法（`call`、`apply`、`bind`）。但是，箭头函数并不适用于所有场合，所以现在有一个[提案](https://github.com/zenparsing/es-function-bind)，提出了“函数绑定”（function bind）运算符，用来取代`call`、`apply`、`bind`调用。
+
+函数绑定运算符是并排的两个冒号（`::`），双冒号左边是一个对象，右边是一个函数。该运算符会自动将左边的对象，作为上下文环境（即`this`对象），绑定到右边的函数上面。
+
+```js
+foo::bar; 
+// 等同于
+bar.bind(foo);
+
+foo::bar(...arguments); 
+// 等同于
+bar.apply(foo, arguments);
+
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+function hasOwn(obj, key){
+  return obj::hasOwnProperty(key);
+}
+```
+
+如果双冒号左边为空，右边是一个对象的方法，则等于将该方法绑定在该对象上面。
+
+```js
+var method = obj::obj.foo; 
+// 等同于
+var method = ::obj.foo;
+
+let log = ::console.log; 
+// 等同于
+var log = console.log.bind(console);
+```
+
+如果双冒号运算符的运算结果，还是一个对象，就可以采用链式写法。
+
+```js
+import{ map, takeWhile, forEach } from "iterlib";
+
+getPlayers()
+::map(x => x.character())
+::takeWhile(x => x.strength >100)
+::forEach(x => console.log(x));
 ```
