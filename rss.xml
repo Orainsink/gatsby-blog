@@ -1,4 +1,135 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 19 Jul 2021 03:55:04 GMT</lastBuildDate><item><title><![CDATA[统计函数执行时间]]></title><description><![CDATA[统计函数 修饰器 或者用高阶函数处理。]]></description><link>https://blog.foolishrobot.xyz/统计函数执行时间</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/统计函数执行时间</guid><pubDate>Mon, 19 Jul 2021 11:02:47 GMT</pubDate><content:encoded>var _excluded = [&quot;components&quot;];
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Orainsink's RSS Feed]]></title><description><![CDATA[Orainsink 的博客, 前端, 随笔, 其他技术笔记]]></description><link>https://blog.foolishrobot.xyz</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 19 Jul 2021 09:21:55 GMT</lastBuildDate><item><title><![CDATA[JS新特性-各种符号]]></title><description><![CDATA[?? 空值合并运算符 双问号的出现是为了补足 || 的缺点。 ||  通过短路运算只能判断 falsy 值，但是业务代码中经常我们需要把  '' ,  0 ,  NaN 这三个值和 undefined 及 null…]]></description><link>https://blog.foolishrobot.xyz/JS新特性-问号和感叹号</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/JS新特性-问号和感叹号</guid><pubDate>Mon, 19 Jul 2021 20:31:14 GMT</pubDate><content:encoded>var _excluded = [&quot;components&quot;];
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i &lt; sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) &gt;= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i &lt; sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) &gt;= 0) continue; target[key] = source[key]; } return target; }
+
+/* @jsxRuntime classic */
+
+/* @jsx mdx */
+var _frontmatter = {
+  &quot;title&quot;: &quot;JS新特性-各种符号&quot;,
+  &quot;date&quot;: &quot;2021-07-19T20:31:14.000Z&quot;,
+  &quot;description&quot;: &quot;让没看过ES新特性的人, 压根读不懂你的代码&quot;,
+  &quot;tags&quot;: [&quot;js&quot;],
+  &quot;categories&quot;: &quot;tech&quot;
+};
+var layoutProps = {
+  _frontmatter: _frontmatter
+};
+var MDXLayout = &quot;wrapper&quot;;
+return function MDXContent(_ref) {
+  var components = _ref.components,
+      props = _objectWithoutProperties(_ref, _excluded);
+
+  return mdx(MDXLayout, _extends({}, layoutProps, props, {
+    components: components,
+    mdxType: &quot;MDXLayout&quot;
+  }), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;-空值合并运算符&quot;
+  }, &quot;?? \u7A7A\u503C\u5408\u5E76\u8FD0\u7B97\u7B26&quot;), mdx(&quot;p&quot;, null, &quot;\u53CC\u95EE\u53F7\u7684\u51FA\u73B0\u662F\u4E3A\u4E86\u8865\u8DB3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;||&quot;), &quot;\u7684\u7F3A\u70B9\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;||&quot;), &quot; \u901A\u8FC7\u77ED\u8DEF\u8FD0\u7B97\u53EA\u80FD\u5224\u65AD&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;falsy&quot;), &quot;\u503C\uFF0C\u4F46\u662F\u4E1A\u52A1\u4EE3\u7801\u4E2D\u7ECF\u5E38\u6211\u4EEC\u9700\u8981\u628A &quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;&apos;&apos;&quot;), &quot;, &quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;0&quot;), &quot;, &quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;NaN&quot;), &quot;\u8FD9\u4E09\u4E2A\u503C\u548C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;undefined&quot;), &quot;\u53CA&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;null&quot;), &quot;\u533A\u5206\u5F00\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u5929\u4E0D\u751F\u6211\u53CC\u95EE\u53F7\uFF1A&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
+    parentName: &quot;pre&quot;,
+    &quot;className&quot;: &quot;language-typescript&quot;
+  }, &quot;// \u540E\u7AEF\u7ED9\u7684\u5B57\u6BB5\nlet count = 0 as null | number;\n// \u524D\u7AEF\u5224\u65ADcount\u5B58\u5728\uFF0C\u5982\u679C\u4E0D\u5B58\u5728\u663E\u793A\u9ED8\u8BA4\u503C\n// \u76F4\u63A5\u7528 || \u4F1A\u6F0F\u63890\nlet text1 = count || &apos;-&apos;; // &apos;-&apos;\n// \u9700\u8981\u7528 typeof \u6216\u8005\u5176\u4ED6\u4EFB\u4F55\u65B9\u5F0F\u5224\u65AD\uFF0C \u9EBB\u70E6\nlet text2 = typeof count === &apos;number&apos; ? count : &apos;-&apos;; // 0\n&quot;)), mdx(&quot;p&quot;, null, &quot;\u524D\u7AEF\u4E07\u53E4\u5982\u957F\u591C\uFF1A&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
+    parentName: &quot;pre&quot;,
+    &quot;className&quot;: &quot;language-typescript&quot;
+  }, &quot;// ?? \u53EA\u4F1A\u62E6\u4E0B null \u548C undefined\nlet text3 = count ?? &apos;-&apos;; // 0\n&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;-安全链式调用&quot;
+  }, &quot;?. \u5B89\u5168\u94FE\u5F0F\u8C03\u7528&quot;), mdx(&quot;p&quot;, null, &quot;\u4E00\u4E2A\u83DC\u9E21\u524D\u7AEF\uFF0C\u6BCF\u5929\u8981\u5904\u7406\u5927\u91CF\u7684&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;error: can&apos;t call method on an undefined value&quot;), &quot;\u8FD9\u79CD\u62A5\u9519\uFF0C\u5C24\u5176\u662F\u4F7F\u7528 hooks \u7684\u65F6\u5019\u3002\u5DE5\u5177\u5BF9\u8C61\u5C1A\u672A\u5B9E\u4F8B\u5316\u5C31\u8C03\u7528\u4ED6\u7684\u51FD\u6570\uFF0C\u6216\u8005\u540E\u7AEF\u6570\u636E\u8FD8\u6CA1\u62FF\u5230\uFF0C\u5C31\u60F3\u53BB\u62FF\u6570\u636E\uFF08&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;null&quot;), &quot;\uFF09\u91CC\u7684\u503C\u3002\u5982\u679C\u6BCF\u4E2A\u8C03\u7528\u7684\u5730\u65B9\u90FD\u53BB\u505A\u4E00\u4E0B\u7A7A\u503C\u5224\u65AD\u5F53\u7136\u4E5F\u4E0D\u662F\u4E0D\u53EF\u4EE5\u3002\u4F46\u6709\u4E86&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;?.&quot;), &quot;\u4E4B\u540E\u5C31 dark \u4E0D\u5FC5\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;?.&quot;), &quot;\u4F1A\u5224\u65AD\u95EE\u53F7\u524D\u7684\u5BF9\u8C61\u5982\u679C\u4E3A&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;null&quot;), &quot;\u6216&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;undefined&quot;), &quot;\u5C31\u76F4\u63A5\u8FD4\u56DE&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;undefined&quot;), &quot;\uFF0C\u7ED3\u675F\u94FE\u5F0F\u8C03\u7528\u3002&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
+    parentName: &quot;pre&quot;,
+    &quot;className&quot;: &quot;language-js&quot;
+  }, &quot;let data = null;\nconsole.log(data?.value); // null\n&quot;)), mdx(&quot;p&quot;, null, &quot;\u4F60\u8FD8\u53EF\u4EE5\u548C&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;??&quot;), &quot;\u914D\u5408&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
+    parentName: &quot;pre&quot;,
+    &quot;className&quot;: &quot;language-js&quot;
+  }, &quot;let data = null;\nconsole.log(data?.value ?? &apos;-&apos;);\n&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;-逻辑空赋值运算符&quot;
+  }, &quot;??= \u903B\u8F91\u7A7A\u8D4B\u503C\u8FD0\u7B97\u7B26&quot;), mdx(&quot;p&quot;, null, &quot;\u53CC\u95EE\u53F7\u8D4B\u503C\u7B26\u53F7\u7248\u3002&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
+    parentName: &quot;pre&quot;,
+    &quot;className&quot;: &quot;language-ts&quot;
+  }, &quot;let x: null | number\n// \u4EC5\u5F53 x \u4E3A null \u6216 undefined \u65F6\uFF0Cx = 1\nx ??= 1\n&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;-强制链式调用（ts）&quot;
+  }, &quot;! \u5F3A\u5236\u94FE\u5F0F\u8C03\u7528\uFF08TS\uFF09&quot;), mdx(&quot;p&quot;, null, &quot;\u5F3A\u5236\u94FE\u5F0F\u8C03\u7528\u5728\u5DE5\u4F5C\u4E2D\u7684\u4F7F\u7528\u9891\u7387\u4E5F\u5F88\u9AD8\uFF0C\u5F88\u591A\u65F6\u5019\u7C7B\u578B\u8986\u76D6\u4F1A\u6709\u9057\u6F0F\uFF0C \u4F46\u662F\u8865\u5168\u7C7B\u578B\u53C8\u592A\u9EBB\u70E6\uFF0C\u5C31\u7528\u5F3A\u5236\u94FE\u5F0F\u8C03\u7528\u6765\u907F\u514D\u4E00\u4E9B\u4E0D\u5FC5\u8981\u7684\u62A5\u9519\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;!&quot;), &quot;\u786E\u5B9A\u7B26\u53F7\u524D\u7684\u5730\u6BB5\u5FC5\u5B9A\u5B58\u5728\uFF1A&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
+    parentName: &quot;pre&quot;,
+    &quot;className&quot;: &quot;language-ts&quot;
+  }, &quot;// \u8FD9\u91CC Error\u5BF9\u8C61\u5B9A\u4E49\u7684stack\u662F\u53EF\u9009\u53C2\u6570\uFF0C\u5982\u679C\u8FD9\u6837\u5199\u7684\u8BDD\u7F16\u8BD1\u5668\u4F1A\u63D0\u793A\n// \u51FA\u9519 TS2532: Object is possibly &apos;undefined&apos;.\nnew Error().stack.split(&apos;\\n&apos;);\n\n// \u6211\u4EEC\u786E\u4FE1\u8FD9\u4E2A\u5B57\u6BB5100%\u51FA\u73B0\uFF0C\u90A3\u4E48\u5C31\u53EF\u4EE5\u6DFB\u52A0\uFF01\uFF0C\u5F3A\u8C03\u8FD9\u4E2A\u5B57\u6BB5\u4E00\u5B9A\u5B58\u5728\nnew Error().stack!.split(&apos;\\n&apos;);\n&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;_-数字分隔符&quot;
+  }, &quot;_&quot;, &quot; \u6570\u5B57\u5206\u9694\u7B26&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
+    parentName: &quot;pre&quot;,
+    &quot;className&quot;: &quot;language-js&quot;
+  }, &quot;let x = 1000000;\nlet y = 1_000_000;\nx === y; // true\n&quot;)), mdx(&quot;h2&quot;, {
+    &quot;id&quot;: &quot;-双冒号运算符&quot;
+  }, &quot;:: \u53CC\u5192\u53F7\u8FD0\u7B97\u7B26&quot;), mdx(&quot;p&quot;, null, &quot;\u7BAD\u5934\u51FD\u6570\u53EF\u4EE5\u7ED1\u5B9A&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;this&quot;), &quot;\u5BF9\u8C61\uFF0C\u5927\u5927\u51CF\u5C11\u4E86\u663E\u5F0F\u7ED1\u5B9A&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;this&quot;), &quot;\u5BF9\u8C61\u7684\u5199\u6CD5\uFF08&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;call&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;apply&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;bind&quot;), &quot;\uFF09\u3002\u4F46\u662F\uFF0C\u7BAD\u5934\u51FD\u6570\u5E76\u4E0D\u9002\u7528\u4E8E\u6240\u6709\u573A\u5408\uFF0C\u6240\u4EE5\u73B0\u5728\u6709\u4E00\u4E2A&quot;, mdx(&quot;a&quot;, {
+    parentName: &quot;p&quot;,
+    &quot;href&quot;: &quot;https://github.com/zenparsing/es-function-bind&quot;
+  }, &quot;\u63D0\u6848&quot;), &quot;\uFF0C\u63D0\u51FA\u4E86\u201C\u51FD\u6570\u7ED1\u5B9A\u201D\uFF08function bind\uFF09\u8FD0\u7B97\u7B26\uFF0C\u7528\u6765\u53D6\u4EE3&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;call&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;apply&quot;), &quot;\u3001&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;bind&quot;), &quot;\u8C03\u7528\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u51FD\u6570\u7ED1\u5B9A\u8FD0\u7B97\u7B26\u662F\u5E76\u6392\u7684\u4E24\u4E2A\u5192\u53F7\uFF08&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;::&quot;), &quot;\uFF09\uFF0C\u53CC\u5192\u53F7\u5DE6\u8FB9\u662F\u4E00\u4E2A\u5BF9\u8C61\uFF0C\u53F3\u8FB9\u662F\u4E00\u4E2A\u51FD\u6570\u3002\u8BE5\u8FD0\u7B97\u7B26\u4F1A\u81EA\u52A8\u5C06\u5DE6\u8FB9\u7684\u5BF9\u8C61\uFF0C\u4F5C\u4E3A\u4E0A\u4E0B\u6587\u73AF\u5883\uFF08\u5373&quot;, mdx(&quot;inlineCode&quot;, {
+    parentName: &quot;p&quot;
+  }, &quot;this&quot;), &quot;\u5BF9\u8C61\uFF09\uFF0C\u7ED1\u5B9A\u5230\u53F3\u8FB9\u7684\u51FD\u6570\u4E0A\u9762\u3002&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
+    parentName: &quot;pre&quot;,
+    &quot;className&quot;: &quot;language-js&quot;
+  }, &quot;foo::bar; \n// \u7B49\u540C\u4E8E\nbar.bind(foo);\n\nfoo::bar(...arguments); \n// \u7B49\u540C\u4E8E\nbar.apply(foo, arguments);\n\nconst hasOwnProperty = Object.prototype.hasOwnProperty;\nfunction hasOwn(obj, key){\n  return obj::hasOwnProperty(key);\n}\n&quot;)), mdx(&quot;p&quot;, null, &quot;\u5982\u679C\u53CC\u5192\u53F7\u5DE6\u8FB9\u4E3A\u7A7A\uFF0C\u53F3\u8FB9\u662F\u4E00\u4E2A\u5BF9\u8C61\u7684\u65B9\u6CD5\uFF0C\u5219\u7B49\u4E8E\u5C06\u8BE5\u65B9\u6CD5\u7ED1\u5B9A\u5728\u8BE5\u5BF9\u8C61\u4E0A\u9762\u3002&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
+    parentName: &quot;pre&quot;,
+    &quot;className&quot;: &quot;language-js&quot;
+  }, &quot;var method = obj::obj.foo; \n// \u7B49\u540C\u4E8E\nvar method = ::obj.foo;\n\nlet log = ::console.log; \n// \u7B49\u540C\u4E8E\nvar log = console.log.bind(console);\n&quot;)), mdx(&quot;p&quot;, null, &quot;\u5982\u679C\u53CC\u5192\u53F7\u8FD0\u7B97\u7B26\u7684\u8FD0\u7B97\u7ED3\u679C\uFF0C\u8FD8\u662F\u4E00\u4E2A\u5BF9\u8C61\uFF0C\u5C31\u53EF\u4EE5\u91C7\u7528\u94FE\u5F0F\u5199\u6CD5\u3002&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
+    parentName: &quot;pre&quot;,
+    &quot;className&quot;: &quot;language-js&quot;
+  }, &quot;import{ map, takeWhile, forEach } from \&quot;iterlib\&quot;;\n\ngetPlayers()\n::map(x =&gt; x.character())\n::takeWhile(x =&gt; x.strength &gt;100)\n::forEach(x =&gt; console.log(x));\n&quot;)));
+}
+;
+MDXContent.isMDXComponent = true;</content:encoded></item><item><title><![CDATA[统计函数执行时间]]></title><description><![CDATA[统计函数 修饰器 或者用高阶函数处理。]]></description><link>https://blog.foolishrobot.xyz/统计函数执行时间</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/统计函数执行时间</guid><pubDate>Mon, 19 Jul 2021 11:02:47 GMT</pubDate><content:encoded>var _excluded = [&quot;components&quot;];
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -4396,103 +4527,6 @@ return function MDXContent(_ref) {
     parentName: &quot;p&quot;,
     &quot;href&quot;: &quot;https://nextjs.org/docs/api-reference/next/link&quot;
   }, &quot;\u9875\u9762\u9884\u52A0\u8F7D\uFF08page preload\uFF09&quot;), &quot;\u4E00\u8D77\u4F7F\u7528\uFF0C\u5C31\u53EF\u4EE5\u7ACB\u5373\u52A0\u8F7D\u4E0B\u4E00\u9875\u548C\u6570\u636E\u3002&quot;));
-}
-;
-MDXContent.isMDXComponent = true;</content:encoded></item><item><title><![CDATA[JS新特性-各种符号]]></title><description><![CDATA[?? 空值合并运算符 双问号的出现是为了补足 || 的缺点。 ||  通过短路运算只能判断 falsy 值，但是业务代码中经常我们需要把  '' ,  0 ,  NaN 这三个值和 undefined 及 null…]]></description><link>https://blog.foolishrobot.xyz/JS新特性-问号和感叹号</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/JS新特性-问号和感叹号</guid><pubDate>Wed, 04 Nov 2020 20:31:14 GMT</pubDate><content:encoded>var _excluded = [&quot;components&quot;];
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i &lt; sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) &gt;= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i &lt; sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) &gt;= 0) continue; target[key] = source[key]; } return target; }
-
-/* @jsxRuntime classic */
-
-/* @jsx mdx */
-var _frontmatter = {
-  &quot;title&quot;: &quot;JS新特性-各种符号&quot;,
-  &quot;date&quot;: &quot;2020-11-04T20:31:14.000Z&quot;,
-  &quot;description&quot;: &quot;让没看过ES新特性的人, 压根读不懂你的代码&quot;,
-  &quot;tags&quot;: [&quot;js&quot;],
-  &quot;categories&quot;: &quot;tech&quot;
-};
-var layoutProps = {
-  _frontmatter: _frontmatter
-};
-var MDXLayout = &quot;wrapper&quot;;
-return function MDXContent(_ref) {
-  var components = _ref.components,
-      props = _objectWithoutProperties(_ref, _excluded);
-
-  return mdx(MDXLayout, _extends({}, layoutProps, props, {
-    components: components,
-    mdxType: &quot;MDXLayout&quot;
-  }), mdx(&quot;h2&quot;, {
-    &quot;id&quot;: &quot;-空值合并运算符&quot;
-  }, &quot;?? \u7A7A\u503C\u5408\u5E76\u8FD0\u7B97\u7B26&quot;), mdx(&quot;p&quot;, null, &quot;\u53CC\u95EE\u53F7\u7684\u51FA\u73B0\u662F\u4E3A\u4E86\u8865\u8DB3&quot;, mdx(&quot;inlineCode&quot;, {
-    parentName: &quot;p&quot;
-  }, &quot;||&quot;), &quot;\u7684\u7F3A\u70B9\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;inlineCode&quot;, {
-    parentName: &quot;p&quot;
-  }, &quot;||&quot;), &quot; \u901A\u8FC7\u77ED\u8DEF\u8FD0\u7B97\u53EA\u80FD\u5224\u65AD&quot;, mdx(&quot;inlineCode&quot;, {
-    parentName: &quot;p&quot;
-  }, &quot;falsy&quot;), &quot;\u503C\uFF0C\u4F46\u662F\u4E1A\u52A1\u4EE3\u7801\u4E2D\u7ECF\u5E38\u6211\u4EEC\u9700\u8981\u628A &quot;, mdx(&quot;inlineCode&quot;, {
-    parentName: &quot;p&quot;
-  }, &quot;&apos;&apos;&quot;), &quot;, &quot;, mdx(&quot;inlineCode&quot;, {
-    parentName: &quot;p&quot;
-  }, &quot;0&quot;), &quot;, &quot;, mdx(&quot;inlineCode&quot;, {
-    parentName: &quot;p&quot;
-  }, &quot;NaN&quot;), &quot;\u8FD9\u4E09\u4E2A\u503C\u548C&quot;, mdx(&quot;inlineCode&quot;, {
-    parentName: &quot;p&quot;
-  }, &quot;undefined&quot;), &quot;\u53CA&quot;, mdx(&quot;inlineCode&quot;, {
-    parentName: &quot;p&quot;
-  }, &quot;null&quot;), &quot;\u533A\u5206\u5F00\u3002&quot;), mdx(&quot;p&quot;, null, &quot;\u5929\u4E0D\u751F\u6211\u53CC\u95EE\u53F7\uFF1A&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
-    parentName: &quot;pre&quot;,
-    &quot;className&quot;: &quot;language-typescript&quot;
-  }, &quot;// \u540E\u7AEF\u7ED9\u7684\u5B57\u6BB5\nlet count = 0 as null | number;\n// \u524D\u7AEF\u5224\u65ADcount\u5B58\u5728\uFF0C\u5982\u679C\u4E0D\u5B58\u5728\u663E\u793A\u9ED8\u8BA4\u503C\n// \u76F4\u63A5\u7528 || \u4F1A\u6F0F\u63890\nlet text1 = count || &apos;-&apos;; // &apos;-&apos;\n// \u9700\u8981\u7528 typeof \u6216\u8005\u5176\u4ED6\u4EFB\u4F55\u65B9\u5F0F\u5224\u65AD\uFF0C \u9EBB\u70E6\nlet text2 = typeof count === &apos;number&apos; ? count : &apos;-&apos;; // 0\n&quot;)), mdx(&quot;p&quot;, null, &quot;\u524D\u7AEF\u4E07\u53E4\u5982\u957F\u591C\uFF1A&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
-    parentName: &quot;pre&quot;,
-    &quot;className&quot;: &quot;language-typescript&quot;
-  }, &quot;// ?? \u53EA\u4F1A\u62E6\u4E0B null \u548C undefined\nlet text3 = count ?? &apos;-&apos;; // 0\n&quot;)), mdx(&quot;h2&quot;, {
-    &quot;id&quot;: &quot;-安全链式调用&quot;
-  }, &quot;?. \u5B89\u5168\u94FE\u5F0F\u8C03\u7528&quot;), mdx(&quot;p&quot;, null, &quot;\u4E00\u4E2A\u83DC\u9E21\u524D\u7AEF\uFF0C\u6BCF\u5929\u8981\u5904\u7406\u5927\u91CF\u7684&quot;, mdx(&quot;inlineCode&quot;, {
-    parentName: &quot;p&quot;
-  }, &quot;error: can&apos;t call method on an undefined value&quot;), &quot;\u8FD9\u79CD\u62A5\u9519\uFF0C\u5C24\u5176\u662F\u4F7F\u7528 hooks \u7684\u65F6\u5019\u3002\u5DE5\u5177\u5BF9\u8C61\u5C1A\u672A\u5B9E\u4F8B\u5316\u5C31\u8C03\u7528\u4ED6\u7684\u51FD\u6570\uFF0C\u6216\u8005\u540E\u7AEF\u6570\u636E\u8FD8\u6CA1\u62FF\u5230\uFF0C\u5C31\u60F3\u53BB\u62FF\u6570\u636E\uFF08&quot;, mdx(&quot;inlineCode&quot;, {
-    parentName: &quot;p&quot;
-  }, &quot;null&quot;), &quot;\uFF09\u91CC\u7684\u503C\u3002\u5982\u679C\u6BCF\u4E2A\u8C03\u7528\u7684\u5730\u65B9\u90FD\u53BB\u505A\u4E00\u4E0B\u7A7A\u503C\u5224\u65AD\u5F53\u7136\u4E5F\u4E0D\u662F\u4E0D\u53EF\u4EE5\u3002\u4F46\u6709\u4E86&quot;, mdx(&quot;inlineCode&quot;, {
-    parentName: &quot;p&quot;
-  }, &quot;?.&quot;), &quot;\u4E4B\u540E\u5C31 dark \u4E0D\u5FC5\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;inlineCode&quot;, {
-    parentName: &quot;p&quot;
-  }, &quot;?.&quot;), &quot;\u4F1A\u5224\u65AD\u95EE\u53F7\u524D\u7684\u5BF9\u8C61\u5982\u679C\u4E3A&quot;, mdx(&quot;inlineCode&quot;, {
-    parentName: &quot;p&quot;
-  }, &quot;null&quot;), &quot;\u6216&quot;, mdx(&quot;inlineCode&quot;, {
-    parentName: &quot;p&quot;
-  }, &quot;undefined&quot;), &quot;\u5C31\u76F4\u63A5\u8FD4\u56DE&quot;, mdx(&quot;inlineCode&quot;, {
-    parentName: &quot;p&quot;
-  }, &quot;undefined&quot;), &quot;\uFF0C\u7ED3\u675F\u94FE\u5F0F\u8C03\u7528\u3002&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
-    parentName: &quot;pre&quot;,
-    &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;let data = null;\nconsole.log(data?.value); // null\n&quot;)), mdx(&quot;p&quot;, null, &quot;\u4F60\u8FD8\u53EF\u4EE5\u548C&quot;, mdx(&quot;inlineCode&quot;, {
-    parentName: &quot;p&quot;
-  }, &quot;??&quot;), &quot;\u914D\u5408&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
-    parentName: &quot;pre&quot;,
-    &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;let data = null;\nconsole.log(data?.value ?? &apos;-&apos;);\n&quot;)), mdx(&quot;h2&quot;, {
-    &quot;id&quot;: &quot;-逻辑空赋值运算符&quot;
-  }, &quot;??= \u903B\u8F91\u7A7A\u8D4B\u503C\u8FD0\u7B97\u7B26&quot;), mdx(&quot;p&quot;, null, &quot;\u53CC\u95EE\u53F7\u8D4B\u503C\u7B26\u53F7\u7248\u3002&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
-    parentName: &quot;pre&quot;,
-    &quot;className&quot;: &quot;language-ts&quot;
-  }, &quot;let x: null | number\n// \u4EC5\u5F53 x \u4E3A null \u6216 undefined \u65F6\uFF0Cx = 1\nx ??= 1\n&quot;)), mdx(&quot;h2&quot;, {
-    &quot;id&quot;: &quot;-强制链式调用（ts）&quot;
-  }, &quot;! \u5F3A\u5236\u94FE\u5F0F\u8C03\u7528\uFF08TS\uFF09&quot;), mdx(&quot;p&quot;, null, &quot;\u5F3A\u5236\u94FE\u5F0F\u8C03\u7528\u5728\u5DE5\u4F5C\u4E2D\u7684\u4F7F\u7528\u9891\u7387\u4E5F\u5F88\u9AD8\uFF0C\u5F88\u591A\u65F6\u5019\u7C7B\u578B\u8986\u76D6\u4F1A\u6709\u9057\u6F0F\uFF0C \u4F46\u662F\u8865\u5168\u7C7B\u578B\u53C8\u592A\u9EBB\u70E6\uFF0C\u5C31\u7528\u5F3A\u5236\u94FE\u5F0F\u8C03\u7528\u6765\u907F\u514D\u4E00\u4E9B\u4E0D\u5FC5\u8981\u7684\u62A5\u9519\u3002&quot;), mdx(&quot;p&quot;, null, mdx(&quot;inlineCode&quot;, {
-    parentName: &quot;p&quot;
-  }, &quot;!&quot;), &quot;\u786E\u5B9A\u7B26\u53F7\u524D\u7684\u5730\u6BB5\u5FC5\u5B9A\u5B58\u5728\uFF1A&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
-    parentName: &quot;pre&quot;,
-    &quot;className&quot;: &quot;language-ts&quot;
-  }, &quot;// \u8FD9\u91CC Error\u5BF9\u8C61\u5B9A\u4E49\u7684stack\u662F\u53EF\u9009\u53C2\u6570\uFF0C\u5982\u679C\u8FD9\u6837\u5199\u7684\u8BDD\u7F16\u8BD1\u5668\u4F1A\u63D0\u793A\n// \u51FA\u9519 TS2532: Object is possibly &apos;undefined&apos;.\nnew Error().stack.split(&apos;\\n&apos;);\n\n// \u6211\u4EEC\u786E\u4FE1\u8FD9\u4E2A\u5B57\u6BB5100%\u51FA\u73B0\uFF0C\u90A3\u4E48\u5C31\u53EF\u4EE5\u6DFB\u52A0\uFF01\uFF0C\u5F3A\u8C03\u8FD9\u4E2A\u5B57\u6BB5\u4E00\u5B9A\u5B58\u5728\nnew Error().stack!.split(&apos;\\n&apos;);\n&quot;)), mdx(&quot;h2&quot;, {
-    &quot;id&quot;: &quot;_-数字分隔符&quot;
-  }, &quot;_&quot;, &quot; \u6570\u5B57\u5206\u9694\u7B26&quot;), mdx(&quot;pre&quot;, null, mdx(&quot;code&quot;, {
-    parentName: &quot;pre&quot;,
-    &quot;className&quot;: &quot;language-js&quot;
-  }, &quot;let x = 1000000;\nlet y = 1_000_000;\nx === y; // true\n&quot;)));
 }
 ;
 MDXContent.isMDXComponent = true;</content:encoded></item><item><title><![CDATA[JavaScript 风格指南]]></title><description><![CDATA[原文地址:  ryanmcdermott/clean-code-javascript 原文翻译:  alivebao / clean-code-js 转载文章用于自己学习查阅, 如有侵权, 联系作者删除. 介绍 作者 根据 Robert C. Martin…]]></description><link>https://blog.foolishrobot.xyz/代码整洁之道-js版本</link><guid isPermaLink="false">https://blog.foolishrobot.xyz/代码整洁之道-js版本</guid><pubDate>Tue, 13 Oct 2020 13:37:42 GMT</pubDate><content:encoded>var _excluded = [&quot;components&quot;];
