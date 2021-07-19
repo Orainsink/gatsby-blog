@@ -1,0 +1,38 @@
+---
+title: 统计函数执行时间
+date: 2021-07-19 11:02:47
+description:
+tags: [性能]
+categories: snippet
+---
+
+## 统计函数
+
+```js
+function time(target, name, descriptor) {
+    const func = descriptor.value;
+    if (typeof func === 'function') {
+        descriptor.value = function(...args) {
+            console.time();
+            const results = func.apply(this, args);
+            console.timeEnd();
+            return results;
+        }
+    }
+}
+```
+
+## 修饰器
+
+```js
+class Person {
+    @time
+    say() {
+        console.log('hello')
+    }
+}
+const person = new Person();
+person.say();
+```
+
+或者用高阶函数处理。
