@@ -95,4 +95,28 @@ export const songs: Song[] = [
     cover:
       'http://p1.music.126.net/5M49xn4JIQlxfP_ekV6kjQ==/109951164063354523.jpg?param=130y130',
   },
+  {
+    id: 12,
+    name: '卧龙吟-古琴',
+    artist: '白无瑕',
+    url: 'http://music.163.com/song/media/outer/url?id=1362020289.mp3',
+    cover:
+      'http://p2.music.126.net/4yGI2kXFa-pgKtsw7vYYBQ==/109951164034857326.jpg?param=130y130',
+  },
+  {
+    id: 13,
+    name: '国际歌-民乐版',
+    artist: '自得琴社',
+    url: 'http://music.163.com/song/media/outer/url?id=1857628275.mp3',
+    cover:
+      'http://p2.music.126.net/TT9aYBeuXyPkwQyUODBdqQ==/109951166135693121.jpg?param=130y130',
+  },
+  {
+    id: 14,
+    name: '空山鸟语',
+    artist: '自得琴社',
+    url: 'http://music.163.com/song/media/outer/url?id=1367710382.mp3',
+    cover:
+      'http://p2.music.126.net/TT9aYBeuXyPkwQyUODBdqQ==/109951166135693121.jpg?param=130y130',
+  },
 ];
