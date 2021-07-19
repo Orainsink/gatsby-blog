@@ -7,7 +7,7 @@ const onInitialClientRender = () => {
 
   if (
     !Boolean(globalThis?.localStorage.getItem('SCENE')) ||
-    Boolean(globalThis？.localStorage.getItem('SKIP'))
+    Boolean(globalThis?.localStorage.getItem('SKIP'))
   ) {
     document.getElementById('___loader').style.display = 'none';
   } else {
