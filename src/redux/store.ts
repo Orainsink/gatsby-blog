@@ -11,6 +11,7 @@ export interface RootState {
   headerDrop: boolean;
   theme: null | 'dark' | 'light';
   title: string;
+  playerVisible: boolean;
   music: {
     playing: boolean;
     volume: number;
@@ -77,6 +78,10 @@ const reducer = produce(
         draft.theme = payload;
         return draft;
       }
+      case 'PLAYER_VISIBLE': {
+        draft.playerVisible = payload;
+        return draft;
+      }
       default:
         return draft;
     }
@@ -99,6 +104,7 @@ const initialState = {
   maxHeight: 0,
   headerDrop: false,
   theme: globalThis.localStorage?.getItem('theme'),
+  playerVisible: false,
   music: {
     playing: false,
     volume: 0.5,

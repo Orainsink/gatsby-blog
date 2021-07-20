@@ -25,9 +25,10 @@ const getRandomList = () =>
 
 /** Controller panel */
 const Panel = () => {
-  const { playing, volume, mute, loop, id, loaded } = useSelector(
-    (state: iRootState) => state.music
-  );
+  const {
+    playerVisible,
+    music: { playing, volume, mute, loop, id, loaded },
+  } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
 
   const [randomList, setRandomList] = useState<number[]>([]);
@@ -55,15 +56,15 @@ const Panel = () => {
   }, []);
 
   useEffect(() => {
-    if (playing) {
-      loaded && siriWaveRef.current?.start();
+    if (playing && playerVisible && loaded) {
+      siriWaveRef.current?.start();
     } else {
       siriWaveRef.current?.stop();
     }
     return () => {
       siriWaveRef.current?.stop();
     };
-  }, [playing, loaded]);
+  }, [playing, loaded, playerVisible]);
 
   /**
    * change play status
@@ -98,7 +99,7 @@ const Panel = () => {
           <div
             className={classnames(
               styles.playingImg,
-              playing ? styles.running : styles.paused
+              playing && playerVisible ? styles.running : styles.paused
             )}
           >
             <div />
@@ -110,7 +111,7 @@ const Panel = () => {
         )}
       </li>
     ),
-    [id, playing, loaded, handleClick]
+    [id, playing, playerVisible, loaded, handleClick]
   );
 
   /** current song id */

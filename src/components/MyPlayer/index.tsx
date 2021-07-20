@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tooltip } from 'antd';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import classnames from 'classnames';
 import * as styles from './index.module.less';
 import Panel from './Panel';
@@ -11,9 +11,9 @@ const MyPlayer = () => {
   const {
     headerDrop,
     theme,
-    music: { loaded },
+    music: { loaded, playing },
   } = useSelector((state: iRootState) => state);
-  const { playing } = useSelector((state: iRootState) => state.music);
+  const dispatch = useDispatch();
 
   return (
     <Tooltip
@@ -24,6 +24,9 @@ const MyPlayer = () => {
         [styles.dark]: theme === 'dark',
       })}
       getPopupContainer={() => document.getElementById('header')}
+      onVisibleChange={(visible) =>
+        dispatch({ type: 'PLAYER_VISIBLE', payload: visible })
+      }
     >
       <div style={{ cursor: 'pointer', transform: 'translateY(0.2em)' }}>
         <svg

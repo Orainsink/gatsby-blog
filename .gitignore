@@ -75,3 +75,5 @@ yarn-error.log
 .husky/
 # vscode
 .vscode/
+# test
+__snapshots__/
