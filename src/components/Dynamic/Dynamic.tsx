@@ -20,7 +20,7 @@ interface Data {
 /**
  * some default values
  */
-const hfUrl =
+const HF_URL =
   'https://free-api.heweather.net/s6/weather/now?&location=auto_ip&key=' +
   process.env.GATSBY_HEWEATHER_KEY;
 let cameraShakeY = 0;
@@ -102,7 +102,7 @@ const Dynamic = () => {
   useEffect(() => {
     const fetchWeather = async () => {
       try {
-        const promise = await fetch(hfUrl, {
+        const promise = await fetch(HF_URL, {
           headers: {
             'content-type': 'application/json',
           },

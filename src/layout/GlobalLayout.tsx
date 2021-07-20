@@ -4,12 +4,11 @@ import '../assets/css/variables.less';
 import '../assets/css/global.less';
 import Header from '../components/Header';
 import BackTop from '../components/BackTop';
+import Bg from '../components/Bg';
 import { useHasMounted, useBackTop } from '../hooks';
 import '../assets/css/base.less';
-import loadable from '@loadable/component';
 import { iRootState } from '../redux/store';
 import ErrorBoundary from '../components/ErrorBoundary';
-const Bg = loadable(() => import('../components/Bg'));
 
 /**global PageElement */
 const GlobalLayout = ({ children }) => {
