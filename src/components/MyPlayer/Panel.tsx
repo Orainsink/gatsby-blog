@@ -15,6 +15,7 @@ import * as styles from './index.module.less';
 import Controller from './Controller';
 import { iRootState } from '../../redux/store';
 import { ReactComponent as MusicLoadingSvg } from '../../assets/img/musicLoading.svg';
+import useMediaMeta from './useMediaMeta';
 
 /**伪随机数组 */
 const getRandomList = () =>
@@ -137,6 +138,26 @@ const Panel = () => {
       dispatch({ type: 'MUSIC', payload: { id: tmpList[0] } });
     }
   }, [id, loop, randomList, dispatch]);
+
+  /**
+   * modify media session action
+   */
+  useEffect(() => {
+    const handler = function (playing: boolean) {
+      dispatch({ type: 'MUSIC', payload: { playing } });
+    };
+
+    navigator.mediaSession.setActionHandler('play', () => handler(true));
+    navigator.mediaSession.setActionHandler('pause', () => handler(false));
+    navigator.mediaSession.setActionHandler('pause', () => handler(false));
+    navigator.mediaSession.setActionHandler('previoustrack', function () {});
+    navigator.mediaSession.setActionHandler('nexttrack', function () {
+      handleMusicEnd();
+    });
+    // eslint-disable-next-line
+  }, [dispatch]);
+
+  useMediaMeta(id);
 
   return (
     <>

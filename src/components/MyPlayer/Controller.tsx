@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Col, Row, Slider } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReactComponent as PausedSvg } from '../../assets/img/paused.svg';
