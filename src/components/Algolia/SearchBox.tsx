@@ -4,7 +4,7 @@ import { Input } from 'antd';
 import { useDebounce } from '../../hooks';
 const { Search } = Input;
 
-export default connectSearchBox(({ refine, currentRefinement, onFocus }) => {
+export default connectSearchBox(({ refine }) => {
   const [val, setVal] = useState('');
   useDebounce(
     () => {

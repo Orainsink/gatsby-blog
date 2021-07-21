@@ -6,8 +6,8 @@ const onInitialClientRender = () => {
   }, 0);
 
   if (
-    !Boolean(globalThis?.localStorage.getItem('SCENE')) ||
-    Boolean(globalThis?.localStorage.getItem('SKIP'))
+    !Boolean(window?.localStorage.getItem('SCENE')) ||
+    Boolean(window?.localStorage.getItem('SKIP'))
   ) {
     document.getElementById('___loader').style.display = 'none';
   } else {
@@ -16,7 +16,18 @@ const onInitialClientRender = () => {
     }, 300);
   }
 };
+/**pwa update notice */
+const onServiceWorkerUpdateReady = () => {
+  const answer = window.confirm(
+    `This application has been updated. ` +
+      `Reload to display the latest version?`
+  );
+  if (answer === true) {
+    window.location.reload();
+  }
+};
 
 module.exports = {
   onInitialClientRender,
+  onServiceWorkerUpdateReady,
 };

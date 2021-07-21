@@ -1,0 +1,152 @@
+---
+title: service worker搭配按需加载实现性能优化，及workbox入门
+date: 2021-07-21 15:36:15
+description: sw.js可以代理web应用的请求，让前端可以在不和后端打招呼的情况下缓存资源。
+tags: [性能, react]
+categories: tech
+---
+
+## React 按需加载
+
+### 代码拆分 - import()
+
+ECMA Script 标准有一个提案，专门用于动态加载模块，语法是 `import(someModule)`，该 `import()` 函数会返回一个 Promise。在模块加载成功后，我们就可以在 Promise 的 then 回调函数中去使用这个模块。当 Webpack 解析到该`import()`语法时，会自动进行代码拆分，生成独立的 bundle 文件。
+
+### 懒加载 - React.lazy()
+
+在把不重要的模块拆分出去过后，网页的加载速度变快了很多，接下来就是等待 promise 结束过后执行异步模块了。
+
+如果动态`import()`的是一个react组件，那么该组件需要用[`React.lazy()`](https://zh-hans.reactjs.org/docs/code-splitting.html)处理一下（`React.lazy()`封装了一些promise的处理逻辑，返回了一个React组件，不使用`lazy()`就得自己处理promise，比较麻烦）
+
+`React.lazy()`将在v18版本支持SSR，当前版本如果想支持SSR，可以用插件`@loadable/component`替代
+
+### 变量控制加载
+
+`React.lazy()` 把条件渲染细节挪到了框架层，允许把动态引入的组件当普通组件用，优雅地消除了这种侵入性。
+
+变量控制加载可以进一步降低页面需要加载的js文件的数量。我们可以把一些不常用的功能采用用户行为触发的方式加载文件，进一步优化性能。但对绝大部分功能来说，应该直接用懒加载，因为变量控制加载可能会增加用户使用某功能的时候的等待时间，体验不太好。
+
+```jsx
+import * as React from 'react';
+const TestComponent = React.lazy(() => import('./TestComponent'))
+
+const App = () => {
+  const [value] = React.useState(0);
+  
+  return <div>
+    {!!value && <Suspense fallback={<div>Lodaing</div>}>
+      <TestComponent />
+    </Suspense>}
+  </div>
+}
+```
+
+### 注意事项
+
+懒加载的组件是会造成页面重排的，使用的时候最好注意对页面布局的影响，或者用`Suspense`预留空间。
+
+## service worker
+
+我们通常可以使用`cache-control`等http缓存对网站的静态资源进行优化，但是强缓存的主导者基本是还是后端，这就给前端带来了一些不便。如果是 offline 情况下，协商缓存也会因为断网而报错。
+
+Service worker 是客户端和服务器之间的中间人（中介），运行于一个独立的线程，可以拦截网站的所有请求，我们可以通过sw实现离线开发（PWA）或者由前端自由控制静态资源的离线缓存，而且sw不会影响网站的性能。
+
+和浏览器自动的资源缓存机制相比，Service worker 加上 Cache Storage ，具有更高的准确性和可靠性。它可以确保两点：
+
+- 缓存永远不过期。你只要下载过一次，就永远不需要再重新下载，除非主动删除。
+- 永远不会访问过期的资源。换句话说，如果发布了一个新版本，那么你可以通过版本化的一些机制，来确保用户访问到的一定是最新的资源。
+
+### Service worker 注册
+
+使用 Service Worker 的第一步，就是告诉浏览器当前域名下我需要使用 Service Worker。
+
+我们可以使用下面的代码来实现：
+
+```js
+if ('serviceWorker' in navigator) { 
+  navigator.serviceWorker
+    .register('/sw.js')
+    .then(() => { 
+    	// 注册成功
+    	console.log('Service worker registered.');
+  	}, (err) => {
+    	// 注册失败
+    	console.log('ServiceWorker registration failed: ', err);
+  	});
+	});
+}
+```
+
+从代码中可以看到，首先我们需要判断当前浏览器是否支持 Service Worker。如果支持，那么就用 register 方法注册一个 Service Worker，它的参数是 Service Worker 脚本的代码路径，例子中的代码路径就是根路径下的 sw.js 这个文件。如果浏览器不支持，则什么都不做。
+
+### 在 Service Worker 安装之后初始化缓存机制
+
+在 Service Worker 的实现代码被下载和执行后，会触发安装完成的事件，这个时候，你就可以在 sw.js 里监听这个事件，从而初始化自己的缓存机制。
+
+比如下面的代码，就演示了如何在安装事件中配置 Cache Storage：
+
+```js
+const cacheName = 'my_app_cache';
+// 在 sw.js 中监听安装完成事件
+self.addEventListener('install', function(e) {
+  console.log('Service worker installed.');
+  // 初始化 Cache Storage
+  const cacheOpenPromise = caches.open(cacheName);
+  // 安装过程中，等待 Cache Storage 配置完成
+  e.waitUntil(cacheOpenPromise);
+});
+```
+
+> Cache Storage 也是浏览器提供的一种缓存机制，专门用于缓存一个请求的 request 和 response 的配对关系。此外，它还提供了 API，用来判断某个 request 是不是有对应的 response 已经缓存。所以 Cache Storage 也可以认为是专门为 Service Worker 提供的缓存机制。
+
+有了这样一段代码，我们就完成了 Service Worker 的安装。需要特别注意的是，每次打开 Web 页面时，页面其实都会调用 Service Worker 的 register 方法去注册。但是浏览器会判断脚本内容是否有变化，只有发生了变化才会重新安装。
+
+### 拦截请求
+
+当 Service Worker 安装完成后，接下来就是处于运行状态，能够拦截前端的请求了。你可以通过监听 fetch 事件来处理所有的请求，然后根据请求内容等条件来决定如何处理请求。比如使用本地缓存或者发送到服务器端，实现的方式就是在 sw.js 文件中加入下面的代码：
+
+```js
+// 监听所有的请求
+self.addEventListener('fetch', function(e) {
+  // 如果请求的路径不是 js 结尾，就通过 return false 来告诉 
+  // service worker 这个请求应该发送到服务器端
+  if (!request.url.endsWith('.js')) return false;
+  
+  // 否则检查 cache 中是否有对应的 response
+  const promise = caches.open(cacheName).then(cache => {
+    // 使用 cache.match 
+    return cache.match(e.request).then(res => {
+      if (res) {
+        // 如果缓存存在则直接返回结果
+        return Promise.resolve(res);
+      } else {
+        // 否则发出请求，并存到 cache
+        const req = new Request(e.request.url);
+        return fetch(corsRequest).then(res => {
+          // 更新 cache
+          cache.put(request, res.clone());
+          return res;
+        })
+      }
+    });
+  });
+  // 使用 e.respondWith 方法给请求返回内容
+  e.respondWith(promise);
+});
+```
+
+在这段代码中，采用的是一种缓存优先的策略。如果发现缓存存在，就使用缓存。否则发送请求到服务器端，然后把响应存放到缓存，并同时返回给调用者。这是一种最为高效的静态资源缓存策略，因为只会下载一次，但同时也对静态资源的打包有一定要求，那就是任何一次代码更新，都需要有唯一的路径。
+
+在实际的项目中，一般会通过加入时间戳，或者版本化的命名静态资源文件来实现。当然，在实际的项目中，使用 Service Worker 其实还有更多的考虑因素，比如何时删掉旧版本缓存，如何处理请求失败等等。但是核心机制基本就是示例代码中的内容，相信你在真正使用时，能够完善地加入对应的细节处理。
+
+## 缓存策略
+
+并不是所有文件都需要缓存，我们只通过Service worker来缓存按需加载的 js 文件和 css 文件。
+
+处理方法就是在上面的代码块那里进行一次正则匹配，遇到打包出来的app.js的时候直接返回 false就行了。
+
+如果不过滤主体js，可以在生命周期里判断是否有更新，如果有更新弹出一个弹窗然后刷新网站就行了。
+
+## 效果
+
+本博客
