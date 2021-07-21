@@ -1,13 +1,7 @@
 /*!
-  Copyright (c) 2017 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-
-/*!
  *  Spatial Plugin - Adds support for stereo and 3D audio where Web Audio is supported.
  *  
- *  howler.js v2.2.1
+ *  howler.js v2.2.3
  *  howlerjs.com
  *
  *  (c) 2013-2020, James Simpson of GoldFire Studios
@@ -17,7 +11,7 @@
  */
 
 /*!
- *  howler.js v2.2.1
+ *  howler.js v2.2.3
  *  howlerjs.com
  *
  *  (c) 2013-2020, James Simpson of GoldFire Studios
