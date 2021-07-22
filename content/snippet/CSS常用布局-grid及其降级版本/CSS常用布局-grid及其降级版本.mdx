@@ -1,0 +1,259 @@
+---
+title: CSS常用布局-grid及其降级版本
+date: 2021-07-22 11:13:16
+description: 拥抱变化，网上很多教程都太老了
+tags: [css]
+categories: snippet
+---
+
+import Center from './Center';
+
+import TwoColumn from './TwoColumn';
+
+import Sandwich from './Sandwich';
+
+import HolyGrail from './HolyGrail';
+
+> Grid 布局的属性比较多而且难记，自定义 grid 布局的时候建议直接使用布局生成器
+>
+> https://grid.layoutit.com/
+
+## 空间居中
+
+空间居中布局指的是，不管容器的大小，项目总是占据中心点。
+
+### grid 版
+
+<Center />
+
+```css
+.parent {
+  display: grid;
+  place-items: center;
+}
+```
+
+### flex 版
+
+```css
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+```
+
+### 定位版 - transform
+
+```css
+.parent {
+  position: relative;
+}
+.child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+```
+
+### 定位版 - margin: auto
+
+auto 用于分配块级元素的剩余空间
+
+```css
+.parent {
+  position: relative;
+}
+.child {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+```
+
+### 行内元素
+
+```css
+.parent {
+  test-align: center;
+  height: 20px;
+  /* 行高和高度一样，子元素就会垂直居中 */
+  line-height: 20px;
+}
+```
+
+## 两栏式布局
+
+两栏式布局就是一个边栏，一个主栏。
+
+<TwoColumn />
+
+### grid 版
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: minmax(150px, 25%) 1fr;
+}
+```
+
+### flex 版
+
+```css
+.container {
+  display: flex;
+  flex-flow: nowrap;
+}
+.left {
+  flex: 0 0 150px;
+}
+.right {
+  flex: 1;
+}
+```
+
+### 浮动版
+
+```css
+.container::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.left {
+  float: left;
+  width: 150px;
+  height: 400px;
+}
+.right {
+  margin-left: 150px;
+  height: 200px;
+}
+```
+
+## 三明治布局
+
+三明治布局指的是，页面在垂直方向上，分成三部分：页眉、内容区、页脚。
+
+<Sandwich />
+
+### grid 版
+
+```css
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+```
+
+### flex 版本
+
+```css
+.container {
+  display: flex;
+  flex-flow: colume nowrap;
+}
+.header,
+.footer {
+  /* flex: 0 0; */
+}
+.main {
+  flex: 1;
+  overflow: auto;
+}
+```
+
+## 圣杯布局
+
+圣杯布局是最常用的布局，所以被比喻为圣杯。它将页面分成五个部分，除了页眉和页脚，内容区分成左边栏、主栏、右边栏。
+
+<HolyGrail />
+
+### grid 版
+
+```html
+<div class="container">
+  <header class="a" />
+  <div class="b" />
+  <main class="c" />
+  <div class="d" />
+  <footer class="e" />
+</div>
+```
+
+```css
+.container {
+  display: grid;
+  grid-template: auto 1fr auto / auto 1fr auto;
+  gap: 0px 0px;
+  grid-template-areas:
+    'a a a'
+    'b c d'
+    'e e e';
+}
+.a {
+  grid-area: a;
+}
+.b {
+  grid-area: b;
+}
+.c {
+  grid-area: c;
+}
+.d {
+  grid-area: d;
+}
+.e {
+  grid-area: e;
+}
+```
+
+### flex 版
+
+```html
+<div class="container">
+  <header />
+  <div class="center">
+    <div />
+    <main />
+    <div />
+  </div>
+  <footer />
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-flow: culumn nowrap;
+}
+.header,
+.footer {
+  flex: 0 0;
+}
+.main {
+  flex: 1;
+}
+.center {
+  flex: 1;
+  display: flex;
+}
+.left,
+.right {
+  flex: 0 0 100px;
+}
+```
+
+## 扩展
+
+npm 有一个砌体布局（Masonry-layout）的插件，在图片展示类的网站上使用频率也挺高的。
+
+https://masonry.desandro.com/
+
+原理是用 js 计算宽高度，再用绝对定位生成布局，
+
+该库已经三年没有维护了，周下载量依然接近 10w，有空的话可以研究一下源码，我感觉可以用 grid 来替换绝对定位。
