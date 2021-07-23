@@ -23,6 +23,48 @@ const getRandomList = () =>
     .map((item, index) => index + 1)
     .sort(() => Math.random() - 0.5);
 
+const SongItem = React.memo(
+  ({
+    song,
+    onClick,
+    id,
+    playing,
+    playerVisible,
+    loaded,
+  }: {
+    song: Song;
+    onClick: () => void;
+    id: number;
+    playing: boolean;
+    playerVisible: boolean;
+    loaded: boolean;
+  }) => (
+    <li
+      key={song.id}
+      onClick={() => onClick()}
+      className={classnames(styles.liWrap, {
+        [styles.active]: song.id === id,
+      })}
+    >
+      <span className={styles.name}>{song.name}</span>
+      {song.id === id && loaded && (
+        <div
+          className={classnames(
+            styles.playingImg,
+            playing && playerVisible ? styles.running : styles.paused
+          )}
+        >
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+        </div>
+      )}
+    </li>
+  )
+);
+
 /** Controller panel */
 const Panel = () => {
   const {
@@ -83,35 +125,6 @@ const Panel = () => {
       }
     },
     [dispatch, id, playing, loop]
-  );
-
-  const renderSongItem = useCallback(
-    (song: Song) => (
-      <li
-        key={song.id}
-        onClick={() => handleClick(song)}
-        className={classnames(styles.liWrap, {
-          [styles.active]: song.id === id,
-        })}
-      >
-        <span className={styles.name}>{song.name}</span>
-        {song.id === id && loaded && (
-          <div
-            className={classnames(
-              styles.playingImg,
-              playing && playerVisible ? styles.running : styles.paused
-            )}
-          >
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-          </div>
-        )}
-      </li>
-    ),
-    [id, playing, playerVisible, loaded, handleClick]
   );
 
   /** current song id */
@@ -177,9 +190,18 @@ const Panel = () => {
       <div ref={waveRefCallback}>
         <Controller />
         <ul className={styles.list}>
-          {songs.map((song) => renderSongItem(song))}
+          {songs.map((song) => (
+            <SongItem
+              song={song}
+              key={song.id}
+              onClick={() => handleClick(song)}
+              id={id}
+              playing={playing}
+              playerVisible={playerVisible}
+              loaded={loaded}
+            />
+          ))}
         </ul>
-
         {!loaded && <MusicLoadingSvg className={styles.loadingSvg} />}
       </div>
     </>
