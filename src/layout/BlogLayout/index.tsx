@@ -4,8 +4,7 @@ import { Col, Row } from 'antd';
 import SideBar, { Info } from '../../components/SideBlocks';
 import * as styles from './index.module.less';
 import { useBackgroundColor } from '../../hooks';
-import loadable from '@loadable/component';
-const Footer = loadable(() => import('../../components/Footer'));
+import Footer from '../../components/Footer';
 interface Props {
   content?: React.ReactNode;
   sideBlocks?: React.ReactNode;

@@ -5,11 +5,10 @@ import { Col, Row } from 'antd';
 import SideBar, { TagsBlock, Info } from '../../components/SideBlocks';
 import * as styles from './index.module.less';
 import { useBackgroundColor } from '../../hooks';
-import loadable from '@loadable/component';
 import Comment from '../../components/Comment';
 import { iRootState } from '../../redux/store';
-const Tools = loadable(() => import('../../components/SideBlocks/Tools'));
-const Footer = loadable(() => import('../../components/Footer'));
+import Footer from '../../components/Footer';
+import Tools from '../../components/SideBlocks/Tools';
 
 interface Props {
   children?: React.ReactNode;

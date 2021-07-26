@@ -66,6 +66,6 @@ function App() {
 
 `canScroll` 为`true` 的时候取消监听, 为`false` 的时候监听并阻止原生事件.
 
-`preventBodyScroll`最好放在函数组件外, 放在组件内可能会取消监听失败. 因为两个`preventBodyScroll`对应的内存地址不一样.
+`preventBodyScroll`最好放在函数组件外, 放在组件内会取消监听失败. 因为两个`preventBodyScroll`对应的内存地址不一样.
 
 效果就和我上面的简历网站差不多.
