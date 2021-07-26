@@ -23,7 +23,7 @@ export interface RootState {
   };
 }
 
-const reducer = produce(
+export const reducer = produce(
   (draft: RootState, action: { type: string; payload: any }): RootState => {
     const { type, payload } = action;
     switch (type) {
@@ -88,7 +88,7 @@ const reducer = produce(
   }
 );
 
-const initialState = {
+export const initialState = {
   scene:
     globalThis.localStorage?.getItem('SCENE') !== null
       ? Boolean(globalThis.localStorage?.getItem('SCENE'))

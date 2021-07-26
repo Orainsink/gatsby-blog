@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React from 'react';
 import { Card, Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
@@ -7,15 +7,93 @@ import * as styles from './index.module.less';
 
 const { Meta } = Card;
 
+interface GroupItem {
+  totalCount: number;
+  fieldValue: string;
+}
 interface Data {
   allFile: {
     totalCount: number;
-    group: {
-      totalCount: number;
-      fieldValue: string;
-    }[];
+    group: GroupItem[];
   };
 }
+
+/**
+ * get category count
+ * @param category
+ * @param group
+ * @returns
+ */
+const getCount = (category: string, group: GroupItem[]) => {
+  return (
+    group.filter((item) => item.fieldValue === category)[0]?.totalCount || 0
+  );
+};
+/**
+ * get category info
+ * @param group
+ * @returns
+ */
+const getColumn = (group: GroupItem[]) => {
+  return [
+    {
+      category: 'leetcode',
+      name: 'leetcode',
+      path: '/leetcode',
+      count: getCount('leetcode', group),
+      img: (
+        <StaticImage
+          src="../../../content/assets/leetcode.png"
+          alt="leetcode"
+          className={styles.imgWrap}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      category: 'snippet',
+      name: 'snippet',
+      path: '/snippet',
+      count: getCount('snippet', group),
+      img: (
+        <StaticImage
+          src="../../../content/assets/snippet.png"
+          alt="snippet"
+          className={styles.imgWrap}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      category: 'essay',
+      name: '随笔',
+      path: '/essay',
+      count: getCount('essay', group),
+      img: (
+        <StaticImage
+          src="../../../content/assets/随笔.png"
+          alt="essay"
+          className={styles.imgWrap}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      category: 'tech',
+      name: '技术',
+      path: '/archives',
+      count: getCount('tech', group),
+      img: (
+        <StaticImage
+          src="../../../content/assets/javascript.png"
+          alt="tech"
+          className={styles.imgWrap}
+          placeholder="blurred"
+        />
+      ),
+    },
+  ];
+};
 
 const CategoryComponent = () => {
   const data: Data = useStaticQuery(graphql`
@@ -32,76 +110,6 @@ const CategoryComponent = () => {
 
   const { group } = data.allFile;
 
-  const getCount = useCallback(
-    (category: string) => {
-      return (
-        group.filter((item) => item.fieldValue === category)[0]?.totalCount || 0
-      );
-    },
-    [group]
-  );
-
-  const cateColumn = useMemo(() => {
-    return [
-      {
-        category: 'leetcode',
-        name: 'leetcode',
-        path: '/leetcode',
-        count: getCount('leetcode'),
-        img: (
-          <StaticImage
-            src="../../../content/assets/leetcode.png"
-            alt="leetcode"
-            className={styles.imgWrap}
-            placeholder="blurred"
-          />
-        ),
-      },
-      {
-        category: 'snippet',
-        name: 'snippet',
-        path: '/snippet',
-        count: getCount('snippet'),
-        img: (
-          <StaticImage
-            src="../../../content/assets/snippet.png"
-            alt="snippet"
-            className={styles.imgWrap}
-            placeholder="blurred"
-          />
-        ),
-      },
-      {
-        category: 'essay',
-        name: '随笔',
-        path: '/essay',
-        count: getCount('essay'),
-        img: (
-          <StaticImage
-            src="../../../content/assets/随笔.png"
-            alt="essay"
-            className={styles.imgWrap}
-            placeholder="blurred"
-          />
-        ),
-      },
-      {
-        category: 'tech',
-        name: '技术',
-        path: '/archives',
-        count: getCount('tech'),
-        img: (
-          <StaticImage
-            src="../../../content/assets/javascript.png"
-            alt="tech"
-            className={styles.imgWrap}
-            placeholder="blurred"
-          />
-        ),
-      },
-    ];
-  }, [getCount]);
-
   return (
     <section className={styles.wrap}>
       <div className={styles.title}>
@@ -109,7 +117,7 @@ const CategoryComponent = () => {
         欢迎光临！博主 莫沉 是个前端菜狗，龟速学习中。
       </div>
       <Row gutter={16} justify="space-around">
-        {cateColumn.map((item) => (
+        {getColumn(group).map((item) => (
           <Col
             xs={{ span: 24 }}
             sm={{ span: 12 }}

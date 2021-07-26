@@ -83,7 +83,7 @@ const Dynamic = () => {
       }
     }
   `);
-  const url = data?.file.publicURL;
+  const url = data.file.publicURL;
   const { scene } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
   const [words, setWords] = useState<string[]>(null);
@@ -130,7 +130,7 @@ const Dynamic = () => {
       <group>
         <CameraTween isScene={scene} />
         {/* moon && light */}
-        <Moon onCloseScene={handleScene} />
+        <Moon onClose={handleScene} />
         {/* Floor */}
         <Suspense fallback={null}>
           <Floor url={url} />

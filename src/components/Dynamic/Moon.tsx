@@ -3,11 +3,11 @@ import React, { useEffect, useState, useCallback, useRef } from 'react';
 import gsap from 'gsap';
 
 interface Props {
-  onCloseScene: () => void;
+  onClose: () => void;
 }
 /** three.js moon */
 const Moon = (props: Props) => {
-  const { onCloseScene } = props;
+  const { onClose } = props;
   const [active, setActive] = useState<boolean>(false);
   const tweenRef = useRef<GSAPTween>(null);
   const moonRef = useRef<GSAPTween>(null);
@@ -58,6 +58,8 @@ const Moon = (props: Props) => {
     tweenRef.current?.resume();
     return () => {
       tweenRef.current?.kill();
+      moonRef.current?.kill();
+      lightRef.current?.kill();
     };
   }, []);
   useEffect(() => {
@@ -70,13 +72,6 @@ const Moon = (props: Props) => {
     }
   }, [active]);
 
-  useEffect(() => {
-    return () => {
-      moonRef.current?.kill();
-      lightRef.current?.kill();
-    };
-  }, []);
-
   return (
     <pointLight
       args={['#ffffff', 8, 62, 2]}
@@ -86,7 +81,7 @@ const Moon = (props: Props) => {
       <mesh
         onPointerOver={() => setActive(true)}
         onPointerOut={() => setActive(false)}
-        onClick={onCloseScene}
+        onClick={onClose}
         ref={moonRefCallback}
       >
         <meshBasicMaterial color="#ffffff" />

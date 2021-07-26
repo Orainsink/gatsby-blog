@@ -64,6 +64,9 @@ const Header = () => {
     }
   }, [is1024, is650]);
 
+  /**
+   * scroll effects
+   */
   useEffect(() => {
     const handleScroll: () => void = () => {
       if (is768) return setActive(false);
@@ -82,6 +85,7 @@ const Header = () => {
     document.body.addEventListener('scroll', handleScroll, {
       passive: false,
     });
+
     return () => {
       document.body.removeEventListener('scroll', handleScroll);
     };

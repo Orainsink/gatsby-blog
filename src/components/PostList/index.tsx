@@ -10,28 +10,36 @@ interface Props {
   hideMore?: boolean;
 }
 
+const getLowerCasePosts = (
+  posts: ChildMdxItem[]
+): {
+  title: string;
+  description: string;
+  excerpt: string;
+  tags: string[];
+  date: any;
+}[] =>
+  posts.map(({ node }) => ({
+    title: (node.childMdx.frontmatter.title || '').toLowerCase(),
+    description: (node.childMdx.frontmatter.description || '').toLowerCase(),
+    excerpt: (node.childMdx.excerpt || '').toLowerCase(),
+    tags: (node.childMdx.frontmatter.tags || []).map((tag) =>
+      (tag || '').toLowerCase()
+    ),
+    date: node.childMdx.frontmatter.date,
+  }));
+
 const PostList = ({ posts, hideMore = false }: Props) => {
   const { curTag, curDate } = useSelector((state: iRootState) => state);
   const [filteredPosts, setFilteredPosts] = useState(posts);
   const [fold, setFold] = useState(true);
 
-  const lowerCasePosts = useMemo(
-    () =>
-      posts.map(({ node }) => ({
-        title: (node.childMdx.frontmatter.title || '').toLowerCase(),
-        description: (
-          node.childMdx.frontmatter.description || ''
-        ).toLowerCase(),
-        excerpt: (node.childMdx.excerpt || '').toLowerCase(),
-        tags: (node.childMdx.frontmatter.tags || []).map((tag) =>
-          (tag || '').toLowerCase()
-        ),
-        date: node.childMdx.frontmatter.date,
-      })),
-    [posts]
-  );
-
+  /**
+   * 过滤 / 筛选
+   */
   useEffect(() => {
+    const lowerCasePosts = getLowerCasePosts(posts);
+
     if (!curTag && !curDate) {
       setFilteredPosts(posts);
     }
@@ -50,7 +58,7 @@ const PostList = ({ posts, hideMore = false }: Props) => {
     if (curTag && curDate) {
       console.warn('tag and date should not all be true');
     }
-  }, [curDate, curTag, lowerCasePosts, posts]);
+  }, [curDate, curTag, posts]);
 
   useEffect(() => {
     setFold(true);
@@ -61,12 +69,8 @@ const PostList = ({ posts, hideMore = false }: Props) => {
       {filteredPosts.map(({ node }, index) => {
         const title =
           node.childMdx.frontmatter.title || node.childMdx.fields.slug;
-        const {
-          date,
-          description,
-          tags,
-          categories,
-        } = node.childMdx.frontmatter;
+        const { date, description, tags, categories } =
+          node.childMdx.frontmatter;
         return index < 6 || !fold ? (
           <article key={node.childMdx.fields.slug}>
             <header>
