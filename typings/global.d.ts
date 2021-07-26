@@ -1,6 +1,20 @@
 declare const __PATH_PREFIX__: string;
 declare const __REDUX_DEVTOOLS_EXTENSION__: string;
 declare module '*.json';
+declare class MediaMetadata {
+  title: string;
+  artist: string;
+  artwork: { [key: string]: string }[];
+  constructor({
+    title,
+    artist,
+    artwork,
+  }: {
+    title: string;
+    artist: string;
+    artwork: { [key: string]: string }[];
+  });
+}
 declare module '*.css' {
   const classes: { [key: string]: string };
   export default classes;
