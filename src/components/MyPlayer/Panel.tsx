@@ -161,13 +161,15 @@ const Panel = () => {
       dispatch({ type: 'MUSIC', payload: { playing } });
     };
 
-    navigator.mediaSession.setActionHandler('play', () => handler(true));
-    navigator.mediaSession.setActionHandler('pause', () => handler(false));
-    navigator.mediaSession.setActionHandler('pause', () => handler(false));
-    navigator.mediaSession.setActionHandler('previoustrack', function () {});
-    navigator.mediaSession.setActionHandler('nexttrack', function () {
-      handleMusicEnd();
-    });
+    if (navigator && navigator.mediaSession) {
+      navigator.mediaSession.setActionHandler('play', () => handler(true));
+      navigator.mediaSession.setActionHandler('pause', () => handler(false));
+      navigator.mediaSession.setActionHandler('pause', () => handler(false));
+      navigator.mediaSession.setActionHandler('previoustrack', function () {});
+      navigator.mediaSession.setActionHandler('nexttrack', function () {
+        handleMusicEnd();
+      });
+    }
     // eslint-disable-next-line
   }, [dispatch]);
 

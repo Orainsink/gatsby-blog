@@ -9,11 +9,15 @@ const useMediaMeta = (id: number) => {
   useEffect(() => {
     if ('mediaSession' in navigator) {
       const curSong = songs[id - 1];
-      navigator.mediaSession.metadata = new MediaMetadata({
-        title: curSong.name,
-        artist: curSong.artist,
-        artwork: [{ src: curSong.cover, sizes: '130x130', type: 'image/jpg' }],
-      });
+      if (navigator && navigator.mediaSession) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: curSong.name,
+          artist: curSong.artist,
+          artwork: [
+            { src: curSong.cover, sizes: '130x130', type: 'image/jpg' },
+          ],
+        });
+      }
     }
   }, [id]);
 };
