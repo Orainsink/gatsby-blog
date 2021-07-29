@@ -14,24 +14,26 @@ const MenuComponent = ({ drawer }: { drawer: boolean }) => {
   } else
     return (
       <ul className={styles.nav}>
-        <li>
-          <Link to="/">home</Link>
-        </li>
-        <li>
-          <Dropdown
-            overlay={<ArchivesMenu visible={visible} />}
-            arrow
-            overlayClassName={styles.dropWrapper}
-            onVisibleChange={(visible) => setVisible(visible)}
-          >
+        <Link to="/">
+          <li>home</li>
+        </Link>
+
+        <Dropdown
+          overlay={<ArchivesMenu visible={visible} />}
+          arrow
+          overlayClassName={styles.dropWrapper}
+          onVisibleChange={(visible) => setVisible(visible)}
+        >
+          <li>
             <span>
               archives <DownOutlined />
             </span>
-          </Dropdown>
-        </li>
-        <li>
-          <Link to="/about/1438181566">about</Link>
-        </li>
+          </li>
+        </Dropdown>
+
+        <Link to="/about/1438181566">
+          <li>about</li>
+        </Link>
       </ul>
     );
 };

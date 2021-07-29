@@ -41,24 +41,24 @@ const MenuDrawer = () => {
         onClose={() => setVisible(false)}
       >
         <ul className={classnames(styles.nav, styles.drawerNav)}>
-          <li>
-            <Link to="/">home</Link>
-          </li>
+          <Link to="/">
+            <li>home</li>
+          </Link>
+
           <div style={{ width: '100%' }}>
             <div style={{ padding: '12px 0' }}>archives</div>
-            <ul>
+            <ul className={styles.subUl}>
               {categories.map((category) => (
-                <li key={category}>
-                  <Link to={categoryColumn[category].path}>
-                    {categoryColumn[category].name}
-                  </Link>
-                </li>
+                <Link to={categoryColumn[category].path} key={category}>
+                  <li>{categoryColumn[category].name}</li>
+                </Link>
               ))}
             </ul>
           </div>
-          <li>
-            <Link to="/about/1438181566">about</Link>
-          </li>
+
+          <Link to="/about/1438181566">
+            <li>about</li>
+          </Link>
         </ul>
         <div className={styles.menuShasha}>
           <SharkMenuSvg />
