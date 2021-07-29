@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { iRootState } from '../redux/store';
 
@@ -6,7 +6,7 @@ const Comment = () => {
   const commentBox = useRef<HTMLDivElement>(null);
   const theme = useSelector((state: iRootState) => state.theme);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const scriptEl = document.createElement('script');
     scriptEl.async = true;
     scriptEl.src = 'https://utteranc.es/client.js';
@@ -30,16 +30,17 @@ const Comment = () => {
   }, []);
 
   useEffect(() => {
-    document
-      .querySelector('iframe.utterances-frame')
-      // @ts-ignore
-      ?.contentWindow.postMessage(
+    const frameDom = document.querySelector('iframe.utterances-frame');
+
+    if (frameDom && frameDom.contentWindow) {
+      frameDom.contentWindow.postMessage(
         {
           type: 'set-theme',
           theme: theme === 'dark' ? 'github-dark' : 'github-light',
         },
         'https://utteranc.es/'
       );
+    }
   }, [theme]);
 
   return <div ref={commentBox} className="comments"></div>;
