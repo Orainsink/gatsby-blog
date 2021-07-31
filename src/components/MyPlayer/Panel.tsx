@@ -6,7 +6,6 @@ import React, {
   useRef,
 } from 'react';
 import SiriWave from 'siriwave';
-import ReactHowler from 'react-howler';
 import { songs, Song } from '../../assets/config/songs';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
@@ -16,6 +15,7 @@ import Controller from './Controller';
 import { iRootState } from '../../redux/store';
 import { ReactComponent as MusicLoadingSvg } from '../../assets/img/musicLoading.svg';
 import useMediaMeta from './useMediaMeta';
+import ReactHowler from './Howler';
 
 /**伪随机数组 */
 const getRandomList = () =>
@@ -141,17 +141,21 @@ const Panel = () => {
     }
   }, [loop]);
 
+  const toNextSong = useCallback(() => {
+    let tmpList = randomList.filter((item) => item !== id);
+    if (tmpList.length < 1) {
+      tmpList = getRandomList().filter((item) => item !== id);
+    }
+    setRandomList(tmpList);
+    dispatch({ type: 'MUSIC', payload: { id: tmpList[0] } });
+  }, [dispatch, id, randomList]);
+
   /**onEnd, loop or random play */
   const handleMusicEnd = useCallback(() => {
     if (!loop) {
-      let tmpList = randomList.filter((item) => item !== id);
-      if (tmpList.length < 1) {
-        tmpList = getRandomList().filter((item) => item !== id);
-      }
-      setRandomList(tmpList);
-      dispatch({ type: 'MUSIC', payload: { id: tmpList[0] } });
+      toNextSong();
     }
-  }, [id, loop, randomList, dispatch]);
+  }, [loop, toNextSong]);
 
   /**
    * modify media session action
@@ -167,7 +171,7 @@ const Panel = () => {
       navigator.mediaSession.setActionHandler('pause', () => handler(false));
       navigator.mediaSession.setActionHandler('previoustrack', function () {});
       navigator.mediaSession.setActionHandler('nexttrack', function () {
-        handleMusicEnd();
+        toNextSong();
       });
     }
     // eslint-disable-next-line
