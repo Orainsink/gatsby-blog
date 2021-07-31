@@ -107,7 +107,7 @@ export const initialState = {
   playerVisible: false,
   music: {
     playing: false,
-    volume: 0.5,
+    volume: 0.3,
     mute: false,
     loop: false,
     id: 2,

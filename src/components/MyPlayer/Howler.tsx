@@ -113,6 +113,7 @@ const ReactHowler: React.FC<HowlerProps> = ({
    * toggle volume
    */
   useEffect(() => {
+    howlerRef.current.off('end');
     howlerRef.current.on('end', onEnd);
   }, [onEnd]);
   /**
