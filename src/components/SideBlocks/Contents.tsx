@@ -11,7 +11,7 @@ interface Props {
 /** 侧边栏 目录块 */
 const Contents = (props: Props) => {
   const { content } = props;
-  const contentsRef = useRef<HTMLDivElement>(null);
+  // const contentsRef = useRef<HTMLDivElement>(null);
   const scrollY = useScrollY();
 
   const isFixed = useMemo(() => scrollY > 333, [scrollY]);
@@ -54,15 +54,14 @@ const Contents = (props: Props) => {
       })}
     >
       <div className={styles.title}>Contents</div>
-      <div ref={contentsRef} className={classnames(styles.contents)}>
-        <Anchor
-          getContainer={() => document.body as HTMLElement}
-          targetOffset={200}
-          onClick={handleClick}
-        >
-          {renderLinks}
-        </Anchor>
-      </div>
+      <Anchor
+        className={classnames(styles.contents)}
+        getContainer={() => document.body as HTMLElement}
+        targetOffset={200}
+        onClick={handleClick}
+      >
+        {renderLinks}
+      </Anchor>
     </Col>
   );
 };
