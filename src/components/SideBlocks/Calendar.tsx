@@ -75,7 +75,6 @@ const CalendarBlock = ({ posts }: Props) => {
           <Select
             size="small"
             dropdownMatchSelectWidth={false}
-            // className={styles.select}
             onChange={(newYear) => {
               const now = value.clone().year(newYear);
               onChange(now);

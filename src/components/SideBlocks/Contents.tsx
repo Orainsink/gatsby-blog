@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useCallback } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { Anchor, Col } from 'antd';
 import classnames from 'classnames';
 import { useScrollY } from '../../hooks';
@@ -11,7 +11,6 @@ interface Props {
 /** 侧边栏 目录块 */
 const Contents = (props: Props) => {
   const { content } = props;
-  // const contentsRef = useRef<HTMLDivElement>(null);
   const scrollY = useScrollY();
 
   const isFixed = useMemo(() => scrollY > 333, [scrollY]);

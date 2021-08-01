@@ -90,7 +90,9 @@ const Modal = React.memo(({ url, theme }: { url: string; theme: string }) => {
       ease: 'power4.out',
       ...curArr,
     });
-    return () => tween.kill();
+    return () => {
+      tween.kill();
+    };
   }, [nodes]);
 
   // 实例化视角控制器, 需要useFrame更新
