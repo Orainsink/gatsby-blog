@@ -29,7 +29,7 @@ interface Data {
   };
 }
 
-const _CUSTOMSCALE_ = 8;
+const CUSTOM_SCALE = 8;
 const Modal = React.memo(({ url, theme }: { url: string; theme: string }) => {
   const { nodes } = useLoader(GLTFLoader, url) as any;
 
@@ -49,7 +49,7 @@ const Modal = React.memo(({ url, theme }: { url: string; theme: string }) => {
     box3.expandByObject(obj);
     const v3 = new Vector3();
     box3.getSize(v3);
-    const scale = _CUSTOMSCALE_ / Math.max(v3.x, v3.y, v3.z);
+    const scale = CUSTOM_SCALE / Math.max(v3.x, v3.y, v3.z);
     obj.scale.set(scale, scale, scale);
 
     // 重新计算包围盒，重新计算包围盒，不能使用原来的包围盒必须重新声明一个包围盒

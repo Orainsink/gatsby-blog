@@ -1,0 +1,63 @@
+---
+title: useReferredState
+date: 2021-08-03 22:21:46
+description: ref的自定义hook，储存需要获取最新值但是不想触发副作用的变量
+tags: [hook]
+categories: snippet
+---
+
+## js版
+
+```jsx
+// useReferredState.js
+import React, { useState，useRef } from "react";
+
+export default function useReferredState(initialValue) {
+    const [state, setState] = useState(initialValue);
+    const reference = useRef(state);
+
+    const setReferredState = value => {
+        reference.current = value;
+        setState(value);
+    };
+
+    return [reference, setReferredState];
+}
+
+
+// SomeComponent.js
+import React from "react";
+
+const SomeComponent = () => {
+    const [someValueRef, setSomeValue] = useReferredState();
+    // console.log(someValueRef.current);
+};
+```
+
+## Ts 版
+
+```tsx
+import React, { useRef, useState } from 'react';
+
+const useReferredState = <T>(
+  initialValue: any = undefined
+): [T, React.MutableRefObject<T>, React.Dispatch<T>] => {
+  const [state, setState] = useState<T>(initialValue);
+  const reference = useRef<T>(state);
+
+  const setReferredState = (value: any) => {
+    // checking if the passed value is a function that can take current state and set value
+    if (value && value.constructor && value.call && value.apply) {
+      reference.current = value(state);
+      setState(value(state));
+    } else {
+      reference.current = value;
+      setState(value);
+    }
+  };
+
+  return [/*state,*/ reference, setReferredState];// 通常我们并不需要这个state
+};
+export default useReferredState;
+```
+
