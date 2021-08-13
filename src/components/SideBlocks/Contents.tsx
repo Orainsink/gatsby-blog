@@ -53,14 +53,15 @@ const Contents = (props: Props) => {
       })}
     >
       <div className={styles.title}>Contents</div>
-      <Anchor
-        className={classnames(styles.contents)}
-        getContainer={() => document.body as HTMLElement}
-        targetOffset={200}
-        onClick={handleClick}
-      >
-        {renderLinks}
-      </Anchor>
+      <div className={classnames(styles.contents)}>
+        <Anchor
+          getContainer={() => document.body as HTMLElement}
+          targetOffset={200}
+          onClick={handleClick}
+        >
+          {renderLinks}
+        </Anchor>
+      </div>
     </Col>
   );
 };

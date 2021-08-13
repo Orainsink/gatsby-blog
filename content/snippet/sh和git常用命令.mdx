@@ -50,6 +50,21 @@ $ git reset --keep [commit]
 git rebase -i HEAD~3
 ```
 
+## git cherry-pick
+
+```sh
+# 提交commit
+git cherry-pick <commitHash>
+# 提交分支的最近一次commit
+git cherry-pick feature
+# 提交多个commit
+git cherry-pick <commitHashA> <commitHashA>
+# 提交区间（左开右闭，A必须早于B）
+git cherry-pick A..B
+# 提交区间（闭合）
+git cherry-pick A^..B
+```
+
 ## yarn 升级包
 
 ```sh
