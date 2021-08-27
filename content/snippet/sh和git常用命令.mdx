@@ -50,6 +50,13 @@ $ git reset --keep [commit]
 git rebase -i HEAD~3
 ```
 
+## git reflog
+
+```sh
+# reflog 可以查询被删除的commit，而 git log 不会。可以在 rebase 失误的时候抢救一下。
+git reflog
+```
+
 ## git cherry-pick
 
 ```sh
