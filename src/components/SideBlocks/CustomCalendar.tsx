@@ -4,8 +4,8 @@ import generateCalendar from 'antd/es/calendar/generateCalendar';
 import 'antd/es/calendar/style';
 
 /**
- * Custom Calendar component, reduce 250kb size
- * replace momentjs to dayjs
+ * Custom Calendar component
+ * replace momentjs with dayjs
  *  */
 const Calendar = generateCalendar<Dayjs>(dayjsGenerateConfig);
 
