@@ -1,15 +1,18 @@
 import React from 'react';
 import { DoubleSide } from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { useLoader } from 'react-three-fiber';
+import { useGLTF } from '@react-three/drei';
 
 const Floor = ({ url }: { url: string }) => {
-  const { nodes, materials } = useLoader(GLTFLoader, url) as any;
+  const { nodes } = useGLTF(url) as any;
 
   return (
     <mesh position={[-70, -20, -30]} rotation={[0.3, 0, 0]}>
       <bufferGeometry {...nodes.mesh_0.geometry} />
-      <meshLambertMaterial {...materials['']} flatShading side={DoubleSide} />
+      <meshLambertMaterial
+        {...nodes.mesh_0.material}
+        flatShading
+        side={DoubleSide}
+      />
     </mesh>
   );
 };

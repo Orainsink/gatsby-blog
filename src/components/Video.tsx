@@ -8,6 +8,7 @@ interface Props {
   style?: CSSProperties;
   className?: string;
 }
+// TODO: complete this component
 /**
  * flv video player
  * @prop src src url

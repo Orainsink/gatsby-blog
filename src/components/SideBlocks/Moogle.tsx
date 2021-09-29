@@ -1,8 +1,7 @@
 import React, { Suspense, useEffect, useRef } from 'react';
-import { Canvas, useLoader, useThree, useFrame } from 'react-three-fiber';
+import { Canvas, useThree, useFrame } from 'react-three-fiber';
 import { ResizeObserver } from '@juggle/resize-observer';
 import { graphql, useStaticQuery } from 'gatsby';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import {
   Mesh,
@@ -22,16 +21,21 @@ import { iRootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
 import classnames from 'classnames';
 import cloneDeep from 'lodash/cloneDeep';
-
+import { useGLTF } from '@react-three/drei';
 interface Data {
   file: {
     publicURL: string;
   };
 }
 
+interface Props {
+  url: string;
+  theme: string;
+}
+
 const CUSTOM_SCALE = 8;
-const Modal = React.memo(({ url, theme }: { url: string; theme: string }) => {
-  const { nodes } = useLoader(GLTFLoader, url) as any;
+const Modal = React.memo(({ url, theme }: Props) => {
+  const { nodes } = useGLTF(url) as any;
 
   const moogleRef = useRef<Mesh>();
   const geomRef = useRef<BufferGeometry>();

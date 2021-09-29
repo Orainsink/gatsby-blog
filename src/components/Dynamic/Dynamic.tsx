@@ -35,8 +35,9 @@ const cameraProps = {
  * shake camera
  */
 const CameraTween = React.memo(({ isScene }: { isScene: boolean }) => {
-  const camera = useThree(({ camera }) => camera) as PerspectiveCamera;
   const scene = useThree(({ scene }) => scene);
+  const camera = useThree(({ camera }) => camera) as PerspectiveCamera;
+
   // set default camera, and scene fog
   useEffect(() => {
     scene.fog = new FogExp2('#0a0a0a', 0.0025);
@@ -63,10 +64,12 @@ const CameraTween = React.memo(({ isScene }: { isScene: boolean }) => {
   useFrame(({ scene, gl, camera, mouse }) => {
     // Stop all animations when scene is hidden
     if (!isScene) return;
+
     camera.position.y +=
       Math.cos(cameraShakeY) / 50 - (mouse.y * 5 + camera.position.y) * 0.03;
     camera.position.x += (mouse.x * 5 - camera.position.x) * 0.03;
     cameraShakeY += 0.02;
+    camera.updateProjectionMatrix();
 
     gl.render(scene, camera);
   }, 1);
@@ -120,7 +123,6 @@ const Dynamic = () => {
       }
     };
     fetchWeather();
-    // eslint-disable-next-line
   }, []);
 
   if (!isClient) return null;
