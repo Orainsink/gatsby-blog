@@ -1,5 +1,5 @@
 ---
-title: SSG-补水(Rehydration)的风险
+title: SSG-再水合(Rehydration)的风险
 date: 2020-11-23 22:43:27
 description: 深入了解gatsby和react
 tags: [ssr, react, gatsby]
@@ -10,7 +10,7 @@ categories: tech
 >
 > 翻译一篇解释得比较好点的文章，原文： https://www.joshwcomeau.com/react/the-perils-of-rehydration/
 
-# The Perils of Rehydration(补水的风险)
+# The Perils of Rehydration(再水合的风险)
 
 > An Eye-Opening Realization about Gatsby and React
 
@@ -132,7 +132,7 @@ function Navigation() {
 
 现在我们构建的应用都是交互式的，动态的---用户已经习惯了单靠 HTML 和 CSS 无法完成的网页体验！所以我们仍然需要运行客户端的 JS。
 
-客户端 JS 包括在编译时生成的相同的 React 代码。它在用户的设备上运行，并建立一个整个网页应该是什么样子的切片。然后，它将其与文档中构建的 HTML 进行比较。这是一个被称为补水(`rehydration`)的过程。（译者：在 ssr 中，没有添加 react 脚本的 dom tree 就像干巴巴的枯枝，把 js 代码注入进去的过程就像给干海绵补水，所以才叫`rehydration`）
+客户端 JS 包括在编译时生成的相同的 React 代码。它在用户的设备上运行，并建立一个整个网页应该是什么样子的切片。然后，它将其与文档中构建的 HTML 进行比较。这是一个被称为再水合(`rehydration`)的过程。（译者：在 ssr 中，没有添加 react 脚本的 dom tree 就像干巴巴的枯枝，把 js 代码注入进去的过程就像给干海绵水合，所以才叫`rehydration`）
 
 关键的是，`rehydration`与渲染不是一回事。在典型的渲染中，当`props`或`state`发生变化时，React 会比对差异并更新 DOM。在`rehydration`中，React 假设 DOM 不会改变。它只是试图采用现有的 DOM。
 
@@ -206,7 +206,7 @@ const Navigation = () => {
 
 ## Rehydration ≠ render
 
-当 React 应用补水时，它会假设 DOM 结构固定不变。
+当 React 应用水合时，它会假设 DOM 结构固定不变。
 
 当 React 应用第一次在客户端上运行时，React 通过挂载你的所有组件，建立起 DOM 应该是什么样子的切片。然后，它眯着眼睛看页面上已有的 DOM 节点，并试图将两者匹配在一起。它不是在玩 "大家来找茬 "的游戏，它只是想把两个节点拼接在一起，以便将来的更新能够正确处理。
 
@@ -221,7 +221,7 @@ const Navigation = () => {
 ```
 
 ```jsx
-<!-- 补水过后react期待的html -->
+<!-- 水合过后react期待的html -->
 
 <header>
   <h1>Your Site</h1>
@@ -231,11 +231,11 @@ const Navigation = () => {
 </header>
 ```
 
-有点值得注意的是，React 有时候还是可以处理这种情况的。你可能在不知情的情况下犯了这种错误, 但是逃过了一劫。但你这无疑是在玩火。补水过程的优化是为了 ⚡️ 快速 ⚡️，而不是为了捕捉和修复不匹配。
+有点值得注意的是，React 有时候还是可以处理这种情况的。你可能在不知情的情况下犯了这种错误, 但是逃过了一劫。但你这无疑是在玩火。水合过程的优化是为了 ⚡️ 快速 ⚡️，而不是为了捕捉和修复不匹配。
 
 ### gatsby 的问题
 
-React 团队知道补水不匹配可能会导致页面显示错误的问题，他们选择在控制台抛出错误来提醒你构建出来的 html 可能不匹配：
+React 团队知道水合不匹配可能会导致页面显示错误的问题，他们选择在控制台抛出错误来提醒你构建出来的 html 可能不匹配：
 
 ![ssr2](ssr2.png)
 
@@ -243,13 +243,13 @@ React 团队知道补水不匹配可能会导致页面显示错误的问题，�
 
 这是一种权衡。通过在开发中选择不使用服务器端渲染，Gatsby 可以更好地热更新以及优化构建过程。让你能够快速看到你所做的更改是[非常非常重要的](https://vimeo.com/36579366)。Gatsby 优先考虑的是速度，而不是准确性。
 
-这是个很重要的问题，不过；在[一个公开讨论的问题](https://github.com/gatsbyjs/gatsby/issues/17914)中，人们正在倡导改变这一设定，我们可能会在以后的版本中开始看到补水地警告。
+这是个很重要的问题，不过；在[一个公开讨论的问题](https://github.com/gatsbyjs/gatsby/issues/17914)中，人们正在倡导改变这一设定，我们可能会在以后的版本中开始看到水合地警告。
 
 不过在那之前，在使用 Gatsby 开发时，注意这一点尤为重要!
 
 ## 解决办法
 
-为了避免问题的发生，我们需要确保补水后的应用与原始 HTML 相匹配。那么我们如何管理 "动态 "数据呢？
+为了避免问题的发生，我们需要确保水合后的应用与原始 HTML 相匹配。那么我们如何管理 "动态 "数据呢？
 
 下面是解决方案的样子。
 
@@ -278,7 +278,7 @@ function Navigation() {
 
 在`useEffect`调用里面，我们立即触发重新渲染，将`hasMounted`设置为`true`。当这个值为真时，"真实 "内容就会被渲染。
 
-与我们之前的解决方案不同的是：`useEffect`只有在组件挂载后才会启动。当 React 应用在补水过程中去查看 DOM 时，`useEffect`还没有被调用，因此我们满足了 React 的期望。
+与我们之前的解决方案不同的是：`useEffect`只有在组件挂载后才会启动。当 React 应用在水合过程中去查看 DOM 时，`useEffect`还没有被调用，因此我们满足了 React 的期望。
 
 ```jsx
 <!-- 构建过程中生成的初始html -->
@@ -289,7 +289,7 @@ function Navigation() {
 ```
 
 ```jsx
-<!-- 补水过后react期待的html -->
+<!-- 水合过后react期待的html -->
 
 <header>
   <h1>Your Site</h1>
