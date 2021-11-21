@@ -41,6 +41,6 @@ export function random(
  * @param length
  * @return undefined[]
  */
-export function arr(length: number): any[] {
+export function arr(length: number): undefined[] {
   return new Array(length).fill(undefined);
 }

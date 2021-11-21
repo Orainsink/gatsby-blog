@@ -6,7 +6,7 @@ import React, {
   useRef,
 } from 'react';
 import SiriWave from 'siriwave';
-import { songs, Song } from '../../assets/config/songs';
+import SONGS, { Song } from '../../assets/constants/songs';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
 import { arr } from '../../utils/utils';
@@ -19,7 +19,7 @@ import ReactHowler from './Howler';
 
 /**伪随机数组 */
 const getRandomList = () =>
-  arr(songs.length)
+  arr(SONGS.length)
     .map((item, index) => index + 1)
     .sort(() => Math.random() - 0.5);
 
@@ -129,7 +129,7 @@ const Panel = () => {
 
   /** current song id */
   const songUrl = useMemo(() => {
-    return songs.filter((song) => song.id === id)[0]?.url;
+    return SONGS.filter((song) => song.id === id)[0]?.url;
   }, [id]);
 
   /**
@@ -196,7 +196,7 @@ const Panel = () => {
       <div ref={waveRefCallback}>
         <Controller />
         <ul className={styles.list}>
-          {songs.map((song) => (
+          {SONGS.map((song) => (
             <SongItem
               song={song}
               key={song.id}

@@ -14,14 +14,14 @@ import {
 } from 'three';
 import gsap from 'gsap';
 import { Col } from 'antd';
-import { useMedia } from '../../hooks';
-// @ts-ignore
-import { col, canvasWrap } from './index.module.less';
-import { iRootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
 import classnames from 'classnames';
-import cloneDeep from 'lodash/cloneDeep';
 import { useGLTF } from '@react-three/drei';
+
+import * as styles from './index.module.less';
+import { useMedia } from '../../hooks';
+import { iRootState } from '../../redux/store';
+
 interface Data {
   file: {
     publicURL: string;
@@ -74,16 +74,16 @@ const Modal = React.memo(({ url, theme }: Props) => {
   // 莫古莫古动画
   useEffect(() => {
     if (!nodes) return;
-    const geometry = nodes.mesh_0.geometry as any;
+    const geometry = nodes.mesh_0.geometry as BufferGeometry;
     const positions = geometry.attributes.position;
     // 深拷贝存储莫古利模型数据
-    const curArr = cloneDeep(positions.array);
-    // 位置乱序
+    const curArr = Object.assign({}, positions.array);
+    // @ts-ignore 位置乱序
     positions.array.sort(() => Math.random() - 0.5);
     // 添加乱序过后的粒子geometry到mesh对象
     geomRef.current = geometry;
 
-    // 开启位置数据更新
+    // @ts-ignore 开启位置数据更新
     curArr.onUpdate = function () {
       if (!geomRef.current) return;
       geomRef.current.attributes.position.needsUpdate = true;
@@ -138,7 +138,7 @@ const Moogle = () => {
   return (
     <Col
       flex={is1100 ? '1 1 300px' : '0 0 300px'}
-      className={classnames(col, canvasWrap)}
+      className={classnames(styles.col, styles.canvasWrap)}
     >
       <Canvas resize={{ polyfill: ResizeObserver }}>
         <ambientLight

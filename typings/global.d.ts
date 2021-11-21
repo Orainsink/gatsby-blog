@@ -26,9 +26,12 @@ declare module '*.module.less' {
   const classNames: ClassNames;
   export = classNames;
 }
+
 declare module '*.gltf';
 declare module '*.svg';
 declare module '*.png';
+declare module '*.jpeg';
+declare module '*.glsl';
 declare module 'algoliasearch/lite';
 declare module '@loadable/component';
 declare module 'classnames';

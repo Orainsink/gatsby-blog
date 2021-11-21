@@ -104,7 +104,7 @@ const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
             marginBottom: '1.6em',
           }}
         />
-        <Tags tags={tags} categories={categories} />
+        <Tags tags={tags} category={categories} />
       </article>
 
       <nav>

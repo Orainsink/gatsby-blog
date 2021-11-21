@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { songs } from '../../assets/config/songs';
+import SONGS from '../../assets/constants/songs';
 
 /**
  * used for chrome / mac global audio controller
@@ -8,7 +8,7 @@ import { songs } from '../../assets/config/songs';
 const useMediaMeta = (id: number) => {
   useEffect(() => {
     if ('mediaSession' in navigator) {
-      const curSong = songs[id - 1];
+      const curSong = SONGS[id - 1];
       if (navigator && navigator.mediaSession) {
         navigator.mediaSession.metadata = new MediaMetadata({
           title: curSong.name,

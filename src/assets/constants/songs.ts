@@ -1,4 +1,3 @@
-/**网易云歌单 */
 export interface Song {
   name: string;
   artist: string;
@@ -6,7 +5,8 @@ export interface Song {
   cover: string;
   id: number;
 }
-export const songs: Song[] = [
+/**网易云歌单 */
+const SONGS: Song[] = [
   {
     id: 1,
     name: 'Intro',
@@ -120,3 +120,5 @@ export const songs: Song[] = [
     cover:
       'http://p1.music.126.net/5M49xn4JIQlxfP_ekV6kjQ==/109951164063354523.jpg?param=130y130',
   }, */
+
+export default SONGS;

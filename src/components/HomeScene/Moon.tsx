@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSpring, a } from '@react-spring/three';
+import { useCursor } from '@react-three/drei';
 
 interface Props {
   onClose: () => void;
@@ -8,6 +9,8 @@ interface Props {
 const Moon = (props: Props) => {
   const { onClose } = props;
   const [active, setActive] = useState<boolean>(false);
+
+  useCursor(active);
 
   const lightSpring = useSpring({
     intensity: active ? 10 : 8,

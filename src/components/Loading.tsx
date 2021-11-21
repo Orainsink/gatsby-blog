@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { ReactComponent as LoadingSvg } from '../assets/img/loading.svg';
-/**
- * loading组件,用于组件懒加载,默认debounce=500
- * @param {number} debounce debounce time
- */
+
 interface Props {
   debounce?: number;
   children?: React.ReactNode;
 }
+/**
+ * loading组件,用于组件懒加载,默认debounce=500
+ * @param {number} debounce debounce time
+ */
 const Loading = (props: Props) => {
   const { debounce = 500, children } = props;
   const [active, setActive] = useState(false);

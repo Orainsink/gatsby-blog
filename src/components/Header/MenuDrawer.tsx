@@ -7,7 +7,7 @@ import { useDrawerCloseEffect, useMedia } from '../../hooks';
 import * as styles from './index.module.less';
 import { useLocation } from '@reach/router';
 import { ReactComponent as SharkMenuSvg } from '../../assets/img/menu.svg';
-import { categoryColumn, categories } from '../../assets/config/categories';
+import { CATEGORY_MAP } from '../../assets/constants/categories';
 
 /**
  * menu drawer for mobile phone
@@ -48,9 +48,9 @@ const MenuDrawer = () => {
           <div style={{ width: '100%' }}>
             <div style={{ padding: '12px 0' }}>archives</div>
             <ul className={styles.subUl}>
-              {categories.map((category) => (
-                <Link to={categoryColumn[category].path} key={category}>
-                  <li>{categoryColumn[category].name}</li>
+              {[...CATEGORY_MAP.values()].map((item) => (
+                <Link to={item.path} key={item.name}>
+                  <li>{item.name}</li>
                 </Link>
               ))}
             </ul>

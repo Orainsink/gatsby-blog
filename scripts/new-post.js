@@ -6,7 +6,7 @@
  * => '/name' means folder, use it when you need imgs or other assets
  * => '/name##category' add category
  */
-const { categories } = require('../src/assets/config/categories');
+const { CATEGORY_MAP } = require('../src/assets/constants/categories');
 const fs = require('fs');
 const moment = require('moment');
 const exec = require('child_process').exec;
@@ -65,7 +65,7 @@ function openFolder() {
 
 // content/category
 try {
-  if (categories.indexOf(category) === -1) {
+  if (CATEGORY_MAP.has(category)) {
     throw new Error('wrong category');
   }
 

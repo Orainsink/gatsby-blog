@@ -4,10 +4,12 @@ import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import * as styles from './index.module.less';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import Poem from '../components/Poem';
 import Comment from '../components/Comment';
 import loadable from '@loadable/component';
-const Moogle = loadable(() => import('../components/SideBlocks/Moogle'));
+import Poem from '../components/Poem';
+const MoogleScene = loadable(
+  () => import('../components/SideBlocks/MoogleScene')
+);
 
 interface Data {
   mdx: {
@@ -16,9 +18,8 @@ interface Data {
 }
 const AboutPostTemplate = ({ data }: PageProps<Data>) => {
   const { mdx } = data;
-
   return (
-    <Layout sideBlocks={<Moogle />}>
+    <Layout sideBlocks={<MoogleScene />}>
       <SEO title="About" />
       <Poem />
       <section className={styles.container} style={{ padding: '1em' }}>

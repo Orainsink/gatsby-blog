@@ -3,12 +3,12 @@ import { Link } from 'gatsby';
 import { Tag } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { iRootState } from '../redux/store';
-import { categoryColumn } from '../assets/config/categories';
+import { CATEGORY_MAP } from '../assets/constants/categories';
 interface Props {
   tags: string[];
-  categories?: string;
+  category?: string;
 }
-const Tags = ({ tags, categories }: Props) => {
+const Tags = ({ tags, category }: Props) => {
   const dispatch = useDispatch();
   const theme = useSelector((state: iRootState) => state.theme);
 
@@ -22,11 +22,11 @@ const Tags = ({ tags, categories }: Props) => {
     [dispatch]
   );
 
-  if (categories !== 'tech' && categoryColumn.hasOwnProperty(categories)) {
-    let curCategory = categoryColumn[categories];
+  if (category !== 'tech' && CATEGORY_MAP.has(category)) {
+    let curCategory = CATEGORY_MAP.get(category);
     return (
       <p className="tags">
-        <Link key={categories} to={curCategory.path}>
+        <Link key={category} to={curCategory.path}>
           <Tag color={curCategory.tag} style={{ cursor: 'pointer' }}>
             {curCategory.name}
           </Tag>

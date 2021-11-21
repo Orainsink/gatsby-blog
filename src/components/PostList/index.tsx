@@ -10,15 +10,15 @@ interface Props {
   hideMore?: boolean;
 }
 
-const getLowerCasePosts = (
-  posts: ChildMdxItem[]
-): {
+interface PostItemType {
   title: string;
   description: string;
   excerpt: string;
   tags: string[];
   date: any;
-}[] =>
+}
+
+const getLowerCasePosts = (posts: ChildMdxItem[]): PostItemType[] =>
   posts.map(({ node }) => ({
     title: (node.childMdx.frontmatter.title || '').toLowerCase(),
     description: (node.childMdx.frontmatter.description || '').toLowerCase(),
@@ -31,7 +31,7 @@ const getLowerCasePosts = (
 
 const PostList = ({ posts, hideMore = false }: Props) => {
   const { curTag, curDate } = useSelector((state: iRootState) => state);
-  const [filteredPosts, setFilteredPosts] = useState(posts);
+  const [filteredPosts, setFilteredPosts] = useState<ChildMdxItem[]>(posts);
   const [fold, setFold] = useState(true);
 
   /**
@@ -93,7 +93,7 @@ const PostList = ({ posts, hideMore = false }: Props) => {
                   __html: description || node.childMdx.excerpt,
                 }}
               />
-              <Tags tags={tags} categories={categories} />
+              <Tags tags={tags} category={categories} />
             </section>
           </article>
         ) : null;

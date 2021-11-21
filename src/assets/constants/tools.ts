@@ -11,7 +11,7 @@ import { ReactComponent as EmojiSvg } from '../img/horseFace.svg';
 import { ReactComponent as CubicBezierSvg } from '../img/bezier.svg';
 import { ReactComponent as GridSvg } from '../img/grid.svg';
 import { ComponentType, SVGProps } from 'react';
-const tools: {
+const TOOLS: {
   name: string;
   icon: ComponentType<SVGProps<SVGSVGElement>>;
   url: string;
@@ -34,8 +34,7 @@ const tools: {
   {
     name: 'react-use',
     icon: ReactUseSvg,
-    url:
-      'https://github.com/zenghongtu/react-use-chinese/blob/master/README.md',
+    url: 'https://github.com/zenghongtu/react-use-chinese/blob/master/README.md',
   },
   {
     name: 'box-shadow',
@@ -78,4 +77,4 @@ const tools: {
     url: 'https://emojipedia.org',
   },
 ];
-export default tools;
+export default TOOLS;

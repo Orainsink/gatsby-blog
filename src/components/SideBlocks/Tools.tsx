@@ -2,7 +2,7 @@ import React from 'react';
 import { Col } from 'antd';
 import classnames from 'classnames';
 import * as styles from './index.module.less';
-import tools from '../../assets/config/tools';
+import TOOLS from '../../assets/constants/tools';
 import Icon from '@ant-design/icons';
 import useColFlex from './useColFlex';
 interface ToolItemProp {
@@ -38,7 +38,7 @@ const Tools = () => {
   return (
     <Col flex={colFlex} className={classnames(styles.col, styles.toolsWrapper)}>
       <div className={styles.title}>Tools</div>
-      {tools.map((tool) => (
+      {TOOLS.map((tool) => (
         <ToolItem data={tool} key={tool.name} />
       ))}
     </Col>

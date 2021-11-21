@@ -3,11 +3,14 @@ import { Col, Row } from 'antd';
 import { Link } from 'gatsby';
 import { useMagicColor } from '../../hooks';
 import * as styles from './index.module.less';
-import { categoryColumn, categories } from '../../assets/config/categories';
+import {
+  CATEGORY_MAP,
+  CATEGORY_NAMES,
+} from '../../assets/constants/categories';
 
 let column: string[][] = [];
-for (let i = 0; i < categories.length; i += 2) {
-  column.push(categories.slice(i, i + 2));
+for (let i = 0; i < CATEGORY_NAMES.length; i += 2) {
+  column.push(CATEGORY_NAMES.slice(i, i + 2));
 }
 
 const ArchivesMenu = React.memo(({ visible }: { visible: boolean }) => {
@@ -25,9 +28,9 @@ const ArchivesMenu = React.memo(({ visible }: { visible: boolean }) => {
       {column.map((item, index) => (
         <Row align="middle" justify="space-between" key={index}>
           {item.map((category) => (
-            <Col span={12} /* className={styles.cls} */ key={category}>
-              <Link to={categoryColumn[category].path}>
-                {categoryColumn[category].name}
+            <Col span={12} key={category}>
+              <Link to={CATEGORY_MAP.get(category).path}>
+                {CATEGORY_MAP.get(category).name}
               </Link>
             </Col>
           ))}

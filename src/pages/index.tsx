@@ -6,7 +6,7 @@ import CateSnippet from '../components/Cards';
 import Trigger from '../components/Trigger';
 import Poem from '../components/Poem';
 import PostList from '../components/PostList';
-import Dynamic from '../components/Dynamic';
+import HomeScene from '../components/HomeScene';
 import { useHasMounted } from '../hooks';
 
 interface Data {
@@ -34,7 +34,7 @@ const Index = ({ data }: PageProps<Data>) => {
 
   return (
     <>
-      {hasMounted && <Dynamic />}
+      {hasMounted && <HomeScene />}
       {hasMounted && <Trigger />}
       <Layout>
         <SEO title={siteTitle} />
