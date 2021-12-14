@@ -219,7 +219,7 @@ const Controls = () => {
 添加`vr`属性将启用 Three 的 vr 模式，并将渲染循环切换到`gl.setAnimationLoop`，详情参考[Three 官方文档](https://threejs.org/docs/index.html#manual/en/introduction/How-to-create-VR-content)。
 
 ```jsx
-import * as VR from '!exports-loader?WEBVR!three/examples/js/vr/WebVR';
+import * as VR from '!exports-loader?WEBVR!three/examples/vr/WebVR';
 import { Canvas } from 'react-three-fiber';
 
 <Canvas

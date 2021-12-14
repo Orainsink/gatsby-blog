@@ -65,7 +65,7 @@ function openFolder() {
 
 // content/category
 try {
-  if (CATEGORY_MAP.has(category)) {
+  if (!CATEGORY_MAP.has(category)) {
     throw new Error('wrong category');
   }
 
