@@ -11,11 +11,13 @@ import { ReactComponent as EmojiSvg } from '../img/horseFace.svg';
 import { ReactComponent as CubicBezierSvg } from '../img/bezier.svg';
 import { ReactComponent as GridSvg } from '../img/grid.svg';
 import { ComponentType, SVGProps } from 'react';
-const TOOLS: {
+
+interface Tool {
   name: string;
   icon: ComponentType<SVGProps<SVGSVGElement>>;
   url: string;
-}[] = [
+}
+const TOOLS: Tool[] = [
   {
     name: 'can-I-use',
     icon: CanIUseSvg,

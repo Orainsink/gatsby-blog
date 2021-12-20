@@ -17,7 +17,7 @@ const destroyHowler = (howler: HowlType): void => {
 /**
  * https://github.com/goldfire/howler.js
  */
-const ReactHowler: React.FC<HowlerProps> = ({
+const ReactHowler = ({
   src,
   volume = 1.0,
   html5 = true,
@@ -37,7 +37,7 @@ const ReactHowler: React.FC<HowlerProps> = ({
   onLoad,
   onSeek,
   onLoadError,
-}) => {
+}: HowlerProps) => {
   const howlerRef = useRef<HowlType>();
 
   /**

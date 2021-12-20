@@ -3,15 +3,7 @@ import { Col, Row } from 'antd';
 import { Link } from 'gatsby';
 import { useMagicColor } from '../../hooks';
 import * as styles from './index.module.less';
-import {
-  CATEGORY_MAP,
-  CATEGORY_NAMES,
-} from '../../assets/constants/categories';
-
-let column: string[][] = [];
-for (let i = 0; i < CATEGORY_NAMES.length; i += 2) {
-  column.push(CATEGORY_NAMES.slice(i, i + 2));
-}
+import { CATEGORY_MAP, MENU_NAMES } from '../../assets/constants/categories';
 
 const ArchivesMenu = React.memo(({ visible }: { visible: boolean }) => {
   const magicRef = useRef<HTMLDivElement>(null);
@@ -25,7 +17,7 @@ const ArchivesMenu = React.memo(({ visible }: { visible: boolean }) => {
 
   return (
     <div className={styles.dropMenu} ref={refCallback}>
-      {column.map((item, index) => (
+      {MENU_NAMES.map((item, index) => (
         <Row align="middle" justify="space-between" key={index}>
           {item.map((category) => (
             <Col span={12} key={category}>

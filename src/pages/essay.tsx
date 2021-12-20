@@ -32,8 +32,8 @@ const EssayPage = ({ data }: PageProps<Data>) => {
 
   const getImg = useCallback(
     (relativeDirectory: string) => {
-      const node: any = data.images.edges.find(
-        (image) => image.node.relativeDirectory === relativeDirectory
+      const node: any = data.images.edges.find((image) =>
+        relativeDirectory.startsWith(`/${image.node.relativeDirectory}`)
       )?.node;
       if (node) {
         return getImage(node);
@@ -70,7 +70,7 @@ const EssayPage = ({ data }: PageProps<Data>) => {
               className={styles.essayItem}
               cover={
                 <GatsbyImage
-                  image={getImg(item.frontmatter.title)}
+                  image={getImg(item.fields.slug)}
                   style={{ width: '100%' }}
                   alt=""
                 />

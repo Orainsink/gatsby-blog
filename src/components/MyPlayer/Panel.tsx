@@ -17,6 +17,15 @@ import { ReactComponent as MusicLoadingSvg } from '../../assets/img/musicLoading
 import useMediaMeta from './useMediaMeta';
 import ReactHowler from './Howler';
 
+interface SongProps {
+  song: Song;
+  onClick: () => void;
+  id: number;
+  playing: boolean;
+  playerVisible: boolean;
+  loaded: boolean;
+}
+
 /**伪随机数组 */
 const getRandomList = () =>
   arr(SONGS.length)
@@ -24,21 +33,7 @@ const getRandomList = () =>
     .sort(() => Math.random() - 0.5);
 
 const SongItem = React.memo(
-  ({
-    song,
-    onClick,
-    id,
-    playing,
-    playerVisible,
-    loaded,
-  }: {
-    song: Song;
-    onClick: () => void;
-    id: number;
-    playing: boolean;
-    playerVisible: boolean;
-    loaded: boolean;
-  }) => (
+  ({ song, onClick, id, playing, playerVisible, loaded }: SongProps) => (
     <li
       key={song.id}
       onClick={() => onClick()}
