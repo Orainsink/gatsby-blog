@@ -69,7 +69,7 @@ const Panel = () => {
   const dispatch = useDispatch();
 
   const [randomList, setRandomList] = useState<number[]>([]);
-  const siriWaveRef = useRef<SiriWave>(null);
+  const siriWaveRef = useRef<SiriWave>();
 
   const setLoaded = useCallback(
     (loaded: boolean) => {
@@ -94,12 +94,12 @@ const Panel = () => {
 
   useEffect(() => {
     if (playing && playerVisible && loaded) {
-      siriWaveRef.current?.start();
+      siriWaveRef.current.start();
     } else {
-      siriWaveRef.current?.stop();
+      siriWaveRef.current.stop();
     }
     return () => {
-      siriWaveRef.current?.stop();
+      siriWaveRef.current.stop();
     };
   }, [playing, loaded, playerVisible]);
 

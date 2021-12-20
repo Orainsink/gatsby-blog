@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useCallback, useEffect } from 'react';
+import React, { useMemo, useCallback, useEffect } from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { useDispatch, useSelector } from 'react-redux';
 import * as styles from './index.module.less';
@@ -37,7 +37,6 @@ const WordCloudItem = (props: Props) => {
   `);
   const { jump = false, height = 150 } = props;
   const group = data.allFile.group;
-  const wordRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
   const theme = useSelector((state: iRootState) => state.theme);
 
@@ -61,32 +60,35 @@ const WordCloudItem = (props: Props) => {
     return group.map((item) => [item.fieldValue, getFontSize(item.totalCount)]);
   }, [group, getFontSize]);
 
-  useEffect(() => {
-    if (wordRef.current) {
-      WordCloud(wordRef.current, {
-        list: allTags,
-        gridSize: 18,
-        shape: 'square',
-        shrinkToFit: true,
-        weightFactor: 1,
-        drawOutOfBound: false,
-        rotateRatio: 0,
-        ellipticity: 1.5,
-        classes: styles.cloud,
-        backgroundColor: 'transparent',
-        fontFamily: 'Finger Paint, sans-serif',
-        color: theme === 'dark' ? 'random-light' : 'random-dark',
-        click: (item) => {
-          dispatch({ type: 'CUR_TAG', payload: item[0] });
-          jump && navigate('/archives/');
-        },
-      });
-    }
-  }, [allTags, jump, dispatch, theme]);
+  const wordRefCb = useCallback(
+    (node) => {
+      if (node) {
+        WordCloud(node, {
+          list: allTags,
+          gridSize: 18,
+          shape: 'square',
+          shrinkToFit: true,
+          weightFactor: 1,
+          drawOutOfBound: false,
+          rotateRatio: 0,
+          ellipticity: 1.5,
+          classes: styles.cloud,
+          backgroundColor: 'transparent',
+          fontFamily: 'Finger Paint, sans-serif',
+          color: theme === 'dark' ? 'random-light' : 'random-dark',
+          click: (item) => {
+            dispatch({ type: 'CUR_TAG', payload: item[0] });
+            jump && navigate('/archives/');
+          },
+        });
+      }
+    },
+    [allTags, jump, theme]
+  );
 
   return (
     <div className={styles.wrap}>
-      <div ref={wordRef} style={{ width: '100%', height: `${height}px` }} />
+      <div ref={wordRefCb} style={{ width: '100%', height: `${height}px` }} />
     </div>
   );
 };

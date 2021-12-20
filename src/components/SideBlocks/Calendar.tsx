@@ -88,6 +88,14 @@ const CalendarBlock = ({ posts }: Props) => {
     );
   }, []);
 
+  const handleSelect = useCallback((date) => {
+    if (!allMonths[dayjs(date).format('YYYY/MM')]) return;
+    dispatch({
+      type: 'CUR_DATE',
+      payload: dayjs(date).format('YYYY/MM'),
+    });
+  }, []);
+
   return (
     <Col flex={colFlex} className={classnames(styles.col, styles.calendarWrap)}>
       <div className={styles.title}>Calendar</div>
@@ -95,13 +103,7 @@ const CalendarBlock = ({ posts }: Props) => {
         fullscreen={false}
         mode="year"
         headerRender={headerRender}
-        onSelect={(date) => {
-          if (!allMonths[dayjs(date).format('YYYY/MM')]) return;
-          dispatch({
-            type: 'CUR_DATE',
-            payload: dayjs(date).format('YYYY/MM'),
-          });
-        }}
+        onSelect={handleSelect}
         defaultValue={dayjs()}
         disabledDate={disableDate}
         monthFullCellRender={monthCellRender}

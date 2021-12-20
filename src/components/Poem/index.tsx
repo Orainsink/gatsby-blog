@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as styles from './index.module.less';
-const jinrishici = require('jinrishici');
+import { load as poemLoader } from 'jinrishici';
 
 interface Poem {
   content: string;
@@ -15,7 +15,7 @@ const PoemComponent = () => {
   const [poem, setPoem] = useState<null | Poem>(null);
 
   useEffect(() => {
-    jinrishici.load((res) => {
+    poemLoader((res) => {
       setPoem(res.data);
     });
   }, []);

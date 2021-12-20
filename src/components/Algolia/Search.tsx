@@ -1,5 +1,5 @@
 import algoliasearch from 'algoliasearch/lite';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { InstantSearch } from 'react-instantsearch-dom';
 import SearchBox from './SearchBox';
 import SearchResult from './SearchResult';
@@ -10,7 +10,6 @@ import { ReactComponent as SearchSvg } from '../../assets/img/search.svg';
 import { iRootState } from '../../redux/store';
 
 const Search = () => {
-  const rootRef = useRef<HTMLDivElement>(null);
   const [query, setQuery] = useState<any>();
   const maxHeight = useSelector((state: iRootState) => state.maxHeight);
   const [client, setClient] = useState(null);
@@ -27,7 +26,7 @@ const Search = () => {
   const indices = [{ name: `Pages`, title: `Pages` }];
 
   return (
-    <div ref={rootRef}>
+    <div>
       {!!client && (
         <InstantSearch
           searchClient={client}

@@ -1,38 +1,39 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { iRootState } from '../redux/store';
 
 const Comment = () => {
-  const commentBox = useRef<HTMLDivElement>(null);
   const theme = useSelector((state: iRootState) => state.theme);
 
-  useEffect(() => {
-    const scriptEl = document.createElement('script');
-    scriptEl.async = true;
-    scriptEl.src = 'https://utteranc.es/client.js';
-    scriptEl.setAttribute('repo', 'Orainsink/gatsby-blog');
-    scriptEl.setAttribute('issue-term', 'title');
-    scriptEl.setAttribute('id', 'utterances');
-    scriptEl.setAttribute('label', 'comment');
-    scriptEl.setAttribute('crossorigin', 'anonymous');
-    scriptEl.setAttribute(
-      'theme',
-      globalThis.localStorage?.getItem('theme') === 'dark'
-        ? 'github-dark'
-        : 'github-light'
-    );
+  const commentsRefCb = useCallback((node) => {
+    if (node) {
+      const scriptEl = document.createElement('script');
+      scriptEl.async = true;
+      scriptEl.src = 'https://utteranc.es/client.js';
+      scriptEl.setAttribute('repo', 'Orainsink/gatsby-blog');
+      scriptEl.setAttribute('issue-term', 'title');
+      scriptEl.setAttribute('id', 'utterances');
+      scriptEl.setAttribute('label', 'comment');
+      scriptEl.setAttribute('crossorigin', 'anonymous');
+      scriptEl.setAttribute(
+        'theme',
+        globalThis.localStorage?.getItem('theme') === 'dark'
+          ? 'github-dark'
+          : 'github-light'
+      );
 
-    if (commentBox?.current) {
-      commentBox.current.appendChild(scriptEl);
-    } else {
-      console.log(`Error adding utterances comments on: ${commentBox}`);
+      if (node) {
+        node.appendChild(scriptEl);
+      } else {
+        console.log(`Error adding utterances comments`);
+      }
     }
   }, []);
 
   useEffect(() => {
-    const frameDom = document.querySelector('iframe.utterances-frame');
+    const frameDom: any = document.querySelector('iframe.utterances-frame');
 
-    if (frameDom && frameDom.contentWindow) {
+    if (frameDom?.contentWindow) {
       frameDom.contentWindow.postMessage(
         {
           type: 'set-theme',
@@ -43,6 +44,6 @@ const Comment = () => {
     }
   }, [theme]);
 
-  return <div ref={commentBox} className="comments"></div>;
+  return <div ref={commentsRefCb} className="comments"></div>;
 };
 export default React.memo(Comment);

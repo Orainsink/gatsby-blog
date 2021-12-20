@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useRef } from 'react';
 import { Col, Row } from 'antd';
 import { Link } from 'gatsby';
 import { useMagicColor } from '../../hooks';
@@ -9,14 +9,8 @@ const ArchivesMenu = React.memo(({ visible }: { visible: boolean }) => {
   const magicRef = useRef<HTMLDivElement>(null);
   useMagicColor(magicRef.current, visible);
 
-  const refCallback = useCallback((node: HTMLDivElement) => {
-    if (node !== null) {
-      magicRef.current = node;
-    }
-  }, []);
-
   return (
-    <div className={styles.dropMenu} ref={refCallback}>
+    <div className={styles.dropMenu} ref={magicRef}>
       {MENU_NAMES.map((item, index) => (
         <Row align="middle" justify="space-between" key={index}>
           {item.map((category) => (
