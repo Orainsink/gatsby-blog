@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as styles from './index.module.less';
 import { load as poemLoader } from 'jinrishici';
+import { useLocalStorage } from '../../hooks';
 
 interface Poem {
   content: string;
@@ -12,7 +13,7 @@ interface Poem {
 }
 
 const PoemComponent = () => {
-  const [poem, setPoem] = useState<null | Poem>(null);
+  const [poem, setPoem] = useLocalStorage<null | Poem>('my-key', null);
 
   useEffect(() => {
     poemLoader((res) => {
