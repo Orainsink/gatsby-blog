@@ -13,7 +13,7 @@ interface Poem {
 }
 
 const PoemComponent = () => {
-  const [poem, setPoem] = useLocalStorage<null | Poem>('my-key', null);
+  const [poem, setPoem] = useLocalStorage<null | Poem>('poem', null);
 
   useEffect(() => {
     poemLoader((res) => {
