@@ -1,21 +1,25 @@
 /**Called when the initial (but not subsequent) render of Gatsby App is done on the client. */
-const onInitialClientRender = () => {
-  // close loading
-  setTimeout(function () {
-    document.getElementById('___loader').style.opacity = 0;
-  }, 0);
+// const onInitialClientRender = () => {
+//   const loaderIframe = document.getElementById('___loader');
+//   // close loading
+//   if (loaderIframe) {
+//     setTimeout(function () {
+//       loaderIframe.style.opacity = 0;
+//     }, 0);
 
-  if (
-    !Boolean(window?.localStorage.getItem('SCENE')) ||
-    Boolean(window?.localStorage.getItem('SKIP'))
-  ) {
-    document.getElementById('___loader').style.display = 'none';
-  } else {
-    setTimeout(function () {
-      document.getElementById('___loader').style.display = 'none';
-    }, 300);
-  }
-};
+//     if (
+//       !Boolean(window?.localStorage.getItem('SCENE')) ||
+//       Boolean(window?.localStorage.getItem('SKIP'))
+//     ) {
+//       loaderIframe.style.display = 'none';
+//     } else {
+//       setTimeout(function () {
+//         console.log(loaderIframe.style.display);
+//         loaderIframe.style.display = 'none';
+//       }, 300);
+//     }
+//   }
+// };
 /**pwa update notice */
 // const onServiceWorkerUpdateReady = () => {
 //   const answer = window.confirm(
@@ -28,6 +32,6 @@ const onInitialClientRender = () => {
 // };
 
 module.exports = {
-  onInitialClientRender,
+  // onInitialClientRender,
   // onServiceWorkerUpdateReady,
 };
