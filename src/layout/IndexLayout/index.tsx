@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { Col, Row } from 'antd';
-import SideBar, { TagsBlock, Info } from '../../components/SideBlocks';
+import SideBar from '../../components/SideBlocks';
 import * as styles from './index.module.less';
 import { useBackgroundColor } from '../../hooks';
 import Comment from '../../components/Comment';
 import { iRootState } from '../../redux/store';
 import Footer from '../../components/Footer';
-import Tools from '../../components/SideBlocks/Tools';
 
 interface Props {
   children?: React.ReactNode;
@@ -53,9 +52,9 @@ const Layout = ({ children }: Props) => {
             <Comment />
           </Col>
           <SideBar>
-            <Info />
-            <TagsBlock />
-            <Tools />
+            <SideBar.Info />
+            <SideBar.TagsBlock />
+            <SideBar.Tools />
           </SideBar>
         </Row>
       </main>

@@ -7,7 +7,7 @@ import * as styles from './index.module.less';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Anchor } from 'antd';
-import { Contents } from '../components/SideBlocks';
+import SideBlocks from '../components/SideBlocks';
 import { useMedia } from '../hooks';
 import generatePath from '../utils/generatePath';
 import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
@@ -55,7 +55,11 @@ const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
   }, []);
 
   return (
-    <Layout sideBlocks={is1110 ? null : <Contents content={tableOfContents} />}>
+    <Layout
+      sideBlocks={
+        is1110 ? null : <SideBlocks.Contents content={tableOfContents} />
+      }
+    >
       <SEO title={title} description={description || excerpt} />
       <article>
         <header>

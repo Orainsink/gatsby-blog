@@ -13,7 +13,7 @@ const Contents = (props: Props) => {
   const { content } = props;
   const scrollY = useScrollY();
 
-  const isFixed = useMemo(() => scrollY > 333, [scrollY]);
+  const isFixed = useMemo(() => scrollY > 327, [scrollY]);
 
   const isHide = useMemo(() => {
     if (!isClient) return false;
@@ -56,7 +56,7 @@ const Contents = (props: Props) => {
       <div className={classnames(styles.contents)}>
         <Anchor
           getContainer={() => document.body as HTMLElement}
-          targetOffset={200}
+          targetOffset={80}
           onClick={handleClick}
         >
           {renderLinks}

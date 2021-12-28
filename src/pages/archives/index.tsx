@@ -8,7 +8,7 @@ import loadable from '@loadable/component';
 import { ReloadOutlined } from '@ant-design/icons';
 import * as styles from './index.module.less';
 import PostList from '../../components/PostList';
-import { Calendar } from '../../components/SideBlocks';
+import SideBlocks from '../../components/SideBlocks';
 import { iRootState } from '../../redux/store';
 const WordCloud = loadable(() => import('../../components/WordCloud'));
 
@@ -24,7 +24,7 @@ const ArchivesPage = ({ data }: PageProps<Data>) => {
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
 
   return (
-    <Layout sideBlocks={<Calendar posts={posts} />}>
+    <Layout sideBlocks={<SideBlocks.Calendar posts={posts} />}>
       <SEO title="技术-归档" />
       <WordCloud />
       <Divider orientation="center" className={styles.divider}>

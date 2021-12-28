@@ -57,27 +57,27 @@ const SONGS: Song[] = [
   },
   {
     id: 7,
-    name: 'Coke Can Motorcycle',
-    artist: 'JMR',
-    url: 'http://music.163.com/song/media/outer/url?id=1436451685.mp3',
+    name: '清平乐',
+    artist: '张紫宁',
+    url: 'http://music.163.com/song/media/outer/url?id=1375868212.mp3',
     cover:
-      'http://p2.music.126.net/DdE13ChbcjwsTFP6xuIOqw==/109951164859762568.jpg?param=130y130',
+      'https://p1.music.126.net/145FpHsLi2_RyjqCm9kEUQ==/109951164698991135.jpg?param=130y130',
   },
   {
     id: 8,
-    name: '回眸',
-    artist: '墨武侠锋',
-    url: 'http://music.163.com/song/media/outer/url?id=31381307.mp3',
+    name: '荏染时',
+    artist: '紫龙',
+    url: 'http://music.163.com/song/media/outer/url?id=1876135435.mp3',
     cover:
-      'http://p2.music.126.net/BtaxL4NFiJ8FX0U_iESxRA==/2935696046396304.jpg?param=130y130',
+      '	https://p2.music.126.net/G1ze4Vc6PvAW-KXoef59Qw==/109951166363571092.jpg?param=130y130',
   },
   {
     id: 9,
-    name: '青石愿',
-    artist: '沙拉莹',
-    url: 'http://music.163.com/song/media/outer/url?id=1336917600.mp3',
+    name: '弗雷斯贝尔古的少女',
+    artist: 'Caro',
+    url: 'http://music.163.com/song/media/outer/url?id=1835851311.mp3',
     cover:
-      'http://p2.music.126.net/BtaxL4NFiJ8FX0U_iESxRA==/2935696046396304.jpg?param=130y130',
+      'https://p1.music.126.net/eELQNTRf1FZB4DhonzuTBQ==/109951165873019107.jpg?param=130y130',
   },
   {
     id: 10,
@@ -119,6 +119,22 @@ const SONGS: Song[] = [
     url: 'http://music.163.com/song/media/outer/url?id=1364353126.mp3',
     cover:
       'http://p1.music.126.net/5M49xn4JIQlxfP_ekV6kjQ==/109951164063354523.jpg?param=130y130',
+  }, */
+/*   {
+    id: 8,
+    name: '回眸',
+    artist: '墨武侠锋',
+    url: 'http://music.163.com/song/media/outer/url?id=31381307.mp3',
+    cover:
+      'http://p2.music.126.net/BtaxL4NFiJ8FX0U_iESxRA==/2935696046396304.jpg?param=130y130',
+  },
+  {
+    id: 9,
+    name: '青石愿',
+    artist: '沙拉莹',
+    url: 'http://music.163.com/song/media/outer/url?id=1336917600.mp3',
+    cover:
+      'http://p2.music.126.net/BtaxL4NFiJ8FX0U_iESxRA==/2935696046396304.jpg?param=130y130',
   }, */
 
 export default SONGS;

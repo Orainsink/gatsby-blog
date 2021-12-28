@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Col, Row } from 'antd';
 import { useHasMounted } from '../../hooks';
+import Calendar from './Calendar';
+import Contents from './Contents';
+import Info from './Info';
+import TagsBlock from './TagsBlock';
+import Tools from './Tools';
 
 interface Props {
   children: React.ReactNode;
@@ -25,4 +30,11 @@ const SideBar = (props: Props) => {
     )
   );
 };
-export default React.memo(SideBar);
+
+SideBar.Calendar = Calendar;
+SideBar.Contents = Contents;
+SideBar.Info = Info;
+SideBar.TagsBlock = TagsBlock;
+SideBar.Tools = Tools;
+
+export default SideBar;

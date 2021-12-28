@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Col, Row } from 'antd';
-import SideBar, { Info } from '../../components/SideBlocks';
+import SideBar from '../../components/SideBlocks';
 import * as styles from './index.module.less';
 import { useBackgroundColor } from '../../hooks';
 import Footer from '../../components/Footer';
@@ -40,7 +40,7 @@ const Layout = (props: Props) => {
             {children}
           </Col>
           <SideBar>
-            <Info />
+            <SideBar.Info />
             {sideBlocks}
           </SideBar>
         </Row>

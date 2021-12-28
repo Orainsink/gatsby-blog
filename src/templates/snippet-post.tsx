@@ -10,7 +10,7 @@ import { Anchor } from 'antd';
 import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
 import { useMedia } from '../hooks';
 import generatePath from '../utils/generatePath';
-import { Contents } from '../components/SideBlocks';
+import SideBlocks from '../components/SideBlocks';
 import Comment from '../components/Comment';
 import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
 interface Props {
@@ -54,7 +54,11 @@ const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
   }, []);
 
   return (
-    <Layout sideBlocks={is1110 ? null : <Contents content={tableOfContents} />}>
+    <Layout
+      sideBlocks={
+        is1110 ? null : <SideBlocks.Contents content={tableOfContents} />
+      }
+    >
       <SEO title={title} description={description || excerpt} />
       <article>
         <header>
