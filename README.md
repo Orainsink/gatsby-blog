@@ -29,14 +29,8 @@ yarn
 yarn start
 # build project
 yarn build
-# write a new post, default category is "tech"
+# write a new post
 yarn new your-post-name
-# or if your post contains imgs, use
-yarn new /your-post-folder-name
-# new post with category in ["tech","essay","leetcode","snippet"]
-yarn new your-post-name##essay
-#or
-yarn new /your-postfolder-name##essay
 ```
 
 > This blog is a personal project for practicing, so there are no special optimizations for extensibility or customization.
@@ -50,16 +44,8 @@ yarn new /your-postfolder-name##essay
 ### How to write posts
 
 ```shell
-yarn new aaa
+yarn new your-post-name
 ```
-
-this command will create a `aaa.mdx` file in `/content/tech`
-
-```shell
-yarn new /aaa
-```
-
-this will create a path `/content/tech/aaa/` and generate a `aaa.mdx` file.
 
 ### How to change styles and components
 
