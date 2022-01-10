@@ -34,7 +34,7 @@ class NewPost {
   constructor({
     isFolder = true,
     category = '',
-    description = '',
+    description = ' ',
     url = '',
     index = 0,
   }) {
