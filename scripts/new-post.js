@@ -71,7 +71,6 @@ class NewPost {
   }
   getStrByConfig() {
     let result = '';
-    console.log(this.config);
     result = Object.keys(this.config)
       .map((field) => {
         const v = this.config[field];
