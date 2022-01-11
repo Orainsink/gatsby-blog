@@ -190,7 +190,6 @@ type fn = ReturnType<typeof foo>;
 
 ```ts
 type NonNullable<T> = T extends null | undefined ? never : T;
-复制代码
 ```
 
 它的作用是去除 T 中包含的`null`或者`undefined`。如下示例所示，变量`foo`的类型为`TFoo`，因此下面的赋值都是没问题的。
@@ -200,7 +199,6 @@ type TFoo = 1 | null | undefined
 let foo: TFoo = 1
 foo = null
 foo = undefined
-复制代码
 ```
 
 如果我想把`TFoo`中的`null`和`undefined`去除掉，可以这样处理：
