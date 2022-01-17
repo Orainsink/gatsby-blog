@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import { Col, Row } from 'antd';
 import { useHasMounted } from '../../hooks';
 import Calendar from './Calendar';
+import MarketCalendar from './MarketCalendar';
 import Contents from './Contents';
 import Info from './Info';
 import TagsBlock from './TagsBlock';
@@ -32,6 +33,7 @@ const SideBar = (props: Props) => {
 };
 
 SideBar.Calendar = Calendar;
+SideBar.MarketCalendar = MarketCalendar;
 SideBar.Contents = Contents;
 SideBar.Info = Info;
 SideBar.TagsBlock = TagsBlock;
