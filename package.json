@@ -127,6 +127,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "new": "node ./scripts/new-post.js",
+    "diary": "node ./scripts/write-diary.js",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" ",
     "deploy": "gatsby build && gh-pages -d public -r https://$GH_TOKEN@github.com/Orainsink/gatsby-blog.git",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",

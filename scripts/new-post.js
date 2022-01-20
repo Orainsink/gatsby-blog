@@ -105,7 +105,7 @@ class NewPost {
     try {
       if (os.platform() === 'win32') {
         exec(`explorer.exe /select,"${openPath}"`);
-      } else if (os.platform() === 'darwin') {
+      } else {
         exec(`open ${openPath}`);
       }
     } catch (err) {
