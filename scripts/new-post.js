@@ -1,6 +1,6 @@
 // #!/usr/bin/env node
 /**
- * generate markdown file from template
+ * generate markdown file by template
  */
 const fs = require('fs');
 const moment = require('moment');
