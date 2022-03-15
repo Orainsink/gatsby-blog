@@ -41,8 +41,20 @@ const onCreateWebpackConfig = ({ actions, stage }) => {
   });
 };
 
+const onCreateBabelConfig = ({ actions }) => {
+  actions.setBabelPlugin({
+    name: `babel-plugin-import`,
+    options: {
+      libraryName: "antd",
+      libraryDirectory: "es",
+      style: 'css'
+    }
+  });
+};
+
 module.exports = {
   createPages: require('./scripts/createPages'),
   onCreateNode: require('./scripts/onCreateNode'),
+  onCreateBabelConfig,
   onCreateWebpackConfig,
 };

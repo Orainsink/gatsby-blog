@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import * as styles from './index.module.less';
+import React, { useEffect } from 'react';
 import { load as poemLoader } from 'jinrishici';
+
+import * as styles from './index.module.less';
 import { useLocalStorage } from '../../hooks';
 
 interface Poem {

@@ -151,16 +151,14 @@ module.exports = {
       options: {
         lessOptions: {
           javascriptEnabled: true,
-          // strictMath: true,
+          math: 'always',
+          strictMath: false,
           cssLoaderOptions: {
             camelCase: false,
           },
           modifyVars,
-          postCssPlugins: [require('autoprefixer'), require('cssnano')].filter(
-            Boolean
-          ),
+          postCssPlugins: [require('postcss-preset-env'), require('cssnano')]
         },
-        postCssPlugins: [require('autoprefixer'), require('cssnano')],
       },
     },
     {
@@ -184,16 +182,9 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-typescript`,
     'gatsby-plugin-cname',
     'gatsby-plugin-dark-mode',
     'gatsby-plugin-svgr',
-    {
-      resolve: 'gatsby-plugin-antd',
-      options: {
-        style: true,
-      },
-    },
     {
       resolve: `gatsby-plugin-react-redux`,
       options: {

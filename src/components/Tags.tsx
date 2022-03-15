@@ -36,7 +36,7 @@ const Tags = ({ tags, category }: Props) => {
   }
 
   return (
-    tags?.length && (
+    !!tags?.length && (
       <p className="tags">
         {tags.map((tag) => (
           <Link key={tag} onClick={() => onTagClicked(tag)} to={`/archives`}>
