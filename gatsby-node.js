@@ -47,7 +47,7 @@ const onCreateBabelConfig = ({ actions }) => {
     options: {
       libraryName: "antd",
       libraryDirectory: "es",
-      style: 'css'
+      style: true
     }
   });
 };
