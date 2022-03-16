@@ -21,6 +21,8 @@ import { useGLTF } from '@react-three/drei';
 import * as styles from './index.module.less';
 import { useMedia } from '../../hooks';
 import { iRootState } from '../../redux/store';
+import { Theme } from '../../assets/constants/common';
+import { useIsDark } from '../../hooks/useIsDark';
 
 interface Data {
   file: {
@@ -30,11 +32,11 @@ interface Data {
 
 interface Props {
   url: string;
-  theme: string;
+  isDark: boolean;
 }
 
 const CUSTOM_SCALE = 8;
-const Modal = React.memo(({ url, theme }: Props) => {
+const Modal = React.memo(({ url, isDark }: Props) => {
   const { nodes } = useGLTF(url) as any;
 
   const moogleRef = useRef<Mesh>();
@@ -113,7 +115,7 @@ const Modal = React.memo(({ url, theme }: Props) => {
       <points ref={pointsRef}>
         <bufferGeometry {...nodes.mesh_0.geometry} ref={geomRef} />
         <pointsMaterial
-          color={theme === 'dark' ? '#efefef' : '#0f0f0f'}
+          color={isDark ? '#efefef' : '#0f0f0f'}
           size={0.1}
           transparent
           blending={AdditiveBlending}
@@ -133,7 +135,7 @@ const Moogle = () => {
   `);
   const url = data.file.publicURL;
   const is1100 = useMedia('(max-width: 1100px)');
-  const theme = useSelector((state: iRootState) => state.theme);
+  const isDark = useIsDark()
 
   return (
     <Col
@@ -148,7 +150,7 @@ const Moogle = () => {
         />
         {process.env.NODE_ENV === 'development' && <gridHelper />}
         <Suspense fallback={null}>
-          <Modal url={url} theme={theme} />
+          <Modal url={url} isDark={isDark} />
         </Suspense>
       </Canvas>
     </Col>

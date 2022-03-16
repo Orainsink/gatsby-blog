@@ -6,20 +6,21 @@ import Icon, {
   GithubOutlined,
   WechatOutlined,
 } from '@ant-design/icons';
-import { ReactComponent as SteamSvg } from '../../assets/img/steam.svg';
 import classnames from 'classnames';
+
+import { ReactComponent as SteamSvg } from '../../assets/img/steam.svg';
 import { useMedia } from '../../hooks';
 import * as styles from './index.module.less';
-import { useSelector } from 'react-redux';
-import { iRootState } from '../../redux/store';
 import { graphql, useStaticQuery } from 'gatsby';
+import { Theme } from '../../assets/constants/common';
+import { useIsDark } from '../../hooks/useIsDark';
 interface Data {
   avatar: any;
   avatarD: any;
 }
 /**个人信息块 */
 const Info = () => {
-  const theme = useSelector((state: iRootState) => state.theme);
+  const isDark = useIsDark()
   const is1100 = useMedia('(max-width: 1100px)');
 
   const data: Data = useStaticQuery(graphql`
@@ -46,7 +47,7 @@ const Info = () => {
       }
     }
   `);
-  const avatar = getImage(theme === 'dark' ? data.avatarD : data.avatar);
+  const avatar = getImage(isDark ? data.avatarD : data.avatar);
 
   const weChatRender = useMemo(() => {
     return (
@@ -95,9 +96,9 @@ const Info = () => {
       <GatsbyImage image={avatar} alt="" className={styles.avatar} />
       <div className={styles.titleWrap}>
         <div className={styles.title}>ABOUT</div>
-        <div>{theme === 'dark' ? 'Orainsink' : '莫沉'}</div>
+        <div>{isDark ? 'Orainsink' : '莫沉'}</div>
         <div>
-          {theme === 'dark' ? 'listen, feel, think' : '倾听, 感受, 思考'}
+          {isDark ? 'listen, feel, think' : '倾听, 感受, 思考'}
         </div>
         <div className={styles.iconWrap}>
           <a

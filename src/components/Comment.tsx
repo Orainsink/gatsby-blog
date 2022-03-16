@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { iRootState } from '../redux/store';
+
+import { useIsDark } from '../hooks/useIsDark';
 
 const Comment = () => {
-  const theme = useSelector((state: iRootState) => state.theme);
+  const isDark = useIsDark()
 
   const commentsRefCb = useCallback((node) => {
     if (node) {
@@ -17,7 +17,7 @@ const Comment = () => {
       scriptEl.setAttribute('crossorigin', 'anonymous');
       scriptEl.setAttribute(
         'theme',
-        globalThis.localStorage?.getItem('theme') === 'dark'
+        isDark
           ? 'github-dark'
           : 'github-light'
       );
@@ -37,12 +37,12 @@ const Comment = () => {
       frameDom.contentWindow.postMessage(
         {
           type: 'set-theme',
-          theme: theme === 'dark' ? 'github-dark' : 'github-light',
+          theme: isDark ? 'github-dark' : 'github-light',
         },
         'https://utteranc.es/'
       );
     }
-  }, [theme]);
+  }, [isDark]);
 
   return <div ref={commentsRefCb} className="comments"></div>;
 };

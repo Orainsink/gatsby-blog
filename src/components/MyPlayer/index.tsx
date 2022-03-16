@@ -2,18 +2,20 @@ import React from 'react';
 import { Tooltip } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import classnames from 'classnames';
+
 import * as styles from './index.module.less';
 import Panel from './Panel';
 import { iRootState } from '../../redux/store';
+import { useIsDark } from '../../hooks/useIsDark';
 
 /** myPlayer wrap */
 const MyPlayer = () => {
   const {
     headerDrop,
-    theme,
     music: { loaded, playing },
   } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
+  const isDark = useIsDark()
 
   return (
     <Tooltip
@@ -21,7 +23,7 @@ const MyPlayer = () => {
       trigger="click"
       overlayClassName={classnames(styles.wrapper, {
         [styles.headerDrop]: headerDrop,
-        [styles.dark]: theme === 'dark',
+        [styles.dark]: isDark,
       })}
       getPopupContainer={() => document.getElementById('header')}
       onVisibleChange={(visible) =>

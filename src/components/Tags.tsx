@@ -1,16 +1,17 @@
 import React, { useCallback } from 'react';
 import { Link } from 'gatsby';
 import { Tag } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
-import { iRootState } from '../redux/store';
+import { useDispatch } from 'react-redux';
+
 import { CATEGORY_MAP } from '../assets/constants/categories';
+import { useIsDark } from '../hooks/useIsDark';
 interface Props {
   tags: string[];
   category?: string;
 }
 const Tags = ({ tags, category }: Props) => {
   const dispatch = useDispatch();
-  const theme = useSelector((state: iRootState) => state.theme);
+  const isDark = useIsDark()
 
   const onTagClicked = useCallback(
     (tag: string) => {
@@ -41,7 +42,7 @@ const Tags = ({ tags, category }: Props) => {
         {tags.map((tag) => (
           <Link key={tag} onClick={() => onTagClicked(tag)} to={`/archives`}>
             <Tag
-              color={theme === 'dark' ? 'var(--tag-color)' : 'blue'}
+              color={isDark ? 'var(--tag-color)' : 'blue'}
               style={{ cursor: 'pointer' }}
             >
               #{tag}

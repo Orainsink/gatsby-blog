@@ -12,6 +12,7 @@ import { ReactComponent as LeetcodeSvg } from '../assets/img/leetcode.svg';
 import generatePath from '../utils/generatePath';
 import { ColumnsType } from 'antd/lib/table';
 import { iRootState } from '../redux/store';
+import { useIsDark } from '../hooks/useIsDark';
 
 interface Data {
   allFile: {
@@ -31,7 +32,7 @@ interface ColumnItemType {
   id: string;
 }
 const SnippetPage = ({ data }: PageProps<Data>) => {
-  const { curDate, theme } = useSelector((state: iRootState) => state);
+  const { curDate } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
   const options = useMemo(() => {
@@ -41,6 +42,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
     }));
   }, [data]);
 
+  const isDark = useIsDark()
   useResetKey();
   const is768 = useMedia('(max-width: 768px)');
   const datas = useMemo(() => {
@@ -78,7 +80,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
       dataIndex: 'tag',
       width: 80,
       render: (text: string) => (
-        <Tag color={theme === 'dark' ? 'var(--tag-color)' : 'blue'}>{text}</Tag>
+        <Tag color={isDark ? 'var(--tag-color)' : 'blue'}>{text}</Tag>
       ),
       onFilter: (value, record) => record.tag.indexOf(value + '') === 0,
       filters: options,
@@ -96,7 +98,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
       width: 100,
       render: (text: string) =>
         text ? (
-          <Button ghost={theme === 'dark' ? true : false} href={text}>
+          <Button ghost={isDark ? true : false} href={text}>
             <LeetcodeSvg
               style={{
                 width: '18px',
@@ -125,7 +127,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
           <div style={{ fontWeight: 'bold' }}>{text}</div>
           <div>date：{row.date}</div>
           <div>
-            <Tag color={theme === 'dark' ? 'var(--tag-color)' : 'blue'}>
+            <Tag color={isDark ? 'var(--tag-color)' : 'blue'}>
               {row.tag}
             </Tag>
           </div>
@@ -141,7 +143,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
             <Button
               type="link"
               size="large"
-              ghost={theme === 'dark' ? true : false}
+              ghost={isDark ? true : false}
               href={text}
             >
               <LeetcodeSvg style={{ width: '18px', height: '18px' }} />

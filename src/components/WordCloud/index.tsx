@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as styles from './index.module.less';
 import isClient from '../../utils/isClient';
 import { iRootState } from '../../redux/store';
+import { Theme } from '../../assets/constants/common';
+import { useIsDark } from '../../hooks/useIsDark';
 const WordCloud = isClient ? require('wordcloud') : undefined;
 
 interface Data {
@@ -38,7 +40,7 @@ const WordCloudItem = (props: Props) => {
   const { jump = false, height = 150 } = props;
   const group = data.allFile.group;
   const dispatch = useDispatch();
-  const theme = useSelector((state: iRootState) => state.theme);
+  const isDark = useIsDark()
 
   const weighted = useMemo(() => {
     let arr = group.map((item) => item.totalCount);
@@ -75,7 +77,7 @@ const WordCloudItem = (props: Props) => {
           classes: styles.cloud,
           backgroundColor: 'transparent',
           fontFamily: 'Finger Paint, sans-serif',
-          color: theme === 'dark' ? 'random-light' : 'random-dark',
+          color: isDark? 'random-light' : 'random-dark',
           click: (item) => {
             dispatch({ type: 'CUR_TAG', payload: item[0] });
             jump && navigate('/archives/');
@@ -83,7 +85,7 @@ const WordCloudItem = (props: Props) => {
         });
       }
     },
-    [allTags, jump, theme]
+    [allTags, jump, isDark]
   );
 
   return (

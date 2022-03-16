@@ -1,15 +1,17 @@
 import React, { useMemo } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
 import { Divider, Table, Tag } from 'antd';
-import Layout from '../layout/BlogLayout';
-import SEO from '../components/seo';
+import dayjs from 'dayjs';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReloadOutlined } from '@ant-design/icons';
+
 import * as styles from './archives/index.module.less';
 import { useResetKey, useMedia } from '../hooks';
-import dayjs from 'dayjs';
+import Layout from '../layout/BlogLayout';
+import SEO from '../components/seo';
 import generatePath from '../utils/generatePath';
 import { iRootState } from '../redux/store';
+import { useIsDark } from '../hooks/useIsDark';
 
 interface Data {
   allFile: {
@@ -18,9 +20,10 @@ interface Data {
 }
 
 const SnippetPage = ({ data }: PageProps<Data>) => {
-  const { curDate, theme } = useSelector((state: iRootState) => state);
+  const { curDate } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
+  const isDark = useIsDark()
 
   useResetKey();
   const is768 = useMedia('(max-width: 768px)');
@@ -55,7 +58,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
       dataIndex: 'tag',
       width: 80,
       render: (text: string) => (
-        <Tag color={theme === 'dark' ? 'var(--tag-color)' : 'blue'}>{text}</Tag>
+        <Tag color={isDark? 'var(--tag-color)' : 'blue'}>{text}</Tag>
       ),
     },
     {
@@ -76,7 +79,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
           <div style={{ fontWeight: 'bold' }}>{text}</div>
           <div>{row.description}</div>
           <div>
-            <Tag color={theme === 'dark' ? 'var(--tag-color)' : 'blue'}>
+            <Tag color={isDark ? 'var(--tag-color)' : 'blue'}>
               {row.tag}
             </Tag>
           </div>

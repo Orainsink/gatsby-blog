@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import classnames from 'classnames';
 
 import * as styles from './index.module.less';
+import { useMedia } from '../../../hooks';
+import { Theme } from '../../../assets/constants/common';
 
 const ThemeBtn = () => {
   const dispatch = useDispatch();
@@ -13,10 +15,12 @@ const ThemeBtn = () => {
     },
     [dispatch]
   );
+  const isBrowserColorSchemeDark = useMedia('prefers-color-scheme: dark')
 
   useEffect(() => {
-    setTheme(globalThis.localStorage?.getItem('theme'))
-  }, []);
+    const browserColorScheme = isBrowserColorSchemeDark? Theme.DARK: Theme.LIGHT
+    setTheme(globalThis.localStorage?.getItem('theme') ?? browserColorScheme)
+  }, [isBrowserColorSchemeDark]);
 
   return (
     <ThemeToggler>
@@ -30,11 +34,11 @@ const ThemeBtn = () => {
               id="toggle--daynight"
               className={styles.checkbox}
               onChange={(e) => {
-                const curTheme = e.target.checked ? 'light' : 'dark';
+                const curTheme = e.target.checked ? Theme.LIGHT : Theme.DARK;
                 toggleTheme(curTheme);
                 setTheme(curTheme);
               }}
-              checked={theme !== 'dark'}
+              checked={theme !== Theme.DARK}
             />
             <label className={styles.btn} htmlFor="toggle--daynight">
               <span className={styles.feature}></span>
