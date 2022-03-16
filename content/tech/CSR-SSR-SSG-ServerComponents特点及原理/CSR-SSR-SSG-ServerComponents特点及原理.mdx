@@ -154,6 +154,20 @@ Static Generation（也叫 SSG，Static Site Generation）是指在编译时生�
 
 第一个问题的一种可行的实践方案是将 SSR 与 SSG 结合起来，只对内容依赖个性化数据、或者频繁更新的页面走 SSR 或者 CSR，其余场景都走 SSG。通常来说我们可以用`useEffect`这种副作用钩子来简单实现这一效果，但我们也可以考虑其他第三方库提供的一些新的渲染方案 ISR / DPR / DSG，这部分只作为延伸学习。
 
+## 总结
+
+![ssr <-> csr](1.jpg)
+
+如图是从服务端到浏览器的五种渲染模式。
+
+开发者应该根据实际项目需要，选择合适的渲染模式。
+
+绝大部分商业项目都不是纯SSR或者CSR模式，而采用混合模式。在该图片中的 SSR with (Re)hydration 和 CSR with Prerendering 这两种即为SSR/SSG/CSR混用的模式。
+
+除此之外，不同的框架还提功能更细化的混合渲染模式，这一块我放在技术延伸里，仅供参考。
+
+图片来源：[我看 Next.js：一个更现代的海王](https://toutiao.io/posts/ffcwol1/preview) 
+
 ## 技术延伸（引用的文章会配图更易理解）
 
 ### Jamstack 技术架构
@@ -178,7 +192,7 @@ Static Generation（也叫 SSG，Static Site Generation）是指在编译时生�
 
 ### DSG延迟静态生成(Deferred Static Generation)
 
-Gatsbyjs 在 SSG 上更进一步优化的渲染方案，不过只能使用他们的云服务，后端数据也只能用nodejs。
+Gatsbyjs 在 SSG 上更进一步优化的渲染模式，不过只能使用他们的云服务，后端数据也只能用nodejs。
 
 简单来说，就是把SSG的打包操作托管给了Gatsby cloud，然后gatsby cloud不会直接生成静态网站，而是在用户发送了第一次页面请求过后才组装页面并构建html结果，生成的页面会直接返回给用户，然后该页面会在CDN里留一个缓存，当有第二个用户请求该页面的时候，就可以直接通过CDN返回缓存，而不用再次构建静态HTML。
 
@@ -188,7 +202,7 @@ Gatsbyjs 在 SSG 上更进一步优化的渲染方案，不过只能使用他们
 
 ### Server Components（React 服务端组件，未成熟的方案）
 
-无论哪种渲染方案，发给服务端发送给客户端的都是完整的 Html， 而如果采用服务端渲染的形式，我们需要准备好所有组件的 HTML 才能返回。如果某个组件需要的数据耗时较久，也会阻塞整个 HTML 的生成。为了优化白屏时间，我们还可以考虑 code split 懒加载以减少直接下载的 Html 代码量。
+无论哪种渲染方案，发给服务端发送给客户端的都是完整的 Html， 而如果采用服务端渲染模式，我们需要准备好所有组件的 HTML 才能返回。如果某个组件需要的数据耗时较久，也会阻塞整个 HTML 的生成。为了优化白屏时间，我们还可以考虑 code split 懒加载以减少直接下载的 Html 代码量。
 
 Server Components 就是结合了 code split 懒加载和 SSR 的技术方案。
 
@@ -201,13 +215,17 @@ Server Components 就是结合了 code split 懒加载和 SSR 的技术方案。
 
 ### Streaming SSR（React 流式服务端渲染）
 
-Streaming SSR 是服务端组件技术的延伸，配合服务端组件和 react `Suspense`组件，实现流式加载的效果（常见于图片加载，只不过这里图片变成了 html 片段）
+Streaming SSR 是服务端组件技术的延伸，配合服务端组件和 react `Suspense`组件，实现流式加载的效果（常见于图片加载，只不过这里图片变成了 html 片段）。
 
 具体的细节，可以参考这篇文章： [浅析 React 18 Streaming SSR（流式服务端渲染）](https://juejin.cn/post/7064759195710521381)
+
+它可以和`IntersectionObserver` API 搭配使用，实现极致的性能优化。
 
 另外，流式渲染需要发送更多的http请求，所以搭配http2多路复用的特性使用更好。
 
 ### 微前端（乾坤和模块联邦）
+
+微前端不属于渲染模式，这里加上只是顺手。。。
 
 SPA 全称叫 single-page-app, 即单页面应用，不管 SPA 还是 MPA，一个页面都是一个应用，但我们经常还需要在网页上嵌入第三方应用，这个时候要踩的坑就很多了。
 
