@@ -29,7 +29,8 @@ const Comment = () => {
         console.log(`Error adding utterances comments`);
       }
     }
-  }, [isDark]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const frameDom: any = document.querySelector('iframe.utterances-frame');
