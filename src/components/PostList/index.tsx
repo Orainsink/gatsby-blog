@@ -37,7 +37,7 @@ const PostList = ({ posts, hideMore = false }: Props) => {
 
   const getIsAccordion  = useCallback((index) => {
     return index < 6 || !fold
-  }, []);
+  }, [fold]);
 
   /**
    * 过滤 / 筛选
