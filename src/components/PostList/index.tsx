@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'gatsby';
 import { useSelector } from 'react-redux';
+
 import Tags from '../Tags';
 import generatePath from '../../utils/generatePath';
 import * as styles from './index.module.less';
@@ -33,6 +34,10 @@ const PostList = ({ posts, hideMore = false }: Props) => {
   const { curTag, curDate } = useSelector((state: iRootState) => state);
   const [filteredPosts, setFilteredPosts] = useState<ChildMdxItem[]>(posts);
   const [fold, setFold] = useState(true);
+
+  const getIsAccordion  = useCallback((index) => {
+    return index < 6 || !fold
+  }, []);
 
   /**
    * 过滤 / 筛选
@@ -71,7 +76,8 @@ const PostList = ({ posts, hideMore = false }: Props) => {
           node.childMdx.frontmatter.title || node.childMdx.fields.slug;
         const { date, description, tags, categories } =
           node.childMdx.frontmatter;
-        return index < 6 || !fold ? (
+          
+        return getIsAccordion(index) ? (
           <article key={node.childMdx.fields.slug}>
             <header>
               <h3 className={styles.title}>

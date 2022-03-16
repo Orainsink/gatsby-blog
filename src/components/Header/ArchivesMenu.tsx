@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Col, Row } from 'antd';
 import { Link } from 'gatsby';
+
 import { useMagicColor } from '../../hooks';
 import * as styles from './index.module.less';
 import { CATEGORY_MAP, MENU_NAMES } from '../../assets/constants/categories';

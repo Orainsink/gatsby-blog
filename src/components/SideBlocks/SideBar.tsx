@@ -1,5 +1,6 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { Col, Row } from 'antd';
+
 import { useHasMounted } from '../../hooks';
 import Calendar from './Calendar';
 import MarketCalendar from './MarketCalendar';

@@ -1,6 +1,7 @@
 import React from 'react';
-import * as styles from './index.module.less';
 import { useSelector } from 'react-redux';
+
+import * as styles from './index.module.less';
 import mainBg from '../../../content/assets/mainBg.svg';
 import { iRootState } from '../../redux/store';
 

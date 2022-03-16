@@ -4,7 +4,7 @@ import { Tag } from 'antd';
 import { useDispatch } from 'react-redux';
 
 import { CATEGORY_MAP } from '../assets/constants/categories';
-import { useIsDark } from '../hooks/useIsDark';
+import { useHasMounted, useIsDark } from '../hooks';
 interface Props {
   tags: string[];
   category?: string;
@@ -12,6 +12,7 @@ interface Props {
 const Tags = ({ tags, category }: Props) => {
   const dispatch = useDispatch();
   const isDark = useIsDark()
+  const hasMounted = useHasMounted()
 
   const onTagClicked = useCallback(
     (tag: string) => {
@@ -37,7 +38,7 @@ const Tags = ({ tags, category }: Props) => {
   }
 
   return (
-    !!tags?.length && (
+    !!tags?.length && hasMounted &&  (
       <p className="tags">
         {tags.map((tag) => (
           <Link key={tag} onClick={() => onTagClicked(tag)} to={`/archives`}>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
+
 import { ReactComponent as MarkSvg } from '../../assets/img/mark.svg';
 import * as styles from './index.module.less';
 
@@ -26,7 +27,7 @@ interface Data {
  */
 const getCount = (category: string, group: GroupItem[]) => {
   return (
-    group.filter((item) => item.fieldValue === category)[0]?.totalCount || 0
+    group.find((item) => item.fieldValue === category)?.totalCount || 0
   );
 };
 /**

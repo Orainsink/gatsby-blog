@@ -6,12 +6,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ReloadOutlined } from '@ant-design/icons';
 
 import * as styles from './archives/index.module.less';
-import { useResetKey, useMedia } from '../hooks';
+import { useResetKey, useMedia, useIsDark } from '../hooks';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import generatePath from '../utils/generatePath';
 import { iRootState } from '../redux/store';
-import { useIsDark } from '../hooks/useIsDark';
 
 interface Data {
   allFile: {

@@ -1,12 +1,13 @@
 import React, { useCallback } from 'react';
 import { Link, graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { MDXProvider } from '@mdx-js/react';
+import { Anchor } from 'antd';
+
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import Tags from '../components/Tags';
 import * as styles from './index.module.less';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { MDXProvider } from '@mdx-js/react';
-import { Anchor } from 'antd';
 import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
 import { useMedia } from '../hooks';
 import generatePath from '../utils/generatePath';

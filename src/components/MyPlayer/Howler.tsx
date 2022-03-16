@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { Howl } from 'howler';
+
 import { HowlType, HowlerProps } from './typings';
 
 /**

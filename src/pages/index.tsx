@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageProps, graphql } from 'gatsby';
+
 import Layout from '../layout/IndexLayout';
 import SEO from '../components/seo';
 import CateSnippet from '../components/Cards';

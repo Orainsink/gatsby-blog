@@ -1,7 +1,8 @@
 import React from 'react';
+import classnames from 'classnames';
+
 import { GithubOutlined, MailOutlined } from '@ant-design/icons';
 import * as styles from './index.module.less';
-import classnames from 'classnames';
 
 /**Footer */
 const Footer = () => (

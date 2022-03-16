@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
-import * as styles from './index.module.less';
 import { useDispatch, useSelector } from 'react-redux';
+
+import * as styles from './index.module.less';
 import { iRootState } from '../../redux/store';
 
 /**

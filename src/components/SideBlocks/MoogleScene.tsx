@@ -14,16 +14,11 @@ import {
 } from 'three';
 import gsap from 'gsap';
 import { Col } from 'antd';
-import { useSelector } from 'react-redux';
 import classnames from 'classnames';
 import { useGLTF } from '@react-three/drei';
 
 import * as styles from './index.module.less';
-import { useMedia } from '../../hooks';
-import { iRootState } from '../../redux/store';
-import { Theme } from '../../assets/constants/common';
-import { useIsDark } from '../../hooks/useIsDark';
-
+import { useMedia, useIsDark } from '../../hooks';
 interface Data {
   file: {
     publicURL: string;

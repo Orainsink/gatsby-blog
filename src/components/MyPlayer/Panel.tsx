@@ -6,8 +6,9 @@ import React, {
   useRef,
 } from 'react';
 import SiriWave from 'siriwave';
-import SONGS, { Song } from '../../assets/constants/songs';
 import { useSelector, useDispatch } from 'react-redux';
+
+import SONGS, { Song } from '../../assets/constants/songs';
 import classnames from 'classnames';
 import { arr } from '../../utils/utils';
 import * as styles from './index.module.less';

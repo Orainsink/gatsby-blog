@@ -1,13 +1,14 @@
 import React, { useCallback } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
 import { Card, Divider } from 'antd';
-import Layout from '../layout/BlogLayout';
-import SEO from '../components/seo';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReloadOutlined } from '@ant-design/icons';
+import { getImage, GatsbyImage } from 'gatsby-plugin-image';
+
+import Layout from '../layout/BlogLayout';
+import SEO from '../components/seo';
 import * as styles from './archives/index.module.less';
 import { useResetKey } from '../hooks';
-import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 import generatePath from '../utils/generatePath';
 import { iRootState } from '../redux/store';
 

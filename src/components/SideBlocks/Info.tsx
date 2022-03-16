@@ -7,13 +7,11 @@ import Icon, {
   WechatOutlined,
 } from '@ant-design/icons';
 import classnames from 'classnames';
+import { graphql, useStaticQuery } from 'gatsby';
 
 import { ReactComponent as SteamSvg } from '../../assets/img/steam.svg';
-import { useMedia } from '../../hooks';
+import { useMedia, useIsDark } from '../../hooks';
 import * as styles from './index.module.less';
-import { graphql, useStaticQuery } from 'gatsby';
-import { Theme } from '../../assets/constants/common';
-import { useIsDark } from '../../hooks/useIsDark';
 interface Data {
   avatar: any;
   avatarD: any;

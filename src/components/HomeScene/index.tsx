@@ -1,12 +1,14 @@
 import React, { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { iRootState } from '../../redux/store';
 import classnames from 'classnames';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 import loadable from '@loadable/component';
+
+import { iRootState } from '../../redux/store';
 import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
 import * as styles from './index.module.less';
 import { ReactComponent as LoadingSvg } from '../../assets/img/loading.svg';
+
 const Dynamic = loadable(() => import('./Dynamic'), {
   fallback: (
     <div

@@ -3,9 +3,10 @@ import classnames from 'classnames';
 import { Button, Drawer } from 'antd';
 import { Link } from 'gatsby';
 import { UnorderedListOutlined } from '@ant-design/icons';
+import { useLocation } from '@reach/router';
+
 import { useDrawerCloseEffect, useMedia } from '../../hooks';
 import * as styles from './index.module.less';
-import { useLocation } from '@reach/router';
 import { ReactComponent as SharkMenuSvg } from '../../assets/img/menu.svg';
 import { CATEGORY_MAP } from '../../assets/constants/categories';
 

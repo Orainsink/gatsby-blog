@@ -1,7 +1,8 @@
 import * as React from 'react';
-import SEO from '../../components/seo';
 import { Button } from 'antd';
 import { Link } from 'gatsby';
+
+import SEO from '../../components/seo';
 import Loading from '../../components/Loading';
 import * as styles from './index.module.less';
 

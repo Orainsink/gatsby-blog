@@ -1,6 +1,7 @@
 import React from 'react';
-import { arr, random } from '../../utils/utils';
 import { Vector3 } from 'three';
+
+import { arr, random } from '../../utils/utils';
 
 const blocks = arr(20).map((e, i) => (
   <mesh

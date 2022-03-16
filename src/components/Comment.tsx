@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect } from 'react';
 
-import { useIsDark } from '../hooks/useIsDark';
+import { useHasMounted, useIsDark } from '../hooks';
 
 const Comment = () => {
   const isDark = useIsDark()
+  const hasMounted = useHasMounted()
 
   const commentsRefCb = useCallback((node) => {
     if (node) {
@@ -28,7 +29,7 @@ const Comment = () => {
         console.log(`Error adding utterances comments`);
       }
     }
-  }, []);
+  }, [isDark]);
 
   useEffect(() => {
     const frameDom: any = document.querySelector('iframe.utterances-frame');
@@ -44,6 +45,6 @@ const Comment = () => {
     }
   }, [isDark]);
 
-  return <div ref={commentsRefCb} className="comments"></div>;
+  return hasMounted && <div ref={commentsRefCb} className="comments"></div>;
 };
 export default React.memo(Comment);

@@ -3,14 +3,15 @@ import classnames from 'classnames';
 import { Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { GithubOutlined, SearchOutlined } from '@ant-design/icons';
-import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { useMedia } from '../../hooks';
 import loadable from '@loadable/component';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { useMedia } from '../../hooks';
 import * as styles from './index.module.less';
 import ThemeBtn from './ThemeBtn';
 import MenuComponent from './MenuComponent';
 import { iRootState } from '../../redux/store';
+import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
 const MyPlayer = loadable(() => import('../MyPlayer'));
 const SearchDrawer = loadable(() => import('../../components/Algolia/Index'));
 

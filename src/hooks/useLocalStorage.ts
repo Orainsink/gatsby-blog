@@ -7,6 +7,7 @@ import {
   useLayoutEffect,
 } from 'react';
 import { F } from 'ramda';
+
 import isClient from '../utils/isClient';
 
 type parserOptions<T> =

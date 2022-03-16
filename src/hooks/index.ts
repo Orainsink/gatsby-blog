@@ -11,3 +11,4 @@ export { useScrollY } from './useScrollY';
 export { useWindowSize } from './useWindowSize';
 export { useResetKey } from './useResetKey';
 export { useLocalStorage } from './useLocalStorage';
+export { useIsDark } from './useIsDark';

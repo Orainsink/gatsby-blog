@@ -2,6 +2,9 @@ import React, { Suspense, useEffect, useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Canvas, useFrame, useThree } from 'react-three-fiber';
 import { FogExp2, PerspectiveCamera, Vector3 } from 'three';
+import { useStaticQuery, graphql } from 'gatsby';
+import gsap from 'gsap';
+
 import Text from './TextComponent';
 import Moon from './Moon';
 import { useBackgroundColor } from '../../hooks';
@@ -9,8 +12,6 @@ import { iRootState } from '../../redux/store';
 import isClient from '../../utils/isClient';
 import Stars from './Stars';
 import Floor from './Floor';
-import gsap from 'gsap';
-import { useStaticQuery, graphql } from 'gatsby';
 
 interface Data {
   file: {

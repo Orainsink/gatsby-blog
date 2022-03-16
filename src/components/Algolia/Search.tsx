@@ -1,6 +1,7 @@
 import algoliasearch from 'algoliasearch/lite';
 import React, { useState, useEffect } from 'react';
 import { InstantSearch } from 'react-instantsearch-dom';
+
 import SearchBox from './SearchBox';
 import SearchResult from './SearchResult';
 import * as styles from './index.module.less';

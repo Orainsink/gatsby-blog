@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import * as styles from './index.module.less';
 import Panel from './Panel';
 import { iRootState } from '../../redux/store';
-import { useIsDark } from '../../hooks/useIsDark';
+import { useIsDark } from '../../hooks';
 
 /** myPlayer wrap */
 const MyPlayer = () => {

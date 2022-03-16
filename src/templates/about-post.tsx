@@ -1,11 +1,12 @@
 import React from 'react';
 import { PageProps, graphql } from 'gatsby';
+import loadable from '@loadable/component';
+
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import * as styles from './index.module.less';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Comment from '../components/Comment';
-import loadable from '@loadable/component';
 import Poem from '../components/Poem';
 const MoogleScene = loadable(
   () => import('../components/SideBlocks/MoogleScene')

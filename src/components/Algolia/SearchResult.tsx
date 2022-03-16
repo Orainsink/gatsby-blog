@@ -9,8 +9,9 @@ import {
   PoweredBy,
 } from 'react-instantsearch-dom';
 import { Divider } from 'antd';
-import * as styles from './index.module.less';
 import { useSelector } from 'react-redux';
+
+import * as styles from './index.module.less';
 import generatePath from '../../utils/generatePath';
 import { ReactComponent as NoResultSvg } from '../../assets/img/noResult.svg';
 import { iRootState } from '../../redux/store';

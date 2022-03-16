@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { Col, Row, Slider } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { ReactComponent as PausedSvg } from '../../assets/img/paused.svg';
 import { ReactComponent as StartSvg } from '../../assets/img/start.svg';
 import { ReactComponent as RandomSvg } from '../../assets/img/random.svg';
