@@ -1,7 +1,8 @@
-import React, { useCallback } from 'react';
+import React, { useCallback,useEffect } from 'react';
 import { ThemeToggler } from 'gatsby-plugin-dark-mode';
 import { useDispatch } from 'react-redux';
 import classnames from 'classnames';
+
 import * as styles from './index.module.less';
 
 const ThemeBtn = () => {
@@ -12,6 +13,10 @@ const ThemeBtn = () => {
     },
     [dispatch]
   );
+
+  useEffect(() => {
+    setTheme(globalThis.localStorage?.getItem('theme'))
+  }, []);
 
   return (
     <ThemeToggler>

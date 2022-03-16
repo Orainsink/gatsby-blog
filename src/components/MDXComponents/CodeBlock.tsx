@@ -1,10 +1,11 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import vsDark from 'prism-react-renderer/themes/vsDark';
-import lightTheme from '../../assets/theme/customPrism';
 import { useSelector } from 'react-redux';
 import { Button } from 'antd';
 import { CopyOutlined, SmileOutlined } from '@ant-design/icons';
+
+import lightTheme from '../../assets/theme/customPrism';
 import { iRootState } from '../../redux/store';
 interface Props {
   children: string;
@@ -22,11 +23,6 @@ const CodeBlock = ({
   const language = langClass.replace(/language-/, '') as Language;
   const [copied, setCopied] = useState(false);
   const theme = useSelector((state: iRootState) => state.theme);
-  const [currentTheme, setCurrentTheme] = useState<"dark" | "light">(theme);
-  
-  useEffect(() => {
-    setCurrentTheme(theme)
-  }, [theme]);
 
   const copyToClipboard = useCallback((code: string) => {
     if (typeof code !== 'string') return;
@@ -46,7 +42,7 @@ const CodeBlock = ({
       {...defaultProps}
       code={children}
       language={language}
-      theme={currentTheme === 'dark' ? vsDark : lightTheme}
+      theme={theme === 'dark' ? vsDark : lightTheme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <div
