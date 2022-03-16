@@ -20,7 +20,7 @@ const QUESTIONS = [
   },
   {
     type: 'list',
-    name: 'category',
+    name: 'categories',
     message: 'Choose a category:',
     choices: CATEGORY_NAMES,
   },
@@ -33,7 +33,7 @@ const QUESTIONS = [
 class NewPost {
   constructor({
     isFolder = true,
-    category = '',
+    categories = '',
     description = ' ',
     url = '',
     index = 0,
@@ -41,7 +41,7 @@ class NewPost {
     this.isFolder = isFolder;
     this.path = '';
     this.config = {
-      category,
+      categories,
       description,
       date: moment().format('YYYY-MM-DD HH:mm:ss'),
       title: process.argv[2],
@@ -61,12 +61,12 @@ class NewPost {
     }
   }
   getPath() {
-    const { category, title } = this.config;
+    const { categories, title } = this.config;
     if (this.isFolder) {
-      fs.mkdirSync(`./content/${category}/${title}`);
-      this.path = `./content/${category}/${title}/${title}.mdx`;
+      fs.mkdirSync(`./content/${categories}/${title}`);
+      this.path = `./content/${categories}/${title}/${title}.mdx`;
     } else {
-      this.path = `./content/${category}/${title}.mdx`;
+      this.path = `./content/${categories}/${title}.mdx`;
     }
   }
   getStrByConfig() {
@@ -85,7 +85,7 @@ class NewPost {
     return '---\n' + result + 'tags: []\n' + '---';
   }
   writeFile() {
-    const { category, title, date } = this.config;
+    const { categories, title, date } = this.config;
     const output = this.getOutput();
     fs.writeFileSync(this.path, output);
 
@@ -93,7 +93,7 @@ class NewPost {
       {
         title: title,
         date: date,
-        category: category,
+        categories: categories,
         isFolder: this.isFolder,
       },
     ]);
