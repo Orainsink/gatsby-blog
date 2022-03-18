@@ -1,5 +1,5 @@
 import algoliasearch from 'algoliasearch/lite';
-import React, { useState, useEffect } from 'react';
+import { memo, useState, useEffect } from 'react';
 import { InstantSearch } from 'react-instantsearch-dom';
 
 import SearchBox from './SearchBox';
@@ -51,4 +51,4 @@ const Search = () => {
     </div>
   );
 };
-export default React.memo(Search);
+export default memo(Search);

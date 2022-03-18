@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from 'react';
+import { useEffect, useCallback, useState, memo } from 'react';
 import classnames from 'classnames';
 import { Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
@@ -160,4 +160,4 @@ const Header = () => {
   );
 };
 
-export default React.memo(Header);
+export default memo(Header);

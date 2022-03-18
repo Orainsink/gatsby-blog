@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState } from 'react';
+import { useRef, useCallback, useState } from 'react';
 import useMagicColor from './useMagicColor';
 
 const MagicComponent = () => {

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
 import { Divider, Table, Tag } from 'antd';
 import dayjs from 'dayjs';
@@ -22,7 +22,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
   const { curDate } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
-  const isDark = useIsDark()
+  const isDark = useIsDark();
 
   useResetKey();
   const is768 = useMedia('(max-width: 768px)');
@@ -57,7 +57,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
       dataIndex: 'tag',
       width: 80,
       render: (text: string) => (
-        <Tag color={isDark? 'var(--tag-color)' : 'blue'}>{text}</Tag>
+        <Tag color={isDark ? 'var(--tag-color)' : 'blue'}>{text}</Tag>
       ),
     },
     {
@@ -78,9 +78,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
           <div style={{ fontWeight: 'bold' }}>{text}</div>
           <div>{row.description}</div>
           <div>
-            <Tag color={isDark ? 'var(--tag-color)' : 'blue'}>
-              {row.tag}
-            </Tag>
+            <Tag color={isDark ? 'var(--tag-color)' : 'blue'}>{row.tag}</Tag>
           </div>
         </div>
       ),

@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useRef } from 'react';
+import { memo, Suspense, useEffect, useRef } from 'react';
 import { Canvas, useThree, useFrame } from 'react-three-fiber';
 import { ResizeObserver } from '@juggle/resize-observer';
 import { graphql, useStaticQuery } from 'gatsby';
@@ -31,7 +31,7 @@ interface Props {
 }
 
 const CUSTOM_SCALE = 8;
-const Modal = React.memo(({ url, isDark }: Props) => {
+const Modal = memo(({ url, isDark }: Props) => {
   const { nodes } = useGLTF(url) as any;
 
   const moogleRef = useRef<Mesh>();
@@ -130,7 +130,7 @@ const Moogle = () => {
   `);
   const url = data.file.publicURL;
   const is1100 = useMedia('(max-width: 1100px)');
-  const isDark = useIsDark()
+  const isDark = useIsDark();
 
   return (
     <Col
@@ -151,4 +151,4 @@ const Moogle = () => {
     </Col>
   );
 };
-export default React.memo(Moogle);
+export default memo(Moogle);

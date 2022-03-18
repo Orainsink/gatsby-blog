@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import { Col, Tooltip } from 'antd';
 import { StaticImage, GatsbyImage, getImage } from 'gatsby-plugin-image';
 import Icon, {
@@ -18,7 +18,7 @@ interface Data {
 }
 /**个人信息块 */
 const Info = () => {
-  const isDark = useIsDark()
+  const isDark = useIsDark();
   const is1100 = useMedia('(max-width: 1100px)');
 
   const data: Data = useStaticQuery(graphql`
@@ -95,9 +95,7 @@ const Info = () => {
       <div className={styles.titleWrap}>
         <div className={styles.title}>ABOUT</div>
         <div>{isDark ? 'Orainsink' : '莫沉'}</div>
-        <div>
-          {isDark ? 'listen, feel, think' : '倾听, 感受, 思考'}
-        </div>
+        <div>{isDark ? 'listen, feel, think' : '倾听, 感受, 思考'}</div>
         <div className={styles.iconWrap}>
           <a
             href="https://www.zhihu.com/people/f6e5b2cbbe6e9535239e41b51305bf2c?utm_source=qq&utm_medium=social&utm_oi=586439395150794752"
@@ -124,4 +122,4 @@ const Info = () => {
     </Col>
   );
 };
-export default React.memo(Info);
+export default memo(Info);

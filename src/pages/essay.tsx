@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
 import { Card, Divider } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';

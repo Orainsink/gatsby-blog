@@ -1,4 +1,3 @@
-import React from 'react';
 import { PageProps, graphql } from 'gatsby';
 import { Divider } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';

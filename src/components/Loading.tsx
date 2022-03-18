@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, ReactNode, memo } from 'react';
 import { ReactComponent as LoadingSvg } from '../assets/img/loading.svg';
 
 interface Props {
   debounce?: number;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 /**
  * loading组件,用于组件懒加载,默认debounce=500
@@ -40,4 +40,4 @@ const Loading = (props: Props) => {
     )
   );
 };
-export default React.memo(Loading);
+export default memo(Loading);

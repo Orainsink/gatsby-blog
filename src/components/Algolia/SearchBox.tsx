@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { connectSearchBox } from 'react-instantsearch-dom';
 import { Input } from 'antd';
 

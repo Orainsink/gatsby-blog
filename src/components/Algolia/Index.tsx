@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { Drawer } from 'antd';
 import { useLocation } from '@reach/router';
 
@@ -35,4 +35,4 @@ const SearchDrawer = (props: Props) => {
     </Drawer>
   );
 };
-export default React.memo(SearchDrawer);
+export default memo(SearchDrawer);

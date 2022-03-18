@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { load as poemLoader } from 'jinrishici';
 
 import * as styles from './index.module.less';
@@ -31,4 +31,4 @@ const PoemComponent = () => {
   );
 };
 
-export default React.memo(PoemComponent);
+export default memo(PoemComponent);

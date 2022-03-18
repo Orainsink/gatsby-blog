@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react';
+import { memo, useMemo, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { Col, Row, Select } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
@@ -112,4 +112,4 @@ const CalendarBlock = ({ posts }: Props) => {
     </Col>
   );
 };
-export default React.memo(CalendarBlock);
+export default memo(CalendarBlock);

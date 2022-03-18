@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { Card, Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
@@ -26,9 +26,7 @@ interface Data {
  * @returns
  */
 const getCount = (category: string, group: GroupItem[]) => {
-  return (
-    group.find((item) => item.fieldValue === category)?.totalCount || 0
-  );
+  return group.find((item) => item.fieldValue === category)?.totalCount || 0;
 };
 /**
  * get category info
@@ -140,4 +138,4 @@ const CategoryComponent = () => {
   );
 };
 
-export default React.memo(CategoryComponent);
+export default memo(CategoryComponent);

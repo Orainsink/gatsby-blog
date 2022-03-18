@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 
 const styles = {
   parent: {
@@ -20,4 +20,4 @@ const Sandwich = () => {
     </div>
   );
 };
-export default React.memo(Sandwich);
+export default memo(Sandwich);

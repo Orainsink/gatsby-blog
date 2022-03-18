@@ -55,10 +55,6 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
       const previous =
         index === posts.length - 1 ? null : posts[index + 1].node;
       const next = index === 0 ? null : posts[index - 1].node;
-
-      if(node){
-        console.log(node, '<== node');
-      }
       
       createPage({
         path:

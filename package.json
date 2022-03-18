@@ -144,8 +144,12 @@
           }
         }
       ],
-      "@babel/preset-react",
-      "@babel/preset-flow"
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "automatic"
+        }
+      ]
     ],
     "plugins": [
       "@babel/plugin-proposal-class-properties"
@@ -153,7 +157,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "node_modules/cz-gitmoji-customize"
+      "path": "cz-gitmoji-customize"
     }
   }
 }

@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useCallback, useState } from 'react';
+import { memo, Suspense, useEffect, useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Canvas, useFrame, useThree } from 'react-three-fiber';
 import { FogExp2, PerspectiveCamera, Vector3 } from 'three';
@@ -35,7 +35,7 @@ const cameraProps = {
 /**
  * shake camera
  */
-const CameraTween = React.memo(({ isScene }: { isScene: boolean }) => {
+const CameraTween = memo(({ isScene }: { isScene: boolean }) => {
   const scene = useThree(({ scene }) => scene);
   const camera = useThree(({ camera }) => camera) as PerspectiveCamera;
 
@@ -148,4 +148,4 @@ const Dynamic = () => {
   );
 };
 
-export default React.memo(Dynamic);
+export default memo(Dynamic);

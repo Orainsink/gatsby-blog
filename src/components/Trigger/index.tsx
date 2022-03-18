@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import * as styles from './index.module.less';
@@ -31,4 +31,4 @@ const Trigger = () => {
   );
 };
 
-export default React.memo(Trigger);
+export default memo(Trigger);

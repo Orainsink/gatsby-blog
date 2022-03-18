@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 
 import { useHasMounted, useIsDark } from '../hooks';
 
 const Comment = () => {
-  const isDark = useIsDark()
-  const hasMounted = useHasMounted()
+  const isDark = useIsDark();
+  const hasMounted = useHasMounted();
 
   const commentsRefCb = useCallback((node) => {
     if (node) {
@@ -16,12 +16,7 @@ const Comment = () => {
       scriptEl.setAttribute('id', 'utterances');
       scriptEl.setAttribute('label', 'comment');
       scriptEl.setAttribute('crossorigin', 'anonymous');
-      scriptEl.setAttribute(
-        'theme',
-        isDark
-          ? 'github-dark'
-          : 'github-light'
-      );
+      scriptEl.setAttribute('theme', isDark ? 'github-dark' : 'github-light');
 
       if (node) {
         node.appendChild(scriptEl);
@@ -29,7 +24,7 @@ const Comment = () => {
         console.log(`Error adding utterances comments`);
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -48,4 +43,4 @@ const Comment = () => {
 
   return hasMounted && <div ref={commentsRefCb} className="comments"></div>;
 };
-export default React.memo(Comment);
+export default memo(Comment);

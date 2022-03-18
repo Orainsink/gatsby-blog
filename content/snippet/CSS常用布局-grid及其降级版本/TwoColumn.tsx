@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 
 const styles = {
   parent: {
@@ -19,4 +19,4 @@ const TwoColumn = () => {
     </div>
   );
 };
-export default React.memo(TwoColumn);
+export default memo(TwoColumn);

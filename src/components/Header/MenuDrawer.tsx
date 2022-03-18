@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { Button, Drawer } from 'antd';
 import { Link } from 'gatsby';
@@ -68,4 +68,4 @@ const MenuDrawer = () => {
     </>
   );
 };
-export default React.memo(MenuDrawer);
+export default memo(MenuDrawer);

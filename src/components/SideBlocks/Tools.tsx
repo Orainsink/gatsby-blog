@@ -1,4 +1,4 @@
-import React from 'react';
+import { ComponentType, memo, SVGProps } from 'react';
 import { Col } from 'antd';
 import classnames from 'classnames';
 
@@ -9,12 +9,12 @@ import useColFlex from './useColFlex';
 interface ToolItemProp {
   data: {
     name: string;
-    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    icon: ComponentType<SVGProps<SVGSVGElement>>;
     url: string;
   };
 }
 
-const ToolItem = React.memo(({ data }: ToolItemProp) => (
+const ToolItem = memo(({ data }: ToolItemProp) => (
   <a
     href={data.url}
     target="_blank"
@@ -45,4 +45,4 @@ const Tools = () => {
     </Col>
   );
 };
-export default React.memo(Tools);
+export default memo(Tools);

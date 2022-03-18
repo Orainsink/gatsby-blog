@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+
 import '../assets/css/variables.less';
 import '../assets/css/global.less';
 import Header from '../components/Header';
@@ -32,4 +33,4 @@ const GlobalLayout = ({ children }) => {
   );
 };
 
-export default React.memo(GlobalLayout);
+export default memo(GlobalLayout);

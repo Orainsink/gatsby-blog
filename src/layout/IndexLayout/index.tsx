@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, ReactNode, memo } from 'react';
 import classnames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { Col, Row } from 'antd';
+
 import SideBar from '../../components/SideBlocks';
 import * as styles from './index.module.less';
 import { useBackgroundColor } from '../../hooks';
@@ -10,7 +11,7 @@ import { iRootState } from '../../redux/store';
 import Footer from '../../components/Footer';
 
 interface Props {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 /**index Layout */
@@ -63,4 +64,4 @@ const Layout = ({ children }: Props) => {
   );
 };
 
-export default React.memo(Layout);
+export default memo(Layout);

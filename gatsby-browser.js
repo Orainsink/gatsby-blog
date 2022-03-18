@@ -4,7 +4,7 @@ const onInitialClientRender = () => {
   // close loading
   if (loaderIframe) {
     setTimeout(function () {
-      loaderIframe.style.opacity = 0;
+      loaderIframe.style.opacity = '0';
     }, 0);
 
     if (

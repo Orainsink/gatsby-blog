@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import { memo, useState, useCallback, useMemo } from 'react';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 import { Button } from 'antd';
@@ -21,8 +21,8 @@ const CodeBlock = ({
 }: Props) => {
   const language = langClass.replace(/language-/, '') as Language;
   const [copied, setCopied] = useState(false);
-  const isDark = useIsDark()
-  const hasMounted = useHasMounted()
+  const isDark = useIsDark();
+  const hasMounted = useHasMounted();
 
   const copyToClipboard = useCallback((code: string) => {
     if (typeof code !== 'string') return;
@@ -37,9 +37,9 @@ const CodeBlock = ({
     document.body.removeChild(el);
   }, []);
 
-  const theme = useMemo(( ) => {
-    return isDark && hasMounted ? vsDark : lightTheme
-  }, [hasMounted, isDark])
+  const theme = useMemo(() => {
+    return isDark && hasMounted ? vsDark : lightTheme;
+  }, [hasMounted, isDark]);
 
   return (
     <Highlight
@@ -137,4 +137,4 @@ const CodeBlock = ({
   );
 };
 
-export default React.memo(CodeBlock);
+export default memo(CodeBlock);

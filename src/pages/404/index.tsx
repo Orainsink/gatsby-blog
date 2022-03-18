@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { memo } from 'react';
 import { Button } from 'antd';
 import { Link } from 'gatsby';
 
@@ -22,4 +22,4 @@ const NotFoundPage = () => (
   </>
 );
 
-export default React.memo(NotFoundPage);
+export default memo(NotFoundPage);

@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { PageProps, graphql } from 'gatsby';
 
 import Layout from '../layout/IndexLayout';
@@ -56,7 +56,7 @@ const Index = ({ data }: PageProps<Data>) => {
   );
 };
 
-export default React.memo(Index);
+export default memo(Index);
 
 export const pageQuery = graphql`
   query {

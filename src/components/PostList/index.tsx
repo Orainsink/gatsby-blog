@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { memo, useState, useEffect, useCallback } from 'react';
 import { Link } from 'gatsby';
 import { useSelector } from 'react-redux';
 
@@ -35,9 +35,12 @@ const PostList = ({ posts, hideMore = false }: Props) => {
   const [filteredPosts, setFilteredPosts] = useState<ChildMdxItem[]>(posts);
   const [fold, setFold] = useState(true);
 
-  const getIsAccordion  = useCallback((index) => {
-    return index < 6 || !fold
-  }, [fold]);
+  const getIsAccordion = useCallback(
+    (index) => {
+      return index < 6 || !fold;
+    },
+    [fold]
+  );
 
   /**
    * 过滤 / 筛选
@@ -76,7 +79,7 @@ const PostList = ({ posts, hideMore = false }: Props) => {
           node.childMdx.frontmatter.title || node.childMdx.fields.slug;
         const { date, description, tags, categories } =
           node.childMdx.frontmatter;
-          
+
         return getIsAccordion(index) ? (
           <article key={node.childMdx.fields.slug}>
             <header>
@@ -112,4 +115,4 @@ const PostList = ({ posts, hideMore = false }: Props) => {
     </>
   );
 };
-export default React.memo(PostList);
+export default memo(PostList);

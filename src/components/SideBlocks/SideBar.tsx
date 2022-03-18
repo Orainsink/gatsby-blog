@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { Col, Row } from 'antd';
 
 import { useHasMounted } from '../../hooks';
@@ -10,7 +10,7 @@ import TagsBlock from './TagsBlock';
 import Tools from './Tools';
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 /**侧边栏 */
 const SideBar = (props: Props) => {

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { memo, useRef } from 'react';
 import { Col, Row } from 'antd';
 import { Link } from 'gatsby';
 
@@ -6,7 +6,7 @@ import { useMagicColor } from '../../hooks';
 import * as styles from './index.module.less';
 import { CATEGORY_MAP, MENU_NAMES } from '../../assets/constants/categories';
 
-const ArchivesMenu = React.memo(({ visible }: { visible: boolean }) => {
+const ArchivesMenu = memo(({ visible }: { visible: boolean }) => {
   const magicRef = useRef<HTMLDivElement>(null);
   useMagicColor(magicRef.current, visible);
 
@@ -27,4 +27,4 @@ const ArchivesMenu = React.memo(({ visible }: { visible: boolean }) => {
   );
 });
 
-export default React.memo(ArchivesMenu);
+export default memo(ArchivesMenu);

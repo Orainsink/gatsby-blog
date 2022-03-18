@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import { memo, useEffect, ReactNode } from 'react';
 import { useDispatch } from 'react-redux';
 import { Col, Row } from 'antd';
+
 import SideBar from '../../components/SideBlocks';
 import * as styles from './index.module.less';
 import { useBackgroundColor } from '../../hooks';
 import Footer from '../../components/Footer';
 interface Props {
-  content?: React.ReactNode;
-  sideBlocks?: React.ReactNode;
-  children?: React.ReactNode;
+  content?: ReactNode;
+  sideBlocks?: ReactNode;
+  children?: ReactNode;
 }
 
 /** blog posts Layout */
@@ -50,4 +51,4 @@ const Layout = (props: Props) => {
   );
 };
 
-export default React.memo(Layout);
+export default memo(Layout);

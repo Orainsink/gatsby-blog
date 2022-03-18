@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo, DetailedHTMLProps, AnchorHTMLAttributes } from 'react';
 
 /**
  * anchor with target='_blank'
@@ -6,8 +6,8 @@ import React from 'react';
 const AnchorBlock = ({
   children,
   ...rest
-}: React.DetailedHTMLProps<
-  React.AnchorHTMLAttributes<HTMLAnchorElement>,
+}: DetailedHTMLProps<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
   HTMLAnchorElement
 >) => (
   <a target="_blank" rel="noreferrer" {...rest}>
@@ -15,4 +15,4 @@ const AnchorBlock = ({
   </a>
 );
 
-export default React.memo(AnchorBlock);
+export default memo(AnchorBlock);

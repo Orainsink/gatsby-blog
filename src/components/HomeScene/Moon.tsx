@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { memo, useState } from 'react';
 import { useSpring, a } from '@react-spring/three';
 import { useCursor } from '@react-three/drei';
 
@@ -43,4 +43,4 @@ const Moon = (props: Props) => {
   );
 };
 
-export default React.memo(Moon);
+export default memo(Moon);

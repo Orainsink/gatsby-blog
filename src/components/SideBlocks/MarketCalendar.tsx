@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react';
+import { memo, useMemo, useCallback } from 'react';
 import { Col, Row, Select } from 'antd';
 import { graphql, useStaticQuery } from 'gatsby';
 import dayjs, { Dayjs } from 'dayjs';
@@ -33,12 +33,11 @@ const MarketCalendarBlock = () => {
     const result: Result = {};
     rawBody.match(reg).forEach((str: string) => {
       const date = str.slice(4, 14);
-      console.log('🟩'.codePointAt(1), str);
       const color = str.includes('\u{1F7E5}') ? 'green' : 'red';
       result[date] = color;
     });
     return result;
-  }, []);
+  }, [rawBody]);
 
   const colorObj = {
     green: '#00b100',
@@ -114,4 +113,4 @@ const MarketCalendarBlock = () => {
     </Col>
   );
 };
-export default React.memo(MarketCalendarBlock);
+export default memo(MarketCalendarBlock);

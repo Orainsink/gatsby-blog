@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { Col } from 'antd';
 import classnames from 'classnames';
 
@@ -20,4 +20,4 @@ const TagsBlock = () => {
     </Col>
   );
 };
-export default React.memo(TagsBlock);
+export default memo(TagsBlock);

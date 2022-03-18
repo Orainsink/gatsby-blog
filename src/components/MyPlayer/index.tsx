@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { Tooltip } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import classnames from 'classnames';
@@ -15,7 +15,7 @@ const MyPlayer = () => {
     music: { loaded, playing },
   } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
-  const isDark = useIsDark()
+  const isDark = useIsDark();
 
   return (
     <Tooltip
@@ -56,4 +56,4 @@ const MyPlayer = () => {
     </Tooltip>
   );
 };
-export default React.memo(MyPlayer);
+export default memo(MyPlayer);

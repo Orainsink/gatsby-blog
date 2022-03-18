@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import classnames from 'classnames';
 
 import { GithubOutlined, MailOutlined } from '@ant-design/icons';
@@ -47,4 +47,4 @@ const Footer = () => (
   </footer>
 );
 
-export default React.memo(Footer);
+export default memo(Footer);

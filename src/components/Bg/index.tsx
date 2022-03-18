@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { useSelector } from 'react-redux';
 
 import * as styles from './index.module.less';
@@ -18,4 +18,4 @@ const Bg = () => {
     </div>
   );
 };
-export default React.memo(Bg);
+export default memo(Bg);

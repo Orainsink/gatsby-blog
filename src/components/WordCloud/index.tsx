@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react';
+import { memo, useMemo, useCallback } from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { useDispatch } from 'react-redux';
 import * as styles from './index.module.less';
@@ -38,7 +38,7 @@ const WordCloudItem = (props: Props) => {
   const { jump = false, height = 150 } = props;
   const group = data.allFile.group;
   const dispatch = useDispatch();
-  const isDark = useIsDark()
+  const isDark = useIsDark();
 
   const weighted = useMemo(() => {
     let arr = group.map((item) => item.totalCount);
@@ -75,7 +75,7 @@ const WordCloudItem = (props: Props) => {
           classes: styles.cloud,
           backgroundColor: 'transparent',
           fontFamily: 'Finger Paint, sans-serif',
-          color: isDark? 'random-light' : 'random-dark',
+          color: isDark ? 'random-light' : 'random-dark',
           click: (item) => {
             dispatch({ type: 'CUR_TAG', payload: item[0] });
             jump && navigate('/archives/');
@@ -93,4 +93,4 @@ const WordCloudItem = (props: Props) => {
   );
 };
 
-export default React.memo(WordCloudItem);
+export default memo(WordCloudItem);

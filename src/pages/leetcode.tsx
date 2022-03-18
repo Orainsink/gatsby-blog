@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
 import { Button, Divider, Table, Tag } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
@@ -42,7 +42,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
     }));
   }, [data]);
 
-  const isDark = useIsDark()
+  const isDark = useIsDark();
   useResetKey();
   const is768 = useMedia('(max-width: 768px)');
   const datas = useMemo(() => {
@@ -127,9 +127,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
           <div style={{ fontWeight: 'bold' }}>{text}</div>
           <div>date：{row.date}</div>
           <div>
-            <Tag color={isDark ? 'var(--tag-color)' : 'blue'}>
-              {row.tag}
-            </Tag>
+            <Tag color={isDark ? 'var(--tag-color)' : 'blue'}>{row.tag}</Tag>
           </div>
         </div>
       ),

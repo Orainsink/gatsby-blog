@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 
 const styles = {
   parent: {
@@ -51,4 +51,4 @@ const Center = () => {
     </div>
   );
 };
-export default React.memo(Center);
+export default memo(Center);

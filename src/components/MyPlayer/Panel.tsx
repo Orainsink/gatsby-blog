@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useMemo,
-  useCallback,
-  useRef,
-} from 'react';
+import { memo, useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import SiriWave from 'siriwave';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -33,7 +27,7 @@ const getRandomList = () =>
     .map((item, index) => index + 1)
     .sort(() => Math.random() - 0.5);
 
-const SongItem = React.memo(
+const SongItem = memo(
   ({ song, onClick, id, playing, playerVisible, loaded }: SongProps) => (
     <li
       key={song.id}
@@ -210,4 +204,4 @@ const Panel = () => {
   );
 };
 
-export default React.memo(Panel);
+export default memo(Panel);

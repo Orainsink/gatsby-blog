@@ -1,4 +1,4 @@
-import React, { useCallback,useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { ThemeToggler } from 'gatsby-plugin-dark-mode';
 import { useDispatch } from 'react-redux';
 import classnames from 'classnames';
@@ -15,11 +15,14 @@ const ThemeBtn = () => {
     },
     [dispatch]
   );
-  const isBrowserColorSchemeDark = useMedia('prefers-color-scheme: dark')
+  const isBrowserColorSchemeDark = useMedia('prefers-color-scheme: dark');
 
   useEffect(() => {
-    const browserColorScheme = isBrowserColorSchemeDark? Theme.DARK: Theme.LIGHT
-    setTheme(globalThis.localStorage?.getItem('theme') ?? browserColorScheme)
+    const browserColorScheme = isBrowserColorSchemeDark
+      ? Theme.DARK
+      : Theme.LIGHT;
+    setTheme(globalThis.localStorage?.getItem('theme') ?? browserColorScheme);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isBrowserColorSchemeDark]);
 
   return (
@@ -49,4 +52,4 @@ const ThemeBtn = () => {
     </ThemeToggler>
   );
 };
-export default React.memo(ThemeBtn);
+export default memo(ThemeBtn);

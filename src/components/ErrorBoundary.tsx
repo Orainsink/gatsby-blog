@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import * as Sentry from '@sentry/react';
 
 interface StateType {
@@ -8,7 +8,7 @@ interface StateType {
  * Sentry ErrorBoundary
  * https://zh-hans.reactjs.org/docs/error-boundaries.html
  */
-class ErrorBoundary extends React.Component<any, StateType> {
+class ErrorBoundary extends Component<any, StateType> {
   constructor(props) {
     super(props);
     this.state = { error: null };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { memo, useState } from 'react';
 import { Dropdown } from 'antd';
 import { Link } from 'gatsby';
 import { DownOutlined } from '@ant-design/icons';
@@ -39,4 +39,4 @@ const MenuComponent = ({ drawer }: { drawer: boolean }) => {
     );
 };
 
-export default React.memo(MenuComponent);
+export default memo(MenuComponent);

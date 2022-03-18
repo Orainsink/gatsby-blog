@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import { Link } from 'gatsby';
 import { Tag } from 'antd';
 import { useDispatch } from 'react-redux';
@@ -11,8 +11,8 @@ interface Props {
 }
 const Tags = ({ tags, category }: Props) => {
   const dispatch = useDispatch();
-  const isDark = useIsDark()
-  const hasMounted = useHasMounted()
+  const isDark = useIsDark();
+  const hasMounted = useHasMounted();
 
   const onTagClicked = useCallback(
     (tag: string) => {
@@ -38,7 +38,8 @@ const Tags = ({ tags, category }: Props) => {
   }
 
   return (
-    !!tags?.length && hasMounted &&  (
+    !!tags?.length &&
+    hasMounted && (
       <p className="tags">
         {tags.map((tag) => (
           <Link key={tag} onClick={() => onTagClicked(tag)} to={`/archives`}>
@@ -55,4 +56,4 @@ const Tags = ({ tags, category }: Props) => {
   );
 };
 
-export default React.memo(Tags);
+export default memo(Tags);

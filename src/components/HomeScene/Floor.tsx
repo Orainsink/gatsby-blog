@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { DoubleSide } from 'three';
 import { useGLTF } from '@react-three/drei';
 
@@ -16,4 +16,4 @@ const Floor = ({ url }: { url: string }) => {
     </mesh>
   );
 };
-export default React.memo(Floor);
+export default memo(Floor);

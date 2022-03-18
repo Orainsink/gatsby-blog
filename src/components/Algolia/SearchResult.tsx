@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import React from 'react';
+import { memo } from 'react';
 import {
   connectStateResults,
   Highlight,
@@ -72,4 +72,4 @@ const SearchResult = ({ indices }: Props) => {
     </div>
   );
 };
-export default React.memo(SearchResult);
+export default memo(SearchResult);

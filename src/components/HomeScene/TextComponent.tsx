@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { Texture, DoubleSide } from 'three';
 
 interface Props {
@@ -87,4 +87,4 @@ const Text = (props: Props) => {
   );
 };
 
-export default React.memo(Text);
+export default memo(Text);

@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { Vector3 } from 'three';
 
 import { arr, random } from '../../utils/utils';
@@ -38,4 +38,4 @@ const Stars = () => (
     </points>
   </group>
 );
-export default React.memo(Stars);
+export default memo(Stars);

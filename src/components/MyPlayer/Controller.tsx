@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback, memo } from 'react';
 import { Col, Row, Slider } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -65,4 +65,4 @@ const Controller = () => {
   );
 };
 
-export default React.memo(Controller);
+export default memo(Controller);

@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react';
+import { memo, useMemo, useCallback, MouseEvent } from 'react';
 import { Anchor, Col } from 'antd';
 import classnames from 'classnames';
 
@@ -23,7 +23,7 @@ const Contents = (props: Props) => {
     );
   }, [scrollY]);
 
-  const handleClick = useCallback((e: React.MouseEvent<HTMLElement>) => {
+  const handleClick = useCallback((e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
   }, []);
 
@@ -66,4 +66,4 @@ const Contents = (props: Props) => {
     </Col>
   );
 };
-export default React.memo(Contents);
+export default memo(Contents);

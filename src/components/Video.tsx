@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import { memo, CSSProperties } from 'react';
 
 interface Props {
   src: string;
@@ -27,4 +27,4 @@ const VideoComponent = (props: Props) => {
     </video>
   );
 };
-export default React.memo(VideoComponent);
+export default memo(VideoComponent);

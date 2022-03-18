@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classnames from 'classnames';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
@@ -49,4 +49,4 @@ const Wrapper = () => {
     </ReactScrollWheelHandler>
   );
 };
-export default React.memo(Wrapper);
+export default memo(Wrapper);
