@@ -1,6 +1,6 @@
 import { memo, Suspense, useEffect, useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Canvas, useFrame, useThree } from 'react-three-fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { FogExp2, PerspectiveCamera, Vector3 } from 'three';
 import { useStaticQuery, graphql } from 'gatsby';
 import gsap from 'gsap';

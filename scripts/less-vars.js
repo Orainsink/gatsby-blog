@@ -1,6 +1,6 @@
 var modifyVars = {
   'font-size-base': '16px',
-  'border-radius-base': 'var(--border-radius-base)',
+  'border-radius-base': '4px',
   'body-background': 'var(--body-background)',
   /** text */
   'text-color': 'var(--text-color)',

@@ -11,8 +11,8 @@
 ## 👷Built with
 
 - Typescript + less modules
-- [gatsby 3.0](https://www.gatsbyjs.org/)
-- [react-three-fiber](https://github.com/react-spring/react-three-fiber)
+- [gatsby 4.9](https://www.gatsbyjs.org/)
+- [react-three-fiber 7.0](https://github.com/react-spring/react-three-fiber)
 - [howler.js](https://howlerjs.com/)
 - [Antd 4.0](https://ant.design/)
 
@@ -23,7 +23,7 @@
 yarn add -g gatsby-cli
 # clone repo
 git clone https://github.com/Orainsink/gatsby-blog.git
-# add dependences
+# download dependences
 yarn
 # start dev server at localhost:8000
 yarn start

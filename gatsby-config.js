@@ -147,21 +147,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-less`,
-      options: {
-        lessOptions: {
-          javascriptEnabled: true,
-          math: 'always',
-          strictMath: false,
-          cssLoaderOptions: {
-            camelCase: false,
-          },
-          modifyVars,
-          postCssPlugins: [require('postcss-preset-env'), require('cssnano')]
-        },
-      },
-    },
-    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
@@ -185,6 +170,21 @@ module.exports = {
     'gatsby-plugin-cname',
     'gatsby-plugin-dark-mode',
     'gatsby-plugin-svgr',
+    {
+      resolve: `gatsby-plugin-less`,
+      options: {
+        lessOptions: {
+          javascriptEnabled: true,
+          strictMath: false,
+          math: 'always',
+          cssLoaderOptions: {
+            camelCase: false,
+          },
+          modifyVars,
+        },
+        postCssPlugins: [require('postcss-preset-env'), require('cssnano')]
+      },
+    },
     {
       resolve: `gatsby-plugin-react-redux`,
       options: {
