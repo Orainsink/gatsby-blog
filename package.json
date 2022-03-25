@@ -94,7 +94,7 @@
     "gltf-pipeline": "3.0.2",
     "inquirer": "8.2.2",
     "postcss-preset-env": "7.4.3",
-    "prettier": "2.6.0",
+    "prettier": "2.6.1",
     "typescript-plugin-css-modules": "3.4.0",
     "webpack-filter-warnings-plugin": "1.2.1"
   },
