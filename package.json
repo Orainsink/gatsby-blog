@@ -92,7 +92,7 @@
     "eslint-plugin-react-hooks": "4.3.0",
     "gh-pages": "3.2.3",
     "gltf-pipeline": "3.0.2",
-    "inquirer": "8.2.0",
+    "inquirer": "8.2.2",
     "postcss-preset-env": "7.4.3",
     "prettier": "2.6.0",
     "typescript-plugin-css-modules": "3.4.0",
