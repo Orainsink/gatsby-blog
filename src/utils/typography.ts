@@ -1,14 +1,5 @@
 import Typography from 'typography';
-import noriega from 'typography-theme-noriega';
-
-noriega.baseFontSize = '16px';
-noriega.overrideThemeStyles = () => {
-  return {
-    'a.gatsby-resp-image-link': {
-      boxShadow: `none`,
-    },
-  };
-};
+import {typographyThemeNoriega as noriega} from '../assets/theme/typography';
 
 delete noriega.googleFonts;
 
