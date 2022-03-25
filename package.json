@@ -108,27 +108,16 @@
     "type": "git",
     "url": "git+https://github.com/Orainsink/gatsby-blog.git"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{jsx,js,ts,tsx,json,md,mdx,css,less}": [
-      "prettier --write"
-    ]
-  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "format": "prettier --write \"**/*.{js,jsx,json,md,mdx,ts,tsx}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "new": "node ./scripts/new-post.js",
     "diary": "node ./scripts/write-diary.js",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" ",
-    "deploy": "gatsby build && gh-pages -d public -r https://$GH_TOKEN@github.com/Orainsink/gatsby-blog.git",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
     "lint:fix": "yarn lint --fix"
   },
