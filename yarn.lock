@@ -7470,7 +7470,7 @@ gatsby-plugin-nprogress@4.10.0:
     "@babel/runtime" "^7.15.4"
     accessible-nprogress "^2.1.2"
 
-gatsby-plugin-offline@^5.10.2:
+gatsby-plugin-offline@5.10.2:
   version "5.10.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-5.10.2.tgz#cf38bcf6c90d91e7511953bdb1122f9df2f4b4c0"
   integrity sha512-HYa5du0/gW1bEN4l7kSyUUJugv/Dkr6kkywK+Mhrcn8wMdGYeqiO/WidpW3wbFvEtAVD7kHvz+TATtVliqeAsQ==
