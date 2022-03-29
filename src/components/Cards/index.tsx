@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Card, Col, Row } from 'antd';
+import { Card } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 

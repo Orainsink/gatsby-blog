@@ -5,7 +5,7 @@ import { Link } from 'gatsby';
 import { UnorderedListOutlined } from '@ant-design/icons';
 import { useLocation } from '@reach/router';
 
-import { useDrawerCloseEffect, useMedia } from '../../hooks';
+import { useDrawerCloseEffect } from '../../hooks';
 import * as styles from './index.module.less';
 import { ReactComponent as SharkMenuSvg } from '../../assets/img/menu.svg';
 import { CATEGORY_MAP } from '../../assets/constants/categories';
@@ -16,7 +16,6 @@ import { CATEGORY_MAP } from '../../assets/constants/categories';
 const MenuDrawer = () => {
   const [visible, setVisible] = useState(false);
   useDrawerCloseEffect(visible);
-  const isMobile = useMedia('isMobile');
 
   const location = useLocation();
 
