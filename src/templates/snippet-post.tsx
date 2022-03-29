@@ -36,7 +36,7 @@ const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
     tableOfContents,
   } = mdx;
   const { previous, next } = pageContext;
-  const is1110 = useMedia('(max-width: 1110px)');
+  const isDesktop = useMedia('isDesktop');
 
   /**
    * Recursion Links
@@ -57,7 +57,7 @@ const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
   return (
     <Layout
       sideBlocks={
-        is1110 ? null : <SideBlocks.Contents content={tableOfContents} />
+        isDesktop && <SideBlocks.Contents content={tableOfContents} />
       }
     >
       <SEO title={title} description={description || excerpt} />
@@ -86,7 +86,7 @@ const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
             </a>
           </p>
         </header>
-        {!!tableOfContents && is1110 && (
+        {!!tableOfContents && !isDesktop && (
           <div className={styles.tableContents}>
             <Anchor
               getContainer={() => document.body as HTMLElement}

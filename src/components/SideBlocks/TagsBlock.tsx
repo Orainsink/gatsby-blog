@@ -8,11 +8,11 @@ import WordCloud from '../WordCloud';
 
 /* wordCloud */
 const TagsBlock = () => {
-  const is1110 = useMedia('(max-width: 1110px)');
+  const isDesktop = useMedia('isDesktop');
 
   return (
     <Col
-      flex={is1110 ? '1 1 300px' : '0 0 300px'}
+      flex={isDesktop ? '0 0 300px' : '1 1 300px'}
       className={classnames(styles.wordCloudWrap, styles.col)}
     >
       <div className={styles.title}>TAGS</div>

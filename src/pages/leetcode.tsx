@@ -44,7 +44,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
 
   const isDark = useIsDark();
   useResetKey();
-  const is768 = useMedia('(max-width: 768px)');
+  const isMobile = useMedia('isMobile');
   const datas = useMemo(() => {
     return posts.map(({ node: { childMdx: mdx } }) => ({
       title: mdx.frontmatter?.title,
@@ -166,7 +166,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
       </Divider>
       <Table<ColumnItemType>
         rowClassName={styles.clsRow}
-        columns={is768 ? smallColumns : columns}
+        columns={isMobile ? smallColumns : columns}
         dataSource={datas}
         rowKey="slug"
         showSorterTooltip={false}

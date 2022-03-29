@@ -1,7 +1,6 @@
 import { useEffect, useState, ReactNode, memo } from 'react';
 import classnames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
-import { Col, Row } from 'antd';
 
 import SideBar from '../../components/SideBlocks';
 import * as styles from './index.module.less';
@@ -47,17 +46,17 @@ const Layout = ({ children }: Props) => {
         </div>
       )}
       <main className={styles.main}>
-        <Row justify="space-between" gutter={8}>
-          <Col flex="1 1 800px" className={styles.mainWrap}>
+        <div className={styles.container}>
+          <div className={styles.mainWrap}>
             {children}
             <Comment />
-          </Col>
+          </div>
           <SideBar>
             <SideBar.Info />
             <SideBar.TagsBlock />
             <SideBar.Tools />
           </SideBar>
-        </Row>
+        </div>
       </main>
       <Footer />
     </div>

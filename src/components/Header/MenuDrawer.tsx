@@ -16,7 +16,7 @@ import { CATEGORY_MAP } from '../../assets/constants/categories';
 const MenuDrawer = () => {
   const [visible, setVisible] = useState(false);
   useDrawerCloseEffect(visible);
-  const is520 = useMedia('(max-width: 520px)');
+  const isMobile = useMedia('isMobile');
 
   const location = useLocation();
 
@@ -33,9 +33,7 @@ const MenuDrawer = () => {
         className={styles.drawerBtn}
         icon={<UnorderedListOutlined style={{ fontSize: '26px' }} />}
         onClick={() => setVisible(true)}
-      >
-        {is520 ? null : <span style={{ fontSize: '24px' }}>MENU</span>}
-      </Button>
+      />
       <Drawer
         title={<span className={styles.drawerTitle}>MENU</span>}
         visible={visible}

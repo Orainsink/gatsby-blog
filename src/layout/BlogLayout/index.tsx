@@ -1,9 +1,9 @@
 import { memo, useEffect, ReactNode } from 'react';
 import { useDispatch } from 'react-redux';
-import { Col, Row } from 'antd';
+import classnames from 'classnames';
 
 import SideBar from '../../components/SideBlocks';
-import * as styles from './index.module.less';
+import * as styles from '../IndexLayout/index.module.less';
 import { useBackgroundColor } from '../../hooks';
 import Footer from '../../components/Footer';
 interface Props {
@@ -28,23 +28,14 @@ const Layout = (props: Props) => {
   return (
     <div className={styles.wrapper}>
       <main
-        style={{
-          margin: `8.05em auto 0 auto`,
-          maxWidth: '1200px',
-          padding: `0.4em`,
-        }}
-        className={styles.main}
+        className={classnames(styles.main, styles.container)}
         id="main"
       >
-        <Row justify="space-between" gutter={8}>
-          <Col flex="1 1 800px" className={styles.mainWrap}>
-            {children}
-          </Col>
-          <SideBar>
-            <SideBar.Info />
-            {sideBlocks}
-          </SideBar>
-        </Row>
+        <div className={styles.mainWrap}>{children}</div>
+        <SideBar>
+          <SideBar.Info />
+          {sideBlocks}
+        </SideBar>
       </main>
       <Footer />
     </div>

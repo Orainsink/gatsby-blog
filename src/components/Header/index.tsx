@@ -38,9 +38,8 @@ const Header = () => {
   const [drawer, setDrawer] = useState(false);
   const [searchVisible, setSearchVisible] = useState(false);
   const [titleVisible, setTitleVisible] = useState(true);
-  const is1024 = useMedia('(max-width: 1024px)');
-  const is650 = useMedia('(max-width: 650px)');
-  const is768 = useMedia('(max-width: 768px)');
+  const isDesktop = useMedia('isDesktop');
+  const isMobile = useMedia('isMobile');
 
   const { hasArrow, scene, title, headerDrop } = useSelector(
     (state: iRootState) => state
@@ -52,25 +51,16 @@ const Header = () => {
   );
 
   useEffect(() => {
-    if (is1024) {
-      setTitleVisible(false);
-    } else {
-      setTitleVisible(true);
-    }
-
-    if (is650) {
-      setDrawer(true);
-    } else {
-      setDrawer(false);
-    }
-  }, [is1024, is650]);
+    setTitleVisible(isDesktop);
+    setDrawer(isMobile);
+  }, [isDesktop, isMobile]);
 
   /**
    * scroll effects
    */
   useEffect(() => {
     const handleScroll: () => void = () => {
-      if (is768) return setActive(false);
+      if (isMobile) return setActive(false);
       if (document.body.scrollTop > 0) {
         setActive(true);
       } else {
@@ -79,7 +69,7 @@ const Header = () => {
     };
 
     /** change active status when component mounted */
-    if (document.body.scrollTop > 0 && !is768) {
+    if (document.body.scrollTop > 0 && !isMobile) {
       setActive(true);
     }
 
@@ -90,7 +80,7 @@ const Header = () => {
     return () => {
       document.body.removeEventListener('scroll', handleScroll);
     };
-  }, [setActive, is768]);
+  }, [setActive, isMobile]);
 
   const handleArrow = useCallback(() => {
     dispatch({ type: 'SKIP', payload: false });

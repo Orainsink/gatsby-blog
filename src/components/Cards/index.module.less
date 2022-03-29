@@ -18,7 +18,7 @@
   height: 0;
   transition: all 500ms ease;
 }
-@media screen and (max-width: 468px) {
+@media screen and (max-width: 768px) {
   .imgWrap {
     height: 100px !important;
   }
@@ -36,4 +36,18 @@
   color: #dcdcdc;
   fill: #dcdcdc;
   margin-right: 1em;
+}
+.cardsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 16px 16px;
+  grid-template-areas: '. . . .';
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      '. .'
+      '. .';
+  }
 }

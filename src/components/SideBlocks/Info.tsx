@@ -19,7 +19,7 @@ interface Data {
 /**个人信息块 */
 const Info = () => {
   const isDark = useIsDark();
-  const is1100 = useMedia('(max-width: 1100px)');
+  const isDesktop = useMedia('isDesktop');
 
   const data: Data = useStaticQuery(graphql`
     query sideQuery {
@@ -88,7 +88,7 @@ const Info = () => {
 
   return (
     <Col
-      flex={is1100 ? '1 1 300px' : '0 0 300px'}
+      flex={isDesktop ? '0 0 300px' : '1 1 300px'}
       className={classnames(styles.InfoWrap, styles.col)}
     >
       <GatsbyImage image={avatar} alt="" className={styles.avatar} />

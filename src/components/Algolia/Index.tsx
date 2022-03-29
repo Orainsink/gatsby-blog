@@ -13,7 +13,7 @@ interface Props {
 const SearchDrawer = (props: Props) => {
   const { visible, onClose } = props;
   useDrawerCloseEffect(visible);
-  const is600 = useMedia('(max-width: 600px)');
+  const isMobile = useMedia('isMobile');
   const location = useLocation();
 
   /** close menu when location changes */
@@ -27,7 +27,7 @@ const SearchDrawer = (props: Props) => {
       placement="left"
       onClose={onClose}
       visible={visible}
-      width={is600 ? '100%' : 600}
+      width={isMobile ? '100%' : 600}
       bodyStyle={{ padding: '12px' }}
       className={styles.drawerWrap}
     >

@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { Col, Row } from 'antd';
 
 import { useHasMounted } from '../../hooks';
 import Calendar from './Calendar';
@@ -16,18 +15,21 @@ const SideBar = (props: Props) => {
   const { children } = props;
 
   const sideWrap = {
-    padding: 0,
+    display: 'flex',
+    width: '100%',
+    flexFlow: 'row wrap',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    gap: '16px',
   };
 
   const hasMounted = useHasMounted();
 
   return (
     hasMounted && (
-      <Col flex="1 1 300px" style={sideWrap}>
-        <Row align="top" justify="center">
-          {children}
-        </Row>
-      </Col>
+      <div>
+        <div style={sideWrap}>{children}</div>
+      </div>
     )
   );
 };

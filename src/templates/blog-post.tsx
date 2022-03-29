@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 import { useCallback } from 'react';
 import { Link, graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
@@ -37,7 +38,7 @@ const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
     tableOfContents,
   } = mdx;
   const { previous, next } = pageContext;
-  const is1110 = useMedia('(max-width: 1110px)');
+  const isDesktop = useMedia('isDesktop');
 
   /**
    * Recursion Links
@@ -58,7 +59,7 @@ const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
   return (
     <Layout
       sideBlocks={
-        is1110 ? null : <SideBlocks.Contents content={tableOfContents} />
+        isDesktop && <SideBlocks.Contents content={tableOfContents} />
       }
     >
       <SEO title={title} description={description || excerpt} />
@@ -78,7 +79,6 @@ const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
             <a
               className={styles.licence}
               rel="license"
-              // eslint-disable-next-line
               target="_blank"
               href="http://creativecommons.org/licenses/by-nc/4.0/"
               title="This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
@@ -87,7 +87,7 @@ const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
             </a>
           </p>
         </header>
-        {!!tableOfContents && is1110 && (
+        {!!tableOfContents && !isDesktop && (
           <div className={styles.tableContents}>
             <Anchor targetOffset={200} affix={false}>
               {renderLinks(tableOfContents)}

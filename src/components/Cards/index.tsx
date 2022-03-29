@@ -115,15 +115,11 @@ const CategoryComponent = () => {
         <MarkSvg className={styles.mark} />
         欢迎光临！博主 莫沉 是个前端菜狗，学习 TDD 和 Go 中。
       </div>
-      <Row gutter={16} justify="space-around">
+      <div className={styles.cardsContainer}>
         {getColumn(group).map((item) => (
-          <Col
-            xs={{ span: 24 }}
-            sm={{ span: 12 }}
-            flex="1 0 200px"
-            key={item.name}
-          >
+          
             <Card
+            key={item.name}
               hoverable
               className={styles.cardWrap}
               onClick={() => navigate(item.path)}
@@ -131,9 +127,9 @@ const CategoryComponent = () => {
             >
               <Meta title={item.name} description={`${item.count}篇文章`} />
             </Card>
-          </Col>
+         
         ))}
-      </Row>
+      </div>
     </section>
   );
 };

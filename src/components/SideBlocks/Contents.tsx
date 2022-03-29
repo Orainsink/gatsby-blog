@@ -30,16 +30,17 @@ const Contents = (props: Props) => {
   /**
    * Recursion Links
    */
-  const renderLinks = useMemo(() => {
+  const renderLinks = useCallback(() => {
     if (!content.items) return null;
 
-    function renderLink(items) {
+    const renderLink = (items) => {
       return items.map((item) => (
         <Anchor.Link href={item.url} title={item.title} key={item.url}>
           {item.items ? renderLink(item.items) : null}
         </Anchor.Link>
       ));
     }
+
     return renderLink(content.items);
   }, [content]);
 
@@ -60,7 +61,7 @@ const Contents = (props: Props) => {
           targetOffset={80}
           onClick={handleClick}
         >
-          {renderLinks}
+          {renderLinks()}
         </Anchor>
       </div>
     </Col>

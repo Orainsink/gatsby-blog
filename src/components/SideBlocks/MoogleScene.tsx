@@ -129,12 +129,12 @@ const Moogle = () => {
     }
   `);
   const url = data.file.publicURL;
-  const is1100 = useMedia('(max-width: 1100px)');
+  const isDesktop = useMedia('isDesktop');
   const isDark = useIsDark();
 
   return (
     <Col
-      flex={is1100 ? '1 1 300px' : '0 0 300px'}
+      flex={isDesktop ? '0 0 300px' : '1 1 300px'}
       className={classnames(styles.col, styles.canvasWrap)}
     >
       <Canvas resize={{ polyfill: ResizeObserver }}>
