@@ -83,6 +83,7 @@ const WordCloudItem = (props: Props) => {
         });
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [allTags, jump, isDark]
   );
 

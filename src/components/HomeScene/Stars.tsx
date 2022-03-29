@@ -3,7 +3,7 @@ import { Vector3 } from 'three';
 
 import { arr, random } from '../../utils/utils';
 
-const blocks = arr(20).map((e, i) => (
+const blocks = arr(20).map((_, i) => (
   <mesh
     key={i}
     position={new Vector3(random(-50, 50), random(-100, 100), random(-50, 0))}

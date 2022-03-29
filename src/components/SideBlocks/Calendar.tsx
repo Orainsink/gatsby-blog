@@ -15,7 +15,7 @@ const CalendarBlock = ({ posts }: Props) => {
   const dispatch = useDispatch();
   const colFlex = useColFlex();
 
-  const allMonths: { [month: string]: number | undefined } = useMemo(() => {
+  const allMonths: Record<string, number | undefined> = useMemo(() => {
     const obj = {};
     posts.forEach(({ node }) => {
       let date = node.childMdx.frontmatter.date.substring(0, 7);
@@ -89,13 +89,16 @@ const CalendarBlock = ({ posts }: Props) => {
     );
   }, []);
 
-  const handleSelect = useCallback((date) => {
-    if (!allMonths[dayjs(date).format('YYYY/MM')]) return;
-    dispatch({
-      type: 'CUR_DATE',
-      payload: dayjs(date).format('YYYY/MM'),
-    });
-  }, []);
+  const handleSelect = useCallback(
+    (date) => {
+      if (!allMonths[dayjs(date).format('YYYY/MM')]) return;
+      dispatch({
+        type: 'CUR_DATE',
+        payload: dayjs(date).format('YYYY/MM'),
+      });
+    },
+    [allMonths, dispatch]
+  );
 
   return (
     <Col flex={colFlex} className={classnames(styles.col, styles.calendarWrap)}>
