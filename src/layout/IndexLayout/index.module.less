@@ -49,10 +49,6 @@
   min-height: 25.6em;
   z-index: 1;
   width: 100%;
-  max-width: calc(100vw - 0.8em);
-  @media (min-width: 1025px) {
-    max-width: calc(100vw - 338px);
-  }
 }
 .container {
   display: grid;
@@ -62,7 +58,7 @@
   grid-template-rows: 1fr;
 
   @media (min-width: 1025px) {
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: minmax(min-content,870px) 300px;
     grid-template-areas: '. .';
   }
 }
