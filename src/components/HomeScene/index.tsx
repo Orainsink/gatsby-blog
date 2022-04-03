@@ -1,30 +1,28 @@
-import { memo, useCallback, useMemo } from 'react';
+import { memo, useCallback, useMemo, lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classnames from 'classnames';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
-import loadable from '@loadable/component';
 
 import { iRootState } from '../../redux/store';
 import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
 import * as styles from './index.module.less';
-import { ReactComponent as LoadingSvg } from '../../assets/img/loading.svg';
+// import { ReactComponent as LoadingSvg } from '../../assets/img/loading.svg';
 
-const Dynamic = loadable(() => import('./Dynamic'), {
-  fallback: (
-    <div
-      style={{
-        width: '100%',
-        height: '100%',
-        background: '#0a0a0a',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <LoadingSvg />
-    </div>
-  ),
-});
+const Dynamic = lazy(() => import('./Dynamic'));
+// const DynamicFallback = () => (
+//   <div
+//     style={{
+//       width: '100%',
+//       height: '100%',
+//       background: '#0a0a0a',
+//       display: 'flex',
+//       justifyContent: 'center',
+//       alignItems: 'center',
+//     }}
+//   >
+//     <LoadingSvg />
+//   </div>
+// );
 
 const Wrapper = () => {
   const { scene, trigger } = useSelector((state: iRootState) => state);
@@ -43,7 +41,10 @@ const Wrapper = () => {
   return (
     <ReactScrollWheelHandler downHandler={handleScene}>
       <div className={classnames(styles.wrapper, curStyle)}>
-        <Dynamic />
+        <Suspense fallback={null}>
+          <Dynamic />
+        </Suspense>
+
         <ArrowSvg className={styles.arrow} onClick={handleScene} />
       </div>
     </ReactScrollWheelHandler>

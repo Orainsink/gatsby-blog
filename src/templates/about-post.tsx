@@ -1,5 +1,5 @@
 import { PageProps, graphql } from 'gatsby';
-import loadable from '@loadable/component';
+import { lazy, Suspense } from 'react';
 
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
@@ -7,9 +7,7 @@ import * as styles from './index.module.less';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Comment from '../components/Comment';
 import Poem from '../components/Poem';
-const MoogleScene = loadable(
-  () => import('../components/SideBlocks/MoogleScene')
-);
+const MoogleScene = lazy(() => import('../components/SideBlocks/MoogleScene'));
 
 interface Data {
   mdx: {
@@ -19,7 +17,13 @@ interface Data {
 const AboutPostTemplate = ({ data }: PageProps<Data>) => {
   const { mdx } = data;
   return (
-    <Layout sideBlocks={<MoogleScene />}>
+    <Layout
+      sideBlocks={
+        <Suspense fallback={null}>
+          <MoogleScene />
+        </Suspense>
+      }
+    >
       <SEO title="About" />
       <Poem />
       <section className={styles.container} style={{ padding: '1em' }}>

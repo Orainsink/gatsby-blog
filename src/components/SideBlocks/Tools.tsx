@@ -14,20 +14,20 @@ interface ToolItemProp {
   };
 }
 
-const ToolItem = memo(({ data }: ToolItemProp) => (
+const ToolItem = memo(({ data: { url, icon, name } }: ToolItemProp) => (
   <a
-    href={data.url}
+    href={url}
     target="_blank"
     rel="noreferrer"
-    title={data.url}
-    key={data.name}
+    title={url}
+    key={name}
     className={styles.toolLink}
   >
     <span className={styles.tool}>
       <div className={styles.iconBox}>
-        <Icon component={data.icon} className={styles.toolIcon}></Icon>
+        <Icon component={icon} className={styles.toolIcon}></Icon>
       </div>
-      <span className={styles.toolName}>{data.name}</span>
+      <span className={styles.toolName}>{name}</span>
     </span>
   </a>
 ));

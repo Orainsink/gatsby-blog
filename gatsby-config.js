@@ -206,12 +206,6 @@ module.exports = {
         showSpinner: true,
       },
     },
-    {
-      resolve: `gatsby-plugin-loadable-components-ssr`,
-      options: {
-        useHydrate: true,
-      },
-    },
     isProduction && {
       resolve: '@sentry/gatsby',
       options: {

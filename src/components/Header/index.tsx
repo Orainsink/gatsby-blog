@@ -1,9 +1,8 @@
-import { useEffect, useCallback, useState, memo } from 'react';
+import { useEffect, useCallback, useState, memo, lazy, Suspense } from 'react';
 import classnames from 'classnames';
 import { Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { GithubOutlined, SearchOutlined } from '@ant-design/icons';
-import loadable from '@loadable/component';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useMedia } from '../../hooks';
@@ -12,8 +11,8 @@ import ThemeBtn from './ThemeBtn';
 import MenuComponent from './MenuComponent';
 import { iRootState } from '../../redux/store';
 import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
-const MyPlayer = loadable(() => import('../MyPlayer'));
-const SearchDrawer = loadable(() => import('../../components/Algolia/Index'));
+const MyPlayer = lazy(() => import('../MyPlayer'));
+const SearchDrawer = lazy(() => import('../Algolia/Index'));
 
 /**Header */
 const Header = () => {
@@ -100,7 +99,9 @@ const Header = () => {
     >
       <Row justify="space-around" align="middle">
         <Col style={{ display: 'flex', alignItems: 'center' }}>
-          <MyPlayer />
+          <Suspense fallback={null}>
+            <MyPlayer />
+          </Suspense>
         </Col>
         {!drawer && (
           <Col className={styles.author}>
@@ -144,8 +145,9 @@ const Header = () => {
           <ThemeBtn />
         </Col>
       </Row>
-
-      <SearchDrawer visible={searchVisible} onClose={handleClose} />
+      <Suspense fallback={null}>
+        <SearchDrawer visible={searchVisible} onClose={handleClose} />
+      </Suspense>
     </header>
   );
 };
