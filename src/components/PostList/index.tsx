@@ -11,7 +11,7 @@ interface Props {
   hideMore?: boolean;
 }
 
-interface PostItemType {
+interface PostItem {
   title: string;
   description: string;
   excerpt: string;
@@ -19,7 +19,7 @@ interface PostItemType {
   date: any;
 }
 
-const getLowerCasePosts = (posts: ChildMdxItem[]): PostItemType[] =>
+const getLowerCasePosts = (posts: ChildMdxItem[]): PostItem[] =>
   posts.map(({ node }) => ({
     title: (node.childMdx.frontmatter.title || '').toLowerCase(),
     description: (node.childMdx.frontmatter.description || '').toLowerCase(),
@@ -35,12 +35,9 @@ const PostList = ({ posts, hideMore = false }: Props) => {
   const [filteredPosts, setFilteredPosts] = useState<ChildMdxItem[]>(posts);
   const [fold, setFold] = useState(true);
 
-  const getIsAccordion = useCallback(
-    (index) => {
-      return index < 6 || !fold;
-    },
-    [fold]
-  );
+  const getIsAccordion = useCallback((index, _fold) => {
+    return index < 6 || !_fold;
+  }, []);
 
   /**
    * 过滤 / 筛选
@@ -80,32 +77,34 @@ const PostList = ({ posts, hideMore = false }: Props) => {
         const { date, description, tags, categories } =
           node.childMdx.frontmatter;
 
-        return getIsAccordion(index) ? (
-          <article key={node.childMdx.fields.slug}>
-            <header>
-              <h3 className={styles.title}>
-                <Link
-                  to={generatePath(
-                    node.childMdx.frontmatter.categories,
-                    node.childMdx.fields.slug
-                  )}
-                >
-                  {title}
-                </Link>
-              </h3>
-              <small>{date}</small>
-            </header>
-            <section>
-              <p
-                className={styles.phrase}
-                dangerouslySetInnerHTML={{
-                  __html: description || node.childMdx.excerpt,
-                }}
-              />
-              <Tags tags={tags} category={categories} />
-            </section>
-          </article>
-        ) : null;
+        return (
+          getIsAccordion(index, fold) && (
+            <article key={node.childMdx.fields.slug}>
+              <header>
+                <h3 className={styles.title}>
+                  <Link
+                    to={generatePath(
+                      node.childMdx.frontmatter.categories,
+                      node.childMdx.fields.slug
+                    )}
+                  >
+                    {title}
+                  </Link>
+                </h3>
+                <small>{date}</small>
+              </header>
+              <section>
+                <p
+                  className={styles.phrase}
+                  dangerouslySetInnerHTML={{
+                    __html: description || node.childMdx.excerpt,
+                  }}
+                />
+                <Tags tags={tags} category={categories} />
+              </section>
+            </article>
+          )
+        );
       })}
       {hideMore && filteredPosts?.length > 6 && (
         <div onClick={() => setFold(!fold)} className={styles.moreBtn}>

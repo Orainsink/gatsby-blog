@@ -117,17 +117,15 @@ const CategoryComponent = () => {
       </div>
       <div className={styles.cardsContainer}>
         {getColumn(group).map((item) => (
-          
-            <Card
+          <Card
             key={item.name}
-              hoverable
-              className={styles.cardWrap}
-              onClick={() => navigate(item.path)}
-              cover={item.img}
-            >
-              <Meta title={item.name} description={`${item.count}篇文章`} />
-            </Card>
-         
+            hoverable
+            className={styles.cardWrap}
+            onClick={() => navigate(item.path)}
+            cover={item.img}
+          >
+            <Meta title={item.name} description={`${item.count}篇文章`} />
+          </Card>
         ))}
       </div>
     </section>

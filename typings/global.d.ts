@@ -33,7 +33,6 @@ declare module '*.png';
 declare module '*.jpeg';
 declare module '*.glsl';
 declare module 'algoliasearch/lite';
-declare module '@loadable/component';
 declare module 'classnames';
 declare module '@mdx-js/react';
 

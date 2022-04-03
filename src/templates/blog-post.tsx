@@ -1,13 +1,12 @@
 /* eslint-disable react/jsx-no-target-blank */
-import { useCallback } from 'react';
 import { Link, graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
-import { Anchor } from 'antd';
 
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import Tags from '../components/Tags';
+import Anchor from '../components/Anchor';
 import * as styles from './index.module.less';
 import SideBlocks from '../components/SideBlocks';
 import { useMedia } from '../hooks';
@@ -40,26 +39,10 @@ const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
   const { previous, next } = pageContext;
   const isDesktop = useMedia('isDesktop');
 
-  /**
-   * Recursion Links
-   */
-  const renderLinks = useCallback((content) => {
-    if (!content.items) return null;
-
-    function renderLink(items) {
-      return items.map((item) => (
-        <Anchor.Link href={item.url} title={item.title} key={item.url}>
-          {item.items ? renderLink(item.items) : null}
-        </Anchor.Link>
-      ));
-    }
-    return renderLink(content.items);
-  }, []);
-
   return (
     <Layout
       sideBlocks={
-        isDesktop && <SideBlocks.Contents content={tableOfContents} />
+        isDesktop && <SideBlocks.Contents contents={tableOfContents} />
       }
     >
       <SEO title={title} description={description || excerpt} />
@@ -89,9 +72,11 @@ const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
         </header>
         {!!tableOfContents && !isDesktop && (
           <div className={styles.tableContents}>
-            <Anchor targetOffset={200} affix={false}>
-              {renderLinks(tableOfContents)}
-            </Anchor>
+            <Anchor
+              targetOffset={200}
+              affix={false}
+              contents={tableOfContents}
+            />
           </div>
         )}
         <section className={styles.container}>

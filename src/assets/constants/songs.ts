@@ -112,29 +112,5 @@ const SONGS: Song[] = [
       'http://p2.music.126.net/TT9aYBeuXyPkwQyUODBdqQ==/109951166135693121.jpg?param=130y130',
   },
 ];
-/*   {
-    id: 11,
-    name: '流れ行く夜を越えて',
-    artist: 'Falcom Sound Team jdk',
-    url: 'http://music.163.com/song/media/outer/url?id=1364353126.mp3',
-    cover:
-      'http://p1.music.126.net/5M49xn4JIQlxfP_ekV6kjQ==/109951164063354523.jpg?param=130y130',
-  }, */
-/*   {
-    id: 8,
-    name: '回眸',
-    artist: '墨武侠锋',
-    url: 'http://music.163.com/song/media/outer/url?id=31381307.mp3',
-    cover:
-      'http://p2.music.126.net/BtaxL4NFiJ8FX0U_iESxRA==/2935696046396304.jpg?param=130y130',
-  },
-  {
-    id: 9,
-    name: '青石愿',
-    artist: '沙拉莹',
-    url: 'http://music.163.com/song/media/outer/url?id=1336917600.mp3',
-    cover:
-      'http://p2.music.126.net/BtaxL4NFiJ8FX0U_iESxRA==/2935696046396304.jpg?param=130y130',
-  }, */
 
 export default SONGS;
