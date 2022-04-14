@@ -83,7 +83,7 @@
     "cssnano": "5.1.5",
     "cz-gitmoji-customize": "1.2.5",
     "eslint": "8.12.0",
-    "eslint-config-react-app": "7.0.0",
+    "eslint-config-react-app": "7.0.1",
     "eslint-plugin-flowtype": "8.0.3",
     "eslint-plugin-import": "2.25.4",
     "eslint-plugin-jsx-a11y": "6.5.1",
