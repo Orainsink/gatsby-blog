@@ -2620,10 +2620,10 @@
     "@react-spring/shared" "~9.4.4"
     "@react-spring/types" "~9.4.4"
 
-"@react-three/drei@8.19.5":
-  version "8.19.5"
-  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-8.19.5.tgz#cd641bd9b3d189fe3b7aec75a5961290a3a05eb5"
-  integrity sha512-v25X9Q/bQFiQDfluXNSDznXmYlschlTpOEoPttKjeml+f4LHG57DrGB9VFlhlPmTviNNBBnoqT39XMelkZlWUQ==
+"@react-three/drei@9.4.2":
+  version "9.4.2"
+  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-9.4.2.tgz#fede0831105047d2d19612fd6590b3607029e8a6"
+  integrity sha512-lACXlvMobHwnGPX0XwKfPB6D+q6D6XEnhxk2FC0P+WexUyouV3oMh72nk8BkOtduvxNe6iYJMVdwHhNmbHbk9w==
   dependencies:
     "@babel/runtime" "^7.11.2"
     "@react-spring/three" "^9.3.1"
@@ -2638,7 +2638,7 @@
     stats.js "^0.17.0"
     suspend-react "^0.0.8"
     three-mesh-bvh "^0.5.7"
-    three-stdlib "^2.8.9"
+    three-stdlib "^2.8.12"
     troika-three-text "^0.46.3"
     utility-types "^3.10.0"
     zustand "^3.5.13"
@@ -4849,7 +4849,7 @@ cheerio@^1.0.0-rc.10:
     parse5-htmlparser2-tree-adapter "^6.0.1"
     tslib "^2.2.0"
 
-chevrotain@^10.1.1:
+chevrotain@^10.1.2:
   version "10.1.2"
   resolved "https://registry.yarnpkg.com/chevrotain/-/chevrotain-10.1.2.tgz#c990ab43e32fd0bfb176ad1cbdebf48302ac8542"
   integrity sha512-hvRiQuhhTZxkPMGD/dke+s1EGo8AkKDBU05CcufBO278qgAQSwIC4QyLdHz0CFHVtqVYWjlAS5D1KwvBbaHT+w==
@@ -14321,14 +14321,14 @@ three-mesh-bvh@^0.5.7:
   resolved "https://registry.yarnpkg.com/three-mesh-bvh/-/three-mesh-bvh-0.5.7.tgz#bb5620dc4cf213f0ea29c8638347312c81dbfb2b"
   integrity sha512-CASFj3/3WKQ68S6E3vUNVTPyz9qHPJIDYvO4pEYMTUY0NOGCunz/mMnn71S3TKlDKamYPZO4PMv9SDN8SVBIEA==
 
-three-stdlib@^2.8.9:
-  version "2.8.10"
-  resolved "https://registry.yarnpkg.com/three-stdlib/-/three-stdlib-2.8.10.tgz#00cabf3b4e01dd138633aa0dd2e1a16b216d9c74"
-  integrity sha512-8AWWdgaJyccg9+GdyxSXnW23XR53KJ4E23Un3Y+d1yl4sSSWIafWbDADJcU8DoNEPZTXCw5UXYt5r7P5pAh5VA==
+three-stdlib@^2.8.12:
+  version "2.9.1"
+  resolved "https://registry.yarnpkg.com/three-stdlib/-/three-stdlib-2.9.1.tgz#300abf6cf12ab388e515fd8572217288dffe4736"
+  integrity sha512-e+Hyd47ssVTy2UzUfmaccB7m30qITVMdvGs/QypeGdJa3uwhw1zR9jO/ce61S65Omiy/oGDMWG8dJIZxyQ7u8w==
   dependencies:
     "@babel/runtime" "^7.16.7"
     "@webgpu/glslang" "^0.0.15"
-    chevrotain "^10.1.1"
+    chevrotain "^10.1.2"
     draco3d "^1.4.1"
     fflate "^0.6.9"
     ktx-parse "^0.2.1"
