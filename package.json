@@ -19,7 +19,7 @@
     "@sentry/tracing": "6.19.2",
     "@svgr/webpack": "6.2.1",
     "algoliasearch": "4.13.0",
-    "antd": "4.19.2",
+    "antd": "4.20.0",
     "classnames": "2.3.1",
     "dayjs": "1.11.0",
     "gatsby": "4.10.3",
