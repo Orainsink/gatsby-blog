@@ -13,7 +13,7 @@
     "@loadable/webpack-plugin": "5.15.2",
     "@mdx-js/mdx": "1.6.22",
     "@mdx-js/react": "1.6.22",
-    "@react-three/drei": "9.4.2",
+    "@react-three/drei": "8.19.5",
     "@react-three/fiber": "7.0.26",
     "@sentry/gatsby": "6.19.2",
     "@sentry/tracing": "6.19.2",
