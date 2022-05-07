@@ -30,10 +30,7 @@ const Stars = () => (
     <points>
       <pointsMaterial color="#ffffff" size={0.5} />
       <bufferGeometry>
-        <bufferAttribute
-          attachObject={['attributes', 'position']}
-          args={fiveHundredStars}
-        />
+        <bufferAttribute attach="attributes-position" args={fiveHundredStars} />
       </bufferGeometry>
     </points>
   </group>

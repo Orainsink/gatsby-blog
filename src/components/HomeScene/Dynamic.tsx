@@ -89,8 +89,8 @@ const Dynamic = () => {
   `);
   const url = data.file.publicURL;
   const { scene } = useSelector((state: iRootState) => state);
-  const dispatch = useDispatch();
   const [words, setWords] = useState<string[]>(null);
+  const dispatch = useDispatch();
 
   useBackgroundColor();
 
@@ -114,11 +114,14 @@ const Dynamic = () => {
         });
         const res = await promise.json();
         const data = res.HeWeather6[0];
-        const words: string[] = [
-          data.basic.location, //city
-          data.now.tmp + '℃ ' + data.now.cond_txt, // temperature
-        ];
-        setWords(words);
+        if (data.now) {
+          const words: string[] = [
+            data.basic.location, //city
+            data.now.tmp + '℃ ' + data.now.cond_txt, // temperature
+          ].filter(Boolean);
+
+          setWords(words);
+        }
       } catch (err) {
         console.log(err);
       }

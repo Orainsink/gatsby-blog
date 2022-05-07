@@ -1,17 +1,18 @@
 import { memo, useMemo, useCallback, MouseEvent } from 'react';
-import { Anchor, Col } from 'antd';
+import { Col } from 'antd';
 import classnames from 'classnames';
 
 import { useScrollY } from '../../hooks';
 import * as styles from './index.module.less';
 import isClient from '../../utils/isClient';
+import Anchor from '../Anchor';
 interface Props {
-  content: any;
+  contents: any;
 }
 
 /** 侧边栏 目录块 */
 const Contents = (props: Props) => {
-  const { content } = props;
+  const { contents } = props;
   const scrollY = useScrollY();
 
   const isFixed = useMemo(() => scrollY > 327, [scrollY]);
@@ -27,24 +28,7 @@ const Contents = (props: Props) => {
     e.preventDefault();
   }, []);
 
-  /**
-   * Recursion Links
-   */
-  const renderLinks = useCallback(() => {
-    if (!content.items) return null;
-
-    const renderLink = (items) => {
-      return items.map((item) => (
-        <Anchor.Link href={item.url} title={item.title} key={item.url}>
-          {item.items ? renderLink(item.items) : null}
-        </Anchor.Link>
-      ));
-    }
-
-    return renderLink(content.items);
-  }, [content]);
-
-  if (!content.items) return null;
+  if (!contents.items) return null;
 
   return (
     <Col
@@ -60,9 +44,8 @@ const Contents = (props: Props) => {
           getContainer={() => document.body as HTMLElement}
           targetOffset={80}
           onClick={handleClick}
-        >
-          {renderLinks()}
-        </Anchor>
+          contents={contents}
+        />
       </div>
     </Col>
   );

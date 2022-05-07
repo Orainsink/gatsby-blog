@@ -16,6 +16,42 @@ interface Data {
   avatar: any;
   avatarD: any;
 }
+
+const Steam = () => (
+  <div className={styles.steamWrap}>
+    <h3>ID：Moogle Knight</h3>
+    <StaticImage
+      src="../../../content/assets/moogle.png"
+      alt=""
+      width={100}
+      height={100}
+      layout="fixed"
+      placeholder="blurred"
+    />
+    <div>重度RPG玩家，受苦爱好者</div>
+    <div>
+      <del>你玩手游吗？什么你居然不玩游戏？</del>
+    </div>
+  </div>
+);
+
+const Wechat = () => (
+  <div className={styles.wechatWrap}>
+    <h3>ID：Orainsink</h3>
+    <StaticImage
+      src="../../../content/assets/wechat.png"
+      alt=""
+      width={100}
+      height={100}
+      layout="fixed"
+      placeholder="blurred"
+    />
+    <div>
+      微信在线<del>相亲</del>交友
+    </div>
+  </div>
+);
+
 /**个人信息块 */
 const Info = () => {
   const isDark = useIsDark();
@@ -47,45 +83,6 @@ const Info = () => {
   `);
   const avatar = getImage(isDark ? data.avatarD : data.avatar);
 
-  const weChatRender = useMemo(() => {
-    return (
-      <div className={styles.wechatWrap}>
-        <h3>ID：Orainsink</h3>
-        <StaticImage
-          src="../../../content/assets/wechat.png"
-          alt=""
-          width={100}
-          height={100}
-          layout="fixed"
-          placeholder="blurred"
-        />
-        <div>
-          微信在线<del>相亲</del>交友
-        </div>
-      </div>
-    );
-  }, []);
-
-  const steamRender = useMemo(() => {
-    return (
-      <div className={styles.steamWrap}>
-        <h3>ID：Moogle Knight</h3>
-        <StaticImage
-          src="../../../content/assets/moogle.png"
-          alt=""
-          width={100}
-          height={100}
-          layout="fixed"
-          placeholder="blurred"
-        />
-        <div>重度RPG玩家，受苦爱好者</div>
-        <div>
-          <del>你玩手游吗？什么你居然不玩游戏？</del>
-        </div>
-      </div>
-    );
-  }, []);
-
   return (
     <Col
       flex={isDesktop ? '0 0 300px' : '1 1 300px'}
@@ -111,10 +108,10 @@ const Info = () => {
           >
             <GithubOutlined className={styles.icon} />
           </a>
-          <Tooltip title={weChatRender}>
+          <Tooltip title={<Wechat />}>
             <WechatOutlined />
           </Tooltip>
-          <Tooltip title={steamRender}>
+          <Tooltip title={<Steam />}>
             <Icon component={SteamSvg} />
           </Tooltip>
         </div>

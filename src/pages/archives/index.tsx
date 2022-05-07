@@ -1,7 +1,7 @@
+import { lazy, Suspense } from 'react';
 import { PageProps, graphql } from 'gatsby';
 import { Divider } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
-import loadable from '@loadable/component';
 import { ReloadOutlined } from '@ant-design/icons';
 
 import Layout from '../../layout/BlogLayout';
@@ -10,7 +10,7 @@ import * as styles from './index.module.less';
 import PostList from '../../components/PostList';
 import SideBlocks from '../../components/SideBlocks';
 import { iRootState } from '../../redux/store';
-const WordCloud = loadable(() => import('../../components/WordCloud'));
+const WordCloud = lazy(() => import('../../components/WordCloud'));
 
 interface Data {
   allFile: {
@@ -26,7 +26,9 @@ const ArchivesPage = ({ data }: PageProps<Data>) => {
   return (
     <Layout sideBlocks={<SideBlocks.Calendar posts={posts} />}>
       <SEO title="技术-归档" />
-      <WordCloud />
+      <Suspense fallback={null}>
+        <WordCloud />
+      </Suspense>
       <Divider orientation="center" className={styles.divider}>
         {curTag ? '#' + curTag : curDate ? curDate : 'ARCHIVES'}
         {curTag || curDate ? (

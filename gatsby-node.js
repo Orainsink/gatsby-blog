@@ -25,14 +25,14 @@ const onCreateWebpackConfig = ({ actions, stage }) => {
           authToken: process.env.GATSBY_SENTRY_AUTH,
           org: 'orainsink',
           project: 'orainsink',
-          include: './public',
+          include: 'public',
           release: 'blog',
           ignore: ['node_modules', 'webpack.config.js', 'assets'],
         }),
       /**delete sourcemap before deploy*/
       stage === 'build-javascript' && {
         apply: (compiler) =>
-          compiler.hooks.done.tap('CleanJsMapPlugin', (compilation, cb) => {
+          compiler.hooks.done.tap('CleanJsMapPlugin', (_, cb) => {
             glob.sync('./public/**/*.js.map').forEach((f) => removeSync(f));
             cb && cb();
           }),

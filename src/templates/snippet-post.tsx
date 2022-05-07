@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 import { useCallback } from 'react';
 import { Link, graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
@@ -57,7 +58,7 @@ const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
   return (
     <Layout
       sideBlocks={
-        isDesktop && <SideBlocks.Contents content={tableOfContents} />
+        isDesktop && <SideBlocks.Contents contents={tableOfContents} />
       }
     >
       <SEO title={title} description={description || excerpt} />
@@ -77,7 +78,6 @@ const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
             <a
               className={styles.licence}
               rel="license"
-              // eslint-disable-next-line react/jsx-no-target-blank
               target="_blank"
               href="http://creativecommons.org/licenses/by-nc/4.0/"
               title="This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
