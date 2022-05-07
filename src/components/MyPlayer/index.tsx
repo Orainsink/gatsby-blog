@@ -20,7 +20,7 @@ const MyPlayer = () => {
   return (
     <Tooltip
       title={<Panel />}
-      trigger="click"
+      trigger={['click']}
       overlayClassName={classnames(styles.wrapper, {
         [styles.headerDrop]: headerDrop,
         [styles.dark]: isDark,

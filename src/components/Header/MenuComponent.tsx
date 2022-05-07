@@ -22,14 +22,11 @@ const MenuComponent = ({ drawer }: { drawer: boolean }) => {
 
           <Dropdown
             overlay={<ArchivesMenu visible={visible} />}
-            arrow
             overlayClassName={styles.dropWrapper}
             onVisibleChange={(visible) => setVisible(visible)}
           >
             <li>
-              <span>
-                archives <DownOutlined />
-              </span>
+              archives <DownOutlined />
             </li>
           </Dropdown>
 

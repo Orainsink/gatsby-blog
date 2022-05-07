@@ -13,8 +13,7 @@ import useMediaMeta from './useMediaMeta';
 import ReactHowler from './Howler';
 
 interface SongProps {
-  song: Song;
-  onClick: () => void;
+  onClick: (song: Song) => void;
   id: number;
   playing: boolean;
   playerVisible: boolean;
@@ -24,34 +23,38 @@ interface SongProps {
 /**伪随机数组 */
 const getRandomList = () =>
   arr(SONGS.length)
-    .map((item, index) => index + 1)
+    .map((_, index) => index + 1)
     .sort(() => Math.random() - 0.5);
 
-const SongItem = memo(
-  ({ song, onClick, id, playing, playerVisible, loaded }: SongProps) => (
-    <li
-      key={song.id}
-      onClick={() => onClick()}
-      className={classnames(styles.liWrap, {
-        [styles.active]: song.id === id,
-      })}
-    >
-      <span className={styles.name}>{song.name}</span>
-      {song.id === id && loaded && (
-        <div
-          className={classnames(
-            styles.playingImg,
-            playing && playerVisible ? styles.running : styles.paused
-          )}
+const SongsList = memo(
+  ({ onClick, id, playing, playerVisible, loaded }: SongProps) => (
+    <ul className={styles.list}>
+      {SONGS.map((song) => (
+        <li
+          key={song.id}
+          onClick={() => onClick(song)}
+          className={classnames(styles.liWrap, {
+            [styles.active]: song.id === id,
+          })}
         >
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-        </div>
-      )}
-    </li>
+          <span className={styles.name}>{song.name}</span>
+          {song.id === id && loaded && (
+            <div
+              className={classnames(
+                styles.playingImg,
+                playing && playerVisible ? styles.running : styles.paused
+              )}
+            >
+              <div />
+              <div />
+              <div />
+              <div />
+              <div />
+            </div>
+          )}
+        </li>
+      ))}
+    </ul>
   )
 );
 
@@ -185,19 +188,13 @@ const Panel = () => {
       />
       <div ref={waveRefCallback}>
         <Controller />
-        <ul className={styles.list}>
-          {SONGS.map((song) => (
-            <SongItem
-              song={song}
-              key={song.id}
-              onClick={() => handleClick(song)}
-              id={id}
-              playing={playing}
-              playerVisible={playerVisible}
-              loaded={loaded}
-            />
-          ))}
-        </ul>
+        <SongsList
+          onClick={handleClick}
+          id={id}
+          playing={playing}
+          playerVisible={playerVisible}
+          loaded={loaded}
+        />
         {!loaded && <MusicLoadingSvg className={styles.loadingSvg} />}
       </div>
     </>
