@@ -6,7 +6,7 @@ import '../assets/css/global.less';
 import Header from '../components/Header';
 import BackTop from '../components/BackTop';
 import Bg from '../components/Bg';
-import { useHasMounted, useBackTop } from '../hooks';
+import { useBackTop } from '../hooks';
 import '../assets/css/base.less';
 import { iRootState } from '../redux/store';
 import ErrorBoundary from '../components/ErrorBoundary';
@@ -15,7 +15,6 @@ import ErrorBoundary from '../components/ErrorBoundary';
 const GlobalLayout = ({ children }) => {
   const { scene } = useSelector((state: iRootState) => state);
 
-  const hasMounted = useHasMounted();
   useBackTop();
 
   useEffect(() => {
@@ -26,9 +25,9 @@ const GlobalLayout = ({ children }) => {
   return (
     <ErrorBoundary>
       <div>{children}</div>
-      {hasMounted && <Header />}
-      {hasMounted && <Bg />}
-      {hasMounted && <BackTop />}
+      <Header />
+      <Bg />
+      <BackTop />
     </ErrorBoundary>
   );
 };

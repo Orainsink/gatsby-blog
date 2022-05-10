@@ -50,10 +50,7 @@ const openFile = (curPath) => {
 const addNewDiary = (result, color, range) => {
   const _color = color === 'red' ? '🟥' : '🟩';
   const title = `### ${today} ${range} ${_color}`;
-  return result.replace(
-    /\#\# 交易记录\n/,
-    '## 交易记录\n' + '\n' + title + '\n'
-  );
+  return result.replace(/## 交易记录\n/, '## 交易记录\n\n' + title + '\n');
 };
 
 const editDiary = ({ color, range }) => {

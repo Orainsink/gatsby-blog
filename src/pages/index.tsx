@@ -8,7 +8,6 @@ import Trigger from '../components/Trigger';
 import Poem from '../components/Poem';
 import PostList from '../components/PostList';
 import HomeScene from '../components/HomeScene';
-import { useHasMounted } from '../hooks';
 
 interface Data {
   site: {
@@ -31,12 +30,10 @@ const Index = ({ data }: PageProps<Data>) => {
     },
   }));
 
-  const hasMounted = useHasMounted();
-
   return (
     <>
-      {hasMounted && <HomeScene />}
-      {hasMounted && <Trigger />}
+      <HomeScene />
+      <Trigger />
       <Layout>
         <SEO title={siteTitle} />
         <Poem />

@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react';
+import { memo } from 'react';
 import { Col, Tooltip } from 'antd';
 import { StaticImage, GatsbyImage, getImage } from 'gatsby-plugin-image';
 import Icon, {

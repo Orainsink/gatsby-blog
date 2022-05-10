@@ -113,7 +113,7 @@ const CategoryComponent = () => {
     <section className={styles.wrap}>
       <div className={styles.title}>
         <MarkSvg className={styles.mark} />
-        欢迎光临！博主 莫沉 是个前端菜狗，学习 TDD 和 Go 中。
+        欢迎光临！博主 莫沉 是个切图仔，学习Go和webGL中。
       </div>
       <div className={styles.cardsContainer}>
         {getColumn(group).map((item) => (

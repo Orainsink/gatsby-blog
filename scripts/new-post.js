@@ -82,7 +82,7 @@ class NewPost {
   }
   getOutput() {
     const result = this.getStrByConfig();
-    return '---\n' + result + 'tags: []\n' + '---';
+    return '---\n' + result + 'tags: []\n---';
   }
   writeFile() {
     const { categories, title, date } = this.config;

@@ -6,23 +6,20 @@ import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 import { iRootState } from '../../redux/store';
 import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
 import * as styles from './index.module.less';
-// import { ReactComponent as LoadingSvg } from '../../assets/img/loading.svg';
 
 const Dynamic = lazy(() => import('./Dynamic'));
-// const DynamicFallback = () => (
-//   <div
-//     style={{
-//       width: '100%',
-//       height: '100%',
-//       background: '#0a0a0a',
-//       display: 'flex',
-//       justifyContent: 'center',
-//       alignItems: 'center',
-//     }}
-//   >
-//     <LoadingSvg />
-//   </div>
-// );
+const DynamicFallback = () => (
+  <div
+    style={{
+      width: '100%',
+      height: '100%',
+      background: '#0a0a0a',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+  />
+);
 
 const Wrapper = () => {
   const { scene, trigger } = useSelector((state: iRootState) => state);
@@ -41,7 +38,7 @@ const Wrapper = () => {
   return (
     <ReactScrollWheelHandler downHandler={handleScene}>
       <div className={classnames(styles.wrapper, curStyle)}>
-        <Suspense fallback={null}>
+        <Suspense fallback={<DynamicFallback />}>
           <Dynamic />
         </Suspense>
 

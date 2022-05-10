@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 
-import { useHasMounted } from '../../hooks';
 import Calendar from './Calendar';
 import Contents from './Contents';
 import Info from './Info';
@@ -23,14 +22,10 @@ const SideBar = (props: Props) => {
     gap: '16px',
   };
 
-  const hasMounted = useHasMounted();
-
   return (
-    hasMounted && (
-      <div>
-        <div style={sideWrap}>{children}</div>
-      </div>
-    )
+    <div>
+      <div style={sideWrap}>{children}</div>
+    </div>
   );
 };
 

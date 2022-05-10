@@ -86,7 +86,9 @@
     "eslint-plugin-react": "7.29.4",
     "eslint-plugin-react-hooks": "4.5.0",
     "gltf-pipeline": "3.0.4",
+    "husky": ">=6",
     "inquirer": "8.2.4",
+    "lint-staged": ">=10",
     "postcss": "8.4.13",
     "postcss-preset-env": "7.5.0",
     "prettier": "2.6.2",
@@ -114,7 +116,8 @@
     "diary": "node ./scripts/write-diary.js",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" ",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "prepare": "husky install"
   },
   "babel": {
     "presets": [
@@ -141,5 +144,9 @@
     "commitizen": {
       "path": "cz-gitmoji-customize"
     }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": "eslint --cache --fix",
+    "*.{js,jsx,json,md,mdx,ts,tsx}": "prettier --write"
   }
 }
