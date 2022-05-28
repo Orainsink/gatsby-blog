@@ -16,7 +16,6 @@ const GlobalLayout = ({ children }) => {
   const { scene } = useSelector((state: iRootState) => state);
 
   useBackTop();
-
   useEffect(() => {
     const body = document.getElementsByTagName('body')[0];
     body.style.overflowY = scene ? 'hidden' : 'auto';
