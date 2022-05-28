@@ -1,18 +1,17 @@
-import { useEffect, useCallback, useState, memo, lazy, Suspense } from 'react';
+import { useEffect, useCallback, useState, memo } from 'react';
 import classnames from 'classnames';
 import { Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { GithubOutlined, SearchOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-
+import MyPlayer from '../MyPlayer';
+import SearchDrawer from '../Algolia';
 import { useMedia } from '../../hooks';
 import * as styles from './index.module.less';
 import ThemeBtn from './ThemeBtn';
 import MenuComponent from './MenuComponent';
 import { iRootState } from '../../redux/store';
 import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
-const MyPlayer = lazy(() => import('../MyPlayer'));
-const SearchDrawer = lazy(() => import('../Algolia/Index'));
 
 /**Header */
 const Header = () => {
@@ -99,9 +98,7 @@ const Header = () => {
     >
       <Row justify="space-around" align="middle">
         <Col style={{ display: 'flex', alignItems: 'center' }}>
-          <Suspense fallback={null}>
-            <MyPlayer />
-          </Suspense>
+          <MyPlayer />
         </Col>
         {!drawer && (
           <Col className={styles.author}>
@@ -145,9 +142,7 @@ const Header = () => {
           <ThemeBtn />
         </Col>
       </Row>
-      <Suspense fallback={null}>
-        <SearchDrawer visible={searchVisible} onClose={handleClose} />
-      </Suspense>
+      <SearchDrawer visible={searchVisible} onClose={handleClose} />
     </header>
   );
 };

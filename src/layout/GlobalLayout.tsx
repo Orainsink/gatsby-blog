@@ -1,15 +1,15 @@
-import { memo, useEffect } from 'react';
+import { memo, useEffect, Suspense, lazy } from 'react';
 import { useSelector } from 'react-redux';
 
 import '../assets/css/variables.less';
 import '../assets/css/global.less';
-import Header from '../components/Header';
 import BackTop from '../components/BackTop';
 import Bg from '../components/Bg';
 import { useBackTop } from '../hooks';
 import '../assets/css/base.less';
 import { iRootState } from '../redux/store';
 import ErrorBoundary from '../components/ErrorBoundary';
+const Header = lazy(() => import('../components/Header'));
 
 /**global PageElement */
 const GlobalLayout = ({ children }) => {
@@ -25,7 +25,9 @@ const GlobalLayout = ({ children }) => {
   return (
     <ErrorBoundary>
       <div>{children}</div>
-      <Header />
+      <Suspense fallback={null}>
+        <Header />
+      </Suspense>
       <Bg />
       <BackTop />
     </ErrorBoundary>
