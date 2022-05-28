@@ -42,7 +42,6 @@ const Contents = (props: Props) => {
       <div className={classnames(styles.contents)}>
         <Anchor
           getContainer={() => document.body as HTMLElement}
-          targetOffset={80}
           onClick={handleClick}
           contents={contents}
         />
