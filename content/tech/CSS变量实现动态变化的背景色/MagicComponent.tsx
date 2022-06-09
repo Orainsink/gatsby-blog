@@ -1,16 +1,12 @@
-import { useRef, useCallback, useState } from 'react';
+import { useState, useEffect } from 'react';
 import useMagicColor from './useMagicColor';
 
 const MagicComponent = () => {
-  const magicRef = useRef(null);
   const [active, setActive] = useState(false);
-  useMagicColor(magicRef.current, active);
+  useMagicColor(() => document.getElementById('post-magic-container'), active);
 
-  const refCallback = useCallback((node) => {
-    if (node !== null) {
-      magicRef.current = node;
-      setActive(true);
-    }
+  useEffect(() => {
+    setActive(true);
   }, []);
 
   return (
@@ -22,7 +18,6 @@ const MagicComponent = () => {
         borderRadius: '10px',
         margin: 'auto',
       }}
-      ref={refCallback}
     ></div>
   );
 };

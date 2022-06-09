@@ -19,7 +19,7 @@ const colorArr = [
  * @notice 存在兼容性问题, 需要在元素的样式里写上默认的 background-color 做降级处理
  */
 export const useMagicColor = (
-  node: HTMLDivElement,
+  getContainer: () => HTMLElement | null,
   active: boolean = true
 ): void => {
   useEffect(() => {
@@ -41,6 +41,7 @@ export const useMagicColor = (
   }, []);
 
   useEffect(() => {
+    const node = getContainer();
     if (!node) return;
     if (!window.CSS || !window.CSS.hasOwnProperty('registerProperty')) return;
     let index = 1;
@@ -75,5 +76,6 @@ export const useMagicColor = (
     return () => {
       clearInterval(timer);
     };
-  }, [node, active]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active]);
 };

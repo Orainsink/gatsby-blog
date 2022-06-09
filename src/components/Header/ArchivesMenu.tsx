@@ -1,4 +1,4 @@
-import { memo, ReactElement, useRef } from 'react';
+import { memo, ReactElement } from 'react';
 import { Col, Row } from 'antd';
 import { Link } from 'gatsby';
 
@@ -10,11 +10,10 @@ interface Props {
   visible: boolean;
 }
 const ArchivesMenu = memo(({ visible }: Props): ReactElement => {
-  const magicRef = useRef<HTMLDivElement>(null);
-  useMagicColor(magicRef.current!, visible);
+  useMagicColor(() => document.getElementById('magic-container'), visible);
 
   return (
-    <div className={styles.dropMenu} ref={magicRef}>
+    <div className={styles.dropMenu} id="magic-container">
       {MENU_NAMES.map((item, index) => (
         <Row align="middle" justify="space-between" key={index}>
           {item.map((category) => (

@@ -14,7 +14,10 @@ const colorArr = [
   'hsl(235deg, 77%, 40%)',
 ];
 
-const useMagicColor = (node: any, active: boolean = false) => {
+const useMagicColor = (
+  getContainer: () => HTMLElement | null,
+  active: boolean = false
+) => {
   useEffect(() => {
     if (window.CSS && window.CSS.hasOwnProperty('registerProperty')) {
       colorNames.forEach((name, index) => {
@@ -34,6 +37,7 @@ const useMagicColor = (node: any, active: boolean = false) => {
   }, []);
 
   useEffect(() => {
+    const node = getContainer();
     if (!node) return;
     if (!window.CSS || !window.CSS.hasOwnProperty('registerProperty')) return;
     let index = 1;
@@ -68,6 +72,7 @@ const useMagicColor = (node: any, active: boolean = false) => {
     return () => {
       clearInterval(timer);
     };
-  }, [node, active]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active]);
 };
 export default useMagicColor;
