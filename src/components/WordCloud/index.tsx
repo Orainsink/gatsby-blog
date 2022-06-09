@@ -6,7 +6,7 @@ import isClient from '../../utils/isClient';
 import { useIsDark } from '../../hooks';
 import { GetWordCloudDataQuery } from '../../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
-const WordCloud: any = isClient ? import('wordcloud') : undefined;
+const WordCloud = isClient ? require('wordcloud') : undefined;
 
 interface Props {
   jump?: boolean;
