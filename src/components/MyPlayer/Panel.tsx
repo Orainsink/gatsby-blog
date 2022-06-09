@@ -155,7 +155,7 @@ const Panel = () => {
    * modify media session action
    */
   useEffect(() => {
-    const handler = function (playing: boolean) {
+    const handler = (playing: boolean) => {
       dispatch({ type: 'MUSIC', payload: { playing } });
     };
 
@@ -163,10 +163,8 @@ const Panel = () => {
       navigator.mediaSession.setActionHandler('play', () => handler(true));
       navigator.mediaSession.setActionHandler('pause', () => handler(false));
       navigator.mediaSession.setActionHandler('pause', () => handler(false));
-      navigator.mediaSession.setActionHandler('previoustrack', function () {});
-      navigator.mediaSession.setActionHandler('nexttrack', function () {
-        toNextSong();
-      });
+      navigator.mediaSession.setActionHandler('previoustrack', () => {});
+      navigator.mediaSession.setActionHandler('nexttrack', () => toNextSong());
     }
     // eslint-disable-next-line
   }, [dispatch]);

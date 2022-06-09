@@ -13,7 +13,7 @@ interface HTMLProps {
   postBodyComponents: any[];
 }
 
-export default function HTML(props: HTMLProps) {
+const HTML = (props: HTMLProps) => {
   return (
     <html {...props.htmlAttributes} style={{ overflowY: 'hidden' }}>
       <head>
@@ -60,4 +60,5 @@ export default function HTML(props: HTMLProps) {
       </body>
     </html>
   );
-}
+};
+export default HTML;

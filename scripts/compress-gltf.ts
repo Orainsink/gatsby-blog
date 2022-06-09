@@ -49,7 +49,7 @@ const findFilesInDir = (
  * @param {Number} index
  * @returns void
  */
-function compressGltf(path: string, index: number) {
+const compressGltf = (path: string, index: number) => {
   if (!path.match(/.gltf/g)) {
     return console.log('path wrong: ' + path);
   }
@@ -58,7 +58,7 @@ function compressGltf(path: string, index: number) {
   processGltf(gltf, pipelineOptions).then((results: any) => {
     fsExtra.writeJsonSync(path.slice(0, -2) + 'b', results.gltf);
   });
-}
+};
 
 const gltfList = findFilesInDir('content', '.gltf');
 gltfList?.forEach(compressGltf);

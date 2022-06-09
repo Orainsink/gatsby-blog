@@ -49,13 +49,13 @@ const SnippetPostTemplate = ({
   const renderLinks = useCallback((content: TableOfContents) => {
     if (!content.items) return null;
 
-    function renderLink(items: TableOfContents[]) {
+    const renderLink = (items: TableOfContents[]) => {
       return items.map((item) => (
         <Anchor.Link href={item.url} title={item.title} key={item.url}>
           {item.items ? renderLink(item.items) : null}
         </Anchor.Link>
       ));
-    }
+    };
     return renderLink(content.items);
   }, []);
 

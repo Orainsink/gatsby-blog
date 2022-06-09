@@ -63,7 +63,7 @@ const editDiary = ({ color, range }: { color: string; range: string }) => {
 
     const result = addNewDiary(data, color, range);
 
-    fs.writeFile(path, result, 'utf8', function (err) {
+    fs.writeFile(path, result, 'utf8', (err) => {
       if (err) return console.log(err);
     });
   });

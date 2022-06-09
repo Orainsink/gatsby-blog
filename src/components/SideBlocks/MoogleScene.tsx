@@ -77,7 +77,7 @@ const Modal = memo(({ url, isDark }: Props) => {
     geomRef.current = geometry;
 
     // @ts-ignore 开启位置数据更新
-    curArr.onUpdate = function () {
+    curArr.onUpdate = () => {
       if (!geomRef.current) return;
       geomRef.current.attributes.position.needsUpdate = true;
     };

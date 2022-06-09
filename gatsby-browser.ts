@@ -6,7 +6,7 @@ export const onInitialClientRender: GatsbyBrowser['onInitialClientRender'] =
     const loaderIframe = document.getElementById('___loader');
     // close loading
     if (loaderIframe) {
-      setTimeout(function () {
+      setTimeout(() => {
         loaderIframe.style.opacity = '0';
       }, 0);
 
@@ -16,7 +16,7 @@ export const onInitialClientRender: GatsbyBrowser['onInitialClientRender'] =
       ) {
         loaderIframe.style.display = 'none';
       } else {
-        setTimeout(function () {
+        setTimeout(() => {
           loaderIframe.style.display = 'none';
         }, 300);
       }
