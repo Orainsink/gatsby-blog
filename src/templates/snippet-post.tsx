@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-target-blank */
-import { useCallback } from 'react';
+import { useCallback, ReactElement } from 'react';
 import { Link, graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
@@ -15,22 +15,26 @@ import generatePath from '../utils/generatePath';
 import SideBlocks from '../components/SideBlocks';
 import Comment from '../components/Comment';
 import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
+import { GetSnippetPostQuery } from '../../graphql-types';
+import {
+  DeepRequiredAndNonNullable,
+  TableOfContents,
+} from '../../typings/custom';
+
+type Data = DeepRequiredAndNonNullable<GetSnippetPostQuery>;
 interface Props {
-  data: {
-    mdx: MdxItem;
-    site: {
-      siteMetadata: {
-        title: string;
-      };
-    };
-  };
+  data: Data;
   pageContext: {
     previous: any;
     next: any;
     id: string;
   };
 }
-const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
+
+const SnippetPostTemplate = ({
+  data: { mdx },
+  pageContext,
+}: Props): ReactElement => {
   const {
     frontmatter: { title, tags, description, date, categories },
     excerpt,
@@ -42,10 +46,10 @@ const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
   /**
    * Recursion Links
    */
-  const renderLinks = useCallback((content) => {
+  const renderLinks = useCallback((content: TableOfContents) => {
     if (!content.items) return null;
 
-    function renderLink(items) {
+    function renderLink(items: TableOfContents[]) {
       return items.map((item) => (
         <Anchor.Link href={item.url} title={item.title} key={item.url}>
           {item.items ? renderLink(item.items) : null}
@@ -147,7 +151,7 @@ const SnippetPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
 export default SnippetPostTemplate;
 
 export const pageQuery = graphql`
-  query SnippetPostQuery($id: String) {
+  query getSnippetPost($id: String) {
     site {
       siteMetadata {
         title

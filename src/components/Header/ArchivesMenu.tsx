@@ -1,4 +1,4 @@
-import { memo, useRef } from 'react';
+import { memo, ReactElement, useRef } from 'react';
 import { Col, Row } from 'antd';
 import { Link } from 'gatsby';
 
@@ -6,9 +6,12 @@ import { useMagicColor } from '../../hooks';
 import * as styles from './index.module.less';
 import { CATEGORY_MAP, MENU_NAMES } from '../../assets/constants/categories';
 
-const ArchivesMenu = memo(({ visible }: { visible: boolean }) => {
+interface Props {
+  visible: boolean;
+}
+const ArchivesMenu = memo(({ visible }: Props): ReactElement => {
   const magicRef = useRef<HTMLDivElement>(null);
-  useMagicColor(magicRef.current, visible);
+  useMagicColor(magicRef.current!, visible);
 
   return (
     <div className={styles.dropMenu} ref={magicRef}>
@@ -16,8 +19,8 @@ const ArchivesMenu = memo(({ visible }: { visible: boolean }) => {
         <Row align="middle" justify="space-between" key={index}>
           {item.map((category) => (
             <Col span={12} key={category}>
-              <Link to={CATEGORY_MAP.get(category).path}>
-                {CATEGORY_MAP.get(category).name}
+              <Link to={CATEGORY_MAP.get(category)!.path}>
+                {CATEGORY_MAP.get(category)!.name}
               </Link>
             </Col>
           ))}

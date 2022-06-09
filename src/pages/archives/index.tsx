@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, ReactElement } from 'react';
 import { PageProps, graphql } from 'gatsby';
 import { Divider } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,18 +10,18 @@ import * as styles from './index.module.less';
 import PostList from '../../components/PostList';
 import SideBlocks from '../../components/SideBlocks';
 import { iRootState } from '../../redux/store';
+import { GetArchivesPageDataQuery, FileEdge } from '../../../graphql-types';
+import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 const WordCloud = lazy(() => import('../../components/WordCloud'));
 
-interface Data {
-  allFile: {
-    edges: ChildMdxItem[];
-  };
-}
+type Data = DeepRequiredAndNonNullable<GetArchivesPageDataQuery>;
 
-const ArchivesPage = ({ data }: PageProps<Data>) => {
+const ArchivesPage = ({ data }: PageProps<Data>): ReactElement => {
   const { curTag, curDate } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
-  const posts = data.allFile.edges.filter((item) => item.node.childMdx);
+  const posts = data.allFile.edges.filter(
+    (item) => item.node.childMdx
+  ) as FileEdge[];
 
   return (
     <Layout sideBlocks={<SideBlocks.Calendar posts={posts} />}>
@@ -46,7 +46,7 @@ const ArchivesPage = ({ data }: PageProps<Data>) => {
 export default ArchivesPage;
 
 export const pageQuery = graphql`
-  {
+  query getArchivesPageData {
     allFile(
       filter: { sourceInstanceName: { eq: "tech" } }
       sort: { fields: childMdx___frontmatter___date, order: DESC }

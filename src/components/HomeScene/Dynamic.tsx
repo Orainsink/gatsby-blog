@@ -1,4 +1,11 @@
-import { memo, Suspense, useEffect, useCallback, useState } from 'react';
+import {
+  memo,
+  Suspense,
+  useEffect,
+  useCallback,
+  useState,
+  ReactElement,
+} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { FogExp2, PerspectiveCamera, Vector3 } from 'three';
@@ -12,12 +19,9 @@ import { iRootState } from '../../redux/store';
 import isClient from '../../utils/isClient';
 import Stars from './Stars';
 import Floor from './Floor';
+import { DeepRequiredAndNonNullable } from '../../../typings/custom';
+import { GetRockFileQuery } from '../../../graphql-types';
 
-interface Data {
-  file: {
-    publicURL: string;
-  };
-}
 /**
  * some default values
  */
@@ -79,9 +83,11 @@ const CameraTween = memo(({ isScene }: { isScene: boolean }) => {
 });
 
 /** webGl wrapper  */
-const Dynamic = () => {
-  const data: Data = useStaticQuery(graphql`
-    {
+const Dynamic = (): ReactElement | null => {
+  const data = useStaticQuery<
+    DeepRequiredAndNonNullable<GetRockFileQuery>
+  >(graphql`
+    query getRockFile {
       file(absolutePath: { regex: "/rock.gltf/" }) {
         publicURL
       }
@@ -89,7 +95,7 @@ const Dynamic = () => {
   `);
   const url = data.file.publicURL;
   const { scene } = useSelector((state: iRootState) => state);
-  const [words, setWords] = useState<string[]>(null);
+  const [words, setWords] = useState<string[] | null>(null);
   const dispatch = useDispatch();
 
   useBackgroundColor();

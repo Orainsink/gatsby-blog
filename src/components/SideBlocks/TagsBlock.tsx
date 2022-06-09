@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, ReactElement } from 'react';
 import { Col } from 'antd';
 import classnames from 'classnames';
 
@@ -7,7 +7,7 @@ import * as styles from './index.module.less';
 import WordCloud from '../WordCloud';
 
 /* wordCloud */
-const TagsBlock = () => {
+const TagsBlock = (): ReactElement => {
   const isDesktop = useMedia('isDesktop');
 
   return (

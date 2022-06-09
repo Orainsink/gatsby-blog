@@ -1,4 +1,4 @@
-import { memo, useMemo, useCallback } from 'react';
+import { memo, useMemo, useCallback, ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 import { Col, Row, Select } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
@@ -7,18 +7,20 @@ import classnames from 'classnames';
 import Calendar from './CustomCalendar';
 import * as styles from './index.module.less';
 import useColFlex from './useColFlex';
+import { FileEdge } from '../../../graphql-types';
 
 interface Props {
-  posts: ChildMdxItem[];
+  posts: FileEdge[];
 }
-const CalendarBlock = ({ posts }: Props) => {
+const CalendarBlock = ({ posts }: Props): ReactElement => {
   const dispatch = useDispatch();
   const colFlex = useColFlex();
 
   const allMonths: Record<string, number | undefined> = useMemo(() => {
-    const obj = {};
+    const obj: Record<string, number> = {};
     posts.forEach(({ node }) => {
-      let date = node.childMdx.frontmatter.date.substring(0, 7);
+      const frontmatter = node!.childMdx!.frontmatter!;
+      let date = frontmatter.date.substring(0, 7);
       if (obj[date]) {
         obj[date] += 1;
       } else {
@@ -57,40 +59,49 @@ const CalendarBlock = ({ posts }: Props) => {
     [allMonths]
   );
 
-  const headerRender = useCallback(({ value, onChange }) => {
-    const year = value.year();
-    const options = [];
+  const headerRender = useCallback(
+    ({
+      value,
+      onChange,
+    }: {
+      value: Dayjs;
+      onChange: (value: Dayjs) => void;
+    }) => {
+      const year = value.year();
+      const options = [];
 
-    for (let i = 2019; i < dayjs().year() + 1; i += 1) {
-      options.push(
-        <Select.Option key={i} value={i}>
-          {i}
-        </Select.Option>
+      for (let i = 2019; i < dayjs().year() + 1; i += 1) {
+        options.push(
+          <Select.Option key={i} value={i}>
+            {i}
+          </Select.Option>
+        );
+      }
+
+      return (
+        <Row className={styles.calendar} justify="space-between">
+          <Col className={styles.header}>更新月历</Col>
+          <Col>
+            <Select
+              size="small"
+              dropdownMatchSelectWidth={false}
+              onChange={(newYear) => {
+                const now = value.clone().year(parseInt(newYear));
+                onChange(now);
+              }}
+              value={String(year)}
+            >
+              {options}
+            </Select>
+          </Col>
+        </Row>
       );
-    }
-
-    return (
-      <Row className={styles.calendar} justify="space-between">
-        <Col className={styles.header}>更新月历</Col>
-        <Col>
-          <Select
-            size="small"
-            dropdownMatchSelectWidth={false}
-            onChange={(newYear) => {
-              const now = value.clone().year(newYear);
-              onChange(now);
-            }}
-            value={String(year)}
-          >
-            {options}
-          </Select>
-        </Col>
-      </Row>
-    );
-  }, []);
+    },
+    []
+  );
 
   const handleSelect = useCallback(
-    (date) => {
+    (date: Dayjs) => {
       if (!allMonths[dayjs(date).format('YYYY/MM')]) return;
       dispatch({
         type: 'CUR_DATE',

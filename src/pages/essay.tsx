@@ -1,9 +1,9 @@
-import { useCallback } from 'react';
+import { useCallback, ReactElement } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
 import { Card, Divider } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReloadOutlined } from '@ant-design/icons';
-import { getImage, GatsbyImage } from 'gatsby-plugin-image';
+import { getImage, GatsbyImage, ImageDataLike } from 'gatsby-plugin-image';
 
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
@@ -11,39 +11,59 @@ import * as styles from './archives/index.module.less';
 import { useResetKey } from '../hooks';
 import generatePath from '../utils/generatePath';
 import { iRootState } from '../redux/store';
+import { DeepRequiredAndNonNullable } from '../../typings/custom';
+import { GetEssayDataQuery } from '../../graphql-types';
 
-interface Data {
-  allFile: {
-    edges: ChildMdxItem[];
-  };
-  images: {
-    edges: {
-      node: {
-        relativeDirectory: string;
-        childImageSharp: any;
-      };
-    }[];
-  };
-}
-
-const EssayPage = ({ data }: PageProps<Data>) => {
+type Data = DeepRequiredAndNonNullable<GetEssayDataQuery>;
+const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
   const { curDate } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
 
   const getImg = useCallback(
     (relativeDirectory: string) => {
-      const node: any = data.images.edges.find((image) =>
+      const node = data.images.edges.find((image) =>
         relativeDirectory.startsWith(`/${image.node.relativeDirectory}`)
       )?.node;
       if (node) {
-        return getImage(node);
+        return getImage(node as unknown as ImageDataLike);
       } else return null;
     },
     [data]
   );
 
   useResetKey();
+
+  const renderPostCard = useCallback(
+    ({
+      node: {
+        childMdx: { frontmatter, fields },
+      },
+    }: typeof posts[number]) => {
+      return (
+        <Card
+          onClick={() =>
+            navigate(generatePath(frontmatter.categories, fields.slug))
+          }
+          key={frontmatter.title}
+          hoverable
+          className={styles.essayItem}
+          cover={
+            <GatsbyImage
+              image={getImg(fields.slug)!}
+              style={{ width: '100%' }}
+              alt=""
+            />
+          }
+        >
+          <p className={styles.metaTitle}>{frontmatter.title}</p>
+          <p>{frontmatter.date}</p>
+          <p>{frontmatter.description}</p>
+        </Card>
+      );
+    },
+    [getImg]
+  );
 
   return (
     <Layout>
@@ -58,31 +78,7 @@ const EssayPage = ({ data }: PageProps<Data>) => {
         ) : null}
       </Divider>
       {!!posts && (
-        <div className={styles.essayCards}>
-          {posts.map(({ node: { childMdx: item } }) => (
-            <Card
-              onClick={() =>
-                navigate(
-                  generatePath(item.frontmatter.categories, item.fields.slug)
-                )
-              }
-              key={item.frontmatter.title}
-              hoverable
-              className={styles.essayItem}
-              cover={
-                <GatsbyImage
-                  image={getImg(item.fields.slug)}
-                  style={{ width: '100%' }}
-                  alt=""
-                />
-              }
-            >
-              <p className={styles.metaTitle}>{item.frontmatter.title}</p>
-              <p>{item.frontmatter.date}</p>
-              <p>{item.frontmatter.description}</p>
-            </Card>
-          ))}
-        </div>
+        <div className={styles.essayCards}>{posts.map(renderPostCard)}</div>
       )}
     </Layout>
   );
@@ -91,7 +87,7 @@ const EssayPage = ({ data }: PageProps<Data>) => {
 export default EssayPage;
 
 export const pageQuery = graphql`
-  query essayQuery {
+  query getEssayData {
     allFile(
       filter: {
         sourceInstanceName: { eq: "essay" }

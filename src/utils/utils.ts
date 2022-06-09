@@ -3,7 +3,7 @@
  * must be passed on onComplete and onReverseComplete
  * @method yoyo
  */
-export function yoyo() {
+export function yoyo(this: any) {
   if (this.reversed()) {
     this.restart();
   } else {
@@ -19,11 +19,11 @@ export function yoyo() {
  * @param {Boolean} [round=false] Floor the value?
  * @return {Number} Random value
  */
-export function random(
+export const random = (
   low: number,
   high: number,
   round: boolean = false
-): number {
+): number => {
   round = round || false;
 
   let randomValue = Math.random() * (high - low) + low;
@@ -33,7 +33,7 @@ export function random(
   }
 
   return randomValue;
-}
+};
 
 /**
  * generate array
@@ -41,6 +41,6 @@ export function random(
  * @param length
  * @return undefined[]
  */
-export function arr(length: number): undefined[] {
+export const arr = (length: number): undefined[] => {
   return new Array(length).fill(undefined);
-}
+};

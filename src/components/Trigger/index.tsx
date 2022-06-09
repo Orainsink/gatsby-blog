@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { memo, useCallback, ReactElement } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import * as styles from './index.module.less';
@@ -7,7 +7,7 @@ import { iRootState } from '../../redux/store';
 /**
  * scene Trigger
  */
-const Trigger = () => {
+const Trigger = (): ReactElement | null => {
   const dispatch = useDispatch();
   const { skip, scene } = useSelector((state: iRootState) => state);
 

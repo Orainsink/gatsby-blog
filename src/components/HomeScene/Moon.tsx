@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useState, ReactElement } from 'react';
 import { useSpring, a } from '@react-spring/three';
 import { useCursor } from '@react-three/drei';
 
@@ -6,8 +6,7 @@ interface Props {
   onClose: () => void;
 }
 /** three.js moon */
-const Moon = (props: Props) => {
-  const { onClose } = props;
+const Moon = ({ onClose }: Props): ReactElement => {
   const [active, setActive] = useState<boolean>(false);
 
   useCursor(active);

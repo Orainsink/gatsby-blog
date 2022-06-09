@@ -1,6 +1,8 @@
-import { memo } from 'react';
+import { memo, ReactElement } from 'react';
 import { BackTop } from 'antd';
 
-const BackTopComponent = () => <BackTop target={() => document.body} />;
+const BackTopComponent = (): ReactElement => (
+  <BackTop target={() => document.body} />
+);
 
 export default memo(BackTopComponent);

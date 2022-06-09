@@ -1,12 +1,12 @@
-import { memo, useCallback, useEffect } from 'react';
+import { memo, ReactElement, useCallback, useEffect } from 'react';
 
 import { useHasMounted, useIsDark } from '../hooks';
 
-const Comment = () => {
+const Comment = (): ReactElement | null => {
   const isDark = useIsDark();
   const hasMounted = useHasMounted();
 
-  const commentsRefCb = useCallback((node) => {
+  const commentsRefCb = useCallback((node: HTMLDivElement) => {
     if (node) {
       const scriptEl = document.createElement('script');
       scriptEl.async = true;
@@ -41,6 +41,8 @@ const Comment = () => {
     }
   }, [isDark]);
 
-  return hasMounted && <div ref={commentsRefCb} className="comments"></div>;
+  return hasMounted ? (
+    <div ref={commentsRefCb} className="comments"></div>
+  ) : null;
 };
 export default memo(Comment);

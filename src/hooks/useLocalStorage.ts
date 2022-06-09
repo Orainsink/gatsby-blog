@@ -55,7 +55,7 @@ export const useLocalStorage = <T>(
 
   const deserializer = options
     ? options.raw
-      ? (value) => value
+      ? (value: string) => value
       : // @ts-ignore
         options.deserializer
     : JSON.parse;

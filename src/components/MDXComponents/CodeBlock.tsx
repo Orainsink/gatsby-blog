@@ -1,4 +1,4 @@
-import { memo, useState, useCallback, useMemo } from 'react';
+import { memo, useState, useCallback, useMemo, ReactElement } from 'react';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 import { Button } from 'antd';
@@ -18,7 +18,7 @@ interface Props {
 const CodeBlock = ({
   children,
   className: langClass = 'javascript',
-}: Props) => {
+}: Props): ReactElement => {
   const language = langClass.replace(/language-/, '') as Language;
   const [copied, setCopied] = useState(false);
   const isDark = useIsDark();

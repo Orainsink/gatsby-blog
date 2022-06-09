@@ -5,7 +5,8 @@
  * http://k88hudson.github.io/syntax-highlighting-theme-generator/www/
  */
 import { PrismTheme } from 'prism-react-renderer';
-var theme: PrismTheme = {
+
+const theme: PrismTheme = {
   plain: {
     color: '#3d4451',
     backgroundColor: '#f6f6f6',

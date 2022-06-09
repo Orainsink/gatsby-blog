@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import isClient from '../utils/isClient';
 import { MediaQueryMap } from '../assets/constants/common';
 
-type MediaQuery = keyof typeof MediaQueryMap | 'prefers-color-scheme: dark'
+type MediaQuery = keyof typeof MediaQueryMap | 'prefers-color-scheme: dark';
 /**
  * tracks state of a CSS media query
  * https://github.com/streamich/react-use/blob/master/src/useMedia.ts
@@ -19,13 +19,17 @@ const Demo = () => {
   );
 };
  */
-export const useMedia = (query: MediaQuery , defaultState: boolean = false) => {
+export const useMedia = (
+  query: MediaQuery,
+  defaultState: boolean = false
+): boolean => {
   const [state, setState] = useState(
     isClient ? () => window.matchMedia(query).matches : defaultState
   );
 
   useEffect(() => {
     let mounted = true;
+    // @ts-ignore
     const _query = MediaQueryMap[query] ?? query;
     const mql = window.matchMedia(_query);
     const onChange = () => {

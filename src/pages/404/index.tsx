@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, ReactElement } from 'react';
 import { Button } from 'antd';
 import { Link } from 'gatsby';
 
@@ -6,7 +6,7 @@ import SEO from '../../components/seo';
 import Loading from '../../components/Loading';
 import * as styles from './index.module.less';
 
-const NotFoundPage = () => (
+const NotFoundPage = (): ReactElement => (
   <>
     <SEO title="404: Not Found" />
     <Loading debounce={0}>

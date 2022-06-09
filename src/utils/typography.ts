@@ -1,6 +1,7 @@
 import Typography from 'typography';
-import {typographyThemeNoriega as noriega} from '../assets/theme/typography';
+import { typographyThemeNoriega as noriega } from '../assets/theme/typography';
 
+// @ts-ignore
 delete noriega.googleFonts;
 
 const typography = new Typography(noriega);

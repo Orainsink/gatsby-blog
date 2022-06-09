@@ -1,4 +1,4 @@
-import { useEffect, useState, ReactNode, memo } from 'react';
+import { useEffect, useState, ReactNode, memo, ReactElement } from 'react';
 import classnames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -10,11 +10,11 @@ import { iRootState } from '../../redux/store';
 import Footer from '../../components/Footer';
 
 interface Props {
-  children?: ReactNode;
+  children: ReactNode;
 }
 
 /**index Layout */
-const Layout = ({ children }: Props) => {
+const Layout = ({ children }: Props): ReactElement => {
   const { scene, trigger, skip } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
   const [wrapperClass, setWrapperClass] = useState('');

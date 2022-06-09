@@ -25,7 +25,7 @@ const MyPlayer = () => {
         [styles.headerDrop]: headerDrop,
         [styles.dark]: isDark,
       })}
-      getPopupContainer={() => document.getElementById('header')}
+      getPopupContainer={() => document.getElementById('header')!}
       onVisibleChange={(visible) =>
         dispatch({ type: 'PLAYER_VISIBLE', payload: visible })
       }

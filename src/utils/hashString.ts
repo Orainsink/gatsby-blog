@@ -1,4 +1,4 @@
-function hashString(str) {
+const hashString = (str: string) => {
   let hash = 0;
   if (str.length === 0) {
     return String(hash);
@@ -9,5 +9,6 @@ function hashString(str) {
     hash = hash & hash;
   }
   return String(hash);
-}
-module.exports = hashString;
+};
+
+export default hashString;

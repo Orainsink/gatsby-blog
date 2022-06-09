@@ -1,4 +1,4 @@
-import { memo, useEffect, ReactNode } from 'react';
+import { memo, useEffect, ReactNode, ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 import classnames from 'classnames';
 
@@ -13,7 +13,7 @@ interface Props {
 }
 
 /** blog posts Layout */
-const Layout = (props: Props) => {
+const Layout = (props: Props): ReactElement => {
   const { sideBlocks, children } = props;
   const dispatch = useDispatch();
   useBackgroundColor();
@@ -27,10 +27,7 @@ const Layout = (props: Props) => {
 
   return (
     <div className={styles.wrapper}>
-      <main
-        className={classnames(styles.main, styles.container)}
-        id="main"
-      >
+      <main className={classnames(styles.main, styles.container)} id="main">
         <div className={styles.mainWrap}>{children}</div>
         <SideBar>
           <SideBar.Info />

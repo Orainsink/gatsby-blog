@@ -1,6 +1,11 @@
-import { memo } from 'react';
+import { memo, ReactElement } from 'react';
 import { Col, Tooltip } from 'antd';
-import { StaticImage, GatsbyImage, getImage } from 'gatsby-plugin-image';
+import {
+  StaticImage,
+  GatsbyImage,
+  getImage,
+  ImageDataLike,
+} from 'gatsby-plugin-image';
 import Icon, {
   ZhihuOutlined,
   GithubOutlined,
@@ -12,12 +17,10 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { ReactComponent as SteamSvg } from '../../assets/img/steam.svg';
 import { useMedia, useIsDark } from '../../hooks';
 import * as styles from './index.module.less';
-interface Data {
-  avatar: any;
-  avatarD: any;
-}
+import { GetSelfInfoQuery } from '../../../graphql-types';
+import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 
-const Steam = () => (
+const Steam = (): ReactElement => (
   <div className={styles.steamWrap}>
     <h3>ID：Moogle Knight</h3>
     <StaticImage
@@ -35,7 +38,7 @@ const Steam = () => (
   </div>
 );
 
-const Wechat = () => (
+const Wechat = (): ReactElement => (
   <div className={styles.wechatWrap}>
     <h3>ID：Orainsink</h3>
     <StaticImage
@@ -57,8 +60,10 @@ const Info = () => {
   const isDark = useIsDark();
   const isDesktop = useMedia('isDesktop');
 
-  const data: Data = useStaticQuery(graphql`
-    query sideQuery {
+  const data = useStaticQuery<
+    DeepRequiredAndNonNullable<GetSelfInfoQuery>
+  >(graphql`
+    query getSelfInfo {
       avatar: file(absolutePath: { regex: "/avatar.png/" }) {
         childImageSharp {
           gatsbyImageData(
@@ -81,14 +86,17 @@ const Info = () => {
       }
     }
   `);
-  const avatar = getImage(isDark ? data.avatarD : data.avatar);
+
+  const avatar = getImage(
+    (isDark ? data.avatarD : data.avatar) as ImageDataLike
+  );
 
   return (
     <Col
       flex={isDesktop ? '0 0 300px' : '1 1 300px'}
       className={classnames(styles.InfoWrap, styles.col)}
     >
-      <GatsbyImage image={avatar} alt="" className={styles.avatar} />
+      <GatsbyImage image={avatar!} alt="" className={styles.avatar} />
       <div className={styles.titleWrap}>
         <div className={styles.title}>ABOUT</div>
         <div>{isDark ? 'Orainsink' : '莫沉'}</div>

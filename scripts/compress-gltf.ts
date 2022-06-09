@@ -1,9 +1,9 @@
-const gltfPipeline = require('gltf-pipeline');
-const fsExtra = require('fs-extra');
-const processGltf = gltfPipeline.processGltf;
-const path = require('path');
-const fs = require('fs');
+import gltfPipeline from 'gltf-pipeline';
+import fsExtra from 'fs-extra';
+import path from 'path';
+import fs from 'fs';
 
+import processGltf = gltfPipeline.processGltf;
 const pipelineOptions = {
   dracoOptions: {
     compressionLevel: 10,
@@ -17,8 +17,11 @@ const pipelineOptions = {
  * @param  {String} filter       Extension name, e.g: '.html'
  * @return {Array}               Result files with path string in an array
  */
-function findFilesInDir(startPath, filter) {
-  let results = [];
+const findFilesInDir = (
+  startPath: string,
+  filter: string
+): string[] | undefined => {
+  let results: string[] = [];
 
   if (!fs.existsSync(startPath)) {
     console.log('no dir ', startPath);
@@ -30,7 +33,7 @@ function findFilesInDir(startPath, filter) {
     const filename = path.join(startPath, files[i]);
     const stat = fs.lstatSync(filename);
     if (stat.isDirectory()) {
-      results = results.concat(findFilesInDir(filename, filter)); //recurse
+      results = results.concat(findFilesInDir(filename, filter) as string[]);
     } else if (filename.indexOf(filter) >= 0) {
       console.log('🔎 found: ', filename);
       results.push(filename);
@@ -38,23 +41,24 @@ function findFilesInDir(startPath, filter) {
   }
 
   return results;
-}
+};
+
 /**
  * compress gltf files
  * @param {String} path
  * @param {Number} index
  * @returns void
  */
-function compressGltf(path, index) {
+function compressGltf(path: string, index: number) {
   if (!path.match(/.gltf/g)) {
     return console.log('path wrong: ' + path);
   }
   const gltf = fsExtra.readJsonSync(path);
 
-  processGltf(gltf, pipelineOptions).then((results) => {
+  processGltf(gltf, pipelineOptions).then((results: any) => {
     fsExtra.writeJsonSync(path.slice(0, -2) + 'b', results.gltf);
   });
 }
 
 const gltfList = findFilesInDir('content', '.gltf');
-gltfList.forEach(compressGltf);
+gltfList?.forEach(compressGltf);

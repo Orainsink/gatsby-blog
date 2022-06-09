@@ -4,7 +4,7 @@ import { useLocation } from '@reach/router';
 /**
  * back top when path change
  */
-export const useBackTop = () => {
+export const useBackTop = (): void => {
   const { pathname } = useLocation();
 
   useEffect(() => {

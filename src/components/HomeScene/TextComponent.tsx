@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect, useState, ReactElement } from 'react';
 import { Texture, DoubleSide } from 'three';
 
 interface Props {
@@ -16,17 +16,15 @@ const params = {
 };
 
 /** three.js text component */
-const Text = (props: Props) => {
-  const { words, position, rotation } = props;
-
+const Text = ({ words, position, rotation }: Props): ReactElement | null => {
   const [size, setSize] = useState<[number, number]>([0, 0]);
-  const [map, setMap] = useState<Texture>(null);
+  const [map, setMap] = useState<Texture>();
 
   useEffect(() => {
     if (!words) return;
 
     let canvas = document.createElement('canvas');
-    let context = canvas.getContext('2d');
+    let context: CanvasRenderingContext2D = canvas.getContext('2d')!;
     let font = `${params.style} ${params.size}px ${params.font}`;
     context.font = font;
 
@@ -67,23 +65,21 @@ const Text = (props: Props) => {
 
     setMap(texture);
   }, [words]);
-
+  if (!map) return null;
   return (
-    map && (
-      <group name="text" position={position} rotation={rotation}>
-        <mesh>
-          <planeGeometry args={[size[0], size[1]]} />
-          <meshBasicMaterial
-            transparent
-            depthTest
-            opacity={1}
-            side={DoubleSide}
-            depthWrite={false}
-            map={map}
-          />
-        </mesh>
-      </group>
-    )
+    <group name="text" position={position} rotation={rotation}>
+      <mesh>
+        <planeGeometry args={[size[0], size[1]]} />
+        <meshBasicMaterial
+          transparent
+          depthTest
+          opacity={1}
+          side={DoubleSide}
+          depthWrite={false}
+          map={map}
+        />
+      </mesh>
+    </group>
   );
 };
 

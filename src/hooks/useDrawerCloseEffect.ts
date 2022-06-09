@@ -9,7 +9,7 @@ import { iRootState } from '../redux/store';
  * @function useDrawerCloseEffect
  * @param {Boolean} visible
  **/
-export const useDrawerCloseEffect = (visible: boolean) => {
+export const useDrawerCloseEffect = (visible: boolean): void => {
   const scene = useSelector((state: iRootState) => state.scene);
 
   useEffect(() => {

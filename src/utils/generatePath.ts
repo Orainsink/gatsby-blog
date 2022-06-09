@@ -4,7 +4,8 @@ import hashString from './hashString';
  * @param categories
  * @param id
  */
-const generatePath = (categories: string, id: string) => {
+const generatePath = (categories: string, id: string): string => {
   return `/${categories}/${hashString(id)}`;
 };
+
 export default generatePath;

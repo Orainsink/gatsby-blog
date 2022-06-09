@@ -1,4 +1,11 @@
-import { memo, useEffect, Suspense, lazy } from 'react';
+import {
+  memo,
+  useEffect,
+  Suspense,
+  lazy,
+  ReactElement,
+  ReactNode,
+} from 'react';
 import { useSelector } from 'react-redux';
 
 import '../assets/css/variables.less';
@@ -10,9 +17,11 @@ import '../assets/css/base.less';
 import { iRootState } from '../redux/store';
 import ErrorBoundary from '../components/ErrorBoundary';
 const Header = lazy(() => import('../components/Header'));
-
+interface Props {
+  children: ReactNode;
+}
 /**global PageElement */
-const GlobalLayout = ({ children }) => {
+const GlobalLayout = ({ children }: Props): ReactElement => {
   const { scene } = useSelector((state: iRootState) => state);
 
   useBackTop();

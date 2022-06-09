@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react';
+import { memo, ReactElement, useEffect } from 'react';
 import { Drawer } from 'antd';
 import { useLocation } from '@reach/router';
 
@@ -10,8 +10,7 @@ interface Props {
   visible: boolean;
   onClose: () => void;
 }
-const SearchDrawer = (props: Props) => {
-  const { visible, onClose } = props;
+const SearchDrawer = ({ visible, onClose }: Props): ReactElement => {
   useDrawerCloseEffect(visible);
   const isMobile = useMedia('isMobile');
   const location = useLocation();
@@ -31,7 +30,7 @@ const SearchDrawer = (props: Props) => {
       bodyStyle={{ padding: '12px' }}
       className={styles.drawerWrap}
     >
-      <AlgoliaSearch />
+      <AlgoliaSearch visible={visible} />
     </Drawer>
   );
 };

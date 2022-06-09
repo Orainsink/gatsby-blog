@@ -2,7 +2,7 @@ import { useMedia } from '../../hooks';
 import { useEffect, useState } from 'react';
 
 /**SideBlock flex param */
-const useColFlex = () => {
+const useColFlex = (): string => {
   const [colFlex, setColFlex] = useState('0 0 300px');
   const isDesktop = useMedia('isDesktop');
 

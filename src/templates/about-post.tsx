@@ -1,5 +1,5 @@
 import { PageProps, graphql } from 'gatsby';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, ReactElement } from 'react';
 
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
@@ -7,14 +7,13 @@ import * as styles from './index.module.less';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Comment from '../components/Comment';
 import Poem from '../components/Poem';
+import { GetAboutPageDataQuery } from '../../graphql-types';
+import { DeepRequiredAndNonNullable } from '../../typings/custom';
 const MoogleScene = lazy(() => import('../components/SideBlocks/MoogleScene'));
 
-interface Data {
-  mdx: {
-    body: string;
-  };
-}
-const AboutPostTemplate = ({ data }: PageProps<Data>) => {
+type Data = DeepRequiredAndNonNullable<GetAboutPageDataQuery>;
+
+const AboutPostTemplate = ({ data }: PageProps<Data>): ReactElement => {
   const { mdx } = data;
   return (
     <Layout
@@ -37,7 +36,7 @@ const AboutPostTemplate = ({ data }: PageProps<Data>) => {
 export default AboutPostTemplate;
 
 export const pageQuery = graphql`
-  query {
+  query getAboutPageData {
     mdx(fields: { slug: { eq: "/about" } }) {
       body
     }

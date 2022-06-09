@@ -2,6 +2,7 @@
 import { Link, graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
+import { ReactElement } from 'react';
 
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
@@ -14,23 +15,23 @@ import generatePath from '../utils/generatePath';
 import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
 import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
 import Comment from '../components/Comment';
+import { GetBlogPostQuery } from '../../graphql-types';
+import { DeepRequiredAndNonNullable } from '../../typings/custom';
 
+type Data = DeepRequiredAndNonNullable<GetBlogPostQuery>;
 interface Props {
-  data: {
-    mdx: MdxItem;
-    site: {
-      siteMetadata: {
-        title: string;
-      };
-    };
-  };
+  data: Data;
   pageContext: {
-    previous: MarkdownRemark;
-    next: MarkdownRemark;
+    previous: any;
+    next: any;
     id: string;
   };
 }
-const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
+
+const BlogPostTemplate = ({
+  data: { mdx },
+  pageContext,
+}: Props): ReactElement => {
   const {
     frontmatter: { title, tags, description, date, categories },
     excerpt,
@@ -75,7 +76,7 @@ const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
             <Anchor
               targetOffset={200}
               affix={false}
-              contents={tableOfContents}
+              contents={tableOfContents as any}
             />
           </div>
         )}
@@ -133,7 +134,7 @@ const BlogPostTemplate = ({ data: { mdx }, pageContext }: Props) => {
 export default BlogPostTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostQuery($id: String) {
+  query getBlogPost($id: String) {
     site {
       siteMetadata {
         title

@@ -1,22 +1,18 @@
-import { memo } from 'react';
+import { memo, ReactElement } from 'react';
 import { Card } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 
 import { ReactComponent as MarkSvg } from '../../assets/img/mark.svg';
 import * as styles from './index.module.less';
+import { GetTagsQuery } from '../../../graphql-types';
+import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 
 const { Meta } = Card;
 
 interface GroupItem {
   totalCount: number;
   fieldValue: string;
-}
-interface Data {
-  allFile: {
-    totalCount: number;
-    group: GroupItem[];
-  };
 }
 
 /**
@@ -25,7 +21,7 @@ interface Data {
  * @param group
  * @returns
  */
-const getCount = (category: string, group: GroupItem[]) => {
+const getCount = (category: string, group: GroupItem[]): number => {
   return group.find((item) => item.fieldValue === category)?.totalCount || 0;
 };
 /**
@@ -94,9 +90,9 @@ const getColumn = (group: GroupItem[]) => {
   ];
 };
 
-const CategoryComponent = () => {
-  const data: Data = useStaticQuery(graphql`
-    query TagsQuery {
+const CategoryComponent = (): ReactElement => {
+  const data = useStaticQuery<DeepRequiredAndNonNullable<GetTagsQuery>>(graphql`
+    query getTags {
       allFile {
         totalCount
         group(field: childMdx___frontmatter___categories) {

@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, ReactElement } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
 import { Divider, Table, Tag } from 'antd';
 import dayjs from 'dayjs';
@@ -11,14 +11,12 @@ import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import generatePath from '../utils/generatePath';
 import { iRootState } from '../redux/store';
+import { DeepRequiredAndNonNullable } from '../../typings/custom';
+import { GetSnippetPageDataQuery } from '../../graphql-types';
 
-interface Data {
-  allFile: {
-    edges: ChildMdxItem[];
-  };
-}
+type Data = DeepRequiredAndNonNullable<GetSnippetPageDataQuery>;
 
-const SnippetPage = ({ data }: PageProps<Data>) => {
+const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
   const { curDate } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
@@ -28,15 +26,19 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
   const isMobile = useMedia('isMobile');
 
   const datas = useMemo(() => {
-    return posts.map(({ node: { childMdx: mdx } }) => ({
-      title: mdx.frontmatter?.title,
-      description: mdx.frontmatter?.description ?? mdx.excerpt,
-      tag: mdx.frontmatter?.tags[0],
-      categories: mdx.frontmatter.categories,
-      date: mdx.frontmatter?.date,
-      slug: mdx.fields?.slug,
-      id: mdx.id,
-    }));
+    return posts.map(({ node: { childMdx: mdx } }) => {
+      const frontmatter = mdx.frontmatter!;
+      const fields = mdx.fields!;
+      return {
+        title: frontmatter.title,
+        description: frontmatter.description ?? mdx.excerpt,
+        tag: frontmatter.tags[0],
+        categories: frontmatter.categories,
+        date: frontmatter.date,
+        slug: fields.slug,
+        id: mdx.id,
+      };
+    });
   }, [posts]);
 
   const columns: any = [
@@ -113,7 +115,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
         size={isMobile ? 'middle' : 'large'}
         pagination={{ pageSize: 16 }}
         onRow={(row) => ({
-          onClick: () => navigate(generatePath(row.categories, row.slug)),
+          onClick: () => navigate(generatePath(row.categories!, row.slug!)),
         })}
       ></Table>
     </Layout>
@@ -123,7 +125,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
 export default SnippetPage;
 
 export const pageQuery = graphql`
-  {
+  query getSnippetPageData {
     allFile(
       filter: { sourceInstanceName: { eq: "snippet" } }
       sort: { fields: childMdx___frontmatter___date, order: DESC }

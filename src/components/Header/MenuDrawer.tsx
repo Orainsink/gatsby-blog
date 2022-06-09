@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { memo, ReactElement, useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { Button, Drawer } from 'antd';
 import { Link } from 'gatsby';
@@ -13,7 +13,7 @@ import { CATEGORY_MAP } from '../../assets/constants/categories';
 /**
  * menu drawer for mobile phone
  **/
-const MenuDrawer = () => {
+const MenuDrawer = (): ReactElement => {
   const [visible, setVisible] = useState(false);
   useDrawerCloseEffect(visible);
 

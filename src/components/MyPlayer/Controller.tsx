@@ -1,4 +1,4 @@
-import { useCallback, memo } from 'react';
+import { useCallback, memo, ReactElement } from 'react';
 import { Col, Row, Slider } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -11,7 +11,7 @@ import * as styles from './index.module.less';
 import { iRootState } from '../../redux/store';
 
 /**Controller */
-const Controller = () => {
+const Controller = (): ReactElement => {
   const dispatch = useDispatch();
   const { playing, volume, loop } = useSelector(
     (state: iRootState) => state.music

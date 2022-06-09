@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import { memo } from 'react';
+import { memo, ReactElement } from 'react';
 import {
   connectStateResults,
   Highlight,
@@ -15,25 +15,12 @@ import * as styles from './index.module.less';
 import generatePath from '../../utils/generatePath';
 import { ReactComponent as NoResultSvg } from '../../assets/img/noResult.svg';
 import { iRootState } from '../../redux/store';
+import { SearchIndex } from './typings';
 
-const HitCount = connectStateResults(({ searchResults }) => {
-  const hitCount = searchResults && searchResults.nbHits;
-  const maxHeight = useSelector((state: iRootState) => state.maxHeight);
+interface Props {
+  indices: SearchIndex[];
+}
 
-  return hitCount > 0 ? (
-    <Divider orientation="center">
-      {hitCount} result{hitCount !== 1 ? `s` : ``}
-    </Divider>
-  ) : (
-    <div
-      className={styles.shashaWrap}
-      style={{ top: `${maxHeight / 2 - 118}px` }}
-    >
-      <NoResultSvg />
-      <div className={styles.noResultText}>Whe, where's the results?</div>
-    </div>
-  );
-});
 interface HitProp {
   hit: {
     categories: string;
@@ -41,7 +28,35 @@ interface HitProp {
     objectId: string;
   };
 }
-const PageHit = ({ hit }: HitProp) => (
+
+interface HitCountProps {
+  searchResults: {
+    nbHits: number;
+  };
+}
+
+const HitCount: () => ReactElement = connectStateResults(
+  ({ searchResults }: HitCountProps) => {
+    const hitCount = searchResults && searchResults.nbHits;
+    const maxHeight = useSelector((state: iRootState) => state.maxHeight);
+
+    return hitCount > 0 ? (
+      <Divider orientation="center">
+        {hitCount} result{hitCount !== 1 ? `s` : ``}
+      </Divider>
+    ) : (
+      <div
+        className={styles.shashaWrap}
+        style={{ top: `${maxHeight / 2 - 118}px` }}
+      >
+        <NoResultSvg />
+        <div className={styles.noResultText}>Whe, where's the results?</div>
+      </div>
+    );
+  }
+);
+
+const PageHit = ({ hit }: HitProp): ReactElement => (
   <div>
     <Link to={generatePath(hit.categories, hit.slug)}>
       <h4>
@@ -52,18 +67,14 @@ const PageHit = ({ hit }: HitProp) => (
   </div>
 );
 
-const HitsInIndex = ({ index }) => (
+const HitsInIndex = ({ index }: { index: SearchIndex }): ReactElement => (
   <Index indexName={index.name}>
     <HitCount />
     <Hits className={styles.Hits} hitComponent={PageHit} />
   </Index>
 );
 
-interface Props {
-  indices: any[];
-}
-
-const SearchResult = ({ indices }: Props) => {
+const SearchResult = ({ indices }: Props): ReactElement => {
   return (
     <div className={styles.resultWrap}>
       {indices.length > 0 &&

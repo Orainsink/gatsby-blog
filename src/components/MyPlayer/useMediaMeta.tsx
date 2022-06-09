@@ -6,7 +6,7 @@ import SONGS from '../../assets/constants/songs';
  * used for chrome / mac global audio controller
  * @param id song id
  */
-const useMediaMeta = (id: number) => {
+const useMediaMeta = (id: number): void => {
   useEffect(() => {
     if ('mediaSession' in navigator) {
       const curSong = SONGS[id - 1];

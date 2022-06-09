@@ -19,12 +19,8 @@ import { useGLTF } from '@react-three/drei';
 
 import * as styles from './index.module.less';
 import { useMedia, useIsDark } from '../../hooks';
-interface Data {
-  file: {
-    publicURL: string;
-  };
-}
-
+import { DeepRequiredAndNonNullable } from '../../../typings/custom';
+import { GetMoogleFileQuery } from '../../../graphql-types';
 interface Props {
   url: string;
   isDark: boolean;
@@ -43,7 +39,7 @@ const Modal = memo(({ url, isDark }: Props) => {
   // 初始化模型大小和位置
   useEffect(() => {
     scene.fog = new Fog(0x05050c, 10, 60);
-    const obj = moogleRef.current;
+    const obj = moogleRef.current!;
 
     // scale
     const box3 = new Box3();
@@ -121,8 +117,10 @@ const Modal = memo(({ url, isDark }: Props) => {
 });
 
 const Moogle = () => {
-  const data: Data = useStaticQuery(graphql`
-    {
+  const data = useStaticQuery<
+    DeepRequiredAndNonNullable<GetMoogleFileQuery>
+  >(graphql`
+    query getMoogleFile {
       file(absolutePath: { regex: "/moogle.gltf/" }) {
         publicURL
       }

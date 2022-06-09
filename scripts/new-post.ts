@@ -2,14 +2,17 @@
 /**
  * generate markdown file by template
  */
-const fs = require('fs');
-const moment = require('moment');
-const exec = require('child_process').exec;
-const os = require('os');
-const _path = require('path');
-const inquirer = require('inquirer');
+import fs from 'fs';
+import moment from 'moment';
+import childProcess from 'child_process';
+import os from 'os';
+import _path from 'path';
+import inquirer from 'inquirer';
+import { mapObjIndexed } from 'ramda';
 
-const { CATEGORY_NAMES } = require('../src/assets/constants/categories');
+import { CATEGORY_NAMES } from '../src/assets/constants/categories';
+
+const exec = childProcess.exec;
 
 const QUESTIONS = [
   {
@@ -30,7 +33,20 @@ const QUESTIONS = [
     message: 'input your description:',
   },
 ];
+
+interface Config {
+  categories: string;
+  description: string;
+  date: string;
+  title: string;
+  url: string;
+  index: number;
+}
 class NewPost {
+  isFolder: boolean;
+  path: string;
+  config: Config;
+
   constructor({
     isFolder = true,
     categories = '',
@@ -70,15 +86,13 @@ class NewPost {
     }
   }
   getStrByConfig() {
-    let result = '';
-    result = Object.keys(this.config)
-      .map((field) => {
-        const v = this.config[field];
-        return v ? `${field}: ${v}\n` : '';
-      })
-      .filter(Boolean)
-      .join('');
-    return result;
+    const result: string[] = [];
+
+    mapObjIndexed((v, field) => {
+      result.push(v ? `${field}: ${v}\n` : '');
+    }, this.config);
+
+    return result.filter(Boolean).join('');
   }
   getOutput() {
     const result = this.getStrByConfig();

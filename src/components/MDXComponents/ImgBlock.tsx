@@ -1,4 +1,9 @@
-import { memo, DetailedHTMLProps, ImgHTMLAttributes } from 'react';
+import {
+  memo,
+  DetailedHTMLProps,
+  ImgHTMLAttributes,
+  ReactElement,
+} from 'react';
 
 /**
  * img with noReferer
@@ -9,6 +14,8 @@ const ImgBlock = ({
 }: DetailedHTMLProps<
   ImgHTMLAttributes<HTMLImageElement>,
   HTMLImageElement
->) => <img {...rest} alt={alt ?? ''} referrerPolicy="no-referrer" />;
+>): ReactElement => (
+  <img {...rest} alt={alt ?? ''} referrerPolicy="no-referrer" />
+);
 
 export default memo(ImgBlock);

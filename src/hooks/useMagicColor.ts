@@ -18,7 +18,10 @@ const colorArr = [
  * @param node node ref
  * @notice 存在兼容性问题, 需要在元素的样式里写上默认的 background-color 做降级处理
  */
-export const useMagicColor = (node: HTMLDivElement, active: boolean = true) => {
+export const useMagicColor = (
+  node: HTMLDivElement,
+  active: boolean = true
+): void => {
   useEffect(() => {
     if (window.CSS && window.CSS.hasOwnProperty('registerProperty')) {
       colorNames.forEach((name, index) => {

@@ -8,7 +8,7 @@ import { useWindowSize } from './useWindowSize';
  * Maximum height, for image position
  * @function useMaxHeight
  */
-export const useMaxHeight = () => {
+export const useMaxHeight = (): void => {
   const [, height] = useWindowSize();
   const dispatch = useDispatch();
   const maxHeight = useSelector((state: iRootState) => state.maxHeight);

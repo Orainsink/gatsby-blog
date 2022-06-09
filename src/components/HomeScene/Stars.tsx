@@ -1,9 +1,9 @@
-import { memo } from 'react';
+import { memo, ReactElement } from 'react';
 import { Vector3 } from 'three';
 
 import { arr, random } from '../../utils/utils';
 
-const blocks = arr(20).map((_, i) => (
+const blocks: ReactElement[] = arr(20).map((_, i) => (
   <mesh
     key={i}
     position={new Vector3(random(-50, 50), random(-100, 100), random(-50, 0))}
@@ -15,7 +15,7 @@ const blocks = arr(20).map((_, i) => (
 ));
 
 const fiveHundredStars = ((): [ArrayLike<number>, number] => {
-  let tmpArr = [];
+  let tmpArr: number[] = [];
   arr(500).forEach(() => {
     tmpArr.push(random(-50, 50));
     tmpArr.push(random(-100, 100));
@@ -24,7 +24,7 @@ const fiveHundredStars = ((): [ArrayLike<number>, number] => {
   return [new Float32Array(tmpArr), 3];
 })();
 
-const Stars = () => (
+const Stars = (): ReactElement => (
   <group>
     {blocks}
     <points>

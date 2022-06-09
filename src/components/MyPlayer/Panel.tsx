@@ -79,7 +79,7 @@ const Panel = () => {
   const waveRefCallback = useCallback((node: HTMLDivElement) => {
     if (node !== null) {
       const wave = new SiriWave({
-        container: document.getElementById('wave'),
+        container: document.getElementById('wave')!,
         cover: true,
         //@ts-ignore
         style: 'ios9',
@@ -91,13 +91,14 @@ const Panel = () => {
   }, []);
 
   useEffect(() => {
+    const siriwave = siriWaveRef.current!;
     if (playing && playerVisible && loaded) {
-      siriWaveRef.current.start();
+      siriwave.start();
     } else {
-      siriWaveRef.current.stop();
+      siriwave.stop();
     }
     return () => {
-      siriWaveRef.current.stop();
+      siriwave.stop();
     };
   }, [playing, loaded, playerVisible]);
 

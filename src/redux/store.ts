@@ -17,14 +17,14 @@ export interface RootState {
     volume: number;
     mute: boolean;
     loop: boolean;
-    id: number | null;
+    id: number;
     title: string;
     loaded: boolean;
   };
 }
 
 export const reducer = produce(
-  (draft: RootState, action: { type: string; payload: any }): RootState => {
+  (draft: RootState, action: { type: string; payload: any }) => {
     const { type, payload } = action;
     switch (type) {
       case 'SCENE': {
@@ -114,10 +114,11 @@ export const initialState = {
     title: '',
     loaded: false,
   },
-} as RootState;
+} as Readonly<RootState>;
 
 const createStore = () =>
   reduxCreateStore(
+    // @ts-ignore
     reducer,
     initialState,
     // @ts-ignore

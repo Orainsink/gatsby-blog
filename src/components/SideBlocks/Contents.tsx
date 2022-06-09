@@ -1,4 +1,4 @@
-import { memo, useMemo, useCallback, MouseEvent } from 'react';
+import { memo, useMemo, useCallback, MouseEvent, ReactElement } from 'react';
 import { Col } from 'antd';
 import classnames from 'classnames';
 
@@ -11,7 +11,7 @@ interface Props {
 }
 
 /** 侧边栏 目录块 */
-const Contents = (props: Props) => {
+const Contents = (props: Props): ReactElement | null => {
   const { contents } = props;
   const scrollY = useScrollY();
 

@@ -1,18 +1,27 @@
-require('dotenv').config();
-const modifyVars = require('./scripts/less-vars');
-const { CATEGORY_NAMES } = require('./src/assets/constants/categories');
-const isProduction = require('./scripts/env');
+import dotenv from 'dotenv';
+import { env } from 'process';
+import type { GatsbyConfig, PluginRef } from 'gatsby';
+import path from 'path';
+import postcssPresetEnv from 'postcss-preset-env';
+import cssnano from 'cssnano';
+
+import modifyVars from './scripts/less-vars';
+import { CATEGORY_NAMES } from './src/assets/constants/categories';
+import isProduction from './scripts/env';
+import algoliaQueries from './src/utils/algolia-queries';
+
+dotenv.config();
 
 /**categories filesystem config */
-const categoryFileConfig = CATEGORY_NAMES.map((name) => ({
+const categoryFileConfig: PluginRef[] = CATEGORY_NAMES.map((name) => ({
   resolve: `gatsby-source-filesystem`,
   options: {
-    path: `${__dirname}/content/${name}`,
+    path: path.resolve(`content/${name}`),
     name,
   },
 }));
 
-module.exports = {
+const config: GatsbyConfig = {
   siteMetadata: {
     title: `Orainsink's Blog`,
     author: {
@@ -30,14 +39,14 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/about`,
+        path: path.resolve('content/about'),
         name: `about`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/assets`,
+        path: path.resolve('content/assets'),
         name: `assets`,
       },
     },
@@ -56,7 +65,7 @@ module.exports = {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
         apiKey: process.env.ALGOLIA_ADMIN_KEY,
         indexName: process.env.ALGOLIA_INDEX_NAME,
-        queries: require('./src/utils/algolia-queries'),
+        queries: algoliaQueries,
         enablePartialUpdates: true,
         matchFields: ['slug'],
       },
@@ -64,7 +73,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/layout/GlobalLayout.tsx`),
+        component: path.resolve(`./src/layout/GlobalLayout.tsx`),
       },
     },
     {
@@ -182,9 +191,10 @@ module.exports = {
           },
           modifyVars,
         },
-        postCssPlugins: [require('postcss-preset-env'), require('cssnano')]
+        postCssPlugins: [postcssPresetEnv, cssnano],
       },
     },
+    `gatsby-plugin-graphql-codegen`,
     {
       resolve: `gatsby-plugin-react-redux`,
       options: {
@@ -210,13 +220,15 @@ module.exports = {
       resolve: '@sentry/gatsby',
       options: {
         release: 'blog',
-        dsn: process.env.GATSBY_SENTRY_DSN,
-        environment: process.env.NODE_ENV,
+        dsn: env.GATSBY_SENTRY_DSN,
+        environment: env.NODE_ENV,
         enabled: (() =>
-          ['production', 'stage'].indexOf(process.env.NODE_ENV) !== -1)(),
+          ['production', 'stage'].indexOf(env.NODE_ENV || 'stage') !== -1)(),
         sampleRate: 0.7,
         tracesSampleRate: 0.8,
       },
     },
-  ].filter(Boolean),
+  ].filter(Boolean) as PluginRef[],
 };
+
+export default config;

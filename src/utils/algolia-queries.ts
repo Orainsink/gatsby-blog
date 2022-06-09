@@ -1,4 +1,5 @@
-const escapeStringRegexp = require('escape-string-regexp');
+import escapeStringRegexp from 'escape-string-regexp';
+
 const pagePath = `content`;
 const indexName = `Pages`;
 const pageQuery = `{
@@ -22,14 +23,18 @@ const pageQuery = `{
     }
   }
 }`;
-function pageToAlgoliaRecord({ node: { id, frontmatter, fields, ...rest } }) {
+
+const pageToAlgoliaRecord = ({
+  node: { id, frontmatter, fields, ...rest },
+}) => {
   return {
     objectID: id,
     ...frontmatter,
     ...fields,
     ...rest,
   };
-}
+};
+
 const queries = [
   {
     query: pageQuery,
@@ -38,4 +43,5 @@ const queries = [
     settings: { attributesToSnippet: [`excerpt:20`] },
   },
 ];
-module.exports = queries;
+
+export default queries;

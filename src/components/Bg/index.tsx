@@ -1,11 +1,11 @@
-import { memo } from 'react';
+import { memo, ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 
 import * as styles from './index.module.less';
 import mainBg from '../../../content/assets/mainBg.svg';
 import { iRootState } from '../../redux/store';
 
-const Bg = () => {
+const Bg = (): ReactElement => {
   const { scene } = useSelector((state: iRootState) => state);
 
   return (

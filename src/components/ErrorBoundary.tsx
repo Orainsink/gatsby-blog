@@ -1,25 +1,28 @@
-import { Component } from 'react';
+import { Component, ErrorInfo, ReactNode } from 'react';
+import { mapObjIndexed } from 'ramda';
 import * as Sentry from '@sentry/react';
 
 interface StateType {
-  error: Error;
+  error: Error | null;
+}
+interface Props {
+  children?: ReactNode;
 }
 /**
  * Sentry ErrorBoundary
  * https://zh-hans.reactjs.org/docs/error-boundaries.html
  */
-class ErrorBoundary extends Component<any, StateType> {
-  constructor(props) {
-    super(props);
-    this.state = { error: null };
-  }
+class ErrorBoundary extends Component<Props, StateType> {
+  public state: StateType = {
+    error: null,
+  };
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     this.setState({ error });
     Sentry.configureScope((scope) => {
-      Object.keys(errorInfo).forEach((key) => {
-        scope.setExtra(key, errorInfo[key]);
-      });
+      mapObjIndexed((value, key) => {
+        scope.setExtra(key, value);
+      }, errorInfo);
     });
     Sentry.captureException(error);
   }

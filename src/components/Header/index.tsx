@@ -1,9 +1,10 @@
-import { useEffect, useCallback, useState, memo } from 'react';
+import { useEffect, useCallback, useState, memo, ReactElement } from 'react';
 import classnames from 'classnames';
 import { Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { GithubOutlined, SearchOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
+
 import MyPlayer from '../MyPlayer';
 import SearchDrawer from '../Algolia';
 import { useMedia, useHasMounted } from '../../hooks';
@@ -12,11 +13,15 @@ import ThemeBtn from './ThemeBtn';
 import MenuComponent from './MenuComponent';
 import { iRootState } from '../../redux/store';
 import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
+import { DeepRequiredAndNonNullable } from '../../../typings/custom';
+import { GetHeaderQuery } from '../../../graphql-types';
 
 /**Header */
-const Header = () => {
-  const data = useStaticQuery(graphql`
-    query HeaderQuery {
+const Header = (): ReactElement | null => {
+  const data = useStaticQuery<
+    DeepRequiredAndNonNullable<GetHeaderQuery>
+  >(graphql`
+    query getHeader {
       site {
         siteMetadata {
           author {
@@ -42,7 +47,7 @@ const Header = () => {
   );
 
   const setActive = useCallback(
-    (active) => dispatch({ type: 'HEADER_DROP', payload: active }),
+    (active: boolean) => dispatch({ type: 'HEADER_DROP', payload: active }),
     [dispatch]
   );
 
@@ -81,65 +86,63 @@ const Header = () => {
 
   const handleClose = useCallback(() => setSearchVisible(false), []);
 
-  return (
-    hasMounted && (
-      <header
-        style={{
-          top: scene ? '100vh' : '0',
-        }}
-        id="header"
-        className={classnames(styles.wrapper, headerDrop && styles.active)}
-      >
-        <Row justify="space-around" align="middle">
-          <Col style={{ display: 'flex', alignItems: 'center' }}>
-            <MyPlayer />
-          </Col>
-          {!isMobile && (
-            <Col className={styles.author}>
-              {!isDesktop ? null : headerDrop && title ? (
-                <span>{title}</span>
-              ) : (
-                <span
-                  className={styles.ora}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    navigate('/');
-                  }}
-                >
-                  Orainsink's Blog
-                </span>
-              )}
-            </Col>
-          )}
-
-          <Col flex={1} style={{ textAlign: 'right' }}>
-            <MenuComponent drawer={isMobile} />
-          </Col>
-          <Col style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <SearchOutlined
-              className={classnames(styles.icon, styles.search)}
-              onClick={() => setSearchVisible(true)}
-            />
-            <GithubOutlined
-              className={styles.icon}
-              onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-                window.open(social.github);
-              }}
-            />
-            {!headerDrop && hasArrow && (
-              <ArrowSvg className={styles.arrow} onClick={handleArrow} />
+  return hasMounted ? (
+    <header
+      style={{
+        top: scene ? '100vh' : '0',
+      }}
+      id="header"
+      className={classnames(styles.wrapper, headerDrop && styles.active)}
+    >
+      <Row justify="space-around" align="middle">
+        <Col style={{ display: 'flex', alignItems: 'center' }}>
+          <MyPlayer />
+        </Col>
+        {!isMobile && (
+          <Col className={styles.author}>
+            {!isDesktop ? null : headerDrop && title ? (
+              <span>{title}</span>
+            ) : (
+              <span
+                className={styles.ora}
+                onClick={(event) => {
+                  event.preventDefault();
+                  navigate('/');
+                }}
+              >
+                Orainsink's Blog
+              </span>
             )}
           </Col>
-          <Col>
-            <ThemeBtn />
-          </Col>
-        </Row>
-        <SearchDrawer visible={searchVisible} onClose={handleClose} />
-      </header>
-    )
-  );
+        )}
+
+        <Col flex={1} style={{ textAlign: 'right' }}>
+          <MenuComponent drawer={isMobile} />
+        </Col>
+        <Col style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <SearchOutlined
+            className={classnames(styles.icon, styles.search)}
+            onClick={() => setSearchVisible(true)}
+          />
+          <GithubOutlined
+            className={styles.icon}
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              window.open(social.github);
+            }}
+          />
+          {!headerDrop && hasArrow && (
+            <ArrowSvg className={styles.arrow} onClick={handleArrow} />
+          )}
+        </Col>
+        <Col>
+          <ThemeBtn />
+        </Col>
+      </Row>
+      <SearchDrawer visible={searchVisible} onClose={handleClose} />
+    </header>
+  ) : null;
 };
 
 export default memo(Header);

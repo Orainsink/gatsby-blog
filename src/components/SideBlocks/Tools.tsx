@@ -1,4 +1,4 @@
-import { ComponentType, memo, SVGProps } from 'react';
+import { ComponentType, memo, SVGProps, ReactElement } from 'react';
 import { Col } from 'antd';
 import classnames from 'classnames';
 
@@ -14,23 +14,25 @@ interface ToolItemProp {
   };
 }
 
-const ToolItem = memo(({ data: { url, icon, name } }: ToolItemProp) => (
-  <a
-    href={url}
-    target="_blank"
-    rel="noreferrer"
-    title={url}
-    key={name}
-    className={styles.toolLink}
-  >
-    <span className={styles.tool}>
-      <div className={styles.iconBox}>
-        <Icon component={icon} className={styles.toolIcon}></Icon>
-      </div>
-      <span className={styles.toolName}>{name}</span>
-    </span>
-  </a>
-));
+const ToolItem = memo(
+  ({ data: { url, icon, name } }: ToolItemProp): ReactElement => (
+    <a
+      href={url}
+      target="_blank"
+      rel="noreferrer"
+      title={url}
+      key={name}
+      className={styles.toolLink}
+    >
+      <span className={styles.tool}>
+        <div className={styles.iconBox}>
+          <Icon component={icon} className={styles.toolIcon}></Icon>
+        </div>
+        <span className={styles.toolName}>{name}</span>
+      </span>
+    </a>
+  )
+);
 
 /* Tools url */
 const Tools = () => {

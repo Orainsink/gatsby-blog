@@ -35,13 +35,26 @@ declare module '*.glsl';
 declare module 'algoliasearch/lite';
 declare module 'classnames';
 declare module '@mdx-js/react';
+declare module 'react-instantsearch-dom';
+declare module 'gatsby-plugin-dark-mode';
+declare module 'howler';
+declare module 'jinrishici';
+declare module 'wordcloud';
+declare module 'postcss-preset-env';
+declare module 'webpack-filter-warnings-plugin';
+declare module 'typography';
+declare module 'gltf-pipeline' {
+  import * as gltfPipeline from 'gltf-pipeline';
 
-interface MdxItem extends MarkdownRemark {
-  body?: string;
+  export default gltfPipeline;
 }
 
-interface ChildMdxItem {
-  node: {
-    childMdx: MdxItem;
-  };
+declare module '*.gql' {
+  const content: string;
+  export default content;
+}
+
+declare module 'escape-string-regexp' {
+  declare function escapeStringRegexp(str: string): string;
+  export default escapeStringRegexp;
 }

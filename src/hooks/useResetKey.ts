@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 /**
  * reset curTag and curDate when component is unmounted
  */
-export const useResetKey = () => {
+export const useResetKey = (): void => {
   const dispatch = useDispatch();
   useEffect(() => {
     return () => {

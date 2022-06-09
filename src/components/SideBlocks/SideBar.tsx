@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, ReactElement } from 'react';
 
 import Calendar from './Calendar';
 import Contents from './Contents';
@@ -10,7 +10,7 @@ interface Props {
   children: ReactNode;
 }
 /**侧边栏 */
-const SideBar = (props: Props) => {
+const SideBar = (props: Props): ReactElement => {
   const { children } = props;
 
   const sideWrap = {

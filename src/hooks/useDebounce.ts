@@ -10,7 +10,7 @@ export const useDebounce = (
   fn: () => any,
   ms: number = 0,
   args: any[] = []
-) => {
+): void => {
   useEffect(() => {
     const handle = setTimeout(fn.bind(null, args), ms);
 

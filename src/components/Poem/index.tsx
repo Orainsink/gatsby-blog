@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react';
+import { memo, useEffect, ReactElement } from 'react';
 import { load as poemLoader } from 'jinrishici';
 
 import * as styles from './index.module.less';
@@ -13,11 +13,15 @@ interface Poem {
   };
 }
 
-const PoemComponent = () => {
+interface PoemResponse {
+  data: Poem;
+}
+
+const PoemComponent = (): ReactElement => {
   const [poem, setPoem] = useLocalStorage<null | Poem>('poem', null);
 
   useEffect(() => {
-    poemLoader((res) => {
+    poemLoader((res: PoemResponse) => {
       setPoem(res.data);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

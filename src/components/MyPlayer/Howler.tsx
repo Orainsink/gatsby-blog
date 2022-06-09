@@ -7,7 +7,7 @@ import { HowlType, HowlerProps } from './typings';
  *  destroy Howl instance
  * @param howler Howl instance
  */
-const destroyHowler = (howler: HowlType): void => {
+const destroyHowler = (howler: HowlType | null): void => {
   if (!howler) return;
   howler.off();
   howler.stop();
@@ -54,7 +54,7 @@ const ReactHowler = ({
    * init Howler
    */
   useEffect(() => {
-    destroyHowler(howlerRef.current);
+    destroyHowler(howlerRef.current!);
     const latestProps = latestPropsRef.current;
 
     const howler: HowlType = new Howl({
@@ -84,7 +84,7 @@ const ReactHowler = ({
     howlerRef.current = howler;
 
     return () => {
-      destroyHowler(howlerRef.current);
+      destroyHowler(howlerRef.current!);
     };
     // eslint-disable-next-line
   }, [src]);
@@ -93,35 +93,35 @@ const ReactHowler = ({
    * toggle loop
    */
   useEffect(() => {
-    howlerRef.current.loop(loop);
+    howlerRef.current!.loop(loop);
     latestPropsRef.current.loop = loop;
   }, [loop]);
   /**
    * toggle mute
    */
   useEffect(() => {
-    howlerRef.current.mute(mute);
+    howlerRef.current!.mute(mute);
     latestPropsRef.current.mute = mute;
   }, [mute]);
   /**
    * toggle volume
    */
   useEffect(() => {
-    howlerRef.current.volume(volume);
+    howlerRef.current!.volume(volume);
     latestPropsRef.current.volume = volume;
   }, [volume]);
   /**
    * toggle volume
    */
   useEffect(() => {
-    howlerRef.current.off('end');
-    howlerRef.current.on('end', onEnd);
+    howlerRef.current!.off('end');
+    onEnd && howlerRef.current!.on('end', onEnd);
   }, [onEnd]);
   /**
    * toggle playing state
    */
   useEffect(() => {
-    const howler = howlerRef.current;
+    const howler = howlerRef.current!;
 
     const play = () => {
       if (!howler.playing()) {

@@ -1,19 +1,12 @@
-import { memo, useMemo, useCallback } from 'react';
+import { memo, useMemo, useCallback, ReactElement } from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { useDispatch } from 'react-redux';
 import * as styles from './index.module.less';
 import isClient from '../../utils/isClient';
 import { useIsDark } from '../../hooks';
-const WordCloud = isClient ? require('wordcloud') : undefined;
-
-interface Data {
-  allFile: {
-    group: {
-      fieldValue: string;
-      totalCount: number;
-    }[];
-  };
-}
+import { GetWordCloudDataQuery } from '../../../graphql-types';
+import { DeepRequiredAndNonNullable } from '../../../typings/custom';
+const WordCloud: any = isClient ? import('wordcloud') : undefined;
 
 interface Props {
   jump?: boolean;
@@ -24,9 +17,11 @@ interface Props {
  * @prop [jump] either can jump to "/archives", default false
  * @prop [height] div height, default 150
  */
-const WordCloudItem = (props: Props) => {
-  const data: Data = useStaticQuery(graphql`
-    query {
+const WordCloudItem = (props: Props): ReactElement => {
+  const data = useStaticQuery<
+    DeepRequiredAndNonNullable<GetWordCloudDataQuery>
+  >(graphql`
+    query getWordCloudData {
       allFile(filter: { sourceInstanceName: { eq: "tech" } }) {
         group(field: childMdx___frontmatter___tags) {
           fieldValue
@@ -61,7 +56,7 @@ const WordCloudItem = (props: Props) => {
   }, [group, getFontSize]);
 
   const wordRefCb = useCallback(
-    (node) => {
+    (node: HTMLDivElement) => {
       if (node) {
         WordCloud(node, {
           list: allTags,
@@ -76,7 +71,7 @@ const WordCloudItem = (props: Props) => {
           backgroundColor: 'transparent',
           fontFamily: 'Finger Paint, sans-serif',
           color: isDark ? 'random-light' : 'random-dark',
-          click: (item) => {
+          click: (item: string[]) => {
             dispatch({ type: 'CUR_TAG', payload: item[0] });
             jump && navigate('/archives/');
           },

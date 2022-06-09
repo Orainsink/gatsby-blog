@@ -8,8 +8,8 @@ import { iRootState } from '../redux/store';
  * @function useIsDark
  * @param {Boolean} isDark
  **/
-export const useIsDark = () => {
+export const useIsDark = (): boolean => {
   const isDark = useSelector((state: iRootState) => state.theme === Theme.DARK);
 
-  return isDark
+  return isDark;
 };

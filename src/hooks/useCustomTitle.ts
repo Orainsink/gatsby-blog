@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
  * set header title text
  * @param title
  */
-export const useCustomTitle = (title: string) => {
+export const useCustomTitle = (title: string): void => {
   const dispatch = useDispatch();
 
   useEffect(() => {

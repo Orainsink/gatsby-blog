@@ -1,8 +1,14 @@
-const replacePath = require('../src/utils/replacePath');
-const path = require('path');
-const hashString = require('../src/utils/hashString');
+import { GatsbyNode } from 'gatsby';
 
-module.exports = exports.createPages = ({ actions, graphql }) => {
+import replacePath from '../src/utils/replacePath';
+import path from 'path';
+import hashString from '../src/utils/hashString';
+import { MdxEdge, Query } from '../graphql-types';
+
+export const createPages: GatsbyNode['createPages'] = ({
+  actions,
+  graphql,
+}) => {
   const { createPage, createRedirect } = actions;
 
   createRedirect({
@@ -29,7 +35,7 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
     about: AboutTemplate,
   };
 
-  return graphql(`
+  return graphql<Query>(`
     {
       allMdx {
         edges {
@@ -50,18 +56,21 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
     if (result.errors) {
       return Promise.reject(result.errors);
     }
-    const posts = result.data.allMdx.edges;
+    const posts = result.data!.allMdx.edges as unknown as MdxEdge[];
     posts.forEach(({ node }, index) => {
       const previous =
         index === posts.length - 1 ? null : posts[index + 1].node;
       const next = index === 0 ? null : posts[index - 1].node;
-      
+
       createPage({
         path:
-          node.frontmatter.categories +
+          node.frontmatter!.categories +
           '/' +
-          replacePath(hashString(node.fields.slug)),
-        component: componentTemplate[node.frontmatter.categories] || Template,
+          replacePath(hashString(node.fields!.slug as string)),
+        component:
+          componentTemplate[
+            node.frontmatter!.categories as keyof typeof componentTemplate
+          ] || Template,
         context: { id: node.id, previous, next },
       });
     });

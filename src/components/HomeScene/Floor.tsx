@@ -1,8 +1,11 @@
-import { memo } from 'react';
+import { memo, ReactElement } from 'react';
 import { DoubleSide } from 'three';
 import { useGLTF } from '@react-three/drei';
 
-const Floor = ({ url }: { url: string }) => {
+interface Props {
+  url: string;
+}
+const Floor = ({ url }: Props): ReactElement => {
   const { nodes } = useGLTF(url) as any;
 
   return (

@@ -1,8 +1,10 @@
-import { memo } from 'react';
+import { memo, ReactElement } from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import { useCustomTitle } from '../hooks';
+import { GetSeoDataQuery } from '../../graphql-types';
+import { DeepRequiredAndNonNullable } from '../../typings/custom';
 
 interface Props {
   description?: string;
@@ -16,11 +18,16 @@ interface Props {
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
-const SEO = ({ description, lang = 'CHS', meta, title }: Props) => {
-  const { site } = useStaticQuery(
+const SEO = ({
+  description,
+  lang = 'CHS',
+  meta,
+  title,
+}: Props): ReactElement => {
+  const { site } = useStaticQuery<DeepRequiredAndNonNullable<GetSeoDataQuery>>(
     graphql`
-      query {
-        site {
+      query getSeoData {
+        site(graphqlTypegen: { ne: true }) {
           siteMetadata {
             title
             description
@@ -32,7 +39,9 @@ const SEO = ({ description, lang = 'CHS', meta, title }: Props) => {
       }
     `
   );
-  const metaDescription = description || site.siteMetadata.description;
+
+  const metadata = site.siteMetadata;
+  const metaDescription = description || metadata.description;
   useCustomTitle(title);
 
   return (
@@ -42,7 +51,7 @@ const SEO = ({ description, lang = 'CHS', meta, title }: Props) => {
       }}
       defer={false}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${metadata.title}`}
       meta={[
         {
           name: `description`,
@@ -66,7 +75,7 @@ const SEO = ({ description, lang = 'CHS', meta, title }: Props) => {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.social.github,
+          content: metadata.social.github,
         },
         {
           name: `twitter:title`,

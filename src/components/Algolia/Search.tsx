@@ -1,5 +1,5 @@
 import algoliasearch from 'algoliasearch/lite';
-import { memo, useState, useEffect } from 'react';
+import { memo, useState, useEffect, ReactElement } from 'react';
 import { InstantSearch } from 'react-instantsearch-dom';
 
 import SearchBox from './SearchBox';
@@ -9,9 +9,13 @@ import { useMaxHeight } from '../../hooks';
 import { useSelector } from 'react-redux';
 import { ReactComponent as SearchSvg } from '../../assets/img/search.svg';
 import { iRootState } from '../../redux/store';
+import { SearchIndex } from './typings';
 
-const Search = () => {
-  const [query, setQuery] = useState<any>();
+interface Props {
+  visible: boolean;
+}
+const Search = ({ visible }: Props): ReactElement => {
+  const [query, setQuery] = useState<string>('');
   const maxHeight = useSelector((state: iRootState) => state.maxHeight);
   const [client, setClient] = useState(null);
   useMaxHeight();
@@ -24,7 +28,7 @@ const Search = () => {
       )
     );
   }, []);
-  const indices = [{ name: `Pages`, title: `Pages` }];
+  const indices: SearchIndex[] = [{ name: `Pages`, title: `Pages` }];
 
   return (
     <div>
@@ -32,10 +36,12 @@ const Search = () => {
         <InstantSearch
           searchClient={client}
           indexName={indices[0].name}
-          onSearchStateChange={({ query }) => setQuery(query)}
+          onSearchStateChange={({ query }: { query: string }) =>
+            setQuery(query)
+          }
         >
-          <SearchBox />
-          {query?.length > 0 ? (
+          {visible && <SearchBox />}
+          {query.length > 0 ? (
             <SearchResult indices={indices} />
           ) : (
             <div

@@ -1,11 +1,11 @@
-import { memo } from 'react';
+import { memo, ReactElement } from 'react';
 import classnames from 'classnames';
 
 import { GithubOutlined, MailOutlined } from '@ant-design/icons';
 import * as styles from './index.module.less';
 
 /**Footer */
-const Footer = () => (
+const Footer = (): ReactElement => (
   <footer className={styles.wrap}>
     <div className={styles.valley}></div>
     <div className={styles.main}>

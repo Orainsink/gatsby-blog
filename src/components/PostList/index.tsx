@@ -1,4 +1,4 @@
-import { memo, useState, useEffect, useCallback } from 'react';
+import { memo, useState, useEffect, useCallback, ReactElement } from 'react';
 import { Link } from 'gatsby';
 import { useSelector } from 'react-redux';
 
@@ -6,8 +6,9 @@ import Tags from '../Tags';
 import generatePath from '../../utils/generatePath';
 import * as styles from './index.module.less';
 import { iRootState } from '../../redux/store';
+import { FileEdge } from '../../../graphql-types';
 interface Props {
-  posts: ChildMdxItem[];
+  posts: FileEdge[];
   hideMore?: boolean;
 }
 
@@ -19,25 +20,30 @@ interface PostItem {
   date: any;
 }
 
-const getLowerCasePosts = (posts: ChildMdxItem[]): PostItem[] =>
-  posts.map(({ node }) => ({
-    title: (node.childMdx.frontmatter.title || '').toLowerCase(),
-    description: (node.childMdx.frontmatter.description || '').toLowerCase(),
-    excerpt: (node.childMdx.excerpt || '').toLowerCase(),
-    tags: (node.childMdx.frontmatter.tags || []).map((tag) =>
-      (tag || '').toLowerCase()
-    ),
-    date: node.childMdx.frontmatter.date,
-  }));
+const getLowerCasePosts = (posts: FileEdge[]): PostItem[] =>
+  posts.map(({ node }) => {
+    const frontmatter = node!.childMdx!.frontmatter!;
 
-const PostList = ({ posts, hideMore = false }: Props) => {
+    return {
+      title: (frontmatter.title || '').toLowerCase(),
+      description: (frontmatter.description || '').toLowerCase(),
+      excerpt: (node!.childMdx!.excerpt || '').toLowerCase(),
+      tags: (frontmatter.tags || []).map((tag) => (tag || '').toLowerCase()),
+      date: frontmatter.date,
+    };
+  });
+
+const PostList = ({ posts, hideMore = false }: Props): ReactElement => {
   const { curTag, curDate } = useSelector((state: iRootState) => state);
-  const [filteredPosts, setFilteredPosts] = useState<ChildMdxItem[]>(posts);
+  const [filteredPosts, setFilteredPosts] = useState<FileEdge[]>(posts);
   const [fold, setFold] = useState(true);
 
-  const getIsAccordion = useCallback((index, _fold) => {
-    return index < 6 || !_fold;
-  }, []);
+  const getIsAccordion = useCallback(
+    (index: number) => {
+      return index < 6 || !fold;
+    },
+    [fold]
+  );
 
   /**
    * 过滤 / 筛选
@@ -72,22 +78,17 @@ const PostList = ({ posts, hideMore = false }: Props) => {
   return (
     <>
       {filteredPosts.map(({ node }, index) => {
-        const title =
-          node.childMdx.frontmatter.title || node.childMdx.fields.slug;
-        const { date, description, tags, categories } =
-          node.childMdx.frontmatter;
+        const fields = node!.childMdx!.fields!;
+        const frontmatter = node!.childMdx!.frontmatter!;
+        const title = frontmatter.title || fields.slug || '';
+        const { date, description, tags, categories } = frontmatter;
 
         return (
-          getIsAccordion(index, fold) && (
-            <article key={node.childMdx.fields.slug}>
+          getIsAccordion(index) && (
+            <article key={fields.slug}>
               <header>
                 <h3 className={styles.title}>
-                  <Link
-                    to={generatePath(
-                      node.childMdx.frontmatter.categories,
-                      node.childMdx.fields.slug
-                    )}
-                  >
+                  <Link to={generatePath(categories!, fields.slug!)}>
                     {title}
                   </Link>
                 </h3>
@@ -97,10 +98,10 @@ const PostList = ({ posts, hideMore = false }: Props) => {
                 <p
                   className={styles.phrase}
                   dangerouslySetInnerHTML={{
-                    __html: description || node.childMdx.excerpt,
+                    __html: description || node!.childMdx!.excerpt || '',
                   }}
                 />
-                <Tags tags={tags} category={categories} />
+                <Tags tags={tags as string[]} category={categories!} />
               </section>
             </article>
           )

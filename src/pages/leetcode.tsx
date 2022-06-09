@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, ReactElement } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
 import { Button, Divider, Table, Tag } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
@@ -13,13 +13,10 @@ import { ColumnsType } from 'antd/lib/table';
 import { iRootState } from '../redux/store';
 import { useResetKey, useMedia, useIsDark } from '../hooks';
 import { ReactComponent as LeetcodeSvg } from '../assets/img/leetcode.svg';
+import { DeepRequiredAndNonNullable } from '../../typings/custom';
+import { GetLeetcodePageDataQuery } from '../../graphql-types';
 
-interface Data {
-  allFile: {
-    group: { fieldValue: string }[];
-    edges: ChildMdxItem[];
-  };
-}
+type Data = DeepRequiredAndNonNullable<GetLeetcodePageDataQuery>;
 interface ColumnItemType {
   title: string;
   description: string;
@@ -31,7 +28,7 @@ interface ColumnItemType {
   categories: string;
   id: string;
 }
-const SnippetPage = ({ data }: PageProps<Data>) => {
+const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
   const { curDate } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
@@ -46,17 +43,21 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
   useResetKey();
   const isMobile = useMedia('isMobile');
   const datas = useMemo(() => {
-    return posts.map(({ node: { childMdx: mdx } }) => ({
-      title: mdx.frontmatter?.title,
-      description: mdx.frontmatter?.description ?? mdx.excerpt,
-      tag: mdx.frontmatter?.tags[0],
-      date: mdx.frontmatter?.date,
-      index: mdx.frontmatter?.index,
-      slug: mdx.fields?.slug,
-      url: mdx.frontmatter?.url,
-      categories: mdx.frontmatter?.categories,
-      id: mdx.id,
-    }));
+    return posts.map(({ node: { childMdx: mdx } }) => {
+      const frontmatter = mdx.frontmatter!;
+      return {
+        title: frontmatter.title,
+        description: frontmatter.description ?? mdx.excerpt,
+        // @ts-ignore
+        tag: frontmatter.tags[0],
+        date: frontmatter.date,
+        index: frontmatter.index,
+        slug: mdx.fields?.slug,
+        url: frontmatter.url,
+        categories: frontmatter.categories,
+        id: mdx.id,
+      };
+    });
   }, [posts]);
 
   const columns: ColumnsType<ColumnItemType> = [
@@ -167,7 +168,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
       <Table<ColumnItemType>
         rowClassName={styles.clsRow}
         columns={isMobile ? smallColumns : columns}
-        dataSource={datas}
+        dataSource={datas as any}
         rowKey="slug"
         showSorterTooltip={false}
         size={columns ? 'middle' : 'large'}
@@ -183,7 +184,7 @@ const SnippetPage = ({ data }: PageProps<Data>) => {
 export default SnippetPage;
 
 export const pageQuery = graphql`
-  {
+  query getLeetcodePageData {
     allFile(
       filter: { sourceInstanceName: { eq: "leetcode" } }
       sort: { fields: childMdx___frontmatter___date, order: DESC }

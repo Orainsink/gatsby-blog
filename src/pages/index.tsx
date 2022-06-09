@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, ReactElement } from 'react';
 import { PageProps, graphql } from 'gatsby';
 
 import Layout from '../layout/IndexLayout';
@@ -8,27 +8,17 @@ import Trigger from '../components/Trigger';
 import Poem from '../components/Poem';
 import PostList from '../components/PostList';
 import HomeScene from '../components/HomeScene';
+import { DeepRequiredAndNonNullable } from '../../typings/custom';
+import { FileEdge, GetPageDataQuery } from '../../graphql-types';
 
-interface Data {
-  site: {
-    siteMetadata: {
-      title: string;
-    };
-  };
-  allMdx: {
-    edges: {
-      node: MdxItem;
-    }[];
-  };
-}
-
-const Index = ({ data }: PageProps<Data>) => {
+type Data = DeepRequiredAndNonNullable<GetPageDataQuery>;
+const Index = ({ data }: PageProps<Data>): ReactElement => {
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMdx.edges.map((edge) => ({
     node: {
       childMdx: edge.node,
     },
-  }));
+  })) as FileEdge[];
 
   return (
     <>
@@ -56,7 +46,7 @@ const Index = ({ data }: PageProps<Data>) => {
 export default memo(Index);
 
 export const pageQuery = graphql`
-  query {
+  query getPageData {
     site {
       siteMetadata {
         title

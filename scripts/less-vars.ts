@@ -1,4 +1,4 @@
-var modifyVars = {
+const modifyVars = {
   'font-size-base': '16px',
   'border-radius-base': '4px',
   'body-background': 'var(--body-background)',
@@ -24,4 +24,4 @@ var modifyVars = {
 
   'border-color-base': 'var(--border-color)',
 };
-module.exports = modifyVars;
+export default modifyVars;

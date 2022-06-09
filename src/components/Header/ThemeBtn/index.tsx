@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect } from 'react';
+import { memo, ReactElement, useCallback, useEffect } from 'react';
 import { ThemeToggler } from 'gatsby-plugin-dark-mode';
 import { useDispatch } from 'react-redux';
 import classnames from 'classnames';
@@ -6,8 +6,11 @@ import classnames from 'classnames';
 import * as styles from './index.module.less';
 import { useMedia } from '../../../hooks';
 import { Theme } from '../../../assets/constants/common';
-
-const ThemeBtn = () => {
+interface ThemeTogglerHelper {
+  theme: string;
+  toggleTheme: (theme: string) => void;
+}
+const ThemeBtn = (): ReactElement => {
   const dispatch = useDispatch();
   const setTheme = useCallback(
     (payload: string | null) => {
@@ -27,7 +30,7 @@ const ThemeBtn = () => {
 
   return (
     <ThemeToggler>
-      {({ theme, toggleTheme }) => {
+      {({ theme, toggleTheme }: ThemeTogglerHelper) => {
         if (!theme) return;
 
         return (

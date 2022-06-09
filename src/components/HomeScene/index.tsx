@@ -1,4 +1,11 @@
-import { memo, useCallback, useMemo, lazy, Suspense } from 'react';
+import {
+  memo,
+  useCallback,
+  useMemo,
+  lazy,
+  Suspense,
+  ReactElement,
+} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classnames from 'classnames';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
@@ -8,7 +15,7 @@ import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
 import * as styles from './index.module.less';
 
 const Dynamic = lazy(() => import('./Dynamic'));
-const DynamicFallback = () => (
+const DynamicFallback = (): ReactElement => (
   <div
     style={{
       width: '100%',
@@ -21,7 +28,7 @@ const DynamicFallback = () => (
   />
 );
 
-const Wrapper = () => {
+const Wrapper = (): ReactElement => {
   const { scene, trigger } = useSelector((state: iRootState) => state);
   const dispatch = useDispatch();
 
