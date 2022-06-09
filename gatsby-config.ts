@@ -9,6 +9,8 @@ import modifyVars from './scripts/less-vars';
 import { CATEGORY_NAMES } from './src/assets/constants/categories';
 import isProduction from './scripts/env';
 import algoliaQueries from './src/utils/algolia-queries';
+import { MdxEdge, Query } from './graphql-types';
+import { DeepRequiredAndNonNullable } from './typings/custom';
 
 dotenv.config();
 
@@ -93,16 +95,22 @@ const config: GatsbyConfig = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMdx } }) => {
-              return allMdx.edges.map((edge) => {
-                return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.excerpt,
-                  date: edge.node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ 'content:encoded': edge.node.body }],
-                });
-              });
+            serialize: ({
+              query: { site, allMdx },
+            }: {
+              query: DeepRequiredAndNonNullable<Query>;
+            }) => {
+              return allMdx.edges.map(
+                (edge: DeepRequiredAndNonNullable<MdxEdge>) => {
+                  return Object.assign({}, edge.node.frontmatter, {
+                    description: edge.node.excerpt,
+                    date: edge.node.frontmatter.date,
+                    url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                    guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                    custom_elements: [{ 'content:encoded': edge.node.body }],
+                  });
+                }
+              );
             },
             query: `
               {
