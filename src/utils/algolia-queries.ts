@@ -1,4 +1,5 @@
 import escapeStringRegexp from 'escape-string-regexp';
+import { MdxEdge } from '../../graphql-types';
 
 const pagePath = `content`;
 const indexName = `Pages`;
@@ -26,7 +27,7 @@ const pageQuery = `{
 
 const pageToAlgoliaRecord = ({
   node: { id, frontmatter, fields, ...rest },
-}) => {
+}: MdxEdge) => {
   return {
     objectID: id,
     ...frontmatter,
@@ -38,7 +39,15 @@ const pageToAlgoliaRecord = ({
 const queries = [
   {
     query: pageQuery,
-    transformer: ({ data }) => data.pages.edges.map(pageToAlgoliaRecord),
+    transformer: ({
+      data,
+    }: {
+      data: {
+        pages: {
+          edges: MdxEdge[];
+        };
+      };
+    }) => data.pages.edges.map(pageToAlgoliaRecord),
     indexName,
     settings: { attributesToSnippet: [`excerpt:20`] },
   },
