@@ -1,20 +1,19 @@
 import { useState, useRef, useEffect, ReactElement } from 'react';
 import { connectSearchBox } from 'react-instantsearch-dom';
-import { Input } from 'antd';
+import { Input, InputRef } from 'antd';
 
 import { useDebounce } from '../../hooks';
-const { Search } = Input;
 
 export default connectSearchBox(
   ({ refine }: { refine: (value: string) => void }): ReactElement => {
     const [val, setVal] = useState('');
-    const searchRef = useRef(null) as any;
+    const searchRef = useRef<InputRef>(null);
 
     useDebounce(
       () => {
         refine(val);
       },
-      500,
+      300,
       [val]
     );
 
@@ -23,13 +22,12 @@ export default connectSearchBox(
     }, []);
 
     return (
-      <Search
+      <Input
         ref={searchRef}
         size="large"
         placeholder="Search"
         allowClear
         onChange={(e) => setVal(e.target.value)}
-        value={val}
       />
     );
   }

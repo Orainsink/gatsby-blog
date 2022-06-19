@@ -202,7 +202,12 @@ const config: GatsbyConfig = {
         postCssPlugins: [postcssPresetEnv, cssnano],
       },
     },
-    `gatsby-plugin-graphql-codegen`,
+    {
+      resolve: `gatsby-plugin-graphql-codegen`,
+      options: {
+        codegen: env.CODEGEN ?? false,
+      },
+    },
     {
       resolve: `gatsby-plugin-react-redux`,
       options: {

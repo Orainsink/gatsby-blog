@@ -4,22 +4,12 @@ import {
   connectStateResults,
   Highlight,
   Hits,
-  Index,
   Snippet,
-  PoweredBy,
 } from 'react-instantsearch-dom';
 import { Divider } from 'antd';
-import { useSelector } from 'react-redux';
 
 import * as styles from './index.module.less';
 import generatePath from '../../utils/generatePath';
-import { ReactComponent as NoResultSvg } from '../../assets/img/noResult.svg';
-import { iRootState } from '../../redux/store';
-import { SearchIndex } from './typings';
-
-interface Props {
-  indices: SearchIndex[];
-}
 
 interface HitProp {
   hit: {
@@ -35,26 +25,15 @@ interface HitCountProps {
   };
 }
 
-const HitCount: () => ReactElement = connectStateResults(
-  ({ searchResults }: HitCountProps) => {
-    const hitCount = searchResults && searchResults.nbHits;
-    const maxHeight = useSelector((state: iRootState) => state.maxHeight);
+const HitCount = connectStateResults(({ searchResults }: HitCountProps) => {
+  const hitCount = searchResults && searchResults.nbHits;
 
-    return hitCount > 0 ? (
-      <Divider orientation="center">
-        {hitCount} result{hitCount !== 1 ? `s` : ``}
-      </Divider>
-    ) : (
-      <div
-        className={styles.shashaWrap}
-        style={{ top: `${maxHeight / 2 - 118}px` }}
-      >
-        <NoResultSvg />
-        <div className={styles.noResultText}>Whe, where's the results?</div>
-      </div>
-    );
-  }
-);
+  return (
+    <Divider orientation="center">
+      {hitCount} result{hitCount > 1 ? `s` : ``}
+    </Divider>
+  );
+});
 
 const PageHit = ({ hit }: HitProp): ReactElement => (
   <div>
@@ -67,19 +46,12 @@ const PageHit = ({ hit }: HitProp): ReactElement => (
   </div>
 );
 
-const HitsInIndex = ({ index }: { index: SearchIndex }): ReactElement => (
-  <Index indexName={index.name}>
-    <HitCount />
-    <Hits className={styles.Hits} hitComponent={PageHit} />
-  </Index>
-);
-
-const SearchResult = ({ indices }: Props): ReactElement => {
+const SearchResult = (): ReactElement => {
   return (
     <div className={styles.resultWrap}>
-      {indices.length > 0 &&
-        indices.map((index) => <HitsInIndex index={index} key={index.name} />)}
-      <PoweredBy />
+      <HitCount />
+      {/* @ts-ignore */}
+      <Hits className={styles.Hits} hitComponent={PageHit} />
     </div>
   );
 };

@@ -7,7 +7,6 @@ export interface RootState {
   skip: boolean;
   curTag: string;
   curDate: string;
-  maxHeight: number;
   headerDrop: boolean;
   theme: null | 'dark' | 'light';
   title: string;
@@ -21,6 +20,7 @@ export interface RootState {
     title: string;
     loaded: boolean;
   };
+  showSearchResult: boolean;
 }
 
 export const reducer = produce(
@@ -66,10 +66,6 @@ export const reducer = produce(
         draft.title = payload;
         return draft;
       }
-      case 'MAX_HEIGHT': {
-        draft.maxHeight = payload;
-        return draft;
-      }
       case 'HEADER_DROP': {
         draft.headerDrop = payload;
         return draft;
@@ -80,6 +76,10 @@ export const reducer = produce(
       }
       case 'PLAYER_VISIBLE': {
         draft.playerVisible = payload;
+        return draft;
+      }
+      case 'CHANGE_SHOW_SEARCH_RESULT': {
+        draft.showSearchResult = payload;
         return draft;
       }
       default:
@@ -101,7 +101,6 @@ export const initialState = {
       : false,
   curTag: '',
   curDate: '',
-  maxHeight: 0,
   headerDrop: false,
   theme: globalThis.localStorage?.getItem('theme'),
   playerVisible: false,
@@ -114,6 +113,7 @@ export const initialState = {
     title: '',
     loaded: false,
   },
+  showSearchResult: false,
 } as Readonly<RootState>;
 
 const createStore = () =>
