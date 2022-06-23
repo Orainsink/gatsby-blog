@@ -14,6 +14,13 @@ scp /path/filename username@servername:/path/
 
 例如 scp /var/www/test.php root@192.168.0.101:/var/www/ 把本机/var/www/目录下的 test.php 文件上传到 192.168.0.101 这台服务器上的/var/www/目录中
 
+## git 改变 hash, 修改 commit
+
+```sh
+git commit --amend --no-edit
+git push -f
+```
+
 ## git 删除远程分支
 
 ```sh
