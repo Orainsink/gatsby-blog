@@ -5,6 +5,7 @@ import path from 'path';
 import postcssPresetEnv from 'postcss-preset-env';
 import cssnano from 'cssnano';
 
+import FunctionOverridePlugin from './scripts/FunctionOverridePlugin';
 import modifyVars from './scripts/less-vars';
 import { CATEGORY_NAMES } from './src/assets/constants/categories';
 import isProduction from './scripts/env';
@@ -198,6 +199,7 @@ const config: GatsbyConfig = {
             camelCase: false,
           },
           modifyVars,
+          plugins: [new FunctionOverridePlugin()],
         },
         postCssPlugins: [postcssPresetEnv, cssnano],
       },

@@ -1,5 +1,5 @@
 import { useEffect, useState, ReactNode, memo, ReactElement } from 'react';
-import { ReactComponent as LoadingSvg } from '../assets/img/loading.svg';
+import LoadingSvg from '../assets/img/loading.svg';
 
 interface Props {
   debounce?: number;
@@ -33,7 +33,7 @@ const Loading = (props: Props): ReactElement | null => {
         zIndex: 11,
       }}
     >
-      <LoadingSvg />
+      <img src={LoadingSvg} alt="/" />
       {children}
     </div>
   ) : null;

@@ -7,7 +7,7 @@ import { useLocation } from '@reach/router';
 
 import { useDrawerCloseEffect } from '../../hooks';
 import * as styles from './index.module.less';
-import { ReactComponent as SharkMenuSvg } from '../../assets/img/menu.svg';
+import SharkMenuSvg from '../../assets/img/menu.svg';
 import { CATEGORY_MAP } from '../../assets/constants/categories';
 
 /**
@@ -59,7 +59,7 @@ const MenuDrawer = (): ReactElement => {
           </Link>
         </ul>
         <div className={styles.menuShasha}>
-          <SharkMenuSvg />
+          <img src={SharkMenuSvg} alt="" />
         </div>
       </Drawer>
     </>

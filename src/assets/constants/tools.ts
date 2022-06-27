@@ -1,20 +1,19 @@
-import { ReactComponent as CanIUseSvg } from '../img/canIUse.svg';
-import { ReactComponent as ColorSvg } from '../img/color.svg';
-import { ReactComponent as ReactUseSvg } from '../img/hook.svg';
-import { ReactComponent as ShadowSvg } from '../img/shadow.svg';
-import { ReactComponent as RegxSvg } from '../img/regx.svg';
-import { ReactComponent as IconfontSvg } from '../img/icon.svg';
-import { ReactComponent as LoadingIoSvg } from '../img/loadingIo.svg';
-import { ReactComponent as SvgSvg } from '../img/svg.svg';
-import { ReactComponent as HslSvg } from '../img/colorWheel.svg';
-import { ReactComponent as EmojiSvg } from '../img/horseFace.svg';
-import { ReactComponent as CubicBezierSvg } from '../img/bezier.svg';
-import { ReactComponent as GridSvg } from '../img/grid.svg';
-import { ComponentType, SVGProps } from 'react';
+import CanIUseSvg from '../img/canIUse.svg';
+import ColorSvg from '../img/color.svg';
+import ReactUseSvg from '../img/hook.svg';
+import ShadowSvg from '../img/shadow.svg';
+import RegxSvg from '../img/regx.svg';
+import IconfontSvg from '../img/icon.svg';
+import LoadingIoSvg from '../img/loadingIo.svg';
+import SvgSvg from '../img/svg.svg';
+import HslSvg from '../img/colorWheel.svg';
+import EmojiSvg from '../img/horseFace.svg';
+import CubicBezierSvg from '../img/bezier.svg';
+import GridSvg from '../img/grid.svg';
 
 interface Tool {
   name: string;
-  icon: ComponentType<SVGProps<SVGSVGElement>>;
+  icon: string;
   url: string;
 }
 const TOOLS: Tool[] = [
