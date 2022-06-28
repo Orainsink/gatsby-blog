@@ -25,7 +25,7 @@ const ToolItem = memo(
     >
       <span className={styles.tool}>
         <div className={styles.iconBox}>
-          <img src={icon} alt="/" className={styles.toolIcon} />
+          <img src={icon} alt="" className={styles.toolIcon} />
         </div>
         <span className={styles.toolName}>{name}</span>
       </span>

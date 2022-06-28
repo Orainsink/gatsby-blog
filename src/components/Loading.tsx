@@ -33,7 +33,7 @@ const Loading = (props: Props): ReactElement | null => {
         zIndex: 11,
       }}
     >
-      <img src={LoadingSvg} alt="/" />
+      <img src={LoadingSvg} alt="" />
       {children}
     </div>
   ) : null;

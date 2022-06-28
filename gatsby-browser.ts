@@ -10,16 +10,9 @@ export const onInitialClientRender: GatsbyBrowser['onInitialClientRender'] =
         loaderIframe.style.opacity = '0';
       }, 0);
 
-      if (
-        !Boolean(window?.localStorage.getItem('SCENE')) ||
-        Boolean(window?.localStorage.getItem('SKIP'))
-      ) {
+      setTimeout(() => {
         loaderIframe.style.display = 'none';
-      } else {
-        setTimeout(() => {
-          loaderIframe.style.display = 'none';
-        }, 300);
-      }
+      }, 300);
     }
   };
 
