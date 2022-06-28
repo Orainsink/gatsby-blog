@@ -55,7 +55,7 @@ const HTML = (props: HTMLProps) => {
           (function(){
             var loaderIframe = document.getElementById('___loader')
             if (
-              typeof window === "object" && (!!window.localStorage.getItem('SCENE') ||
+              typeof window === "object" && window.location.pathname === "/" && (!!window.localStorage.getItem('SCENE') ||
               !window.localStorage.getItem('SKIP'))
             ) {
               loaderIframe.style.display = 'flex';
