@@ -50,7 +50,7 @@ const BlogPostTemplate = ({
       <article>
         <header>
           <h1 style={{ textAlign: 'center', fontWeight: 700 }}>{title}</h1>
-          <p
+          <div
             style={{
               display: 'block',
               marginBottom: '1.6em',
@@ -69,7 +69,7 @@ const BlogPostTemplate = ({
             >
               <LicenseSvg />
             </a>
-          </p>
+          </div>
         </header>
         {!!tableOfContents && !isDesktop && (
           <div className={styles.tableContents}>

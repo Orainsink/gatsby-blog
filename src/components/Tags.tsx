@@ -27,19 +27,19 @@ const Tags = ({ tags, category }: Props): ReactElement | null => {
   if (!!category && category !== 'tech' && CATEGORY_MAP.has(category)) {
     let curCategory = CATEGORY_MAP.get(category)!;
     return (
-      <p className="tags">
+      <div className="tags">
         <Link key={category} to={curCategory.path}>
           <Tag color={curCategory.tag} style={{ cursor: 'pointer' }}>
             {curCategory.name}
           </Tag>
         </Link>
-      </p>
+      </div>
     );
   }
 
   if (!tags?.length || !hasMounted) return null;
   return (
-    <p className="tags">
+    <div className="tags">
       {tags.map((tag) => (
         <Link key={tag} onClick={() => onTagClicked(tag)} to={`/archives`}>
           <Tag
@@ -50,7 +50,7 @@ const Tags = ({ tags, category }: Props): ReactElement | null => {
           </Tag>
         </Link>
       ))}
-    </p>
+    </div>
   );
 };
 
