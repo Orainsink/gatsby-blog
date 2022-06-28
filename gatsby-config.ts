@@ -234,7 +234,6 @@ const config: GatsbyConfig = {
     isProduction && {
       resolve: '@sentry/gatsby',
       options: {
-        release: 'blog',
         dsn: env.GATSBY_SENTRY_DSN,
         environment: env.NODE_ENV,
         enabled: (() =>
