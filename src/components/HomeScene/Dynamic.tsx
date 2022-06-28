@@ -1,11 +1,4 @@
-import {
-  memo,
-  Suspense,
-  useEffect,
-  useCallback,
-  useState,
-  ReactElement,
-} from 'react';
+import { memo, useEffect, useCallback, useState, ReactElement } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { FogExp2, PerspectiveCamera, Vector3 } from 'three';
@@ -144,10 +137,8 @@ const Dynamic = (): ReactElement | null => {
         {/* moon && light */}
         <Moon onClose={handleScene} />
         {/* Floor */}
-        <Suspense fallback={null}>
-          <Floor url={url} />
-          <Stars />
-        </Suspense>
+        <Floor url={url} />
+        <Stars />
         {/* text */}
         {words && <Text words={words} position={[0, -5, 0]} />}
         <Text words={['少熬夜,多运动']} position={[0, -18, -20]} />
