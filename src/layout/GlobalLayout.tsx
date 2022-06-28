@@ -36,7 +36,9 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
       <Suspense fallback={null}>
         <Header />
       </Suspense>
-      <Bg />
+      <Suspense fallback={null}>
+        <Bg />
+      </Suspense>
       <BackTop />
     </ErrorBoundary>
   );
