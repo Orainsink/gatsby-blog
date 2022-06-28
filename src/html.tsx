@@ -59,6 +59,8 @@ const HTML = (props: HTMLProps) => {
               !window.localStorage.getItem('SKIP'))
             ) {
               loaderIframe.style.display = 'flex';
+            } else {
+              loaderIframe.style.display = 'none';
             }
           })()
         `,
