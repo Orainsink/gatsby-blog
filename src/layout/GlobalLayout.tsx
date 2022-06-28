@@ -15,8 +15,10 @@ import { useBackTop } from '../hooks';
 import '../assets/css/base.less';
 import { iRootState } from '../redux/store';
 import ErrorBoundary from '../components/ErrorBoundary';
-const Header = lazy(() => import('../components/Header'));
-const Bg = lazy(() => import('../components/Bg'));
+import Header from '../components/Header';
+import Bg from '../components/Bg';
+// const Header = lazy(() => import('../components/Header'));
+// const Bg = lazy(() => import('../components/Bg'));
 interface Props {
   children: ReactNode;
 }
@@ -32,13 +34,9 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
 
   return (
     <ErrorBoundary>
+      <Header />
+      <Bg />
       <div>{children}</div>
-      <Suspense fallback={null}>
-        <Header />
-      </Suspense>
-      <Suspense fallback={null}>
-        <Bg />
-      </Suspense>
       <BackTop />
     </ErrorBoundary>
   );
