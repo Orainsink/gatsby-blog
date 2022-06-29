@@ -8,7 +8,7 @@ import Layout from '../../layout/BlogLayout';
 import SEO from '../../components/seo';
 import * as styles from './index.module.less';
 import PostList from '../../components/PostList';
-import SideBlocks from '../../components/SideBlocks';
+import { Calendar } from '../../components/SideBlocks';
 import { iRootState } from '../../redux/store';
 import { GetArchivesPageDataQuery, FileEdge } from '../../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
@@ -24,7 +24,7 @@ const ArchivesPage = ({ data }: PageProps<Data>): ReactElement => {
   ) as FileEdge[];
 
   return (
-    <Layout sideBlocks={<SideBlocks.Calendar posts={posts} />}>
+    <Layout sideBlocks={<Calendar posts={posts} />}>
       <SEO title="技术-归档" />
       <Suspense fallback={null}>
         <WordCloud />

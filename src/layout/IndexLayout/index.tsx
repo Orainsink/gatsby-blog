@@ -2,7 +2,7 @@ import { useEffect, useState, ReactNode, memo, ReactElement } from 'react';
 import classnames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 
-import SideBar from '../../components/SideBlocks';
+import SideBar, { Info, TagsBlock, Tools } from '../../components/SideBlocks';
 import * as styles from './index.module.less';
 import { useBackgroundColor } from '../../hooks';
 import Comment from '../../components/Comment';
@@ -52,9 +52,9 @@ const Layout = ({ children }: Props): ReactElement => {
             <Comment />
           </div>
           <SideBar>
-            <SideBar.Info />
-            <SideBar.TagsBlock />
-            <SideBar.Tools />
+            <Info />
+            <TagsBlock />
+            <Tools />
           </SideBar>
         </div>
       </main>

@@ -207,7 +207,7 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-graphql-codegen`,
       options: {
-        codegen: env.CODEGEN ?? false,
+        codegen: !!env.CODEGEN ?? false,
       },
     },
     {
@@ -240,6 +240,13 @@ const config: GatsbyConfig = {
           ['production', 'stage'].indexOf(env.NODE_ENV || 'stage') !== -1)(),
         sampleRate: 0.7,
         tracesSampleRate: 0.8,
+      },
+    },
+    !!env.WEBPACK_BUNDLE_ANALYZER && {
+      resolve: 'gatsby-plugin-webpack-bundle-analyzer',
+      options: {
+        analyzerPort: 4396,
+        production: true,
       },
     },
   ].filter(Boolean) as PluginRef[],

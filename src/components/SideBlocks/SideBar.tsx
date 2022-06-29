@@ -1,11 +1,5 @@
 import { ReactNode, ReactElement } from 'react';
 
-import Calendar from './Calendar';
-import Contents from './Contents';
-import Info from './Info';
-import TagsBlock from './TagsBlock';
-import Tools from './Tools';
-
 interface Props {
   children: ReactNode;
 }
@@ -28,11 +22,5 @@ const SideBar = (props: Props): ReactElement => {
     </div>
   );
 };
-
-SideBar.Calendar = Calendar;
-SideBar.Contents = Contents;
-SideBar.Info = Info;
-SideBar.TagsBlock = TagsBlock;
-SideBar.Tools = Tools;
 
 export default SideBar;

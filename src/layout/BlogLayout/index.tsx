@@ -2,7 +2,7 @@ import { memo, useEffect, ReactNode, ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 import classnames from 'classnames';
 
-import SideBar from '../../components/SideBlocks';
+import SideBar, { Info } from '../../components/SideBlocks';
 import * as styles from '../IndexLayout/index.module.less';
 import { useBackgroundColor } from '../../hooks';
 import Footer from '../../components/Footer';
@@ -30,7 +30,7 @@ const Layout = (props: Props): ReactElement => {
       <main className={classnames(styles.main, styles.container)} id="main">
         <div className={styles.mainWrap}>{children}</div>
         <SideBar>
-          <SideBar.Info />
+          <Info />
           {sideBlocks}
         </SideBar>
       </main>
