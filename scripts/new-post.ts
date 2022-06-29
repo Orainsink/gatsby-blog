@@ -1,3 +1,4 @@
+// #!/usr/bin/env node
 /**
  * generate markdown file by template
  */
@@ -41,7 +42,6 @@ interface Config {
   url: string;
   index: number;
 }
-
 class NewPost {
   isFolder: boolean;
   path: string;
