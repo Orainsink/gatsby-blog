@@ -9,7 +9,7 @@ import SEO from '../components/seo';
 import Tags from '../components/Tags';
 import Anchor from '../components/Anchor';
 import * as styles from './index.module.less';
-import SideBlocks from '../components/SideBlocks';
+import { Contents } from '../components/SideBlocks';
 import { useMedia } from '../hooks';
 import generatePath from '../utils/generatePath';
 import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
@@ -41,11 +41,7 @@ const BlogPostTemplate = ({
   const isDesktop = useMedia('isDesktop');
 
   return (
-    <Layout
-      sideBlocks={
-        isDesktop && <SideBlocks.Contents contents={tableOfContents} />
-      }
-    >
+    <Layout sideBlocks={isDesktop && <Contents contents={tableOfContents} />}>
       <SEO title={title} description={description || excerpt} />
       <article>
         <header>
