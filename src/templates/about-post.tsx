@@ -9,7 +9,10 @@ import Comment from '../components/Comment';
 import Poem from '../components/Poem';
 import { GetAboutPageDataQuery } from '../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
-const MoogleScene = lazy(() => import('../components/SideBlocks/MoogleScene'));
+const MoogleScene = lazy(
+  () =>
+    import(/* webpackPreload: true */ '../components/SideBlocks/MoogleScene')
+);
 
 type Data = DeepRequiredAndNonNullable<GetAboutPageDataQuery>;
 

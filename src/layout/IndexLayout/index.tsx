@@ -2,7 +2,10 @@ import { useEffect, useState, ReactNode, memo, ReactElement } from 'react';
 import classnames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 
-import SideBar, { Info, TagsBlock, Tools } from '../../components/SideBlocks';
+import SideBar from '../../components/SideBlocks/SideBar';
+import Info from '../../components/SideBlocks/Info';
+import TagsBlock from '../../components/SideBlocks/TagsBlock';
+import Tools from '../../components/SideBlocks/Tools';
 import * as styles from './index.module.less';
 import { useBackgroundColor } from '../../hooks';
 import Comment from '../../components/Comment';

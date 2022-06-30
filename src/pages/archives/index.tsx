@@ -1,18 +1,17 @@
-import { lazy, Suspense, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { PageProps, graphql } from 'gatsby';
 import { Divider } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReloadOutlined } from '@ant-design/icons';
-
+import WordCloud from '../../components/WordCloud';
 import Layout from '../../layout/BlogLayout';
 import SEO from '../../components/seo';
 import * as styles from './index.module.less';
 import PostList from '../../components/PostList';
-import { Calendar } from '../../components/SideBlocks';
+import Calendar from '../../components/SideBlocks/Calendar';
 import { iRootState } from '../../redux/store';
 import { GetArchivesPageDataQuery, FileEdge } from '../../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
-const WordCloud = lazy(() => import('../../components/WordCloud'));
 
 type Data = DeepRequiredAndNonNullable<GetArchivesPageDataQuery>;
 
@@ -26,9 +25,7 @@ const ArchivesPage = ({ data }: PageProps<Data>): ReactElement => {
   return (
     <Layout sideBlocks={<Calendar posts={posts} />}>
       <SEO title="技术-归档" />
-      <Suspense fallback={null}>
-        <WordCloud />
-      </Suspense>
+      <WordCloud />
       <Divider orientation="center" className={styles.divider}>
         {curTag ? '#' + curTag : curDate ? curDate : 'ARCHIVES'}
         {curTag || curDate ? (

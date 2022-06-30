@@ -14,7 +14,7 @@ import { iRootState } from '../../redux/store';
 import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
 import * as styles from './index.module.less';
 
-const Dynamic = lazy(() => import('./Dynamic'));
+const Dynamic = lazy(() => import(/* webpackPrefetch: true */ './Dynamic'));
 const DynamicFallback = (): ReactElement => (
   <div
     style={{

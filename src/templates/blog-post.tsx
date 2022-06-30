@@ -9,7 +9,7 @@ import SEO from '../components/seo';
 import Tags from '../components/Tags';
 import Anchor from '../components/Anchor';
 import * as styles from './index.module.less';
-import { Contents } from '../components/SideBlocks';
+import Contents from '../components/SideBlocks/Contents';
 import { useMedia } from '../hooks';
 import generatePath from '../utils/generatePath';
 import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';

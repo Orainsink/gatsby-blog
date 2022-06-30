@@ -12,7 +12,7 @@ import * as styles from './index.module.less';
 import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
 import { useMedia } from '../hooks';
 import generatePath from '../utils/generatePath';
-import SideBlocks from '../components/SideBlocks';
+import Contents from '../components/SideBlocks/Contents';
 import Comment from '../components/Comment';
 import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
 import { GetSnippetPostQuery } from '../../graphql-types';
@@ -60,11 +60,7 @@ const SnippetPostTemplate = ({
   }, []);
 
   return (
-    <Layout
-      sideBlocks={
-        isDesktop && <SideBlocks.Contents contents={tableOfContents} />
-      }
-    >
+    <Layout sideBlocks={isDesktop && <Contents contents={tableOfContents} />}>
       <SEO title={title} description={description || excerpt} />
       <article>
         <header>

@@ -1,4 +1,11 @@
-import { memo, useEffect, ReactElement, ReactNode } from 'react';
+import {
+  memo,
+  useEffect,
+  ReactElement,
+  ReactNode,
+  lazy,
+  Suspense,
+} from 'react';
 import { useSelector } from 'react-redux';
 
 import '../assets/css/variables.less';
@@ -8,8 +15,10 @@ import { useBackTop } from '../hooks';
 import '../assets/css/base.less';
 import { iRootState } from '../redux/store';
 import ErrorBoundary from '../components/ErrorBoundary';
-import Header from '../components/Header';
-import Bg from '../components/Bg';
+const Header = lazy(
+  () => import(/* webpackPreload: true */ '../components/Header')
+);
+const Bg = lazy(() => import(/* webpackPreload: true */ '../components/Bg'));
 
 interface Props {
   children: ReactNode;
@@ -26,9 +35,13 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
 
   return (
     <ErrorBoundary>
-      <Bg />
+      <Suspense fallback={null}>
+        <Bg />
+      </Suspense>
       <div>{children}</div>
-      <Header />
+      <Suspense fallback={null}>
+        <Header />
+      </Suspense>
       <BackTop />
     </ErrorBoundary>
   );

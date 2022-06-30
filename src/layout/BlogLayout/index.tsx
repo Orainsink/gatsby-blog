@@ -2,7 +2,8 @@ import { memo, useEffect, ReactNode, ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 import classnames from 'classnames';
 
-import SideBar, { Info } from '../../components/SideBlocks';
+import Info from '../../components/SideBlocks/Info';
+import SideBar from '../../components/SideBlocks/SideBar';
 import * as styles from '../IndexLayout/index.module.less';
 import { useBackgroundColor } from '../../hooks';
 import Footer from '../../components/Footer';
