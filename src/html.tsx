@@ -19,10 +19,7 @@ const HTML = (props: HTMLProps) => {
         />
         {props.headComponents}
       </head>
-      <body
-        {...props.bodyAttributes}
-        style={{ background: '#0a0a0a', overflowY: 'hidden' }}
-      >
+      <body {...props.bodyAttributes}>
         <div
           id="___loader"
           style={{
