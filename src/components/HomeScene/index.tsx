@@ -13,6 +13,7 @@ import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 import { iRootState } from '../../redux/store';
 import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
 import * as styles from './index.module.less';
+import { ReactComponent as LoadingSvg } from '../../assets/img/loading.svg';
 
 const Dynamic = lazy(() => import(/* webpackPrefetch: true */ './Dynamic'));
 const DynamicFallback = (): ReactElement => (
@@ -25,7 +26,9 @@ const DynamicFallback = (): ReactElement => (
       justifyContent: 'center',
       alignItems: 'center',
     }}
-  />
+  >
+    <LoadingSvg />
+  </div>
 );
 
 const Wrapper = (): ReactElement => {

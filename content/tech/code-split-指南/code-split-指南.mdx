@@ -125,6 +125,10 @@ import(/* webpackPrefetch: true */ './path/to/LoginModal.js');
 
 当用户再去点击`LoginButton`的时候，就可以直接显示 modal 而不需要等待。
 
+附带异步脚本优先级表：
+
+![3](./3.png)
+
 ## 缓存
 
 // TODO
@@ -136,8 +140,8 @@ Code-splitting 不是解决前端性能的银弹，相反，它可能引入更�
 ### 负优化
 
 1. code splitting 会增加整体代码的体积。
-2. code splitting 会增加请求的数量。
-3. 错误的代码分割会导致页面多次重排重绘。
+2. code splitting 会增加请求的数量, 阻塞 http 请求。
+3. 错误的代码分割会导致页面多次重排甚至页面闪烁。
 
 通过检查 web-vitals，控制台 performance 或者 google page insights 量化性能优化的结果，
 
