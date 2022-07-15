@@ -128,20 +128,18 @@ const newRefrigerator = close(put(open(refrigerator), elephant));
 
 ```js
 // 不纯的, 如果外部参数变了，函数返回值会受影响
-var minimum = 21;
-var checkAge = function (age) {
-  return age >= minimum;
-};
+let minimum = 21;
+const checkAge = (age) => age >= minimum;
 
 // 纯的，对外部状态没有依赖
-var checkAge = function (age) {
-  var minimum = 21;
+const checkAge = (age) => {
+  const minimum = 21;
   return age >= minimum;
 };
 ```
 
 ```js
-var xs = [1, 2, 3, 4, 5];
+const xs = [1, 2, 3, 4, 5];
 
 // 纯的, 不修改原数据
 xs.slice(0, 3); // => [1,2,3]
@@ -188,9 +186,9 @@ const PureComponent = ({ name }) => {
 接受或返回函数的函数
 
 ```js
-function add(x, y, f) {
+const add = (x, y, f) => {
   return f(x) + f(y);
-}
+};
 ```
 
 react 最常见的 HOC 也是一个原理，接受或返回组件的函数。
@@ -204,19 +202,19 @@ react 最常见的 HOC 也是一个原理，接受或返回组件的函数。
 柯里化的概念很简单：只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数。
 
 ```js
-function add(x, y, f) {
+const add = (x, y, f) => {
   return f(x) + f(y);
-}
+};
 
-function double(v) {
+const double = (v) => {
   return v * 2;
-}
+};
 
-function curryAdd(f) {
-  return function (a, b) {
+const curryAdd = (f) => {
+  return (a, b) => {
     return f(a) + f(b);
   };
-}
+};
 add(1, 2, double); // 6
 curryAdd(double)(1, 2); // 6
 ```
@@ -249,8 +247,8 @@ g(4); //=> 10
 
 ```js
 // 简单实现，复杂实现可以传递多个函数用于组合
-var compose = function (f, g) {
-  return function (x) {
+const compose = (f, g) => {
+  return (x) => {
     return f(g(x));
   };
 };
