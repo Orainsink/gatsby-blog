@@ -15,10 +15,11 @@ import { useBackTop } from '../hooks';
 import '../assets/css/base.less';
 import { iRootState } from '../redux/store';
 import ErrorBoundary from '../components/ErrorBoundary';
+import Bg from '../components/Bg';
+
 const Header = lazy(
   () => import(/* webpackPreload: true */ '../components/Header')
 );
-const Bg = lazy(() => import(/* webpackPreload: true */ '../components/Bg'));
 
 interface Props {
   children: ReactNode;
@@ -35,9 +36,7 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
 
   return (
     <ErrorBoundary>
-      <Suspense fallback={null}>
-        <Bg />
-      </Suspense>
+      <Bg />
       <div>{children}</div>
       <Suspense fallback={null}>
         <Header />
