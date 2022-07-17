@@ -1,30 +1,26 @@
-import { memo, ReactElement, useCallback, useEffect } from 'react';
+import { memo, ReactElement, useEffect } from 'react';
 import { ThemeToggler } from 'gatsby-plugin-dark-mode';
-import { useDispatch } from 'react-redux';
 import classnames from 'classnames';
 
 import * as styles from './index.module.less';
 import { useMedia } from '../../../hooks';
 import { Theme } from '../../../assets/constants/common';
+import { useSetRecoilState } from 'recoil';
+import { themeAtom } from '../../../store/atom';
 interface ThemeTogglerHelper {
   theme: string;
   toggleTheme: (theme: string) => void;
 }
 const ThemeBtn = (): ReactElement => {
-  const dispatch = useDispatch();
-  const setTheme = useCallback(
-    (payload: string | null) => {
-      dispatch({ type: 'THEME', payload });
-    },
-    [dispatch]
-  );
+  const setTheme = useSetRecoilState(themeAtom);
+
   const isBrowserColorSchemeDark = useMedia('prefers-color-scheme: dark');
 
   useEffect(() => {
     const browserColorScheme = isBrowserColorSchemeDark
       ? Theme.DARK
       : Theme.LIGHT;
-    setTheme(globalThis.localStorage?.getItem('theme') ?? browserColorScheme);
+    setTheme(localStorage.getItem('theme') ?? browserColorScheme);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isBrowserColorSchemeDark]);
 

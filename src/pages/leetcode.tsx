@@ -1,7 +1,6 @@
 import { useMemo, ReactElement } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
 import { Button, Divider, Table, Tag } from 'antd';
-import { useSelector, useDispatch } from 'react-redux';
 import { ReloadOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 
@@ -10,11 +9,12 @@ import Layout from '../layout/BlogLayout';
 import * as styles from './archives/index.module.less';
 import generatePath from '../utils/generatePath';
 import { ColumnsType } from 'antd/lib/table';
-import { iRootState } from '../redux/store';
 import { useResetKey, useMedia, useIsDark } from '../hooks';
 import { ReactComponent as LeetcodeSvg } from '../assets/img/leetcode.svg';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { GetLeetcodePageDataQuery } from '../../graphql-types';
+import { useRecoilValue, useResetRecoilState } from 'recoil';
+import { filterAtom } from '../store/atom';
 
 type Data = DeepRequiredAndNonNullable<GetLeetcodePageDataQuery>;
 interface ColumnItemType {
@@ -29,8 +29,8 @@ interface ColumnItemType {
   id: string;
 }
 const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
-  const { curDate } = useSelector((state: iRootState) => state);
-  const dispatch = useDispatch();
+  const { curDate } = useRecoilValue(filterAtom);
+  const resetFilter = useResetRecoilState(filterAtom);
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
   const options = useMemo(() => {
     return data.allFile.group.map((item) => ({
@@ -159,10 +159,7 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
       <Divider orientation="center" className={styles.divider}>
         {curDate ? curDate : 'LEETCODE'}
         {curDate ? (
-          <ReloadOutlined
-            className={styles.reloadIcon}
-            onClick={() => dispatch({ type: 'RESET_SEARCH' })}
-          />
+          <ReloadOutlined className={styles.reloadIcon} onClick={resetFilter} />
         ) : null}
       </Divider>
       <Table<ColumnItemType>

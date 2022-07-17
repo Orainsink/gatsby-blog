@@ -1,17 +1,18 @@
+import { titleAtom } from './../store/atom';
+import { useSetRecoilState } from 'recoil';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 
 /**
  * set header title text
  * @param title
  */
 export const useCustomTitle = (title: string): void => {
-  const dispatch = useDispatch();
+  const setTitle = useSetRecoilState(titleAtom);
 
   useEffect(() => {
-    dispatch({ type: 'TITLE', payload: title });
+    setTitle(title);
     return () => {
-      dispatch({ type: 'TITLE', payload: '' });
+      setTitle('');
     };
-  }, [dispatch, title]);
+  }, [setTitle, title]);
 };

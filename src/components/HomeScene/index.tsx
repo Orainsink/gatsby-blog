@@ -1,19 +1,12 @@
-import {
-  memo,
-  useCallback,
-  useMemo,
-  lazy,
-  Suspense,
-  ReactElement,
-} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { memo, useCallback, lazy, Suspense, ReactElement } from 'react';
 import classnames from 'classnames';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 
-import { iRootState } from '../../redux/store';
 import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
 import * as styles from './index.module.less';
 import { ReactComponent as LoadingSvg } from '../../assets/img/loading.svg';
+import { selector, useRecoilValue, useSetRecoilState } from 'recoil';
+import { sceneAtom, triggerAtom } from '../../store/atom';
 
 const Dynamic = lazy(() => import(/* webpackPrefetch: true */ './Dynamic'));
 const DynamicFallback = (): ReactElement => (
@@ -31,23 +24,27 @@ const DynamicFallback = (): ReactElement => (
   </div>
 );
 
+const dynamicSceneStyleSelector = selector({
+  key: 'dynamicSceneStyle',
+  get: ({ get }) => {
+    const scene = get(sceneAtom);
+    const trigger = get(triggerAtom);
+
+    return !scene ? styles.disActive : trigger ? styles.trigger : styles.active;
+  },
+});
+
 const Wrapper = (): ReactElement => {
-  const { scene, trigger } = useSelector((state: iRootState) => state);
-  const dispatch = useDispatch();
+  const setScene = useSetRecoilState(sceneAtom);
+  const dynamicSceneStyle = useRecoilValue(dynamicSceneStyleSelector);
 
   const handleScene = useCallback(() => {
-    dispatch({ type: 'SCENE', payload: false });
-  }, [dispatch]);
-
-  const curStyle = useMemo<string>(
-    () =>
-      !scene ? styles.disActive : trigger ? styles.trigger : styles.active,
-    [scene, trigger]
-  );
+    setScene(false);
+  }, [setScene]);
 
   return (
     <ReactScrollWheelHandler downHandler={handleScene}>
-      <div className={classnames(styles.wrapper, curStyle)}>
+      <div className={classnames(styles.wrapper, dynamicSceneStyle)}>
         <Suspense fallback={<DynamicFallback />}>
           <Dynamic />
         </Suspense>

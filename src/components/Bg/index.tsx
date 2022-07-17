@@ -1,13 +1,12 @@
 import { memo, ReactElement } from 'react';
-import { useSelector } from 'react-redux';
+import { useRecoilValue } from 'recoil';
 
 import * as styles from './index.module.less';
 import mainBg from '../../../content/assets/mainBg.svg';
-import { iRootState } from '../../redux/store';
+import { sceneAtom } from '../../store/atom';
 
 const Bg = (): ReactElement => {
-  const { scene } = useSelector((state: iRootState) => state);
-
+  const scene = useRecoilValue(sceneAtom);
   return (
     <div
       data-testid="bg"

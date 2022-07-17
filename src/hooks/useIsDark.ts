@@ -1,15 +1,22 @@
-import { useSelector } from 'react-redux';
+import { themeAtom } from './../store/atom';
+import { selector, useRecoilValue } from 'recoil';
 
 import { Theme } from '../assets/constants/common';
-import { iRootState } from '../redux/store';
 
+const isDarkSelector = selector({
+  key: 'isDark',
+  get: ({ get }) => {
+    const theme = get(themeAtom);
+    return theme === Theme.DARK;
+  },
+});
 /**
  * return if the theme is dark
  * @function useIsDark
  * @param {Boolean} isDark
  **/
 export const useIsDark = (): boolean => {
-  const isDark = useSelector((state: iRootState) => state.theme === Theme.DARK);
+  const isDark = useRecoilValue(isDarkSelector);
 
   return isDark;
 };

@@ -211,12 +211,14 @@ const double = (v) => {
 };
 
 const curryAdd = (f) => {
-  return (a, b) => {
-    return f(a) + f(b);
+  return (x, y) => {
+    return f(x) + f(y);
   };
 };
 add(1, 2, double); // 6
-curryAdd(double)(1, 2); // 6
+const AddDouble = curryAdd(double);
+
+AddDouble(1, 2); // 6
 ```
 
 提前传参可以增加函数的适用度和灵活性，以上面的代码为例，我们可以通过提前传参，构造一个更具针对性的函数：
@@ -264,7 +266,7 @@ ramda 的`compose`是从右到左执行，最后一个函数可以是任意元�
 
 ```js
 const { compose, add, filter, sort, map } = require('ramda');
-// 对一个整型列表先去除奇数，再倒叙，再过滤非正整数，再每项都+2，再累乘；
+// 对一个整型列表先去除奇数，再倒叙，再过滤非正整数，再每项都+2
 // 思考一下怎么做最好
 const list = [1, 2, 3, 4, -1, -10];
 
@@ -275,7 +277,7 @@ const descend = (a, b) => b - a;
 
 const getResult = compose(
   map(add(2)),
-  filter((v) => v > 0),
+  filter(isPositive),
   sort(descend),
   filter(isOdd)
 );
@@ -285,7 +287,7 @@ console.log(getResult(list)); //[ 6, 4 ]
 业务场景更多的是对数据的 format，对于简单的场景来说，使用组合的好处就是代码更简洁和语义化：
 
 ```js
-// 将对象按map格式化，拿到values，再过滤空值，再升序排列
+// 将对象按map格式化(如果falsy返回原值)，拿到values，再过滤空值
 const { compose, values, isNil, mapObjIndexed, filter } = require('ramda');
 const data = {
   a: null,
@@ -312,10 +314,6 @@ const format = (v, k) => {
 const getResult = compose(filter(Boolean), values, mapObjIndexed(format));
 console.log(getResult(data)); // [ 200, 3 ]
 ```
-
-## 容器 container 与 函子 functor
-
-// TODO
 
 ## 误区：拆分并非都有益
 

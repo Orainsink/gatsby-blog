@@ -1,20 +1,19 @@
 import { memo } from 'react';
 import { Tooltip } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
 import classnames from 'classnames';
 
 import * as styles from './index.module.less';
 import Panel from './Panel';
-import { iRootState } from '../../redux/store';
 import { useIsDark } from '../../hooks';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { playerVisibleAtom, musicAtom, headerDropAtom } from '../../store/atom';
 
 /** myPlayer wrap */
 const MyPlayer = () => {
-  const {
-    headerDrop,
-    music: { loaded, playing },
-  } = useSelector((state: iRootState) => state);
-  const dispatch = useDispatch();
+  const { loaded, playing } = useRecoilValue(musicAtom);
+  const headerDrop = useRecoilValue(headerDropAtom);
+  const setPlayerVisible = useSetRecoilState(playerVisibleAtom);
+
   const isDark = useIsDark();
 
   return (
@@ -26,9 +25,7 @@ const MyPlayer = () => {
         [styles.dark]: isDark,
       })}
       getPopupContainer={() => document.getElementById('header')!}
-      onVisibleChange={(visible) =>
-        dispatch({ type: 'PLAYER_VISIBLE', payload: visible })
-      }
+      onVisibleChange={setPlayerVisible}
     >
       <div style={{ cursor: 'pointer', transform: 'translateY(0.2em)' }}>
         <svg

@@ -1,16 +1,15 @@
+import { filterAtom } from './../store/atom';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useResetRecoilState } from 'recoil';
 
 /**
  * reset curTag and curDate when component is unmounted
  */
 export const useResetKey = (): void => {
-  const dispatch = useDispatch();
+  const resetFilter = useResetRecoilState(filterAtom);
+
   useEffect(() => {
-    return () => {
-      dispatch({
-        type: 'RESET_SEARCH',
-      });
-    };
-  }, [dispatch]);
+    resetFilter();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 };

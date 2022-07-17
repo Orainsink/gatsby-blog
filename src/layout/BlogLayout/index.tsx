@@ -1,5 +1,4 @@
 import { memo, useEffect, ReactNode, ReactElement } from 'react';
-import { useDispatch } from 'react-redux';
 import classnames from 'classnames';
 
 import Info from '../../components/SideBlocks/Info';
@@ -7,6 +6,8 @@ import SideBar from '../../components/SideBlocks/SideBar';
 import * as styles from '../IndexLayout/index.module.less';
 import { useBackgroundColor } from '../../hooks';
 import Footer from '../../components/Footer';
+import { useSetRecoilState } from 'recoil';
+import { hasArrowAtom, sceneAtom, skipAtom } from '../../store/atom';
 interface Props {
   content?: ReactNode;
   sideBlocks?: ReactNode;
@@ -16,15 +17,19 @@ interface Props {
 /** blog posts Layout */
 const Layout = (props: Props): ReactElement => {
   const { sideBlocks, children } = props;
-  const dispatch = useDispatch();
+  const setSkip = useSetRecoilState(skipAtom);
+  const setHasArrow = useSetRecoilState(hasArrowAtom);
+  const setScene = useSetRecoilState(sceneAtom);
   useBackgroundColor();
 
   useEffect(() => {
-    dispatch({ type: 'SKIP', payload: true });
-    dispatch({ type: 'HAS_ARROW', payload: false });
-    dispatch({ type: 'SCENE', payload: false });
-    globalThis.localStorage?.setItem('SCENE', '');
-  }, [dispatch]);
+    setSkip(true);
+    setHasArrow(false);
+    setScene(false);
+
+    localStorage.setItem('SCENE', '');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className={styles.wrapper}>

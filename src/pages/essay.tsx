@@ -1,7 +1,6 @@
 import { useCallback, ReactElement } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
 import { Card, Divider } from 'antd';
-import { useSelector, useDispatch } from 'react-redux';
 import { ReloadOutlined } from '@ant-design/icons';
 import { getImage, GatsbyImage, ImageDataLike } from 'gatsby-plugin-image';
 
@@ -10,14 +9,15 @@ import SEO from '../components/seo';
 import * as styles from './archives/index.module.less';
 import { useResetKey } from '../hooks';
 import generatePath from '../utils/generatePath';
-import { iRootState } from '../redux/store';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { GetEssayDataQuery } from '../../graphql-types';
+import { useRecoilValue, useResetRecoilState } from 'recoil';
+import { filterAtom } from '../store/atom';
 
 type Data = DeepRequiredAndNonNullable<GetEssayDataQuery>;
 const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
-  const { curDate } = useSelector((state: iRootState) => state);
-  const dispatch = useDispatch();
+  const { curDate } = useRecoilValue(filterAtom);
+  const resetFilter = useResetRecoilState(filterAtom);
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
 
   const getImg = useCallback(
@@ -71,10 +71,7 @@ const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
       <Divider orientation="center" className={styles.divider}>
         {curDate ? curDate : '随笔'}
         {curDate ? (
-          <ReloadOutlined
-            className={styles.reloadIcon}
-            onClick={() => dispatch({ type: 'RESET_SEARCH' })}
-          />
+          <ReloadOutlined className={styles.reloadIcon} onClick={resetFilter} />
         ) : null}
       </Divider>
       {!!posts && (

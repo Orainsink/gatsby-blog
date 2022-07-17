@@ -1,5 +1,6 @@
 /**Called when the initial (but not subsequent) render of Gatsby App is done on the client. */
 import type { GatsbyBrowser } from 'gatsby';
+import { RecoilRoot } from 'recoil';
 
 export const onInitialClientRender: GatsbyBrowser['onInitialClientRender'] =
   () => {
@@ -27,3 +28,9 @@ export const onInitialClientRender: GatsbyBrowser['onInitialClientRender'] =
 //       window.location.reload();
 //     }
 //   };
+
+export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
+  element,
+}) => {
+  return <RecoilRoot>{element}</RecoilRoot>;
+};

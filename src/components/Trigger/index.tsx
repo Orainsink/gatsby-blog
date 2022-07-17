@@ -1,22 +1,28 @@
-import { memo, useCallback, ReactElement } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { memo, ReactElement } from 'react';
 
 import * as styles from './index.module.less';
-import { iRootState } from '../../redux/store';
+import { selector, useRecoilValue, useSetRecoilState } from 'recoil';
+import { sceneAtom, skipAtom, triggerAtom } from '../../store/atom';
+
+const hideTriggerSelector = selector({
+  key: 'hideTrigger',
+  get: ({ get }) => {
+    const skip = get(skipAtom);
+    const scene = get(sceneAtom);
+
+    return skip || !scene;
+  },
+});
 
 /**
  * scene Trigger
  */
 const Trigger = (): ReactElement | null => {
-  const dispatch = useDispatch();
-  const { skip, scene } = useSelector((state: iRootState) => state);
+  const hideTrigger = useRecoilValue(hideTriggerSelector);
+  const setScene = useSetRecoilState(sceneAtom);
+  const setTrigger = useSetRecoilState(triggerAtom);
 
-  const setTrigger = useCallback(
-    (boo: boolean) => dispatch({ type: 'TRIGGER', payload: boo }),
-    [dispatch]
-  );
-
-  if (skip || !scene) return null;
+  if (hideTrigger) return null;
 
   return (
     <div
@@ -24,7 +30,7 @@ const Trigger = (): ReactElement | null => {
       onMouseEnter={() => setTrigger(true)}
       onMouseLeave={() => setTrigger(false)}
       onClick={() => {
-        dispatch({ type: 'SCENE', payload: false });
+        setScene(false);
         setTrigger(false);
       }}
     />

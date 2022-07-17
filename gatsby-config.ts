@@ -210,19 +210,6 @@ const config: GatsbyConfig = {
         codegen: !!env.CODEGEN ?? false,
       },
     },
-    {
-      resolve: `gatsby-plugin-react-redux`,
-      options: {
-        pathToCreateStoreModule: './src/redux/store',
-        serialize: {
-          space: 0,
-          isJSON: true,
-          unsafe: false,
-        },
-        cleanupOnClient: true,
-        windowKey: '__PRELOADED_STATE__',
-      },
-    },
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-nprogress`,

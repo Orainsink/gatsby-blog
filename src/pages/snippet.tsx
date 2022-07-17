@@ -2,7 +2,6 @@ import { useMemo, ReactElement } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
 import { Divider, Table, Tag } from 'antd';
 import dayjs from 'dayjs';
-import { useSelector, useDispatch } from 'react-redux';
 import { ReloadOutlined } from '@ant-design/icons';
 
 import * as styles from './archives/index.module.less';
@@ -10,15 +9,16 @@ import { useResetKey, useMedia, useIsDark } from '../hooks';
 import Layout from '../layout/BlogLayout';
 import SEO from '../components/seo';
 import generatePath from '../utils/generatePath';
-import { iRootState } from '../redux/store';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { GetSnippetPageDataQuery } from '../../graphql-types';
+import { useRecoilValue, useResetRecoilState } from 'recoil';
+import { filterAtom } from '../store/atom';
 
 type Data = DeepRequiredAndNonNullable<GetSnippetPageDataQuery>;
 
 const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
-  const { curDate } = useSelector((state: iRootState) => state);
-  const dispatch = useDispatch();
+  const { curDate } = useRecoilValue(filterAtom);
+  const resetFilter = useResetRecoilState(filterAtom);
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
   const isDark = useIsDark();
 
@@ -100,10 +100,7 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
       <Divider orientation="center" className={styles.divider}>
         {curDate ? curDate : 'SNIPPET'}
         {curDate ? (
-          <ReloadOutlined
-            className={styles.reloadIcon}
-            onClick={() => dispatch({ type: 'RESET_SEARCH' })}
-          />
+          <ReloadOutlined className={styles.reloadIcon} onClick={resetFilter} />
         ) : null}
       </Divider>
       <Table

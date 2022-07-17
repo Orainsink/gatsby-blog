@@ -8,7 +8,7 @@ export const useBackTop = (): void => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window?.scrollTo(0, 0);
-    document?.body.scrollTo(0, 0);
+    window.scrollTo(0, 0);
+    document.body.scrollTo(0, 0);
   }, [pathname]);
 };

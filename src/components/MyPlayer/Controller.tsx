@@ -1,6 +1,6 @@
 import { useCallback, memo, ReactElement } from 'react';
 import { Col, Row, Slider } from 'antd';
-import { useSelector, useDispatch } from 'react-redux';
+import { useRecoilState } from 'recoil';
 
 import { ReactComponent as PausedSvg } from '../../assets/img/paused.svg';
 import { ReactComponent as StartSvg } from '../../assets/img/start.svg';
@@ -8,18 +8,17 @@ import { ReactComponent as RandomSvg } from '../../assets/img/random.svg';
 import { ReactComponent as LoopSvg } from '../../assets/img/loop.svg';
 import { ReactComponent as VolumeSvg } from '../../assets/img/volume.svg';
 import * as styles from './index.module.less';
-import { iRootState } from '../../redux/store';
+import { musicAtom } from '../../store/atom';
 
 /**Controller */
 const Controller = (): ReactElement => {
-  const dispatch = useDispatch();
-  const { playing, volume, loop } = useSelector(
-    (state: iRootState) => state.music
-  );
+  const [{ playing, volume, loop }, setMusic] = useRecoilState(musicAtom);
+
   /** stop/start playing */
   const handleClick = useCallback(() => {
-    dispatch({ type: 'MUSIC', payload: { playing: !playing } });
-  }, [playing, dispatch]);
+    setMusic((state) => ({ ...state, ...{ playing: !state.playing } }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /**
    * loop mode
@@ -27,8 +26,9 @@ const Controller = (): ReactElement => {
    * false: list random
    */
   const handleLoop = useCallback(() => {
-    dispatch({ type: 'MUSIC', payload: { loop: !loop } });
-  }, [loop, dispatch]);
+    setMusic((state) => ({ ...state, ...{ loop: !state.loop } }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div id="wave" className={styles.waveWrap}>
@@ -52,7 +52,7 @@ const Controller = (): ReactElement => {
           <Slider
             style={{ width: '100%' }}
             onChange={(val) =>
-              dispatch({ type: 'MUSIC', payload: { volume: +val / 10 } })
+              setMusic((state) => ({ ...state, ...{ volume: +val / 10 } }))
             }
             defaultValue={volume * 10}
             step={1}

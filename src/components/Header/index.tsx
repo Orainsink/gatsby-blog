@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import { Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { GithubOutlined, SearchOutlined } from '@ant-design/icons';
-import { useDispatch, useSelector } from 'react-redux';
 
 import MyPlayer from '../MyPlayer';
 import SearchDrawer from '../Algolia';
@@ -11,10 +10,17 @@ import { useMedia, useHasMounted } from '../../hooks';
 import * as styles from './index.module.less';
 import ThemeBtn from './ThemeBtn';
 import MenuComponent from './MenuComponent';
-import { iRootState } from '../../redux/store';
 import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 import { GetHeaderQuery } from '../../../graphql-types';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import {
+  hasArrowAtom,
+  headerDropAtom,
+  sceneAtom,
+  skipAtom,
+  titleAtom,
+} from '../../store/atom';
 
 /**Header */
 const Header = (): ReactElement | null => {
@@ -37,36 +43,33 @@ const Header = (): ReactElement | null => {
   `);
 
   const { social } = data.site.siteMetadata;
-  const dispatch = useDispatch();
   const [searchVisible, setSearchVisible] = useState(false);
   const isDesktop = useMedia('isDesktop');
   const isMobile = useMedia('isMobile');
   const hasMounted = useHasMounted();
-  const { hasArrow, scene, title, headerDrop } = useSelector(
-    (state: iRootState) => state
-  );
 
-  const setActive = useCallback(
-    (active: boolean) => dispatch({ type: 'HEADER_DROP', payload: active }),
-    [dispatch]
-  );
+  const hasArrow = useRecoilValue(hasArrowAtom);
+  const [scene, setScene] = useRecoilState(sceneAtom);
+  const title = useRecoilValue(titleAtom);
+  const [headerDrop, setHeaderDrop] = useRecoilState(headerDropAtom);
+  const setSkip = useSetRecoilState(skipAtom);
 
   /**
    * scroll effects
    */
   useEffect(() => {
     const handleScroll: () => void = () => {
-      if (isMobile) return setActive(false);
+      if (isMobile) return setHeaderDrop(false);
       if (document.body.scrollTop > 0) {
-        setActive(true);
+        setHeaderDrop(true);
       } else {
-        setActive(false);
+        setHeaderDrop(false);
       }
     };
 
     /** change active status when component mounted */
     if (document.body.scrollTop > 0 && !isMobile) {
-      setActive(true);
+      setHeaderDrop(true);
     }
 
     document.body.addEventListener('scroll', handleScroll, {
@@ -76,13 +79,13 @@ const Header = (): ReactElement | null => {
     return () => {
       document.body.removeEventListener('scroll', handleScroll);
     };
-  }, [setActive, isMobile]);
+  }, [setHeaderDrop, isMobile]);
 
   const handleArrow = useCallback(() => {
-    dispatch({ type: 'SKIP', payload: false });
-    dispatch({ type: 'SCENE', payload: true });
-    globalThis.localStorage?.setItem('SCENE', '1');
-  }, [dispatch]);
+    setScene(true);
+    setSkip(false);
+    localStorage.setItem('SCENE', '1');
+  }, [setScene, setSkip]);
 
   const handleClose = useCallback(() => setSearchVisible(false), []);
 

@@ -1,16 +1,16 @@
 import { memo, useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import SiriWave from 'siriwave';
-import { useSelector, useDispatch } from 'react-redux';
 
 import SONGS, { Song } from '../../assets/constants/songs';
 import classnames from 'classnames';
 import { arr } from '../../utils/utils';
 import * as styles from './index.module.less';
 import Controller from './Controller';
-import { iRootState } from '../../redux/store';
 import { ReactComponent as MusicLoadingSvg } from '../../assets/img/musicLoading.svg';
 import useMediaMeta from './useMediaMeta';
 import ReactHowler from './Howler';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { musicAtom, playerVisibleAtom } from '../../store/atom';
 
 interface SongProps {
   onClick: (song: Song) => void;
@@ -60,20 +60,18 @@ const SongsList = memo(
 
 /** Controller panel */
 const Panel = () => {
-  const {
-    playerVisible,
-    music: { playing, volume, mute, loop, id, loaded },
-  } = useSelector((state: iRootState) => state);
-  const dispatch = useDispatch();
+  const [{ playing, volume, mute, loop, id, loaded }, setMusic] =
+    useRecoilState(musicAtom);
+  const playerVisible = useRecoilValue(playerVisibleAtom);
 
   const [randomList, setRandomList] = useState<number[]>([]);
   const siriWaveRef = useRef<SiriWave>();
 
   const setLoaded = useCallback(
     (loaded: boolean) => {
-      dispatch({ type: 'MUSIC', payload: { loaded } });
+      setMusic((state) => ({ ...state, loaded }));
     },
-    [dispatch]
+    [setMusic]
   );
 
   const waveRefCallback = useCallback((node: HTMLDivElement) => {
@@ -109,16 +107,13 @@ const Panel = () => {
   const handleClick = useCallback(
     (song: Song) => {
       if (song.id === id) {
-        dispatch({ type: 'MUSIC', payload: { playing: !playing } });
+        setMusic((state) => ({ ...state, playing: !playing }));
       } else {
         !loop && setRandomList(getRandomList());
-        dispatch({
-          type: 'MUSIC',
-          payload: { id: song.id, playing: true },
-        });
+        setMusic((state) => ({ ...state, id: song.id, playing: true }));
       }
     },
-    [dispatch, id, playing, loop]
+    [setMusic, id, playing, loop]
   );
 
   /** current song id */
@@ -141,8 +136,8 @@ const Panel = () => {
       tmpList = getRandomList().filter((item) => item !== id);
     }
     setRandomList(tmpList);
-    dispatch({ type: 'MUSIC', payload: { id: tmpList[0] } });
-  }, [dispatch, id, randomList]);
+    setMusic((state) => ({ ...state, id: tmpList[0] }));
+  }, [setMusic, id, randomList]);
 
   /**onEnd, loop or random play */
   const handleMusicEnd = useCallback(() => {
@@ -156,7 +151,7 @@ const Panel = () => {
    */
   useEffect(() => {
     const handler = (playing: boolean) => {
-      dispatch({ type: 'MUSIC', payload: { playing } });
+      setMusic((state) => ({ ...state, playing }));
     };
 
     if (navigator && navigator.mediaSession) {
@@ -167,7 +162,7 @@ const Panel = () => {
       navigator.mediaSession.setActionHandler('nexttrack', () => toNextSong());
     }
     // eslint-disable-next-line
-  }, [dispatch]);
+  }, [setMusic]);
 
   useMediaMeta(id);
 

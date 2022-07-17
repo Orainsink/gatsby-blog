@@ -1,7 +1,6 @@
+import { sceneAtom } from './../store/atom';
+import { useRecoilValue } from 'recoil';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-
-import { iRootState } from '../redux/store';
 
 /**
  * fix bug.
@@ -10,7 +9,7 @@ import { iRootState } from '../redux/store';
  * @param {Boolean} visible
  **/
 export const useDrawerCloseEffect = (visible: boolean): void => {
-  const scene = useSelector((state: iRootState) => state.scene);
+  const scene = useRecoilValue(sceneAtom);
 
   useEffect(() => {
     if (!visible) {

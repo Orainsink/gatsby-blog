@@ -1,5 +1,4 @@
 import { memo, useEffect, useCallback, useState, ReactElement } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { FogExp2, PerspectiveCamera, Vector3 } from 'three';
 import { useStaticQuery, graphql } from 'gatsby';
@@ -8,12 +7,13 @@ import gsap from 'gsap';
 import Text from './TextComponent';
 import Moon from './Moon';
 import { useBackgroundColor } from '../../hooks';
-import { iRootState } from '../../redux/store';
 import isClient from '../../utils/isClient';
 import Stars from './Stars';
 import Floor from './Floor';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 import { GetRockFileQuery } from '../../../graphql-types';
+import { useRecoilState } from 'recoil';
+import { sceneAtom } from '../../store/atom';
 
 /**
  * some default values
@@ -87,15 +87,14 @@ const Dynamic = (): ReactElement | null => {
     }
   `);
   const url = data.file.publicURL;
-  const { scene } = useSelector((state: iRootState) => state);
+  const [scene, setScene] = useRecoilState(sceneAtom);
   const [words, setWords] = useState<string[] | null>(null);
-  const dispatch = useDispatch();
 
   useBackgroundColor();
 
   const handleScene = useCallback(() => {
-    dispatch({ type: 'SCENE', payload: false });
-  }, [dispatch]);
+    setScene(false);
+  }, [setScene]);
 
   /**
    * fetch weather data by IP

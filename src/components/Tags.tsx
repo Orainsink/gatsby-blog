@@ -1,27 +1,25 @@
 import { memo, useCallback, ReactElement } from 'react';
 import { Link } from 'gatsby';
 import { Tag } from 'antd';
-import { useDispatch } from 'react-redux';
 
 import { CATEGORY_MAP } from '../assets/constants/categories';
 import { useHasMounted, useIsDark } from '../hooks';
+import { useSetRecoilState } from 'recoil';
+import { filterAtom } from '../store/atom';
 interface Props {
   tags: string[];
   category?: string;
 }
 const Tags = ({ tags, category }: Props): ReactElement | null => {
-  const dispatch = useDispatch();
+  const setFilter = useSetRecoilState(filterAtom);
   const isDark = useIsDark();
   const hasMounted = useHasMounted();
 
   const onTagClicked = useCallback(
     (tag: string) => {
-      dispatch({
-        type: 'CUR_TAG',
-        payload: tag?.trim(),
-      });
+      setFilter((state) => ({ ...state, curTag: tag?.trim() ?? '' }));
     },
-    [dispatch]
+    [setFilter]
   );
 
   if (!!category && category !== 'tech' && CATEGORY_MAP.has(category)) {

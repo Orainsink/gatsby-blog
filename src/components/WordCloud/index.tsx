@@ -1,11 +1,12 @@
 import { memo, useMemo, useCallback, ReactElement } from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
-import { useDispatch } from 'react-redux';
 import * as styles from './index.module.less';
 import isClient from '../../utils/isClient';
 import { useIsDark } from '../../hooks';
 import { GetWordCloudDataQuery } from '../../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
+import { useSetRecoilState } from 'recoil';
+import { filterAtom } from '../../store/atom';
 const WordCloud = isClient ? require('wordcloud') : undefined;
 
 interface Props {
@@ -32,8 +33,8 @@ const WordCloudItem = (props: Props): ReactElement => {
   `);
   const { jump = false, height = 150 } = props;
   const group = data.allFile.group;
-  const dispatch = useDispatch();
   const isDark = useIsDark();
+  const setFilter = useSetRecoilState(filterAtom);
 
   const weighted = useMemo(() => {
     let arr = group.map((item) => item.totalCount);
@@ -72,7 +73,7 @@ const WordCloudItem = (props: Props): ReactElement => {
           fontFamily: 'Finger Paint, sans-serif',
           color: isDark ? 'random-light' : 'random-dark',
           click: (item: string[]) => {
-            dispatch({ type: 'CUR_TAG', payload: item[0] });
+            setFilter((state) => ({ ...state, curTag: item[0] }));
             jump && navigate('/archives/');
           },
         });

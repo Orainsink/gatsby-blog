@@ -1,5 +1,4 @@
 import { memo, useMemo, useCallback, ReactElement } from 'react';
-import { useDispatch } from 'react-redux';
 import { Col, Row, Select } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
 import classnames from 'classnames';
@@ -8,12 +7,14 @@ import Calendar from './CustomCalendar';
 import * as styles from './index.module.less';
 import useColFlex from './useColFlex';
 import { FileEdge } from '../../../graphql-types';
+import { useSetRecoilState } from 'recoil';
+import { filterAtom } from '../../store/atom';
 
 interface Props {
   posts: FileEdge[];
 }
 const CalendarBlock = ({ posts }: Props): ReactElement => {
-  const dispatch = useDispatch();
+  const setFilter = useSetRecoilState(filterAtom);
   const colFlex = useColFlex();
 
   const allMonths: Record<string, number | undefined> = useMemo(() => {
@@ -103,12 +104,12 @@ const CalendarBlock = ({ posts }: Props): ReactElement => {
   const handleSelect = useCallback(
     (date: Dayjs) => {
       if (!allMonths[dayjs(date).format('YYYY/MM')]) return;
-      dispatch({
-        type: 'CUR_DATE',
-        payload: dayjs(date).format('YYYY/MM'),
-      });
+      setFilter((state) => ({
+        ...state,
+        curDate: dayjs(date).format('YYYY/MM'),
+      }));
     },
-    [allMonths, dispatch]
+    [allMonths, setFilter]
   );
 
   return (
