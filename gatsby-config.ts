@@ -236,7 +236,6 @@ const config: GatsbyConfig = {
         production: true,
       },
     },
-    isProduction && 'gatsby-plugin-minify-classnames',
   ].filter(Boolean) as PluginRef[],
 };
 
