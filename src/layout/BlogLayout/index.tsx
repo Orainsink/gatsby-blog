@@ -8,6 +8,8 @@ import { useBackgroundColor } from '../../hooks';
 import Footer from '../../components/Footer';
 import { useSetRecoilState } from 'recoil';
 import { hasArrowAtom, sceneAtom, skipAtom } from '../../store/atom';
+import Bg from '../../components/Bg';
+
 interface Props {
   content?: ReactNode;
   sideBlocks?: ReactNode;
@@ -33,6 +35,7 @@ const Layout = (props: Props): ReactElement => {
 
   return (
     <div className={styles.wrapper}>
+      <Bg />
       <main className={classnames(styles.main, styles.container)} id="main">
         <div className={styles.mainWrap}>{children}</div>
         <SideBar>

@@ -13,7 +13,6 @@ import BackTop from '../components/BackTop';
 import { useBackTop } from '../hooks';
 import '../assets/css/base.less';
 import ErrorBoundary from '../components/ErrorBoundary';
-import Bg from '../components/Bg';
 import { useRecoilValue } from 'recoil';
 import { sceneAtom } from '../store/atom';
 
@@ -36,7 +35,6 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
 
   return (
     <ErrorBoundary>
-      <Bg />
       <div>{children}</div>
       <Suspense fallback={null}>
         <Header />

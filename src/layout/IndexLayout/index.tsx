@@ -9,6 +9,7 @@ import * as styles from './index.module.less';
 import { useBackgroundColor } from '../../hooks';
 import Comment from '../../components/Comment';
 import Footer from '../../components/Footer';
+import Bg from '../../components/Bg';
 import {
   selector,
   useRecoilValue,
@@ -67,6 +68,7 @@ const Layout = ({ children }: Props): ReactElement => {
           Click to slide
         </div>
       )}
+      <Bg />
       <main className={styles.main}>
         <div className={styles.container}>
           <div className={styles.mainWrap}>
