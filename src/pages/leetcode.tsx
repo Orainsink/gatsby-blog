@@ -28,7 +28,7 @@ interface ColumnItemType {
   categories: string;
   id: string;
 }
-const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
+const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
   const { curDate } = useRecoilValue(filterAtom);
   const resetFilter = useResetRecoilState(filterAtom);
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
@@ -178,7 +178,7 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
   );
 };
 
-export default SnippetPage;
+export default LeetcodePage;
 
 export const pageQuery = graphql`
   query getLeetcodePageData {
