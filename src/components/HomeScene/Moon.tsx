@@ -6,7 +6,7 @@ interface Props {
   onClose: () => void;
 }
 /** three.js moon */
-const Moon = ({ onClose }: Props): ReactElement => {
+export const Moon = memo(({ onClose }: Props): ReactElement => {
   const [active, setActive] = useState<boolean>(false);
 
   useCursor(active);
@@ -40,6 +40,4 @@ const Moon = ({ onClose }: Props): ReactElement => {
       </a.mesh>
     </a.pointLight>
   );
-};
-
-export default memo(Moon);
+});

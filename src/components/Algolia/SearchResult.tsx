@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import { memo, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import {
   connectStateResults,
   Highlight,
@@ -9,7 +9,7 @@ import {
 import { Divider } from 'antd';
 
 import * as styles from './index.module.less';
-import generatePath from '../../utils/generatePath';
+import { generatePath } from '../../utils/generatePath';
 
 interface HitProp {
   hit: {
@@ -46,7 +46,7 @@ const PageHit = ({ hit }: HitProp): ReactElement => (
   </div>
 );
 
-const SearchResult = (): ReactElement => {
+export const SearchResult = (): ReactElement => {
   return (
     <div className={styles.resultWrap}>
       <HitCount />
@@ -55,4 +55,3 @@ const SearchResult = (): ReactElement => {
     </div>
   );
 };
-export default memo(SearchResult);

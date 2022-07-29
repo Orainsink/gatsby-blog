@@ -2,12 +2,13 @@ import { ReactElement } from 'react';
 import { PageProps, graphql } from 'gatsby';
 import { Divider } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons';
-import WordCloud from '../../components/WordCloud';
-import Layout from '../../layout/BlogLayout';
-import SEO from '../../components/seo';
+
+import { WordCloud } from '../../components/WordCloud';
+import { Layout } from '../../layout/BlogLayout';
+import { Seo } from '../../components/Seo';
 import * as styles from './index.module.less';
-import PostList from '../../components/PostList';
-import Calendar from '../../components/SideBlocks/Calendar';
+import { PostList } from '../../components/PostList';
+import { CalendarBlock } from '../../components/SideBlocks/Calendar';
 import { GetArchivesPageDataQuery, FileEdge } from '../../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
@@ -23,8 +24,8 @@ const ArchivesPage = ({ data }: PageProps<Data>): ReactElement => {
   ) as FileEdge[];
 
   return (
-    <Layout sideBlocks={<Calendar posts={posts} />}>
-      <SEO title="技术-归档" />
+    <Layout sideBlocks={<CalendarBlock posts={posts} />}>
+      <Seo title="技术-归档" />
       <WordCloud />
       <Divider orientation="center" className={styles.divider}>
         {curTag ? '#' + curTag : curDate ? curDate : 'ARCHIVES'}

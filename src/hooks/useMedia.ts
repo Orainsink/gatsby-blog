@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import isClient from '../utils/isClient';
+import { isClient } from '../utils/isClient';
 import { MediaQueryMap } from '../assets/constants/common';
 
 type MediaQuery = keyof typeof MediaQueryMap | 'prefers-color-scheme: dark';

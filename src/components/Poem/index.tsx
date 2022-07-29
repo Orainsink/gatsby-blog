@@ -1,10 +1,10 @@
-import { memo, useEffect, ReactElement } from 'react';
+import { useEffect, ReactElement } from 'react';
 import { load as poemLoader } from 'jinrishici';
 
 import * as styles from './index.module.less';
 import { useLocalStorage } from '../../hooks';
 
-interface Poem {
+interface PoemData {
   content: string;
   origin: {
     title: string;
@@ -14,11 +14,11 @@ interface Poem {
 }
 
 interface PoemResponse {
-  data: Poem;
+  data: PoemData;
 }
 
-const PoemComponent = (): ReactElement => {
-  const [poem, setPoem] = useLocalStorage<null | Poem>('poem', null);
+export const Poem = (): ReactElement => {
+  const [poem, setPoem] = useLocalStorage<null | PoemData>('poem', null);
 
   useEffect(() => {
     poemLoader((res: PoemResponse) => {
@@ -35,5 +35,3 @@ const PoemComponent = (): ReactElement => {
     </article>
   );
 };
-
-export default memo(PoemComponent);

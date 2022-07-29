@@ -6,9 +6,9 @@ import { ReloadOutlined } from '@ant-design/icons';
 
 import * as styles from './archives/index.module.less';
 import { useResetKey, useMedia, useIsDark } from '../hooks';
-import Layout from '../layout/BlogLayout';
-import SEO from '../components/seo';
-import generatePath from '../utils/generatePath';
+import { Layout } from '../layout/BlogLayout';
+import { Seo } from '../components/Seo';
+import { generatePath } from '../utils/generatePath';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { GetSnippetPageDataQuery } from '../../graphql-types';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
@@ -96,7 +96,7 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
 
   return (
     <Layout>
-      <SEO title="Snippet-归档" />
+      <Seo title="Snippet-归档" />
       <Divider orientation="center" className={styles.divider}>
         {curDate ? curDate : 'SNIPPET'}
         {curDate ? (

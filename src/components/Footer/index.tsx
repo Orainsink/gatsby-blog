@@ -1,11 +1,11 @@
-import { memo, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import classnames from 'classnames';
 
 import { GithubOutlined, MailOutlined } from '@ant-design/icons';
 import * as styles from './index.module.less';
 
 /**Footer */
-const Footer = (): ReactElement => (
+export const Footer = (): ReactElement => (
   <footer className={styles.wrap}>
     <div className={styles.valley}></div>
     <div className={styles.main}>
@@ -46,5 +46,3 @@ const Footer = (): ReactElement => (
     </div>
   </footer>
 );
-
-export default memo(Footer);

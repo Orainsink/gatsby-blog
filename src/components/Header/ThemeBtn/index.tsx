@@ -1,4 +1,4 @@
-import { memo, ReactElement, useEffect } from 'react';
+import { ReactElement, useEffect } from 'react';
 import { ThemeToggler } from 'gatsby-plugin-dark-mode';
 import classnames from 'classnames';
 
@@ -11,7 +11,7 @@ interface ThemeTogglerHelper {
   theme: string;
   toggleTheme: (theme: string) => void;
 }
-const ThemeBtn = (): ReactElement => {
+export const ThemeBtn = (): ReactElement => {
   const setTheme = useSetRecoilState(themeAtom);
 
   const isBrowserColorSchemeDark = useMedia('prefers-color-scheme: dark');
@@ -51,4 +51,3 @@ const ThemeBtn = (): ReactElement => {
     </ThemeToggler>
   );
 };
-export default memo(ThemeBtn);

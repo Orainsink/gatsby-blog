@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import isClient from '../utils/isClient';
+import { isClient } from '../utils/isClient';
 
 function getScrollPosition() {
   return isClient ? document.body.scrollTop : 0;

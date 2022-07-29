@@ -1,4 +1,4 @@
-import { memo, ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 import * as styles from './index.module.less';
 import { selector, useRecoilValue, useSetRecoilState } from 'recoil';
@@ -17,7 +17,7 @@ const hideTriggerSelector = selector({
 /**
  * scene Trigger
  */
-const Trigger = (): ReactElement | null => {
+export const Trigger = (): ReactElement | null => {
   const hideTrigger = useRecoilValue(hideTriggerSelector);
   const setScene = useSetRecoilState(sceneAtom);
   const setTrigger = useSetRecoilState(triggerAtom);
@@ -36,5 +36,3 @@ const Trigger = (): ReactElement | null => {
     />
   );
 };
-
-export default memo(Trigger);

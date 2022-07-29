@@ -24,15 +24,19 @@ const fiveHundredStars = ((): [ArrayLike<number>, number] => {
   return [new Float32Array(tmpArr), 3];
 })();
 
-const Stars = (): ReactElement => (
-  <group>
-    {blocks}
-    <points>
-      <pointsMaterial color="#ffffff" size={0.5} />
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={fiveHundredStars} />
-      </bufferGeometry>
-    </points>
-  </group>
+export const Stars = memo(
+  (): ReactElement => (
+    <group>
+      {blocks}
+      <points>
+        <pointsMaterial color="#ffffff" size={0.5} />
+        <bufferGeometry>
+          <bufferAttribute
+            attach="attributes-position"
+            args={fiveHundredStars}
+          />
+        </bufferGeometry>
+      </points>
+    </group>
+  )
 );
-export default memo(Stars);

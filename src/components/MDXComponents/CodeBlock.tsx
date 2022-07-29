@@ -1,10 +1,10 @@
-import { memo, useState, useCallback, useMemo, ReactElement } from 'react';
+import { useState, useCallback, useMemo, ReactElement } from 'react';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 import { Button } from 'antd';
 import { CopyOutlined, SmileOutlined } from '@ant-design/icons';
 
-import lightTheme from '../../assets/theme/customPrism';
+import { theme as lightTheme } from '../../assets/theme/customPrism';
 import { useHasMounted, useIsDark } from '../../hooks';
 interface Props {
   children: string;
@@ -15,7 +15,7 @@ interface Props {
  * default theme is vscode dark
  * @prop className: langClass 语言类型, 默认javascript
  */
-const CodeBlock = ({
+export const CodeBlock = ({
   children,
   className: langClass = 'javascript',
 }: Props): ReactElement => {
@@ -136,5 +136,3 @@ const CodeBlock = ({
     </Highlight>
   );
 };
-
-export default memo(CodeBlock);

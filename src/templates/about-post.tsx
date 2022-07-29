@@ -1,12 +1,12 @@
 import { PageProps, graphql } from 'gatsby';
 import { lazy, Suspense, ReactElement } from 'react';
 
-import Layout from '../layout/BlogLayout';
-import SEO from '../components/seo';
+import { Layout } from '../layout/BlogLayout';
+import { Seo } from '../components/Seo';
 import * as styles from './index.module.less';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import Comment from '../components/Comment';
-import Poem from '../components/Poem';
+import { Comment } from '../components/Comment';
+import { Poem } from '../components/Poem';
 import { GetAboutPageDataQuery } from '../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
 const MoogleScene = lazy(
@@ -26,7 +26,7 @@ const AboutPostTemplate = ({ data }: PageProps<Data>): ReactElement => {
         </Suspense>
       }
     >
-      <SEO title="About" />
+      <Seo title="About" />
       <Poem />
       <section className={styles.container} style={{ padding: '1em' }}>
         {<MDXRenderer>{mdx.body}</MDXRenderer>}

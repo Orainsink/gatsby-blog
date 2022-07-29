@@ -8,7 +8,7 @@ import {
 } from 'react';
 import { F } from 'ramda';
 
-import isClient from '../utils/isClient';
+import { isClient } from '../utils/isClient';
 
 type parserOptions<T> =
   | {

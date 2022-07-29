@@ -1,16 +1,16 @@
-import { memo, useState, lazy, Suspense, ReactElement } from 'react';
+import { useState, lazy, Suspense, ReactElement } from 'react';
 import { Dropdown } from 'antd';
 import { Link } from 'gatsby';
 import { DownOutlined } from '@ant-design/icons';
 
 import * as styles from './index.module.less';
-import ArchivesMenu from './ArchivesMenu';
+import { ArchivesMenu } from './ArchivesMenu';
 const MenuDrawer = lazy(() => import('./MenuDrawer'));
 
 interface Props {
   drawer: boolean;
 }
-const MenuComponent = ({ drawer }: Props): ReactElement => {
+export const MenuComponent = ({ drawer }: Props): ReactElement => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -41,5 +41,3 @@ const MenuComponent = ({ drawer }: Props): ReactElement => {
     </Suspense>
   );
 };
-
-export default memo(MenuComponent);

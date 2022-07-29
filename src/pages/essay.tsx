@@ -4,11 +4,11 @@ import { Card, Divider } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons';
 import { getImage, GatsbyImage, ImageDataLike } from 'gatsby-plugin-image';
 
-import Layout from '../layout/BlogLayout';
-import SEO from '../components/seo';
+import { Layout } from '../layout/BlogLayout';
+import { Seo } from '../components/Seo';
 import * as styles from './archives/index.module.less';
 import { useResetKey } from '../hooks';
-import generatePath from '../utils/generatePath';
+import { generatePath } from '../utils/generatePath';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { GetEssayDataQuery } from '../../graphql-types';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
@@ -67,7 +67,7 @@ const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
 
   return (
     <Layout>
-      <SEO title="随笔-归档" />
+      <Seo title="随笔-归档" />
       <Divider orientation="center" className={styles.divider}>
         {curDate ? curDate : '随笔'}
         {curDate ? (

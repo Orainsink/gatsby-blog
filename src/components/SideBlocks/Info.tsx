@@ -1,4 +1,4 @@
-import { memo, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { Col, Tooltip } from 'antd';
 import {
   StaticImage,
@@ -56,7 +56,7 @@ const Wechat = (): ReactElement => (
 );
 
 /**个人信息块 */
-const Info = () => {
+export const Info = () => {
   const isDark = useIsDark();
   const isDesktop = useMedia('isDesktop');
 
@@ -127,4 +127,3 @@ const Info = () => {
     </Col>
   );
 };
-export default memo(Info);

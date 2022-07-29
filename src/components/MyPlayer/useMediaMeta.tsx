@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 
-import SONGS from '../../assets/constants/songs';
+import { SONGS } from '../../assets/constants/songs';
 
 /**
  * used for chrome / mac global audio controller
  * @param id song id
  */
-const useMediaMeta = (id: number): void => {
+export const useMediaMeta = (id: number): void => {
   useEffect(() => {
     if ('mediaSession' in navigator) {
       const curSong = SONGS[id - 1];
@@ -22,5 +22,3 @@ const useMediaMeta = (id: number): void => {
     }
   }, [id]);
 };
-
-export default useMediaMeta;

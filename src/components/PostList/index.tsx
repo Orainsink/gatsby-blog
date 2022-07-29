@@ -1,9 +1,9 @@
-import { memo, useState, useEffect, useCallback, ReactElement } from 'react';
+import { useState, useEffect, useCallback, ReactElement } from 'react';
 import { Link } from 'gatsby';
 import { useRecoilValue } from 'recoil';
 
-import Tags from '../Tags';
-import generatePath from '../../utils/generatePath';
+import { Tags } from '../Tags';
+import { generatePath } from '../../utils/generatePath';
 import * as styles from './index.module.less';
 import { FileEdge } from '../../../graphql-types';
 import { filterAtom } from '../../store/atom';
@@ -33,7 +33,7 @@ const getLowerCasePosts = (posts: FileEdge[]): PostItem[] =>
     };
   });
 
-const PostList = ({ posts, hideMore = false }: Props): ReactElement => {
+export const PostList = ({ posts, hideMore = false }: Props): ReactElement => {
   const { curTag, curDate } = useRecoilValue(filterAtom);
   const [filteredPosts, setFilteredPosts] = useState<FileEdge[]>(posts);
   const [fold, setFold] = useState(true);
@@ -115,4 +115,3 @@ const PostList = ({ posts, hideMore = false }: Props): ReactElement => {
     </>
   );
 };
-export default memo(PostList);

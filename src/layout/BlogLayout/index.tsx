@@ -1,14 +1,14 @@
-import { memo, useEffect, ReactNode, ReactElement } from 'react';
+import { useEffect, ReactNode, ReactElement } from 'react';
 import classnames from 'classnames';
 
-import Info from '../../components/SideBlocks/Info';
-import SideBar from '../../components/SideBlocks/SideBar';
+import { Info } from '../../components/SideBlocks/Info';
+import { SideBar } from '../../components/SideBlocks/SideBar';
 import * as styles from '../IndexLayout/index.module.less';
 import { useBackgroundColor } from '../../hooks';
-import Footer from '../../components/Footer';
+import { Footer } from '../../components/Footer';
 import { useSetRecoilState } from 'recoil';
 import { hasArrowAtom, sceneAtom, skipAtom } from '../../store/atom';
-import Bg from '../../components/Bg';
+import { Bg } from '../../components/Bg';
 
 interface Props {
   content?: ReactNode;
@@ -17,7 +17,7 @@ interface Props {
 }
 
 /** blog posts Layout */
-const Layout = (props: Props): ReactElement => {
+export const Layout = (props: Props): ReactElement => {
   const { sideBlocks, children } = props;
   const setSkip = useSetRecoilState(skipAtom);
   const setHasArrow = useSetRecoilState(hasArrowAtom);
@@ -47,5 +47,3 @@ const Layout = (props: Props): ReactElement => {
     </div>
   );
 };
-
-export default memo(Layout);

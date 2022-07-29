@@ -1,14 +1,14 @@
 import { memo, useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import SiriWave from 'siriwave';
 
-import SONGS, { Song } from '../../assets/constants/songs';
+import { Song, SONGS } from '../../assets/constants/songs';
 import classnames from 'classnames';
 import { arr } from '../../utils/utils';
 import * as styles from './index.module.less';
-import Controller from './Controller';
+import { Controller } from './Controller';
 import { ReactComponent as MusicLoadingSvg } from '../../assets/img/musicLoading.svg';
-import useMediaMeta from './useMediaMeta';
-import ReactHowler from './Howler';
+import { useMediaMeta } from './useMediaMeta';
+import { ReactHowler } from './Howler';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { musicAtom, playerVisibleAtom } from '../../store/atom';
 
@@ -59,7 +59,7 @@ const SongsList = memo(
 );
 
 /** Controller panel */
-const Panel = () => {
+export const Panel = memo(() => {
   const [{ playing, volume, mute, loop, id, loaded }, setMusic] =
     useRecoilState(musicAtom);
   const playerVisible = useRecoilValue(playerVisibleAtom);
@@ -193,6 +193,4 @@ const Panel = () => {
       </div>
     </>
   );
-};
-
-export default memo(Panel);
+});

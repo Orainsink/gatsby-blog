@@ -5,7 +5,7 @@ import { useGLTF } from '@react-three/drei';
 interface Props {
   url: string;
 }
-const Floor = ({ url }: Props): ReactElement => {
+export const Floor = memo(({ url }: Props): ReactElement => {
   const { nodes } = useGLTF(url) as any;
 
   return (
@@ -18,5 +18,4 @@ const Floor = ({ url }: Props): ReactElement => {
       />
     </mesh>
   );
-};
-export default memo(Floor);
+});

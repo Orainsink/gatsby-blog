@@ -2,7 +2,7 @@ import { useMedia } from '../../hooks';
 import { useEffect, useState } from 'react';
 
 /**SideBlock flex param */
-const useColFlex = (): string => {
+export const useColFlex = (): string => {
   const [colFlex, setColFlex] = useState('0 0 300px');
   const isDesktop = useMedia('isDesktop');
 
@@ -12,5 +12,3 @@ const useColFlex = (): string => {
 
   return colFlex;
 };
-
-export default useColFlex;

@@ -4,7 +4,7 @@ interface Props {
   children: ReactNode;
 }
 /**侧边栏 */
-const SideBar = (props: Props): ReactElement => {
+export const SideBar = (props: Props): ReactElement => {
   const { children } = props;
 
   const sideWrap = {
@@ -22,5 +22,3 @@ const SideBar = (props: Props): ReactElement => {
     </div>
   );
 };
-
-export default SideBar;

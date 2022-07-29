@@ -1,10 +1,11 @@
-import { memo, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { Col } from 'antd';
 import classnames from 'classnames';
 
 import * as styles from './index.module.less';
-import TOOLS from '../../assets/constants/tools';
-import useColFlex from './useColFlex';
+import { TOOLS } from '../../assets/constants/tools';
+import { useColFlex } from './useColFlex';
+
 interface ToolItemProp {
   data: {
     name: string;
@@ -13,28 +14,28 @@ interface ToolItemProp {
   };
 }
 
-const ToolItem = memo(
-  ({ data: { url, icon, name } }: ToolItemProp): ReactElement => (
-    <a
-      href={url}
-      target="_blank"
-      rel="noreferrer"
-      title={url}
-      key={name}
-      className={styles.toolLink}
-    >
-      <span className={styles.tool}>
-        <div className={styles.iconBox}>
-          <img src={icon} alt="" className={styles.toolIcon} />
-        </div>
-        <span className={styles.toolName}>{name}</span>
-      </span>
-    </a>
-  )
+const ToolItem = ({
+  data: { url, icon, name },
+}: ToolItemProp): ReactElement => (
+  <a
+    href={url}
+    target="_blank"
+    rel="noreferrer"
+    title={url}
+    key={name}
+    className={styles.toolLink}
+  >
+    <span className={styles.tool}>
+      <div className={styles.iconBox}>
+        <img src={icon} alt="" className={styles.toolIcon} />
+      </div>
+      <span className={styles.toolName}>{name}</span>
+    </span>
+  </a>
 );
 
 /* Tools url */
-const Tools = () => {
+export const Tools = () => {
   const colFlex = useColFlex();
 
   return (
@@ -46,4 +47,3 @@ const Tools = () => {
     </Col>
   );
 };
-export default memo(Tools);

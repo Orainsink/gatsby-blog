@@ -1,4 +1,4 @@
-import { memo, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
@@ -13,12 +13,12 @@ interface Props {
   title: string;
 }
 /**
- * SEO component that queries for data with
+ * Seo component that queries for data with
  *  Gatsby's useStaticQuery  hook
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
-const SEO = ({
+export const Seo = ({
   description,
   lang = 'CHS',
   meta,
@@ -89,5 +89,3 @@ const SEO = ({
     />
   );
 };
-
-export default memo(SEO);

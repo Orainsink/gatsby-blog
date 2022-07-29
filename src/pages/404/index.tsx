@@ -1,14 +1,14 @@
-import { memo, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { Button } from 'antd';
 import { Link } from 'gatsby';
 
-import SEO from '../../components/seo';
-import Loading from '../../components/Loading';
+import { Seo } from '../../components/Seo';
+import { Loading } from '../../components/Loading';
 import * as styles from './index.module.less';
 
 const NotFoundPage = (): ReactElement => (
   <>
-    <SEO title="404: Not Found" />
+    <Seo title="404: Not Found" />
     <Loading debounce={0}>
       <div className={styles.wrap}>
         <h1>404</h1>
@@ -22,4 +22,4 @@ const NotFoundPage = (): ReactElement => (
   </>
 );
 
-export default memo(NotFoundPage);
+export default NotFoundPage;

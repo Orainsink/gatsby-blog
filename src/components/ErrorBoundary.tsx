@@ -12,7 +12,7 @@ interface Props {
  * Sentry ErrorBoundary
  * https://zh-hans.reactjs.org/docs/error-boundaries.html
  */
-class ErrorBoundary extends Component<Props, StateType> {
+export class ErrorBoundary extends Component<Props, StateType> {
   public state: StateType = {
     error: null,
   };
@@ -46,5 +46,3 @@ class ErrorBoundary extends Component<Props, StateType> {
     }
   }
 }
-
-export default ErrorBoundary;

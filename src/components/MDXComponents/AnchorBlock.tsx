@@ -1,14 +1,9 @@
-import {
-  memo,
-  DetailedHTMLProps,
-  AnchorHTMLAttributes,
-  ReactElement,
-} from 'react';
+import { DetailedHTMLProps, AnchorHTMLAttributes, ReactElement } from 'react';
 
 /**
  * anchor with target='_blank'
  */
-const AnchorBlock = ({
+export const AnchorBlock = ({
   children,
   ...rest
 }: DetailedHTMLProps<
@@ -19,5 +14,3 @@ const AnchorBlock = ({
     {children}
   </a>
 );
-
-export default memo(AnchorBlock);

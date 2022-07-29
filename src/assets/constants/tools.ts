@@ -16,7 +16,7 @@ interface Tool {
   icon: string;
   url: string;
 }
-const TOOLS: Tool[] = [
+export const TOOLS: Tool[] = [
   {
     name: 'can-I-use',
     icon: CanIUseSvg,
@@ -78,4 +78,3 @@ const TOOLS: Tool[] = [
     url: 'https://emojipedia.org',
   },
 ];
-export default TOOLS;

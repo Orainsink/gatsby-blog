@@ -1,4 +1,4 @@
-import { useEffect, useState, ReactNode, memo, ReactElement } from 'react';
+import { useEffect, useState, ReactNode, ReactElement } from 'react';
 import LoadingSvg from '../assets/img/loading.svg';
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
  * loading组件,用于组件懒加载,默认debounce=500
  * @param {number} debounce debounce time
  */
-const Loading = (props: Props): ReactElement | null => {
+export const Loading = (props: Props): ReactElement | null => {
   const { debounce = 500, children } = props;
   const [active, setActive] = useState(false);
 
@@ -38,4 +38,3 @@ const Loading = (props: Props): ReactElement | null => {
     </div>
   ) : null;
 };
-export default memo(Loading);

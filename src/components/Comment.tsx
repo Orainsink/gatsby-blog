@@ -2,7 +2,7 @@ import { memo, ReactElement, useCallback, useEffect } from 'react';
 
 import { useHasMounted, useIsDark } from '../hooks';
 
-const Comment = (): ReactElement | null => {
+export const Comment = memo((): ReactElement | null => {
   const isDark = useIsDark();
   const hasMounted = useHasMounted();
 
@@ -44,5 +44,4 @@ const Comment = (): ReactElement | null => {
   return hasMounted ? (
     <div ref={commentsRefCb} className="comments"></div>
   ) : null;
-};
-export default memo(Comment);
+});

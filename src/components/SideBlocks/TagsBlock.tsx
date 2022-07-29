@@ -1,13 +1,13 @@
-import { memo, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { Col } from 'antd';
 import classnames from 'classnames';
 
 import { useMedia } from '../../hooks';
 import * as styles from './index.module.less';
-import WordCloud from '../WordCloud';
+import { WordCloud } from '../WordCloud';
 
 /* wordCloud */
-const TagsBlock = (): ReactElement => {
+export const TagsBlock = (): ReactElement => {
   const isDesktop = useMedia('isDesktop');
 
   return (
@@ -20,4 +20,3 @@ const TagsBlock = (): ReactElement => {
     </Col>
   );
 };
-export default memo(TagsBlock);

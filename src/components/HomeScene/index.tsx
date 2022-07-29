@@ -34,7 +34,7 @@ const dynamicSceneStyleSelector = selector({
   },
 });
 
-const Wrapper = (): ReactElement => {
+export const HomeScene = memo((): ReactElement => {
   const setScene = useSetRecoilState(sceneAtom);
   const dynamicSceneStyle = useRecoilValue(dynamicSceneStyleSelector);
 
@@ -53,5 +53,4 @@ const Wrapper = (): ReactElement => {
       </div>
     </ReactScrollWheelHandler>
   );
-};
-export default memo(Wrapper);
+});

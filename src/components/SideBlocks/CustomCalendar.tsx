@@ -9,7 +9,5 @@ import { CalendarProps } from 'antd';
  * Custom Calendar component
  * replace momentjs with dayjs
  *  */
-const Calendar: (props: CalendarProps<Dayjs>) => ReactElement =
+export const Calendar: (props: CalendarProps<Dayjs>) => ReactElement =
   generateCalendar<Dayjs>(dayjsGenerateConfig);
-
-export default Calendar;

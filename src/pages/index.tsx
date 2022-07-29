@@ -1,13 +1,13 @@
-import { memo, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { PageProps, graphql } from 'gatsby';
 
-import Layout from '../layout/IndexLayout';
-import SEO from '../components/seo';
-import CateSnippet from '../components/Cards';
-import Trigger from '../components/Trigger';
-import Poem from '../components/Poem';
-import PostList from '../components/PostList';
-import HomeScene from '../components/HomeScene';
+import { Layout } from '../layout/IndexLayout';
+import { Seo } from '../components/Seo';
+import { CategoryComponent } from '../components/Cards';
+import { Trigger } from '../components/Trigger';
+import { Poem } from '../components/Poem';
+import { PostList } from '../components/PostList';
+import { HomeScene } from '../components/HomeScene';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { FileEdge, GetPageDataQuery } from '../../graphql-types';
 
@@ -25,9 +25,9 @@ const Index = ({ data }: PageProps<Data>): ReactElement => {
       <HomeScene />
       <Trigger />
       <Layout>
-        <SEO title={siteTitle} />
+        <Seo title={siteTitle} />
         <Poem />
-        <CateSnippet />
+        <CategoryComponent />
         <h5
           style={{
             textAlign: 'center',
@@ -43,7 +43,7 @@ const Index = ({ data }: PageProps<Data>): ReactElement => {
   );
 };
 
-export default memo(Index);
+export default Index;
 
 export const pageQuery = graphql`
   query getPageData {

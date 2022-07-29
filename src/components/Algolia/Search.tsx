@@ -1,14 +1,14 @@
 import algoliasearch from 'algoliasearch/lite';
-import { memo, useState, useEffect, ReactElement } from 'react';
+import { useState, useEffect, ReactElement } from 'react';
 import { InstantSearch } from 'react-instantsearch-dom';
 
-import SearchBox from './SearchBox';
-import SearchResult from './SearchResult';
+import { SearchBox } from './SearchBox';
+import { SearchResult } from './SearchResult';
 
 interface Props {
   visible: boolean;
 }
-const Search = ({ visible }: Props): ReactElement => {
+export const Search = ({ visible }: Props): ReactElement => {
   const [client, setClient] = useState(null);
 
   useEffect(() => {
@@ -33,4 +33,3 @@ const Search = ({ visible }: Props): ReactElement => {
     </div>
   );
 };
-export default memo(Search);

@@ -1,4 +1,4 @@
-import { memo, useCallback, ReactElement } from 'react';
+import { useCallback, ReactElement } from 'react';
 import { Link } from 'gatsby';
 import { Tag } from 'antd';
 
@@ -10,7 +10,7 @@ interface Props {
   tags: string[];
   category?: string;
 }
-const Tags = ({ tags, category }: Props): ReactElement | null => {
+export const Tags = ({ tags, category }: Props): ReactElement | null => {
   const setFilter = useSetRecoilState(filterAtom);
   const isDark = useIsDark();
   const hasMounted = useHasMounted();
@@ -51,5 +51,3 @@ const Tags = ({ tags, category }: Props): ReactElement | null => {
     </div>
   );
 };
-
-export default memo(Tags);

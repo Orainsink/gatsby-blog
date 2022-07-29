@@ -3,13 +3,13 @@ import { Tooltip } from 'antd';
 import classnames from 'classnames';
 
 import * as styles from './index.module.less';
-import Panel from './Panel';
+import { Panel } from './Panel';
 import { useIsDark } from '../../hooks';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { playerVisibleAtom, musicAtom, headerDropAtom } from '../../store/atom';
 
 /** myPlayer wrap */
-const MyPlayer = () => {
+export const MyPlayer = memo(() => {
   const { loaded, playing } = useRecoilValue(musicAtom);
   const headerDrop = useRecoilValue(headerDropAtom);
   const setPlayerVisible = useSetRecoilState(playerVisibleAtom);
@@ -52,5 +52,4 @@ const MyPlayer = () => {
       </div>
     </Tooltip>
   );
-};
-export default memo(MyPlayer);
+});

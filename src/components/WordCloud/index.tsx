@@ -1,13 +1,13 @@
 import { memo, useMemo, useCallback, ReactElement } from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import * as styles from './index.module.less';
-import isClient from '../../utils/isClient';
+import { isClient } from '../../utils/isClient';
 import { useIsDark } from '../../hooks';
 import { GetWordCloudDataQuery } from '../../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 import { useSetRecoilState } from 'recoil';
 import { filterAtom } from '../../store/atom';
-const WordCloud = isClient ? require('wordcloud') : undefined;
+const WordCloudCons = isClient ? require('wordcloud') : undefined;
 
 interface Props {
   jump?: boolean;
@@ -18,7 +18,7 @@ interface Props {
  * @prop [jump] either can jump to "/archives", default false
  * @prop [height] div height, default 150
  */
-const WordCloudItem = (props: Props): ReactElement => {
+export const WordCloud = memo((props: Props): ReactElement => {
   const data = useStaticQuery<
     DeepRequiredAndNonNullable<GetWordCloudDataQuery>
   >(graphql`
@@ -59,7 +59,7 @@ const WordCloudItem = (props: Props): ReactElement => {
   const wordRefCb = useCallback(
     (node: HTMLDivElement) => {
       if (node) {
-        WordCloud(node, {
+        WordCloudCons(node, {
           list: allTags,
           gridSize: 18,
           shape: 'square',
@@ -88,6 +88,4 @@ const WordCloudItem = (props: Props): ReactElement => {
       <div ref={wordRefCb} style={{ width: '100%', height: `${height}px` }} />
     </div>
   );
-};
-
-export default memo(WordCloudItem);
+});

@@ -9,7 +9,7 @@ import { CATEGORY_MAP, MENU_NAMES } from '../../assets/constants/categories';
 interface Props {
   visible: boolean;
 }
-const ArchivesMenu = memo(({ visible }: Props): ReactElement => {
+export const ArchivesMenu = memo(({ visible }: Props): ReactElement => {
   useMagicColor(() => document.getElementById('magic-container'), visible);
 
   return (
@@ -28,5 +28,3 @@ const ArchivesMenu = memo(({ visible }: Props): ReactElement => {
     </div>
   );
 });
-
-export default memo(ArchivesMenu);

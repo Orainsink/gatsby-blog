@@ -1,15 +1,15 @@
-import { useEffect, ReactNode, memo, ReactElement } from 'react';
+import { useEffect, ReactNode, ReactElement } from 'react';
 import classnames from 'classnames';
 
-import SideBar from '../../components/SideBlocks/SideBar';
-import Info from '../../components/SideBlocks/Info';
-import TagsBlock from '../../components/SideBlocks/TagsBlock';
-import Tools from '../../components/SideBlocks/Tools';
+import { SideBar } from '../../components/SideBlocks/SideBar';
+import { Info } from '../../components/SideBlocks/Info';
+import { TagsBlock } from '../../components/SideBlocks/TagsBlock';
+import { Tools } from '../../components/SideBlocks/Tools';
 import * as styles from './index.module.less';
 import { useBackgroundColor } from '../../hooks';
-import Comment from '../../components/Comment';
-import Footer from '../../components/Footer';
-import Bg from '../../components/Bg';
+import { Comment } from '../../components/Comment';
+import { Footer } from '../../components/Footer';
+import { Bg } from '../../components/Bg';
 import {
   selector,
   useRecoilValue,
@@ -44,7 +44,7 @@ const wrapperClassSelector = selector({
 });
 
 /**index Layout */
-const Layout = ({ children }: Props): ReactElement => {
+export const Layout = ({ children }: Props): ReactElement => {
   const wrapperClass = useRecoilValue(wrapperClassSelector);
   const scene = useRecoilValue(sceneAtom);
   const trigger = useRecoilValue(triggerAtom);
@@ -86,5 +86,3 @@ const Layout = ({ children }: Props): ReactElement => {
     </div>
   );
 };
-
-export default memo(Layout);

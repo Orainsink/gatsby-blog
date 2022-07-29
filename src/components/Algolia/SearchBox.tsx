@@ -4,7 +4,7 @@ import { Input, InputRef } from 'antd';
 
 import { useDebounce } from '../../hooks';
 
-export default connectSearchBox(
+export const SearchBox = connectSearchBox(
   ({ refine }: { refine: (value: string) => void }): ReactElement => {
     const [val, setVal] = useState('');
     const searchRef = useRef<InputRef>(null);

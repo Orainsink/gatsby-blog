@@ -1,17 +1,17 @@
-import { memo, useMemo, useCallback, MouseEvent, ReactElement } from 'react';
+import { useMemo, useCallback, MouseEvent, ReactElement } from 'react';
 import { Col } from 'antd';
 import classnames from 'classnames';
 
 import { useScrollY } from '../../hooks';
 import * as styles from './index.module.less';
-import isClient from '../../utils/isClient';
-import Anchor from '../Anchor';
+import { isClient } from '../../utils/isClient';
+import { Anchor } from '../Anchor';
 interface Props {
   contents: any;
 }
 
 /** 侧边栏 目录块 */
-const Contents = (props: Props): ReactElement | null => {
+export const Contents = (props: Props): ReactElement | null => {
   const { contents } = props;
   const scrollY = useScrollY();
 
@@ -49,4 +49,3 @@ const Contents = (props: Props): ReactElement | null => {
     </Col>
   );
 };
-export default memo(Contents);

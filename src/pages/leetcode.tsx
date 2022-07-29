@@ -4,10 +4,10 @@ import { Button, Divider, Table, Tag } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 
-import SEO from '../components/seo';
-import Layout from '../layout/BlogLayout';
+import { Seo } from '../components/Seo';
+import { Layout } from '../layout/BlogLayout';
 import * as styles from './archives/index.module.less';
-import generatePath from '../utils/generatePath';
+import { generatePath } from '../utils/generatePath';
 import { ColumnsType } from 'antd/lib/table';
 import { useResetKey, useMedia, useIsDark } from '../hooks';
 import { ReactComponent as LeetcodeSvg } from '../assets/img/leetcode.svg';
@@ -155,7 +155,7 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
 
   return (
     <Layout>
-      <SEO title="Leetcode-归档" />
+      <Seo title="Leetcode-归档" />
       <Divider orientation="center" className={styles.divider}>
         {curDate ? curDate : 'LEETCODE'}
         {curDate ? (

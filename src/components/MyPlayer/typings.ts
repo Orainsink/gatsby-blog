@@ -64,7 +64,7 @@ export interface HowlerProps {
   format?: string[];
   xhr?: { [key: string]: string };
   mute?: boolean;
-  preload?: boolean | string;
+  preload?: boolean | 'metadata' | undefined;
   loop?: boolean;
   volume?: number;
   rate?: number;

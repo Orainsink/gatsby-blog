@@ -1,4 +1,4 @@
-import { memo, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { Card } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
@@ -90,7 +90,7 @@ const getColumn = (group: GroupItem[]) => {
   ];
 };
 
-const CategoryComponent = (): ReactElement => {
+export const CategoryComponent = (): ReactElement => {
   const data = useStaticQuery<DeepRequiredAndNonNullable<GetTagsQuery>>(graphql`
     query getTags {
       allFile {
@@ -127,5 +127,3 @@ const CategoryComponent = (): ReactElement => {
     </section>
   );
 };
-
-export default memo(CategoryComponent);

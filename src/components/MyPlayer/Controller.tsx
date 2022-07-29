@@ -11,7 +11,7 @@ import * as styles from './index.module.less';
 import { musicAtom } from '../../store/atom';
 
 /**Controller */
-const Controller = (): ReactElement => {
+export const Controller = memo((): ReactElement => {
   const [{ playing, volume, loop }, setMusic] = useRecoilState(musicAtom);
 
   /** stop/start playing */
@@ -63,6 +63,4 @@ const Controller = (): ReactElement => {
       </Row>
     </div>
   );
-};
-
-export default memo(Controller);
+});

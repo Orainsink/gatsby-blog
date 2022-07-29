@@ -4,12 +4,12 @@ import { Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { GithubOutlined, SearchOutlined } from '@ant-design/icons';
 
-import MyPlayer from '../MyPlayer';
-import SearchDrawer from '../Algolia';
+import { MyPlayer } from '../MyPlayer';
+import { SearchDrawer } from '../Algolia';
 import { useMedia, useHasMounted } from '../../hooks';
 import * as styles from './index.module.less';
-import ThemeBtn from './ThemeBtn';
-import MenuComponent from './MenuComponent';
+import { ThemeBtn } from './ThemeBtn';
+import { MenuComponent } from './MenuComponent';
 import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 import { GetHeaderQuery } from '../../../graphql-types';
@@ -23,7 +23,7 @@ import {
 } from '../../store/atom';
 
 /**Header */
-const Header = (): ReactElement | null => {
+const Header = memo((): ReactElement | null => {
   const data = useStaticQuery<
     DeepRequiredAndNonNullable<GetHeaderQuery>
   >(graphql`
@@ -146,6 +146,6 @@ const Header = (): ReactElement | null => {
       <SearchDrawer visible={searchVisible} onClose={handleClose} />
     </header>
   ) : null;
-};
+});
 
-export default memo(Header);
+export default Header;

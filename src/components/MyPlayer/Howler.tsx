@@ -18,7 +18,7 @@ const destroyHowler = (howler: HowlType | null): void => {
 /**
  * https://github.com/goldfire/howler.js
  */
-const ReactHowler = ({
+export const ReactHowler = ({
   src,
   volume = 1.0,
   html5 = true,
@@ -138,5 +138,3 @@ const ReactHowler = ({
 
   return <></>;
 };
-
-export default ReactHowler;

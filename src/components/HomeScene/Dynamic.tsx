@@ -4,12 +4,12 @@ import { FogExp2, PerspectiveCamera, Vector3 } from 'three';
 import { useStaticQuery, graphql } from 'gatsby';
 import gsap from 'gsap';
 
-import Text from './TextComponent';
-import Moon from './Moon';
+import { Text } from './TextComponent';
+import { Moon } from './Moon';
 import { useBackgroundColor } from '../../hooks';
-import isClient from '../../utils/isClient';
-import Stars from './Stars';
-import Floor from './Floor';
+import { isClient } from '../../utils/isClient';
+import { Stars } from './Stars';
+import { Floor } from './Floor';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 import { GetRockFileQuery } from '../../../graphql-types';
 import { useRecoilState } from 'recoil';

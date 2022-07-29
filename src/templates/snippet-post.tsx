@@ -5,15 +5,15 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Anchor } from 'antd';
 
-import Layout from '../layout/BlogLayout';
-import SEO from '../components/seo';
-import Tags from '../components/Tags';
+import { Layout } from '../layout/BlogLayout';
+import { Seo } from '../components/Seo';
+import { Tags } from '../components/Tags';
 import * as styles from './index.module.less';
 import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
 import { useMedia } from '../hooks';
-import generatePath from '../utils/generatePath';
-import Contents from '../components/SideBlocks/Contents';
-import Comment from '../components/Comment';
+import { generatePath } from '../utils/generatePath';
+import { Contents } from '../components/SideBlocks/Contents';
+import { Comment } from '../components/Comment';
 import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
 import { GetSnippetPostQuery } from '../../graphql-types';
 import {
@@ -61,7 +61,7 @@ const SnippetPostTemplate = ({
 
   return (
     <Layout sideBlocks={isDesktop && <Contents contents={tableOfContents} />}>
-      <SEO title={title} description={description || excerpt} />
+      <Seo title={title} description={description || excerpt} />
       <article>
         <header>
           <h1 style={{ textAlign: 'center', fontWeight: 700 }}>{title}</h1>

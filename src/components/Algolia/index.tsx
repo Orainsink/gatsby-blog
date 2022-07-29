@@ -1,8 +1,8 @@
-import { memo, ReactElement, useEffect } from 'react';
+import { ReactElement, useEffect } from 'react';
 import { Drawer } from 'antd';
 import { useLocation } from '@reach/router';
 
-import AlgoliaSearch from './Search';
+import { Search } from './Search';
 import { useMedia, useDrawerCloseEffect } from '../../hooks';
 import * as styles from './index.module.less';
 
@@ -10,7 +10,7 @@ interface Props {
   visible: boolean;
   onClose: () => void;
 }
-const SearchDrawer = ({ visible, onClose }: Props): ReactElement => {
+export const SearchDrawer = ({ visible, onClose }: Props): ReactElement => {
   useDrawerCloseEffect(visible);
   const isMobile = useMedia('isMobile');
   const location = useLocation();
@@ -30,8 +30,7 @@ const SearchDrawer = ({ visible, onClose }: Props): ReactElement => {
       bodyStyle={{ padding: '12px' }}
       className={styles.drawerWrap}
     >
-      <AlgoliaSearch visible={visible} />
+      <Search visible={visible} />
     </Drawer>
   );
 };
-export default memo(SearchDrawer);

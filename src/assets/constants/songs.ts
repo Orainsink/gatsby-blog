@@ -6,7 +6,7 @@ export interface Song {
   id: number;
 }
 /**网易云歌单 */
-const SONGS: Song[] = [
+export const SONGS: Song[] = [
   {
     id: 1,
     name: 'Intro',
@@ -112,5 +112,3 @@ const SONGS: Song[] = [
       'http://p2.music.126.net/TT9aYBeuXyPkwQyUODBdqQ==/109951166135693121.jpg?param=130y130',
   },
 ];
-
-export default SONGS;

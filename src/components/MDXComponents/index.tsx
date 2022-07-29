@@ -1,5 +1,3 @@
-import AnchorBlock from './AnchorBlock';
-import CodeBlock from './CodeBlock';
-import ImgBlock from './ImgBlock';
-
-export { AnchorBlock, CodeBlock, ImgBlock };
+export { AnchorBlock } from './AnchorBlock';
+export { CodeBlock } from './CodeBlock';
+export { ImgBlock } from './ImgBlock';

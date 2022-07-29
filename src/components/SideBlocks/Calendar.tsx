@@ -1,11 +1,11 @@
-import { memo, useMemo, useCallback, ReactElement } from 'react';
+import { useMemo, useCallback, ReactElement } from 'react';
 import { Col, Row, Select } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
 import classnames from 'classnames';
 
-import Calendar from './CustomCalendar';
+import { Calendar } from './CustomCalendar';
 import * as styles from './index.module.less';
-import useColFlex from './useColFlex';
+import { useColFlex } from './useColFlex';
 import { FileEdge } from '../../../graphql-types';
 import { useSetRecoilState } from 'recoil';
 import { filterAtom } from '../../store/atom';
@@ -13,7 +13,7 @@ import { filterAtom } from '../../store/atom';
 interface Props {
   posts: FileEdge[];
 }
-const CalendarBlock = ({ posts }: Props): ReactElement => {
+export const CalendarBlock = ({ posts }: Props): ReactElement => {
   const setFilter = useSetRecoilState(filterAtom);
   const colFlex = useColFlex();
 
@@ -127,4 +127,3 @@ const CalendarBlock = ({ posts }: Props): ReactElement => {
     </Col>
   );
 };
-export default memo(CalendarBlock);
