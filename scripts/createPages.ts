@@ -1,8 +1,8 @@
 import { GatsbyNode } from 'gatsby';
 
-import replacePath from '../src/utils/replacePath';
+import { replacePath } from '../src/utils/replacePath';
 import path from 'path';
-import hashString from '../src/utils/hashString';
+import { hashString } from '../src/utils/hashString';
 import { MdxEdge, Query } from '../graphql-types';
 
 export const createPages: GatsbyNode['createPages'] = ({

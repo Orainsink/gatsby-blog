@@ -1,11 +1,4 @@
-import {
-  memo,
-  useEffect,
-  ReactElement,
-  ReactNode,
-  lazy,
-  Suspense,
-} from 'react';
+import { useEffect, ReactElement, ReactNode, lazy, Suspense } from 'react';
 
 import '../assets/css/variables.less';
 import '../assets/css/global.less';
@@ -44,4 +37,4 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
   );
 };
 
-export default memo(GlobalLayout);
+export default GlobalLayout;

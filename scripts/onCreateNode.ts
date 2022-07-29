@@ -1,7 +1,7 @@
 import { GatsbyNode } from 'gatsby';
 import { createFilePath } from 'gatsby-source-filesystem';
 
-import replacePath from '../src/utils/replacePath';
+import { replacePath } from '../src/utils/replacePath';
 
 export const onCreateNode: GatsbyNode['onCreateNode'] = ({
   node,
