@@ -2,13 +2,13 @@ import { ReactElement } from 'react';
 import { Button } from 'antd';
 import { Link } from 'gatsby';
 
-import { Seo } from '../../components/Seo';
+import { SeoHelmet } from '../../components/SeoHelmet';
 import { Loading } from '../../components/Loading';
 import * as styles from './index.module.less';
 
 const NotFoundPage = (): ReactElement => (
   <>
-    <Seo title="404: Not Found" />
+    <SeoHelmet title="404: Not Found" />
     <Loading debounce={0}>
       <div className={styles.wrap}>
         <h1>404</h1>

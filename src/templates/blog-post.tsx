@@ -5,7 +5,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { ReactElement } from 'react';
 
 import { Layout } from '../layout/BlogLayout';
-import { Seo } from '../components/Seo';
+import { SeoHelmet } from '../components/SeoHelmet';
 import { Tags } from '../components/Tags';
 import { Anchor } from '../components/Anchor';
 import * as styles from './index.module.less';
@@ -42,7 +42,7 @@ const BlogPostTemplate = ({
 
   return (
     <Layout sideBlocks={isDesktop && <Contents contents={tableOfContents} />}>
-      <Seo title={title} description={description || excerpt} />
+      <SeoHelmet title={title} description={description || excerpt} />
       <article>
         <header>
           <h1 style={{ textAlign: 'center', fontWeight: 700 }}>{title}</h1>

@@ -6,7 +6,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { Anchor } from 'antd';
 
 import { Layout } from '../layout/BlogLayout';
-import { Seo } from '../components/Seo';
+import { SeoHelmet } from '../components/SeoHelmet';
 import { Tags } from '../components/Tags';
 import * as styles from './index.module.less';
 import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
@@ -61,7 +61,7 @@ const SnippetPostTemplate = ({
 
   return (
     <Layout sideBlocks={isDesktop && <Contents contents={tableOfContents} />}>
-      <Seo title={title} description={description || excerpt} />
+      <SeoHelmet title={title} description={description || excerpt} />
       <article>
         <header>
           <h1 style={{ textAlign: 'center', fontWeight: 700 }}>{title}</h1>

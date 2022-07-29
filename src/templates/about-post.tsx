@@ -2,7 +2,7 @@ import { PageProps, graphql } from 'gatsby';
 import { lazy, Suspense, ReactElement } from 'react';
 
 import { Layout } from '../layout/BlogLayout';
-import { Seo } from '../components/Seo';
+import { SeoHelmet } from '../components/SeoHelmet';
 import * as styles from './index.module.less';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { Comment } from '../components/Comment';
@@ -26,7 +26,7 @@ const AboutPostTemplate = ({ data }: PageProps<Data>): ReactElement => {
         </Suspense>
       }
     >
-      <Seo title="About" />
+      <SeoHelmet title="About" />
       <Poem />
       <section className={styles.container} style={{ padding: '1em' }}>
         {<MDXRenderer>{mdx.body}</MDXRenderer>}

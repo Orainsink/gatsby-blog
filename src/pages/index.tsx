@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { PageProps, graphql } from 'gatsby';
 
 import { Layout } from '../layout/IndexLayout';
-import { Seo } from '../components/Seo';
+import { SeoHelmet } from '../components/SeoHelmet';
 import { CategoryComponent } from '../components/Cards';
 import { Trigger } from '../components/Trigger';
 import { Poem } from '../components/Poem';
@@ -25,7 +25,7 @@ const Index = ({ data }: PageProps<Data>): ReactElement => {
       <HomeScene />
       <Trigger />
       <Layout>
-        <Seo title={siteTitle} />
+        <SeoHelmet title={siteTitle} />
         <Poem />
         <CategoryComponent />
         <h5

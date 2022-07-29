@@ -4,7 +4,7 @@ import { Button, Divider, Table, Tag } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 
-import { Seo } from '../components/Seo';
+import { SeoHelmet } from '../components/SeoHelmet';
 import { Layout } from '../layout/BlogLayout';
 import * as styles from './archives/index.module.less';
 import { generatePath } from '../utils/generatePath';
@@ -155,7 +155,7 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
 
   return (
     <Layout>
-      <Seo title="Leetcode-归档" />
+      <SeoHelmet title="Leetcode-归档" />
       <Divider orientation="center" className={styles.divider}>
         {curDate ? curDate : 'LEETCODE'}
         {curDate ? (

@@ -5,7 +5,7 @@ import { ReloadOutlined } from '@ant-design/icons';
 import { getImage, GatsbyImage, ImageDataLike } from 'gatsby-plugin-image';
 
 import { Layout } from '../layout/BlogLayout';
-import { Seo } from '../components/Seo';
+import { SeoHelmet } from '../components/SeoHelmet';
 import * as styles from './archives/index.module.less';
 import { useResetKey } from '../hooks';
 import { generatePath } from '../utils/generatePath';
@@ -67,7 +67,7 @@ const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
 
   return (
     <Layout>
-      <Seo title="随笔-归档" />
+      <SeoHelmet title="随笔-归档" />
       <Divider orientation="center" className={styles.divider}>
         {curDate ? curDate : '随笔'}
         {curDate ? (

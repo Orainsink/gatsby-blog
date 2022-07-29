@@ -18,7 +18,7 @@ interface Props {
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
-export const Seo = ({
+export const SeoHelmet = ({
   description,
   lang = 'CHS',
   meta,

@@ -5,7 +5,7 @@ import { ReloadOutlined } from '@ant-design/icons';
 
 import { WordCloud } from '../../components/WordCloud';
 import { Layout } from '../../layout/BlogLayout';
-import { Seo } from '../../components/Seo';
+import { SeoHelmet } from '../../components/SeoHelmet';
 import * as styles from './index.module.less';
 import { PostList } from '../../components/PostList';
 import { CalendarBlock } from '../../components/SideBlocks/Calendar';
@@ -25,7 +25,7 @@ const ArchivesPage = ({ data }: PageProps<Data>): ReactElement => {
 
   return (
     <Layout sideBlocks={<CalendarBlock posts={posts} />}>
-      <Seo title="技术-归档" />
+      <SeoHelmet title="技术-归档" />
       <WordCloud />
       <Divider orientation="center" className={styles.divider}>
         {curTag ? '#' + curTag : curDate ? curDate : 'ARCHIVES'}
