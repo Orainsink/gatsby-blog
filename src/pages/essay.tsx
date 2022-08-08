@@ -114,7 +114,7 @@ export const pageQuery = graphql`
     images: allFile(
       filter: {
         sourceInstanceName: { eq: "essay" }
-        extension: { in: ["png", "jpg"] }
+        extension: { in: ["png", "jpg", "jpeg"] }
       }
     ) {
       edges {
