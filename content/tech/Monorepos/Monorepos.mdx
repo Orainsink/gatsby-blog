@@ -1,0 +1,133 @@
+---
+categories: tech
+description: 介绍monorepo，顺便对比turborepo和nx，lerna等业界方案
+date: 2022-08-09 00:38:57
+title: Monorepos
+tags: [架构]
+---
+
+> 参考文章：
+>
+> [The Many Benefits of Using a Monorepo](https://pspdfkit.com/blog/2019/benefits-of-a-monorepo/)
+>
+> [精读《Monorepo 的优势》](https://zhuanlan.zhihu.com/p/65533186)
+
+## Monorepo
+
+monorepo 是一种源码管理模型。其核心是“所有代码在同一个仓库”
+
+![1](./1.png)
+
+总的来说，**虽然拆分子仓库、拆分子 NPM 包（For web）是进行项目隔离的天然方案，但当仓库内容出现关联时，没有任何一种调试方式比源码放在一起更高效。**
+
+**工程化的最终目的是让业务开发可以 100% 聚焦在业务逻辑上**，那么这不仅仅是脚手架、框架需要从自动化、设计上解决的问题，这涉及到仓库管理的设计。
+
+一个理想的开发环境可以抽象成这样：
+
+“只关心业务代码，可以直接跨业务复用而不关心复用方式，调试时所有代码都在源码中。”
+
+在前端开发环境中，多 Git Repo，多 Npm 则是这个理想的阻力，它们导致复用要关心版本号，调试需要 Npm Link。
+
+另外对于多仓库的缺点，英文原文中还有一些没有提到的因素，这里一并列举出来：
+
+**管理、调试困难**
+
+多个 git 仓库管理起来天然是麻烦的。对于功能类似的模块，如果拆成了多个仓库，无论对于多人协作还是独立开发，都需要打开多个仓库页面。
+
+虽然 vscode 通过 [Workspaces](https://code.visualstudio.com/docs/editor/multi-root-workspaces) 解决多仓库管理的问题，但在多人协作的场景下，无法保证每个人的环境配置一致。
+
+对于共用的包通过 Npm 安装，如果不能接受调试编译后的代码，或每次 npm link 一下，就没有办法调试依赖的子包。
+
+**分支管理混乱**
+
+假如一个仓库提供给 A、B 两个项目用，而 B 项目优先开发了功能 b，无法与 A 项目兼容，此时就要在这个仓库开一个 `feature/b` 的分支支持这个功能，并且在未来合并到主干同步到项目 A。
+
+一旦需要开分支的组件变多了，且之间出来依赖关联，分支管理复杂度就会呈指数上升。
+
+**依赖关系复杂**
+
+独立仓库间组件版本号的维护需要手动操作，因为源代码不在一起，所以没有办法整体分析依赖，自动化管理版本号的依赖。
+
+**三方依赖版本可能不一致**
+
+一个独立的包拥有一套独立的开发环境，难以保证子模块的版本和主项目完全一直，就存在运行结果不一致的风险。
+
+**占用总空间大**
+
+正常情况下，一个公司的业务项目只有一个主干，多 git repo 的方式浪费了大量存储空间重复安装比如 React 等大型模块，时间久了可能会占用几十 GB 的额外空间，对于没有外接硬盘的同学来说，定期清理不用的项目下 `node_modules` 也是一件麻烦事。
+
+**不利于团队协作**
+
+一个大项目可能会用到数百个二方包，不同二方包的维护频率不同，权限不同，仓库位置也不同，主仓库对它们的依赖方式也不同。
+
+一旦其中一个包进行了非正常改动，就会影响到整个项目，而我们精力有限，只盯着主仓库，往往会栽在不起眼的二方包发布上。
+
+所以对于一个非常复杂，又具有技术挑战的大型系统在协作人员多的情况下出现问题的概率非常大，需要通过 Review 制度避免错误的发生，那么将所有相关的源码聚合在一个仓库下，是更好管理的。
+
+但 monorepo 也有一些问题，由于源码在一起，仓库变更非常常见，存储空间也变得很大，甚至几 GB，CI 测试运行时间也会变长。
+
+## monorepo 方案
+
+### [NPM/Yarn workspaces](https://code.visualstudio.com/docs/editor/multi-root-workspaces) + [lerna](https://github.com/lerna/lerna)
+
+在过去 Lerna + Yarn Workspace 的形式是社区使用率最高的 Monorepo 方案
+
+仿照官网规范构造的 monorepo 结构
+
+```
+.
+├── packages
+│      ├─ module-a
+│      │    ├─ src            # 模块 a 的源码
+│      │    └─ package.json   # 自动生成的，仅模块 a 的依赖
+│      └─ module-b
+│           ├─ src            # 模块 b 的源码
+│           └─ package.json   # 自动生成的，仅模块 b 的依赖
+├── tsconfig.json             # 配置文件，对整个项目生效
+├── .eslintrc                 # 配置文件，对整个项目生效
+├── node_modules              # 整个项目只有一个外层 node_modules
+└── package.json              # 包含整个项目所有依赖
+```
+
+lerna 负责任务调度
+
+```shell
+# 它为单个软件包或多个软件包运行命令
+lerna run
+# 它管理依赖关系
+lerna bootstrap
+# 它发布你的软件包，处理版本管理，并生成更新日志
+lerna publish
+```
+
+yarn workspace 负责依赖处理
+
+```shell
+yarn workspace module-a add vue --dev
+```
+
+或者将项目内的 module-a 作为依赖链接给 module-b
+
+```json
+{
+  "name": "module-b",
+  "version": "1.0.0",
+  "dependencies": {
+    "cross-env": "5.0.5",
+    // 将module-a作为module-b的依赖，module-a会直接被引用而不会打包到node_modules
+    "module-a": "1.0.0"
+  }
+}
+```
+
+## [Nx](https://nx.dev/)
+
+Nx 是一个前谷歌成员构建的项目，它吸收了许多 Google、Meta 内部 Monorepo 方案的优点。
+
+lerna 在 5.1 版本过后默认集成了 Nx。
+
+## Turborepo
+
+## 什么样的项目适合 Monorepo
+
+## Nx vs Turborepo vs lerna
