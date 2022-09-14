@@ -18,6 +18,7 @@ const MagicComponent = () => {
         borderRadius: '10px',
         margin: 'auto',
       }}
+      id="post-magic-container"
     ></div>
   );
 };

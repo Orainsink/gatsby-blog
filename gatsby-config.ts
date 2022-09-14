@@ -236,7 +236,7 @@ const config: GatsbyConfig = {
         production: true,
       },
     },
-  ].filter(Boolean) as PluginRef[],
+  ].filter((conf): conf is PluginRef => Boolean(conf)),
 };
 
 export default config;

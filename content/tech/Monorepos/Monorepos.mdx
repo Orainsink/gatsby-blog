@@ -11,6 +11,8 @@ tags: [架构]
 > [The Many Benefits of Using a Monorepo](https://pspdfkit.com/blog/2019/benefits-of-a-monorepo/)
 >
 > [精读《Monorepo 的优势》](https://zhuanlan.zhihu.com/p/65533186)
+>
+> [Introducing The Monorepo & NX](https://medium.com/tenable-techblog/introducing-the-monorepo-nx-18e8b273b66)
 
 ## Monorepo
 
@@ -66,11 +68,13 @@ monorepo 是一种源码管理模型。其核心是“所有代码在同一个�
 
 但 monorepo 也有一些问题，由于源码在一起，仓库变更非常常见，存储空间也变得很大，甚至几 GB，CI 测试运行时间也会变长。
 
-## monorepo 方案
+## 即将过时的方案[NPM/Yarn workspaces](https://code.visualstudio.com/docs/editor/multi-root-workspaces) + [lerna](https://github.com/lerna/lerna)
 
-### [NPM/Yarn workspaces](https://code.visualstudio.com/docs/editor/multi-root-workspaces) + [lerna](https://github.com/lerna/lerna)
+在过去 Lerna + Yarn Workspace 的形式是社区使用率最高的 Monorepo 方案。
 
-在过去 Lerna + Yarn Workspace 的形式是社区使用率最高的 Monorepo 方案
+lerna 已经不在作为 monorepo 的推荐方案了，因为有更好的方案可以替代，并且 lerna 本身的维护也成为了一个问题，可能在未来停止维护。
+
+[Lerna is largely unmaintained](https://github.com/lerna/lerna/issues/2703)
 
 仿照官网规范构造的 monorepo 结构
 
@@ -92,11 +96,11 @@ monorepo 是一种源码管理模型。其核心是“所有代码在同一个�
 lerna 负责任务调度
 
 ```shell
-# 它为单个软件包或多个软件包运行命令
-lerna run
-# 它管理依赖关系
+# 为单个软件包或多个软件包运行命令
+lerna run xxx
+# 管理依赖关系，如果开启了workspace，则不需要用这个，直接yarn
 lerna bootstrap
-# 它发布你的软件包，处理版本管理，并生成更新日志
+# 发布你的软件包，处理版本管理，并生成更新日志
 lerna publish
 ```
 
@@ -120,14 +124,48 @@ yarn workspace module-a add vue --dev
 }
 ```
 
-## [Nx](https://nx.dev/)
+## [Nx](https://nx.dev/) vs [Turborepo](https://turborepo.org/)
 
 Nx 是一个前谷歌成员构建的项目，它吸收了许多 Google、Meta 内部 Monorepo 方案的优点。
 
 lerna 在 5.1 版本过后默认集成了 Nx。
 
-## Turborepo
+turborepo 最开始是一个个人项目，于去年被 Vercel 收购。
 
-## 什么样的项目适合 Monorepo
+Nx 和 turborepo 做的事情是类似的。但 Nx 已经开发了 5 年之久，而 turborepo 再很多方面还略显稚嫩：
 
-## Nx vs Turborepo vs lerna
+可以参考 Nx 官网的比较： [Nx and Turborepo](https://nx.dev/more-concepts/turbo-and-nx)
+
+### 速度
+
+参考 github 的一个测速的项目： [large-monorepo](https://github.com/vsavkin/large-monorepo)
+
+即便 turborepo 是由 Go 编写的，但在速度上 Nx 还是略胜一筹。
+
+但这个问题会随着 turborepo 的不断更新而改变。毕竟 Go 的上限还是高于 Nx 的 Typescript，可以未来再观察一下。
+
+### 依赖关系
+
+turborepo 通过 package.json 来分析项目的依赖关系，而 Nx 除了 package.json 之外还会检查项目的代码，所以在 Nx 项目里，子项目可以没有 package.json
+
+Nx 还有一个` visibility rules`，可以规定 monorepo 中某些部分的代码是某个团队私有的。比如 service 不能引用 web app 的代码，防止因为团队混杂过后把项目变成了乱麻。
+
+### 项目可视化
+
+两者都提供了项目依赖关系的可视化功能，但 turborepo 只有一个图表，而 Nx 是一个丰富的可交互的工具。
+
+这方面毫无疑问 turborepo 还有很大提升空间。
+
+### 缓存，编辑器支持等
+
+基本上都在 Nx 官网的比较文章里写了。
+
+在工程成熟度方面 Nx 基本上是完胜的
+
+### turborepo 的优势
+
+turborepo 也有优势：
+
+Nx 是基于插件系统的工具，其社区有丰富的插件可供使用，但必要的时候需要自己实现插件。
+
+Turborepo is designed to be **incrementally adopted**，Turborepo 很适合老项目迁移或者需要快速实现比较灵活的 monorepo 的项目。如果是新建一个长期维护且复杂的项目，那优先考虑的还是 NX
