@@ -76,54 +76,6 @@ lerna 已经不在作为 monorepo 的推荐方案了，因为有更好的方案�
 
 [Lerna is largely unmaintained](https://github.com/lerna/lerna/issues/2703)
 
-仿照官网规范构造的 monorepo 结构
-
-```
-.
-├── packages
-│      ├─ module-a
-│      │    ├─ src            # 模块 a 的源码
-│      │    └─ package.json   # 自动生成的，仅模块 a 的依赖
-│      └─ module-b
-│           ├─ src            # 模块 b 的源码
-│           └─ package.json   # 自动生成的，仅模块 b 的依赖
-├── tsconfig.json             # 配置文件，对整个项目生效
-├── .eslintrc                 # 配置文件，对整个项目生效
-├── node_modules              # 整个项目只有一个外层 node_modules
-└── package.json              # 包含整个项目所有依赖
-```
-
-lerna 负责任务调度
-
-```shell
-# 为单个软件包或多个软件包运行命令
-lerna run xxx
-# 管理依赖关系，如果开启了workspace，则不需要用这个，直接yarn
-lerna bootstrap
-# 发布你的软件包，处理版本管理，并生成更新日志
-lerna publish
-```
-
-yarn workspace 负责依赖处理
-
-```shell
-yarn workspace module-a add vue --dev
-```
-
-或者将项目内的 module-a 作为依赖链接给 module-b
-
-```json
-{
-  "name": "module-b",
-  "version": "1.0.0",
-  "dependencies": {
-    "cross-env": "5.0.5",
-    // 将module-a作为module-b的依赖，module-a会直接被引用而不会打包到node_modules
-    "module-a": "1.0.0"
-  }
-}
-```
-
 ## [Nx](https://nx.dev/) vs [Turborepo](https://turborepo.org/)
 
 Nx 是一个前谷歌成员构建的项目，它吸收了许多 Google、Meta 内部 Monorepo 方案的优点。
@@ -148,7 +100,7 @@ Nx 和 turborepo 做的事情是类似的。但 Nx 已经开发了 5 年之久�
 
 turborepo 通过 package.json 来分析项目的依赖关系，而 Nx 除了 package.json 之外还会检查项目的代码，所以在 Nx 项目里，子项目可以没有 package.json
 
-Nx 还有一个` visibility rules`，可以规定 monorepo 中某些部分的代码是某个团队私有的。比如 service 不能引用 web app 的代码，防止因为团队混杂过后把项目变成了乱麻。
+Nx 还有一个`visibility rules`，可以规定 monorepo 中某些部分的代码是某个团队私有的。比如 service 不能引用 web app 的代码，防止因为团队混杂过后把项目变成了乱麻。
 
 ### 项目可视化
 
@@ -168,4 +120,4 @@ turborepo 也有优势：
 
 Nx 是基于插件系统的工具，其社区有丰富的插件可供使用，但必要的时候需要自己实现插件。
 
-Turborepo is designed to be **incrementally adopted**，Turborepo 很适合老项目迁移或者需要快速实现比较灵活的 monorepo 的项目。如果是新建一个长期维护且复杂的项目，那优先考虑的还是 NX
+Turborepo is designed to be **incrementally adopted**，Turborepo 很适合老项目迁移或者需要快速实现比较灵活的 monorepo 的项目。如果是新建一个长期维护且复杂的项目，那优先考虑的还是 NX。考虑到 Turborepo 现在背后有 Vercal, 未来变成了 Next.js 或者其他脚手架的默认配置也不一定。
