@@ -1,12 +1,13 @@
 import { useState, useEffect, useCallback, ReactElement } from 'react';
 import { Link } from 'gatsby';
 import { useRecoilValue } from 'recoil';
+import styled from 'styled-components';
 
-import { Tags } from '../Tags';
-import { generatePath } from '../../utils/generatePath';
-import * as styles from './PostList.module.less';
-import { FileEdge } from '../../../graphql-types';
-import { filterAtom } from '../../store/atom';
+import { Tags } from './Tags';
+import { generatePath } from '../utils/generatePath';
+import { FileEdge } from '../../graphql-types';
+import { filterAtom } from '../store/atom';
+
 interface Props {
   posts: FileEdge[];
   hideMore?: boolean;
@@ -19,6 +20,28 @@ interface PostItem {
   tags: string[];
   date: any;
 }
+
+const MoreButton = styled.div`
+  text-align: center;
+  font-size: 18px;
+  padding: 1em 0;
+  cursor: pointer;
+`;
+
+const Title = styled.h3`
+  margin-bottom: 0.4em;
+  box-shadow: none;
+  a {
+    color: var(--post-title);
+  }
+  a:hover {
+    color: var(--post-title-hover);
+  }
+`;
+
+const Phrase = styled.p`
+  color: var(--text-color-secondary);
+`;
 
 const getLowerCasePosts = (posts: FileEdge[]): PostItem[] =>
   posts.map(({ node }) => {
@@ -87,16 +110,15 @@ export const PostList = ({ posts, hideMore = false }: Props): ReactElement => {
           getIsAccordion(index) && (
             <article key={fields.slug}>
               <header>
-                <h3 className={styles.title}>
+                <Title>
                   <Link to={generatePath(categories!, fields.slug!)}>
                     {title}
                   </Link>
-                </h3>
+                </Title>
                 <small>{date}</small>
               </header>
               <section>
-                <p
-                  className={styles.phrase}
+                <Phrase
                   dangerouslySetInnerHTML={{
                     __html: description || node!.childMdx!.excerpt || '',
                   }}
@@ -108,9 +130,9 @@ export const PostList = ({ posts, hideMore = false }: Props): ReactElement => {
         );
       })}
       {hideMore && filteredPosts?.length > 6 && (
-        <div onClick={() => setFold(!fold)} className={styles.moreBtn}>
+        <MoreButton onClick={() => setFold(!fold)}>
           <span>{fold ? '展开所有' : '收起'}</span>
-        </div>
+        </MoreButton>
       )}
     </>
   );

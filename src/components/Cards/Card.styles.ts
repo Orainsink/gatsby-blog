@@ -44,6 +44,17 @@ export const StyledCards = styled.div`
 export const StyledCard = styled(Card)`
   margin: 10px 0;
 
+  .card-static-image {
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    transition: all 500ms ease;
+
+    ${({ theme }) => theme.media.isMobile} {
+      height: 100px !important;
+    }
+  }
+
   &:hover {
     .card-static-image {
       transform: scale(1.2);

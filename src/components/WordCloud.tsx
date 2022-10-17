@@ -1,19 +1,39 @@
 import { memo, useMemo, useCallback, ReactElement } from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
+import styled from 'styled-components';
 
-import * as styles from './WordCloud.module.less';
-import { isClient } from '../../utils/isClient';
-import { useIsDark } from '../../hooks';
-import { GetWordCloudDataQuery } from '../../../graphql-types';
-import { DeepRequiredAndNonNullable } from '../../../typings/custom';
+import { isClient } from '../utils/isClient';
+import { useIsDark } from '../hooks';
+import { GetWordCloudDataQuery } from '../../graphql-types';
+import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { useSetRecoilState } from 'recoil';
-import { filterAtom } from '../../store/atom';
+import { filterAtom } from '../store/atom';
+
 const WordCloudCons = isClient ? require('wordcloud') : undefined;
 
 interface Props {
   jump?: boolean;
   height?: number;
 }
+
+const WordCloudContainer = styled.div`
+  width: 100%;
+  padding: 10px 0;
+  height: 200px;
+  span {
+    cursor: pointer;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .word-cloud-cons {
+    transition: all 0.3s ease-out;
+    transform: scale(1) !important;
+    &:hover {
+      transform: scale(1.2) !important;
+    }
+  }
+`;
+
 /**
  * word cloud
  * @prop [jump] either can jump to "/archives", default false
@@ -69,7 +89,7 @@ export const WordCloud = memo((props: Props): ReactElement => {
           drawOutOfBound: false,
           rotateRatio: 0,
           ellipticity: 1.5,
-          classes: styles.cloud,
+          classes: 'word-cloud-cons',
           backgroundColor: 'transparent',
           fontFamily: 'Finger Paint, sans-serif',
           color: isDark ? 'random-light' : 'random-dark',
@@ -85,8 +105,8 @@ export const WordCloud = memo((props: Props): ReactElement => {
   );
 
   return (
-    <div className={styles.wrap}>
+    <WordCloudContainer>
       <div ref={wordRefCb} style={{ width: '100%', height: `${height}px` }} />
-    </div>
+    </WordCloudContainer>
   );
 });
