@@ -1,13 +1,12 @@
 import { useEffect, ReactNode, ReactElement } from 'react';
 import classnames from 'classnames';
 
-import { Info } from '../../components/SideBlocks/Info';
-import { SideBar } from '../../components/SideBlocks/SideBar';
+import { hasArrowAtom, sceneAtom, skipAtom } from '../../store/atom';
+import { Info, SideBar } from '../../components/SideBlocks';
 import * as styles from '../IndexLayout/index.module.less';
 import { useBackgroundColor } from '../../hooks';
-import { Footer } from '../../components/Footer';
 import { useSetRecoilState } from 'recoil';
-import { hasArrowAtom, sceneAtom, skipAtom } from '../../store/atom';
+import { Footer } from '../../components/Footer';
 import { Bg } from '../../components/Bg';
 
 interface Props {

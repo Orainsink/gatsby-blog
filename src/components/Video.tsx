@@ -18,7 +18,7 @@ interface Props {
  * @prop [style]
  * @prop [className]
  */
-const VideoComponent = (props: Props): ReactElement => {
+export const VideoComponent = (props: Props): ReactElement => {
   const { src, type = 'video/mp4', ...rest } = props;
 
   return (
@@ -27,4 +27,3 @@ const VideoComponent = (props: Props): ReactElement => {
     </video>
   );
 };
-export default VideoComponent;

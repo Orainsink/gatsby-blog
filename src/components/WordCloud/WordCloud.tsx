@@ -1,6 +1,7 @@
 import { memo, useMemo, useCallback, ReactElement } from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
-import * as styles from './index.module.less';
+
+import * as styles from './WordCloud.module.less';
 import { isClient } from '../../utils/isClient';
 import { useIsDark } from '../../hooks';
 import { GetWordCloudDataQuery } from '../../../graphql-types';

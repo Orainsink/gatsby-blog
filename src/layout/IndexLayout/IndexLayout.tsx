@@ -1,10 +1,7 @@
 import { useEffect, ReactNode, ReactElement } from 'react';
 import classnames from 'classnames';
 
-import { SideBar } from '../../components/SideBlocks/SideBar';
-import { Info } from '../../components/SideBlocks/Info';
-import { TagsBlock } from '../../components/SideBlocks/TagsBlock';
-import { Tools } from '../../components/SideBlocks/Tools';
+import { SideBar, Info, TagsBlock, Tools } from '../../components/SideBlocks';
 import * as styles from './index.module.less';
 import { useBackgroundColor } from '../../hooks';
 import { Comment } from '../../components/Comment';

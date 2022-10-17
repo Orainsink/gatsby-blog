@@ -12,7 +12,7 @@ import * as styles from './index.module.less';
 import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
 import { useMedia } from '../hooks';
 import { generatePath } from '../utils/generatePath';
-import { Contents } from '../components/SideBlocks/Contents';
+import { Contents } from '../components/SideBlocks';
 import { Comment } from '../components/Comment';
 import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
 import { GetSnippetPostQuery } from '../../graphql-types';
@@ -99,7 +99,11 @@ const SnippetPostTemplate = ({
         )}
         <section className={styles.container}>
           <MDXProvider
-            components={{ code: CodeBlock, img: ImgBlock, a: AnchorBlock }}
+            components={{
+              code: CodeBlock,
+              img: ImgBlock,
+              a: AnchorBlock,
+            }}
           >
             <MDXRenderer>{mdx.body}</MDXRenderer>
           </MDXProvider>

@@ -1,7 +1,412 @@
 ---
 categories: tech
 description: 通过手动实现简易的微前端，来学习如何使用已有的微前端解决方案。
-date: 2022-08-09 00:44:59
+date: 2022-10-13 00:44:59
 title: 手动实现微前端
-tags: []
+tags: [架构]
 ---
+
+## 文章的目的
+
+> 手里的巨石应用越来越大了，是时候思考怎么用微前端来改造了。
+>
+> 我篇文章应该只能算是学习笔记，只有一个目的，就是通过自己动手做一个自行车，让自己更深入地了解奔驰的原理 🤪，所以不会做太多解释性的工作。
+
+首先是马丁老爷子网站的文章[micro-frontends](https://martinfowler.com/articles/micro-frontends.html)，这篇文章详细分析了微前端的原理和 pros & cons。我就不拾人牙慧了。
+
+阿里乾坤的文章：[微前端的核心价值](https://www.yuque.com/kuitos/gky7yw/rhduwc)
+
+要实现一个叫微前端的东西，首先要定义它：多个前端 APP 运行同时运行在一个网页上
+
+目前预想要搞清楚的问题：
+
+1. 样式隔离
+2. JS 隔离
+3. 跨应用通信
+4. 每个 app 可以独立维护和部署
+
+## 新建 MFE monorepo
+
+需要两个个 module，一个容器 app，一个远程 remote app，项目采用 NX monorepo。
+
+> 对 SPA 微前端来说 monorepo 是一种很好的代码管理模型，因为微前端的不同 APP 还是运行在同一个网页上，让他们的代码共享会比 multi repos 各自为战更好
+
+从头开始撸。
+
+**安装 nx cli**
+
+```shell
+npm i -g @nrwl/cli
+```
+
+> 如果安装过后跑 nx 命令得到`zsh: command not found: nx`, 按照这个指引重新安装一下 nx： [zsh: command not found: nx](https://stackoverflow.com/questions/65069128/zsh-command-not-found-nx)
+
+**新建 NX 工作区**
+
+```shell
+npx create-nx-workspace --preset=empty mfe-demo
+cd mfe-demo
+```
+
+**安装 NX 的 react 插件**
+
+```shell
+yarn add -D @nrwl/react
+```
+
+**新建容器 app**
+
+```shell
+nx g @nrwl/react:app shell
+```
+
+**新建 remote 子 APP**
+
+```shell
+nx g @nrwl/react:app remote
+```
+
+**使用[异步边界](https://webpack.docschina.org/concepts/module-federation/#Uncaught-Error-Shared-module-is-not-available-for-eager-consumption)(asynchronous boundary)把初始化代码拆分成更大的块**
+
+把 `/apps/shell/src/main.tsx`改名成`/apps/shell/src/bootstrap.tsx`
+
+然后新增 `index.ts`:
+
+```ts
+import('./bootstrap');
+```
+
+修改 nx 配置文件`/apps/shell/project.json`
+
+```json
+...
+options: {
+  ...
+   // "main": "apps/test/src/main.tsx",
+  "main": "apps/test/src/index.ts"
+}
+```
+
+对 remote app 做相同的事。
+
+### 配置 module-federation 插件
+
+参考 webpack5 [module-federation 文档](https://webpack.js.org/concepts/module-federation/)
+
+修改`/apps/shell/project.json`
+
+```json
+ "targets": {
+    "build": {
+      "options": {
+        // "webpackConfig": "@nrwl/react/plugins/webpack"
+        "webpackConfig": "apps/shell/webpack.config.js"
+      },
+```
+
+shell 目录下新建自定义 webpack 配置
+
+`webpack.config.js`
+
+```js
+const { ModuleFederationPlugin } = require('webpack').container;
+const deps = require('../../package.json').dependencies;
+
+module.exports = (config, context) => {
+  return {
+    ...config,
+    devServer: {
+      ...config.devServer,
+      // HACK ALERT: during async module loading, webpack will try to load the remote entry from http://localhost:3000
+      // and when it is not ready, it will start to redirect to http://localhost:5000 (local address) and throw the error,
+      // We need to force compiler to resolve the remote script strictly from remote host http://localhost:3000.
+      proxy: {
+        'http://localhost:3000': 'http://localhost:3000',
+      },
+    },
+    plugins: [
+      ...config.plugins,
+      new ModuleFederationPlugin({
+        name: 'shell',
+        remotes: {
+          remote: 'remote@http://localhost:3000/remoteEntry.js',
+        },
+        shared: {
+          ...deps,
+          react: { singleton: true, eager: true, requiredVersion: deps.react },
+          'react-dom': {
+            singleton: true,
+            eager: true,
+            requiredVersion: deps['react-dom'],
+          },
+        },
+      }),
+    ],
+  };
+};
+```
+
+对 remote app，类似 shell 一样修改`package.json`, 新增`webpack.config.js`
+
+```js
+const { ModuleFederationPlugin } = require('webpack').container;
+const deps = require('../../package.json').dependencies;
+
+module.exports = (config, context) => {
+  return {
+    ...config,
+    plugins: [
+      ...config.plugins,
+      new ModuleFederationPlugin({
+        name: 'remote',
+        filename: 'remoteEntry.js',
+        exposes: {
+          './App': './src/app/app',
+        },
+        shared: {
+          ...deps,
+          react: {
+            singleton: true,
+            eager: true,
+            requiredVersion: deps.react,
+          },
+          'react-dom': {
+            singleton: true,
+            eager: true,
+            requiredVersion: deps['react-dom'],
+          },
+        },
+      }),
+    ],
+  };
+};
+```
+
+### 运行 Shell APP
+
+**在 shell 中安装 remote app**
+
+`apps/shell/src/app.tsx`
+
+```tsx
+import { Suspense, lazy } from 'react';
+
+const RemoteApp = lazy(() => import('remote/App'));
+
+export function App() {
+  return (
+    <>
+      Shell App
+      <Suspense fallback={<div>Loading...</div>}>
+        <RemoteApp />
+      </Suspense>
+    </>
+  );
+}
+
+export default App;
+```
+
+**修改运行脚本**
+
+shell 会去 localhost:3000 拿打包过后的 remote 代码，所以需要修改一下 serve 脚本
+
+最外层 package.json
+
+```json
+{
+  ...
+  "scripts": {
+        "start:shell": "nx serve --project=shell --port=4999",
+    		"start:remote": "nx serve --project=remote --port=3000",
+    		"start:all": "yarn start:shell & yarn start:remote"
+  }
+}
+```
+
+**运行脚本**
+
+```shell
+yarn start:all
+```
+
+访问`localhost:4999`可以看到微前端本地应用正常运行。
+
+### NX 内部的封装
+
+NX 已经有不错的 MFE starter 了。[NX/react-module-federation](https://github.com/nrwl/react-module-federation)
+
+Nx 提供了一个封装好的`withModuleFederation`，可以方便地[fast build micro front end](https://nx.dev/recipe/faster-builds#summary)
+
+`withModuleFederation`源码：[nx repo](https://github.com/nrwl/nx/blob/master/packages/react/src/module-federation/with-module-federation.ts)，这个插件封装了 NX 自己的缓存配置，以及`ModuleFederationPlugin`的配置细节，我们不需要手动添加配置细节了。
+
+在上面的手动实现的步骤中我们需要手动给 remote app 指定端口，然后需要跑所有的 serve 脚本。
+
+借助 Nx 的 `@nrwl/react:module-federation-dev-server`执行器, 我们可以在 project.json 里面定义 dev server 的端口
+
+Remote app 的 project.json：
+
+```json
+...
+"target": {
+	...
+  "serve": {
+        "executor": "@nrwl/react:module-federation-dev-server",
+        "defaultConfiguration": "development",
+        "options": {
+          "buildTarget": "remote:build",
+          "hmr": true,
+          "port": 4201
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "remote:build:development"
+          },
+          "production": {
+            "buildTarget": "remote:build:production",
+            "hmr": false
+          }
+        }
+      },
+}
+```
+
+### 直接用 Nx 生成微前端项目
+
+以上的实现细节实际上 Nx 已经封装了。我们可以直接通过相关命令生成微前端项目，所以前面三节内容在实际工作中可以省略。
+
+新建一个微前端项目：
+
+```shell
+nx g @nrwl/react:host shell --remotes=remote1,remote2
+```
+
+生成的项目自动配好了`webpack.config.js`和`project.json`，并且默认的`defaultProject`是 shell app
+
+最外层 package.json
+
+```json
+...
+"scripts": {
+    "start": "nx serve",
+    "build": "nx build",
+    "test": "nx test"
+  },
+```
+
+本地测试
+
+```shell
+# 本地测试项目
+npm start
+# 打包代码
+npm build
+```
+
+### 打包
+
+在上一步我们本地测试没问题过后可以选择打包代码。本地测试的时候，所有的 App 都跑在 localhost 之下，在 NX 中，端口是在 project.json 中设置的：
+
+```json
+...
+ "serve": {
+      "executor": "@nrwl/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "shell:build",
+        "hmr": true,
+        // 本地server的端口
+        "port": 4200
+      },
+	}
+```
+
+实际部署过程中，我们可以根据自己的需要选择将不同的 App 部署到不同的域名下。这时候需要给 shell App 指定相应的 remote url
+
+webpack.config.prod.js
+
+```js
+const { withModuleFederation } = require('@nrwl/react/module-federation');
+const baseConfig = require('./module-federation.config');
+
+const prodConfig = {
+  ...baseConfig,
+  /*
+   * Remote overrides for production.
+   * Each entry is a pair of an unique name and the URL where it is deployed.
+   *
+   * e.g.
+   * remotes: [
+   *   ['app1', '//app1.example.com'],
+   *   ['app2', '//app2.example.com'],
+   * ]
+   *
+   * You can also use a full path to the remoteEntry.js file if desired.
+   *
+   * remotes: [
+   *   ['app1', '//example.com/path/to/app1/remoteEntry.js'],
+   *   ['app2', '//example.com/path/to/app2/remoteEntry.js'],
+   * ]
+   */
+  remotes: [['remote', '//myRemotesApp/']],
+};
+
+module.exports = withModuleFederation(prodConfig);
+```
+
+打包后的结构
+
+```
+dist
+  └── apps
+      ├── remote
+      ├── shell
+```
+
+OK，我们顺利地在一个网页上运行了两个 APP，微前端 so easy，下面就是一些“无关紧要”的技术细节了。
+
+## 样式隔离
+
+**样式穿透**
+
+父应用的全局样式污染子应用。穿透的原因很多，常见的两种情况
+
+1. 父应用直接修改了标签的默认样式
+
+   ```css
+   p {
+     margin: 1rem;
+   }
+   ```
+
+2. 父应用使用了`!important`
+
+**样式覆盖**
+
+子应用类名会覆盖父应用的类名。
+
+如果我们的目的只是用微前端拆分巨石应用而不是要让各 App 互不耦合完全不影响彼此，那么就可以假设主 App 和子 App 团队之间有沟通，父 App 的一些全局样式和样式穿透是可以接受的。
+
+对于样式的覆盖，我们可以很自然地想到加前缀。参考 [从零开始写一个微前端框架-样式隔离篇](https://github.com/micro-zoe/micro-app/issues/20)
+
+如果项目是用的 css module 或者 css-in-js 库（styled-component 之类的），就不用太关注这个问题，因为每个类选择器的名字都加上了唯一的短哈希。
+
+## JS 隔离
+
+[从零开始写一个微前端框架-沙箱篇](https://github.com/micro-zoe/micro-app/issues/19)
+
+😅 这个系列写的真的不错。。留个链接。
+
+JS 沙箱的目的是让子应用和基座应用完全解耦。
+
+如果只是按照不同的功能区和贡献团队来分离巨石应用，实际上 JS 沙箱的需求并不大。因为并没有 APP 的插卸需求，子应用共用一个 window 对象是可以接受的。
+
+## 跨应用通信
+
+不同于 iframe，单页微前端的所有 app 还是直接从全局变量里拿到全局状态。
+
+找了下资料，乾坤和其他微前端框架在数据通信这一块都是用的发布订阅者模式，常见的 event bus
+
+[从零开始写一个微前端框架-数据通信篇](https://github.com/micro-zoe/micro-app/issues/21)
+
+## 暂时先写到这里遇到坑了再慢慢记录

@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 
-import * as styles from './index.module.less';
+import * as styles from './Trigger.module.less';
 import { selector, useRecoilValue, useSetRecoilState } from 'recoil';
 import { sceneAtom, skipAtom, triggerAtom } from '../../store/atom';
 

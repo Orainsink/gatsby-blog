@@ -2,7 +2,7 @@ import { ReactElement, useEffect } from 'react';
 import { ThemeToggler } from 'gatsby-plugin-dark-mode';
 import classnames from 'classnames';
 
-import * as styles from './index.module.less';
+import * as styles from './ThemeBtn.module.less';
 import { useMedia } from '../../../hooks';
 import { Theme } from '../../../assets/constants/common';
 import { useSetRecoilState } from 'recoil';

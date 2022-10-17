@@ -1,5 +1,4 @@
 declare const __PATH_PREFIX__: string;
-declare module '*.json';
 declare class MediaMetadata {
   title: string;
   artist: string;
@@ -14,10 +13,6 @@ declare class MediaMetadata {
     artwork: { [key: string]: string }[];
   });
 }
-declare module '*.css' {
-  const classes: { [key: string]: string };
-  export default classes;
-}
 declare module '*.module.less' {
   interface ClassNames {
     [className: string]: string;
@@ -26,13 +21,12 @@ declare module '*.module.less' {
   export = classNames;
 }
 
+declare module '*.json';
 declare module '*.gltf';
 declare module '*.svg';
 declare module '*.png';
 declare module '*.jpeg';
 declare module '*.glsl';
-declare module 'classnames';
-declare module '@mdx-js/react';
 declare module 'gatsby-plugin-dark-mode';
 declare module 'jinrishici';
 declare module 'wordcloud';
@@ -53,4 +47,12 @@ declare module '*.gql' {
 declare module 'escape-string-regexp' {
   declare function escapeStringRegexp(str: string): string;
   export default escapeStringRegexp;
+}
+
+declare module '@mdx-js/react' {
+  type MDXProps = {
+    children: React.ReactNode;
+    components: any;
+  };
+  export class MDXProvider extends React.Component<MDXProps> {}
 }

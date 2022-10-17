@@ -4,7 +4,7 @@ import { useRecoilValue } from 'recoil';
 
 import { Tags } from '../Tags';
 import { generatePath } from '../../utils/generatePath';
-import * as styles from './index.module.less';
+import * as styles from './PostList.module.less';
 import { FileEdge } from '../../../graphql-types';
 import { filterAtom } from '../../store/atom';
 interface Props {

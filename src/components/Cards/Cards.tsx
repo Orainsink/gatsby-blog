@@ -4,7 +4,7 @@ import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 
 import { ReactComponent as MarkSvg } from '../../assets/img/mark.svg';
-import * as styles from './index.module.less';
+import * as styles from './Cards.module.less';
 import { GetTagsQuery } from '../../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 

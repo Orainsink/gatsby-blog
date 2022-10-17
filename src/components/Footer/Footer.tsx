@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import classnames from 'classnames';
 
 import { GithubOutlined, MailOutlined } from '@ant-design/icons';
-import * as styles from './index.module.less';
+import * as styles from './Footer.module.less';
 
 /**Footer */
 export const Footer = (): ReactElement => (

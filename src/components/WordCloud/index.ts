@@ -1,0 +1,1 @@
+export { WordCloud } from './WordCloud';

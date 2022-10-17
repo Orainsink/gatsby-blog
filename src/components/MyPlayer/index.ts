@@ -1,0 +1,1 @@
+export { MyPlayer } from './MyPlayer';

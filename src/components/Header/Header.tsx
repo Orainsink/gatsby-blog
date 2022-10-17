@@ -4,8 +4,8 @@ import { Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { GithubOutlined, SearchOutlined } from '@ant-design/icons';
 
-import { MyPlayer } from '../MyPlayer';
-import { SearchDrawer } from '../Algolia';
+import { MyPlayer } from '../MyPlayer/MyPlayer';
+import { SearchDrawer } from '../Algolia/SearchDrawer';
 import { useMedia, useHasMounted } from '../../hooks';
 import * as styles from './index.module.less';
 import { ThemeBtn } from './ThemeBtn';
@@ -23,7 +23,7 @@ import {
 } from '../../store/atom';
 
 /**Header */
-const Header = memo((): ReactElement | null => {
+export const Header = memo((): ReactElement | null => {
   const data = useStaticQuery<
     DeepRequiredAndNonNullable<GetHeaderQuery>
   >(graphql`
@@ -147,5 +147,3 @@ const Header = memo((): ReactElement | null => {
     </header>
   ) : null;
 });
-
-export default Header;

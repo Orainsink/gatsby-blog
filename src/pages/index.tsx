@@ -3,11 +3,11 @@ import { PageProps, graphql } from 'gatsby';
 
 import { Layout } from '../layout/IndexLayout';
 import { SeoHelmet } from '../components/SeoHelmet';
-import { CategoryComponent } from '../components/Cards';
+import { CategoryComponent } from '../components/Cards/Cards';
 import { Trigger } from '../components/Trigger';
 import { Poem } from '../components/Poem';
 import { PostList } from '../components/PostList';
-import { HomeScene } from '../components/HomeScene';
+import { HomeScene } from '../components/HomeScene/HomeScene';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { FileEdge, GetPageDataQuery } from '../../graphql-types';
 

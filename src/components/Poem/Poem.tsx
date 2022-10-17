@@ -1,7 +1,7 @@
 import { useEffect, ReactElement } from 'react';
 import { load as poemLoader } from 'jinrishici';
 
-import * as styles from './index.module.less';
+import * as styles from './Poem.module.less';
 import { useLocalStorage } from '../../hooks';
 
 interface PoemData {
