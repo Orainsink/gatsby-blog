@@ -3,10 +3,15 @@ import { Card } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 
-import { ReactComponent as MarkSvg } from '../../assets/img/mark.svg';
-import * as styles from './Cards.module.less';
 import { GetTagsQuery } from '../../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
+import {
+  CardSection,
+  StyledTitle,
+  StyledMarkSvg,
+  StyledCards,
+  StyledCard,
+} from './Card.styles';
 
 const { Meta } = Card;
 
@@ -40,8 +45,8 @@ const getColumn = (group: GroupItem[]) => {
         <StaticImage
           src="../../../content/assets/leetcode.png"
           alt="leetcode"
-          className={styles.imgWrap}
           placeholder="blurred"
+          className="card-static-image"
         />
       ),
     },
@@ -54,8 +59,8 @@ const getColumn = (group: GroupItem[]) => {
         <StaticImage
           src="../../../content/assets/snippet.png"
           alt="snippet"
-          className={styles.imgWrap}
           placeholder="blurred"
+          className="card-static-image"
         />
       ),
     },
@@ -68,8 +73,8 @@ const getColumn = (group: GroupItem[]) => {
         <StaticImage
           src="../../../content/assets/随笔.png"
           alt="essay"
-          className={styles.imgWrap}
           placeholder="blurred"
+          className="card-static-image"
         />
       ),
     },
@@ -82,8 +87,8 @@ const getColumn = (group: GroupItem[]) => {
         <StaticImage
           src="../../../content/assets/javascript.png"
           alt="tech"
-          className={styles.imgWrap}
           placeholder="blurred"
+          className="card-static-image"
         />
       ),
     },
@@ -106,24 +111,23 @@ export const CategoryComponent = (): ReactElement => {
   const { group } = data.allFile;
 
   return (
-    <section className={styles.wrap}>
-      <div className={styles.title}>
-        <MarkSvg className={styles.mark} />
+    <CardSection>
+      <StyledTitle>
+        <StyledMarkSvg />
         欢迎光临！博主 莫沉 是个切图仔，学习Go和webGL中。
-      </div>
-      <div className={styles.cardsContainer}>
+      </StyledTitle>
+      <StyledCards>
         {getColumn(group).map((item) => (
-          <Card
+          <StyledCard
             key={item.name}
             hoverable
-            className={styles.cardWrap}
             onClick={() => navigate(item.path)}
             cover={item.img}
           >
             <Meta title={item.name} description={`${item.count}篇文章`} />
-          </Card>
+          </StyledCard>
         ))}
-      </div>
-    </section>
+      </StyledCards>
+    </CardSection>
   );
 };

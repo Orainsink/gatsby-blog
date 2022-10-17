@@ -1,0 +1,12 @@
+// https://github.com/gatsbyjs/gatsby/blob/master/docs/docs/reference/built-in-components/gatsby-plugin-image.md#using-staticimage-with-css-in-js-libraries
+// styled components does not work with static image
+.card-static-image {
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  transition: all 500ms ease;
+
+  @media (max-width: 767px) {
+    height: 100px !important;
+  }
+}

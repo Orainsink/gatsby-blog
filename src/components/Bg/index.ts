@@ -1,1 +1,0 @@
-export { Bg } from './Bg';

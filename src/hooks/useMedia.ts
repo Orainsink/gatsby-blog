@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { isClient } from '../utils/isClient';
-import { MediaQueryMap } from '../assets/constants/common';
+import { MediaQueryMap } from '../assets/constants/breakPoints';
 
 type MediaQuery = keyof typeof MediaQueryMap | 'prefers-color-scheme: dark';
 /**
