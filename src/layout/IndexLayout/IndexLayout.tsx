@@ -1,8 +1,7 @@
 import { useEffect, ReactNode, ReactElement } from 'react';
-import classnames from 'classnames';
+import styled from 'styled-components';
 
 import { SideBar, Info, TagsBlock, Tools } from '../../components/SideBlocks';
-import * as styles from './index.module.less';
 import { useBackgroundColor } from '../../hooks';
 import { Comment } from '../../components/Comment';
 import { Footer } from '../../components/Footer';
@@ -20,6 +19,41 @@ import {
   skipAtom,
   triggerAtom,
 } from '../../store/atom';
+import { containerStyles, Main, MainWrap, Wrapper } from '../Layout.styles';
+
+const Container = styled.div`
+  ${containerStyles}
+`;
+
+const IndexWrapper = styled(Wrapper)<{ wrapperClass: string }>`
+  ${({ wrapperClass }) => {
+    switch (wrapperClass) {
+      case 'disActive':
+        return `top: 0;`;
+      case 'trigger':
+        return `top: 90vh;`;
+      case 'active':
+        return `top: 100vh;`;
+      default:
+        return;
+    }
+  }}
+`;
+
+const ClickTip = styled.div<{ show: boolean }>`
+  color: var(--text-color);
+  font-size: 18px;
+  opacity: 0;
+  transition: opacity 0.6s ease-in;
+  position: absolute;
+  top: calc(5vh - 15px);
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+
+  ${({ show }) => show && `opacity: 1;`}
+`;
 
 interface Props {
   children: ReactNode;
@@ -32,11 +66,7 @@ const wrapperClassSelector = selector({
     const trigger = get(triggerAtom);
     const skip = get(skipAtom);
 
-    return !scene || skip
-      ? styles.disActive
-      : trigger
-      ? styles.trigger
-      : styles.active;
+    return !scene || skip ? 'disActive' : trigger ? 'trigger' : 'active';
   },
 });
 
@@ -57,29 +87,23 @@ export const Layout = ({ children }: Props): ReactElement => {
   }, []);
 
   return (
-    <div className={classnames(styles.wrapper, wrapperClass)} id="markdownBody">
-      {scene && !skip && (
-        <div
-          className={classnames(styles.clickTip, trigger ? styles.show : null)}
-        >
-          Click to slide
-        </div>
-      )}
+    <IndexWrapper wrapperClass={wrapperClass} id="markdownBody">
+      {scene && !skip && <ClickTip show={trigger}>Click to slide</ClickTip>}
       <Bg />
-      <main className={styles.main}>
-        <div className={styles.container}>
-          <div className={styles.mainWrap}>
+      <Main>
+        <Container>
+          <MainWrap>
             {children}
             <Comment />
-          </div>
+          </MainWrap>
           <SideBar>
             <Info />
             <TagsBlock />
             <Tools />
           </SideBar>
-        </div>
-      </main>
+        </Container>
+      </Main>
       <Footer />
-    </div>
+    </IndexWrapper>
   );
 };

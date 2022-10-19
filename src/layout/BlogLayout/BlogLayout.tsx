@@ -1,13 +1,17 @@
 import { useEffect, ReactNode, ReactElement } from 'react';
-import classnames from 'classnames';
+import styled from 'styled-components';
 
 import { hasArrowAtom, sceneAtom, skipAtom } from '../../store/atom';
 import { Info, SideBar } from '../../components/SideBlocks';
-import * as styles from '../IndexLayout/index.module.less';
 import { useBackgroundColor } from '../../hooks';
 import { useSetRecoilState } from 'recoil';
 import { Footer } from '../../components/Footer';
 import { Bg } from '../../components/Bg';
+import { containerStyles, Main, Wrapper, MainWrap } from '../Layout.styles';
+
+const BlogMain = styled(Main)`
+  ${containerStyles}
+`;
 
 interface Props {
   content?: ReactNode;
@@ -33,16 +37,16 @@ export const Layout = (props: Props): ReactElement => {
   }, []);
 
   return (
-    <div className={styles.wrapper}>
+    <Wrapper>
       <Bg />
-      <main className={classnames(styles.main, styles.container)} id="main">
-        <div className={styles.mainWrap}>{children}</div>
+      <BlogMain id="main">
+        <MainWrap>{children}</MainWrap>
         <SideBar>
           <Info />
           {sideBlocks}
         </SideBar>
-      </main>
+      </BlogMain>
       <Footer />
-    </div>
+    </Wrapper>
   );
 };

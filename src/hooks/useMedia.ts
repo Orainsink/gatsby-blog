@@ -4,6 +4,9 @@ import { isClient } from '../utils/isClient';
 import { MediaQueryMap } from '../assets/constants/breakPoints';
 
 type MediaQuery = keyof typeof MediaQueryMap | 'prefers-color-scheme: dark';
+
+const removeMediaPrefix = (query: string) => query.replace(/@media\s/, '');
+
 /**
  * tracks state of a CSS media query
  * https://github.com/streamich/react-use/blob/master/src/useMedia.ts
@@ -30,7 +33,7 @@ export const useMedia = (
   useEffect(() => {
     let mounted = true;
     // @ts-ignore
-    const _query = MediaQueryMap[query] ?? query;
+    const _query = removeMediaPrefix(MediaQueryMap[query] ?? query);
     const mql = window.matchMedia(_query);
     const onChange = () => {
       if (!mounted) {
