@@ -1,11 +1,11 @@
 import { useEffect, ReactNode, ReactElement } from 'react';
 import styled from 'styled-components';
 
-import { SideBar, Info, TagsBlock, Tools } from '../../components/SideBlocks';
-import { useBackgroundColor } from '../../hooks';
-import { Comment } from '../../components/Comment';
-import { Footer } from '../../components/Footer';
-import { Bg } from '../../components/Bg';
+import { SideBar, Info, TagsBlock, Tools } from '../components/SideBlocks';
+import { useBackgroundColor } from '../hooks';
+import { Comment } from '../components/Comment';
+import { Footer } from '../components/Footer';
+import { Bg } from '../components/Bg';
 import {
   selector,
   useRecoilValue,
@@ -18,8 +18,8 @@ import {
   sceneAtom,
   skipAtom,
   triggerAtom,
-} from '../../store/atom';
-import { containerStyles, Main, MainWrap, Wrapper } from '../Layout.styles';
+} from '../store/atom';
+import { containerStyles, Main, MainWrap, Wrapper } from './Layout.styles';
 
 const Container = styled.div`
   ${containerStyles}

@@ -1,13 +1,13 @@
 import { useEffect, ReactNode, ReactElement } from 'react';
 import styled from 'styled-components';
 
-import { hasArrowAtom, sceneAtom, skipAtom } from '../../store/atom';
-import { Info, SideBar } from '../../components/SideBlocks';
-import { useBackgroundColor } from '../../hooks';
+import { hasArrowAtom, sceneAtom, skipAtom } from '../store/atom';
+import { Info, SideBar } from '../components/SideBlocks';
+import { useBackgroundColor } from '../hooks';
 import { useSetRecoilState } from 'recoil';
-import { Footer } from '../../components/Footer';
-import { Bg } from '../../components/Bg';
-import { containerStyles, Main, Wrapper, MainWrap } from '../Layout.styles';
+import { Footer } from '../components/Footer';
+import { Bg } from '../components/Bg';
+import { containerStyles, Main, Wrapper, MainWrap } from './Layout.styles';
 
 const BlogMain = styled(Main)`
   ${containerStyles}
