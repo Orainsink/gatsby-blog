@@ -1,14 +1,66 @@
 import { useMemo, useCallback, ReactElement } from 'react';
 import { Col, Row, Select } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
-import classnames from 'classnames';
+import styled from 'styled-components';
 
 import { Calendar } from './CustomCalendar';
-import * as styles from './index.module.less';
 import { useColFlex } from './useColFlex';
 import { FileEdge } from '../../../graphql-types';
 import { useSetRecoilState } from 'recoil';
 import { filterAtom } from '../../store/atom';
+import { BaseCol, Title } from './SideBlocks.styles';
+
+const CalendarHeaderContainer = styled(Row)`
+  padding: 8px;
+`;
+
+const Header = styled(Col)`
+  font-weight: bold;
+  font-size: 16px;
+  color: var(--text-color);
+`;
+
+const CalendarCell = styled.div`
+  text-align: center;
+`;
+
+const Count = styled.div`
+  font-size: 14px;
+`;
+
+const CalendarContainer = styled(BaseCol)`
+  height: unset;
+  .ant-picker-calendar {
+    background: var(--main-background);
+  }
+  .ant-picker-cell-disabled {
+    color: var(--text-color-secondary) !important;
+  }
+  .ant-picker-cell-disabled::before {
+    background: none;
+  }
+  .ant-picker-cell-in-view {
+    transition: all 0.3s linear;
+    color: var(--primary-color);
+    &:hover {
+      background: var(--component-hover);
+    }
+  }
+  .ant-picker-calendar .ant-picker-panel {
+    background: var(--main-background);
+    border-top: 1px solid var(--border-color);
+  }
+  .ant-select {
+    background-color: 1px solid var(--main-background) !important;
+    border: var(--border-color) !important;
+  }
+  .ant-select-arrow {
+    color: var(--text-color);
+  }
+  .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    background-color: var(--component-background);
+  }
+`;
 
 interface Props {
   posts: FileEdge[];
@@ -43,17 +95,17 @@ export const CalendarBlock = ({ posts }: Props): ReactElement => {
       if (allMonths[dayjs(currentDate).format('YYYY/MM')]) {
         const count = allMonths[dayjs(currentDate).format('YYYY/MM')];
         return (
-          <div className={styles.calendarCell}>
+          <CalendarCell>
             <div>{dayjs(currentDate).format('M月')}</div>
-            <div className={styles.count}>{count + ' 篇'}</div>
-          </div>
+            <Count>{count + ' 篇'}</Count>
+          </CalendarCell>
         );
       } else {
         return (
-          <div className={styles.calendarCell}>
+          <CalendarCell>
             <div>{dayjs(currentDate).format('M月')}</div>
             <div style={{ height: '28px' }}></div>
-          </div>
+          </CalendarCell>
         );
       }
     },
@@ -80,8 +132,8 @@ export const CalendarBlock = ({ posts }: Props): ReactElement => {
       }
 
       return (
-        <Row className={styles.calendar} justify="space-between">
-          <Col className={styles.header}>更新月历</Col>
+        <CalendarHeaderContainer justify="space-between">
+          <Header>更新月历</Header>
           <Col>
             <Select
               size="small"
@@ -95,7 +147,7 @@ export const CalendarBlock = ({ posts }: Props): ReactElement => {
               {options}
             </Select>
           </Col>
-        </Row>
+        </CalendarHeaderContainer>
       );
     },
     []
@@ -113,8 +165,8 @@ export const CalendarBlock = ({ posts }: Props): ReactElement => {
   );
 
   return (
-    <Col flex={colFlex} className={classnames(styles.col, styles.calendarWrap)}>
-      <div className={styles.title}>Calendar</div>
+    <CalendarContainer flex={colFlex}>
+      <Title>Calendar</Title>
       <Calendar
         fullscreen={false}
         mode="year"
@@ -124,6 +176,6 @@ export const CalendarBlock = ({ posts }: Props): ReactElement => {
         disabledDate={disableDate}
         monthFullCellRender={monthCellRender}
       />
-    </Col>
+    </CalendarContainer>
   );
 };

@@ -13,14 +13,24 @@ import {
   BufferGeometry,
 } from 'three';
 import gsap from 'gsap';
-import { Col } from 'antd';
-import classnames from 'classnames';
 import { useGLTF } from '@react-three/drei';
+import styled from 'styled-components';
 
-import * as styles from './index.module.less';
 import { useMedia, useIsDark } from '../../hooks';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 import { GetMoogleFileQuery } from '../../../graphql-types';
+import { BaseCol } from './SideBlocks.styles';
+
+const CanvasContainer = styled(BaseCol)`
+  padding: 0;
+  canvas {
+    &:focus,
+    &:focus-within {
+      outline: none;
+    }
+  }
+`;
+
 interface Props {
   url: string;
   isDark: boolean;
@@ -102,8 +112,8 @@ const Modal = memo(({ url, isDark }: Props) => {
   });
 
   return (
-    <mesh ref={moogleRef}>
-      <points ref={pointsRef}>
+    <mesh ref={moogleRef as any}>
+      <points ref={pointsRef as any}>
         <bufferGeometry {...nodes.mesh_0.geometry} ref={geomRef} />
         <pointsMaterial
           color={isDark ? '#efefef' : '#0f0f0f'}
@@ -131,10 +141,7 @@ const Moogle = () => {
   const isDark = useIsDark();
 
   return (
-    <Col
-      flex={isDesktop ? '0 0 300px' : '1 1 300px'}
-      className={classnames(styles.col, styles.canvasWrap)}
-    >
+    <CanvasContainer flex={isDesktop ? '0 0 300px' : '1 1 300px'}>
       <Canvas resize={{ polyfill: ResizeObserver }}>
         <ambientLight
           attach="light"
@@ -146,7 +153,7 @@ const Moogle = () => {
           <Modal url={url} isDark={isDark} />
         </Suspense>
       </Canvas>
-    </Col>
+    </CanvasContainer>
   );
 };
 export default memo(Moogle);

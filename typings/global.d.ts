@@ -13,13 +13,6 @@ declare class MediaMetadata {
     artwork: { [key: string]: string }[];
   });
 }
-declare module '*.module.less' {
-  interface ClassNames {
-    [className: string]: string;
-  }
-  const classNames: ClassNames;
-  export = classNames;
-}
 
 declare module '*.json';
 declare module '*.gltf';

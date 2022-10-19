@@ -1,22 +1,22 @@
 import { ReactElement } from 'react';
-import { Col } from 'antd';
-import classnames from 'classnames';
+import styled from 'styled-components';
 
 import { useMedia } from '../../hooks';
-import * as styles from './index.module.less';
 import { WordCloud } from '../WordCloud';
+import { BaseCol, Title } from './SideBlocks.styles';
+
+const WordCloudContainer = styled(BaseCol)`
+  overflow: hidden;
+`;
 
 /* wordCloud */
 export const TagsBlock = (): ReactElement => {
   const isDesktop = useMedia('isDesktop');
 
   return (
-    <Col
-      flex={isDesktop ? '0 0 300px' : '1 1 300px'}
-      className={classnames(styles.wordCloudWrap, styles.col)}
-    >
-      <div className={styles.title}>TAGS</div>
+    <WordCloudContainer flex={isDesktop ? '0 0 300px' : '1 1 300px'}>
+      <Title>TAGS</Title>
       <WordCloud jump height={200} />
-    </Col>
+    </WordCloudContainer>
   );
 };

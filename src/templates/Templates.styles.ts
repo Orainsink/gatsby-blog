@@ -1,10 +1,6 @@
-/**
-* mkdowm parse styles
-*/
-body {
-  counter-reset: chapter;
-}
-.container {
+import styled from 'styled-components';
+
+export const Container = styled.section`
   a {
     color: var(--primary-color);
     border-bottom: none;
@@ -45,8 +41,9 @@ body {
       content: counter(chapter) '. ';
     }
   }
-  // 锚点偏移
-  @media screen and (min-width: 768px) {
+
+  // anchor offset
+  ${({ theme }) => theme.media.isNotMobile} {
     *[id] {
       padding-top: 90px;
       margin-top: -70px;
@@ -55,15 +52,16 @@ body {
       top: 70px;
     }
   }
-}
-.tableContents {
+`;
+
+export const TableContents = styled.div`
   background: transparent;
   margin-bottom: 1em;
   position: relative;
   z-index: auto;
   border-left: 4px solid var(--border-color);
   border-radius: var(--border-radius-base);
-  & :global(.ant-anchor-wrapper) {
+  .ant-anchor-wrapper {
     background: unset;
   }
   &::after {
@@ -90,8 +88,14 @@ body {
     margin: 0;
     list-style: decimal;
   }
-}
-.lead {
+`;
+
+export const License = styled.a`
+  vertical-align: -3px;
+  margin-left: 1em;
+`;
+
+export const LeadUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -100,17 +104,12 @@ body {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
-}
-@media (max-width: 768px) {
-  .lead {
+
+  ${({ theme }) => theme.media.isMobile} {
     padding: 1em 0;
     li {
       width: 100%;
       padding: 8px;
     }
   }
-}
-.licence {
-  vertical-align: -3px;
-  margin-left: 1em;
-}
+`;

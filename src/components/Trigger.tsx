@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
+import styled from 'styled-components';
 
-import * as styles from './Trigger.module.less';
 import { selector, useRecoilValue, useSetRecoilState } from 'recoil';
-import { sceneAtom, skipAtom, triggerAtom } from '../../store/atom';
+import { sceneAtom, skipAtom, triggerAtom } from '../store/atom';
 
 const hideTriggerSelector = selector({
   key: 'hideTrigger',
@@ -13,6 +13,17 @@ const hideTriggerSelector = selector({
     return skip || !scene;
   },
 });
+
+const TriggerContainer = styled.div`
+  position: fixed;
+  z-index: 11;
+  width: 100%;
+  height: 80px;
+  cursor: pointer;
+  text-align: center;
+  top: auto;
+  bottom: 0;
+`;
 
 /**
  * scene Trigger
@@ -25,8 +36,7 @@ export const Trigger = (): ReactElement | null => {
   if (hideTrigger) return null;
 
   return (
-    <div
-      className={styles.trigger}
+    <TriggerContainer
       onMouseEnter={() => setTrigger(true)}
       onMouseLeave={() => setTrigger(false)}
       onClick={() => {

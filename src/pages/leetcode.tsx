@@ -1,12 +1,10 @@
 import { useMemo, ReactElement } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
-import { Button, Divider, Table, Tag } from 'antd';
-import { ReloadOutlined } from '@ant-design/icons';
+import { Button, Tag } from 'antd';
 import dayjs from 'dayjs';
 
 import { SeoHelmet } from '../components/SeoHelmet';
 import { Layout } from '../layout/BlogLayout';
-import * as styles from './archives/index.module.less';
 import { generatePath } from '../utils/generatePath';
 import { ColumnsType } from 'antd/lib/table';
 import { useResetKey, useMedia, useIsDark } from '../hooks';
@@ -15,6 +13,7 @@ import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { GetLeetcodePageDataQuery } from '../../graphql-types';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
+import { PageDivider, ReloadIcon, WrappedTable } from '../layout/Pages.styles';
 
 type Data = DeepRequiredAndNonNullable<GetLeetcodePageDataQuery>;
 interface ColumnItemType {
@@ -156,14 +155,11 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
   return (
     <Layout>
       <SeoHelmet title="Leetcode-归档" />
-      <Divider orientation="center" className={styles.divider}>
+      <PageDivider orientation="center">
         {curDate ? curDate : 'LEETCODE'}
-        {curDate ? (
-          <ReloadOutlined className={styles.reloadIcon} onClick={resetFilter} />
-        ) : null}
-      </Divider>
-      <Table<ColumnItemType>
-        rowClassName={styles.clsRow}
+        {curDate ? <ReloadIcon onClick={resetFilter} /> : null}
+      </PageDivider>
+      <WrappedTable
         columns={isMobile ? smallColumns : columns}
         dataSource={datas as any}
         rowKey="slug"
@@ -173,7 +169,7 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
         onRow={(row) => ({
           onClick: () => navigate(generatePath(row.categories, row.slug)),
         })}
-      ></Table>
+      />
     </Layout>
   );
 };

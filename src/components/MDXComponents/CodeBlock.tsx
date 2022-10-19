@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, ReactElement } from 'react';
+import { useState, useCallback, ReactElement } from 'react';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 import { Button } from 'antd';
@@ -37,9 +37,7 @@ export const CodeBlock = ({
     document.body.removeChild(el);
   }, []);
 
-  const theme = useMemo(() => {
-    return isDark && hasMounted ? vsDark : lightTheme;
-  }, [hasMounted, isDark]);
+  const theme = isDark && hasMounted ? vsDark : lightTheme;
 
   return (
     <Highlight

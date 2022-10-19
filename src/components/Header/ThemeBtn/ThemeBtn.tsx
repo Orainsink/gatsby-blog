@@ -1,12 +1,17 @@
 import { ReactElement, useEffect } from 'react';
 import { ThemeToggler } from 'gatsby-plugin-dark-mode';
-import classnames from 'classnames';
 
-import * as styles from './ThemeBtn.module.less';
 import { useMedia } from '../../../hooks';
 import { Theme } from '../../../assets/constants/common';
 import { useSetRecoilState } from 'recoil';
 import { themeAtom } from '../../../store/atom';
+import {
+  Btn,
+  Checkbox,
+  DayNightToggleContainer,
+  Feature,
+} from './ThemeBtn.styles';
+
 interface ThemeTogglerHelper {
   theme: string;
   toggleTheme: (theme: string) => void;
@@ -29,23 +34,24 @@ export const ThemeBtn = (): ReactElement => {
       {({ theme, toggleTheme }: ThemeTogglerHelper) => {
         if (!theme) return;
 
+        const isDay = theme !== Theme.DARK;
+
         return (
-          <div className={classnames(styles.toggle, styles.daynight)}>
-            <input
+          <DayNightToggleContainer>
+            <Checkbox
               type="checkbox"
               id="toggle--daynight"
-              className={styles.checkbox}
               onChange={(e) => {
                 const curTheme = e.target.checked ? Theme.LIGHT : Theme.DARK;
                 toggleTheme(curTheme);
                 setTheme(curTheme);
               }}
-              checked={theme !== Theme.DARK}
+              checked={isDay}
             />
-            <label className={styles.btn} htmlFor="toggle--daynight">
-              <span className={styles.feature}></span>
-            </label>
-          </div>
+            <Btn htmlFor="toggle--daynight">
+              <Feature isDay={isDay} />
+            </Btn>
+          </DayNightToggleContainer>
         );
       }}
     </ThemeToggler>

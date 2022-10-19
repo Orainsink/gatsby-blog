@@ -8,7 +8,6 @@ import { Anchor } from 'antd';
 import { Layout } from '../layout/BlogLayout';
 import { SeoHelmet } from '../components/SeoHelmet';
 import { Tags } from '../components/Tags';
-import * as styles from './index.module.less';
 import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
 import { useMedia } from '../hooks';
 import { generatePath } from '../utils/generatePath';
@@ -20,6 +19,7 @@ import {
   DeepRequiredAndNonNullable,
   TableOfContents,
 } from '../../typings/custom';
+import { Container, LeadUl, License, TableContents } from './Templates.styles';
 
 type Data = DeepRequiredAndNonNullable<GetSnippetPostQuery>;
 interface Props {
@@ -75,19 +75,18 @@ const SnippetPostTemplate = ({
           >
             {date}
             <span style={{ marginLeft: '1em' }}>{categories}</span>
-            <a
-              className={styles.licence}
+            <License
               rel="license"
               target="_blank"
               href="http://creativecommons.org/licenses/by-nc/4.0/"
               title="This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
             >
               <LicenseSvg />
-            </a>
+            </License>
           </div>
         </header>
         {!!tableOfContents && !isDesktop && (
-          <div className={styles.tableContents}>
+          <TableContents>
             <Anchor
               getContainer={() => document.body as HTMLElement}
               targetOffset={200}
@@ -95,9 +94,9 @@ const SnippetPostTemplate = ({
             >
               {renderLinks(tableOfContents)}
             </Anchor>
-          </div>
+          </TableContents>
         )}
-        <section className={styles.container}>
+        <Container>
           <MDXProvider
             components={{
               code: CodeBlock,
@@ -107,7 +106,7 @@ const SnippetPostTemplate = ({
           >
             <MDXRenderer>{mdx.body}</MDXRenderer>
           </MDXProvider>
-        </section>
+        </Container>
         <hr
           style={{
             marginBottom: '1.6em',
@@ -117,7 +116,7 @@ const SnippetPostTemplate = ({
       </article>
 
       <nav>
-        <ul className={styles.lead}>
+        <LeadUl>
           <li style={{ textAlign: 'left' }}>
             {previous && (
               <Link
@@ -141,7 +140,7 @@ const SnippetPostTemplate = ({
               </Link>
             )}
           </li>
-        </ul>
+        </LeadUl>
       </nav>
       {mdx && <Comment />}
     </Layout>

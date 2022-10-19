@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import { PageProps, graphql } from 'gatsby';
+import styled from 'styled-components';
 
 import { Layout } from '../layout/IndexLayout';
 import { SeoHelmet } from '../components/SeoHelmet';
@@ -10,6 +11,12 @@ import { PostList } from '../components/PostList';
 import { HomeScene } from '../components/HomeScene/HomeScene';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { FileEdge, GetPageDataQuery } from '../../graphql-types';
+
+const ListHeaderText = styled.h5`
+  text-align: center;
+  padding: 2em 0;
+  margin: 0;
+`;
 
 type Data = DeepRequiredAndNonNullable<GetPageDataQuery>;
 const Index = ({ data }: PageProps<Data>): ReactElement => {
@@ -28,15 +35,7 @@ const Index = ({ data }: PageProps<Data>): ReactElement => {
         <SeoHelmet title={siteTitle} />
         <Poem />
         <CategoryComponent />
-        <h5
-          style={{
-            textAlign: 'center',
-            padding: '2em 0',
-            margin: 0,
-          }}
-        >
-          最近五篇文章
-        </h5>
+        <ListHeaderText>最近五篇文章</ListHeaderText>
         <PostList posts={posts} />
       </Layout>
     </>

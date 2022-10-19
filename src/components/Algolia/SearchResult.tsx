@@ -7,9 +7,57 @@ import {
   Snippet,
 } from 'react-instantsearch-dom';
 import { Divider } from 'antd';
+import styled from 'styled-components';
 
-import * as styles from './index.module.less';
 import { generatePath } from '../../utils/generatePath';
+
+const ResultWrapper = styled.div`
+  height: 100%;
+  margin-top: 0.5em;
+  mark {
+    background-color: var(--component-hover);
+    color: var(--highlight-color);
+  }
+
+  .ais-Hits-item {
+    border-left: 4px solid var(--border-color);
+    padding: 10px;
+    &:hover {
+      background-color: var(--component-hover);
+    }
+  }
+  .ais-Highlight {
+    font-weight: bold;
+    color: var(--post-title);
+    &:hover {
+      color: var(--post-title-hover);
+    }
+  }
+  .ais-PoweredBy {
+    display: flex;
+    align-content: center;
+    justify-content: flex-end;
+  }
+  .ais-PoweredBy-link {
+    margin-left: 10px;
+  }
+`;
+
+const StyledHits = styled(Hits)`
+  ul {
+    list-style: none;
+    margin-left: 0;
+  }
+  li.ais-Hits-item {
+    margin-bottom: 1em;
+    a {
+      color: var(--link-color);
+      h4 {
+        margin-bottom: 0.2em;
+      }
+    }
+  }
+`;
 
 interface HitProp {
   hit: {
@@ -48,10 +96,10 @@ const PageHit = ({ hit }: HitProp): ReactElement => (
 
 export const SearchResult = (): ReactElement => {
   return (
-    <div className={styles.resultWrap}>
+    <ResultWrapper>
       <HitCount />
       {/* @ts-ignore */}
-      <Hits className={styles.Hits} hitComponent={PageHit} />
-    </div>
+      <StyledHits hitComponent={PageHit} />
+    </ResultWrapper>
   );
 };
