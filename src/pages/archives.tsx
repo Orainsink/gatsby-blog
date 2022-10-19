@@ -10,7 +10,7 @@ import { GetArchivesPageDataQuery, FileEdge } from '../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
-import { PageDivider, ReloadIcon } from './Pages.styles';
+import { PageDivider, ReloadIcon } from '../layout/Pages.styles';
 
 type Data = DeepRequiredAndNonNullable<GetArchivesPageDataQuery>;
 

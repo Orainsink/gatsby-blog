@@ -12,7 +12,7 @@ import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { GetEssayDataQuery } from '../../graphql-types';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
-import { PageDivider, ReloadIcon } from './Pages.styles';
+import { PageDivider, ReloadIcon } from '../layout/Pages.styles';
 
 const EssayCard = styled(Card)`
   width: 45%;

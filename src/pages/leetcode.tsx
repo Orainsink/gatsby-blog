@@ -13,7 +13,7 @@ import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { GetLeetcodePageDataQuery } from '../../graphql-types';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
-import { PageDivider, ReloadIcon, WrappedTable } from './Pages.styles';
+import { PageDivider, ReloadIcon, WrappedTable } from '../layout/Pages.styles';
 
 type Data = DeepRequiredAndNonNullable<GetLeetcodePageDataQuery>;
 interface ColumnItemType {
