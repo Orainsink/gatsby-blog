@@ -11,6 +11,7 @@ export const MediaQueryMap = {
   lg: `@media (min-width: ${BreakPoint.LG}px)`,
   xl: `@media (min-width: ${BreakPoint.XL}px)`,
   isNotDesktop: `@media (max-width: ${BreakPoint.LG - 1}px)`,
+  isNotMobile: `@media (min-width: ${BreakPoint.MD}px)`,
   isDesktop: `@media (min-width: ${BreakPoint.LG}px)`,
   isPad: `@media (min-width: ${BreakPoint.MD}px) and (max-width: ${
     BreakPoint.LG - 1

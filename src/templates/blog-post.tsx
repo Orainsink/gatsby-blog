@@ -3,12 +3,12 @@ import { Link, graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { ReactElement } from 'react';
+import styled from 'styled-components';
 
 import { Layout } from '../layout/BlogLayout';
 import { SeoHelmet } from '../components/SeoHelmet';
 import { Tags } from '../components/Tags';
 import { Anchor } from '../components/Anchor';
-import * as styles from './index.module.less';
 import { Contents } from '../components/SideBlocks/Contents';
 import { useMedia } from '../hooks';
 import { generatePath } from '../utils/generatePath';
@@ -17,6 +17,7 @@ import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
 import { Comment } from '../components/Comment';
 import { GetBlogPostQuery } from '../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
+import { Container, LeadUl, License, TableContents } from './Templates.styles';
 
 type Data = DeepRequiredAndNonNullable<GetBlogPostQuery>;
 interface Props {
@@ -56,27 +57,26 @@ const BlogPostTemplate = ({
           >
             {date}
             <span style={{ marginLeft: '1em' }}>{categories}</span>
-            <a
-              className={styles.licence}
+            <License
               rel="license"
               target="_blank"
               href="http://creativecommons.org/licenses/by-nc/4.0/"
               title="This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
             >
               <LicenseSvg />
-            </a>
+            </License>
           </div>
         </header>
         {!!tableOfContents && !isDesktop && (
-          <div className={styles.tableContents}>
+          <TableContents>
             <Anchor
               targetOffset={200}
               affix={false}
               contents={tableOfContents as any}
             />
-          </div>
+          </TableContents>
         )}
-        <section className={styles.container}>
+        <Container>
           <MDXProvider
             components={{
               code: CodeBlock,
@@ -86,7 +86,7 @@ const BlogPostTemplate = ({
           >
             <MDXRenderer>{mdx.body}</MDXRenderer>
           </MDXProvider>
-        </section>
+        </Container>
         <hr
           style={{
             marginBottom: '1.6em',
@@ -96,7 +96,7 @@ const BlogPostTemplate = ({
       </article>
 
       <nav>
-        <ul className={styles.lead}>
+        <LeadUl>
           <li style={{ textAlign: 'left' }}>
             {previous && (
               <Link
@@ -120,7 +120,7 @@ const BlogPostTemplate = ({
               </Link>
             )}
           </li>
-        </ul>
+        </LeadUl>
       </nav>
       {mdx && <Comment />}
     </Layout>
