@@ -14,7 +14,7 @@ const DropMenu = styled.div`
   background: linear-gradient(135deg, #141619 0%, #c7d2db 100%);
   a {
     padding: 0.5em;
-    color: #fff;
+    color: #fff !important;
     display: inline-block;
     position: relative;
     transition: all 0.2s ease-out;
