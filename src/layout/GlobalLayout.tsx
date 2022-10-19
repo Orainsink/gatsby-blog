@@ -10,15 +10,11 @@ import { useBackTop } from '../hooks';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 import { useRecoilValue } from 'recoil';
 import { sceneAtom } from '../store/atom';
-import { MediaQueryMap } from '../assets/constants/breakPoints';
+import { defaultTheme } from '../assets/constants/defaultTheme';
 
 const Header = lazy(
   () => import(/* webpackPreload: true */ '../components/Header')
 );
-
-const getTheme = () => ({
-  media: MediaQueryMap,
-});
 
 interface Props {
   children: ReactNode;
@@ -35,7 +31,7 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
 
   return (
     <ErrorBoundary>
-      <ThemeProvider theme={getTheme}>
+      <ThemeProvider theme={defaultTheme}>
         <div>{children}</div>
         <Suspense fallback={null}>
           <Header />

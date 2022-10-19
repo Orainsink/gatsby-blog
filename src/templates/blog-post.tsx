@@ -3,7 +3,6 @@ import { Link, graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { ReactElement } from 'react';
-import styled from 'styled-components';
 
 import { Layout } from '../layout/BlogLayout';
 import { SeoHelmet } from '../components/SeoHelmet';
