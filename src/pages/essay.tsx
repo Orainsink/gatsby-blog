@@ -1,20 +1,45 @@
 import { useCallback, ReactElement } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
-import { Card, Divider } from 'antd';
-import { ReloadOutlined } from '@ant-design/icons';
+import { Card } from 'antd';
 import { getImage, GatsbyImage, ImageDataLike } from 'gatsby-plugin-image';
+import styled from 'styled-components';
 
 import { Layout } from '../layout/BlogLayout';
 import { SeoHelmet } from '../components/SeoHelmet';
-import * as styles from './archives/index.module.less';
 import { useResetKey } from '../hooks';
 import { generatePath } from '../utils/generatePath';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { GetEssayDataQuery } from '../../graphql-types';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
+import { PageDivider, ReloadIcon } from './Pages.styles';
+
+const EssayCard = styled(Card)`
+  width: 45%;
+  max-width: 440px;
+  margin: 1em;
+  ${({ theme }) => theme.media.isMobile} {
+    width: 90%;
+  }
+`;
+
+const EssayCards = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+
+  .ant-card-cover {
+    min-height: 180px;
+  }
+`;
+
+const MetaTittle = styled.p`
+  font-size: 20px;
+  font-weight: bold;
+`;
 
 type Data = DeepRequiredAndNonNullable<GetEssayDataQuery>;
+
 const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
   const { curDate } = useRecoilValue(filterAtom);
   const resetFilter = useResetRecoilState(filterAtom);
@@ -41,13 +66,12 @@ const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
       },
     }: typeof posts[number]) => {
       return (
-        <Card
+        <EssayCard
           onClick={() =>
             navigate(generatePath(frontmatter.categories, fields.slug))
           }
           key={frontmatter.title}
           hoverable
-          className={styles.essayItem}
           cover={
             <GatsbyImage
               image={getImg(fields.slug)!}
@@ -56,10 +80,10 @@ const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
             />
           }
         >
-          <p className={styles.metaTitle}>{frontmatter.title}</p>
+          <MetaTittle>{frontmatter.title}</MetaTittle>
           <p>{frontmatter.date}</p>
           <p>{frontmatter.description}</p>
-        </Card>
+        </EssayCard>
       );
     },
     [getImg]
@@ -68,15 +92,11 @@ const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
   return (
     <Layout>
       <SeoHelmet title="随笔-归档" />
-      <Divider orientation="center" className={styles.divider}>
+      <PageDivider orientation="center">
         {curDate ? curDate : '随笔'}
-        {curDate ? (
-          <ReloadOutlined className={styles.reloadIcon} onClick={resetFilter} />
-        ) : null}
-      </Divider>
-      {!!posts && (
-        <div className={styles.essayCards}>{posts.map(renderPostCard)}</div>
-      )}
+        {curDate ? <ReloadIcon onClick={resetFilter} /> : null}
+      </PageDivider>
+      {!!posts && <EssayCards>{posts.map(renderPostCard)}</EssayCards>}
     </Layout>
   );
 };

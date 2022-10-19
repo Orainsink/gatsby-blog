@@ -1,18 +1,16 @@
 import { ReactElement } from 'react';
 import { PageProps, graphql } from 'gatsby';
-import { Divider } from 'antd';
-import { ReloadOutlined } from '@ant-design/icons';
 
-import { WordCloud } from '../../components/WordCloud';
-import { Layout } from '../../layout/BlogLayout';
-import { SeoHelmet } from '../../components/SeoHelmet';
-import * as styles from './index.module.less';
-import { PostList } from '../../components/PostList';
-import { CalendarBlock } from '../../components/SideBlocks/Calendar';
-import { GetArchivesPageDataQuery, FileEdge } from '../../../graphql-types';
-import { DeepRequiredAndNonNullable } from '../../../typings/custom';
+import { WordCloud } from '../components/WordCloud';
+import { Layout } from '../layout/BlogLayout';
+import { SeoHelmet } from '../components/SeoHelmet';
+import { PostList } from '../components/PostList';
+import { CalendarBlock } from '../components/SideBlocks/Calendar';
+import { GetArchivesPageDataQuery, FileEdge } from '../../graphql-types';
+import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
-import { filterAtom } from '../../store/atom';
+import { filterAtom } from '../store/atom';
+import { PageDivider, ReloadIcon } from './Pages.styles';
 
 type Data = DeepRequiredAndNonNullable<GetArchivesPageDataQuery>;
 
@@ -27,12 +25,10 @@ const ArchivesPage = ({ data }: PageProps<Data>): ReactElement => {
     <Layout sideBlocks={<CalendarBlock posts={posts} />}>
       <SeoHelmet title="技术-归档" />
       <WordCloud />
-      <Divider orientation="center" className={styles.divider}>
+      <PageDivider orientation="center">
         {curTag ? '#' + curTag : curDate ? curDate : 'ARCHIVES'}
-        {curTag || curDate ? (
-          <ReloadOutlined className={styles.reloadIcon} onClick={resetFilter} />
-        ) : null}
-      </Divider>
+        {curTag || curDate ? <ReloadIcon onClick={resetFilter} /> : null}
+      </PageDivider>
       <PostList posts={posts} hideMore />
     </Layout>
   );

@@ -1,10 +1,8 @@
 import { useMemo, ReactElement } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
-import { Divider, Table, Tag } from 'antd';
+import { Tag } from 'antd';
 import dayjs from 'dayjs';
-import { ReloadOutlined } from '@ant-design/icons';
 
-import * as styles from './archives/index.module.less';
 import { useResetKey, useMedia, useIsDark } from '../hooks';
 import { Layout } from '../layout/BlogLayout';
 import { SeoHelmet } from '../components/SeoHelmet';
@@ -13,6 +11,7 @@ import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { GetSnippetPageDataQuery } from '../../graphql-types';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
+import { PageDivider, ReloadIcon, WrappedTable } from './Pages.styles';
 
 type Data = DeepRequiredAndNonNullable<GetSnippetPageDataQuery>;
 
@@ -97,14 +96,11 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
   return (
     <Layout>
       <SeoHelmet title="Snippet-归档" />
-      <Divider orientation="center" className={styles.divider}>
+      <PageDivider orientation="center">
         {curDate ? curDate : 'SNIPPET'}
-        {curDate ? (
-          <ReloadOutlined className={styles.reloadIcon} onClick={resetFilter} />
-        ) : null}
-      </Divider>
-      <Table
-        rowClassName={styles.clsRow}
+        {curDate ? <ReloadIcon onClick={resetFilter} /> : null}
+      </PageDivider>
+      <WrappedTable
         columns={isMobile ? smallColumns : columns}
         dataSource={datas}
         rowKey="slug"
@@ -114,7 +110,7 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
         onRow={(row) => ({
           onClick: () => navigate(generatePath(row.categories!, row.slug!)),
         })}
-      ></Table>
+      />
     </Layout>
   );
 };
