@@ -1,4 +1,4 @@
-import { memo, useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { memo, useState, useEffect, useCallback, useRef } from 'react';
 import SiriWave from 'siriwave';
 import styled, { css, keyframes } from 'styled-components';
 
@@ -239,9 +239,7 @@ export const Panel = memo(() => {
   );
 
   /** current song id */
-  const songUrl = useMemo(() => {
-    return SONGS.filter((song) => song.id === id)[0]?.url;
-  }, [id]);
+  const songUrl = SONGS.find((song) => song.id === id)?.url;
 
   /**
    * list random mode: generate random id list
@@ -296,7 +294,7 @@ export const Panel = memo(() => {
         volume={volume}
         mute={mute}
         loop={loop}
-        src={songUrl}
+        src={songUrl || ''}
         format={['mp3']}
         onEnd={() => handleMusicEnd()}
         onLoad={() => setLoaded(true)}

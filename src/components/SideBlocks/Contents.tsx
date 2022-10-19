@@ -1,4 +1,4 @@
-import { useMemo, useCallback, MouseEvent, ReactElement } from 'react';
+import { useCallback, MouseEvent, ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import { useScrollY } from '../../hooks';
@@ -57,12 +57,9 @@ export const Contents = (props: Props): ReactElement | null => {
 
   const isFixed = scrollY > 327;
 
-  const isHide = useMemo(() => {
-    if (!isClient) return false;
-    return (
-      scrollY > document.body.scrollHeight - document.body.clientHeight - 400
-    );
-  }, [scrollY]);
+  const isHide = isClient
+    ? scrollY > document.body.scrollHeight - document.body.clientHeight - 400
+    : false;
 
   const handleClick = useCallback((e: MouseEvent<HTMLElement>) => {
     e.preventDefault();

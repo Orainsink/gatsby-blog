@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, ReactElement } from 'react';
+import { useState, useEffect, ReactElement } from 'react';
 import { Link } from 'gatsby';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
@@ -61,12 +61,9 @@ export const PostList = ({ posts, hideMore = false }: Props): ReactElement => {
   const [filteredPosts, setFilteredPosts] = useState<FileEdge[]>(posts);
   const [fold, setFold] = useState(true);
 
-  const getIsAccordion = useCallback(
-    (index: number) => {
-      return index < 6 || !fold;
-    },
-    [fold]
-  );
+  const getIsAccordion = (index: number) => {
+    return index < 6 || !fold;
+  };
 
   /**
    * 过滤 / 筛选

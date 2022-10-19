@@ -1,4 +1,4 @@
-import { useCallback, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { Link } from 'gatsby';
 import { Tag } from 'antd';
 
@@ -15,12 +15,9 @@ export const Tags = ({ tags, category }: Props): ReactElement | null => {
   const isDark = useIsDark();
   const hasMounted = useHasMounted();
 
-  const onTagClicked = useCallback(
-    (tag: string) => {
-      setFilter((state) => ({ ...state, curTag: tag?.trim() ?? '' }));
-    },
-    [setFilter]
-  );
+  const onTagClicked = (tag: string) => {
+    setFilter((state) => ({ ...state, curTag: tag?.trim() ?? '' }));
+  };
 
   if (!!category && category !== 'tech' && CATEGORY_MAP.has(category)) {
     let curCategory = CATEGORY_MAP.get(category)!;

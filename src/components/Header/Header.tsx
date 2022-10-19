@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useState, memo, ReactElement } from 'react';
+import { useEffect, useState, memo, ReactElement } from 'react';
 import { Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 
@@ -85,13 +85,11 @@ export const Header = memo((): ReactElement | null => {
     };
   }, [setHeaderDrop, isMobile]);
 
-  const handleArrow = useCallback(() => {
+  const handleArrow = () => {
     setScene(true);
     setSkip(false);
     localStorage.setItem('SCENE', '1');
-  }, [setScene, setSkip]);
-
-  const handleClose = useCallback(() => setSearchVisible(false), []);
+  };
 
   return hasMounted ? (
     <HeaderContainer
@@ -140,7 +138,10 @@ export const Header = memo((): ReactElement | null => {
           <ThemeBtn />
         </Col>
       </Row>
-      <SearchDrawer visible={searchVisible} onClose={handleClose} />
+      <SearchDrawer
+        visible={searchVisible}
+        onClose={() => setSearchVisible(false)}
+      />
     </HeaderContainer>
   ) : null;
 });

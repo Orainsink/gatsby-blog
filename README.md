@@ -10,7 +10,7 @@
 
 ## 👷Built with
 
-- Typescript + less modules
+- Typescript + styled-components
 - [gatsby 4.9](https://www.gatsbyjs.org/)
 - [react-three-fiber 7.0](https://github.com/react-spring/react-three-fiber)
 - [howler.js](https://howlerjs.com/)
