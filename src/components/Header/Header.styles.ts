@@ -71,7 +71,6 @@ export const HeaderContainer = styled.header<{ active: boolean }>`
   transition: all 0.5s ease-out;
 
   ${({ theme }) => theme.media.isMobile} {
-    width: calc(100vw - 5px) !important;
     padding: 10px 15px;
   }
 

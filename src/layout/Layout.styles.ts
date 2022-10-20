@@ -8,16 +8,16 @@ export const Wrapper = styled.div`
   right: 0;
   z-index: 1;
   padding-bottom: 320px;
-
-  ${({ theme }) => theme.media.isMobile} {
-    width: calc(100vw - 5px) !important;
-  }
 `;
 
 export const Main = styled.main`
   margin: 8em auto 0 auto;
   max-width: 1200px;
   padding: 0.4em;
+
+  ${({ theme }) => theme.media.isMobile} {
+    padding: 0;
+  }
 `;
 
 export const containerStyles = css`

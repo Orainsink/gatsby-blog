@@ -27,7 +27,8 @@ export const SearchDrawer = ({ visible, onClose }: Props): ReactElement => {
   /** close menu when location changes */
   useEffect(() => {
     onClose();
-  }, [location, onClose]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
 
   return (
     <StyledDrawer
