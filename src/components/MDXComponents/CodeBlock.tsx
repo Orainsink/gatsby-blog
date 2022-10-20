@@ -1,4 +1,4 @@
-import { useState, useCallback, ReactElement } from 'react';
+import { useState, ReactElement } from 'react';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 import { Button } from 'antd';
@@ -24,7 +24,7 @@ export const CodeBlock = ({
   const isDark = useIsDark();
   const hasMounted = useHasMounted();
 
-  const copyToClipboard = useCallback((code: string) => {
+  const copyToClipboard = (code: string) => {
     if (typeof code !== 'string') return;
     const el = document.createElement('textarea');
     el.value = code;
@@ -35,7 +35,7 @@ export const CodeBlock = ({
     el.select();
     document.execCommand('copy');
     document.body.removeChild(el);
-  }, []);
+  };
 
   const theme = isDark && hasMounted ? vsDark : lightTheme;
 

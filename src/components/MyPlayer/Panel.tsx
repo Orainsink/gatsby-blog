@@ -296,7 +296,7 @@ export const Panel = memo(() => {
         loop={loop}
         src={songUrl || ''}
         format={['mp3']}
-        onEnd={() => handleMusicEnd()}
+        onEnd={handleMusicEnd}
         onLoad={() => setLoaded(true)}
         onLoadError={() => setLoaded(false)}
       />

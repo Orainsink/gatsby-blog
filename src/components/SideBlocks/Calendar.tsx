@@ -112,7 +112,7 @@ export const CalendarBlock = ({ posts }: Props): ReactElement => {
     [allMonths]
   );
 
-  const headerRender = useCallback(
+  const renderHeader = useCallback(
     ({
       value,
       onChange,
@@ -170,7 +170,7 @@ export const CalendarBlock = ({ posts }: Props): ReactElement => {
       <Calendar
         fullscreen={false}
         mode="year"
-        headerRender={headerRender}
+        headerRender={renderHeader}
         onSelect={handleSelect}
         defaultValue={dayjs()}
         disabledDate={disableDate}

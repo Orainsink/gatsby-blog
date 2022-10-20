@@ -65,20 +65,17 @@ export const WordCloud = memo(
       };
     }, [group]);
 
-    const getFontSize = useCallback(
-      (count: number) => {
+    const allTags: [string, number][] = useMemo(() => {
+      const getFontSize = (count: number) => {
         const { max, min } = weighted;
         return 16 + (16 * (count - min)) / (max - min);
-      },
-      [weighted]
-    );
+      };
 
-    const allTags: [string, number][] = useMemo(() => {
       return group.map((item) => [
         item.fieldValue,
         getFontSize(item.totalCount),
       ]);
-    }, [group, getFontSize]);
+    }, [group, weighted]);
 
     const wordRefCb = useCallback(
       (node: HTMLDivElement) => {

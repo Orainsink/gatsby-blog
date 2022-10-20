@@ -1,4 +1,4 @@
-import { useCallback, memo, ReactElement } from 'react';
+import { memo, ReactElement } from 'react';
 import { Col, Row, Slider } from 'antd';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
@@ -76,20 +76,16 @@ export const Controller = memo((): ReactElement => {
   const [{ playing, volume, loop }, setMusic] = useRecoilState(musicAtom);
 
   /** stop/start playing */
-  const handleClick = useCallback(() => {
+  const handleClick = () =>
     setMusic((state) => ({ ...state, ...{ playing: !state.playing } }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   /**
    * loop mode
    * true: single track loop
    * false: list random
    */
-  const handleLoop = useCallback(() => {
+  const handleLoop = () =>
     setMusic((state) => ({ ...state, ...{ loop: !state.loop } }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <WaveContainer id="wave">

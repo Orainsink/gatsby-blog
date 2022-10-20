@@ -66,8 +66,12 @@ const memoizedCallback = useCallback(() => {
 
 返回一个 [memoized](https://en.wikipedia.org/wiki/Memoization) 回调函数。
 
-把内联回调函数及依赖项数组作为参数传入 `useCallback`，它将返回该回调函数的 memoized 版本，该回调函数仅在某个依赖项改变时才会更新。当你把回调函数传递给经过优化的并使用引用相等性去避免非必要渲染（例如 `shouldComponentUpdate`）的子组件时，它将非常有用。
+把内联回调函数及依赖项数组作为参数传入 `useCallback`，它将返回该回调函数的 memoized 版本，该回调函数仅在某个依赖项改变时才会更新(改变内存地址)。当你把回调函数传递给经过优化的并使用引用相等性去避免非必要渲染（例如 `shouldComponentUpdate`）的子组件时，它将非常有用。
 
 `useCallback(fn, deps)` 相当于 `useMemo(() => fn, deps)`
 
-注意, 依赖项数组不会作为参数传给回调函数, 且如果回调函数引用到会变化的 state, 那最好是配合 reducer 使用, 不然不能达到性能优化的目的.
+useCallback 实践下来有三个主要的作用
+
+1. 包裹自定义 hook 返回的函数。自定义 hook 的返回的函数可能成为其他 hook 的依赖项。如果不用 `useCallback` 包裹，会导致函数组件每次执行的时候触发该 hook，这经常会导致 bug。
+2. 和 memo 配合进行性能优化。memo 的生效的前提是 props 没有发生改变，但如果 props 中有引用数据类型而这个数据是被重建了，那 memo 就会失效。需要用 useCallback 和 useMemo 处理。
+3. 减少计算量。只要依赖没有发生变化，我们可以直接得到回调函数的返回值。适用于复杂运算的函数。
