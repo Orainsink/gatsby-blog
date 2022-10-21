@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
+  counter-reset: chapter;
+
   a {
     color: var(--primary-color);
     border-bottom: none;
@@ -48,7 +50,7 @@ export const Container = styled.section`
       padding-top: 90px;
       margin-top: -70px;
     }
-    & :global(.anchor.before) {
+    & .anchor.before {
       top: 70px;
     }
   }
