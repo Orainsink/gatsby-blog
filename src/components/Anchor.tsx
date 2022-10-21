@@ -28,6 +28,7 @@ export const Anchor = memo(
       };
       return renderLink(content.items);
     }, []);
+
     return <AntAnchor {...rest}>{renderLinks(contents)}</AntAnchor>;
   }
 );

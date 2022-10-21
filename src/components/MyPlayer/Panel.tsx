@@ -189,12 +189,8 @@ export const Panel = memo(() => {
   const [randomList, setRandomList] = useState<number[]>([]);
   const siriWaveRef = useRef<SiriWave>();
 
-  const setLoaded = useCallback(
-    (loaded: boolean) => {
-      setMusic((state) => ({ ...state, loaded }));
-    },
-    [setMusic]
-  );
+  const setLoaded = (loaded: boolean) =>
+    setMusic((state) => ({ ...state, loaded }));
 
   const waveRefCallback = useCallback((node: HTMLDivElement) => {
     if (node !== null) {

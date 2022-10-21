@@ -77,7 +77,7 @@ Svelte 在语法上和 Vue 接近，Solid 和 React 接近。
 | SSR 框架 | Next/Remix               | Nuxt       | 🚧          | 🚧           | 🚧           |
 | Jamstack | gatsby/Next/Remix        | Nuxt       | 🚧 Sully    | ❌           | ❌           |
 | 3D/AR/VR | three-fiber              | ❌         | ❌          | ❌           | ❌           |
-| 表单     | 💥fomik                  | 🚧         | ⭕          | ❌           | ❌           |
+| 表单     | fomik                    | ⭕         | ⭕          | ❌           | ❌           |
 | 过渡动画 | 🚧react-transition-group | ⭕         | ⭕          | ⭕           | ❌           |
 | 文档     | 🚧 新文档开发中          | 💥         | ⭕          | ⭕           | ⭕           |
 
@@ -101,6 +101,10 @@ Angular 有一个杀手级别的库 [ag-grid](https://www.ag-grid.com/), 该库�
 
 随着设备性能的不断提升，除非有复杂的页面需求，网页的响应性能实际上不再是选择一个前端框架的最主要的考量。（数据来源：[js-framework-benchmark](https://krausest.github.io/js-framework-benchmark/current.html)）
 
+但对于特定场景下的前端，React 相比其他流行的框架有很大劣势。
+
+在复杂表单场景，Vue 和 Svelte 里你可以通过双向绑定很轻松地完成表单的 UI 和数据更新，但在 React 里无论你得在受控于非受控组件之间做出选择。前者需要写大量代码并且容易出现性能问题，后者基本上是绕过了 React，并不是官方提倡的。所以 React 在处理表单场景的时候非常依赖第三方库。
+
 ### 速度
 
 ![speed](./speed.png)
@@ -123,7 +127,7 @@ React 曾经很快，现在依然快，但这是在和 jqury 等比较老的前�
 
 新一代的前端框架，比如 Svelte 和 Solid，都是细粒度响应式地直接更新 DOM，并且将大量的工作放在构建阶段。
 
-由于开发者很容易写出反复 render 的函数组件（这并不是开发者的问题，react 官方倡导的即是只有在性能出现问题的时候再进行性能优化），所以 react 的 diff 次数实际上会比测试预期的更高一点，进一步拖慢了 react 的性能。
+由于开发者很容易写出重渲染的函数组件（这并不是开发者的问题，react 官方倡导的即是只有在性能出现问题的时候再进行性能优化），所以 react 的 diff 次数实际上会比测试预期的更高一点，进一步拖慢了 react 的性能。
 
 ## 心智负担（苦 React 久矣）
 
@@ -154,11 +158,13 @@ Vue 和 Angular 相比就没那么多灵活度，但是用这两个框架写出�
 
 ### API 设计
 
-我不止一次遇到同事截图 React 文档的内容问我一些官方说的不清不楚的问题，这些问题主要集中在函数组件的重渲染，`useEffect`依赖和`memo`的问题，由此引发的性能 bug 非常常见。在官方刻意淡化生命周期的概念，转而用切片概念，但并没有足够的文档说明其原因和注意事项。
+我不止一次遇到同事截图 React 文档的内容问我一些官方说的不清不楚的问题，这些问题主要集中在函数组件的重渲染，`useEffect`依赖和 `memo`的问题，由此引发的性能 bug 非常常见。在官方刻意淡化生命周期的概念，转而用切片概念，但并没有足够的文档说明其原因和注意事项。
 
-React 将`onMounted` `onUpdate`和`onUnMounted`生命周期，副作用还有未来可能新增的离屏组件等功能全部揉到`useEffect`一个 API 里，在最新版本的 react 文档已经 6 篇关于`useEffect`的解释：[react beta](https://beta.reactjs.org/learn/synchronizing-with-effects)，相信新文档上线过后情况会有所改观。
+React 将 `onMounted` `onUpdate`和 `onUnMounted`生命周期，副作用还有未来可能新增的离屏组件等功能全部揉到 `useEffect`一个 API 里，在最新版本的 react 文档已经 6 篇关于 `useEffect`的解释：[react beta](https://beta.reactjs.org/learn/synchronizing-with-effects)，相信新文档上线过后情况会有所改观。
 
-而 Vue3 的组合式函数则将其分为多个独立的函数，Angular 有固定的生命周期，就连 Solid 也分开了两个周期函数`onMount`和`onCleanup`。`useEffect`变得越来越复杂，对其工作原理不清楚的人可能写出 bug，上手难度越来越高。
+而 Vue3 的组合式函数则将其分为多个独立的函数，Angular 有固定的生命周期，就连 Solid 也分开了两个周期函数 `onMount`和 `onCleanup`。`useEffect`变得越来越复杂，对其工作原理不清楚的人可能写出 bug，上手难度越来越高。
+
+对 react 的讨伐，这里有一篇写得不错的文章：[React I Love You, But You&#39;re Bringing Me Down](https://marmelab.com/blog/2022/09/20/react-i-love-you.html)
 
 ## 总结
 

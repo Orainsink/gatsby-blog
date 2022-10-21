@@ -91,8 +91,6 @@ export const Header = memo((): ReactElement | null => {
     localStorage.setItem('SCENE', '1');
   };
 
-  console.log(searchVisible, '<== searchVisible');
-
   return hasMounted ? (
     <HeaderContainer
       style={{

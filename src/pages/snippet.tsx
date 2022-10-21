@@ -1,4 +1,4 @@
-import { useMemo, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
 import { Tag } from 'antd';
 import dayjs from 'dayjs';
@@ -24,21 +24,19 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
   useResetKey();
   const isMobile = useMedia('isMobile');
 
-  const datas = useMemo(() => {
-    return posts.map(({ node: { childMdx: mdx } }) => {
-      const frontmatter = mdx.frontmatter!;
-      const fields = mdx.fields!;
-      return {
-        title: frontmatter.title,
-        description: frontmatter.description ?? mdx.excerpt,
-        tag: frontmatter.tags[0],
-        categories: frontmatter.categories,
-        date: frontmatter.date,
-        slug: fields.slug,
-        id: mdx.id,
-      };
-    });
-  }, [posts]);
+  const datas = posts.map(({ node: { childMdx: mdx } }) => {
+    const frontmatter = mdx.frontmatter!;
+    const fields = mdx.fields!;
+    return {
+      title: frontmatter.title,
+      description: frontmatter.description ?? mdx.excerpt,
+      tag: frontmatter.tags[0],
+      categories: frontmatter.categories,
+      date: frontmatter.date,
+      slug: fields.slug,
+      id: mdx.id,
+    };
+  });
 
   const columns: any = [
     {
