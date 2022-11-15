@@ -278,7 +278,7 @@ export const Panel = memo(() => {
       navigator.mediaSession.setActionHandler('nexttrack', () => toNextSong());
     }
     // eslint-disable-next-line
-  }, [setMusic]);
+  }, []);
 
   useMediaMeta(id);
 

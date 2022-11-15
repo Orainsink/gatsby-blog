@@ -14,5 +14,6 @@ export const useCustomTitle = (title: string): void => {
     return () => {
       setTitle('');
     };
-  }, [setTitle, title]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [title]);
 };

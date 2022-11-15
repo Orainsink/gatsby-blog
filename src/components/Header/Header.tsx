@@ -83,7 +83,8 @@ export const Header = memo((): ReactElement | null => {
     return () => {
       document.body.removeEventListener('scroll', handleScroll);
     };
-  }, [setHeaderDrop, isMobile]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMobile]);
 
   const handleArrow = () => {
     setScene(true);

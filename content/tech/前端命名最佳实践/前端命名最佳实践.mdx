@@ -1,7 +1,66 @@
 ---
 categories: tech
-description: 懂得都懂，最浪费时间的不是思考逻辑而是思考如何命名
+description: There are only two hard problems in Computer Science，cache invalidation and naming things — Phil Karlton
 date: 2022-10-20 19:14:45
-title: 前端命名最佳实践
-tags: []
+title: 前端命名(语义化)最佳实践
+tags: [规范, 文档]
 ---
+
+## 命名法
+
+```
+小驼峰命名法：camelCase
+大驼峰命名法：CamelCase 或 PascalCase
+小蛇式命名法：snake_case
+大蛇式命名法：SNAKE_CASE
+烤串式命名法：kebab-case
+空格式命名法：space case
+```
+
+## html
+
+### 标签的语义化
+
+html 标签不需要我们命名，但是需要我们遵守[语义化](https://www.w3schools.com/html/html5_semantic_elements.asp)。
+
+html 的语义化会影响爬虫及可访问性，而且很容易被小白用 F12 翻出来看到，如果语义化做得差，会很丢人，所以优先级会更高。
+
+### class name
+
+如果你用的 tailwind，可以节省不少脑细胞。
+
+class 命名流行最流行的方案是[BEM](https://getbem.com/introduction/)
+
+BEM 方案同时适用于 Less 和 Scss
+
+这里有一个有意思的的 BEM 命名 cheatsheet 网站可供参考 [bem-cheat-sheet](https://9elements.com/bem-cheat-sheet/)
+
+在实际工作中，我们需要把业务的 UI 抽象成标准的组件组合，然后使用 BEM 命名。
+
+如果有 cheatsheet 不能涵盖的组件，则可以去参考(copy)业界优秀的 UI 库，比如 Antd 或者 MUI
+
+### id
+
+id 没有一个确定的标准，保证 id 的唯一性即可（HTML5 是允许数字开头的 id，但是 CSS 使用选择器的时候似乎会出问题，待确认）。
+
+大多数人偏好 kebab-case
+
+## className in js
+
+## JS 变量命名
+
+## 组件化命名
+
+### react
+
+### Vue
+
+### web-component
+
+## 组件 API 命名
+
+API 命名设计参考 Antd 的文档，组件 API 设计最重要的是一致性，Antd 的设计很有参考价值。
+
+[Collect current API standard](https://github.com/ant-design/ant-design/issues/16048)
+
+## 基于设计模式的命名

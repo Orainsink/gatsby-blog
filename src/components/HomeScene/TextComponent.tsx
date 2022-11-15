@@ -66,7 +66,9 @@ export const Text = memo(
 
       setMap(texture);
     }, [words]);
+
     if (!map) return null;
+
     return (
       <group name="text" position={position} rotation={rotation}>
         <mesh>
