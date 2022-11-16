@@ -23,7 +23,7 @@ tags: [规范, 文档]
 
 html 标签不需要我们命名，但是需要我们遵守[语义化](https://www.w3schools.com/html/html5_semantic_elements.asp)。
 
-html 的语义化会影响爬虫及可访问性，而且很容易被小白用 F12 翻出来看到，如果语义化做得差，会很丢人，所以优先级会更高。
+html 的语义化会影响爬虫 SEO 及可访问性，而且很容易被小白用 F12 翻出来看到，如果语义化做得差，会很丢人，所以优先级会更高。
 
 ### class name
 
@@ -45,22 +45,132 @@ id 没有一个确定的标准，保证 id 的唯一性即可（HTML5 是允许�
 
 大多数人偏好 kebab-case
 
-## className in js
+## className in js(React)
+
+在 js 中的 class name 需要是 camelCase，在使用 emotion 或者 styled-component 的前提下，我们不需要像 BEM 一样在 className 里写明元素层级关系。
+
+几个 css-in-js 工具会把打包后的类名加上唯一的短 hash，所以我们不需要担心样式名重复的问题。驼峰命名在名字很长的时候可读性很差，由于我们不需要担心样式类名重复，所以保持 className 简短是可行的
+
+className 的命名可以参考 BEM 命名
+
+```html
+<div class="tabs">
+  <ul class="tabs__list" role="tablist">
+    <li class="tabs__item" role="presentation">
+      <a href="#A" class="tabs__link" irole="tab">Section A</a>
+    </li>
+  </ul>
+</div>
+```
+
+css module
+
+```jsx
+import * as styles from './index.module.css';
+
+<div className={styles.tab}>
+  <ul className={styles.tabList} role="tablist">
+    <li className={styles.tabItem} role="presentation">
+      <a href="#A" className={styles.tabLink} role="tab">
+        Section A
+      </a>
+    </li>
+  </ul>
+</div>;
+```
+
+styled-components
+
+```jsx
+import styled from "styled-components";
+
+const Tab = styled.div``
+const TabList = styled.ul``
+const TabItem = styled.li``
+const TabLink = styled.a``
+
+<Tab>
+  <TabList  role="tablist">
+    <TabItem role="presentation">
+      <TabLink href="#A" role="tab">Section A</TabLink>
+    </TabItem>
+  </TabList>
+</Tab>
+
+```
+
+没有要使用选择器来影响优先级的情况下，能用一层尽量用 1 层，竟可能避免嵌套层数超过 3 层
+
+```jsx
+import styled from "styled-components";
+
+// Bad practice
+// 如果没有必要（需要通过css选择器优先级来影响css样式的覆盖的情况），则最好不要这么写
+// 1. 难以维护 2.容易受全局样式影响，出bug，因为styled-component并不处理嵌套的样式名
+const Tab = styled.div`
+    .link {}
+    .list {}
+    .item {}
+`
+
+// 最外层的容器一般用 container / wrapper 来当后缀命名
+<BusinessComponentContainer>
+    <Tab>
+        <TabList  role="tablist">
+            <TabItem role="presentation">
+            <TabLink href="#A" role="tab">Section A</TabLink>
+            </TabItem>
+        </TabList>
+    </Tab>
+</BusinessComponentContainer>
+
+```
 
 ## JS 变量命名
 
-## 组件化命名
+一篇写的不错的参考文章：[JavaScript Naming Conventions](https://www.robinwieruch.de/javascript-naming-conventions/)
 
-### react
-
-### Vue
-
-### web-component
-
-## 组件 API 命名
+## API 命名
 
 API 命名设计参考 Antd 的文档，组件 API 设计最重要的是一致性，Antd 的设计很有参考价值。
 
 [Collect current API standard](https://github.com/ant-design/ant-design/issues/16048)
 
+另外有一篇 API 设计的博客值得一看
+
+[Secrets of Awesome JavaScript API Design](https://webstandardssherpa.com/reviews/secrets-of-awesome-javascript-api-design/)
+
+虽然现在的前端开发已经不用再看 moment 或者 jquery，但是这两个库的 api 设计是非常好的教材。
+
 ## 基于设计模式的命名
+
+当你在使用某种设计模式的时候，需要在命名上加以区分，这样读代码的人就可以按照熟悉的模式理解你的代码。
+
+简单的工厂函数来处理权限问题：
+
+```
+let routerFactory = (role) => {
+  switch (role) {
+    case 'superAdmin':
+      return {
+        name: 'SuperAdmin',
+        route: AllRoute
+      };
+      break;
+    case 'normalAdmin':
+      return {
+        name: 'NormalAdmin',
+        route: AllRoute.splice(1)
+      }
+      break;
+    default:
+      throw new Error("Wrong role")
+  }
+}
+
+export { routerFactory }
+```
+
+或者发布订阅者模式(`emit`, `on` )，适应期模式(`adapter`)等常用设计模式
+
+推荐一个比较好玩的设计模式的网站 [design-patterns](https://refactoringguru.cn/design-patterns)
