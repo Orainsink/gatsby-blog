@@ -83,7 +83,7 @@ const MenuDrawer = (): ReactElement => {
       />
       <Drawer
         title={<DrawerTitle>MENU</DrawerTitle>}
-        visible={visible}
+        open={visible}
         onClose={() => setVisible(false)}
       >
         <DrawerNavUl>

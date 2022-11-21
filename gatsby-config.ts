@@ -157,7 +157,6 @@ const config: GatsbyConfig = {
         precachePages: [`/pages/*`],
       },
     },
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
@@ -210,6 +209,7 @@ const config: GatsbyConfig = {
         codegen: !!env.CODEGEN ?? false,
       },
     },
+    // 'gatsby-plugin-swc',
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-nprogress`,
@@ -225,7 +225,7 @@ const config: GatsbyConfig = {
         dsn: env.GATSBY_SENTRY_DSN,
         environment: env.NODE_ENV,
         enabled: (() =>
-          ['production', 'stage'].indexOf(env.NODE_ENV || 'stage') !== -1)(),
+          ['production', 'stage'].includes(env.NODE_ENV || 'stage'))(),
         sampleRate: 0.7,
         tracesSampleRate: 0.8,
       },

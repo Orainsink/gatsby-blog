@@ -114,7 +114,9 @@ export const Controller = memo((): ReactElement => {
             defaultValue={volume * 10}
             step={1}
             max={10}
-            tooltipVisible={false}
+            tooltip={{
+              open: false,
+            }}
           />
         </Volume>
       </ControllerBar>

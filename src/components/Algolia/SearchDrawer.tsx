@@ -35,7 +35,7 @@ export const SearchDrawer = ({ visible, onClose }: Props): ReactElement => {
       title="SEARCH"
       placement="left"
       onClose={onClose}
-      visible={visible}
+      open={visible}
       width={isMobile ? '100%' : 600}
       bodyStyle={{ padding: '12px' }}
     >

@@ -3,7 +3,7 @@ import { PageProps, graphql } from 'gatsby';
 
 import { WordCloud } from '../components/WordCloud';
 import { Layout } from '../layout/BlogLayout';
-import { SeoHelmet } from '../components/SeoHelmet';
+import { Seo } from '../components/Seo';
 import { PostList } from '../components/PostList';
 import { CalendarBlock } from '../components/SideBlocks/Calendar';
 import { GetArchivesPageDataQuery, FileEdge } from '../../graphql-types';
@@ -23,7 +23,6 @@ const ArchivesPage = ({ data }: PageProps<Data>): ReactElement => {
 
   return (
     <Layout sideBlocks={<CalendarBlock posts={posts} />}>
-      <SeoHelmet title="技术-归档" />
       <WordCloud />
       <PageDivider orientation="center">
         {curTag ? '#' + curTag : curDate ? curDate : 'ARCHIVES'}
@@ -36,11 +35,13 @@ const ArchivesPage = ({ data }: PageProps<Data>): ReactElement => {
 
 export default ArchivesPage;
 
+export const Head = () => <Seo title="技术-归档" />;
+
 export const pageQuery = graphql`
   query getArchivesPageData {
     allFile(
       filter: { sourceInstanceName: { eq: "tech" } }
-      sort: { fields: childMdx___frontmatter___date, order: DESC }
+      sort: { childMdx: { frontmatter: { date: DESC } } }
     ) {
       edges {
         node {

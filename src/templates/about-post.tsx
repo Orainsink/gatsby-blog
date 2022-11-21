@@ -3,8 +3,7 @@ import { lazy, Suspense, ReactElement } from 'react';
 import styled from 'styled-components';
 
 import { Layout } from '../layout/BlogLayout';
-import { SeoHelmet } from '../components/SeoHelmet';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { Seo } from '../components/Seo';
 import { Comment } from '../components/Comment';
 import { Poem } from '../components/Poem';
 import { GetAboutPageDataQuery } from '../../graphql-types';
@@ -21,8 +20,7 @@ const AboutContainer = styled(Container)`
 
 type Data = DeepRequiredAndNonNullable<GetAboutPageDataQuery>;
 
-const AboutPostTemplate = ({ data }: PageProps<Data>): ReactElement => {
-  const { mdx } = data;
+const AboutPostTemplate = ({ children }: PageProps<Data>): ReactElement => {
   return (
     <Layout
       sideBlocks={
@@ -31,9 +29,8 @@ const AboutPostTemplate = ({ data }: PageProps<Data>): ReactElement => {
         </Suspense>
       }
     >
-      <SeoHelmet title="About" />
       <Poem />
-      <AboutContainer>{<MDXRenderer>{mdx.body}</MDXRenderer>}</AboutContainer>
+      <AboutContainer>{children}</AboutContainer>
       <Comment />
     </Layout>
   );
@@ -41,10 +38,14 @@ const AboutPostTemplate = ({ data }: PageProps<Data>): ReactElement => {
 
 export default AboutPostTemplate;
 
+export const Head = () => <Seo title="About" />;
+
 export const pageQuery = graphql`
   query getAboutPageData {
     mdx(fields: { slug: { eq: "/about" } }) {
-      body
+      frontmatter {
+        title
+      }
     }
   }
 `;

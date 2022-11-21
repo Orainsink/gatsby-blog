@@ -16,7 +16,6 @@ tags: [架构, react, 性能]
 >
 > 《浏览器工作原理》，Http 2
 
-
 > 我们需要了解早期 SSR 的特点，后来的 CSR 为什么比早期的模版语法技术优秀，以及现在为什么又开始风水轮流转提倡 SSR。
 >
 > 粗略对比，不会太深入细节。
@@ -156,27 +155,27 @@ Static Generation（也叫 SSG，Static Site Generation）是指在编译时生�
 
 ## 总结
 
-![ssr <-> csr](1.jpg)
+![ssr to csr](1.jpg)
 
 如图是从服务端到浏览器的五种渲染模式。
 
 开发者应该根据实际项目需要，选择合适的渲染模式。
 
-绝大部分商业项目都不是纯SSR或者CSR模式，而采用混合模式。在该图片中的 SSR with (Re)hydration 和 CSR with Prerendering 这两种即为SSR/SSG/CSR混用的模式。
+绝大部分商业项目都不是纯 SSR 或者 CSR 模式，而采用混合模式。在该图片中的 SSR with (Re)hydration 和 CSR with Prerendering 这两种即为 SSR/SSG/CSR 混用的模式。
 
 除此之外，不同的框架还提功能更细化的混合渲染模式，这一块我放在技术延伸里，仅供参考。
 
-图片来源：[我看 Next.js：一个更现代的海王](https://toutiao.io/posts/ffcwol1/preview) 
+图片来源：[我看 Next.js：一个更现代的海王](https://toutiao.io/posts/ffcwol1/preview)
 
 ## 技术延伸（引用的文章会配图更易理解）
 
 ### Jamstack 技术架构
 
-太长咯，直接搬运一篇写得不错的文章[Jamstack，下一代Web建站技术栈？](https://zhuanlan.zhihu.com/p/281085404)
+太长咯，直接搬运一篇写得不错的文章[Jamstack，下一代 Web 建站技术栈？](https://zhuanlan.zhihu.com/p/281085404)
 
-### ISR增量静态渲染(Incremental Site Rendering)
+### ISR 增量静态渲染(Incremental Site Rendering)
 
-对大型网站而言，全量预渲染整个网站是不现实的。所以Next有了ISR这个方案。
+对大型网站而言，全量预渲染整个网站是不现实的。所以 Next 有了 ISR 这个方案。
 
 1、**关键性的页面**（如网站首页、热点数据等）预渲染为静态页面，缓存至 CDN，保证最佳的访问性能；
 
@@ -188,17 +187,17 @@ Static Generation（也叫 SSG，Static Site Generation）是指在编译时生�
 
 为了解决 ISR 的一系列问题，Netlify 在前段时间发起了一个新的提案
 
-> 以上两个更详细的利弊可以参考该博客 [新一代Web技术栈的演进：SSR/SSG/ISR/DPR都在做什么？](https://www.cnblogs.com/rsapaper/p/14753789.html)，只做搬运
+> 以上两个更详细的利弊可以参考该博客 [新一代 Web 技术栈的演进：SSR/SSG/ISR/DPR 都在做什么？](https://www.cnblogs.com/rsapaper/p/14753789.html)，只做搬运
 
-### DSG延迟静态生成(Deferred Static Generation)
+### DSG 延迟静态生成(Deferred Static Generation)
 
-Gatsbyjs 在 SSG 上更进一步优化的渲染模式，不过只能使用他们的云服务，后端数据也只能用nodejs。
+Gatsbyjs 在 SSG 上更进一步优化的渲染模式，不过只能使用他们的云服务，后端数据也只能用 nodejs。
 
-简单来说，就是把SSG的打包操作托管给了Gatsby cloud，然后gatsby cloud不会直接生成静态网站，而是在用户发送了第一次页面请求过后才组装页面并构建html结果，生成的页面会直接返回给用户，然后该页面会在CDN里留一个缓存，当有第二个用户请求该页面的时候，就可以直接通过CDN返回缓存，而不用再次构建静态HTML。
+简单来说，就是把 SSG 的打包操作托管给了 Gatsby cloud，然后 gatsby cloud 不会直接生成静态网站，而是在用户发送了第一次页面请求过后才组装页面并构建 html 结果，生成的页面会直接返回给用户，然后该页面会在 CDN 里留一个缓存，当有第二个用户请求该页面的时候，就可以直接通过 CDN 返回缓存，而不用再次构建静态 HTML。
 
 具体可以看这个介绍：[A Guide To Deferred Static Generation](https://www.gatsbyjs.com/blog/deferred-static-generation-guide/)
 
-该技术最大的优势就是可以选择性地生成静态HTML文件，比如我们可以对一些访问量很小的旧博客/商品页面/老页面采用DSG方式，这样在重新打包静态站点的时候就可以跳过这些网页，仅在用户请求的时候才进行构建，节省服务器资源。
+该技术最大的优势就是可以选择性地生成静态 HTML 文件，比如我们可以对一些访问量很小的旧博客/商品页面/老页面采用 DSG 方式，这样在重新打包静态站点的时候就可以跳过这些网页，仅在用户请求的时候才进行构建，节省服务器资源。
 
 ### Server Components（React 服务端组件，未成熟的方案）
 
@@ -221,7 +220,7 @@ Streaming SSR 是服务端组件技术的延伸，配合服务端组件和 react
 
 它可以和`IntersectionObserver` API 搭配使用，实现极致的性能优化。
 
-另外，流式渲染需要发送更多的http请求，所以搭配http2多路复用的特性使用更好。
+另外，流式渲染需要发送更多的 http 请求，所以搭配 http2 多路复用的特性使用更好。
 
 ### 微前端（乾坤和模块联邦）
 

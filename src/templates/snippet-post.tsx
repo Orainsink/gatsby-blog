@@ -1,12 +1,11 @@
 /* eslint-disable react/jsx-no-target-blank */
-import { useCallback, ReactElement } from 'react';
+import { useCallback, ReactElement, ReactNode } from 'react';
 import { Link, graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Anchor } from 'antd';
 
 import { Layout } from '../layout/BlogLayout';
-import { SeoHelmet } from '../components/SeoHelmet';
+import { Seo } from '../components/Seo';
 import { Tags } from '../components/Tags';
 import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
 import { useMedia } from '../hooks';
@@ -24,6 +23,7 @@ import { Container, LeadUl, License, TableContents } from './Templates.styles';
 type Data = DeepRequiredAndNonNullable<GetSnippetPostQuery>;
 interface Props {
   data: Data;
+  children: ReactNode;
   pageContext: {
     previous: any;
     next: any;
@@ -33,11 +33,11 @@ interface Props {
 
 const SnippetPostTemplate = ({
   data: { mdx },
+  children,
   pageContext,
 }: Props): ReactElement => {
   const {
-    frontmatter: { title, tags, description, date, categories },
-    excerpt,
+    frontmatter: { title, tags, date, categories },
     tableOfContents,
   } = mdx;
   const { previous, next } = pageContext;
@@ -51,7 +51,7 @@ const SnippetPostTemplate = ({
 
     const renderLink = (items: TableOfContents[]) => {
       return items.map((item) => (
-        <Anchor.Link href={item.url} title={item.title} key={item.url}>
+        <Anchor.Link href={item.url!} title={item.title} key={item.url}>
           {item.items ? renderLink(item.items) : null}
         </Anchor.Link>
       ));
@@ -61,7 +61,6 @@ const SnippetPostTemplate = ({
 
   return (
     <Layout sideBlocks={isDesktop && <Contents contents={tableOfContents} />}>
-      <SeoHelmet title={title} description={description || excerpt} />
       <article>
         <header>
           <h1 style={{ textAlign: 'center', fontWeight: 700 }}>{title}</h1>
@@ -104,7 +103,7 @@ const SnippetPostTemplate = ({
               a: AnchorBlock,
             }}
           >
-            <MDXRenderer>{mdx.body}</MDXRenderer>
+            {children}
           </MDXProvider>
         </Container>
         <hr
@@ -149,6 +148,15 @@ const SnippetPostTemplate = ({
 
 export default SnippetPostTemplate;
 
+export const Head = ({ data: { mdx } }: Pick<Props, 'data'>) => {
+  const {
+    frontmatter: { title, description },
+    excerpt,
+  } = mdx;
+
+  return <Seo title={title} description={description || excerpt} />;
+};
+
 export const pageQuery = graphql`
   query getSnippetPost($id: String) {
     site {
@@ -168,7 +176,6 @@ export const pageQuery = graphql`
       fields {
         slug
       }
-      body
       excerpt
       tableOfContents
     }

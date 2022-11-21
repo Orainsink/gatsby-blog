@@ -2,11 +2,11 @@ import { useMemo, ReactElement } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
 import { Button, Tag } from 'antd';
 import dayjs from 'dayjs';
+import type { ColumnsType } from 'antd/es/table';
 
-import { SeoHelmet } from '../components/SeoHelmet';
+import { Seo } from '../components/Seo';
 import { Layout } from '../layout/BlogLayout';
 import { generatePath } from '../utils/generatePath';
-import { ColumnsType } from 'antd/lib/table';
 import { useResetKey, useMedia, useIsDark } from '../hooks';
 import { ReactComponent as LeetcodeSvg } from '../assets/img/leetcode.svg';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
@@ -154,7 +154,6 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
 
   return (
     <Layout>
-      <SeoHelmet title="Leetcode-归档" />
       <PageDivider orientation="center">
         {curDate ? curDate : 'LEETCODE'}
         {curDate ? <ReloadIcon onClick={resetFilter} /> : null}
@@ -176,13 +175,15 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
 
 export default LeetcodePage;
 
+export const Head = () => <Seo title="Leetcode-归档" />;
+
 export const pageQuery = graphql`
   query getLeetcodePageData {
     allFile(
       filter: { sourceInstanceName: { eq: "leetcode" } }
-      sort: { fields: childMdx___frontmatter___date, order: DESC }
+      sort: { childMdx: { frontmatter: { date: DESC } } }
     ) {
-      group(field: childMdx___frontmatter___tags) {
+      group(field: { childMdx: { frontmatter: { tags: SELECT } } }) {
         fieldValue
       }
       edges {

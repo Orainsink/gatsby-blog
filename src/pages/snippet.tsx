@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 
 import { useResetKey, useMedia, useIsDark } from '../hooks';
 import { Layout } from '../layout/BlogLayout';
-import { SeoHelmet } from '../components/SeoHelmet';
+import { Seo } from '../components/Seo';
 import { generatePath } from '../utils/generatePath';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { GetSnippetPageDataQuery } from '../../graphql-types';
@@ -93,7 +93,6 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
 
   return (
     <Layout>
-      <SeoHelmet title="Snippet-归档" />
       <PageDivider orientation="center">
         {curDate ? curDate : 'SNIPPET'}
         {curDate ? <ReloadIcon onClick={resetFilter} /> : null}
@@ -115,11 +114,13 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
 
 export default SnippetPage;
 
+export const Head = () => <Seo title="Snippet-归档" />;
+
 export const pageQuery = graphql`
   query getSnippetPageData {
     allFile(
       filter: { sourceInstanceName: { eq: "snippet" } }
-      sort: { fields: childMdx___frontmatter___date, order: DESC }
+      sort: { childMdx: { frontmatter: { date: DESC } } }
     ) {
       edges {
         node {

@@ -96,20 +96,20 @@ const Arrow = styled(ArrowSvg)`
   }
 `;
 
+const DynamicLoading = styled.div`
+  width: 100%
+  height: 100%';
+  background: #0a0a0a';
+  display: flex';
+  justifyContent: center';
+  alignItems: center';
+`;
+
 const Dynamic = lazy(() => import(/* webpackPrefetch: true */ './Dynamic'));
 const DynamicFallback = (): ReactElement => (
-  <div
-    style={{
-      width: '100%',
-      height: '100%',
-      background: '#0a0a0a',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}
-  >
+  <DynamicLoading>
     <LoadingSvg />
-  </div>
+  </DynamicLoading>
 );
 
 const dynamicSceneStyleSelector = selector({
@@ -128,7 +128,8 @@ export const HomeScene = memo((): ReactElement => {
 
   const handleScene = useCallback(() => {
     setScene(false);
-  }, [setScene]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <ReactScrollWheelHandler downHandler={handleScene}>

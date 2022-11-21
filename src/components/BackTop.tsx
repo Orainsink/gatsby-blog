@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
-import { BackTop as AntBackTop } from 'antd';
+import { FloatButton } from 'antd';
 
 export const BackTop = (): ReactElement => (
-  <AntBackTop target={() => document.body} />
+  <FloatButton.BackTop target={() => document.body} />
 );

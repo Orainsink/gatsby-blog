@@ -3,7 +3,7 @@ import { PageProps, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import { Layout } from '../layout/IndexLayout';
-import { SeoHelmet } from '../components/SeoHelmet';
+import { Seo } from '../components/Seo';
 import { CategoryComponent } from '../components/Cards/Cards';
 import { Trigger } from '../components/Trigger';
 import { Poem } from '../components/Poem';
@@ -32,7 +32,6 @@ const Index = ({ data }: PageProps<Data>): ReactElement => {
       <HomeScene />
       <Trigger />
       <Layout>
-        <SeoHelmet title={siteTitle} />
         <Poem />
         <CategoryComponent />
         <ListHeaderText>最近五篇文章</ListHeaderText>
@@ -44,6 +43,8 @@ const Index = ({ data }: PageProps<Data>): ReactElement => {
 
 export default Index;
 
+export const Head = () => <Seo title={siteTitle} />;
+
 export const pageQuery = graphql`
   query getPageData {
     site {
@@ -51,7 +52,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 5) {
+    allMdx(sort: { frontmatter: { date: DESC } }, limit: 5) {
       edges {
         node {
           id

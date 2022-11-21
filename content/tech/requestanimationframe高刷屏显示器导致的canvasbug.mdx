@@ -8,17 +8,17 @@ categories: tech
 
 ## requestAnimationFrame
 
-`requestAnimationFrame`会在浏览器每一帧开始绘制前执行，并且执行的间隔差不会像`setInterval`一样受到js事件循环的影响，有更高的执行效率和准确度，所以在前端动画领域比setTimeout更常见。
+`requestAnimationFrame`会在浏览器每一帧开始绘制前执行，并且执行的间隔差不会像`setInterval`一样受到 js 事件循环的影响，有更高的执行效率和准确度，所以在前端动画领域比 setTimeout 更常见。
 
-**[MDN上的解释](https://developer.mozilla.org/zh-CN/docs/Web/API/window/requestAnimationFrame)：**
+**[MDN 上的解释](https://developer.mozilla.org/zh-CN/docs/Web/API/window/requestAnimationFrame)：**
 
-当你准备更新动画时你应该调用此方法。这将使浏览器在下一次重绘之前调用你传入给该方法的动画函数(即你的回调函数)。回调函数执行次数通常是每秒60次，但在大多数遵循W3C建议的浏览器中，回调函数执行次数通常与浏览器屏幕刷新次数相匹配。为了提高性能和电池寿命，因此在大多数浏览器里，当`requestAnimationFrame()` 运行在后台标签页或者隐藏的[<iframe /\>](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe) 里时，`requestAnimationFrame()` 会被暂停调用以提升性能和电池寿命。
+当你准备更新动画时你应该调用此方法。这将使浏览器在下一次重绘之前调用你传入给该方法的动画函数(即你的回调函数)。回调函数执行次数通常是每秒 60 次，但在大多数遵循 W3C 建议的浏览器中，回调函数执行次数通常与浏览器屏幕刷新次数相匹配。为了提高性能和电池寿命，因此在大多数浏览器里，当`requestAnimationFrame()` 运行在后台标签页或者隐藏的[{/* <iframe /> */}](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe) 里时，`requestAnimationFrame()` 会被暂停调用以提升性能和电池寿命。
 
-回调函数会被传入[`DOMHighResTimeStamp`](https://developer.mozilla.org/zh-CN/docs/Web/API/DOMHighResTimeStamp)参数，[`DOMHighResTimeStamp`](https://developer.mozilla.org/zh-CN/docs/Web/API/DOMHighResTimeStamp)指示当前被 `requestAnimationFrame()` 排序的回调函数被触发的时间。在同一个帧中的多个回调函数，它们每一个都会接受到一个相同的时间戳，即使在计算上一个回调函数的工作负载期间已经消耗了一些时间。该时间戳是一个十进制数，单位毫秒，最小精度为1ms(1000μs)。
+回调函数会被传入[`DOMHighResTimeStamp`](https://developer.mozilla.org/zh-CN/docs/Web/API/DOMHighResTimeStamp)参数，[`DOMHighResTimeStamp`](https://developer.mozilla.org/zh-CN/docs/Web/API/DOMHighResTimeStamp)指示当前被 `requestAnimationFrame()` 排序的回调函数被触发的时间。在同一个帧中的多个回调函数，它们每一个都会接受到一个相同的时间戳，即使在计算上一个回调函数的工作负载期间已经消耗了一些时间。该时间戳是一个十进制数，单位毫秒，最小精度为 1ms(1000μs)。
 
 > 请确保总是使用第一个参数(或其它获得当前时间的方法)计算每次调用之间的时间间隔，否则动画在高刷新率的屏幕中会运行得更快。
 
-## siriwave源码
+## siriwave 源码
 
 博客用的插件是[siriwave](https://github.com/kopiro/siriwave/blob/master/src/index.ts)
 
@@ -50,9 +50,9 @@ categories: tech
 
 [考古挖掘：高刷显示器下的 requestAnimationFrame](https://juejin.cn/post/6953541785217925151)
 
-看了下结论是：**在144hz的显示器上，按照1000/144一帧？ 多显示器的话，都按最低的hz来算，超出60按60算**
+看了下结论是：**在 144hz 的显示器上，按照 1000/144 一帧？ 多显示器的话，都按最低的 hz 来算，超出 60 按 60 算**
 
-也就是说在高刷屏下，上面这个`startDrawCycle`方法执行频率会明显高于60hz屏幕
+也就是说在高刷屏下，上面这个`startDrawCycle`方法执行频率会明显高于 60hz 屏幕
 
 那么问题来了，我该怎么避免因为不恰当地使用`requestAnimationFrame`造成的鬼畜动画？
 
@@ -61,36 +61,38 @@ categories: tech
 上面那段代码修改过后
 
 ```typescript
-  /**
-   * Clear the space, interpolate values, calculate new steps and draws
-   * @returns
-   */
-class SiriWave{
+/**
+ * Clear the space, interpolate values, calculate new steps and draws
+ * @returns
+ */
+class SiriWave {
   // ...
   fpsLimit: number;
   constructor() {
     this.fpsLimit = 60;
-  };
+  }
   private preDelta = 0;
-  
+
   private startDrawCycle(curDelta) {
     const delta = curDelta - this.preDelta;
     if (this.fpsLimit && delta < 1000 / fpsLimit) {
-        return;
+      return;
     }
-    
+
     this.clear();
 
     // Interpolate values
-    this.lerp("amplitude");
-    this.lerp("speed");
+    this.lerp('amplitude');
+    this.lerp('speed');
 
     this.draw();
     this.phase = (this.phase + (Math.PI / 2) * this.speed) % (2 * Math.PI);
 
     if (window.requestAnimationFrame) {
       // 动画的执行
-      this.animationFrameId = window.requestAnimationFrame(this.startDrawCycle.bind(this));
+      this.animationFrameId = window.requestAnimationFrame(
+        this.startDrawCycle.bind(this)
+      );
     } else {
       this.timeoutId = setTimeout(this.startDrawCycle.bind(this), 20);
     }
@@ -98,10 +100,10 @@ class SiriWave{
 }
 ```
 
-加入了`fpsLimit`和私有属性`preDelta`，用于判断距离上次执行动画的间隔时间是否超过了1s（60hz）
+加入了`fpsLimit`和私有属性`preDelta`，用于判断距离上次执行动画的间隔时间是否超过了 1s（60hz）
 
-但这样做依旧有问题，虽然限制住了动画执行频率，但是由于60hz 和144hz下执行间隔并不是倍数关系，所以这样改了过后在144hz屏幕下动画执行速度反而比60hz慢。
+但这样做依旧有问题，虽然限制住了动画执行频率，但是由于 60hz 和 144hz 下执行间隔并不是倍数关系，所以这样改了过后在 144hz 屏幕下动画执行速度反而比 60hz 慢。
 
-对于我来说我觉得这种慢是可以接受的：**不高于60hz**
+对于我来说我觉得这种慢是可以接受的：**不高于 60hz**
 
-但如果想要严格60hz刷新，最好还是使用setInterval
+但如果想要严格 60hz 刷新，最好还是使用 setInterval

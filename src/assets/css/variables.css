@@ -1,0 +1,124 @@
+:root body {
+  /* -------- Base ---------- */
+  --border-radius-base: 4px;
+  /* -------- Colors ----------- */
+  --primary-color: #1890ff;
+  --info-color: #1890ff;
+  --success-color: #52c41a;
+  --warning-color: #faae14;
+  --error-color: #ff1d1e;
+  --normal-color: #d9d9d9;
+  --item-hover-bg: rgba(0, 0, 0, 0.1);
+  /* Background color for `<body>` */
+  --body-background: #efefef;
+  /* Base background color for most components */
+  --component-background: #fff;
+  --main-background: #fff;
+  --component-hover: #f5f5f5;
+  /* text */
+  --text-color: #3d4451;
+  --text-color-secondary: #666666;
+  --text-color-third: #dcdcdc;
+  --text-color-fourth: #efefef;
+  /* h tag */
+  --heading-color: var(--text-color);
+  /* LINK */
+  --link-color: #2b2b2b;
+  --link-hover-color: #40a9ff;
+  --link-active-color: #40a9ff;
+  --border-color: #e1e1e6;
+  /* Disabled states */
+  --disabled-color: #babfbf;
+  --disabled-bg: #ececee;
+  /* input */
+  --input-background: var(--component-background);
+  /* tooltip */
+  --tooltip-bg: var(--component-background);
+  /* border */
+  --border-color: #f0f0f0;
+  /* tag */
+  --tag-color: 'blue';
+  /* box-shadow */
+  --box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16),
+    0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+  /* code */
+  --code-bg: #f6f6f6;
+  --code-color: #db4c69;
+  /* select */
+  --select-item-selected-bg: rgba(0, 0, 0, 0.1);
+  --select-item-active-bg: rgba(0, 0, 0, 0.1);
+  --select-dropdown-bg: #fff;
+  /* table */
+  --table-header-bg: #fafafa;
+  --table-header-color: var(--text-color);
+  --table-row-hover-bg: var(--table-header-bg);
+  --table-header-sort-bg: #f5f5f5;
+  --table-tr-bg: var(--white);
+  /* mdx */
+  --mdx-header: var(--text-color);
+  --backtop: var(--text-color-secondary);
+  /* post */
+  --post-title: var(--link-color);
+  --post-title-hover: var(--link-hover-color);
+  --highlight-color: var(--primary-color);
+}
+
+:root body.dark {
+  /* -------- Base ---------- */
+  --border-radius-base: 4px;
+  /* Colors */
+  --primary-color: #1890ff;
+  --error-color: #f5222d;
+  --warning-color: #faad14;
+  --info-color: #1890ff;
+  --success-color: #52c41a;
+  --heading-color: var(--text-color-secondary);
+  /* text */
+  --text-color: #e8edee;
+  --text-color-secondary: #cdcfcf;
+  --text-color-third: #787a7a;
+  --text-color-fourth: #434343;
+  --link-color: #e8edee;
+  --link-hover-color: #40a9ff;
+  --link-active-color: #40a9ff;
+  --disabled-color: #6b6d6d;
+  --disabled-bg: #3e3e3e;
+  --item-hover-bg: rgba(255, 255, 255, 0.1);
+
+  /* Background color for `<body>` */
+  --body-background: #141619;
+  /* --component-background: #5a5a5a; */
+  --component-background: #3a3a3e;
+  --main-background: #2b2b2e;
+  --component-hover: #47474b;
+  /* table */
+  --table-header-bg: #3a3a3e;
+  --table-header-color: #cdcfcf;
+  --table-row-hover-bg: rgba(255, 255, 255, 0.08);
+  --table-header-sort-bg: rgba(126, 126, 126, 0.1);
+  --table-tr-bg: var(--main-background);
+  /* select */
+  --select-item-selected-bg: rgba(255, 255, 255, 0.1);
+  --select-item-active-bg: rgba(255, 255, 255, 0.1);
+  --select-dropdown-bg: #5a5a5a;
+  /* tag */
+  --tag-color: #787a7a;
+  /* input */
+  --input-background: var(--component-background);
+  /* tooltip */
+  --tooltip-bg: var(--component-background);
+  /* border */
+  --border-color: #49494f;
+  /* box-shadow */
+  --box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16),
+    0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+  --code-bg: #1e1e1e;
+  --code-color: #9cdcfe;
+  /* mdx */
+  --mdx-header: var(--warning-color);
+  --backtop: var(--text-color-fourth);
+  /* post */
+  --post-title: var(--warning-color);
+  --post-title-hover: #ffd666;
+  --highlight-color: #ffe58f;
+}

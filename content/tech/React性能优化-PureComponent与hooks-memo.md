@@ -17,8 +17,6 @@ PureComponent 即纯组件, 用法类似 Component , 作用是减少不必要的
 
 其原理是当组件更新时，如果组件的 props 和 state 都没发生改变，render 方法就不会触发，省去 Virtual DOM 的生成和比对过程。具体就是 React 自动帮我们做了一层浅比较：
 
-<!--more-->
-
 ```js
 if (this._compositeType === CompositeTypes.PureClass) {
   shouldUpdate =

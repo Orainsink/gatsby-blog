@@ -128,7 +128,7 @@ export const MyPlayer = memo(() => {
       headerDrop={headerDrop}
       isDark={isDark}
       getPopupContainer={() => document.getElementById('header')!}
-      onVisibleChange={setPlayerVisible}
+      onOpenChange={setPlayerVisible}
     >
       <div style={{ cursor: 'pointer', transform: 'translateY(0.2em)' }}>
         <MusicIcon

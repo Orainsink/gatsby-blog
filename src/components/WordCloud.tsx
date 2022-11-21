@@ -46,7 +46,7 @@ export const WordCloud = memo(
     >(graphql`
       query getWordCloudData {
         allFile(filter: { sourceInstanceName: { eq: "tech" } }) {
-          group(field: childMdx___frontmatter___tags) {
+          group(field: { childMdx: { frontmatter: { tags: SELECT } } }) {
             fieldValue
             totalCount
           }

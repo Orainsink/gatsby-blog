@@ -20,8 +20,6 @@ password:
 - **MB** 占用内存数(MB). (Chrome 运行时需开启精确内存信息获取,通过【运行】窗口打开 `chrome --enable-precise-memory-info`)
 - **CUSTOM** 用户自定义面板.
 
-<!--more-->
-
 #### 截图
 
 ![fps.png](https://raw.githubusercontent.com/mrdoob/stats.js/master/files/fps.png) ![ms.png](https://raw.githubusercontent.com/mrdoob/stats.js/master/files/ms.png) ![mb.png](https://raw.githubusercontent.com/mrdoob/stats.js/master/files/mb.png) ![custom.png](https://raw.githubusercontent.com/mrdoob/stats.js/master/files/custom.png)

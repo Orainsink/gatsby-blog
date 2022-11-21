@@ -12,8 +12,6 @@ categories: tech
 >
 > [官方文档](https://github.com/tweenjs/tween.js/)
 
-<!--more-->
-
 ## 引入 tween.js
 
 **标签引入** [下载地址](https://raw.githubusercontent.com/tweenjs/tween.js/master/src/Tween.js)

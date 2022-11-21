@@ -25,8 +25,6 @@ npm i three
 
 Vue.cli 是默认使用 Webpack 的,接下来我们就对 three.js 进行模块化引用.
 
-<!--more-->
-
 ### 三.模块化引用 three.js
 
 你现在可以在你的源代码中引入模块，并继续像往常一样使用这个库。

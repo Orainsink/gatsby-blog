@@ -3,7 +3,7 @@ import { Button } from 'antd';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
-import { SeoHelmet } from '../components/SeoHelmet';
+import { Seo } from '../components/Seo';
 import { Loading } from '../components/Loading';
 
 const NotFountContainer = styled.div`
@@ -24,7 +24,6 @@ const NotFountContainer = styled.div`
 
 const NotFoundPage = (): ReactElement => (
   <>
-    <SeoHelmet title="404: Not Found" />
     <Loading debounce={0}>
       <NotFountContainer>
         <h1>404</h1>
@@ -37,5 +36,7 @@ const NotFoundPage = (): ReactElement => (
     </Loading>
   </>
 );
+
+export const Head = () => <Seo title="404: Not Found" />;
 
 export default NotFoundPage;

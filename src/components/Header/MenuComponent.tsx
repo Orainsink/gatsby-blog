@@ -36,8 +36,8 @@ export const MenuComponent = ({ drawer }: Props): ReactElement => {
           </Link>
 
           <StyledDropDown
-            overlay={<ArchivesMenu visible={visible} />}
-            onVisibleChange={(visible) => setVisible(visible)}
+            dropdownRender={() => <ArchivesMenu visible={visible} />}
+            onOpenChange={(visible) => setVisible(visible)}
           >
             <li>
               archives <DownOutlined />

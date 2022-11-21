@@ -5,7 +5,7 @@ import { getImage, GatsbyImage, ImageDataLike } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 
 import { Layout } from '../layout/BlogLayout';
-import { SeoHelmet } from '../components/SeoHelmet';
+import { Seo } from '../components/Seo';
 import { useResetKey } from '../hooks';
 import { generatePath } from '../utils/generatePath';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
@@ -91,7 +91,6 @@ const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
 
   return (
     <Layout>
-      <SeoHelmet title="随笔-归档" />
       <PageDivider orientation="center">
         {curDate ? curDate : '随笔'}
         {curDate ? <ReloadIcon onClick={resetFilter} /> : null}
@@ -103,6 +102,8 @@ const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
 
 export default EssayPage;
 
+export const Head = () => <Seo title="随笔-归档" />;
+
 export const pageQuery = graphql`
   query getEssayData {
     allFile(
@@ -110,7 +111,7 @@ export const pageQuery = graphql`
         sourceInstanceName: { eq: "essay" }
         extension: { in: ["md", "mdx"] }
       }
-      sort: { fields: childMdx___frontmatter___date, order: DESC }
+      sort: { childMdx: { frontmatter: { date: DESC } } }
     ) {
       edges {
         node {

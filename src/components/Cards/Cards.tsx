@@ -100,7 +100,7 @@ export const CategoryComponent = (): ReactElement => {
     query getTags {
       allFile {
         totalCount
-        group(field: childMdx___frontmatter___categories) {
+        group(field: { childMdx: { frontmatter: { categories: SELECT } } }) {
           totalCount
           fieldValue
         }

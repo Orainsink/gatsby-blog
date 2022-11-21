@@ -15,8 +15,6 @@ password:
 > async 函数就是隧道尽头的亮光，很多人认为它是异步操作的终极解决方案。
 > 以下文章参考资料：[阮一峰的博客](http://www.ruanyifeng.com/blog/2015/05/async.html)，[LucasHC 的博客](https://www.jianshu.com/p/3059a2d0f3da)
 
-<!--more-->
-
 ## async 函数的用法
 
 async 函数返回一个 Promise 对象，可以使用 then 方法添加回调函数。

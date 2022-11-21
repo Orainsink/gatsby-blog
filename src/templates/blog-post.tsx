@@ -1,11 +1,10 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { Link, graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
-import { ReactElement } from 'react';
+import { ReactElement, ReactNode } from 'react';
 
 import { Layout } from '../layout/BlogLayout';
-import { SeoHelmet } from '../components/SeoHelmet';
+import { Seo } from '../components/Seo';
 import { Tags } from '../components/Tags';
 import { Anchor } from '../components/Anchor';
 import { Contents } from '../components/SideBlocks/Contents';
@@ -21,6 +20,7 @@ import { Container, LeadUl, License, TableContents } from './Templates.styles';
 type Data = DeepRequiredAndNonNullable<GetBlogPostQuery>;
 interface Props {
   data: Data;
+  children: ReactNode;
   pageContext: {
     previous: any;
     next: any;
@@ -30,11 +30,11 @@ interface Props {
 
 const BlogPostTemplate = ({
   data: { mdx },
+  children,
   pageContext,
 }: Props): ReactElement => {
   const {
-    frontmatter: { title, tags, description, date, categories },
-    excerpt,
+    frontmatter: { title, tags, date, categories },
     tableOfContents,
   } = mdx;
   const { previous, next } = pageContext;
@@ -42,7 +42,6 @@ const BlogPostTemplate = ({
 
   return (
     <Layout sideBlocks={isDesktop && <Contents contents={tableOfContents} />}>
-      <SeoHelmet title={title} description={description || excerpt} />
       <article>
         <header>
           <h1 style={{ textAlign: 'center', fontWeight: 700 }}>{title}</h1>
@@ -83,7 +82,7 @@ const BlogPostTemplate = ({
               a: AnchorBlock,
             }}
           >
-            <MDXRenderer>{mdx.body}</MDXRenderer>
+            {children}
           </MDXProvider>
         </Container>
         <hr
@@ -128,6 +127,15 @@ const BlogPostTemplate = ({
 
 export default BlogPostTemplate;
 
+export const Head = ({ data: { mdx } }: Pick<Props, 'data'>) => {
+  const {
+    frontmatter: { title, description },
+    excerpt,
+  } = mdx;
+
+  return <Seo title={title} description={description || excerpt} />;
+};
+
 export const pageQuery = graphql`
   query getBlogPost($id: String) {
     site {
@@ -147,7 +155,6 @@ export const pageQuery = graphql`
       fields {
         slug
       }
-      body
       excerpt
       tableOfContents
     }

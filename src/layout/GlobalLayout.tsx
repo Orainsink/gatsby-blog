@@ -1,7 +1,7 @@
 import { useEffect, ReactElement, ReactNode, lazy, Suspense } from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import '../assets/css/variables.less';
+import '../assets/css/variables.css';
 import '../assets/css/global.less';
 import '../assets/css/base.less';
 
