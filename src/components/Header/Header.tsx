@@ -55,7 +55,7 @@ export const Header = memo((): ReactElement | null => {
   const [scene, setScene] = useRecoilState(sceneAtom);
   const [headerDrop, setHeaderDrop] = useRecoilState(headerDropAtom);
   const setSkip = useSetRecoilState(skipAtom);
-  const headerTitle = document.title.match(/(\S*)\s\|\sblog+$/)?.[0] ?? title;
+  const headerTitle = document.title.match(/(\S*)\s\|\s/)?.[1] ?? title;
 
   /**
    * scroll effects
@@ -91,7 +91,7 @@ export const Header = memo((): ReactElement | null => {
     localStorage.setItem('SCENE', '1');
   };
 
-  const showTitle = !isDesktop;
+  const showTitle = isDesktop;
   const renderTitle = () =>
     headerDrop ? (
       <span>{headerTitle}</span>

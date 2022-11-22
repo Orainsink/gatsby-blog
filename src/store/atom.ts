@@ -46,7 +46,7 @@ export const filterAtom = atom<Record<'curTag' | 'curDate', string>>({
   },
 });
 
-// headerDrop header 判断是否显示移动端UI
+// 是否已滚动，触发header样式改变
 export const headerDropAtom = atom<boolean>({
   key: 'headerDrop',
   default: false,
