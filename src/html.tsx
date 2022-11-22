@@ -20,7 +20,7 @@ const HTML = (props: HTMLProps) => {
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
-        <div
+        {/* <div
           id="___loader"
           style={{
             position: 'fixed',
@@ -63,7 +63,7 @@ const HTML = (props: HTMLProps) => {
         `,
           }}
         />
-        {props.preBodyComponents}
+        {props.preBodyComponents} */}
         <div
           key={`body`}
           id="___gatsby"

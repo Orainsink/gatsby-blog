@@ -1,17 +1,12 @@
 import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
-  position: absolute;
-  top: 0;
-  transition: top 0.5s ease-out;
-  left: 0;
-  right: 0;
-  z-index: 1;
   padding-bottom: 320px;
+  padding-top: 8em;
 `;
 
 export const Main = styled.main`
-  margin: 8em auto 0 auto;
+  margin: 0 auto 0 auto;
   max-width: 1200px;
   padding: 0.4em;
 

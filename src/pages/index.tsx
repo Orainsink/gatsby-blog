@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { PageProps, graphql } from 'gatsby';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Layout } from '../layout/IndexLayout';
 import { Seo } from '../components/Seo';
@@ -10,11 +10,53 @@ import { Poem } from '../components/Poem';
 import { PostList } from '../components/PostList';
 import { HomeScene } from '../components/HomeScene/HomeScene';
 import { DeepRequiredAndNonNullable, FileEdge } from '../../typings/custom';
+import { selector, useRecoilValue } from 'recoil';
+import { sceneAtom, triggerAtom } from '../store/atom';
+
+const activeStyles = css`
+  transform: translateY(0);
+`;
+
+const disActiveStyles = css`
+  transform: translateY(-100vh);
+`;
+
+const triggerStyles = css`
+  transform: translateY(-10vh);
+`;
+
+const dynamicSceneStyleSelector = selector({
+  key: 'dynamicSceneStyle',
+  get: ({ get }) => {
+    const scene = get(sceneAtom);
+    const trigger = get(triggerAtom);
+
+    return !scene ? 'disActive' : trigger ? 'trigger' : 'active';
+  },
+});
 
 const ListHeaderText = styled.h5`
   text-align: center;
   padding: 2em 0;
   margin: 0;
+`;
+
+const IndexScrollController = styled.div<{
+  status: 'disActive' | 'trigger' | 'active';
+}>`
+  transition: all 0.5s ease-out;
+  ${({ status }) => {
+    switch (status) {
+      case 'disActive':
+        return disActiveStyles;
+      case 'active':
+        return activeStyles;
+      case 'trigger':
+        return triggerStyles;
+      default:
+        return;
+    }
+  }}
 `;
 
 type Data = DeepRequiredAndNonNullable<Queries.getPageDataQuery>;
@@ -24,17 +66,20 @@ const Index = ({ data }: PageProps<Data>): ReactElement => {
       childMdx: edge.node,
     },
   })) as FileEdge[];
+  const dynamicSceneStyle = useRecoilValue(dynamicSceneStyleSelector);
 
   return (
     <>
-      <HomeScene />
       <Trigger />
-      <Layout>
-        <Poem />
-        <CategoryComponent />
-        <ListHeaderText>最近五篇文章</ListHeaderText>
-        <PostList posts={posts} />
-      </Layout>
+      <IndexScrollController status={dynamicSceneStyle}>
+        <HomeScene />
+        <Layout>
+          <Poem />
+          <CategoryComponent />
+          <ListHeaderText>最近五篇文章</ListHeaderText>
+          <PostList posts={posts} />
+        </Layout>
+      </IndexScrollController>
     </>
   );
 };

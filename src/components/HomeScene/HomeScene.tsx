@@ -1,51 +1,17 @@
 import { memo, useCallback, lazy, Suspense, ReactElement } from 'react';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
 import { ReactComponent as LoadingSvg } from '../../assets/img/loading.svg';
-import { selector, useRecoilValue, useSetRecoilState } from 'recoil';
+import { selector, useSetRecoilState } from 'recoil';
 import { sceneAtom, triggerAtom } from '../../store/atom';
 
-const activeStyles = css`
-  top: 0;
-  width: 100%;
-`;
-
-const disActiveStyles = css`
-  top: -100vh;
-  visibility: hidden;
-`;
-
-const triggerStyles = css`
-  transform: translateY(-10vh);
-  top: 0;
-  width: 100%;
-`;
-
-const CanvasContainer = styled.div<{
-  status: 'disActive' | 'trigger' | 'active';
-}>`
-  position: absolute;
-  z-index: 10;
-  height: 100%;
-  width: 100%;
+const CanvasContainer = styled.div`
+  height: 100vh;
+  width: 100vw;
   user-select: none;
   background: #0a0a0a;
-  transition: all 0.5s ease-out;
-
-  ${({ status }) => {
-    switch (status) {
-      case 'disActive':
-        return disActiveStyles;
-      case 'active':
-        return activeStyles;
-      case 'trigger':
-        return triggerStyles;
-      default:
-        return;
-    }
-  }}
 `;
 
 const arrowAme = keyframes`
@@ -97,12 +63,12 @@ const Arrow = styled(ArrowSvg)`
 `;
 
 const DynamicLoading = styled.div`
-  width: 100%
-  height: 100%';
-  background: #0a0a0a';
-  display: flex';
-  justifyContent: center';
-  alignItems: center';
+  width: 100vw;
+  height: 100vh;
+  background: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Dynamic = lazy(() => import(/* webpackPrefetch: true */ './Dynamic'));
@@ -112,19 +78,8 @@ const DynamicFallback = (): ReactElement => (
   </DynamicLoading>
 );
 
-const dynamicSceneStyleSelector = selector({
-  key: 'dynamicSceneStyle',
-  get: ({ get }) => {
-    const scene = get(sceneAtom);
-    const trigger = get(triggerAtom);
-
-    return !scene ? 'disActive' : trigger ? 'trigger' : 'active';
-  },
-});
-
 export const HomeScene = memo((): ReactElement => {
   const setScene = useSetRecoilState(sceneAtom);
-  const dynamicSceneStyle = useRecoilValue(dynamicSceneStyleSelector);
 
   const handleScene = useCallback(() => {
     setScene(false);
@@ -133,7 +88,7 @@ export const HomeScene = memo((): ReactElement => {
 
   return (
     <ReactScrollWheelHandler downHandler={handleScene}>
-      <CanvasContainer status={dynamicSceneStyle}>
+      <CanvasContainer>
         <Suspense fallback={<DynamicFallback />}>
           <Dynamic />
         </Suspense>
