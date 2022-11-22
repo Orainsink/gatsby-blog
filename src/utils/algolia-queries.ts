@@ -1,6 +1,6 @@
 const indexName = `Pages`;
 const pageQuery = `
-query algoliaData {
+query getAlgoliaData {
   pages: allMdx {
     edges {
       node {
@@ -20,7 +20,7 @@ query algoliaData {
 
 const pageToAlgoliaRecord = ({
   node: { id, frontmatter, fields, ...rest },
-}: any) => {
+}: Pick<Queries.MdxEdge, 'node'>) => {
   return {
     objectID: id,
     ...frontmatter,
@@ -37,7 +37,7 @@ const queries = [
     }: {
       data: {
         pages: {
-          edges: any[];
+          edges: Queries.MdxEdge[];
         };
       };
     }) => data.pages.edges.map(pageToAlgoliaRecord),

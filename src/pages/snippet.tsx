@@ -11,6 +11,7 @@ import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
 import { PageDivider, ReloadIcon, WrappedTable } from '../layout/Pages.styles';
+import { ColumnsType } from 'antd/es/table';
 
 type Data = DeepRequiredAndNonNullable<Queries.getSnippetPageDataQuery>;
 const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
@@ -36,7 +37,7 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
     };
   });
 
-  const columns: any = [
+  const columns: ColumnsType<typeof datas[number]> = [
     {
       title: 'TITLE',
       dataIndex: 'title',
@@ -62,15 +63,15 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
       dataIndex: 'date',
       width: 120,
       defaultSortOrder: 'descend',
-      sorter: (a: any, b: any) => dayjs(a.date).unix() - dayjs(b.date).unix(),
+      sorter: (a, b) => dayjs(a.date).unix() - dayjs(b.date).unix(),
     },
   ];
-  const smallColumns: any = [
+  const smallColumns: ColumnsType<typeof datas[number]> = [
     {
       title: 'TITLE',
       dataIndex: 'title',
       width: 250,
-      render: (text: string, row: any) => (
+      render: (text, row) => (
         <div>
           <div style={{ fontWeight: 'bold' }}>{text}</div>
           <div>{row.description}</div>
@@ -85,7 +86,7 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
       dataIndex: 'date',
       width: 120,
       defaultSortOrder: 'descend',
-      sorter: (a: any, b: any) => dayjs(a.date).unix() - dayjs(b.date).unix(),
+      sorter: (a, b) => dayjs(a.date).unix() - dayjs(b.date).unix(),
     },
   ];
 

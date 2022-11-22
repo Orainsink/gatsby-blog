@@ -15,17 +15,7 @@ import { filterAtom } from '../store/atom';
 import { PageDivider, ReloadIcon, WrappedTable } from '../layout/Pages.styles';
 
 type Data = DeepRequiredAndNonNullable<Queries.getLeetcodePageDataQuery>;
-interface ColumnItemType {
-  title: string;
-  description: string;
-  tag: string;
-  date: any;
-  index: number;
-  slug: string;
-  url: string;
-  categories: string;
-  id: string;
-}
+
 const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
   const { curDate } = useRecoilValue(filterAtom);
   const resetFilter = useResetRecoilState(filterAtom);
@@ -58,14 +48,14 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
     });
   }, [posts]);
 
-  const columns: ColumnsType<ColumnItemType> = [
+  const columns: ColumnsType<typeof datas[number]> = [
     {
       title: 'INDEX',
       dataIndex: 'index',
       align: 'center',
       width: 100,
       render: (text: string) => <div>{text ? `#${text}` : '-'}</div>,
-      sorter: (a: any, b: any) => a.index - b.index,
+      sorter: (a, b) => a.index - b.index,
     },
     {
       title: 'TITLE',
@@ -89,7 +79,7 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
       dataIndex: 'date',
       width: 120,
       defaultSortOrder: 'descend',
-      sorter: (a: any, b: any) => dayjs(a.date).unix() - dayjs(b.date).unix(),
+      sorter: (a, b) => dayjs(a.date).unix() - dayjs(b.date).unix(),
     },
     {
       title: '链接',
@@ -111,7 +101,7 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
         ) : null,
     },
   ];
-  const smallColumns: ColumnsType<ColumnItemType> = [
+  const smallColumns: ColumnsType<typeof datas[number]> = [
     {
       title: 'INDEX',
       dataIndex: 'index',
@@ -121,7 +111,7 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
       title: 'TITLE',
       dataIndex: 'title',
       defaultSortOrder: 'descend',
-      render: (text: string, row: any) => (
+      render: (text: string, row) => (
         <div>
           <div style={{ fontWeight: 'bold' }}>{text}</div>
           <div>date：{row.date}</div>
