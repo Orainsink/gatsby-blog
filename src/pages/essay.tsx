@@ -8,11 +8,10 @@ import { Layout } from '../layout/BlogLayout';
 import { Seo } from '../components/Seo';
 import { useResetKey } from '../hooks';
 import { generatePath } from '../utils/generatePath';
-import { DeepRequiredAndNonNullable } from '../../typings/custom';
-import { GetEssayDataQuery } from '../../graphql-types';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
 import { PageDivider, ReloadIcon } from '../layout/Pages.styles';
+import { DeepRequiredAndNonNullable } from '../../typings/custom';
 
 const EssayCard = styled(Card)`
   width: 45%;
@@ -38,8 +37,7 @@ const MetaTittle = styled.p`
   font-weight: bold;
 `;
 
-type Data = DeepRequiredAndNonNullable<GetEssayDataQuery>;
-
+type Data = DeepRequiredAndNonNullable<Queries.getEssayDataQuery>;
 const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
   const { curDate } = useRecoilValue(filterAtom);
   const resetFilter = useResetRecoilState(filterAtom);

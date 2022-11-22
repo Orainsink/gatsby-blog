@@ -14,5 +14,6 @@
     "jsx": "react-jsx",
     "downlevelIteration": true
   },
-  "exclude": ["node_modules", "public", ".cache", "plugins"]
+  "exclude": ["node_modules", "public", ".cache", "plugins"],
+  "include": ["./src/**/*", "gatsby-*.*"]
 }

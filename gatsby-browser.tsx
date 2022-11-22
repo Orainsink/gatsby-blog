@@ -17,18 +17,6 @@ export const onInitialClientRender: GatsbyBrowser['onInitialClientRender'] =
     }
   };
 
-/**pwa update notice */
-// export const onServiceWorkerUpdateReady: GatsbyBrowser['onServiceWorkerUpdateReady'] =
-//   () => {
-//     const answer = window.confirm(
-//       `This application has been updated. ` +
-//         `Reload to display the latest version?`
-//     );
-//     if (answer === true) {
-//       window.location.reload();
-//     }
-//   };
-
 export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
   element,
 }) => {

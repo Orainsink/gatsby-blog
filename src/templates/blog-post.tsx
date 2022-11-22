@@ -13,11 +13,10 @@ import { generatePath } from '../utils/generatePath';
 import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
 import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
 import { Comment } from '../components/Comment';
-import { GetBlogPostQuery } from '../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { Container, LeadUl, License, TableContents } from './Templates.styles';
 
-type Data = DeepRequiredAndNonNullable<GetBlogPostQuery>;
+type Data = DeepRequiredAndNonNullable<Queries.getBlogPostQuery>;
 interface Props {
   data: Data;
   children: ReactNode;

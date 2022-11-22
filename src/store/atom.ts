@@ -61,12 +61,6 @@ export const themeAtom = atom<string | null>({
   ),
 });
 
-// title 暗黑色主题
-export const titleAtom = atom<string>({
-  key: 'title',
-  default: '',
-});
-
 // playerVisible 音乐播放器是否显示
 export const playerVisibleAtom = atom<boolean>({
   key: 'playerVisible',

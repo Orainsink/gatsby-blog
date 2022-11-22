@@ -3,7 +3,6 @@ import { GatsbyNode } from 'gatsby';
 import { replacePath } from '../src/utils/replacePath';
 import path from 'path';
 import { hashString } from '../src/utils/hashString';
-import { MdxEdge, Query } from '../graphql-types';
 
 export const createPages: GatsbyNode['createPages'] = ({
   actions,
@@ -35,8 +34,8 @@ export const createPages: GatsbyNode['createPages'] = ({
     about: AboutTemplate,
   };
 
-  return graphql<Query>(`
-    {
+  return graphql<Queries.Query>(`
+    query getPagesData {
       allMdx {
         edges {
           node {
@@ -56,7 +55,7 @@ export const createPages: GatsbyNode['createPages'] = ({
     if (result.errors) {
       return Promise.reject(result.errors);
     }
-    const posts = result.data!.allMdx.edges as unknown as MdxEdge[];
+    const posts = result.data!.allMdx.edges;
     posts.forEach(({ node }, index) => {
       const previous =
         index === posts.length - 1 ? null : posts[index + 1].node;

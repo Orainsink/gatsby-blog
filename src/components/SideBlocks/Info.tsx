@@ -16,7 +16,6 @@ import styled, { css } from 'styled-components';
 
 import { ReactComponent as SteamSvg } from '../../assets/img/steam.svg';
 import { useMedia, useIsDark } from '../../hooks';
-import { GetSelfInfoQuery } from '../../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 import { BaseCol, Title } from './SideBlocks.styles';
 
@@ -140,7 +139,7 @@ export const Info = () => {
   const isDesktop = useMedia('isDesktop');
 
   const data = useStaticQuery<
-    DeepRequiredAndNonNullable<GetSelfInfoQuery>
+    DeepRequiredAndNonNullable<Queries.getSelfInfoQuery>
   >(graphql`
     query getSelfInfo {
       avatar: file(absolutePath: { regex: "/avatar.png/" }) {

@@ -5,8 +5,8 @@ import styled from 'styled-components';
 
 import { Tags } from './Tags';
 import { generatePath } from '../utils/generatePath';
-import { FileEdge } from '../../graphql-types';
 import { filterAtom } from '../store/atom';
+import { FileEdge } from '../../typings/custom';
 
 interface Props {
   posts: FileEdge[];
@@ -45,7 +45,7 @@ const Phrase = styled.p`
 
 const getLowerCasePosts = (posts: FileEdge[]): PostItem[] =>
   posts.map(({ node }) => {
-    const frontmatter = node!.childMdx!.frontmatter!;
+    const frontmatter = node.childMdx.frontmatter;
 
     return {
       title: (frontmatter.title || '').toLowerCase(),

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import { isClient } from '../utils/isClient';
 import { useIsDark } from '../hooks';
-import { GetWordCloudDataQuery } from '../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { useSetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
@@ -42,7 +41,7 @@ const WordCloudContainer = styled.div`
 export const WordCloud = memo(
   ({ jump = false, height = 150 }: Props): ReactElement => {
     const data = useStaticQuery<
-      DeepRequiredAndNonNullable<GetWordCloudDataQuery>
+      DeepRequiredAndNonNullable<Queries.getWordCloudDataQuery>
     >(graphql`
       query getWordCloudData {
         allFile(filter: { sourceInstanceName: { eq: "tech" } }) {

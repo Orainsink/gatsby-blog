@@ -3,7 +3,6 @@ import { Card } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 
-import { GetTagsQuery } from '../../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 import {
   CardSection,
@@ -96,7 +95,9 @@ const getColumn = (group: GroupItem[]) => {
 };
 
 export const CategoryComponent = (): ReactElement => {
-  const data = useStaticQuery<DeepRequiredAndNonNullable<GetTagsQuery>>(graphql`
+  const data = useStaticQuery<
+    DeepRequiredAndNonNullable<Queries.getTagsQuery>
+  >(graphql`
     query getTags {
       allFile {
         totalCount

@@ -10,12 +10,11 @@ import { generatePath } from '../utils/generatePath';
 import { useResetKey, useMedia, useIsDark } from '../hooks';
 import { ReactComponent as LeetcodeSvg } from '../assets/img/leetcode.svg';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
-import { GetLeetcodePageDataQuery } from '../../graphql-types';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
 import { PageDivider, ReloadIcon, WrappedTable } from '../layout/Pages.styles';
 
-type Data = DeepRequiredAndNonNullable<GetLeetcodePageDataQuery>;
+type Data = DeepRequiredAndNonNullable<Queries.getLeetcodePageDataQuery>;
 interface ColumnItemType {
   title: string;
   description: string;

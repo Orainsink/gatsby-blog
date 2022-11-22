@@ -6,14 +6,12 @@ import { Layout } from '../layout/BlogLayout';
 import { Seo } from '../components/Seo';
 import { PostList } from '../components/PostList';
 import { CalendarBlock } from '../components/SideBlocks/Calendar';
-import { GetArchivesPageDataQuery, FileEdge } from '../../graphql-types';
-import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
 import { PageDivider, ReloadIcon } from '../layout/Pages.styles';
+import { DeepRequiredAndNonNullable, FileEdge } from '../../typings/custom';
 
-type Data = DeepRequiredAndNonNullable<GetArchivesPageDataQuery>;
-
+type Data = DeepRequiredAndNonNullable<Queries.getArchivesPageDataQuery>;
 const ArchivesPage = ({ data }: PageProps<Data>): ReactElement => {
   const { curTag, curDate } = useRecoilValue(filterAtom);
   const resetFilter = useResetRecoilState(filterAtom);

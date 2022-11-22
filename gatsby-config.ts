@@ -10,7 +10,6 @@ import modifyVars from './scripts/less-vars';
 import { CATEGORY_NAMES } from './src/assets/constants/categories';
 import isProduction from './scripts/env';
 import algoliaQueries from './src/utils/algolia-queries';
-import { MdxEdge, Query } from './graphql-types';
 import { DeepRequiredAndNonNullable } from './typings/custom';
 
 dotenv.config();
@@ -25,6 +24,7 @@ const categoryFileConfig: PluginRef[] = CATEGORY_NAMES.map((name) => ({
 }));
 
 const config: GatsbyConfig = {
+  graphqlTypegen: true,
   siteMetadata: {
     title: `Orainsink's Blog`,
     author: {
@@ -62,17 +62,6 @@ const config: GatsbyConfig = {
         trackingId: process.env.TRACKING_ID,
       },
     },
-    isProduction && {
-      resolve: `gatsby-plugin-algolia`,
-      options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_ADMIN_KEY,
-        indexName: process.env.ALGOLIA_INDEX_NAME,
-        queries: algoliaQueries,
-        enablePartialUpdates: true,
-        matchFields: ['slug'],
-      },
-    },
     {
       resolve: `gatsby-plugin-layout`,
       options: {
@@ -99,24 +88,24 @@ const config: GatsbyConfig = {
             serialize: ({
               query: { site, allMdx },
             }: {
-              query: DeepRequiredAndNonNullable<Query>;
+              query: DeepRequiredAndNonNullable<
+                Pick<Queries.Query, 'site' | 'allMdx'>
+              >;
             }) => {
-              return allMdx.edges.map(
-                (edge: DeepRequiredAndNonNullable<MdxEdge>) => {
-                  return Object.assign({}, edge.node.frontmatter, {
-                    description: edge.node.excerpt,
-                    date: edge.node.frontmatter.date,
-                    url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                    guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                    custom_elements: [{ 'content:encoded': edge.node.body }],
-                  });
-                }
-              );
+              return allMdx.edges.map((edge) => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.excerpt,
+                  date: edge.node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  custom_elements: [{ 'content:encoded': edge.node.body }],
+                });
+              });
             },
             query: `
               {
                 allMdx(
-                  sort: { order: DESC, fields: [frontmatter___date] },
+                  sort: {frontmatter: {date: DESC}},
                 ) {
                   edges {
                     node {
@@ -203,12 +192,12 @@ const config: GatsbyConfig = {
         postCssPlugins: [postcssPresetEnv, cssnano],
       },
     },
-    {
-      resolve: `gatsby-plugin-graphql-codegen`,
-      options: {
-        codegen: !!env.CODEGEN ?? false,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-graphql-codegen`,
+    //   options: {
+    //     codegen: !!env.CODEGEN ?? false,
+    //   },
+    // },
     // 'gatsby-plugin-swc',
     `gatsby-plugin-sitemap`,
     {
@@ -235,6 +224,17 @@ const config: GatsbyConfig = {
       options: {
         analyzerPort: 4396,
         production: true,
+      },
+    },
+    isProduction && {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        indexName: process.env.ALGOLIA_INDEX_NAME,
+        queries: algoliaQueries,
+        enablePartialUpdates: true,
+        matchFields: ['slug'],
       },
     },
   ].filter((conf): conf is PluginRef => Boolean(conf)),

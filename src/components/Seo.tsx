@@ -1,8 +1,6 @@
 import { ReactElement } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import { useCustomTitle } from '../hooks';
-import { GetSeoDataQuery } from '../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
 
 interface Props {
@@ -18,10 +16,12 @@ interface Props {
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 export const Seo = ({ description, title }: Props): ReactElement => {
-  const { site } = useStaticQuery<DeepRequiredAndNonNullable<GetSeoDataQuery>>(
+  const { site } = useStaticQuery<
+    DeepRequiredAndNonNullable<Queries.getSeoDataQuery>
+  >(
     graphql`
       query getSeoData {
-        site(graphqlTypegen: { ne: true }) {
+        site {
           siteMetadata {
             title
             description
@@ -36,7 +36,6 @@ export const Seo = ({ description, title }: Props): ReactElement => {
 
   const metadata = site.siteMetadata;
   const metaDescription = description || metadata.description;
-  useCustomTitle(title);
 
   return (
     <>

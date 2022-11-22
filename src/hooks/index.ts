@@ -1,6 +1,5 @@
 export { useBackTop } from './useBackTop';
 export { useBackgroundColor } from './useBackgroundColor';
-export { useCustomTitle } from './useCustomTitle';
 export { useDebounce } from './useDebounce';
 export { useDrawerCloseEffect } from './useDrawerCloseEffect';
 export { useHasMounted } from './useHasMounted';

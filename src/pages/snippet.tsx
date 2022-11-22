@@ -8,13 +8,11 @@ import { Layout } from '../layout/BlogLayout';
 import { Seo } from '../components/Seo';
 import { generatePath } from '../utils/generatePath';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
-import { GetSnippetPageDataQuery } from '../../graphql-types';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
 import { PageDivider, ReloadIcon, WrappedTable } from '../layout/Pages.styles';
 
-type Data = DeepRequiredAndNonNullable<GetSnippetPageDataQuery>;
-
+type Data = DeepRequiredAndNonNullable<Queries.getSnippetPageDataQuery>;
 const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
   const { curDate } = useRecoilValue(filterAtom);
   const resetFilter = useResetRecoilState(filterAtom);

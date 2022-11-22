@@ -5,10 +5,10 @@ import styled from 'styled-components';
 
 import { Calendar } from './CustomCalendar';
 import { useColFlex } from './useColFlex';
-import { FileEdge } from '../../../graphql-types';
 import { useSetRecoilState } from 'recoil';
 import { filterAtom } from '../../store/atom';
 import { BaseCol, Title } from './SideBlocks.styles';
+import { FileEdge } from '../../../typings/custom';
 
 const CalendarHeaderContainer = styled(Row)`
   padding: 8px;

@@ -13,14 +13,13 @@ import { generatePath } from '../utils/generatePath';
 import { Contents } from '../components/SideBlocks';
 import { Comment } from '../components/Comment';
 import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
-import { GetSnippetPostQuery } from '../../graphql-types';
 import {
   DeepRequiredAndNonNullable,
   TableOfContents,
 } from '../../typings/custom';
 import { Container, LeadUl, License, TableContents } from './Templates.styles';
 
-type Data = DeepRequiredAndNonNullable<GetSnippetPostQuery>;
+type Data = DeepRequiredAndNonNullable<Queries.getSnippetPostQuery>;
 interface Props {
   data: Data;
   children: ReactNode;

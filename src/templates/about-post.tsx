@@ -6,7 +6,6 @@ import { Layout } from '../layout/BlogLayout';
 import { Seo } from '../components/Seo';
 import { Comment } from '../components/Comment';
 import { Poem } from '../components/Poem';
-import { GetAboutPageDataQuery } from '../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { Container } from './Templates.styles';
 const MoogleScene = lazy(
@@ -18,7 +17,7 @@ const AboutContainer = styled(Container)`
   padding: 1em;
 `;
 
-type Data = DeepRequiredAndNonNullable<GetAboutPageDataQuery>;
+type Data = DeepRequiredAndNonNullable<Queries.getAboutPageDataQuery>;
 
 const AboutPostTemplate = ({ children }: PageProps<Data>): ReactElement => {
   return (

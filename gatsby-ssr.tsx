@@ -9,9 +9,3 @@ import type { GatsbySSR } from 'gatsby';
 export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => {
   return <RecoilRoot>{element}</RecoilRoot>;
 };
-
-export const onRenderBody: GatsbySSR['onRenderBody'] = ({
-  setHtmlAttributes,
-}) => {
-  setHtmlAttributes({ lang: 'CHS' });
-};

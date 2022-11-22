@@ -1,19 +1,4 @@
 declare const __PATH_PREFIX__: string;
-declare class MediaMetadata {
-  title: string;
-  artist: string;
-  artwork: { [key: string]: string }[];
-  constructor({
-    title,
-    artist,
-    artwork,
-  }: {
-    title: string;
-    artist: string;
-    artwork: { [key: string]: string }[];
-  });
-}
-
 declare module '*.json';
 declare module '*.gltf';
 declare module '*.svg';
@@ -35,11 +20,6 @@ declare module 'gltf-pipeline' {
 declare module '*.gql' {
   const content: string;
   export default content;
-}
-
-declare module 'escape-string-regexp' {
-  declare function escapeStringRegexp(str: string): string;
-  export default escapeStringRegexp;
 }
 
 declare module '@mdx-js/react' {
