@@ -6,10 +6,12 @@ import { CATEGORY_MAP } from '../assets/constants/categories';
 import { useHasMounted, useIsDark } from '../hooks';
 import { useSetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
+
 interface Props {
-  tags: string[];
+  tags: readonly string[];
   category?: string;
 }
+
 export const Tags = ({ tags, category }: Props): ReactElement | null => {
   const setFilter = useSetRecoilState(filterAtom);
   const isDark = useIsDark();

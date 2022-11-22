@@ -15,5 +15,11 @@
     "downlevelIteration": true
   },
   "exclude": ["node_modules", "public", ".cache", "plugins"],
-  "include": ["./src/**/*", "gatsby-*.*"]
+  "include": [
+    "./src/**/*",
+    "gatsby-*.*",
+    "./scripts/*",
+    "./typings/*",
+    "./content/**/*"
+  ]
 }

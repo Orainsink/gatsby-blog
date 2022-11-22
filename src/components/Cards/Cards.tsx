@@ -25,7 +25,7 @@ interface GroupItem {
  * @param group
  * @returns
  */
-const getCount = (category: string, group: GroupItem[]): number => {
+const getCount = (category: string, group: readonly GroupItem[]): number => {
   return group.find((item) => item.fieldValue === category)?.totalCount || 0;
 };
 /**
@@ -33,7 +33,7 @@ const getCount = (category: string, group: GroupItem[]): number => {
  * @param group
  * @returns
  */
-const getColumn = (group: GroupItem[]) => {
+const getColumn = (group: readonly GroupItem[]) => {
   return [
     {
       category: 'leetcode',
