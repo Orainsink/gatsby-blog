@@ -121,7 +121,6 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "new": "ts-node ./scripts/new-post.ts",
-    "diary": "ts-node ./scripts/write-diary.ts",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" ",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
     "lint:fix": "yarn lint --fix",
