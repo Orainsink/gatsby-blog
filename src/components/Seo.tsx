@@ -39,7 +39,7 @@ export const Seo = ({ description, title }: Props): ReactElement => {
 
   return (
     <>
-      <title>{`${title} | metadata.title`}</title>
+      <title>{`${title} | ${metadata.title}`}</title>
       <meta name="description" content={metaDescription} />
       <meta name="og:title" content={title} />
       <meta name="og:description" content={metaDescription} />
@@ -47,8 +47,8 @@ export const Seo = ({ description, title }: Props): ReactElement => {
       <meta name="og:description" content={metaDescription} />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:creator" content={metadata.social.github} />
-      <meta name={`twitter:title`} content={title} />
-      <meta name={`twitter:description`} content={metaDescription} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={metaDescription} />
     </>
   );
 };

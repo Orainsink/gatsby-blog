@@ -6,7 +6,12 @@ import { useBackgroundColor } from '../hooks';
 import { Comment } from '../components/Comment';
 import { Footer } from '../components/Footer';
 import { Bg } from '../components/Bg';
-import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
+import {
+  selector,
+  useRecoilValue,
+  useResetRecoilState,
+  useSetRecoilState,
+} from 'recoil';
 import {
   filterAtom,
   hasArrowAtom,
@@ -18,6 +23,21 @@ import { containerStyles, Main, MainWrap, Wrapper } from './Layout.styles';
 
 const Container = styled.div`
   ${containerStyles}
+`;
+
+const IndexWrapper = styled(Wrapper)<{ wrapperClass: string }>`
+  ${({ wrapperClass }) => {
+    switch (wrapperClass) {
+      case 'disActive':
+        return `top: 0;`;
+      case 'trigger':
+        return `top: 90vh;`;
+      case 'active':
+        return `top: 100vh;`;
+      default:
+        return;
+    }
+  }}
 `;
 
 const ClickTip = styled.div<{ show: boolean }>`
@@ -39,8 +59,20 @@ interface Props {
   children: ReactNode;
 }
 
+const wrapperClassSelector = selector({
+  key: 'wrapperClass',
+  get: ({ get }) => {
+    const scene = get(sceneAtom);
+    const trigger = get(triggerAtom);
+    const skip = get(skipAtom);
+
+    return !scene || skip ? 'disActive' : trigger ? 'trigger' : 'active';
+  },
+});
+
 /**index Layout */
 export const Layout = ({ children }: Props): ReactElement => {
+  const wrapperClass = useRecoilValue(wrapperClassSelector);
   const scene = useRecoilValue(sceneAtom);
   const trigger = useRecoilValue(triggerAtom);
   const skip = useRecoilValue(skipAtom);
@@ -55,7 +87,7 @@ export const Layout = ({ children }: Props): ReactElement => {
   }, []);
 
   return (
-    <Wrapper id="markdownBody">
+    <IndexWrapper wrapperClass={wrapperClass}>
       {scene && !skip && <ClickTip show={trigger}>Click to slide</ClickTip>}
       <Bg />
       <Main>
@@ -72,6 +104,6 @@ export const Layout = ({ children }: Props): ReactElement => {
         </Container>
       </Main>
       <Footer />
-    </Wrapper>
+    </IndexWrapper>
   );
 };

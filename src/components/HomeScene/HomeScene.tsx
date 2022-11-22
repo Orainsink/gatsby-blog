@@ -1,17 +1,50 @@
 import { memo, useCallback, lazy, Suspense, ReactElement } from 'react';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
 import { ReactComponent as LoadingSvg } from '../../assets/img/loading.svg';
-import { selector, useSetRecoilState } from 'recoil';
+import { selector, useRecoilValue, useSetRecoilState } from 'recoil';
 import { sceneAtom, triggerAtom } from '../../store/atom';
 
-const CanvasContainer = styled.div`
+const activeStyles = css`
+  top: 0;
+`;
+
+const disActiveStyles = css`
+  top: -100vh;
+  visibility: hidden;
+`;
+
+const triggerStyles = css`
+  transform: translateY(-10vh);
+  top: 0;
+`;
+
+const CanvasContainer = styled.div<{
+  status: 'disActive' | 'trigger' | 'active';
+}>`
+  position: absolute;
+  z-index: 10;
   height: 100vh;
   width: 100vw;
   user-select: none;
   background: #0a0a0a;
+  transition: all 0.5s ease-out;
+  top: 0;
+
+  ${({ status }) => {
+    switch (status) {
+      case 'disActive':
+        return disActiveStyles;
+      case 'active':
+        return activeStyles;
+      case 'trigger':
+        return triggerStyles;
+      default:
+        return;
+    }
+  }}
 `;
 
 const arrowAme = keyframes`
@@ -78,8 +111,19 @@ const DynamicFallback = (): ReactElement => (
   </DynamicLoading>
 );
 
+const dynamicSceneStyleSelector = selector({
+  key: 'dynamicSceneStyle',
+  get: ({ get }) => {
+    const scene = get(sceneAtom);
+    const trigger = get(triggerAtom);
+
+    return !scene ? 'disActive' : trigger ? 'trigger' : 'active';
+  },
+});
+
 export const HomeScene = memo((): ReactElement => {
   const setScene = useSetRecoilState(sceneAtom);
+  const dynamicSceneStyle = useRecoilValue(dynamicSceneStyleSelector);
 
   const handleScene = useCallback(() => {
     setScene(false);
@@ -88,7 +132,7 @@ export const HomeScene = memo((): ReactElement => {
 
   return (
     <ReactScrollWheelHandler downHandler={handleScene}>
-      <CanvasContainer>
+      <CanvasContainer status={dynamicSceneStyle}>
         <Suspense fallback={<DynamicFallback />}>
           <Dynamic />
         </Suspense>
