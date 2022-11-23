@@ -1,8 +1,7 @@
 import { useEffect, ReactElement } from 'react';
 import { load as poemLoader } from 'jinrishici';
+import { useLocalStorage } from 'react-use';
 import styled from 'styled-components';
-
-import { useLocalStorage } from '../hooks';
 
 interface PoemData {
   content: string;
