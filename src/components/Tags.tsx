@@ -3,9 +3,10 @@ import { Link } from 'gatsby';
 import { Tag } from 'antd';
 
 import { CATEGORY_MAP } from '../assets/constants/categories';
-import { useHasMounted, useIsDark } from '../hooks';
+import { useIsDark } from '../hooks';
 import { useSetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
+import { useMountedState } from 'react-use';
 
 interface Props {
   tags: readonly string[];
@@ -15,7 +16,7 @@ interface Props {
 export const Tags = ({ tags, category }: Props): ReactElement | null => {
   const setFilter = useSetRecoilState(filterAtom);
   const isDark = useIsDark();
-  const hasMounted = useHasMounted();
+  const hasMounted = useMountedState()();
 
   const onTagClicked = (tag: string) => {
     setFilter((state) => ({ ...state, curTag: tag?.trim() ?? '' }));

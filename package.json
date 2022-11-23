@@ -55,6 +55,7 @@
     "react-scroll-wheel-handler": "2.2.0",
     "react-spring": "9.5.5",
     "react-typography": "0.16.20",
+    "react-use": "^17.4.0",
     "recoil": "^0.7.6",
     "siriwave": "2.3.0",
     "styled-components": "^5.3.6",

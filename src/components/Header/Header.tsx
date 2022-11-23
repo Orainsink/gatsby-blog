@@ -4,7 +4,7 @@ import { useStaticQuery, graphql, navigate } from 'gatsby';
 
 import { MyPlayer } from '../MyPlayer/MyPlayer';
 import { SearchDrawer } from '../Algolia/SearchDrawer';
-import { useMedia, useHasMounted } from '../../hooks';
+import { useMedia } from '../../hooks';
 import { ThemeBtn } from './ThemeBtn';
 import { MenuComponent } from './MenuComponent';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
@@ -23,6 +23,7 @@ import {
   Ora,
   SearchIcon,
 } from './Header.styles';
+import { useMountedState } from 'react-use';
 
 /**Header */
 export const Header = memo((): ReactElement | null => {
@@ -49,7 +50,7 @@ export const Header = memo((): ReactElement | null => {
   const [searchVisible, setSearchVisible] = useState(false);
   const isDesktop = useMedia('isDesktop');
   const isMobile = useMedia('isMobile');
-  const hasMounted = useHasMounted();
+  const hasMounted = useMountedState()();
 
   const hasArrow = useRecoilValue(hasArrowAtom);
   const [scene, setScene] = useRecoilState(sceneAtom);

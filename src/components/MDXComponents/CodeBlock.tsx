@@ -5,7 +5,8 @@ import { Button } from 'antd';
 import { CopyOutlined, SmileOutlined } from '@ant-design/icons';
 
 import { theme as lightTheme } from '../../assets/theme/customPrism';
-import { useHasMounted, useIsDark } from '../../hooks';
+import { useIsDark } from '../../hooks';
+import { useMountedState } from 'react-use';
 interface Props {
   children: string;
   className?: string;
@@ -22,7 +23,7 @@ export const CodeBlock = ({
   const language = langClass.replace(/language-/, '') as Language;
   const [copied, setCopied] = useState(false);
   const isDark = useIsDark();
-  const hasMounted = useHasMounted();
+  const hasMounted = useMountedState()();
 
   const copyToClipboard = (code: string) => {
     if (typeof code !== 'string') return;
