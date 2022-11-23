@@ -1,6 +1,6 @@
-import { themeAtom } from './../store/atom';
 import { selector, useRecoilValue } from 'recoil';
 
+import { themeAtom } from './../store/atom';
 import { Theme } from '../assets/constants/common';
 
 const isDarkSelector = selector({

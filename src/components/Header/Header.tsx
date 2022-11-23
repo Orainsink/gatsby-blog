@@ -1,6 +1,7 @@
 import { useEffect, useState, memo, ReactElement } from 'react';
 import { Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { MyPlayer } from '../MyPlayer/MyPlayer';
 import { SearchDrawer } from '../Algolia/SearchDrawer';
@@ -8,7 +9,6 @@ import { useMedia } from '../../hooks';
 import { ThemeBtn } from './ThemeBtn';
 import { MenuComponent } from './MenuComponent';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import {
   hasArrowAtom,
   headerDropAtom,

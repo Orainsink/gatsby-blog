@@ -1,10 +1,10 @@
 import { useState, lazy, Suspense, ReactElement } from 'react';
 import { Dropdown, DropdownProps } from 'antd';
 import { Link } from 'gatsby';
+import styled from 'styled-components';
 import { DownOutlined } from '@ant-design/icons';
 
 import { ArchivesMenu } from './ArchivesMenu';
-import styled from 'styled-components';
 import { NavUl } from './Header.styles';
 const MenuDrawer = lazy(() => import('./MenuDrawer'));
 

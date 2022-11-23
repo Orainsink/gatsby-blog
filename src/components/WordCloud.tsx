@@ -1,11 +1,11 @@
 import { memo, useMemo, useCallback, ReactElement } from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
+import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 
 import { isClient } from '../utils/isClient';
 import { useIsDark } from '../hooks';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
-import { useSetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
 
 const WordCloudCons = isClient ? require('wordcloud') : undefined;

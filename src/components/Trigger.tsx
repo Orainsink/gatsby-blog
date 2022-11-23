@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import styled from 'styled-components';
-
 import { selector, useRecoilValue, useSetRecoilState } from 'recoil';
+
 import { sceneAtom, skipAtom, triggerAtom } from '../store/atom';
 
 const hideTriggerSelector = selector({

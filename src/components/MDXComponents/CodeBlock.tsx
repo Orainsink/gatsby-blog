@@ -3,10 +3,11 @@ import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 import { Button } from 'antd';
 import { CopyOutlined, SmileOutlined } from '@ant-design/icons';
+import { useMountedState } from 'react-use';
 
 import { theme as lightTheme } from '../../assets/theme/customPrism';
 import { useIsDark } from '../../hooks';
-import { useMountedState } from 'react-use';
+
 interface Props {
   children: string;
   className?: string;

@@ -1,6 +1,7 @@
-import { sceneAtom } from './../store/atom';
 import { useRecoilValue } from 'recoil';
 import { useEffect } from 'react';
+
+import { sceneAtom } from './../store/atom';
 
 /**
  * fix bug.

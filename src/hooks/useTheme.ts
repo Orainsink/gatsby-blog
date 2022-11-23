@@ -1,5 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
+
 import { themeAtom } from '../store/atom';
 
 declare global {

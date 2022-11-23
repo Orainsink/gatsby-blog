@@ -1,12 +1,12 @@
 import { ReactElement } from 'react';
 import { Link } from 'gatsby';
 import { Tag } from 'antd';
+import { useMountedState } from 'react-use';
+import { useSetRecoilState } from 'recoil';
 
 import { CATEGORY_MAP } from '../assets/constants/categories';
 import { useIsDark } from '../hooks';
-import { useSetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
-import { useMountedState } from 'react-use';
 
 interface Props {
   tags: readonly string[];

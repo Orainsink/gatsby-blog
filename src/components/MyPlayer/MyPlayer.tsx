@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import { Tooltip, TooltipProps } from 'antd';
 import styled, { css, keyframes } from 'styled-components';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { Panel } from './Panel';
 import { useIsDark } from '../../hooks';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { playerVisibleAtom, musicAtom, headerDropAtom } from '../../store/atom';
 
 const WrappedTooltip = ({ className, ...rest }: TooltipProps) => {

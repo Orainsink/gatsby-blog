@@ -1,10 +1,10 @@
 import { memo, useCallback, lazy, Suspense, ReactElement } from 'react';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 import styled, { css, keyframes } from 'styled-components';
+import { selector, useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
 import { ReactComponent as LoadingSvg } from '../../assets/img/loading.svg';
-import { selector, useRecoilValue, useSetRecoilState } from 'recoil';
 import { sceneAtom, triggerAtom } from '../../store/atom';
 
 const activeStyles = css`

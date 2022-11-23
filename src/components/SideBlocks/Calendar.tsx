@@ -2,10 +2,10 @@ import { useMemo, useCallback, ReactElement } from 'react';
 import { Col, Row, Select } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
 import styled from 'styled-components';
+import { useSetRecoilState } from 'recoil';
 
 import { Calendar } from './CustomCalendar';
 import { useColFlex } from './useColFlex';
-import { useSetRecoilState } from 'recoil';
 import { filterAtom } from '../../store/atom';
 import { BaseCol, Title } from './SideBlocks.styles';
 import { FileEdge } from '../../../typings/custom';
