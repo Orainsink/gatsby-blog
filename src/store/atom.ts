@@ -58,6 +58,12 @@ export const playerVisibleAtom = atom<boolean>({
   default: false,
 });
 
+// theme 暗黑色主题
+export const themeAtom = atom<string | null>({
+  key: 'theme',
+  default: windowWrapper<string | null>(() => window.__theme, null),
+});
+
 // music 播放器的状态
 export const musicAtom = atom<MusicState>({
   key: 'music',

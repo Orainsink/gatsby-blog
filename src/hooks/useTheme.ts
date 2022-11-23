@@ -1,4 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+import { themeAtom } from '../store/atom';
 
 declare global {
   interface Window {
@@ -9,14 +11,13 @@ declare global {
 }
 
 export const useTheme = () => {
-  const [currentTheme, setCurrentTheme] = useState<string | null>(
-    typeof window === 'undefined' ? null : window.__theme
-  );
+  const [currentTheme, setCurrentTheme] = useRecoilState(themeAtom);
 
   useEffect(() => {
     window.__onThemeChange = () => {
       setCurrentTheme(window.__theme);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const toggleTheme = useCallback((theme: string) => {
