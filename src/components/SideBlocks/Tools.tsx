@@ -22,7 +22,7 @@ const Tool = styled.span`
   height: 40px;
   border-radius: 20px;
   line-height: 40px;
-  background: var(--text-color-fourth);
+  background: var(--color-text-fourth);
   padding: 3px 8px 3px 2px;
 `;
 
@@ -51,10 +51,10 @@ const ToolIcon = styled.img`
 const ToolName = styled.span`
   transition: color 0.3s;
   line-height: 40px;
-  color: var(--text-color);
+  color: var(--color-text);
 
   ${Tool}:hover & {
-    color: var(--link-hover-color);
+    color: var(--color-link-hover);
   }
 `;
 

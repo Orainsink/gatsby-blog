@@ -5,6 +5,6 @@ import { useLayoutEffect } from 'react';
  */
 export const useBackgroundColor = (trigger: boolean = true): void => {
   useLayoutEffect(() => {
-    if (trigger) document.body.style.background = 'var(--body-background)';
+    if (trigger) document.body.style.background = 'var(--color-bg-layout)';
   }, [trigger]);
 };

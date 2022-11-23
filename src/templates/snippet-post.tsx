@@ -17,7 +17,13 @@ import {
   DeepRequiredAndNonNullable,
   TableOfContents,
 } from '../../typings/custom';
-import { Container, LeadUl, License, TableContents } from './Templates.styles';
+import {
+  Article,
+  Container,
+  LeadUl,
+  License,
+  TableContents,
+} from './Templates.styles';
 
 type Data = DeepRequiredAndNonNullable<Queries.getSnippetPostQuery>;
 interface Props {
@@ -60,7 +66,7 @@ const SnippetPostTemplate = ({
 
   return (
     <Layout sideBlocks={isDesktop && <Contents contents={tableOfContents} />}>
-      <article>
+      <Article>
         <header>
           <h1 style={{ textAlign: 'center', fontWeight: 700 }}>{title}</h1>
           <div
@@ -111,7 +117,7 @@ const SnippetPostTemplate = ({
           }}
         />
         <Tags tags={tags} category={categories} />
-      </article>
+      </Article>
 
       <nav>
         <LeadUl>

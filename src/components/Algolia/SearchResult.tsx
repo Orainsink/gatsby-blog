@@ -20,7 +20,7 @@ const ResultWrapper = styled.div`
   }
 
   .ais-Hits-item {
-    border-left: 4px solid var(--border-color);
+    border-left: 4px solid var(--color-border);
     padding: 10px;
     &:hover {
       background-color: var(--component-hover);
@@ -45,7 +45,7 @@ const StyledHits = styled(Hits)`
   li.ais-Hits-item {
     margin-bottom: 1em;
     a {
-      color: var(--link-color);
+      color: var(--color-link);
       h4 {
         margin-bottom: 0.2em;
       }

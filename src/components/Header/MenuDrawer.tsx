@@ -22,7 +22,7 @@ const DrawerBtn = styled(Button)`
 const DrawerTitle = styled.span`
   font-size: 20px;
   font-weight: 700;
-  color: var(--text-color);
+  color: var(--color-text);
 `;
 
 const DrawerNavUl = styled(NavUl)`
@@ -34,7 +34,7 @@ const DrawerNavUl = styled(NavUl)`
   li {
     margin: 0;
     &::after {
-      background-color: var(--text-color);
+      background-color: var(--color-text);
     }
     a {
       width: 100%;

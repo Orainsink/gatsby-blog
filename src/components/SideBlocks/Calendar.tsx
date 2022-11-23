@@ -16,7 +16,7 @@ const CalendarHeaderContainer = styled(Row)`
 const Header = styled(Col)`
   font-weight: bold;
   font-size: 16px;
-  color: var(--text-color);
+  color: var(--color-text);
 `;
 
 const CalendarCell = styled.div`

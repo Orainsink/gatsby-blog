@@ -10,7 +10,7 @@ export const Container = styled.section`
     outline: none;
     pointer-events: auto;
     &:hover {
-      color: var(--link-hover-color);
+      color: var(--color-link-hover);
     }
   }
   li {
@@ -19,11 +19,11 @@ export const Container = styled.section`
   }
   blockquote {
     padding: 1em;
-    color: var(--text-color-secondary);
-    border-left: 4px solid var(--border-color);
-    background: var(--text-color-fourth);
+    color: var(--color-text-secondary);
+    border-left: 4px solid var(--color-border);
+    background: var(--color-text-fourth);
     line-height: 2;
-    border-radius: var(--border-radius-base);
+    border-radius: var(--border-radius);
   }
   h1,
   h2,
@@ -61,8 +61,8 @@ export const TableContents = styled.div`
   margin-bottom: 1em;
   position: relative;
   z-index: auto;
-  border-left: 4px solid var(--border-color);
-  border-radius: var(--border-radius-base);
+  border-left: 4px solid var(--color-border);
+  border-radius: var(--border-radius);
 
   &::after {
     position: absolute;
@@ -70,7 +70,7 @@ export const TableContents = styled.div`
     top: -20px;
     right: 10%;
     font-size: 42px;
-    color: var(--text-color-fourth);
+    color: var(--color-text-fourth);
     font-weight: 700;
     z-index: 0;
   }
@@ -111,5 +111,22 @@ export const LeadUl = styled.ul`
       width: 100%;
       padding: 8px;
     }
+  }
+`;
+
+export const Article = styled.article`
+  padding: 1.5rem 0.7rem;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.2s ease-in;
+
+  &:hover {
+    color: var(--color-link);
+  }
+  &:active {
+    color: var(--color-link-hover);
+  }
+
+  ${({ theme }) => theme.media.isMobile} {
+    padding: 1.5rem 0;
   }
 `;

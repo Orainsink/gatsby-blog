@@ -5,11 +5,9 @@ declare module '*.svg';
 declare module '*.png';
 declare module '*.jpeg';
 declare module '*.glsl';
-declare module 'gatsby-plugin-dark-mode';
 declare module 'jinrishici';
 declare module 'wordcloud';
 declare module 'postcss-preset-env';
-declare module 'webpack-filter-warnings-plugin';
 declare module 'typography';
 declare module 'gltf-pipeline' {
   import * as gltfPipeline from 'gltf-pipeline';

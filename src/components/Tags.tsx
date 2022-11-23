@@ -40,7 +40,7 @@ export const Tags = ({ tags, category }: Props): ReactElement | null => {
       {tags.map((tag) => (
         <Link key={tag} onClick={() => onTagClicked(tag)} to={`/archives`}>
           <Tag
-            color={isDark ? 'var(--tag-color)' : 'blue'}
+            color={isDark ? '#787a7a' : 'blue'}
             style={{ cursor: 'pointer' }}
           >
             #{tag}

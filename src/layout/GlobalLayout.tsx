@@ -4,8 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { useRecoilValue } from 'recoil';
 import theme from 'antd/es/theme/export';
 
-import '../assets/css/variables.css';
-import '../assets/css/global.less';
+import '../assets/css/global.css';
 
 import { BackTop } from '../components/BackTop';
 import { useBackTop, useIsDark } from '../hooks';
@@ -13,6 +12,7 @@ import { ErrorBoundary } from '../components/ErrorBoundary';
 import { sceneAtom } from '../store/atom';
 import { defaultTheme } from '../assets/constants/defaultTheme';
 import { DebugObserver } from '../components/Debugger';
+import { GlobalStyles } from '../assets/theme/globalStyles';
 
 const Header = lazy(
   () => import(/* webpackPreload: true */ '../components/Header')
@@ -29,6 +29,7 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
   const isDark = useIsDark();
 
   useBackTop();
+
   useEffect(() => {
     const body = document.getElementsByTagName('body')[0];
     body.style.overflowY = scene ? 'hidden' : 'auto';
@@ -39,13 +40,11 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
       {process.env.NODE_ENV === 'development' && <DebugObserver />}
       <ConfigProvider
         theme={{
-          token: {
-            colorPrimary: '#1890ff',
-          },
           algorithm: isDark ? darkAlgorithm : defaultAlgorithm,
         }}
       >
-        <ThemeProvider theme={defaultTheme}>
+        <ThemeProvider theme={{ ...defaultTheme }}>
+          <GlobalStyles />
           <div>{children}</div>
           <Suspense fallback={null}>
             <Header />

@@ -18,7 +18,7 @@ const FooterContainer = styled.footer`
     rgb(40, 44, 49) 90%
   );
   a {
-    color: var(--link-hover-color);
+    color: var(--color-link-hover);
   }
 `;
 
@@ -49,7 +49,7 @@ const StyledMailOutlined = styled(MailOutlined)`
 
 const StyledGithubOutlined = styled(GithubOutlined)`
   ${footerIconStyles}
-  color: var(--link-hover-color);
+  color: var(--color-link-hover);
 `;
 
 const FooterPhrase = styled.div`

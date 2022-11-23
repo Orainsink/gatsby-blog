@@ -26,7 +26,7 @@ const SteamContainer = styled.div`
   justify-content: center;
   padding: 10px;
   del {
-    color: var(--text-color-secondary);
+    color: var(--color-text-secondary);
     font-size: 12px;
   }
 `;
@@ -38,7 +38,7 @@ const WechatContainer = styled.div`
   align-items: center;
   padding: 10px;
   del {
-    color: var(--text-color-secondary);
+    color: var(--color-text-secondary);
     font-size: 12px;
   }
 `;
@@ -87,7 +87,7 @@ const IconContainer = styled.div`
 `;
 
 const iconStyle = css`
-  color: var(--text-color);
+  color: var(--color-text);
 `;
 
 const StyledZhihuOutlined = styled(ZhihuOutlined)`

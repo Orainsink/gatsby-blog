@@ -65,7 +65,7 @@ export const CodeBlock = ({
               transform: 'translateY(-98%)',
               fontSize: '18px',
               textTransform: 'uppercase',
-              color: 'var(--text-color)',
+              color: 'var(--color-text)',
             }}
           >
             <div
@@ -91,7 +91,7 @@ export const CodeBlock = ({
               style={{
                 padding: '2px 12px 0px',
                 background: 'var(--code-bg)',
-                color: 'var(--text-color)',
+                color: 'var(--color-text)',
                 borderRadius: '8px 8px 0px 0px',
                 transition: 'none',
               }}

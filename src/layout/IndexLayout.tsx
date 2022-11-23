@@ -41,7 +41,7 @@ const IndexWrapper = styled(Wrapper)<{ wrapperClass: string }>`
 `;
 
 const ClickTip = styled.div<{ show: boolean }>`
-  color: var(--text-color);
+  color: var(--color-text);
   font-size: 18px;
   opacity: 0;
   transition: opacity 0.6s ease-in;

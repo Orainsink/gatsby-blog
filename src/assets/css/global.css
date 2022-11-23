@@ -6,8 +6,8 @@ li {
   list-style: none;
 }
 :not(pre) > code {
-  color: var(--code-color);
-  background: var(--code-bg);
+  color: var(--color-code);
+  background: var(--color-code-bg);
   padding: 0.1em 0.3em;
   border-radius: 0.3em;
   text-shadow: none;
@@ -36,24 +36,4 @@ body {
 
 code {
   white-space: pre-wrap;
-}
-
-article {
-  padding: 1.5rem 0.7rem;
-  border-radius: 2px;
-  border-bottom: 1px solid var(--border-color);
-  transition: background-color 0.2s ease-in;
-  a {
-    &:hover {
-      color: var(--link-hover-color);
-    }
-    &:active {
-      color: var(--link-hover-color);
-    }
-  }
-}
-@media screen and (max-width: 768px) {
-  article {
-    padding: 1.5rem 0;
-  }
 }

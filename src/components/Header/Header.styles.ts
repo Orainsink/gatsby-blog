@@ -50,12 +50,12 @@ export const NavUl = styled.ul`
 `;
 
 const activeStyles = css`
-  background-color: var(--main-background);
-  color: var(--text-color);
+  background-color: var(--color-bg-container);
+  color: var(--color-text);
   position: fixed;
   padding-top: 0;
   padding-bottom: 0;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--box-shadow-secondary);
 `;
 
 export const HeaderContainer = styled.header<{ active: boolean }>`

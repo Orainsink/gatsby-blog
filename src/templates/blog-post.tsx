@@ -14,7 +14,13 @@ import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
 import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
 import { Comment } from '../components/Comment';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
-import { Container, LeadUl, License, TableContents } from './Templates.styles';
+import {
+  Article,
+  Container,
+  LeadUl,
+  License,
+  TableContents,
+} from './Templates.styles';
 
 type Data = DeepRequiredAndNonNullable<Queries.getBlogPostQuery>;
 interface Props {
@@ -41,7 +47,7 @@ const BlogPostTemplate = ({
 
   return (
     <Layout sideBlocks={isDesktop && <Contents contents={tableOfContents} />}>
-      <article>
+      <Article>
         <header>
           <h1 style={{ textAlign: 'center', fontWeight: 700 }}>{title}</h1>
           <div
@@ -90,7 +96,7 @@ const BlogPostTemplate = ({
           }}
         />
         <Tags tags={tags} category={categories} />
-      </article>
+      </Article>
 
       <nav>
         <LeadUl>

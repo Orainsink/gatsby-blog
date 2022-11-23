@@ -40,7 +40,24 @@ const Title = styled.h3`
 `;
 
 const Phrase = styled.p`
-  color: var(--text-color-secondary);
+  color: var(--color-text-secondary);
+`;
+
+const PostListItem = styled.article`
+  padding: 1.5rem 0.7rem;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.2s ease-in;
+
+  &:hover {
+    color: var(--color-link);
+  }
+  &:active {
+    color: var(--color-link-hover);
+  }
+
+  ${({ theme }) => theme.media.isMobile} {
+    padding: 1.5rem 0;
+  }
 `;
 
 const getLowerCasePosts = (posts: FileEdge[]): PostItem[] =>
@@ -50,7 +67,7 @@ const getLowerCasePosts = (posts: FileEdge[]): PostItem[] =>
     return {
       title: (frontmatter.title || '').toLowerCase(),
       description: (frontmatter.description || '').toLowerCase(),
-      excerpt: (node!.childMdx!.excerpt || '').toLowerCase(),
+      excerpt: (node.childMdx.excerpt || '').toLowerCase(),
       tags: (frontmatter.tags || []).map((tag) => (tag || '').toLowerCase()),
       date: frontmatter.date,
     };
@@ -105,7 +122,7 @@ export const PostList = ({ posts, hideMore = false }: Props): ReactElement => {
 
         return (
           getIsAccordion(index) && (
-            <article key={fields.slug}>
+            <PostListItem key={fields.slug}>
               <header>
                 <Title>
                   <Link to={generatePath(categories!, fields.slug!)}>
@@ -122,7 +139,7 @@ export const PostList = ({ posts, hideMore = false }: Props): ReactElement => {
                 />
                 <Tags tags={tags as string[]} category={categories!} />
               </section>
-            </article>
+            </PostListItem>
           )
         );
       })}

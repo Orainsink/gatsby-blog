@@ -62,7 +62,7 @@ const LiWrap = styled.li<{
 
       ${PlayingIcon} {
         & > div {
-          background-color: var(--text-color);
+          background-color: var(--color-text);
         }
       }
     `}
@@ -105,7 +105,7 @@ const PlayingIcon = styled.div<{ running: boolean }>`
     transition: all 0.2s ease;
     animation: ${WaveAme} 1s ease infinite forwards;
     transform-origin: 50% 50%;
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
+    box-shadow: var(--box-shadow);
   }
   & > div:nth-child(2) {
     animation-delay: 0.25s;

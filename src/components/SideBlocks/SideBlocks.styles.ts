@@ -2,8 +2,8 @@ import { Col } from 'antd';
 import styled from 'styled-components';
 
 export const BaseCol = styled(Col)`
-  background: var(--main-background);
-  border-radius: var(--border-radius-base);
+  background: var(--color-bg-container);
+  border-radius: var(--border-radius);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 14px;
@@ -31,6 +31,6 @@ export const Title = styled.span`
   bottom: 10%;
   right: 10px;
   font-weight: bold;
-  color: var(--text-color-fourth);
+  color: var(--color-text-fourth);
   z-index: 0;
 `;

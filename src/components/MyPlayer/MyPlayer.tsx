@@ -28,7 +28,7 @@ const breathAme = keyframes`
 
 const darkStyle = css`
   .ant-tooltip-inner {
-    color: var(--text-color);
+    color: var(--color-text);
     @supports (backdrop-filter: blur(20px)) {
       background: rgba(58, 58, 58, 0.8);
       backdrop-filter: blur(20px);
@@ -38,7 +38,7 @@ const darkStyle = css`
 
 const headerDropStyle = css`
   .ant-tooltip-inner {
-    color: var(--text-color);
+    color: var(--color-text);
     @supports (backdrop-filter: blur(20px)) {
       background: rgba(239, 239, 239, 0.8);
       backdrop-filter: blur(20px);
@@ -46,7 +46,7 @@ const headerDropStyle = css`
   }
   .playingImg {
     & > div {
-      background-color: var(--text-color);
+      background-color: var(--color-text);
     }
   }
   .liWrap {
@@ -71,7 +71,7 @@ const StyledWrappedTooltip = styled(WrappedTooltip)<{
     color: rgba(255, 255, 255, 0.7);
     padding: 0;
     margin: 0;
-    border-radius: var(--border-radius-base);
+    border-radius: var(--border-radius);
     background: linear-gradient(135deg, #141619 0%, #c7d2db 100%);
     overflow: hidden;
     @supports (backdrop-filter: blur(20px)) {

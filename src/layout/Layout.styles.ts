@@ -35,9 +35,9 @@ export const containerStyles = css`
 `;
 
 export const MainWrap = styled.div`
-  background: var(--main-background);
-  border-radius: var(--border-radius-base);
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+  background: var(--color-bg-container);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
   padding: 0.8em !important;
   min-height: 25.6em;
   z-index: 1;
