@@ -3,10 +3,9 @@ import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 import { Button } from 'antd';
 import { CopyOutlined, SmileOutlined } from '@ant-design/icons';
-import { useMountedState } from 'react-use';
 
 import { theme as lightTheme } from '../../assets/theme/customPrism';
-import { useIsDark } from '../../hooks';
+import { useIsDark, useHasMounted } from '../../hooks';
 
 interface Props {
   children: string;
@@ -24,7 +23,7 @@ export const CodeBlock = ({
   const language = langClass.replace(/language-/, '') as Language;
   const [copied, setCopied] = useState(false);
   const isDark = useIsDark();
-  const hasMounted = useMountedState()();
+  const hasMounted = useHasMounted();
 
   const copyToClipboard = (code: string) => {
     if (typeof code !== 'string') return;

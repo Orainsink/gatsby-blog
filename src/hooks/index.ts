@@ -8,3 +8,4 @@ export { useWindowSize } from './useWindowSize';
 export { useResetKey } from './useResetKey';
 export { useIsDark } from './useIsDark';
 export { useTheme } from './useTheme';
+export { useHasMounted } from './useHasMounted';

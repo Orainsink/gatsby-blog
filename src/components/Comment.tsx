@@ -1,11 +1,11 @@
 import { memo, ReactElement, useCallback } from 'react';
-import { useMountedState, useUpdateEffect } from 'react-use';
+import { useUpdateEffect } from 'react-use';
 
-import { useIsDark } from '../hooks';
+import { useIsDark, useHasMounted } from '../hooks';
 
 export const Comment = memo((): ReactElement | null => {
   const isDark = useIsDark();
-  const hasMounted = useMountedState()();
+  const hasMounted = useHasMounted();
 
   const commentsRefCb = useCallback((node: HTMLDivElement) => {
     if (node) {

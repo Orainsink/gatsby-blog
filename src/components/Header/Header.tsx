@@ -23,7 +23,7 @@ import {
   Ora,
   SearchIcon,
 } from './Header.styles';
-import { useMountedState } from 'react-use';
+import { useHasMounted } from '../../hooks';
 
 /**Header */
 export const Header = memo((): ReactElement | null => {
@@ -50,7 +50,7 @@ export const Header = memo((): ReactElement | null => {
   const [searchVisible, setSearchVisible] = useState(false);
   const isDesktop = useMedia('isDesktop');
   const isMobile = useMedia('isMobile');
-  const hasMounted = useMountedState()();
+  const hasMounted = useHasMounted();
 
   const hasArrow = useRecoilValue(hasArrowAtom);
   const [scene, setScene] = useRecoilState(sceneAtom);
