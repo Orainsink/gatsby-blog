@@ -1,6 +1,5 @@
 export { useBackTop } from './useBackTop';
 export { useBackgroundColor } from './useBackgroundColor';
-export { useDebounce } from './useDebounce';
 export { useDrawerCloseEffect } from './useDrawerCloseEffect';
 export { useMagicColor } from './useMagicColor';
 export { useMedia } from './useMedia';

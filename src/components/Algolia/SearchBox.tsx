@@ -1,8 +1,7 @@
 import { useState, useRef, useEffect, ReactElement } from 'react';
 import { connectSearchBox } from 'react-instantsearch-dom';
 import { Input, InputRef } from 'antd';
-
-import { useDebounce } from '../../hooks';
+import { useDebounce } from 'react-use';
 
 export const SearchBox = connectSearchBox(
   ({ refine }: { refine: (value: string) => void }): ReactElement => {
