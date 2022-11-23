@@ -1,10 +1,9 @@
 import { useMemo, useCallback, ReactElement } from 'react';
-import { Col, Row, Select } from 'antd';
+import { Col, Row, Select, Calendar } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
 import styled from 'styled-components';
 import { useSetRecoilState } from 'recoil';
 
-import { Calendar } from './CustomCalendar';
 import { useColFlex } from './useColFlex';
 import { filterAtom } from '../../store/atom';
 import { BaseCol, Title } from './SideBlocks.styles';
@@ -90,7 +89,7 @@ export const CalendarBlock = ({ posts }: Props): ReactElement => {
     [allMonths]
   );
 
-  const monthCellRender = useCallback(
+  const renderMonthCell = useCallback(
     (currentDate: Dayjs) => {
       if (allMonths[dayjs(currentDate).format('YYYY/MM')]) {
         const count = allMonths[dayjs(currentDate).format('YYYY/MM')];
@@ -174,7 +173,7 @@ export const CalendarBlock = ({ posts }: Props): ReactElement => {
         onSelect={handleSelect}
         defaultValue={dayjs()}
         disabledDate={disableDate}
-        monthFullCellRender={monthCellRender}
+        monthFullCellRender={renderMonthCell}
       />
     </CalendarContainer>
   );
