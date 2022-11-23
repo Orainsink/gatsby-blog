@@ -174,7 +174,7 @@ const config: GatsbyConfig = {
       },
     },
     'gatsby-plugin-cname',
-    'gatsby-plugin-dark-mode',
+    // 'gatsby-plugin-dark-mode',
     'gatsby-plugin-svgr',
     {
       resolve: `gatsby-plugin-less`,

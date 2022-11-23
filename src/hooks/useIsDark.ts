@@ -1,22 +1,14 @@
-import { themeAtom } from './../store/atom';
-import { selector, useRecoilValue } from 'recoil';
-
 import { Theme } from '../assets/constants/common';
+import { useTheme } from './useTheme';
+import { useEffect, useState } from 'react';
 
-const isDarkSelector = selector({
-  key: 'isDark',
-  get: ({ get }) => {
-    const theme = get(themeAtom);
-    return theme === Theme.DARK;
-  },
-});
-/**
- * return if the theme is dark
- * @function useIsDark
- * @param {Boolean} isDark
- **/
-export const useIsDark = (): boolean => {
-  const isDark = useRecoilValue(isDarkSelector);
+export const useIsDark = () => {
+  const [theme] = useTheme();
+  const [isDark, setIsDark] = useState<boolean>(theme === Theme.DARK);
+
+  useEffect(() => {
+    setIsDark(theme === Theme.DARK);
+  }, [theme]);
 
   return isDark;
 };

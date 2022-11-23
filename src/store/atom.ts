@@ -52,15 +52,6 @@ export const headerDropAtom = atom<boolean>({
   default: false,
 });
 
-// theme 暗黑色主题
-export const themeAtom = atom<string | null>({
-  key: 'theme',
-  default: windowWrapper<string | null>(
-    () => localStorage.getItem('theme'),
-    null
-  ),
-});
-
 // playerVisible 音乐播放器是否显示
 export const playerVisibleAtom = atom<boolean>({
   key: 'playerVisible',
