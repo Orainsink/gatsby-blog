@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, ReactElement } from 'react';
-import { connectSearchBox } from 'react-instantsearch-dom';
 import { Input, InputRef } from 'antd';
+import { connectSearchBox } from 'react-instantsearch-dom';
 import { useDebounce } from 'react-use';
 
 export const SearchBox = connectSearchBox(
