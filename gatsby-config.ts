@@ -174,7 +174,6 @@ const config: GatsbyConfig = {
       },
     },
     'gatsby-plugin-cname',
-    // 'gatsby-plugin-dark-mode',
     'gatsby-plugin-svgr',
     {
       resolve: `gatsby-plugin-less`,
@@ -192,12 +191,6 @@ const config: GatsbyConfig = {
         postCssPlugins: [postcssPresetEnv, cssnano],
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-graphql-codegen`,
-    //   options: {
-    //     codegen: !!env.CODEGEN ?? false,
-    //   },
-    // },
     // 'gatsby-plugin-swc',
     `gatsby-plugin-sitemap`,
     {
