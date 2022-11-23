@@ -5,11 +5,6 @@ import { ReactComponent as MarkSvg } from '../../assets/img/mark.svg';
 
 export const CardSection = styled.section`
   margin-bottom: 1em;
-  & .ant-card-cover {
-    overflow: hidden;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
-  }
 `;
 
 export const StyledTitle = styled.div`
@@ -43,6 +38,7 @@ export const StyledCards = styled.div`
 
 export const StyledCard = styled(Card)`
   margin: 10px 0;
+  overflow: hidden;
 
   .card-static-image {
     width: 100%;

@@ -2,11 +2,9 @@ import dotenv from 'dotenv';
 import { env } from 'process';
 import type { GatsbyConfig, PluginRef } from 'gatsby';
 import path from 'path';
-import postcssPresetEnv from 'postcss-preset-env';
-import cssnano from 'cssnano';
 
-import FunctionOverridePlugin from './scripts/FunctionOverridePlugin';
-import modifyVars from './scripts/less-vars';
+// import FunctionOverridePlugin from './scripts/FunctionOverridePlugin';
+// import modifyVars from './scripts/less-vars';
 import { CATEGORY_NAMES } from './src/assets/constants/categories';
 import isProduction from './scripts/env';
 import algoliaQueries from './src/utils/algolia-queries';
@@ -175,22 +173,6 @@ const config: GatsbyConfig = {
     },
     'gatsby-plugin-cname',
     'gatsby-plugin-svgr',
-    {
-      resolve: `gatsby-plugin-less`,
-      options: {
-        lessOptions: {
-          javascriptEnabled: true,
-          strictMath: false,
-          math: 'always',
-          cssLoaderOptions: {
-            camelCase: false,
-          },
-          modifyVars,
-          plugins: [new FunctionOverridePlugin()],
-        },
-        postCssPlugins: [postcssPresetEnv, cssnano],
-      },
-    },
     // 'gatsby-plugin-swc',
     `gatsby-plugin-sitemap`,
     {

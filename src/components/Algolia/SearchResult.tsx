@@ -26,13 +26,7 @@ const ResultWrapper = styled.div`
       background-color: var(--component-hover);
     }
   }
-  .ais-Highlight {
-    font-weight: bold;
-    color: var(--post-title);
-    &:hover {
-      color: var(--post-title-hover);
-    }
-  }
+
   .ais-PoweredBy {
     display: flex;
     align-content: center;
@@ -84,14 +78,14 @@ const HitCount = connectStateResults(({ searchResults }: HitCountProps) => {
 });
 
 const PageHit = ({ hit }: HitProp): ReactElement => (
-  <div>
-    <Link to={generatePath(hit.categories, hit.slug)}>
+  <Link to={generatePath(hit.categories, hit.slug)}>
+    <div>
       <h4>
         <Highlight attribute="title" hit={hit} tagName="mark" />
       </h4>
-    </Link>
-    <Snippet attribute="excerpt" hit={hit} tagName="mark" />
-  </div>
+      <Snippet attribute="excerpt" hit={hit} tagName="mark" />
+    </div>
+  </Link>
 );
 
 export const SearchResult = (): ReactElement => {

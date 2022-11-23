@@ -63,9 +63,7 @@ export const TableContents = styled.div`
   z-index: auto;
   border-left: 4px solid var(--border-color);
   border-radius: var(--border-radius-base);
-  .ant-anchor-wrapper {
-    background: unset;
-  }
+
   &::after {
     position: absolute;
     content: '目录';

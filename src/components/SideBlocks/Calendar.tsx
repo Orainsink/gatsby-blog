@@ -29,36 +29,6 @@ const Count = styled.div`
 
 const CalendarContainer = styled(BaseCol)`
   height: unset;
-  .ant-picker-calendar {
-    background: var(--main-background);
-  }
-  .ant-picker-cell-disabled {
-    color: var(--text-color-secondary) !important;
-  }
-  .ant-picker-cell-disabled::before {
-    background: none;
-  }
-  .ant-picker-cell-in-view {
-    transition: all 0.3s linear;
-    color: var(--primary-color);
-    &:hover {
-      background: var(--component-hover);
-    }
-  }
-  .ant-picker-calendar .ant-picker-panel {
-    background: var(--main-background);
-    border-top: 1px solid var(--border-color);
-  }
-  .ant-select {
-    background-color: 1px solid var(--main-background) !important;
-    border: var(--border-color) !important;
-  }
-  .ant-select-arrow {
-    color: var(--text-color);
-  }
-  .ant-select:not(.ant-select-customize-input) .ant-select-selector {
-    background-color: var(--component-background);
-  }
 `;
 
 interface Props {

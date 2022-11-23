@@ -40,14 +40,6 @@ const ContentsContainer = styled(BaseCol)<{
 const ContentsBody = styled.div`
   z-index: 1;
   position: relative;
-
-  .ant-anchor-wrapper {
-    background: none;
-    max-height: unset !important;
-  }
-  .ant-affix {
-    position: absolute !important;
-  }
 `;
 
 /** 侧边栏 目录块 */
