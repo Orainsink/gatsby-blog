@@ -63,16 +63,20 @@ const InfoContainer = styled(BaseCol)`
   }
 `;
 
-const TitleContainer = styled.div`
-  div {
-    z-index: 1;
-    position: relative;
-    text-align: center;
-  }
-  > div:nth-child(2) {
-    font-size: 20px;
-    font-weight: bold;
-  }
+const Bloger = styled.div`
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  color: var(--color-text);
+  font-size: 20px;
+  font-weight: bold;
+`;
+
+const Motto = styled.div`
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  color: var(--color-text-secondary);
 `;
 
 const IconContainer = styled.div`
@@ -95,6 +99,14 @@ const StyledZhihuOutlined = styled(ZhihuOutlined)`
 `;
 
 const StyledGithubOutlined = styled(GithubOutlined)`
+  ${iconStyle}
+`;
+
+const StyledWechatOutlined = styled(WechatOutlined)`
+  ${iconStyle}
+`;
+
+const StyledSteamIcon = styled(Icon)`
   ${iconStyle}
 `;
 
@@ -172,10 +184,10 @@ export const Info = () => {
   return (
     <InfoContainer flex={isDesktop ? '0 0 300px' : '1 1 300px'}>
       <GatsbyImage image={avatar!} alt="" className="owner-avatar-image" />
-      <TitleContainer>
+      <div>
         <Title>ABOUT</Title>
-        <div>{isDark ? 'Orainsink' : '莫沉'}</div>
-        <div>{isDark ? 'listen, feel, think' : '倾听, 感受, 思考'}</div>
+        <Bloger>{isDark ? 'Orainsink' : '莫沉'}</Bloger>
+        <Motto>{isDark ? 'listen, feel, think' : '倾听, 感受, 思考'}</Motto>
         <IconContainer>
           <a
             href="https://www.zhihu.com/people/f6e5b2cbbe6e9535239e41b51305bf2c?utm_source=qq&utm_medium=social&utm_oi=586439395150794752"
@@ -192,13 +204,13 @@ export const Info = () => {
             <StyledGithubOutlined />
           </a>
           <Tooltip title={<Wechat />}>
-            <WechatOutlined />
+            <StyledWechatOutlined />
           </Tooltip>
           <Tooltip title={<Steam />}>
-            <Icon component={SteamSvg} />
+            <StyledSteamIcon component={SteamSvg} />
           </Tooltip>
         </IconContainer>
-      </TitleContainer>
+      </div>
     </InfoContainer>
   );
 };

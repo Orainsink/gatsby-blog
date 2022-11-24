@@ -39,6 +39,7 @@ export const StyledCards = styled.div`
 export const StyledCard = styled(Card)`
   margin: 10px 0;
   overflow: hidden;
+  background: var(--color-bg-component);
 
   .card-static-image {
     width: 100%;

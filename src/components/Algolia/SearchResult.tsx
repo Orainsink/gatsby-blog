@@ -15,7 +15,7 @@ const ResultWrapper = styled.div`
   height: 100%;
   margin-top: 0.5em;
   mark {
-    background-color: var(--component-hover);
+    background-color: var(--color-component-hover);
     color: var(--highlight-color);
   }
 
@@ -23,7 +23,7 @@ const ResultWrapper = styled.div`
     border-left: 4px solid var(--color-border);
     padding: 10px;
     &:hover {
-      background-color: var(--component-hover);
+      background-color: var(--color-component-hover);
     }
   }
 

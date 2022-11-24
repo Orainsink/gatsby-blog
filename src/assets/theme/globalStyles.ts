@@ -33,6 +33,8 @@ export const GlobalStyles = createGlobalStyle`
     --color-bg-layout: #efefef;
     --color-bg-elevated: ${defaultMapToken.colorBgElevated};
     --color-bg-container: #fff;
+    --color-bg-component: #fff;
+    --color-component-hover: #f5f5f5;
     /* -------- Fill ---------- */
     --color-fill: ${defaultMapToken.colorFill};
     --color-fill-secondary: ${defaultMapToken.colorFillSecondary};
@@ -47,9 +49,6 @@ export const GlobalStyles = createGlobalStyle`
     /* -------- Link ---------- */
     --color-link: var(--color-primary);
     --color-link-hover: var(--color-primary-hover);
-
-    /* -------- Temp variables ---------- */
-    --component-hover: #f5f5f5;
   }
 
   :root body.dark {
@@ -62,6 +61,8 @@ export const GlobalStyles = createGlobalStyle`
     --color-bg-layout: #141619;
     --color-bg-elevated: ${darkMapToken.colorBgElevated};
     --color-bg-container: #2b2b2e;
+    --color-bg-component: #3a3a3e;
+    --color-bg-component-hover: #47474b;
     /* -------- Fill ---------- */
     --color-fill: ${darkMapToken.colorFill};
     --color-fill-secondary: ${darkMapToken.colorFillSecondary};
@@ -73,8 +74,5 @@ export const GlobalStyles = createGlobalStyle`
     /* -------- Code ---------- */
     --color-code-bg: #1e1e1e;
     --color-code: #9cdcfe;
-
-    /* -------- Temp variables ---------- */
-    --component-hover: #47474b;
   }
 `;
