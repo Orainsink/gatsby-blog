@@ -41,6 +41,10 @@ export const StyledCard = styled(Card)`
   overflow: hidden;
   background: var(--color-bg-component);
 
+  .ant-card-cover {
+    overflow: hidden;
+  }
+
   .card-static-image {
     width: 100%;
     padding-bottom: 56.25%;
