@@ -7,6 +7,9 @@ import { Tags } from './Tags';
 import { generatePath } from '../utils/generatePath';
 import { filterAtom } from '../store/atom';
 import { FileEdge } from '../../typings/custom';
+import { Typography } from 'antd';
+
+const { Title } = Typography;
 
 interface Props {
   posts: FileEdge[];
@@ -28,36 +31,22 @@ const MoreButton = styled.div`
   cursor: pointer;
 `;
 
-const Title = styled.h3`
-  margin-bottom: 0.4em;
-  box-shadow: none;
-  a {
-    color: var(--post-title);
-  }
-  a:hover {
-    color: var(--post-title-hover);
-  }
-`;
-
 const Phrase = styled.p`
   color: var(--color-text-secondary);
 `;
 
-const PostListItem = styled.article`
+const PostListItem = styled(Typography)`
   padding: 1.5rem 0.7rem;
   border-bottom: 1px solid var(--color-border);
-  transition: background-color 0.2s ease-in;
-
-  &:hover {
-    color: var(--color-link);
-  }
-  &:active {
-    color: var(--color-link-hover);
-  }
 
   ${({ theme }) => theme.media.isMobile} {
     padding: 1.5rem 0;
   }
+`;
+
+const PostDate = styled.small`
+  margin-bottom: 0.5em;
+  display: inline-block;
 `;
 
 const getLowerCasePosts = (posts: FileEdge[]): PostItem[] =>
@@ -123,22 +112,21 @@ export const PostList = ({ posts, hideMore = false }: Props): ReactElement => {
         return (
           getIsAccordion(index) && (
             <PostListItem key={fields.slug}>
-              <header>
-                <Title>
-                  <Link to={generatePath(categories!, fields.slug!)}>
-                    {title}
-                  </Link>
-                </Title>
-                <small>{date}</small>
-              </header>
-              <section>
-                <Phrase
-                  dangerouslySetInnerHTML={{
-                    __html: description || node!.childMdx!.excerpt || '',
-                  }}
-                />
-                <Tags tags={tags as string[]} category={categories!} />
-              </section>
+              <Title level={4}>
+                <Link
+                  to={generatePath(categories!, fields.slug!)}
+                  className="ant-typography"
+                >
+                  {title}
+                </Link>
+              </Title>
+              <PostDate>{date}</PostDate>
+              <Phrase
+                dangerouslySetInnerHTML={{
+                  __html: description || node!.childMdx!.excerpt || '',
+                }}
+              />
+              <Tags tags={tags as string[]} category={categories!} />
             </PostListItem>
           )
         );
