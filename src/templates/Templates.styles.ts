@@ -3,16 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.section`
   counter-reset: chapter;
 
-  a {
-    color: var(--primary-color);
-    border-bottom: none;
-    text-decoration: none;
-    outline: none;
-    pointer-events: auto;
-    &:hover {
-      color: var(--color-link-hover);
-    }
-  }
   li {
     list-style-type: decimal;
     list-style-position: outside;

@@ -1,16 +1,17 @@
-import { DetailedHTMLProps, AnchorHTMLAttributes, ReactElement } from 'react';
+import { FC } from 'react';
+import { Typography } from 'antd';
+import { LinkProps } from 'antd/es/typography/Link';
+
+const { Link } = Typography;
 
 /**
  * anchor with target='_blank'
  */
-export const AnchorBlock = ({
+export const AnchorBlock: FC<LinkProps & React.RefAttributes<HTMLElement>> = ({
   children,
   ...rest
-}: DetailedHTMLProps<
-  AnchorHTMLAttributes<HTMLAnchorElement>,
-  HTMLAnchorElement
->): ReactElement => (
-  <a target="_blank" rel="noreferrer" {...rest}>
+}) => (
+  <Link target="_blank" rel="noreferrer" {...rest}>
     {children}
-  </a>
+  </Link>
 );

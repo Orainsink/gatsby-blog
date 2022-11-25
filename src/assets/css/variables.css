@@ -4,7 +4,7 @@
   /* -------- Colors ----------- */
   --primary-color: #1890ff;
   --info-color: #1890ff;
-  --success-color: #52c41a;
+  --success-color: hwb(100 10% 23%);
   --warning-color: #faae14;
   --error-color: #ff1d1e;
   --normal-color: #d9d9d9;

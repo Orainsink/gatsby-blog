@@ -1,10 +1,13 @@
 import { ReactElement } from 'react';
 import { GithubOutlined, MailOutlined } from '@ant-design/icons';
 import styled, { css } from 'styled-components';
+import { Typography } from 'antd';
 
 import { useIsDark } from '../hooks';
 import darkValley from '../assets/img/valley-dark.svg';
 import valley from '../assets/img/valley.svg';
+
+const { Link } = Typography;
 
 const FooterContainer = styled.footer`
   width: 100%;
@@ -17,9 +20,6 @@ const FooterContainer = styled.footer`
     rgb(29, 32, 25) 70%,
     rgb(40, 44, 49) 90%
   );
-  a {
-    color: var(--color-link-hover);
-  }
 `;
 
 const FooterMain = styled.div`
@@ -85,13 +85,13 @@ export const Footer = (): ReactElement => {
         <FooterPhrase>
           <div>
             <StyledGithubOutlined />
-            <a
+            <Link
               href="https://github.com/Orainsink/gatsby-blog"
               target="_blank"
               rel="noopener noreferrer"
             >
               Site Repository
-            </a>
+            </Link>
           </div>
           <div>
             <StyledMailOutlined />
@@ -100,29 +100,29 @@ export const Footer = (): ReactElement => {
         </FooterPhrase>
         <div>
           © Orainsink {new Date().getFullYear()}, Built with{' '}
-          <a
+          <Link
             href="https://www.gatsbyjs.org"
             target="_blank"
             rel="noopener noreferrer"
           >
             Gatsby
-          </a>
+          </Link>
           {', '}
-          <a
+          <Link
             href="https://ant.design"
             target="_blank"
             rel="noopener noreferrer"
           >
             Antd
-          </a>
+          </Link>
           {', '}
-          <a
+          <Link
             href="https://threejs.org"
             target="_blank"
             rel="noopener noreferrer"
           >
             Three.js
-          </a>
+          </Link>
         </div>
       </FooterMain>
     </FooterContainer>
