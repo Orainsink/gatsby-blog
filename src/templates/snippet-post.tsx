@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { useCallback, ReactElement, ReactNode } from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
 import { Anchor } from 'antd';
 
@@ -9,7 +9,6 @@ import { Seo } from '../components/Seo';
 import { Tags } from '../components/Tags';
 import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
 import { useMedia } from '../hooks';
-import { generatePath } from '../utils/generatePath';
 import { Contents } from '../components/SideBlocks';
 import { Comment } from '../components/Comment';
 import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
@@ -17,13 +16,8 @@ import {
   DeepRequiredAndNonNullable,
   TableOfContents,
 } from '../../typings/custom';
-import {
-  Article,
-  Container,
-  LeadUl,
-  License,
-  TableContents,
-} from './Templates.styles';
+import { Article, Container, License, TableContents } from './Templates.styles';
+import { PreAndNext } from './components/PreAndNext';
 
 type Data = DeepRequiredAndNonNullable<Queries.getSnippetPostQuery>;
 interface Props {
@@ -119,33 +113,7 @@ const SnippetPostTemplate = ({
         <Tags tags={tags} category={categories} />
       </Article>
 
-      <nav>
-        <LeadUl>
-          <li style={{ textAlign: 'left' }}>
-            {previous && (
-              <Link
-                to={generatePath(
-                  previous.frontmatter.categories,
-                  previous.fields.slug
-                )}
-                rel="prev"
-              >
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li style={{ textAlign: 'right' }}>
-            {next && (
-              <Link
-                to={generatePath(next.frontmatter.categories, next.fields.slug)}
-                rel="next"
-              >
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </LeadUl>
-      </nav>
+      <PreAndNext previous={previous} next={next} />
       {mdx && <Comment />}
     </Layout>
   );

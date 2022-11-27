@@ -109,13 +109,6 @@ export const Article = styled.article`
   border-bottom: 1px solid var(--color-border);
   transition: background-color 0.2s ease-in;
 
-  &:hover {
-    color: var(--color-link);
-  }
-  &:active {
-    color: var(--color-link-hover);
-  }
-
   ${({ theme }) => theme.media.isMobile} {
     padding: 1.5rem 0;
   }
