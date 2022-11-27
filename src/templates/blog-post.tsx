@@ -23,7 +23,7 @@ const Subtitle = styled.div`
   text-align: center;
 
   a {
-    color: var(--color-text-secondary);
+    color: inherit;
     text-decoration: underline;
   }
 `;

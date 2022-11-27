@@ -1,8 +1,9 @@
 import { GatsbyNode } from 'gatsby';
+import path from 'path';
 
 import { replacePath } from '../src/utils/replacePath';
-import path from 'path';
 import { hashString } from '../src/utils/hashString';
+import { DeepRequiredAndNonNullable } from '../typings/custom';
 
 export const createPages: GatsbyNode['createPages'] = ({
   actions,
@@ -34,19 +35,19 @@ export const createPages: GatsbyNode['createPages'] = ({
     about: AboutTemplate,
   };
 
-  return graphql<Queries.Query>(`
+  return graphql<DeepRequiredAndNonNullable<Queries.Query>>(`
     query getPagesData {
       allMdx {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-              categories
-            }
+        nodes {
+          id
+          internal {
+            contentFilePath
+          }
+          fields {
+            slug
+          }
+          frontmatter {
+            categories
           }
         }
       }
@@ -55,21 +56,21 @@ export const createPages: GatsbyNode['createPages'] = ({
     if (result.errors) {
       return Promise.reject(result.errors);
     }
-    const posts = result.data!.allMdx.edges;
-    posts.forEach(({ node }, index) => {
-      const previous =
-        index === posts.length - 1 ? null : posts[index + 1].node;
-      const next = index === 0 ? null : posts[index - 1].node;
+    const nodes = result.data!.allMdx.nodes;
+    nodes.forEach((node, index) => {
+      const previous = index === nodes.length - 1 ? null : nodes[index + 1];
+      const next = index === 0 ? null : nodes[index - 1];
+      const postTemplate =
+        componentTemplate[
+          node.frontmatter.categories as keyof typeof componentTemplate
+        ] || Template;
 
       createPage({
         path:
-          node.frontmatter!.categories +
+          node.frontmatter.categories +
           '/' +
-          replacePath(hashString(node.fields!.slug as string)),
-        component:
-          componentTemplate[
-            node.frontmatter!.categories as keyof typeof componentTemplate
-          ] || Template,
+          replacePath(hashString(node.fields.slug)),
+        component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
         context: { id: node.id, previous, next },
       });
     });
