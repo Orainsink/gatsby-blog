@@ -71,7 +71,7 @@ export const CodeBlock = ({
             <div
               style={{
                 padding: '2px 12px 0px',
-                background: 'var(--code-bg)',
+                background: 'var(--color-code-bg)',
                 borderRadius: '8px 8px 0px 0px',
                 pointerEvents: 'none',
                 margin: '0 5px',
@@ -90,7 +90,7 @@ export const CodeBlock = ({
               }}
               style={{
                 padding: '2px 12px 0px',
-                background: 'var(--code-bg)',
+                background: 'var(--color-code-bg)',
                 color: 'var(--color-text)',
                 borderRadius: '8px 8px 0px 0px',
                 transition: 'none',

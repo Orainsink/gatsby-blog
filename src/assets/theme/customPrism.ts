@@ -54,18 +54,6 @@ export const theme: PrismTheme = {
         color: '#990055',
       },
     },
-    // {
-    //   types: ['constant'],
-    //   style: {
-    //     color: 'rgb(100, 102, 149)',
-    //   },
-    // },
-    // {
-    //   types: ['class-name'],
-    //   style: {
-    //     color: '#DD4A68',
-    //   },
-    // },
     {
       types: ['attr-name', 'variable', 'selector', 'string', 'template-string'],
       style: {
