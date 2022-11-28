@@ -18,6 +18,8 @@ export const GlobalStyles = createGlobalStyle`
     --space-xl: 2rem;
     --space-xxl: 3rem;
 
+    --font-size-small: 14px;
+
     --box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
     --box-shadow-secondary: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
 
@@ -34,7 +36,7 @@ export const GlobalStyles = createGlobalStyle`
     --color-bg-elevated: ${defaultMapToken.colorBgElevated};
     --color-bg-container: #fff;
     --color-bg-component: #fff;
-    --color-component-hover: #f5f5f5;
+    --color-component-hover: rgba(0,0,0,0.1);
     /* -------- Fill ---------- */
     --color-fill: ${defaultMapToken.colorFill};
     --color-fill-secondary: ${defaultMapToken.colorFillSecondary};
@@ -64,7 +66,7 @@ export const GlobalStyles = createGlobalStyle`
     --color-bg-elevated: ${darkMapToken.colorBgElevated};
     --color-bg-container: #2b2b2e;
     --color-bg-component: #3a3a3e;
-    --color-bg-component-hover: #47474b;
+    --color-component-hover: rgba(255,255,255,0.1);
     /* -------- Fill ---------- */
     --color-fill: ${darkMapToken.colorFill};
     --color-fill-secondary: ${darkMapToken.colorFillSecondary};

@@ -15,8 +15,6 @@ const CalendarHeaderContainer = styled(Row)`
 
 const Header = styled(Col)`
   font-weight: bold;
-  font-size: 16px;
-  color: var(--color-text);
 `;
 
 const CalendarCell = styled.div`
@@ -24,11 +22,20 @@ const CalendarCell = styled.div`
 `;
 
 const Count = styled.div`
-  font-size: 14px;
+  font-size: var(--font-size-small);
 `;
 
 const CalendarContainer = styled(BaseCol)`
   height: unset;
+
+  .ant-picker-cell {
+    &:hover {
+      background: var(--color-component-hover);
+    }
+    &::before {
+      height: 100% !important;
+    }
+  }
 `;
 
 interface Props {
@@ -73,7 +80,6 @@ export const CalendarBlock = ({ posts }: Props): ReactElement => {
         return (
           <CalendarCell>
             <div>{dayjs(currentDate).format('M月')}</div>
-            <div style={{ height: '28px' }}></div>
           </CalendarCell>
         );
       }
