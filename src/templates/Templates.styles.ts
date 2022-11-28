@@ -14,7 +14,9 @@ export const Container = styled.section`
     background: var(--color-text-fourth);
     line-height: 2;
     border-radius: var(--border-radius);
+    margin: 0 0 var(--space-md);
   }
+
   h1,
   h2,
   h3,
@@ -25,7 +27,7 @@ export const Container = styled.section`
     font-weight: 700;
     text-rendering: optimizeLegibility;
     line-height: 1.1;
-    color: var(--mdx-header);
+    color: var(--color-mdx-header);
   }
   h2 {
     &::before {
@@ -108,6 +110,10 @@ export const Article = styled.article`
   padding: 1.5rem 0.7rem;
   border-bottom: 1px solid var(--color-border);
   transition: background-color 0.2s ease-in;
+
+  h1 {
+    color: var(--color-mdx-header);
+  }
 
   ${({ theme }) => theme.media.isMobile} {
     padding: 1.5rem 0;

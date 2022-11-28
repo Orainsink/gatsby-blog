@@ -10,13 +10,13 @@ export const GlobalStyles = createGlobalStyle`
   :root body{
     /* -------- Common Variables ---------- */
     --border-radius: ${defaultSeed.borderRadius}px;
-    --space-xxs: 4px;
-    --space-xs: 8px;
-    --space-sm: 12px;
-    --space-md: 16px;
-    --space-lg: 24px;
-    --space-xl: 32px;
-    --space-xxl: 48px;
+    --space-xxs: 0.25rem;
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-xxl: 3rem;
 
     --box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
     --box-shadow-secondary: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
@@ -49,6 +49,8 @@ export const GlobalStyles = createGlobalStyle`
     /* -------- Link ---------- */
     --color-link: var(--color-primary);
     --color-link-hover: var(--color-primary-hover);
+    /* -------- Post ---------- */
+    --color-mdx-header: var(--color-text);
   }
 
   :root body.dark {
@@ -74,5 +76,7 @@ export const GlobalStyles = createGlobalStyle`
     /* -------- Code ---------- */
     --color-code-bg: #1e1e1e;
     --color-code: #9cdcfe;
+    /* -------- Post ---------- */
+    --color-mdx-header: ${darkMapToken.colorWarning};
   }
 `;
