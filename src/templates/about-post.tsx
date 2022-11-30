@@ -1,4 +1,4 @@
-import { lazy, Suspense, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { PageProps } from 'gatsby';
 import styled from 'styled-components';
 
@@ -8,33 +8,21 @@ import { Comment } from '../components/Comment';
 import { Poem } from '../components/Poem';
 import { Container } from './Templates.styles';
 import { MdxParser } from '../components/MDXComponents';
-
-const MoogleScene = lazy(
-  () =>
-    import(/* webpackPreload: true */ '../components/SideBlocks/MoogleScene')
-);
+import { MoogleScene } from '../components/SideBlocks/MoogleScene';
 
 const AboutContainer = styled(Container)`
   padding: 1em;
 `;
 
-const AboutPostTemplate = ({ children }: PageProps<{}>): ReactElement => {
-  return (
-    <Layout
-      sideBlocks={
-        <Suspense fallback={null}>
-          <MoogleScene />
-        </Suspense>
-      }
-    >
-      <Poem />
-      <AboutContainer>
-        <MdxParser>{children}</MdxParser>
-      </AboutContainer>
-      <Comment />
-    </Layout>
-  );
-};
+const AboutPostTemplate = ({ children }: PageProps<{}>): ReactElement => (
+  <Layout sideBlocks={<MoogleScene />}>
+    <Poem />
+    <AboutContainer>
+      <MdxParser>{children}</MdxParser>
+    </AboutContainer>
+    <Comment />
+  </Layout>
+);
 
 export default AboutPostTemplate;
 

@@ -155,4 +155,4 @@ const Moogle = () => {
     </CanvasContainer>
   );
 };
-export default memo(Moogle);
+export const MoogleScene = memo(Moogle);
