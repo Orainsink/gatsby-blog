@@ -173,7 +173,7 @@ const config: GatsbyConfig = {
               maintainCase: false,
               removeAccents: true,
               isIconAfterHeader: true,
-              elements: [`h2`, `h3`],
+              elements: [`h2`, `h3`, `h4`],
             },
           },
         ],
