@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
-import { useCallback, ReactElement, ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import { graphql } from 'gatsby';
-import { Anchor } from 'antd';
 
 import { Layout } from '../layout/BlogLayout';
 import { Seo } from '../components/Seo';
@@ -11,10 +10,7 @@ import { useMedia } from '../hooks';
 import { Contents } from '../components/SideBlocks';
 import { Comment } from '../components/Comment';
 import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
-import {
-  DeepRequiredAndNonNullable,
-  TableOfContents,
-} from '../../typings/custom';
+import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import {
   Article,
   Container,
@@ -24,6 +20,7 @@ import {
   Subtitle,
   TableContents,
 } from './Templates.styles';
+import { Anchor } from '../components/Anchor';
 
 type Data = DeepRequiredAndNonNullable<Queries.getSnippetPostQuery>;
 interface Props {
@@ -40,22 +37,6 @@ const SnippetPostTemplate = ({
     tableOfContents,
   } = mdx;
   const isDesktop = useMedia('isDesktop');
-
-  /**
-   * Recursion Links
-   */
-  const renderLinks = useCallback((content: TableOfContents) => {
-    if (!content.items) return null;
-
-    const renderLink = (items: TableOfContents[]) => {
-      return items.map((item) => (
-        <Anchor.Link href={item.url!} title={item.title} key={item.url}>
-          {item.items ? renderLink(item.items) : null}
-        </Anchor.Link>
-      ));
-    };
-    return renderLink(content.items);
-  }, []);
 
   return (
     <Layout sideBlocks={isDesktop && <Contents contents={tableOfContents} />}>
@@ -78,12 +59,10 @@ const SnippetPostTemplate = ({
         {tableOfContents && !isDesktop && (
           <TableContents>
             <Anchor
-              getContainer={() => document.body as HTMLElement}
               targetOffset={200}
               affix={false}
-            >
-              {renderLinks(tableOfContents)}
-            </Anchor>
+              contents={tableOfContents as any}
+            />
           </TableContents>
         )}
         <Container>

@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { graphql } from 'gatsby';
 import { ReactElement, ReactNode } from 'react';
-import styled from 'styled-components';
 
 import { Layout } from '../layout/BlogLayout';
 import { Seo } from '../components/Seo';
@@ -54,7 +53,7 @@ const BlogPostTemplate = ({ data: { mdx }, children }: Props): ReactElement => {
             </License>
           </Subtitle>
         </header>
-        {!!tableOfContents && !isDesktop && (
+        {tableOfContents && !isDesktop && (
           <TableContents>
             <Anchor
               targetOffset={200}
