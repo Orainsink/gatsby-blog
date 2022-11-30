@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-  counter-reset: chapter;
-
   li {
     list-style-type: decimal;
     list-style-position: outside;
@@ -30,9 +28,16 @@ export const Container = styled.section`
     color: var(--color-mdx-header);
   }
   h2 {
+    a {
+      transform: translateY(4px);
+    }
+    svg {
+      fill: var(--color-mdx-header);
+    }
     &::before {
-      counter-increment: chapter;
-      content: counter(chapter) '. ';
+      padding-left: var(--space-sm);
+      border-left: var(--space-xxs) solid var(--color-border);
+      content: '';
     }
   }
 
