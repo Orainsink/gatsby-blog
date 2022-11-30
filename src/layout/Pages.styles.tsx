@@ -19,6 +19,11 @@ export const ReloadIcon = styled(ReloadOutlined)`
 
 const StyledTable = styled(Table)`
   cursor: pointer;
+
+  thead,
+  tbody {
+    background: var(--color-bg-container);
+  }
 `;
 
 export const WrappedTable = ({ className, ...rest }: TableProps<any>) => (
