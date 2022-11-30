@@ -19,7 +19,9 @@ import {
   Article,
   Container,
   License,
+  MajorTitle,
   PostHr,
+  Subtitle,
   TableContents,
 } from './Templates.styles';
 
@@ -59,19 +61,8 @@ const SnippetPostTemplate = ({
     <Layout sideBlocks={isDesktop && <Contents contents={tableOfContents} />}>
       <Article>
         <header>
-          <h1
-            style={{ textAlign: 'center', fontWeight: 'var(--font-weight-xl)' }}
-          >
-            {title}
-          </h1>
-          <div
-            style={{
-              display: 'block',
-              marginBottom: '1.6em',
-              color: '#999999',
-              textAlign: 'center',
-            }}
-          >
+          <MajorTitle>{title}</MajorTitle>
+          <Subtitle>
             {date}
             <span style={{ marginLeft: 'var(--space-md)' }}>{categories}</span>
             <License
@@ -82,9 +73,9 @@ const SnippetPostTemplate = ({
             >
               <LicenseSvg />
             </License>
-          </div>
+          </Subtitle>
         </header>
-        {!!tableOfContents && !isDesktop && (
+        {tableOfContents && !isDesktop && (
           <TableContents>
             <Anchor
               getContainer={() => document.body as HTMLElement}

@@ -19,18 +19,9 @@ import {
   License,
   PostHr,
   TableContents,
+  Subtitle,
+  MajorTitle,
 } from './Templates.styles';
-
-const Subtitle = styled.div`
-  margin-bottom: var(--space-lg);
-  color: var(--color-text-secondary);
-  text-align: center;
-
-  a {
-    color: inherit;
-    text-decoration: underline;
-  }
-`;
 
 type Data = DeepRequiredAndNonNullable<Queries.getBlogPostQuery>;
 interface Props {
@@ -49,11 +40,7 @@ const BlogPostTemplate = ({ data: { mdx }, children }: Props): ReactElement => {
     <Layout sideBlocks={isDesktop && <Contents contents={tableOfContents} />}>
       <Article>
         <header>
-          <h1
-            style={{ textAlign: 'center', fontWeight: 'var(--font-weight-xl)' }}
-          >
-            {title}
-          </h1>
+          <MajorTitle>{title}</MajorTitle>
           <Subtitle>
             {date}
             <span style={{ marginLeft: 'var(--space-md)' }}>{categories}</span>

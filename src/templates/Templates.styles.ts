@@ -130,3 +130,18 @@ export const PostHr = styled.hr`
   margin-bottom: var(--space-lg);
   background: none;
 `;
+
+export const MajorTitle = styled.h1`
+  text-align: center;
+  font-weight: var(--font-weight-xl);
+`;
+export const Subtitle = styled.div`
+  margin-bottom: var(--space-lg);
+  color: var(--color-text-secondary);
+  text-align: center;
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
+`;
