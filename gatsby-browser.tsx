@@ -24,7 +24,8 @@ export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
 };
 
 export const onRouteUpdate: GatsbyBrowser['onRouteUpdate'] = ({ location }) => {
-  const anchor = decodeURI(location.hash.split('#')[1]?.toLowerCase());
+  const tag = location.hash.split('#')[1];
+  const anchor = decodeURI(tag).toLowerCase().trim();
   const element = document.getElementById(anchor);
 
   if (element) {
