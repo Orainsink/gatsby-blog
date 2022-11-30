@@ -25,6 +25,7 @@ export const GlobalStyles = createGlobalStyle`
 
     --color-primary: ${defaultMapToken.colorPrimary};
     --color-primary-hover: ${defaultMapToken.colorPrimaryBorderHover};
+    --color-primary-active: ${defaultMapToken.colorPrimaryHover};
     
     /* -------- Text ---------- */
     --color-text: ${defaultMapToken.colorText};
@@ -51,11 +52,16 @@ export const GlobalStyles = createGlobalStyle`
     /* -------- Link ---------- */
     --color-link: var(--color-primary);
     --color-link-hover: var(--color-primary-hover);
+    --color-link-active: var(--color-primary-active);
     /* -------- Post ---------- */
     --color-mdx-header: var(--color-text);
   }
 
   :root body.dark {
+    --color-primary: ${defaultMapToken.colorWarningText};
+    --color-primary-hover: ${defaultMapToken.colorWarningTextHover};
+    --color-primary-active: ${defaultMapToken.colorWarningTextActive};
+
     /* -------- Dark Variables ---------- */
     --color-text: ${darkMapToken.colorText};
     --color-text-secondary: ${darkMapToken.colorTextSecondary};

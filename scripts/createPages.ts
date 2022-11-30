@@ -56,6 +56,7 @@ export const createPages: GatsbyNode['createPages'] = ({
       createPage({
         path: generatePath(categories, title),
         component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+        context: { id: node.id },
       });
     });
   });

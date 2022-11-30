@@ -38,6 +38,12 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
       <ConfigProvider
         theme={{
           algorithm: isDark ? darkAlgorithm : defaultAlgorithm,
+          token: {
+            colorPrimary: isDark ? '#faad14' : '#1677ff',
+            colorLink: 'var(--color-link)',
+            colorLinkActive: 'var(--color-link-hover)',
+            colorLinkHover: 'var(--color-link-active)',
+          },
         }}
       >
         <ThemeProvider theme={{ ...defaultTheme }}>
