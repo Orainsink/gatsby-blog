@@ -57,9 +57,7 @@ export const createPages: GatsbyNode['createPages'] = ({
       return Promise.reject(result.errors);
     }
     const nodes = result.data!.allMdx.nodes;
-    nodes.forEach((node, index) => {
-      const previous = index === nodes.length - 1 ? null : nodes[index + 1];
-      const next = index === 0 ? null : nodes[index - 1];
+    nodes.forEach((node) => {
       const postTemplate =
         componentTemplate[
           node.frontmatter.categories as keyof typeof componentTemplate
@@ -71,7 +69,6 @@ export const createPages: GatsbyNode['createPages'] = ({
           '/' +
           replacePath(hashString(node.fields.slug)),
         component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
-        context: { id: node.id, previous, next },
       });
     });
   });

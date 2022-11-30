@@ -22,29 +22,21 @@ import {
   PostHr,
   TableContents,
 } from './Templates.styles';
-import { PreAndNext } from './components/PreAndNext';
 
 type Data = DeepRequiredAndNonNullable<Queries.getSnippetPostQuery>;
 interface Props {
   data: Data;
   children: ReactNode;
-  pageContext: {
-    previous: any;
-    next: any;
-    id: string;
-  };
 }
 
 const SnippetPostTemplate = ({
   data: { mdx },
   children,
-  pageContext,
 }: Props): ReactElement => {
   const {
     frontmatter: { title, tags, date, categories },
     tableOfContents,
   } = mdx;
-  const { previous, next } = pageContext;
   const isDesktop = useMedia('isDesktop');
 
   /**
@@ -105,8 +97,6 @@ const SnippetPostTemplate = ({
         <PostHr />
         <Tags tags={tags} category={categories} />
       </Article>
-
-      <PreAndNext previous={previous} next={next} />
       {mdx && <Comment />}
     </Layout>
   );
