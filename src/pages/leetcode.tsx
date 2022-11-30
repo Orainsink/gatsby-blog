@@ -3,6 +3,7 @@ import { PageProps, graphql, navigate } from 'gatsby';
 import { Button, Tag } from 'antd';
 import dayjs from 'dayjs';
 import type { ColumnsType } from 'antd/es/table';
+import styled from 'styled-components';
 
 import { Seo } from '../components/Seo';
 import { Layout } from '../layout/BlogLayout';
@@ -13,6 +14,13 @@ import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
 import { PageDivider, ReloadIcon, WrappedTable } from '../layout/Pages.styles';
+
+const StyledLeetcodeBtn = styled(LeetcodeSvg)`
+  width: var(--font-size-lg);
+  height: var(--font-size-lg);
+  vertical-align: -1px;
+  margin-right: 4px;
+`;
 
 type Data = DeepRequiredAndNonNullable<Queries.getLeetcodePageDataQuery>;
 
@@ -61,7 +69,7 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
       title: 'TITLE',
       dataIndex: 'title',
       render: (text: string) => (
-        <div style={{ fontWeight: 'bold' }}>{text}</div>
+        <div style={{ fontWeight: 'var(--font-weight-lg)' }}>{text}</div>
       ),
     },
     {
@@ -69,7 +77,7 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
       dataIndex: 'tag',
       width: 80,
       render: (text: string) => (
-        <Tag color={isDark ? 'var(--tag-color)' : 'blue'}>{text}</Tag>
+        <Tag color={'var(--color-primary)'}>{text}</Tag>
       ),
       onFilter: (value, record) => record.tag.indexOf(value + '') === 0,
       filters: options,
@@ -88,14 +96,7 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
       render: (text: string) =>
         text ? (
           <Button ghost={isDark ? true : false} href={text}>
-            <LeetcodeSvg
-              style={{
-                width: '18px',
-                height: '18px',
-                verticalAlign: '-1px',
-                marginRight: '4px',
-              }}
-            />
+            <StyledLeetcodeBtn />
             查看题目
           </Button>
         ) : null,
@@ -113,10 +114,10 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
       defaultSortOrder: 'descend',
       render: (text: string, row) => (
         <div>
-          <div style={{ fontWeight: 'bold' }}>{text}</div>
+          <div style={{ fontWeight: 'var(--font-weight-lg)' }}>{text}</div>
           <div>date：{row.date}</div>
           <div>
-            <Tag color={isDark ? 'var(--tag-color)' : 'blue'}>{row.tag}</Tag>
+            <Tag color={'var(--color-primary)'}>{row.tag}</Tag>
           </div>
         </div>
       ),
@@ -133,7 +134,12 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
               ghost={isDark ? true : false}
               href={text}
             >
-              <LeetcodeSvg style={{ width: '18px', height: '18px' }} />
+              <LeetcodeSvg
+                style={{
+                  width: 'var(--font-size-lg)',
+                  height: 'var(--font-size-lg)',
+                }}
+              />
             </Button>
           ) : null}
         </div>

@@ -63,7 +63,7 @@ const ToggleContainer = styled.div`
   display: block;
   text-align: center;
   user-select: none;
-  margin-left: 20px;
+  margin-left: var(--space-md);
 `;
 
 export const DayNightToggleContainer = styled(ToggleContainer)`

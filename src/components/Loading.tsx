@@ -1,6 +1,20 @@
 import { useEffect, useState, ReactNode, ReactElement } from 'react';
+import styled from 'styled-components';
 
 import LoadingSvg from '../assets/img/loading.svg';
+
+const LoadingContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 11;
+`;
 
 interface Props {
   debounce?: number;
@@ -20,22 +34,9 @@ export const Loading = (props: Props): ReactElement | null => {
   }, [debounce]);
 
   return active ? (
-    <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        background: '#0a0a0a',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        zIndex: 11,
-      }}
-    >
+    <LoadingContainer>
       <img src={LoadingSvg} alt="" />
       {children}
-    </div>
+    </LoadingContainer>
   ) : null;
 };

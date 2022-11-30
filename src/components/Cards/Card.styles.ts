@@ -4,27 +4,27 @@ import { Card } from 'antd';
 import { ReactComponent as MarkSvg } from '../../assets/img/mark.svg';
 
 export const CardSection = styled.section`
-  margin-bottom: 1em;
+  margin-bottom: var(--space-md);
 `;
 
 export const StyledTitle = styled.div`
-  font-size: 1rem;
+  font-size: var(--font-size-md);
   width: 100%;
   text-align: center;
-  margin: 1em auto;
+  margin: var(--space-md) auto;
 `;
 
 export const StyledMarkSvg = styled(MarkSvg)`
   color: #dcdcdc;
   fill: #dcdcdc;
-  margin-right: 1em;
+  margin-right: var(--space-md);
 `;
 
 export const StyledCards = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
-  gap: 16px 16px;
+  gap: var(--space-md) var(--space-md);
   grid-template-areas: '. . . .';
 
   ${({ theme }) => theme.media.isMobile} {
@@ -49,7 +49,7 @@ export const StyledCard = styled(Card)`
     width: 100%;
     padding-bottom: 56.25%;
     height: 0;
-    transition: all 500ms ease;
+    transition: all 0.3s ease;
 
     ${({ theme }) => theme.media.isMobile} {
       height: 100px !important;

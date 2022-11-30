@@ -11,7 +11,7 @@ import { MdxParser } from '../components/MDXComponents';
 import { MoogleScene } from '../components/SideBlocks/MoogleScene';
 
 const AboutContainer = styled(Container)`
-  padding: 1em;
+  padding: var(--space-md);
 `;
 
 const AboutPostTemplate = ({ children }: PageProps<{}>): ReactElement => (

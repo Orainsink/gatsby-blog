@@ -14,13 +14,13 @@ const DrawerBtn = styled(UnorderedListOutlined)`
   border: none;
   color: inherit;
   font-size: 28px;
-  font-weight: 700;
+  font-weight: var(--font-weight-xl);
   margin-right: 15px;
 `;
 
 const DrawerTitle = styled.span`
-  font-size: 20px;
-  font-weight: 700;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-xl);
   color: var(--color-text);
 `;
 

@@ -59,7 +59,11 @@ const SnippetPostTemplate = ({
     <Layout sideBlocks={isDesktop && <Contents contents={tableOfContents} />}>
       <Article>
         <header>
-          <h1 style={{ textAlign: 'center', fontWeight: 700 }}>{title}</h1>
+          <h1
+            style={{ textAlign: 'center', fontWeight: 'var(--font-weight-xl)' }}
+          >
+            {title}
+          </h1>
           <div
             style={{
               display: 'block',
@@ -69,7 +73,7 @@ const SnippetPostTemplate = ({
             }}
           >
             {date}
-            <span style={{ marginLeft: '1em' }}>{categories}</span>
+            <span style={{ marginLeft: 'var(--space-md)' }}>{categories}</span>
             <License
               rel="license"
               target="_blank"

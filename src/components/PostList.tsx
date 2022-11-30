@@ -26,8 +26,8 @@ interface PostItem {
 
 const MoreButton = styled.div`
   text-align: center;
-  font-size: 18px;
-  padding: 1em 0;
+  font-size: var(--font-size-lg);
+  padding: var(--space-md) 0;
   cursor: pointer;
 `;
 
@@ -36,7 +36,7 @@ const Phrase = styled.p`
 `;
 
 const PostListItem = styled(Typography)`
-  padding: 1.5rem 0.7rem;
+  padding: var(--space-lg) var(--space-sm);
   border-bottom: 1px solid var(--color-border);
 
   ${({ theme }) => theme.media.isMobile} {
@@ -45,7 +45,7 @@ const PostListItem = styled(Typography)`
 `;
 
 const PostDate = styled.small`
-  margin-bottom: 0.5em;
+  margin-bottom: var(--space-xs);
   display: inline-block;
 `;
 

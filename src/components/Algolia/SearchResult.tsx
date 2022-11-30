@@ -13,7 +13,7 @@ import { generatePath } from '../../utils/generatePath';
 
 const ResultWrapper = styled.div`
   height: 100%;
-  margin-top: 0.5em;
+  margin-top: var(--space-xs);
 
   ul {
     list-style: none;
@@ -28,12 +28,12 @@ const ResultWrapper = styled.div`
   .ais-Hits-item {
     border-left: 4px solid var(--color-border);
     padding: 10px;
-    margin-bottom: 1em;
+    margin-bottom: var(--space-md);
 
     a {
       color: var(--color-text);
       h4 {
-        margin-bottom: 0.2em;
+        margin-bottom: var(--space-xxs);
       }
     }
     &:hover {

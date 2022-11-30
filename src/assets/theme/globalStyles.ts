@@ -10,6 +10,8 @@ export const GlobalStyles = createGlobalStyle`
   :root body{
     /* -------- Common Variables ---------- */
     --border-radius: ${defaultSeed.borderRadius}px;
+    --border-radius-sm: 4px;
+
     --space-xxs: 0.25rem;
     --space-xs: 0.5rem;
     --space-sm: 0.75rem;
@@ -18,7 +20,13 @@ export const GlobalStyles = createGlobalStyle`
     --space-xl: 2rem;
     --space-xxl: 3rem;
 
-    --font-size-small: 14px;
+    --font-size-sm: 14px;
+    --font-size-md: 16px;
+    --font-size-lg: 18px;
+    --font-size-xl: 20px;
+    --font-size-xxl: 24px
+    --font-weight-lg: 500;
+    --font-weight-xl: 700;
 
     --box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
     --box-shadow-secondary: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);

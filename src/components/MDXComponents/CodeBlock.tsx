@@ -3,9 +3,48 @@ import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 import { Button } from 'antd';
 import { CopyOutlined, SmileOutlined } from '@ant-design/icons';
+import styled, { css } from 'styled-components';
 
 import { theme as lightTheme } from '../../assets/theme/customPrism';
 import { useIsDark } from '../../hooks';
+
+const labelSharedStyles = css`
+  padding: 2px 12px 0px;
+  background: var(--color-code-bg);
+  border-radius: var(--border-radius-sm) var(--border-radius-sm) 0px 0px;
+  color: var(--color-text) !important;
+  font-weight: var(--font-weight-lg);
+`;
+
+const LabelsContainer = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  position: absolute;
+  top: 0;
+  right: 14px;
+  transform: translateY(-98%);
+  text-transform: uppercase;
+`;
+
+const LanguageLabel = styled.div`
+  ${labelSharedStyles}
+  pointer-events: none;
+  margin: 0 5px;
+  height: 32px;
+  line-height: 32px;
+`;
+
+const CopyButton = styled(Button)`
+  ${labelSharedStyles}
+  transition: none;
+  font-family: inherit;
+`;
+
+const HighlightContainer = styled.div`
+  margin: var(--space-xl) 0 var(--space-md) 0;
+  position: relative;
+`;
 
 export interface CodeBlockProps {
   children: string;
@@ -45,64 +84,27 @@ export const CodeBlock = memo(
         theme={theme}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <div
-            style={{
-              margin: '2em 0 1em 0',
-              position: 'relative',
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'flex-end',
-                justifyContent: 'flex-end',
-                position: 'absolute',
-                top: 0,
-                right: '14px',
-                transform: 'translateY(-98%)',
-                fontSize: '18px',
-                textTransform: 'uppercase',
-                color: 'var(--color-text)',
-              }}
-            >
-              <div
-                style={{
-                  padding: '2px 12px 0px',
-                  background: 'var(--color-code-bg)',
-                  borderRadius: '8px 8px 0px 0px',
-                  pointerEvents: 'none',
-                  margin: '0 5px',
-                  height: '32px',
-                  lineHeight: '32px',
-                }}
-              >
-                {language}
-              </div>
-              <Button
+          <HighlightContainer>
+            <LabelsContainer>
+              <LanguageLabel>{language}</LanguageLabel>
+              <CopyButton
                 type="link"
                 onClick={() => {
                   copyToClipboard(children);
                   setCopied(true);
                   setTimeout(() => setCopied(false), 3000);
                 }}
-                style={{
-                  padding: '2px 12px 0px',
-                  background: 'var(--color-code-bg)',
-                  color: 'var(--color-text)',
-                  borderRadius: '8px 8px 0px 0px',
-                  transition: 'none',
-                }}
               >
                 {copied ? <SmileOutlined /> : <CopyOutlined />}
                 {copied ? 'succeed' : 'copy'}
-              </Button>
-            </div>
+              </CopyButton>
+            </LabelsContainer>
             <pre
               className={className}
               style={{
                 ...style,
-                padding: '0.8em 0.8em',
-                borderRadius: 4,
+                padding: 'var(--space-sm)',
+                borderRadius: 'var(--border-radius-sm)',
                 lineHeight: 1.5,
                 overflow: 'auto',
                 maxHeight: '40em',
@@ -127,7 +129,7 @@ export const CodeBlock = memo(
                 </div>
               ))}
             </pre>
-          </div>
+          </HighlightContainer>
         )}
       </Highlight>
     );

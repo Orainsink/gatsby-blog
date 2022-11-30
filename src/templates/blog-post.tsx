@@ -22,7 +22,7 @@ import {
 } from './Templates.styles';
 
 const Subtitle = styled.div`
-  margin-bottom: 1.6em;
+  margin-bottom: var(--space-lg);
   color: var(--color-text-secondary);
   text-align: center;
 
@@ -49,10 +49,14 @@ const BlogPostTemplate = ({ data: { mdx }, children }: Props): ReactElement => {
     <Layout sideBlocks={isDesktop && <Contents contents={tableOfContents} />}>
       <Article>
         <header>
-          <h1 style={{ textAlign: 'center', fontWeight: 700 }}>{title}</h1>
+          <h1
+            style={{ textAlign: 'center', fontWeight: 'var(--font-weight-xl)' }}
+          >
+            {title}
+          </h1>
           <Subtitle>
             {date}
-            <span style={{ marginLeft: '1em' }}>{categories}</span>
+            <span style={{ marginLeft: 'var(--space-md)' }}>{categories}</span>
             <License
               rel="license"
               target="_blank"

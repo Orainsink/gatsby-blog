@@ -55,7 +55,7 @@ const headerDropStyle = css`
     }
   }
   .active {
-    padding: 1em 1em;
+    padding: var(--space-md);
     background-color: rgba(0, 0, 0, 0.1);
   }
 `;
@@ -86,6 +86,11 @@ const StyledWrappedTooltip = styled(WrappedTooltip)<{
   ${({ isDark }) => isDark && darkStyle}
 
   ${({ isDark, headerDrop }) => headerDrop && !isDark && headerDropStyle}
+`;
+
+const MusicIconContainer = styled.div`
+  cursor: 'pointer';
+  transform: 'translateY(0.2em)';
 `;
 
 const MusicIcon = styled.svg<{ running: boolean }>`
@@ -130,7 +135,7 @@ export const MyPlayer = memo(() => {
       getPopupContainer={() => document.getElementById('header')!}
       onOpenChange={setPlayerVisible}
     >
-      <div style={{ cursor: 'pointer', transform: 'translateY(0.2em)' }}>
+      <MusicIconContainer>
         <MusicIcon
           running={playing && loaded}
           xmlSpace="preserve"
@@ -149,7 +154,7 @@ export const MyPlayer = memo(() => {
             <path d="M82.626 14.752a3.71 3.71 0 0 0-4.787-3.554L37.308 23.446A3.712 3.712 0 0 0 34.669 27v37.568c-3.081-.717-6.694-.103-9.997 1.994-6.218 3.946-8.987 11.65-6.183 17.205 2.804 5.556 10.119 6.861 16.337 2.914 4.789-3.04 7.528-8.306 7.255-13.104h.013V42.565L75.2 32.603V53.97c-3.103-.753-6.756-.15-10.094 1.968-6.217 3.946-8.986 11.649-6.183 17.204 2.804 5.556 10.119 6.861 16.337 2.914 4.984-3.163 7.748-8.737 7.207-13.687h.159V14.752z"></path>
           </G2>
         </MusicIcon>
-      </div>
+      </MusicIconContainer>
     </StyledWrappedTooltip>
   );
 });

@@ -16,7 +16,7 @@ import { DeepRequiredAndNonNullable } from '../../typings/custom';
 const EssayCard = styled(Card)`
   width: 45%;
   max-width: 440px;
-  margin: 1em;
+  margin: var(--space-md);
   ${({ theme }) => theme.media.isMobile} {
     width: 90%;
   }
@@ -33,8 +33,8 @@ const EssayCards = styled.div`
 `;
 
 const MetaTittle = styled.p`
-  font-size: 20px;
-  font-weight: bold;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-lg);
 `;
 
 type Data = DeepRequiredAndNonNullable<Queries.getEssayDataQuery>;

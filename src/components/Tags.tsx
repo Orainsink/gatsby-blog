@@ -12,6 +12,8 @@ interface Props {
   category?: string;
 }
 
+const pointerStyle = { cursor: 'pointer' };
+
 export const Tags = ({ tags, category }: Props): ReactElement | null => {
   const setFilter = useSetRecoilState(filterAtom);
   const isDark = useIsDark();
@@ -26,7 +28,7 @@ export const Tags = ({ tags, category }: Props): ReactElement | null => {
     return (
       <div>
         <Link key={category} to={curCategory.path}>
-          <Tag color={curCategory.tag} style={{ cursor: 'pointer' }}>
+          <Tag color={curCategory.tag} style={pointerStyle}>
             {curCategory.name}
           </Tag>
         </Link>
@@ -39,10 +41,7 @@ export const Tags = ({ tags, category }: Props): ReactElement | null => {
     <div>
       {tags.map((tag) => (
         <Link key={tag} onClick={() => onTagClicked(tag)} to={`/tech`}>
-          <Tag
-            color={isDark ? '#787a7a' : 'blue'}
-            style={{ cursor: 'pointer' }}
-          >
+          <Tag color={isDark ? '#787a7a' : 'blue'} style={pointerStyle}>
             #{tag}
           </Tag>
         </Link>

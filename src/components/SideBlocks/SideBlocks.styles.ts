@@ -11,8 +11,8 @@ export const BaseCol = styled(Col)`
   height: 250px;
   position: relative;
   &::after {
-    height: 20px;
-    width: 20px;
+    height: var(--font-size-xl);
+    width: var(--font-size-xl);
     content: '';
     position: absolute;
     top: 5px;
@@ -30,7 +30,7 @@ export const Title = styled.span`
   text-transform: uppercase;
   bottom: 10%;
   right: 10px;
-  font-weight: bold;
+  font-weight: var(--font-weight-lg);
   color: var(--color-text-fourth);
   z-index: 0;
 `;

@@ -14,7 +14,7 @@ const CalendarHeaderContainer = styled(Row)`
 `;
 
 const Header = styled(Col)`
-  font-weight: bold;
+  font-weight: var(--font-weight-lg);
 `;
 
 const CalendarCell = styled.div`
@@ -22,7 +22,7 @@ const CalendarCell = styled.div`
 `;
 
 const Count = styled.div`
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-sm);
 `;
 
 const CalendarContainer = styled(BaseCol)`

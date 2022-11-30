@@ -22,13 +22,13 @@ const WaveContainer = styled.div`
 
 const ControllerBar = styled(Row)`
   margin: 0;
-  padding: 1em 1em 0 1em;
+  padding: var(--space-md) var(--space-md) 0 var(--space-md);
   position: relative;
   z-index: 1;
   color: inherit;
   svg {
     fill: currentColor;
-    transition: all 0.2s linear;
+    transition: all 0.3s linear;
   }
 `;
 
@@ -66,8 +66,8 @@ const Volume = styled(Col)`
   align-items: center;
   > svg {
     margin-left: 0.6em;
-    width: 20px;
-    height: 20px;
+    width: var(--font-size-xl);
+    height: var(--font-size-xl);
   }
 `;
 
@@ -99,9 +99,15 @@ export const Controller = memo((): ReactElement => {
         </Start>
         <Loop>
           {loop ? (
-            <LoopSvg style={{ width: '24px' }} onClick={handleLoop} />
+            <LoopSvg
+              style={{ width: 'var(--font-size-xxl)' }}
+              onClick={handleLoop}
+            />
           ) : (
-            <RandomSvg style={{ width: '18px' }} onClick={handleLoop} />
+            <RandomSvg
+              style={{ width: 'var(--font-size-lg)' }}
+              onClick={handleLoop}
+            />
           )}
         </Loop>
         <Volume flex={1}>

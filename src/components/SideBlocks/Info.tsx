@@ -68,8 +68,8 @@ const Bloger = styled.div`
   position: relative;
   text-align: center;
   color: var(--color-text);
-  font-size: 20px;
-  font-weight: bold;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-lg);
 `;
 
 const Motto = styled.div`
@@ -183,7 +183,7 @@ export const Info = () => {
 
   return (
     <InfoContainer flex={isDesktop ? '0 0 300px' : '1 1 300px'}>
-      <GatsbyImage image={avatar} alt="" className="owner-avatar-image" />
+      <GatsbyImage image={avatar!} alt="" className="owner-avatar-image" />
       <div>
         <Title>ABOUT</Title>
         <Bloger>{isDark ? 'Orainsink' : '莫沉'}</Bloger>

@@ -3,12 +3,14 @@ import styled from 'styled-components';
 
 import mainBg from '../../content/assets/mainBg.svg';
 
+const BG_MAX_HEIGHT = '270px';
+
 const BgContainer = styled.div`
   pointer-events: none;
   left: 0;
   width: 100%;
-  height: 270px;
-  transition: top 0.5s ease-out;
+  height: ${BG_MAX_HEIGHT};
+  transition: top 0.3s ease-out;
   z-index: 0;
   position: absolute;
   background: #141619;
@@ -18,8 +20,9 @@ const BgContainer = styled.div`
 const BgSvg = styled.img`
   width: 100%;
   height: 450px;
+
   ${({ theme }) => theme.media.isNotDesktop} {
-    height: 270px;
+    height: ${BG_MAX_HEIGHT};
   }
 `;
 

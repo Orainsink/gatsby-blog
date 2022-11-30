@@ -9,7 +9,7 @@ li {
   color: var(--color-code);
   background: var(--color-code-bg);
   padding: 0.1em 0.3em;
-  border-radius: 0.3em;
+  border-radius: var(--border-radius-sm);
   text-shadow: none;
   direction: ltr;
   text-align: left;

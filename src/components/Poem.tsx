@@ -18,21 +18,21 @@ interface PoemResponse {
 
 const mobileStyle = css`
   ${({ theme }) => theme.media.isMobile} {
-    font-size: 18px;
+    font-size: var(--font-size-lg);
   }
 `;
 
 const PoemContainer = styled.article`
-  padding: 10px 16px;
+  padding: 10px var(--space-md);
   position: relative;
   overflow: hidden;
   opacity: 1;
   height: 100px;
-  font-weight: 700;
+  font-weight: var(--font-weight-xl);
 `;
 
 const PoemContent = styled.div`
-  font-size: 18px;
+  font-size: var(--font-size-lg);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

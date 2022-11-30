@@ -26,7 +26,7 @@ const LiWrap = styled.li<{
   headerDrop: boolean;
 }>`
   margin: 0;
-  padding: 0.3em 1em;
+  padding: 0.3em var(--space-md);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -40,7 +40,7 @@ const LiWrap = styled.li<{
   ${({ active }) =>
     active &&
     css`
-      padding: 1em 1em;
+      padding: var(--space-md);
       background-color: rgba(0, 0, 0, 0.1);
     `}
 
@@ -49,7 +49,7 @@ const LiWrap = styled.li<{
     !isDark &&
     headerDrop &&
     `
-    padding: 1em 1em;
+    padding: var(--space-md);
     background-color: rgba(0, 0, 0, 0.1);`}
 
   ${({ isDark, headerDrop }) =>
@@ -91,7 +91,7 @@ const PlayingIcon = styled.div<{ running: boolean }>`
   height: 22px;
   text-align: center;
   font-size: 10px;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   background: transparent;
   display: flex;
   align-items: center;
@@ -102,7 +102,7 @@ const PlayingIcon = styled.div<{ running: boolean }>`
     height: 100%;
     width: 3px;
     display: inline-block;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     animation: ${WaveAme} 1s ease infinite forwards;
     transform-origin: 50% 50%;
     box-shadow: var(--box-shadow);
@@ -128,8 +128,8 @@ const PlayingIcon = styled.div<{ running: boolean }>`
 
 const LoadingIcon = styled(MusicLoadingSvg)`
   position: absolute;
-  width: 2em;
-  height: 2em;
+  width: var(--space-xl);
+  height: var(--space-xl);
   top: 0;
   right: 0;
 `;

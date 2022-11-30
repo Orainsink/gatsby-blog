@@ -1,4 +1,14 @@
 import { ReactNode, ReactElement } from 'react';
+import styled from 'styled-components';
+
+const SideContainer = styled.aside`
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-md);
+`;
 
 interface Props {
   children: ReactNode;
@@ -7,18 +17,9 @@ interface Props {
 export const SideBar = (props: Props): ReactElement => {
   const { children } = props;
 
-  const sideWrap = {
-    display: 'flex',
-    width: '100%',
-    flexFlow: 'row wrap',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    gap: '16px',
-  };
-
   return (
     <div>
-      <div style={sideWrap}>{children}</div>
+      <SideContainer>{children}</SideContainer>
     </div>
   );
 };

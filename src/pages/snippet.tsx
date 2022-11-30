@@ -42,7 +42,7 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
       title: 'TITLE',
       dataIndex: 'title',
       render: (text: string) => (
-        <div style={{ fontWeight: 'bold' }}>{text}</div>
+        <div style={{ fontWeight: 'var(--font-weight-lg)' }}>{text}</div>
       ),
     },
     {
@@ -73,7 +73,7 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
       width: 250,
       render: (text, row) => (
         <div>
-          <div style={{ fontWeight: 'bold' }}>{text}</div>
+          <div style={{ fontWeight: 'var(--font-weight-lg)' }}>{text}</div>
           <div>{row.description}</div>
           <div>
             <Tag color={isDark ? 'var(--tag-color)' : 'blue'}>{row.tag}</Tag>

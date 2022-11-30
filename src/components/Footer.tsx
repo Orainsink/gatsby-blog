@@ -9,11 +9,14 @@ import valley from '../assets/img/valley.svg';
 
 const { Link } = Typography;
 
+const FOOTER_MAX_HEIGHT = '200px';
+const OFFSET = '120px';
+
 const FooterContainer = styled.footer`
   width: 100%;
   position: absolute;
   bottom: 0;
-  height: 200px;
+  height: ${FOOTER_MAX_HEIGHT};
   background: linear-gradient(
     135deg,
     rgb(20, 22, 25),
@@ -23,7 +26,7 @@ const FooterContainer = styled.footer`
 `;
 
 const FooterMain = styled.div`
-  transform: translateY(120px);
+  transform: translateY(${OFFSET});
   color: #fff;
   > div {
     text-align: center;
@@ -37,8 +40,8 @@ const FooterMain = styled.div`
 `;
 
 const footerIconStyles = css`
-  height: 20px;
-  width: 20px;
+  height: var(--font-size-xl);
+  width: var(--font-size-xl);
   margin: 0 4px;
   vertical-align: -2px;
 `;
@@ -58,7 +61,7 @@ const FooterPhrase = styled.div`
   flex-flow: wrap;
   color: #fff;
   > div {
-    margin: 0 20px;
+    margin: 0 var(--space-lg);
   }
 `;
 
@@ -66,7 +69,7 @@ const FooterValley = styled.div<{ isDark: boolean }>`
   width: 100%;
   height: 250px;
   position: absolute;
-  top: -120px;
+  top: -${OFFSET};
   left: 0;
   background-position: center center;
   background-repeat: no-repeat;
