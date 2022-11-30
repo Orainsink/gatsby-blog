@@ -14,6 +14,12 @@ import { generatePath } from '../../utils/generatePath';
 const ResultWrapper = styled.div`
   height: 100%;
   margin-top: 0.5em;
+
+  ul {
+    list-style: none;
+    margin-left: 0;
+  }
+
   mark {
     background-color: var(--color-component-hover);
     color: var(--highlight-color);
@@ -22,6 +28,14 @@ const ResultWrapper = styled.div`
   .ais-Hits-item {
     border-left: 4px solid var(--color-border);
     padding: 10px;
+    margin-bottom: 1em;
+
+    a {
+      color: var(--color-text);
+      h4 {
+        margin-bottom: 0.2em;
+      }
+    }
     &:hover {
       background-color: var(--color-component-hover);
     }
@@ -34,22 +48,6 @@ const ResultWrapper = styled.div`
   }
   .ais-PoweredBy-link {
     margin-left: 10px;
-  }
-`;
-
-const StyledHits = styled(Hits)`
-  ul {
-    list-style: none;
-    margin-left: 0;
-  }
-  li.ais-Hits-item {
-    margin-bottom: 1em;
-    a {
-      color: var(--color-link);
-      h4 {
-        margin-bottom: 0.2em;
-      }
-    }
   }
 `;
 
@@ -68,7 +66,7 @@ interface HitCountProps {
 }
 
 const HitCount = connectStateResults(({ searchResults }: HitCountProps) => {
-  const hitCount = searchResults && searchResults.nbHits;
+  const hitCount = searchResults?.nbHits;
 
   return (
     <Divider orientation="center">
@@ -92,8 +90,7 @@ export const SearchResult = (): ReactElement => {
   return (
     <ResultWrapper>
       <HitCount />
-      {/* @ts-ignore */}
-      <StyledHits hitComponent={PageHit} />
+      <Hits hitComponent={PageHit} />
     </ResultWrapper>
   );
 };

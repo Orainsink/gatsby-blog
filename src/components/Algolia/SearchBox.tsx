@@ -3,8 +3,11 @@ import { Input, InputRef } from 'antd';
 import { connectSearchBox } from 'react-instantsearch-dom';
 import { useDebounce } from 'react-use';
 
+interface SearchBoxProps {
+  refine: (value: string) => void;
+}
 export const SearchBox = connectSearchBox(
-  ({ refine }: { refine: (value: string) => void }): ReactElement => {
+  ({ refine }: SearchBoxProps): ReactElement => {
     const [val, setVal] = useState('');
     const searchRef = useRef<InputRef>(null);
 
