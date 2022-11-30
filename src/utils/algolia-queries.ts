@@ -9,9 +9,6 @@ query getAlgoliaData {
           title
           categories
         }
-        fields {
-          slug
-        }
         excerpt(pruneLength: 5000)
       }
     }

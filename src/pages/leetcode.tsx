@@ -32,7 +32,7 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
   const isMobile = useMedia('isMobile');
   const datas = useMemo(() => {
     return posts.map(({ node: { childMdx: mdx } }) => {
-      const frontmatter = mdx.frontmatter!;
+      const frontmatter = mdx.frontmatter;
       return {
         title: frontmatter.title,
         description: frontmatter.description ?? mdx.excerpt,
@@ -40,7 +40,7 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
         tag: frontmatter.tags[0],
         date: frontmatter.date,
         index: frontmatter.index,
-        slug: mdx.fields?.slug,
+        slug: mdx.fields.slug,
         url: frontmatter.url,
         categories: frontmatter.categories,
         id: mdx.id,
@@ -155,7 +155,7 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
         size={columns ? 'middle' : 'large'}
         pagination={{ pageSize: 16 }}
         onRow={(row) => ({
-          onClick: () => navigate(generatePath(row.categories, row.slug)),
+          onClick: () => navigate(generatePath(row.categories, row.title)),
         })}
       />
     </Layout>

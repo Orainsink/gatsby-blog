@@ -48,9 +48,7 @@ const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
       const node = data.images.edges.find((image) =>
         relativeDirectory.startsWith(`/${image.node.relativeDirectory}`)
       )?.node;
-      if (node) {
-        return getImage(node as unknown as ImageDataLike);
-      } else return null;
+      return getImage(node as unknown as ImageDataLike);
     },
     [data]
   );
@@ -60,15 +58,16 @@ const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
   const renderPostCard = useCallback(
     ({
       node: {
-        childMdx: { frontmatter, fields },
+        childMdx: {
+          frontmatter: { categories, title, date, description },
+          fields,
+        },
       },
     }: typeof posts[number]) => {
       return (
         <EssayCard
-          onClick={() =>
-            navigate(generatePath(frontmatter.categories, fields.slug))
-          }
-          key={frontmatter.title}
+          onClick={() => navigate(generatePath(categories, title))}
+          key={title}
           hoverable
           cover={
             <GatsbyImage
@@ -78,9 +77,9 @@ const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
             />
           }
         >
-          <MetaTittle>{frontmatter.title}</MetaTittle>
-          <p>{frontmatter.date}</p>
-          <p>{frontmatter.description}</p>
+          <MetaTittle>{title}</MetaTittle>
+          <p>{date}</p>
+          <p>{description}</p>
         </EssayCard>
       );
     },

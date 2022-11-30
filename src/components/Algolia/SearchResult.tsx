@@ -56,7 +56,7 @@ const StyledHits = styled(Hits)`
 interface HitProp {
   hit: {
     categories: string;
-    slug: string;
+    title: string;
     objectId: string;
   };
 }
@@ -78,7 +78,7 @@ const HitCount = connectStateResults(({ searchResults }: HitCountProps) => {
 });
 
 const PageHit = ({ hit }: HitProp): ReactElement => (
-  <Link to={generatePath(hit.categories, hit.slug)}>
+  <Link to={generatePath(hit.categories, hit.title)}>
     <div>
       <h4>
         <Highlight attribute="title" hit={hit} tagName="mark" />

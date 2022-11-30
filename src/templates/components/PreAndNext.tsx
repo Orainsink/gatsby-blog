@@ -15,7 +15,7 @@ export const PreAndNext = ({ previous, next }: PreAndNextProps) => {
             <Link
               to={generatePath(
                 previous.frontmatter.categories,
-                previous.fields.slug
+                previous.frontmatter.title
               )}
               rel="prev"
             >
@@ -26,7 +26,10 @@ export const PreAndNext = ({ previous, next }: PreAndNextProps) => {
         <li style={{ textAlign: 'right' }}>
           {next && (
             <Link
-              to={generatePath(next.frontmatter.categories, next.fields.slug)}
+              to={generatePath(
+                next.frontmatter.categories,
+                next.frontmatter.title
+              )}
               rel="next"
             >
               {next.frontmatter.title} →

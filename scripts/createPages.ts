@@ -2,26 +2,18 @@ import { GatsbyNode } from 'gatsby';
 import path from 'path';
 
 import { replacePath } from '../src/utils/replacePath';
-import { hashString } from '../src/utils/hashString';
 import { DeepRequiredAndNonNullable } from '../typings/custom';
+
+const generatePath = (categories: string, title: string | null) => {
+  const titlePath = title ? '/' + replacePath(title) : '';
+  return categories + titlePath;
+};
 
 export const createPages: GatsbyNode['createPages'] = ({
   actions,
   graphql,
 }) => {
-  const { createPage, createRedirect } = actions;
-
-  createRedirect({
-    fromPath: '/tech',
-    redirectInBrowser: true,
-    toPath: '/archives',
-  });
-
-  createRedirect({
-    fromPath: '/about',
-    redirectInBrowser: true,
-    toPath: '/about/1438181566',
-  });
+  const { createPage } = actions;
 
   const Template = path.resolve(`src/templates/blog-post.tsx`);
   const SnippetTemplate = path.resolve(`src/templates/snippet-post.tsx`);
@@ -43,10 +35,8 @@ export const createPages: GatsbyNode['createPages'] = ({
           internal {
             contentFilePath
           }
-          fields {
-            slug
-          }
           frontmatter {
+            title
             categories
           }
         }
@@ -58,16 +48,13 @@ export const createPages: GatsbyNode['createPages'] = ({
     }
     const nodes = result.data!.allMdx.nodes;
     nodes.forEach((node) => {
+      const { categories, title } = node.frontmatter;
       const postTemplate =
-        componentTemplate[
-          node.frontmatter.categories as keyof typeof componentTemplate
-        ] || Template;
+        componentTemplate[categories as keyof typeof componentTemplate] ||
+        Template;
 
       createPage({
-        path:
-          node.frontmatter.categories +
-          '/' +
-          replacePath(hashString(node.fields.slug)),
+        path: generatePath(categories, title),
         component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
       });
     });

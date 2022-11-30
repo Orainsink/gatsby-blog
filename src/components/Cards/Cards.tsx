@@ -80,7 +80,7 @@ const getColumn = (group: readonly GroupItem[]) => {
     {
       category: 'tech',
       name: '技术',
-      path: '/archives',
+      path: '/tech',
       count: getCount('tech', group),
       img: (
         <StaticImage

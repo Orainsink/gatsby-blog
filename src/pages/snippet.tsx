@@ -24,8 +24,8 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
   const isMobile = useMedia('isMobile');
 
   const datas = posts.map(({ node: { childMdx: mdx } }) => {
-    const frontmatter = mdx.frontmatter!;
-    const fields = mdx.fields!;
+    const frontmatter = mdx.frontmatter;
+    const fields = mdx.fields;
     return {
       title: frontmatter.title,
       description: frontmatter.description ?? mdx.excerpt,
@@ -104,7 +104,7 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
         size={isMobile ? 'middle' : 'large'}
         pagination={{ pageSize: 16 }}
         onRow={(row) => ({
-          onClick: () => navigate(generatePath(row.categories!, row.slug!)),
+          onClick: () => navigate(generatePath(row.categories, row.title)),
         })}
       />
     </Layout>

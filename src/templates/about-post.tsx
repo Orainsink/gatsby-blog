@@ -1,13 +1,14 @@
-import { PageProps, graphql } from 'gatsby';
 import { lazy, Suspense, ReactElement } from 'react';
+import { PageProps } from 'gatsby';
 import styled from 'styled-components';
 
 import { Layout } from '../layout/BlogLayout';
 import { Seo } from '../components/Seo';
 import { Comment } from '../components/Comment';
 import { Poem } from '../components/Poem';
-import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { Container } from './Templates.styles';
+import { MdxParser } from '../components/MDXComponents';
+
 const MoogleScene = lazy(
   () =>
     import(/* webpackPreload: true */ '../components/SideBlocks/MoogleScene')
@@ -17,9 +18,7 @@ const AboutContainer = styled(Container)`
   padding: 1em;
 `;
 
-type Data = DeepRequiredAndNonNullable<Queries.getAboutPageDataQuery>;
-
-const AboutPostTemplate = ({ children }: PageProps<Data>): ReactElement => {
+const AboutPostTemplate = ({ children }: PageProps<{}>): ReactElement => {
   return (
     <Layout
       sideBlocks={
@@ -29,7 +28,9 @@ const AboutPostTemplate = ({ children }: PageProps<Data>): ReactElement => {
       }
     >
       <Poem />
-      <AboutContainer>{children}</AboutContainer>
+      <AboutContainer>
+        <MdxParser>{children}</MdxParser>
+      </AboutContainer>
       <Comment />
     </Layout>
   );
@@ -38,13 +39,3 @@ const AboutPostTemplate = ({ children }: PageProps<Data>): ReactElement => {
 export default AboutPostTemplate;
 
 export const Head = () => <Seo title="About" />;
-
-export const pageQuery = graphql`
-  query getAboutPageData {
-    mdx(fields: { slug: { eq: "/about" } }) {
-      frontmatter {
-        title
-      }
-    }
-  }
-`;

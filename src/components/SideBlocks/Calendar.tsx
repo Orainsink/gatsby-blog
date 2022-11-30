@@ -48,7 +48,7 @@ export const CalendarBlock = ({ posts }: Props): ReactElement => {
   const allMonths: Record<string, number | undefined> = useMemo(() => {
     const obj: Record<string, number> = {};
     posts.forEach(({ node }) => {
-      const frontmatter = node!.childMdx!.frontmatter!;
+      const frontmatter = node.childMdx.frontmatter!;
       let date = frontmatter.date.substring(0, 7);
       if (obj[date]) {
         obj[date] += 1;

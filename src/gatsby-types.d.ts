@@ -2592,14 +2592,6 @@ declare namespace Queries {
     readonly maxWidth: number;
   };
 
-  type getAboutPageDataQueryVariables = Exact<{ [key: string]: never }>;
-
-  type getAboutPageDataQuery = {
-    readonly mdx: {
-      readonly frontmatter: { readonly title: string | null } | null;
-    } | null;
-  };
-
   type getArchivesPageDataQueryVariables = Exact<{ [key: string]: never }>;
 
   type getArchivesPageDataQuery = {

@@ -33,7 +33,7 @@ export const MenuComponent = ({ drawer }: Props): ReactElement => {
             </li>
           </Dropdown>
 
-          <Link to="/about/1438181566">
+          <Link to="/about/">
             <li>about</li>
           </Link>
         </NavUl>

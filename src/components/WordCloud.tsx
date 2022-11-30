@@ -35,7 +35,7 @@ const WordCloudContainer = styled.div`
 
 /**
  * word cloud
- * @prop [jump] either can jump to "/archives", default false
+ * @prop [jump] either can jump to "/tech", default false
  * @prop [height] div height, default 150
  */
 export const WordCloud = memo(
@@ -94,7 +94,7 @@ export const WordCloud = memo(
             color: isDark ? 'random-light' : 'random-dark',
             click: (item: string[]) => {
               setFilter((state) => ({ ...state, curTag: item[0] }));
-              jump && navigate('/archives/');
+              jump && navigate('/tech/');
             },
           });
         }

@@ -102,7 +102,7 @@ const MenuDrawer = (): ReactElement => {
             </SubUl>
           </div>
 
-          <Link to="/about/1438181566">
+          <Link to="/about/">
             <li>about</li>
           </Link>
         </DrawerNavUl>

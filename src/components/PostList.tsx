@@ -104,9 +104,9 @@ export const PostList = ({ posts, hideMore = false }: Props): ReactElement => {
   return (
     <>
       {filteredPosts.map(({ node }, index) => {
-        const fields = node!.childMdx!.fields!;
-        const frontmatter = node!.childMdx!.frontmatter!;
-        const title = frontmatter.title || fields.slug || '';
+        const fields = node.childMdx.fields;
+        const frontmatter = node.childMdx.frontmatter;
+        const title = frontmatter.title;
         const { date, description, tags, categories } = frontmatter;
 
         return (
@@ -114,7 +114,7 @@ export const PostList = ({ posts, hideMore = false }: Props): ReactElement => {
             <PostListItem key={fields.slug}>
               <Title level={4}>
                 <Link
-                  to={generatePath(categories!, fields.slug!)}
+                  to={generatePath(categories, title)}
                   className="ant-typography"
                 >
                   {title}
@@ -123,10 +123,10 @@ export const PostList = ({ posts, hideMore = false }: Props): ReactElement => {
               <PostDate>{date}</PostDate>
               <Phrase
                 dangerouslySetInnerHTML={{
-                  __html: description || node!.childMdx!.excerpt || '',
+                  __html: description || node.childMdx.excerpt || '',
                 }}
               />
-              <Tags tags={tags as string[]} category={categories!} />
+              <Tags tags={tags as string[]} category={categories} />
             </PostListItem>
           )
         );
