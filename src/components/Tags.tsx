@@ -24,7 +24,7 @@ export const Tags = ({ tags, category }: Props): ReactElement | null => {
   if (!!category && category !== 'tech' && CATEGORY_MAP.has(category)) {
     let curCategory = CATEGORY_MAP.get(category)!;
     return (
-      <div className="tags">
+      <div>
         <Link key={category} to={curCategory.path}>
           <Tag color={curCategory.tag} style={{ cursor: 'pointer' }}>
             {curCategory.name}
@@ -36,7 +36,7 @@ export const Tags = ({ tags, category }: Props): ReactElement | null => {
 
   if (!tags?.length || !hasMounted) return null;
   return (
-    <div className="tags">
+    <div>
       {tags.map((tag) => (
         <Link key={tag} onClick={() => onTagClicked(tag)} to={`/archives`}>
           <Tag

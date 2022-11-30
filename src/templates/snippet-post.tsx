@@ -15,7 +15,13 @@ import {
   DeepRequiredAndNonNullable,
   TableOfContents,
 } from '../../typings/custom';
-import { Article, Container, License, TableContents } from './Templates.styles';
+import {
+  Article,
+  Container,
+  License,
+  PostHr,
+  TableContents,
+} from './Templates.styles';
 import { PreAndNext } from './components/PreAndNext';
 
 type Data = DeepRequiredAndNonNullable<Queries.getSnippetPostQuery>;
@@ -96,11 +102,7 @@ const SnippetPostTemplate = ({
         <Container>
           <MdxParser>{children}</MdxParser>
         </Container>
-        <hr
-          style={{
-            marginBottom: '1.6em',
-          }}
-        />
+        <PostHr />
         <Tags tags={tags} category={categories} />
       </Article>
 

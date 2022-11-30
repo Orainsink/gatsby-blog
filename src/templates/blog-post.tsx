@@ -13,7 +13,13 @@ import { MdxParser } from '../components/MDXComponents';
 import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
 import { Comment } from '../components/Comment';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
-import { Article, Container, License, TableContents } from './Templates.styles';
+import {
+  Article,
+  Container,
+  License,
+  PostHr,
+  TableContents,
+} from './Templates.styles';
 import { PreAndNext } from './components/PreAndNext';
 
 const Subtitle = styled.div`
@@ -80,11 +86,7 @@ const BlogPostTemplate = ({
         <Container>
           <MdxParser>{children}</MdxParser>
         </Container>
-        <hr
-          style={{
-            marginBottom: '1.6em',
-          }}
-        />
+        <PostHr />
         <Tags tags={tags} category={categories} />
       </Article>
 

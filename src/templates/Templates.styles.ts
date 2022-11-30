@@ -119,3 +119,8 @@ export const Article = styled.article`
     padding: 1.5rem 0;
   }
 `;
+
+export const PostHr = styled.hr`
+  margin-bottom: 1.6rem;
+  background: none;
+`;
