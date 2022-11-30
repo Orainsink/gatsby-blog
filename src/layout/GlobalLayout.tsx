@@ -6,7 +6,7 @@ import { useRecoilValue } from 'recoil';
 import '../assets/css/global.css';
 
 import { BackTop } from '../components/BackTop';
-import { useBackTop, useIsDark } from '../hooks';
+import { useIsDark } from '../hooks';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 import { sceneAtom } from '../store/atom';
 import { defaultTheme } from '../assets/constants/defaultTheme';
@@ -26,8 +26,6 @@ interface Props {
 const GlobalLayout = ({ children }: Props): ReactElement => {
   const scene = useRecoilValue(sceneAtom);
   const isDark = useIsDark();
-
-  // useBackTop();
 
   useEffect(() => {
     const body = document.getElementsByTagName('body')[0];

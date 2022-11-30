@@ -1,4 +1,3 @@
-export { useBackTop } from './useBackTop';
 export { useBackgroundColor } from './useBackgroundColor';
 export { useDrawerCloseEffect } from './useDrawerCloseEffect';
 export { useMagicColor } from './useMagicColor';
