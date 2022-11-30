@@ -3,8 +3,6 @@ import { env } from 'process';
 import type { GatsbyConfig, PluginRef } from 'gatsby';
 import path from 'path';
 
-// import FunctionOverridePlugin from './scripts/FunctionOverridePlugin';
-// import modifyVars from './scripts/less-vars';
 import { CATEGORY_NAMES } from './src/assets/constants/categories';
 import isProduction from './scripts/env';
 import algoliaQueries from './src/utils/algolia-queries';
