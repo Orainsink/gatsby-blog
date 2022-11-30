@@ -77,7 +77,7 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
       dataIndex: 'tag',
       width: 80,
       render: (text: string) => (
-        <Tag color={'var(--color-primary)'}>{text}</Tag>
+        <Tag color={isDark ? 'warning' : 'processing'}>{text}</Tag>
       ),
       onFilter: (value, record) => record.tag.indexOf(value + '') === 0,
       filters: options,
@@ -117,7 +117,7 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
           <div style={{ fontWeight: 'var(--font-weight-lg)' }}>{text}</div>
           <div>date：{row.date}</div>
           <div>
-            <Tag color={'var(--color-primary)'}>{row.tag}</Tag>
+            <Tag color={isDark ? 'warning' : 'processing'}>{row.tag}</Tag>
           </div>
         </div>
       ),

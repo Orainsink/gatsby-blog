@@ -24,7 +24,7 @@ export const GlobalStyles = createGlobalStyle`
     --font-size-md: 16px;
     --font-size-lg: 18px;
     --font-size-xl: 20px;
-    --font-size-xxl: 24px
+    --font-size-xxl: 24px;
     --font-weight-lg: 500;
     --font-weight-xl: 700;
 

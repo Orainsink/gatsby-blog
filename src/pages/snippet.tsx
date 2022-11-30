@@ -18,10 +18,10 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
   const { curDate } = useRecoilValue(filterAtom);
   const resetFilter = useResetRecoilState(filterAtom);
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
-  const isDark = useIsDark();
 
   useResetKey();
   const isMobile = useMedia('isMobile');
+  const isDark = useIsDark();
 
   const datas = posts.map(({ node: { childMdx: mdx } }) => {
     const frontmatter = mdx.frontmatter;
@@ -55,7 +55,7 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
       dataIndex: 'tag',
       width: 80,
       render: (text: string) => (
-        <Tag color={isDark ? 'var(--tag-color)' : 'blue'}>{text}</Tag>
+        <Tag color={isDark ? 'warning' : 'processing'}>{text}</Tag>
       ),
     },
     {
@@ -76,7 +76,7 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
           <div style={{ fontWeight: 'var(--font-weight-lg)' }}>{text}</div>
           <div>{row.description}</div>
           <div>
-            <Tag color={isDark ? 'var(--tag-color)' : 'blue'}>{row.tag}</Tag>
+            <Tag color={isDark ? 'warning' : 'processing'}>{row.tag}</Tag>
           </div>
         </div>
       ),
