@@ -52,8 +52,8 @@ export const ArchivesMenu = memo(({ visible }: Props): ReactElement => {
         <Row align="middle" justify="space-between" key={index}>
           {item.map((category) => (
             <Col span={12} key={category}>
-              <Link to={CATEGORY_MAP.get(category).path}>
-                {CATEGORY_MAP.get(category).name}
+              <Link to={CATEGORY_MAP.get(category)!.path}>
+                {CATEGORY_MAP.get(category)!.name}
               </Link>
             </Col>
           ))}
