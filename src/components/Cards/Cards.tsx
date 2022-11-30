@@ -51,7 +51,7 @@ const getColumn = (group: readonly GroupItem[]) => {
     },
     {
       category: 'snippet',
-      name: 'snippet',
+      name: 'cheat sheets',
       path: '/snippet',
       count: getCount('snippet', group),
       img: (
