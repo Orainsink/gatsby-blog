@@ -27,7 +27,7 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
   const scene = useRecoilValue(sceneAtom);
   const isDark = useIsDark();
 
-  useBackTop();
+  // useBackTop();
 
   useEffect(() => {
     const body = document.getElementsByTagName('body')[0];

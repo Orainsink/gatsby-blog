@@ -22,3 +22,17 @@ export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
 }) => {
   return <RecoilRoot>{element}</RecoilRoot>;
 };
+
+export const onRouteUpdate: GatsbyBrowser['onRouteUpdate'] = ({ location }) => {
+  const anchor = decodeURI(location.hash.split('#')[1]?.toLowerCase());
+  const element = document.getElementById(anchor);
+
+  if (element) {
+    document.body.scrollTo({
+      top: element.offsetTop,
+      left: 0,
+    });
+  } else {
+    document.body.scrollTo(0, 0);
+  }
+};

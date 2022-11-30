@@ -1,4 +1,4 @@
-import { MouseEvent, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import { useScrollY } from '../../hooks';
@@ -53,10 +53,6 @@ export const Contents = (props: Props): ReactElement | null => {
     ? scrollY > document.body.scrollHeight - document.body.clientHeight - 400
     : false;
 
-  const handleClick = (e: MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-  };
-
   if (!contents.items) return null;
 
   return (
@@ -65,7 +61,6 @@ export const Contents = (props: Props): ReactElement | null => {
       <ContentsBody>
         <Anchor
           getContainer={() => document.body as HTMLElement}
-          onClick={handleClick}
           contents={contents}
         />
       </ContentsBody>
