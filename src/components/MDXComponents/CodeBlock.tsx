@@ -7,19 +7,19 @@ import { CopyOutlined, SmileOutlined } from '@ant-design/icons';
 import { theme as lightTheme } from '../../assets/theme/customPrism';
 import { useIsDark, useHasMounted } from '../../hooks';
 
-interface Props {
+export interface CodeBlockProps {
   children: string;
-  className?: string;
+  className: string;
 }
 /**
  * code block component
  * default theme is vscode dark
- * @prop className: langClass 语言类型, 默认javascript
+ * @prop className: langClass 语言类型, 必传，否则会作为单个 code 渲染
  */
 export const CodeBlock = ({
   children,
-  className: langClass = 'javascript',
-}: Props): ReactElement => {
+  className: langClass,
+}: CodeBlockProps): ReactElement => {
   const language = langClass.replace(/language-/, '') as Language;
   const [copied, setCopied] = useState(false);
   const isDark = useIsDark();

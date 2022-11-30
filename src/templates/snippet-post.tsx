@@ -1,13 +1,12 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { useCallback, ReactElement, ReactNode } from 'react';
 import { graphql } from 'gatsby';
-import { MDXProvider } from '@mdx-js/react';
 import { Anchor } from 'antd';
 
 import { Layout } from '../layout/BlogLayout';
 import { Seo } from '../components/Seo';
 import { Tags } from '../components/Tags';
-import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
+import { MdxParser } from '../components/MDXComponents';
 import { useMedia } from '../hooks';
 import { Contents } from '../components/SideBlocks';
 import { Comment } from '../components/Comment';
@@ -95,15 +94,7 @@ const SnippetPostTemplate = ({
           </TableContents>
         )}
         <Container>
-          <MDXProvider
-            components={{
-              code: CodeBlock,
-              img: ImgBlock,
-              a: AnchorBlock,
-            }}
-          >
-            {children}
-          </MDXProvider>
+          <MdxParser>{children}</MdxParser>
         </Container>
         <hr
           style={{

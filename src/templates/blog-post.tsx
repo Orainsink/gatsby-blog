@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { graphql } from 'gatsby';
-import { MDXProvider } from '@mdx-js/react';
 import { ReactElement, ReactNode } from 'react';
 import styled from 'styled-components';
 
@@ -10,7 +9,7 @@ import { Tags } from '../components/Tags';
 import { Anchor } from '../components/Anchor';
 import { Contents } from '../components/SideBlocks/Contents';
 import { useMedia } from '../hooks';
-import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
+import { MdxParser } from '../components/MDXComponents';
 import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
 import { Comment } from '../components/Comment';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
@@ -79,15 +78,7 @@ const BlogPostTemplate = ({
           </TableContents>
         )}
         <Container>
-          <MDXProvider
-            components={{
-              code: CodeBlock,
-              img: ImgBlock,
-              a: AnchorBlock,
-            }}
-          >
-            {children}
-          </MDXProvider>
+          <MdxParser>{children}</MdxParser>
         </Container>
         <hr
           style={{

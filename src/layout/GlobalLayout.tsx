@@ -1,8 +1,7 @@
 import { useEffect, ReactElement, ReactNode, lazy, Suspense } from 'react';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider, theme } from 'antd';
 import { ThemeProvider } from 'styled-components';
 import { useRecoilValue } from 'recoil';
-import theme from 'antd/es/theme/export';
 
 import '../assets/css/global.css';
 

@@ -333,7 +333,7 @@ tween.js 提供了一些现有的缓动功能。它们按照它们表示的方�
 
 不管要修改多少个属性，easing 函数在每次更新时只调用一次。 然后将结果与初始值以及这个值和最终值之间的差值（delta）一起使用，就像这个伪代码一样：
 
-```
+```js
 easedElapsed = easing(k);
 for each property:
 	newPropertyValue = initialPropertyValue + propertyDelta * easedElapsed;

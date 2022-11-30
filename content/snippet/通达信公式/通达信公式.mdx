@@ -10,7 +10,7 @@ categories: snippet
 
 日内做 T 公式(主图叠加)
 
-```
+```text
 MA30:=EMA(CLOSE,30);
 强弱:EMA(CLOSE,900);
 STICKLINE((MA30>强弱),MA30,强弱,1,0),COLOR0000FF;
@@ -27,7 +27,7 @@ DRAWTEXT(LONGCROSS(现价,阻力,2),现价,'S'),COLORGREEN;{抛};
 
 精准分时线
 
-```
+```text
 V1:=(C*2+H+L)/4*10;
 V2:=EMA(V1,13)-EMA(V1,34);
 V3:=EMA(V2,5); V4:=2*(V2-V3)*5.5;
