@@ -29,6 +29,7 @@ const PoemContainer = styled.article`
   opacity: 1;
   height: 100px;
   font-weight: var(--font-weight-xl);
+  border-bottom: 1px solid var(--color-border);
 `;
 
 const PoemContent = styled.div`
