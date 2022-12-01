@@ -2,6 +2,8 @@
 import type { GatsbyBrowser } from 'gatsby';
 import { RecoilRoot } from 'recoil';
 
+import { scrollToAnchor } from './src/utils/scrollToAnchor';
+
 export const onInitialClientRender: GatsbyBrowser['onInitialClientRender'] =
   () => {
     const loaderIframe = document.getElementById('___loader');
@@ -15,6 +17,8 @@ export const onInitialClientRender: GatsbyBrowser['onInitialClientRender'] =
         loaderIframe.style.display = 'none';
       }, 300);
     }
+
+    scrollToAnchor(window.location.hash);
   };
 
 export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
@@ -24,16 +28,5 @@ export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
 };
 
 export const onRouteUpdate: GatsbyBrowser['onRouteUpdate'] = ({ location }) => {
-  const tag = location.hash.split('#')[1];
-  const anchor = decodeURI(tag).toLowerCase().trim();
-  const element = document.getElementById(anchor);
-
-  if (element) {
-    document.body.scrollTo({
-      top: element.offsetTop,
-      left: 0,
-    });
-  } else {
-    document.body.scrollTo(0, 0);
-  }
+  scrollToAnchor(location.hash);
 };
