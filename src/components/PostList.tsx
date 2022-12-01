@@ -24,30 +24,11 @@ interface PostItem {
   date: any;
 }
 
-const MoreButton = styled.div`
-  text-align: center;
-  font-size: var(--font-size-lg);
-  padding: var(--space-md) 0;
-  cursor: pointer;
-`;
-
-const Phrase = styled.p`
-  color: var(--color-text-secondary);
-`;
-
-const PostListItem = styled(Typography)`
-  padding: var(--space-lg) var(--space-sm);
-  border-bottom: 1px solid var(--color-border);
-
-  ${({ theme }) => theme.media.isMobile} {
-    padding: 1.5rem 0;
-  }
-
-  h4 > a {
+const ItemTitle = styled(Title)`
+  & > a {
     color: var(--color-mdx-header);
     position: relative;
     transition: all 0.3s ease-out;
-
     &:hover {
       color: var(--color-mdx-header-hover);
     }
@@ -67,6 +48,26 @@ const PostListItem = styled(Typography)`
     &:hover::after {
       width: 100% !important;
     }
+  }
+`;
+
+const MoreButton = styled.div`
+  text-align: center;
+  font-size: var(--font-size-lg);
+  padding: var(--space-md) 0;
+  cursor: pointer;
+`;
+
+const Phrase = styled.p`
+  color: var(--color-text-secondary);
+`;
+
+const PostListItem = styled(Typography)`
+  padding: var(--space-lg) var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+
+  ${({ theme }) => theme.media.isMobile} {
+    padding: 1.5rem 0;
   }
 `;
 
@@ -121,7 +122,8 @@ export const PostList = ({ posts, hideMore = false }: Props): ReactElement => {
     if (curTag && curDate) {
       console.warn('tag and date should not all be true');
     }
-  }, [curDate, curTag, posts]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [curDate, curTag]);
 
   useEffect(() => {
     setFold(true);
@@ -138,14 +140,14 @@ export const PostList = ({ posts, hideMore = false }: Props): ReactElement => {
         return (
           getIsAccordion(index) && (
             <PostListItem key={fields.slug}>
-              <Title level={4}>
+              <ItemTitle level={4}>
                 <Link
                   to={generatePath(categories, title)}
                   className="ant-typography"
                 >
                   {title}
                 </Link>
-              </Title>
+              </ItemTitle>
               <PostDate>{date}</PostDate>
               <Phrase
                 dangerouslySetInnerHTML={{

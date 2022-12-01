@@ -20,7 +20,7 @@ export const Tags = ({ tags, category }: Props): ReactElement | null => {
   const hasMounted = useHasMounted();
 
   const onTagClicked = (tag: string) => {
-    setFilter((state) => ({ ...state, curTag: tag?.trim() ?? '' }));
+    setFilter({ curTag: tag?.trim() ?? '' });
   };
 
   if (!!category && category !== 'tech' && CATEGORY_MAP.has(category)) {

@@ -131,10 +131,9 @@ export const CalendarBlock = ({ posts }: Props): ReactElement => {
   const handleSelect = useCallback(
     (date: Dayjs) => {
       if (!allMonths[dayjs(date).format('YYYY/MM')]) return;
-      setFilter((state) => ({
-        ...state,
+      setFilter({
         curDate: dayjs(date).format('YYYY/MM'),
-      }));
+      });
     },
     [allMonths, setFilter]
   );

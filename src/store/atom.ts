@@ -38,12 +38,9 @@ export const skipAtom = atom<boolean>({
   default: false,
 });
 
-export const filterAtom = atom<Record<'curTag' | 'curDate', string>>({
+export const filterAtom = atom<Partial<Record<'curTag' | 'curDate', string>>>({
   key: 'filter',
-  default: {
-    curTag: '',
-    curDate: '',
-  },
+  default: {},
 });
 
 // 是否已滚动，触发header样式改变

@@ -93,7 +93,7 @@ export const WordCloud = memo(
             fontFamily: 'Finger Paint, sans-serif',
             color: isDark ? 'random-light' : 'random-dark',
             click: (item: string[]) => {
-              setFilter((state) => ({ ...state, curTag: item[0] }));
+              setFilter({ curTag: item[0] });
               jump && navigate('/tech/');
             },
           });
