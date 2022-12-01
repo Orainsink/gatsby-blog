@@ -155,6 +155,7 @@ const config: GatsbyConfig = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    'gatsby-plugin-mdx-embed',
     {
       resolve: `gatsby-plugin-mdx`,
       options: {

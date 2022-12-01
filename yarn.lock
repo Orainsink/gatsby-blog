@@ -7926,6 +7926,11 @@ gatsby-plugin-manifest@5.2.0:
     semver "^7.3.7"
     sharp "^0.30.7"
 
+gatsby-plugin-mdx-embed@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-mdx-embed/-/gatsby-plugin-mdx-embed-1.1.3.tgz#3e004a8c770e573fc891edd4634754b15c348503"
+  integrity sha512-4q6nil4GQrj5YsFV8it/TCL5I2W/WyYzfxtxVrV5tVwBcI2mRYjPT6wbSOnirt12SdQqFdLWO+Kiwv5IQw/qog==
+
 gatsby-plugin-mdx@5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-mdx/-/gatsby-plugin-mdx-5.2.0.tgz#282221011102717e2a6b55df5da2399cd2a3558d"
@@ -10335,6 +10340,11 @@ mdurl@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/mdurl/-/mdurl-1.0.1.tgz#fe85b2ec75a59037f2adfec100fd6c601761152e"
   integrity sha512-/sKlQJCBYVY9Ers9hqzKou4H6V5UWc/M59TH2dvkt+84itfnq7uFOMLpOiOS4ujvHP4etln18fmIxA5R5fll0g==
+
+mdx-embed@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/mdx-embed/-/mdx-embed-1.1.2.tgz#04468e8dcb3be9fe3e65207e88a83d2f76555a24"
+  integrity sha512-AAronHC/sh4py+RhJOuX8+9+lyUbJsmCLquXNPCEHZ0llPWjMuwls77hII/lWI2kwBSPZPahrqti8kGTv1pi1w==
 
 meant@^1.0.3:
   version "1.0.3"
