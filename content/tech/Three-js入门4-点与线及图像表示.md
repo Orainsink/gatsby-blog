@@ -15,7 +15,7 @@ categories: tech
 >
 > 参考资料[dragon/threejs 教程](https://teakki.com/p/58a19327f0d40775548c6bd7),[webgl 中文网教程](http://www.hewebgl.com/article/getarticle/56)
 
-### 一.点
+## 一.点
 
 在三维空间中的某一个点可以用一个坐标点来表示。一个坐标点由 x,y,z 三个分量构成。在 three.js 中，点可以在右手坐标系中表示(webGL 并非必须右手坐标系,只是习惯性约定用右手坐标系)
 
@@ -95,7 +95,7 @@ function createShapePoints() {
 
 注意，既然点可以使用材质，那么点其实可以表示任何形状，从这个意义上讲，点也是一个平面。
 
-### 二.线
+## 二.线
 
 ```js
 ...
@@ -157,7 +157,7 @@ function createDashedLine() {
 
 ![img](/assets/12.png)
 
-### 三.面
+## 三.面
 
 **`ShapeGeometry`**
 
@@ -248,7 +248,7 @@ function createRect() {
 
 总之，Geometry 是点集，各种 Geometry 只是为了更方便的创建各种形状的点集。
 
-### 四.图像的表示初识
+## 四.图像的表示初识
 
 图像表示的部分如图:
 

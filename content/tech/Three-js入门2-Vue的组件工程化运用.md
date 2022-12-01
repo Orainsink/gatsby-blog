@@ -9,11 +9,11 @@ categories: tech
 password:
 ---
 
-### 一.Vue 项目构建
+## 一.Vue 项目构建
 
 使用 Vue.cli 脚手架进行项目构建,详情参考 [Vue.cli](https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create) 官网文档.
 
-### 二.安装 three.js
+## 二.安装 three.js
 
 使用 npm 安装
 
@@ -25,7 +25,7 @@ npm i three
 
 Vue.cli 是默认使用 Webpack 的,接下来我们就对 three.js 进行模块化引用.
 
-### 三.模块化引用 three.js
+## 三.模块化引用 three.js
 
 你现在可以在你的源代码中引入模块，并继续像往常一样使用这个库。
 
@@ -56,7 +56,7 @@ const scene = new Scene();
 
 官方文档的注意事项:目前，**无法用这种方式导入"examples/js"目录中的文件**。 这是因为一些文件依赖于 THREE 的全局命名空间污染。了解更多详情，请参阅[Transform `examples/js` to support modules #9562](https://github.com/mrdoob/three.js/issues/9562)。
 
-### 四.组件模板
+## 四.组件模板
 
 一个简单的 Vue 组件模板
 
