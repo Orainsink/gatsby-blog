@@ -1,11 +1,11 @@
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 /** resize hook
  * @function useWindowSize
  * @returns {number[]} [width, height]
  */
 export const useWindowSize = (): [number, number] => {
   const [size, setSize] = useState<[number, number]>([0, 0]);
-  useLayoutEffect(() => {
+  useEffect(() => {
     const updateSize = () => {
       setSize([window.innerWidth, window.innerHeight]);
     };
