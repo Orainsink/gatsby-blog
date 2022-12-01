@@ -19,16 +19,22 @@ import { useMedia, useIsDark } from '../../hooks';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 import { BaseCol, Title } from './SideBlocks.styles';
 
-const SteamContainer = styled.div`
+const tooltipContainerSharedStyles = css`
   display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  justify-content: center;
   padding: 10px;
+  color: var(--color-text);
+
   del {
     color: var(--color-text-secondary);
     font-size: 12px;
   }
+`;
+
+const SteamContainer = styled.div`
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+  ${tooltipContainerSharedStyles}
 `;
 
 const WechatContainer = styled.div`
@@ -36,11 +42,7 @@ const WechatContainer = styled.div`
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
-  padding: 10px;
-  del {
-    color: var(--color-text-secondary);
-    font-size: 12px;
-  }
+  ${tooltipContainerSharedStyles}
 `;
 
 const InfoContainer = styled(BaseCol)`
@@ -203,10 +205,10 @@ export const Info = () => {
           >
             <StyledGithubOutlined />
           </a>
-          <Tooltip title={<Wechat />}>
+          <Tooltip title={<Wechat />} color="var(--color-bg-container)">
             <StyledWechatOutlined />
           </Tooltip>
-          <Tooltip title={<Steam />}>
+          <Tooltip title={<Steam />} color="var(--color-bg-container)">
             <StyledSteamIcon component={SteamSvg} />
           </Tooltip>
         </IconContainer>
