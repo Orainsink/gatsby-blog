@@ -63,6 +63,7 @@ export const GlobalStyles = createGlobalStyle`
     --color-link-active: var(--color-primary-active);
     /* -------- Post ---------- */
     --color-mdx-header: var(--color-text);
+    --color-mdx-header-hover: var(--color-text-secondary);
   }
 
   :root body.dark {
@@ -94,5 +95,6 @@ export const GlobalStyles = createGlobalStyle`
     --color-code: #9cdcfe;
     /* -------- Post ---------- */
     --color-mdx-header: ${darkMapToken.colorWarning};
+    --color-mdx-header-hover: ${darkMapToken.colorWarningHover};
   }
 `;

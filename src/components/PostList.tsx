@@ -42,6 +42,32 @@ const PostListItem = styled(Typography)`
   ${({ theme }) => theme.media.isMobile} {
     padding: 1.5rem 0;
   }
+
+  h4 > a {
+    color: var(--color-mdx-header);
+    position: relative;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      color: var(--color-mdx-header-hover);
+    }
+
+    &::after {
+      background-color: var(--color-mdx-header-hover);
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 3px;
+      border-radius: var(--border-radius);
+      color: inherit;
+      transition: all 0.3s ease-out;
+    }
+    &:hover::after {
+      width: 100% !important;
+    }
+  }
 `;
 
 const PostDate = styled.small`
