@@ -48,8 +48,8 @@ export const ArchivesMenu = memo(({ visible }: Props): ReactElement => {
 
   return (
     <DropMenu id="magic-container">
-      {MENU_NAMES.map((item, index) => (
-        <Row align="middle" justify="space-between" key={index}>
+      {MENU_NAMES.map((item) => (
+        <Row align="middle" justify="space-between" key={item[0][0]}>
           {item.map((category) => (
             <Col span={12} key={category}>
               <Link to={CATEGORY_MAP.get(category)!.path}>

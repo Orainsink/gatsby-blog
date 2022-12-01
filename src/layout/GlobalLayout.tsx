@@ -10,7 +10,7 @@ import { useIsDark } from '../hooks';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 import { sceneAtom } from '../store/atom';
 import { defaultTheme } from '../assets/constants/defaultTheme';
-import { DebugObserver } from '../components/Debugger';
+// import { DebugObserver } from '../components/Debugger';
 import { GlobalStyles } from '../assets/theme/globalStyles';
 import { StyleCacheProvider } from '../assets/theme/antdThemeCache';
 
@@ -35,7 +35,7 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
 
   return (
     <ErrorBoundary>
-      {process.env.NODE_ENV === 'development' && <DebugObserver />}
+      {/* {process.env.NODE_ENV === 'development' && <DebugObserver />} */}
       <StyleCacheProvider>
         <ConfigProvider
           theme={{
