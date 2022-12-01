@@ -3,7 +3,6 @@ import { PageProps, graphql, navigate } from 'gatsby';
 import { Button, Tag } from 'antd';
 import dayjs from 'dayjs';
 import type { ColumnsType } from 'antd/es/table';
-import styled from 'styled-components';
 
 import { Seo } from '../components/Seo';
 import { Layout } from '../layout/BlogLayout';
@@ -14,13 +13,6 @@ import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
 import { PageDivider, ReloadIcon, WrappedTable } from '../layout/Pages.styles';
-
-const StyledLeetcodeBtn = styled(LeetcodeSvg)`
-  width: var(--font-size-lg);
-  height: var(--font-size-lg);
-  vertical-align: -1px;
-  margin-right: 4px;
-`;
 
 type Data = DeepRequiredAndNonNullable<Queries.getLeetcodePageDataQuery>;
 
@@ -88,18 +80,6 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
       width: 120,
       defaultSortOrder: 'descend',
       sorter: (a, b) => dayjs(a.date).unix() - dayjs(b.date).unix(),
-    },
-    {
-      title: '链接',
-      dataIndex: 'url',
-      width: 100,
-      render: (text: string) =>
-        text ? (
-          <Button ghost={isDark ? true : false} href={text}>
-            <StyledLeetcodeBtn />
-            查看题目
-          </Button>
-        ) : null,
     },
   ];
   const smallColumns: ColumnsType<typeof datas[number]> = [
