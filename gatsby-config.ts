@@ -161,13 +161,13 @@ const config: GatsbyConfig = {
       options: {
         extensions: ['.mdx', '.md'],
         gatsbyRemarkPlugins: [
+          'gatsby-remark-responsive-iframe',
           {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 890,
             },
           },
-          'gatsby-remark-responsive-iframe',
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
