@@ -19,6 +19,10 @@ import { useMedia, useIsDark } from '../../hooks';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 import { BaseCol, Title } from './SideBlocks.styles';
 
+const StyledTitle = styled(Title)`
+  z-index: -1;
+`;
+
 const tooltipContainerSharedStyles = css`
   display: flex;
   padding: 10px;
@@ -186,8 +190,8 @@ export const Info = () => {
   return (
     <InfoContainer flex={isDesktop ? '0 0 300px' : '1 1 300px'}>
       <GatsbyImage image={avatar!} alt="" className="owner-avatar-image" />
+      <StyledTitle>ABOUT</StyledTitle>
       <div>
-        <Title>ABOUT</Title>
         <Bloger>{isDark ? 'Orainsink' : '莫沉'}</Bloger>
         <Motto>{isDark ? 'listen, feel, think' : '倾听, 感受, 思考'}</Motto>
         <IconContainer>

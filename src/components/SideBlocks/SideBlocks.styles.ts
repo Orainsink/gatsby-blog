@@ -32,5 +32,4 @@ export const Title = styled.span`
   right: 10px;
   font-weight: var(--font-weight-lg);
   color: var(--color-text-fourth);
-  z-index: -1;
 `;
