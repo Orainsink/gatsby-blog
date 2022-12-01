@@ -12,6 +12,7 @@ import { sceneAtom } from '../store/atom';
 import { defaultTheme } from '../assets/constants/defaultTheme';
 import { DebugObserver } from '../components/Debugger';
 import { GlobalStyles } from '../assets/theme/globalStyles';
+import { StyleCacheProvider } from '../assets/theme/antdThemeCache';
 
 const Header = lazy(
   () => import(/* webpackPreload: true */ '../components/Header')
@@ -35,26 +36,28 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
   return (
     <ErrorBoundary>
       {process.env.NODE_ENV === 'development' && <DebugObserver />}
-      <ConfigProvider
-        theme={{
-          algorithm: isDark ? darkAlgorithm : defaultAlgorithm,
-          token: {
-            colorPrimary: isDark ? '#faad14' : '#1677ff',
-            colorLink: 'var(--color-link)',
-            colorLinkActive: 'var(--color-link-hover)',
-            colorLinkHover: 'var(--color-link-active)',
-          },
-        }}
-      >
-        <ThemeProvider theme={{ ...defaultTheme }}>
-          <GlobalStyles />
-          <div>{children}</div>
-          <Suspense fallback={null}>
-            <Header />
-          </Suspense>
-          <BackTop />
-        </ThemeProvider>
-      </ConfigProvider>
+      <StyleCacheProvider>
+        <ConfigProvider
+          theme={{
+            algorithm: isDark ? darkAlgorithm : defaultAlgorithm,
+            token: {
+              colorPrimary: isDark ? '#faad14' : '#1677ff',
+              colorLink: 'var(--color-link)',
+              colorLinkActive: 'var(--color-link-hover)',
+              colorLinkHover: 'var(--color-link-active)',
+            },
+          }}
+        >
+          <ThemeProvider theme={{ ...defaultTheme }}>
+            <GlobalStyles />
+            <div>{children}</div>
+            <Suspense fallback={null}>
+              <Header />
+            </Suspense>
+            <BackTop />
+          </ThemeProvider>
+        </ConfigProvider>
+      </StyleCacheProvider>
     </ErrorBoundary>
   );
 };

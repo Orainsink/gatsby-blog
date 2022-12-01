@@ -1,3 +1,4 @@
+import { antdStyleText } from './assets/theme/antdThemeCache';
 import { DarkModeScript, HtmlLoading } from './components/HtmlTemplate';
 
 interface HTMLProps {
@@ -20,6 +21,7 @@ const HTML = (props: HTMLProps) => {
           content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=0"
         />
         {props.headComponents}
+        {antdStyleText}
       </head>
       <body {...props.bodyAttributes}>
         <HtmlLoading />

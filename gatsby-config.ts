@@ -25,6 +25,9 @@ const categoryFileConfig: PluginRef[] = CATEGORY_NAMES.map((name) => ({
 
 const config: GatsbyConfig = {
   graphqlTypegen: true,
+  flags: {
+    DEV_SSR: true,
+  },
   siteMetadata: {
     title: `Orainsink's Blog`,
     author: {

@@ -24,6 +24,7 @@ import {
   SearchIcon,
 } from './Header.styles';
 import { useHasMounted } from '../../hooks';
+import { windowWrapper } from '../../utils/windowWrapper';
 
 /**Header */
 export const Header = memo((): ReactElement | null => {
@@ -56,7 +57,10 @@ export const Header = memo((): ReactElement | null => {
   const [scene, setScene] = useRecoilState(sceneAtom);
   const [headerDrop, setHeaderDrop] = useRecoilState(headerDropAtom);
   const setSkip = useSetRecoilState(skipAtom);
-  const headerTitle = document.title.match(/(\S*)\s\|\s/)?.[1] ?? title;
+  const headerTitle = windowWrapper(
+    () => document?.title.match(/(\S*)\s\|\s/)?.[1] ?? title,
+    title
+  );
 
   /**
    * scroll effects
