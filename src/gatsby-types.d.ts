@@ -1281,7 +1281,6 @@ declare namespace Queries {
     readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
     readonly title: Maybe<Scalars['String']>;
     readonly top: Maybe<Scalars['Int']>;
-    readonly url: Maybe<Scalars['String']>;
   };
 
   type MdxFrontmatter_dateArgs = {
@@ -1301,7 +1300,6 @@ declare namespace Queries {
     readonly tags: InputMaybe<FieldSelectorEnum>;
     readonly title: InputMaybe<FieldSelectorEnum>;
     readonly top: InputMaybe<FieldSelectorEnum>;
-    readonly url: InputMaybe<FieldSelectorEnum>;
   };
 
   type MdxFrontmatterFilterInput = {
@@ -1314,7 +1312,6 @@ declare namespace Queries {
     readonly tags: InputMaybe<StringQueryOperatorInput>;
     readonly title: InputMaybe<StringQueryOperatorInput>;
     readonly top: InputMaybe<IntQueryOperatorInput>;
-    readonly url: InputMaybe<StringQueryOperatorInput>;
   };
 
   type MdxFrontmatterSortInput = {
@@ -1327,7 +1324,6 @@ declare namespace Queries {
     readonly tags: InputMaybe<SortOrderEnum>;
     readonly title: InputMaybe<SortOrderEnum>;
     readonly top: InputMaybe<SortOrderEnum>;
-    readonly url: InputMaybe<SortOrderEnum>;
   };
 
   type MdxGroupConnection = {
@@ -3038,7 +3034,6 @@ declare namespace Queries {
               readonly description: string | null;
               readonly categories: string | null;
               readonly tags: ReadonlyArray<string | null> | null;
-              readonly url: string | null;
               readonly index: number | null;
             } | null;
             readonly fields: { readonly slug: string | null } | null;

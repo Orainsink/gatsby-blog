@@ -41,7 +41,6 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
         date: frontmatter.date,
         index: frontmatter.index,
         slug: mdx.fields.slug,
-        url: frontmatter.url,
         categories: frontmatter.categories,
         id: mdx.id,
       };
@@ -102,29 +101,6 @@ const LeetcodePage = ({ data }: PageProps<Data>): ReactElement => {
         </div>
       ),
     },
-    {
-      title: 'SOURCE',
-      dataIndex: 'url',
-      render: (text: string) => (
-        <div>
-          {text ? (
-            <Button
-              type="link"
-              size="large"
-              ghost={isDark ? true : false}
-              href={text}
-            >
-              <LeetcodeSvg
-                style={{
-                  width: 'var(--font-size-lg)',
-                  height: 'var(--font-size-lg)',
-                }}
-              />
-            </Button>
-          ) : null}
-        </div>
-      ),
-    },
   ];
 
   return (
@@ -171,7 +147,6 @@ export const pageQuery = graphql`
               description
               categories
               tags
-              url
               index
             }
             fields {
