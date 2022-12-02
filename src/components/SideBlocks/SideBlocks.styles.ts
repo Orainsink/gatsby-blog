@@ -1,5 +1,6 @@
 import { Col } from 'antd';
 import styled from 'styled-components';
+import nailImg from '../../assets/img/nail.svg';
 
 export const BaseCol = styled(Col)`
   background: var(--color-bg-container);
@@ -20,7 +21,7 @@ export const BaseCol = styled(Col)`
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url(../../assets/img/pin.svg);
+    background-image: url(${nailImg});
   }
 `;
 
