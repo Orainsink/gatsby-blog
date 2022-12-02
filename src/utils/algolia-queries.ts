@@ -9,11 +9,22 @@ query getAlgoliaData {
           title
           categories
         }
+        internal {
+          contentDigest
+        }
         excerpt(pruneLength: 5000)
       }
     }
   }
 }`;
+
+interface QueryVariable {
+  data: {
+    pages: {
+      edges: Queries.MdxEdge[];
+    };
+  };
+}
 
 const pageToAlgoliaRecord = ({
   node: { id, frontmatter, fields, ...rest },
@@ -29,15 +40,8 @@ const pageToAlgoliaRecord = ({
 const queries = [
   {
     query: pageQuery,
-    transformer: ({
-      data,
-    }: {
-      data: {
-        pages: {
-          edges: Queries.MdxEdge[];
-        };
-      };
-    }) => data.pages.edges.map(pageToAlgoliaRecord),
+    transformer: ({ data }: QueryVariable) =>
+      data.pages.edges.map(pageToAlgoliaRecord),
     indexName,
     settings: { attributesToSnippet: [`excerpt:20`] },
   },
