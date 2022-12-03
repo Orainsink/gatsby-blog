@@ -108,7 +108,7 @@
     "url": "git+https://github.com/Orainsink/gatsby-blog.git"
   },
   "scripts": {
-    "build": "gatsby build",
+    "build": "DEBUG=gatsby:gatsby-plugin-sharp gatsby build",
     "format": "prettier --write \"**/*.{js,jsx,json,md,mdx,ts,tsx}\"",
     "start": "gatsby develop",
     "serve": "gatsby serve",
