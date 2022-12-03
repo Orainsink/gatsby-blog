@@ -1,11 +1,5 @@
 import { ReactElement } from 'react';
-import { Tooltip } from 'antd';
-// import {
-// StaticImage,
-// GatsbyImage,
-// getImage,
-// ImageDataLike,
-// } from 'gatsby-plugin-image';
+
 import Icon, {
   ZhihuOutlined,
   GithubOutlined,
@@ -14,7 +8,7 @@ import Icon, {
 // import { graphql, useStaticQuery } from 'gatsby';
 import styled, { css } from 'styled-components';
 
-import { ReactComponent as SteamSvg } from '../../assets/img/steam.svg';
+// import { ReactComponent as SteamSvg } from '../../assets/img/steam.svg';
 import { useMedia, useIsDark } from '../../hooks';
 // import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 import { BaseCol, Title } from './SideBlocks.styles';
@@ -209,12 +203,12 @@ export const Info = () => {
           >
             <StyledGithubOutlined />
           </a>
-          <Tooltip title={<Wechat />} color="var(--color-bg-container)">
+          {/* <Tooltip title={<Wechat />} color="var(--color-bg-container)">
             <StyledWechatOutlined />
           </Tooltip>
           <Tooltip title={<Steam />} color="var(--color-bg-container)">
             <StyledSteamIcon component={SteamSvg} />
-          </Tooltip>
+          </Tooltip> */}
         </IconContainer>
       </div>
     </InfoContainer>

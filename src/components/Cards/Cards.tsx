@@ -95,19 +95,19 @@ interface GroupItem {
 // };
 
 export const CategoryComponent = (): ReactElement => {
-  const data = useStaticQuery<
-    DeepRequiredAndNonNullable<Queries.getTagsQuery>
-  >(graphql`
-    query getTags {
-      allFile {
-        totalCount
-        group(field: { childMdx: { frontmatter: { categories: SELECT } } }) {
-          totalCount
-          fieldValue
-        }
-      }
-    }
-  `);
+  // const data = useStaticQuery<
+  //   DeepRequiredAndNonNullable<Queries.getTagsQuery>
+  // >(graphql`
+  //   query getTags {
+  //     allFile {
+  //       totalCount
+  //       group(field: { childMdx: { frontmatter: { categories: SELECT } } }) {
+  //         totalCount
+  //         fieldValue
+  //       }
+  //     }
+  //   }
+  // `);
 
   // const { group } = data.allFile;
 
