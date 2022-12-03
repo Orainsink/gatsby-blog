@@ -192,7 +192,12 @@ const config: GatsbyConfig = {
         showSpinner: true,
       },
     },
-    `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        pure: true,
+      },
+    },
     isProduction && {
       resolve: '@sentry/gatsby',
       options: {
