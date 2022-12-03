@@ -41,8 +41,8 @@ const IndexWrapper = styled(Wrapper)<{ wrapperClass: string }>`
 `;
 
 const ClickTip = styled.div<{ show: boolean }>`
-  color: var(--text-color);
-  font-size: 18px;
+  color: var(--color-text);
+  font-size: var(--font-size-lg);
   opacity: 0;
   transition: opacity 0.6s ease-in;
   position: absolute;
@@ -87,7 +87,7 @@ export const Layout = ({ children }: Props): ReactElement => {
   }, []);
 
   return (
-    <IndexWrapper wrapperClass={wrapperClass} id="markdownBody">
+    <IndexWrapper wrapperClass={wrapperClass}>
       {scene && !skip && <ClickTip show={trigger}>Click to slide</ClickTip>}
       <Bg />
       <Main>

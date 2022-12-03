@@ -18,7 +18,6 @@ import styled from 'styled-components';
 
 import { useMedia, useIsDark } from '../../hooks';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
-import { GetMoogleFileQuery } from '../../../graphql-types';
 import { BaseCol } from './SideBlocks.styles';
 
 const CanvasContainer = styled(BaseCol)`
@@ -128,7 +127,7 @@ const Modal = memo(({ url, isDark }: Props) => {
 
 const Moogle = () => {
   const data = useStaticQuery<
-    DeepRequiredAndNonNullable<GetMoogleFileQuery>
+    DeepRequiredAndNonNullable<Queries.getMoogleFileQuery>
   >(graphql`
     query getMoogleFile {
       file(absolutePath: { regex: "/moogle.gltf/" }) {
@@ -156,4 +155,4 @@ const Moogle = () => {
     </CanvasContainer>
   );
 };
-export default memo(Moogle);
+export const MoogleScene = memo(Moogle);

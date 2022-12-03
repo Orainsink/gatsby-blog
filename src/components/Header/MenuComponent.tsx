@@ -1,26 +1,15 @@
 import { useState, lazy, Suspense, ReactElement } from 'react';
-import { Dropdown, DropdownProps } from 'antd';
+import { Dropdown } from 'antd';
 import { Link } from 'gatsby';
 import { DownOutlined } from '@ant-design/icons';
 
 import { ArchivesMenu } from './ArchivesMenu';
-import styled from 'styled-components';
 import { NavUl } from './Header.styles';
 const MenuDrawer = lazy(() => import('./MenuDrawer'));
 
 interface Props {
   drawer: boolean;
 }
-
-const WrappedDropDown = ({ className, ...rest }: DropdownProps) => (
-  <Dropdown overlayClassName={className} {...rest} />
-);
-
-const StyledDropDown = styled(WrappedDropDown)`
-  .ant-dropdown-arrow {
-    border-color: transparent;
-  }
-`;
 
 export const MenuComponent = ({ drawer }: Props): ReactElement => {
   const [visible, setVisible] = useState(false);
@@ -35,16 +24,16 @@ export const MenuComponent = ({ drawer }: Props): ReactElement => {
             <li>home</li>
           </Link>
 
-          <StyledDropDown
-            overlay={<ArchivesMenu visible={visible} />}
-            onVisibleChange={(visible) => setVisible(visible)}
+          <Dropdown
+            dropdownRender={() => <ArchivesMenu visible={visible} />}
+            onOpenChange={(visible) => setVisible(visible)}
           >
             <li>
               archives <DownOutlined />
             </li>
-          </StyledDropDown>
+          </Dropdown>
 
-          <Link to="/about/1438181566">
+          <Link to="/about/">
             <li>about</li>
           </Link>
         </NavUl>

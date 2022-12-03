@@ -1,17 +1,4 @@
 /**
- * Set yoyo on a TweenLite tween
- * must be passed on onComplete and onReverseComplete
- * @method yoyo
- */
-export function yoyo(this: any) {
-  if (this.reversed()) {
-    this.restart();
-  } else {
-    this.reverse();
-  }
-}
-
-/**
  * Return a random value in a specified range
  * @method random
  * @param {Number} [low] Lowest value possible

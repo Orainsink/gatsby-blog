@@ -1,6 +1,7 @@
-import { filterAtom } from './../store/atom';
 import { useEffect } from 'react';
 import { useResetRecoilState } from 'recoil';
+
+import { filterAtom } from './../store/atom';
 
 /**
  * reset curTag and curDate when component is unmounted

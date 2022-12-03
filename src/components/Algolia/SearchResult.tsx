@@ -13,26 +13,34 @@ import { generatePath } from '../../utils/generatePath';
 
 const ResultWrapper = styled.div`
   height: 100%;
-  margin-top: 0.5em;
+  margin-top: var(--space-xs);
+
+  ul {
+    list-style: none;
+    margin-left: 0;
+  }
+
   mark {
-    background-color: var(--component-hover);
+    background-color: var(--color-component-hover);
     color: var(--highlight-color);
   }
 
   .ais-Hits-item {
-    border-left: 4px solid var(--border-color);
+    border-left: 4px solid var(--color-border);
     padding: 10px;
+    margin-bottom: var(--space-md);
+
+    a {
+      color: var(--color-text);
+      h4 {
+        margin-bottom: var(--space-xxs);
+      }
+    }
     &:hover {
-      background-color: var(--component-hover);
+      background-color: var(--color-component-hover);
     }
   }
-  .ais-Highlight {
-    font-weight: bold;
-    color: var(--post-title);
-    &:hover {
-      color: var(--post-title-hover);
-    }
-  }
+
   .ais-PoweredBy {
     display: flex;
     align-content: center;
@@ -43,26 +51,10 @@ const ResultWrapper = styled.div`
   }
 `;
 
-const StyledHits = styled(Hits)`
-  ul {
-    list-style: none;
-    margin-left: 0;
-  }
-  li.ais-Hits-item {
-    margin-bottom: 1em;
-    a {
-      color: var(--link-color);
-      h4 {
-        margin-bottom: 0.2em;
-      }
-    }
-  }
-`;
-
 interface HitProp {
   hit: {
     categories: string;
-    slug: string;
+    title: string;
     objectId: string;
   };
 }
@@ -74,7 +66,7 @@ interface HitCountProps {
 }
 
 const HitCount = connectStateResults(({ searchResults }: HitCountProps) => {
-  const hitCount = searchResults && searchResults.nbHits;
+  const hitCount = searchResults?.nbHits;
 
   return (
     <Divider orientation="center">
@@ -84,22 +76,21 @@ const HitCount = connectStateResults(({ searchResults }: HitCountProps) => {
 });
 
 const PageHit = ({ hit }: HitProp): ReactElement => (
-  <div>
-    <Link to={generatePath(hit.categories, hit.slug)}>
+  <Link to={generatePath(hit.categories, hit.title)}>
+    <div>
       <h4>
         <Highlight attribute="title" hit={hit} tagName="mark" />
       </h4>
-    </Link>
-    <Snippet attribute="excerpt" hit={hit} tagName="mark" />
-  </div>
+      <Snippet attribute="excerpt" hit={hit} tagName="mark" />
+    </div>
+  </Link>
 );
 
 export const SearchResult = (): ReactElement => {
   return (
     <ResultWrapper>
       <HitCount />
-      {/* @ts-ignore */}
-      <StyledHits hitComponent={PageHit} />
+      <Hits hitComponent={PageHit} />
     </ResultWrapper>
   );
 };

@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import styled from 'styled-components';
-
 import { selector, useRecoilValue, useSetRecoilState } from 'recoil';
+
 import { sceneAtom, skipAtom, triggerAtom } from '../store/atom';
 
 const hideTriggerSelector = selector({
@@ -14,11 +14,12 @@ const hideTriggerSelector = selector({
   },
 });
 
+const TRIGGER_HEIGHT = '80px';
 const TriggerContainer = styled.div`
   position: fixed;
   z-index: 11;
-  width: 100%;
-  height: 80px;
+  width: 100vw;
+  height: ${TRIGGER_HEIGHT};
   cursor: pointer;
   text-align: center;
   top: auto;

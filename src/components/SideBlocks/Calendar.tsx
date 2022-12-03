@@ -1,23 +1,20 @@
 import { useMemo, useCallback, ReactElement } from 'react';
-import { Col, Row, Select } from 'antd';
+import { Col, Row, Select, Calendar } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
 import styled from 'styled-components';
-
-import { Calendar } from './CustomCalendar';
-import { useColFlex } from './useColFlex';
-import { FileEdge } from '../../../graphql-types';
 import { useSetRecoilState } from 'recoil';
+
+import { useColFlex } from './useColFlex';
 import { filterAtom } from '../../store/atom';
 import { BaseCol, Title } from './SideBlocks.styles';
+import { FileEdge } from '../../../typings/custom';
 
 const CalendarHeaderContainer = styled(Row)`
   padding: 8px;
 `;
 
 const Header = styled(Col)`
-  font-weight: bold;
-  font-size: 16px;
-  color: var(--text-color);
+  font-weight: var(--font-weight-lg);
 `;
 
 const CalendarCell = styled.div`
@@ -25,40 +22,19 @@ const CalendarCell = styled.div`
 `;
 
 const Count = styled.div`
-  font-size: 14px;
+  font-size: var(--font-size-sm);
 `;
 
 const CalendarContainer = styled(BaseCol)`
   height: unset;
-  .ant-picker-calendar {
-    background: var(--main-background);
-  }
-  .ant-picker-cell-disabled {
-    color: var(--text-color-secondary) !important;
-  }
-  .ant-picker-cell-disabled::before {
-    background: none;
-  }
-  .ant-picker-cell-in-view {
-    transition: all 0.3s linear;
-    color: var(--primary-color);
+
+  .ant-picker-cell {
     &:hover {
-      background: var(--component-hover);
+      background: var(--color-component-hover);
     }
-  }
-  .ant-picker-calendar .ant-picker-panel {
-    background: var(--main-background);
-    border-top: 1px solid var(--border-color);
-  }
-  .ant-select {
-    background-color: 1px solid var(--main-background) !important;
-    border: var(--border-color) !important;
-  }
-  .ant-select-arrow {
-    color: var(--text-color);
-  }
-  .ant-select:not(.ant-select-customize-input) .ant-select-selector {
-    background-color: var(--component-background);
+    &::before {
+      height: 100% !important;
+    }
   }
 `;
 
@@ -72,7 +48,7 @@ export const CalendarBlock = ({ posts }: Props): ReactElement => {
   const allMonths: Record<string, number | undefined> = useMemo(() => {
     const obj: Record<string, number> = {};
     posts.forEach(({ node }) => {
-      const frontmatter = node!.childMdx!.frontmatter!;
+      const frontmatter = node.childMdx.frontmatter!;
       let date = frontmatter.date.substring(0, 7);
       if (obj[date]) {
         obj[date] += 1;
@@ -90,7 +66,7 @@ export const CalendarBlock = ({ posts }: Props): ReactElement => {
     [allMonths]
   );
 
-  const monthCellRender = useCallback(
+  const renderMonthCell = useCallback(
     (currentDate: Dayjs) => {
       if (allMonths[dayjs(currentDate).format('YYYY/MM')]) {
         const count = allMonths[dayjs(currentDate).format('YYYY/MM')];
@@ -104,7 +80,6 @@ export const CalendarBlock = ({ posts }: Props): ReactElement => {
         return (
           <CalendarCell>
             <div>{dayjs(currentDate).format('M月')}</div>
-            <div style={{ height: '28px' }}></div>
           </CalendarCell>
         );
       }
@@ -156,10 +131,9 @@ export const CalendarBlock = ({ posts }: Props): ReactElement => {
   const handleSelect = useCallback(
     (date: Dayjs) => {
       if (!allMonths[dayjs(date).format('YYYY/MM')]) return;
-      setFilter((state) => ({
-        ...state,
+      setFilter({
         curDate: dayjs(date).format('YYYY/MM'),
-      }));
+      });
     },
     [allMonths, setFilter]
   );
@@ -174,7 +148,7 @@ export const CalendarBlock = ({ posts }: Props): ReactElement => {
         onSelect={handleSelect}
         defaultValue={dayjs()}
         disabledDate={disableDate}
-        monthFullCellRender={monthCellRender}
+        monthFullCellRender={renderMonthCell}
       />
     </CalendarContainer>
   );

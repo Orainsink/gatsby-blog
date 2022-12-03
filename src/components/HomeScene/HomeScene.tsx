@@ -1,15 +1,14 @@
 import { memo, useCallback, lazy, Suspense, ReactElement } from 'react';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 import styled, { css, keyframes } from 'styled-components';
+import { selector, useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { ReactComponent as ArrowSvg } from '../../assets/img/arrow.svg';
 import { ReactComponent as LoadingSvg } from '../../assets/img/loading.svg';
-import { selector, useRecoilValue, useSetRecoilState } from 'recoil';
 import { sceneAtom, triggerAtom } from '../../store/atom';
 
 const activeStyles = css`
   top: 0;
-  width: 100%;
 `;
 
 const disActiveStyles = css`
@@ -20,7 +19,6 @@ const disActiveStyles = css`
 const triggerStyles = css`
   transform: translateY(-10vh);
   top: 0;
-  width: 100%;
 `;
 
 const CanvasContainer = styled.div<{
@@ -28,11 +26,12 @@ const CanvasContainer = styled.div<{
 }>`
   position: absolute;
   z-index: 10;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   user-select: none;
   background: #0a0a0a;
-  transition: all 0.5s ease-out;
+  transition: all 0.3s ease-out;
+  top: 0;
 
   ${({ status }) => {
     switch (status) {
@@ -96,20 +95,20 @@ const Arrow = styled(ArrowSvg)`
   }
 `;
 
+const DynamicLoading = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Dynamic = lazy(() => import(/* webpackPrefetch: true */ './Dynamic'));
 const DynamicFallback = (): ReactElement => (
-  <div
-    style={{
-      width: '100%',
-      height: '100%',
-      background: '#0a0a0a',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}
-  >
+  <DynamicLoading>
     <LoadingSvg />
-  </div>
+  </DynamicLoading>
 );
 
 const dynamicSceneStyleSelector = selector({
@@ -128,7 +127,8 @@ export const HomeScene = memo((): ReactElement => {
 
   const handleScene = useCallback(() => {
     setScene(false);
-  }, [setScene]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <ReactScrollWheelHandler downHandler={handleScene}>

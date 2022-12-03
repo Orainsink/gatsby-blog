@@ -8,7 +8,7 @@ tags: [规范, 文档]
 
 ## 命名法
 
-```
+```text
 小驼峰命名法：camelCase
 大驼峰命名法：CamelCase 或 PascalCase
 小蛇式命名法：snake_case
@@ -148,27 +148,27 @@ API 命名设计参考 Antd 的文档，组件 API 设计最重要的是一致�
 
 简单的工厂函数来处理权限问题：
 
-```
+```js
 let routerFactory = (role) => {
   switch (role) {
     case 'superAdmin':
       return {
         name: 'SuperAdmin',
-        route: AllRoute
+        route: AllRoute,
       };
       break;
     case 'normalAdmin':
       return {
         name: 'NormalAdmin',
-        route: AllRoute.splice(1)
-      }
+        route: AllRoute.splice(1),
+      };
       break;
     default:
-      throw new Error("Wrong role")
+      throw new Error('Wrong role');
   }
-}
+};
 
-export { routerFactory }
+export { routerFactory };
 ```
 
 或者发布订阅者模式(`emit`, `on` )，适应期模式(`adapter`)等常用设计模式

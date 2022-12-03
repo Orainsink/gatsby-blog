@@ -1,13 +1,10 @@
-export { useBackTop } from './useBackTop';
 export { useBackgroundColor } from './useBackgroundColor';
-export { useCustomTitle } from './useCustomTitle';
-export { useDebounce } from './useDebounce';
 export { useDrawerCloseEffect } from './useDrawerCloseEffect';
-export { useHasMounted } from './useHasMounted';
 export { useMagicColor } from './useMagicColor';
 export { useMedia } from './useMedia';
 export { useScrollY } from './useScrollY';
 export { useWindowSize } from './useWindowSize';
 export { useResetKey } from './useResetKey';
-export { useLocalStorage } from './useLocalStorage';
 export { useIsDark } from './useIsDark';
+export { useTheme } from './useTheme';
+export { useHasMounted } from './useHasMounted';

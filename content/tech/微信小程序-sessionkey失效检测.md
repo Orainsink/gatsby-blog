@@ -19,8 +19,6 @@ password:
 
 ## 为何要检测 sessionkey
 
-<!--more-->
-
 如上官方文档, 官方文档说明了三件事
 
 1. sessionkey 会过期

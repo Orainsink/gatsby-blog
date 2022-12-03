@@ -8,16 +8,16 @@ import { CATEGORY_MAP, MENU_NAMES } from '../../assets/constants/categories';
 
 const DropMenu = styled.div`
   width: 200px;
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
   text-align: center;
-  padding: 0.2em;
+  padding: var(--space-xxs);
   background: linear-gradient(135deg, #141619 0%, #c7d2db 100%);
   a {
-    padding: 0.5em;
+    padding: var(--space-xs);
     color: #fff !important;
     display: inline-block;
     position: relative;
-    transition: all 0.2s ease-out;
+    transition: all 0.3s ease-out;
     &::after {
       background-color: rgba(255, 255, 255, 0.7);
       content: '';
@@ -26,9 +26,9 @@ const DropMenu = styled.div`
       bottom: 0;
       width: 0;
       height: 3px;
-      border-radius: 10px;
+      border-radius: var(--border-radius);
       color: inherit;
-      transition: all 0.2s ease-out;
+      transition: all 0.3s ease-out;
     }
     &:hover::after {
       transform: translateY(-3px);
@@ -48,8 +48,8 @@ export const ArchivesMenu = memo(({ visible }: Props): ReactElement => {
 
   return (
     <DropMenu id="magic-container">
-      {MENU_NAMES.map((item, index) => (
-        <Row align="middle" justify="space-between" key={index}>
+      {MENU_NAMES.map((item) => (
+        <Row align="middle" justify="space-between" key={item[0][0]}>
           {item.map((category) => (
             <Col span={12} key={category}>
               <Link to={CATEGORY_MAP.get(category)!.path}>

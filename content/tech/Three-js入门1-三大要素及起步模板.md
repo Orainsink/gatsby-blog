@@ -9,11 +9,9 @@ categories: tech
 password:
 ---
 
-### 前言:
+## 前言:
 
 粗略地扫完了《webGl 编程指南》这本 webGL 入门书过后,发现直接操纵 webGL 提供的 API 有点复杂,于是开始学习成熟的 webGl 封装库.我们的学习路径按照入门->做出东西->深入研究,进行学习.Three.js 诞生到现在已经比较成熟,功能强大,而且更新频率快,作为入门的库来说再合适不过了.
-
-<!--more-->
 
 Three.js 的学习资料来源不多,大部分学习资料来自于[webGL 中文网](http://www.hewebgl.com/)(网站从 2012 年办到 2019 年了,webgl 还是没有火,个人感觉即便是 5G 时代这个技术也不会在互联网领域内火,一方面是是 webGl 的性能虽然已经提升了很多但相对本地应用来说还是比较羸弱,另一方面 2d canvas 已经能做出炫酷的页面了,3d 最多只能当个玩具,只是某些方向比如互联网医疗,在线教育和大数据 ppt 展示等可能有需求而已.学习 webGl 纯粹是兴趣驱动.)
 
@@ -33,23 +31,23 @@ webGl 相关代码用框架的模块化编程的话,结构会更清晰,但是学
 
 > 三大要素即为场景,相机和渲染器这三个对象,为 Three.js 的最基本组成部分,有了这三大要素,才能通过摄像机渲染出场景,然后往场景里面添加几何体,光线等
 
-### 一.场景 scene
+## 一.场景 scene
 
 场景是所有物体的容器。
 
 在 Three.js 中场景就只有一种，用`THREE.Scene`来表示
 
-##### 构建场景：
+### 构建场景：
 
 ```js
 var scene = new THREE.Scene();
 ```
 
-### 二.相机 camera
+## 二.相机 camera
 
 在 Threejs 中相机的表示是`THREE.Camera`，它是相机的抽象基类，其子类有两种相机，分别是正投影相机(正交投影相机)`THREE.OrthographicCamera`和透视投影相机`THREE.PerspectiveCamera`。
 
-##### 1.构建正交投影相机`THREE.OrthographicCamera`:
+### 1.构建正交投影相机`THREE.OrthographicCamera`:
 
 ```js
 var camera = new THREE.OrthographicCamera(
@@ -82,7 +80,7 @@ far — 摄像机视锥体远端面。
 
 ![img](http://www.hewebgl.com/attached/image/20130530/20130530145859_920.jpg)
 
-##### 2.构建透视投影相机`THREE.PerspectiveCamera`
+### 2.构建透视投影相机`THREE.PerspectiveCamera`
 
 ```js
 var camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
@@ -103,7 +101,7 @@ far — 摄像机视锥体远端面
 
 ![img](http://www.hewebgl.com/attached/image/20130530/20130530151418_279.jpg)
 
-##### 3.相机的位置属性属性:up,position,lookAt
+### 3.相机的位置属性属性:up,position,lookAt
 
 up 为相机的正上方,与 lookAt 正交
 
@@ -113,11 +111,11 @@ lookAt 是相机看向的矢量方向,和 up 正交,up 和 lookAt 两个属性�
 
 三个属性可以完全确定相机在坐标系的位置.
 
-### 三.渲染器 renderer
+## 三.渲染器 renderer
 
 渲染器决定了渲染的结果应该画在页面的什么元素上面，并且以怎样的方式来绘制。
 
-##### 构建`webGLRenderer`渲染器
+### 构建`webGLRenderer`渲染器
 
 ```js
 //实例化webGLRenderer渲染器对象
@@ -138,7 +136,7 @@ document.body.appendChild(renderer.domElement);
 
 **以上为必需的三大组件.**
 
-### 四.添加物体到场景中
+## 四.添加物体到场景中
 
 ```js
 //立方体-即three.js提供的模型骨架,这里用的是立方体(cube)
@@ -159,7 +157,7 @@ scene.add(cube);
 
 默认情况下，当我们调用`scene.add()`的时候，物体将会被添加到坐标为(0,0,0)的位置。但这可能会使得摄像机的位置和立方体相互重叠（也就是摄像机位于立方体中）。为了防止这种情况的发生，我们只需要将摄像机稍微向外移动一些即可。
 
-### 五.渲染
+## 五.渲染
 
 ```js
 function animate() {
@@ -176,7 +174,7 @@ animate();
 
 //[requestAnimationFrame()](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame)的解释参考 MDN
 
-### 六.简单的 html 起步框架
+## 六.简单的 html 起步框架
 
 ```html
 <!DOCTYPE html>

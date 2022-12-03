@@ -1,12 +1,11 @@
 import { memo, useMemo, useCallback, ReactElement } from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
+import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 
 import { isClient } from '../utils/isClient';
 import { useIsDark } from '../hooks';
-import { GetWordCloudDataQuery } from '../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
-import { useSetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
 
 const WordCloudCons = isClient ? require('wordcloud') : undefined;
@@ -36,17 +35,17 @@ const WordCloudContainer = styled.div`
 
 /**
  * word cloud
- * @prop [jump] either can jump to "/archives", default false
+ * @prop [jump] either can jump to "/tech", default false
  * @prop [height] div height, default 150
  */
 export const WordCloud = memo(
   ({ jump = false, height = 150 }: Props): ReactElement => {
     const data = useStaticQuery<
-      DeepRequiredAndNonNullable<GetWordCloudDataQuery>
+      DeepRequiredAndNonNullable<Queries.getWordCloudDataQuery>
     >(graphql`
       query getWordCloudData {
         allFile(filter: { sourceInstanceName: { eq: "tech" } }) {
-          group(field: childMdx___frontmatter___tags) {
+          group(field: { childMdx: { frontmatter: { tags: SELECT } } }) {
             fieldValue
             totalCount
           }
@@ -94,8 +93,8 @@ export const WordCloud = memo(
             fontFamily: 'Finger Paint, sans-serif',
             color: isDark ? 'random-light' : 'random-dark',
             click: (item: string[]) => {
-              setFilter((state) => ({ ...state, curTag: item[0] }));
-              jump && navigate('/archives/');
+              setFilter({ curTag: item[0] });
+              jump && navigate('/tech/');
             },
           });
         }

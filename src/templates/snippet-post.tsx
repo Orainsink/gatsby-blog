@@ -1,80 +1,51 @@
 /* eslint-disable react/jsx-no-target-blank */
-import { useCallback, ReactElement } from 'react';
-import { Link, graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { MDXProvider } from '@mdx-js/react';
-import { Anchor } from 'antd';
+import { ReactElement, ReactNode } from 'react';
+import { graphql } from 'gatsby';
 
 import { Layout } from '../layout/BlogLayout';
-import { SeoHelmet } from '../components/SeoHelmet';
+import { Seo } from '../components/Seo';
 import { Tags } from '../components/Tags';
-import { ImgBlock, CodeBlock, AnchorBlock } from '../components/MDXComponents';
+import { MdxParser } from '../components/MDXComponents';
 import { useMedia } from '../hooks';
-import { generatePath } from '../utils/generatePath';
 import { Contents } from '../components/SideBlocks';
 import { Comment } from '../components/Comment';
 import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
-import { GetSnippetPostQuery } from '../../graphql-types';
+import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import {
-  DeepRequiredAndNonNullable,
-  TableOfContents,
-} from '../../typings/custom';
-import { Container, LeadUl, License, TableContents } from './Templates.styles';
+  Article,
+  Container,
+  License,
+  MajorTitle,
+  PostHr,
+  Subtitle,
+  TableContents,
+} from './Templates.styles';
+import { Anchor } from '../components/Anchor';
 
-type Data = DeepRequiredAndNonNullable<GetSnippetPostQuery>;
+type Data = DeepRequiredAndNonNullable<Queries.getSnippetPostQuery>;
 interface Props {
   data: Data;
-  pageContext: {
-    previous: any;
-    next: any;
-    id: string;
-  };
+  children: ReactNode;
 }
 
 const SnippetPostTemplate = ({
   data: { mdx },
-  pageContext,
+  children,
 }: Props): ReactElement => {
   const {
-    frontmatter: { title, tags, description, date, categories },
-    excerpt,
+    frontmatter: { title, tags, date, categories },
     tableOfContents,
   } = mdx;
-  const { previous, next } = pageContext;
   const isDesktop = useMedia('isDesktop');
-
-  /**
-   * Recursion Links
-   */
-  const renderLinks = useCallback((content: TableOfContents) => {
-    if (!content.items) return null;
-
-    const renderLink = (items: TableOfContents[]) => {
-      return items.map((item) => (
-        <Anchor.Link href={item.url} title={item.title} key={item.url}>
-          {item.items ? renderLink(item.items) : null}
-        </Anchor.Link>
-      ));
-    };
-    return renderLink(content.items);
-  }, []);
 
   return (
     <Layout sideBlocks={isDesktop && <Contents contents={tableOfContents} />}>
-      <SeoHelmet title={title} description={description || excerpt} />
-      <article>
+      <Article>
         <header>
-          <h1 style={{ textAlign: 'center', fontWeight: 700 }}>{title}</h1>
-          <div
-            style={{
-              display: 'block',
-              marginBottom: '1.6em',
-              color: '#999999',
-              textAlign: 'center',
-            }}
-          >
+          <MajorTitle>{title}</MajorTitle>
+          <Subtitle>
             {date}
-            <span style={{ marginLeft: '1em' }}>{categories}</span>
+            <span style={{ marginLeft: 'var(--space-md)' }}>{categories}</span>
             <License
               rel="license"
               target="_blank"
@@ -83,71 +54,38 @@ const SnippetPostTemplate = ({
             >
               <LicenseSvg />
             </License>
-          </div>
+          </Subtitle>
         </header>
-        {!!tableOfContents && !isDesktop && (
+        {tableOfContents && !isDesktop && (
           <TableContents>
             <Anchor
-              getContainer={() => document.body as HTMLElement}
               targetOffset={200}
               affix={false}
-            >
-              {renderLinks(tableOfContents)}
-            </Anchor>
+              contents={tableOfContents as any}
+            />
           </TableContents>
         )}
         <Container>
-          <MDXProvider
-            components={{
-              code: CodeBlock,
-              img: ImgBlock,
-              a: AnchorBlock,
-            }}
-          >
-            <MDXRenderer>{mdx.body}</MDXRenderer>
-          </MDXProvider>
+          <MdxParser>{children}</MdxParser>
         </Container>
-        <hr
-          style={{
-            marginBottom: '1.6em',
-          }}
-        />
+        <PostHr />
         <Tags tags={tags} category={categories} />
-      </article>
-
-      <nav>
-        <LeadUl>
-          <li style={{ textAlign: 'left' }}>
-            {previous && (
-              <Link
-                to={generatePath(
-                  previous.frontmatter.categories,
-                  previous.fields.slug
-                )}
-                rel="prev"
-              >
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li style={{ textAlign: 'right' }}>
-            {next && (
-              <Link
-                to={generatePath(next.frontmatter.categories, next.fields.slug)}
-                rel="next"
-              >
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </LeadUl>
-      </nav>
+      </Article>
       {mdx && <Comment />}
     </Layout>
   );
 };
 
 export default SnippetPostTemplate;
+
+export const Head = ({ data: { mdx } }: Pick<Props, 'data'>) => {
+  const {
+    frontmatter: { title, description },
+    excerpt,
+  } = mdx;
+
+  return <Seo title={title} description={description || excerpt} />;
+};
 
 export const pageQuery = graphql`
   query getSnippetPost($id: String) {
@@ -168,7 +106,6 @@ export const pageQuery = graphql`
       fields {
         slug
       }
-      body
       excerpt
       tableOfContents
     }

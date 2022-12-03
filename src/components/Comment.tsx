@@ -1,6 +1,7 @@
-import { memo, ReactElement, useCallback, useEffect } from 'react';
+import { memo, ReactElement, useCallback } from 'react';
+import { useUpdateEffect } from 'react-use';
 
-import { useHasMounted, useIsDark } from '../hooks';
+import { useIsDark, useHasMounted } from '../hooks';
 
 export const Comment = memo((): ReactElement | null => {
   const isDark = useIsDark();
@@ -27,7 +28,7 @@ export const Comment = memo((): ReactElement | null => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     const frameDom: any = document.querySelector('iframe.utterances-frame');
 
     if (frameDom?.contentWindow) {

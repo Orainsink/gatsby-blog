@@ -11,7 +11,7 @@ password:
 
 > 翻译自官方文档
 
-### 一.JavaScript 性能监测器 [stats.js](https://github.com/mrdoob/stats.js/)
+## 一.JavaScript 性能监测器 [stats.js](https://github.com/mrdoob/stats.js/)
 
 这个插件提供了一个简单的信息窗口,来帮助你监测代码的性能
 
@@ -20,13 +20,11 @@ password:
 - **MB** 占用内存数(MB). (Chrome 运行时需开启精确内存信息获取,通过【运行】窗口打开 `chrome --enable-precise-memory-info`)
 - **CUSTOM** 用户自定义面板.
 
-<!--more-->
-
-#### 截图
+### 截图
 
 ![fps.png](https://raw.githubusercontent.com/mrdoob/stats.js/master/files/fps.png) ![ms.png](https://raw.githubusercontent.com/mrdoob/stats.js/master/files/ms.png) ![mb.png](https://raw.githubusercontent.com/mrdoob/stats.js/master/files/mb.png) ![custom.png](https://raw.githubusercontent.com/mrdoob/stats.js/master/files/custom.png)
 
-#### 使用
+### 使用
 
 ```js
 var stats = new Stats();
@@ -44,7 +42,7 @@ function animate() {
 requestAnimationFrame(animate);
 ```
 
-#### 书签小工具
+### 书签小工具
 
 你可以把以下书签代码放在页面的任何地方使用(嵌入页面代码,放到书签栏,或者直接在控制台里面输入都 可以使用)
 
@@ -64,11 +62,11 @@ javascript: (function () {
 })();
 ```
 
-### 二.可视化调参插件 [dat.GUI](https://workshop.chromeexperiments.com/examples/gui/)
+## 二.可视化调参插件 [dat.GUI](https://workshop.chromeexperiments.com/examples/gui/)
 
 > 演示在官网,文章无截图,仅作翻译
 
-##### 1.基本用法
+### 1.基本用法
 
 通过少量代码,你就可以使用 dat.GUI 来进行可视化调参
 
@@ -101,7 +99,7 @@ window.onload = function() {
 - data.GUI 根据属性的初始值确定控制器的类型(根据传入的属性确定是控制速度还是描边等)
 - 按 H 键显示/隐藏所有 GUI 控制面板
 
-##### 2.限制输入界面效果
+### 2.限制输入界面效果
 
 你可以限制输入的数字范围.如果设置的是一个闭区间的数字范围,控制面板就会生成可拖动的滑块,方便使用
 
@@ -121,7 +119,7 @@ gui.add(text, 'message', ['pizza', 'chrome', 'hooray']);
 gui.add(text, 'speed', { Stopped: 0, Slow: 0.1, Fast: 5 });
 ```
 
-##### 3.收纳界面效果
+### 3.收纳界面效果
 
 你可以设置控制面板为收纳文件夹样式,来对属性进行分类.
 
@@ -140,7 +138,7 @@ f2.add(text, 'message');
 f2.open();
 ```
 
-##### 4.颜色控制器
+### 4.颜色控制器
 
 dat.GUI 支持多种颜色模式.以下代码展示四种颜色模式的使用方法.
 
@@ -166,7 +164,7 @@ window.onload = function () {
 
 dat.GUI 将以其初始值定义的格式修改颜色。
 
-##### 5.保存菜单(使用 localStorage)
+### 5.保存菜单(使用 localStorage)
 
 通过对添加进 GUI 的对象调用`gui.remember()`方法,在控制器界面生成保存菜单
 
@@ -190,7 +188,7 @@ gui.remember(fizzyText);
 // 添加控制器 ...
 ```
 
-##### 6.预设
+### 6.预设
 
 保存菜单还允许你将所有设置保存为预设.
 
@@ -214,7 +212,7 @@ var gui = new dat.GUI({
 
 关于 localStorage 的提醒：建议将预设保存在代码里。因为 localStorage 会在清除浏览数据的时候被清除。
 
-##### 7.事件
+### 7.事件
 
 你可以绑定事件监听,监听每个控制器上的事件.
 
@@ -231,7 +229,7 @@ controller.onFinishChange(function (value) {
 });
 ```
 
-##### 8.自定义控制器摆放
+### 8.自定义控制器摆放
 
 默认情况下,dat.GUI 控制面板会创建在固定的位置,并且自动 append 到 dat.GUI 创建的 DOM 元素内.
 
@@ -244,7 +242,7 @@ var customContainer = document.getElementById('my-gui-container');
 customContainer.appendChild(gui.domElement);
 ```
 
-##### 9.控制面板自动更新属性数据
+### 9.控制面板自动更新属性数据
 
 如果您希望控制器对 GUI 外部所做的更改做出反应，请使用 listen 方法。
 
@@ -264,7 +262,7 @@ update();
 
 在控制器上调用`listen()`方法会监听每一帧的变化,如果数据量很大的话,监听会导致代码效率变慢,谨慎使用.
 
-##### 10.控制面板手动更新属性数据
+### 10.控制面板手动更新属性数据
 
 如果你想在自定义的循环中更新控制器,请使用`updataDisplay()`方法
 
@@ -287,6 +285,6 @@ var update = function () {
 update();
 ```
 
-##### 11.其他参考博客
+### 11.其他参考博客
 
 [Three.js - dat.GUI 库的使用详解](http://www.hangge.com/blog/cache/detail_1785.html)

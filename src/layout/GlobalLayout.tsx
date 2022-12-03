@@ -1,20 +1,24 @@
 import { useEffect, ReactElement, ReactNode, lazy, Suspense } from 'react';
+import { ConfigProvider, theme } from 'antd';
 import { ThemeProvider } from 'styled-components';
+import { useRecoilValue } from 'recoil';
 
-import '../assets/css/variables.less';
-import '../assets/css/global.less';
-import '../assets/css/base.less';
+import '../assets/css/global.css';
 
 import { BackTop } from '../components/BackTop';
-import { useBackTop } from '../hooks';
+import { useIsDark } from '../hooks';
 import { ErrorBoundary } from '../components/ErrorBoundary';
-import { useRecoilValue } from 'recoil';
 import { sceneAtom } from '../store/atom';
 import { defaultTheme } from '../assets/constants/defaultTheme';
+// import { DebugObserver } from '../components/Debugger';
+import { GlobalStyles } from '../assets/theme/globalStyles';
+import { StyleCacheProvider } from '../assets/theme/antdThemeCache';
 
 const Header = lazy(
   () => import(/* webpackPreload: true */ '../components/Header')
 );
+
+const { darkAlgorithm, defaultAlgorithm } = theme;
 
 interface Props {
   children: ReactNode;
@@ -22,8 +26,8 @@ interface Props {
 /**global PageElement */
 const GlobalLayout = ({ children }: Props): ReactElement => {
   const scene = useRecoilValue(sceneAtom);
+  const isDark = useIsDark();
 
-  useBackTop();
   useEffect(() => {
     const body = document.getElementsByTagName('body')[0];
     body.style.overflowY = scene ? 'hidden' : 'auto';
@@ -31,13 +35,29 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
 
   return (
     <ErrorBoundary>
-      <ThemeProvider theme={defaultTheme}>
-        <div>{children}</div>
-        <Suspense fallback={null}>
-          <Header />
-        </Suspense>
-        <BackTop />
-      </ThemeProvider>
+      {/* {process.env.NODE_ENV === 'development' && <DebugObserver />} */}
+      <StyleCacheProvider>
+        <ConfigProvider
+          theme={{
+            algorithm: isDark ? darkAlgorithm : defaultAlgorithm,
+            token: {
+              colorPrimary: isDark ? '#faad14' : '#1677ff',
+              colorLink: 'var(--color-link)',
+              colorLinkActive: 'var(--color-link-hover)',
+              colorLinkHover: 'var(--color-link-active)',
+            },
+          }}
+        >
+          <ThemeProvider theme={{ ...defaultTheme }}>
+            <GlobalStyles />
+            <div>{children}</div>
+            <Suspense fallback={null}>
+              <Header />
+            </Suspense>
+            <BackTop />
+          </ThemeProvider>
+        </ConfigProvider>
+      </StyleCacheProvider>
     </ErrorBoundary>
   );
 };

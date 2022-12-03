@@ -2,16 +2,15 @@ import dotenv from 'dotenv';
 import { env } from 'process';
 import type { GatsbyConfig, PluginRef } from 'gatsby';
 import path from 'path';
-import postcssPresetEnv from 'postcss-preset-env';
-import cssnano from 'cssnano';
 
-import FunctionOverridePlugin from './scripts/FunctionOverridePlugin';
-import modifyVars from './scripts/less-vars';
 import { CATEGORY_NAMES } from './src/assets/constants/categories';
 import isProduction from './scripts/env';
-import algoliaQueries from './src/utils/algolia-queries';
-import { MdxEdge, Query } from './graphql-types';
+import algoliaQueries from './src/utils/algoliaQueries';
 import { DeepRequiredAndNonNullable } from './typings/custom';
+import {
+  REMARK_LINK_CLASS,
+  REMARK_LINK_OFFSET,
+} from './src/assets/constants/common';
 
 dotenv.config();
 
@@ -25,6 +24,10 @@ const categoryFileConfig: PluginRef[] = CATEGORY_NAMES.map((name) => ({
 }));
 
 const config: GatsbyConfig = {
+  graphqlTypegen: true,
+  flags: {
+    DEV_SSR: true,
+  },
   siteMetadata: {
     title: `Orainsink's Blog`,
     author: {
@@ -62,17 +65,6 @@ const config: GatsbyConfig = {
         trackingId: process.env.TRACKING_ID,
       },
     },
-    isProduction && {
-      resolve: `gatsby-plugin-algolia`,
-      options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_ADMIN_KEY,
-        indexName: process.env.ALGOLIA_INDEX_NAME,
-        queries: algoliaQueries,
-        enablePartialUpdates: true,
-        matchFields: ['slug'],
-      },
-    },
     {
       resolve: `gatsby-plugin-layout`,
       options: {
@@ -99,24 +91,24 @@ const config: GatsbyConfig = {
             serialize: ({
               query: { site, allMdx },
             }: {
-              query: DeepRequiredAndNonNullable<Query>;
+              query: DeepRequiredAndNonNullable<
+                Pick<Queries.Query, 'site' | 'allMdx'>
+              >;
             }) => {
-              return allMdx.edges.map(
-                (edge: DeepRequiredAndNonNullable<MdxEdge>) => {
-                  return Object.assign({}, edge.node.frontmatter, {
-                    description: edge.node.excerpt,
-                    date: edge.node.frontmatter.date,
-                    url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                    guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                    custom_elements: [{ 'content:encoded': edge.node.body }],
-                  });
-                }
-              );
+              return allMdx.edges.map((edge) => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.excerpt,
+                  date: edge.node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  custom_elements: [{ 'content:encoded': edge.node.body }],
+                });
+              });
             },
             query: `
               {
                 allMdx(
-                  sort: { order: DESC, fields: [frontmatter___date] },
+                  sort: {frontmatter: {date: DESC}},
                 ) {
                   edges {
                     node {
@@ -157,59 +149,41 @@ const config: GatsbyConfig = {
         precachePages: [`/pages/*`],
       },
     },
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    'gatsby-plugin-mdx-embed',
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
         gatsbyRemarkPlugins: [
+          'gatsby-remark-responsive-iframe',
           {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 890,
             },
           },
-          'gatsby-remark-responsive-iframe',
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
-              icon: false,
+              offsetY: REMARK_LINK_OFFSET,
+              className: REMARK_LINK_CLASS,
+              maintainCase: false,
+              removeAccents: true,
+              isIconAfterHeader: true,
+              elements: [`h2`, `h3`, `h4`],
             },
           },
         ],
       },
     },
     'gatsby-plugin-cname',
-    'gatsby-plugin-dark-mode',
     'gatsby-plugin-svgr',
-    {
-      resolve: `gatsby-plugin-less`,
-      options: {
-        lessOptions: {
-          javascriptEnabled: true,
-          strictMath: false,
-          math: 'always',
-          cssLoaderOptions: {
-            camelCase: false,
-          },
-          modifyVars,
-          plugins: [new FunctionOverridePlugin()],
-        },
-        postCssPlugins: [postcssPresetEnv, cssnano],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-graphql-codegen`,
-      options: {
-        codegen: !!env.CODEGEN ?? false,
-      },
-    },
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-nprogress`,
@@ -218,14 +192,19 @@ const config: GatsbyConfig = {
         showSpinner: true,
       },
     },
-    `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        pure: true,
+      },
+    },
     isProduction && {
       resolve: '@sentry/gatsby',
       options: {
         dsn: env.GATSBY_SENTRY_DSN,
         environment: env.NODE_ENV,
         enabled: (() =>
-          ['production', 'stage'].indexOf(env.NODE_ENV || 'stage') !== -1)(),
+          ['production', 'stage'].includes(env.NODE_ENV || 'stage'))(),
         sampleRate: 0.7,
         tracesSampleRate: 0.8,
       },
@@ -235,6 +214,17 @@ const config: GatsbyConfig = {
       options: {
         analyzerPort: 4396,
         production: true,
+      },
+    },
+    isProduction && {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        indexName: process.env.ALGOLIA_INDEX_NAME,
+        queries: algoliaQueries,
+        enablePartialUpdates: true,
+        matchFields: ['slug'],
       },
     },
   ].filter((conf): conf is PluginRef => Boolean(conf)),

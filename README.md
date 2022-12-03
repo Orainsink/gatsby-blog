@@ -11,10 +11,11 @@
 ## 👷Built with
 
 - Typescript + styled-components
-- [gatsby 4.9](https://www.gatsbyjs.org/)
-- [react-three-fiber 7.0](https://github.com/react-spring/react-three-fiber)
+- [gatsby 5.x](https://www.gatsbyjs.org/)
+- [react-three-fiber 9.x](https://github.com/react-spring/react-three-fiber)
 - [howler.js](https://howlerjs.com/)
-- [Antd 4.0](https://ant.design/)
+- [Antd 5.x](https://ant.design/)
+- [React 18.x](https://reactjs.org/)
 
 ## :sparkle:Quick Start
 
@@ -49,7 +50,7 @@ yarn new your-post-name
 
 ### How to change styles and components
 
-You can change global styles by modifying `scripts/less-vars.js` and `src/assets/css/`
+You can change global styles by modifying `src/assets/theme/`
 
 ### Enviroment variables
 

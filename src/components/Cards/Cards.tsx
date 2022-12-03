@@ -3,7 +3,6 @@ import { Card } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 
-import { GetTagsQuery } from '../../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 import {
   CardSection,
@@ -26,7 +25,7 @@ interface GroupItem {
  * @param group
  * @returns
  */
-const getCount = (category: string, group: GroupItem[]): number => {
+const getCount = (category: string, group: readonly GroupItem[]): number => {
   return group.find((item) => item.fieldValue === category)?.totalCount || 0;
 };
 /**
@@ -34,7 +33,7 @@ const getCount = (category: string, group: GroupItem[]): number => {
  * @param group
  * @returns
  */
-const getColumn = (group: GroupItem[]) => {
+const getColumn = (group: readonly GroupItem[]) => {
   return [
     {
       category: 'leetcode',
@@ -52,7 +51,7 @@ const getColumn = (group: GroupItem[]) => {
     },
     {
       category: 'snippet',
-      name: 'snippet',
+      name: 'cheat sheet',
       path: '/snippet',
       count: getCount('snippet', group),
       img: (
@@ -81,7 +80,7 @@ const getColumn = (group: GroupItem[]) => {
     {
       category: 'tech',
       name: '技术',
-      path: '/archives',
+      path: '/tech',
       count: getCount('tech', group),
       img: (
         <StaticImage
@@ -96,11 +95,13 @@ const getColumn = (group: GroupItem[]) => {
 };
 
 export const CategoryComponent = (): ReactElement => {
-  const data = useStaticQuery<DeepRequiredAndNonNullable<GetTagsQuery>>(graphql`
+  const data = useStaticQuery<
+    DeepRequiredAndNonNullable<Queries.getTagsQuery>
+  >(graphql`
     query getTags {
       allFile {
         totalCount
-        group(field: childMdx___frontmatter___categories) {
+        group(field: { childMdx: { frontmatter: { categories: SELECT } } }) {
           totalCount
           fieldValue
         }

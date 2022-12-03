@@ -4,7 +4,6 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 import SentryWebpackPlugin from '@sentry/webpack-plugin';
-import FilterWarningsPlugin from 'webpack-filter-warnings-plugin';
 import { removeSync } from 'fs-extra';
 import glob from 'glob';
 import type { GatsbyNode } from 'gatsby';
@@ -19,10 +18,6 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
 }) => {
   actions.setWebpackConfig({
     plugins: [
-      // antd的问题,css顺序冲突,目前没有找到更好的解决办法,只能过滤
-      new FilterWarningsPlugin({
-        exclude: /Conflicting order./,
-      }),
       /**
        * sentry source map
        * https://docs.sentry.io/platforms/javascript/guides/gatsby/sourcemaps/
@@ -47,18 +42,5 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
           ),
       },
     ].filter(Boolean),
-  });
-};
-
-export const onCreateBabelConfig: GatsbyNode['onCreateBabelConfig'] = ({
-  actions,
-}) => {
-  actions.setBabelPlugin({
-    name: `babel-plugin-import`,
-    options: {
-      libraryName: 'antd',
-      libraryDirectory: 'es',
-      style: true,
-    },
   });
 };

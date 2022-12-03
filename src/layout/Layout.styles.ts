@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export const Wrapper = styled.div`
   position: absolute;
   top: 0;
-  transition: top 0.5s ease-out;
+  transition: top 0.3s ease-out;
   left: 0;
   right: 0;
   z-index: 1;
@@ -35,9 +35,9 @@ export const containerStyles = css`
 `;
 
 export const MainWrap = styled.div`
-  background: var(--main-background);
-  border-radius: var(--border-radius-base);
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+  background: var(--color-bg-container);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
   padding: 0.8em !important;
   min-height: 25.6em;
   z-index: 1;

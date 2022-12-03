@@ -5,8 +5,11 @@ import styled from 'styled-components';
 
 import { Tags } from './Tags';
 import { generatePath } from '../utils/generatePath';
-import { FileEdge } from '../../graphql-types';
 import { filterAtom } from '../store/atom';
+import { FileEdge } from '../../typings/custom';
+import { Typography } from 'antd';
+
+const { Title } = Typography;
 
 interface Props {
   posts: FileEdge[];
@@ -21,36 +24,66 @@ interface PostItem {
   date: any;
 }
 
+const ItemTitle = styled(Title)`
+  & > a {
+    color: var(--color-mdx-header);
+    position: relative;
+    transition: all 0.3s ease-out;
+    &:hover {
+      color: var(--color-mdx-header-hover);
+    }
+
+    &::after {
+      background-color: var(--color-mdx-header-hover);
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 3px;
+      border-radius: var(--border-radius);
+      color: inherit;
+      transition: all 0.3s ease-out;
+    }
+    &:hover::after {
+      width: 100% !important;
+    }
+  }
+`;
+
 const MoreButton = styled.div`
   text-align: center;
-  font-size: 18px;
-  padding: 1em 0;
+  font-size: var(--font-size-lg);
+  padding: var(--space-md) 0;
   cursor: pointer;
 `;
 
-const Title = styled.h3`
-  margin-bottom: 0.4em;
-  box-shadow: none;
-  a {
-    color: var(--post-title);
-  }
-  a:hover {
-    color: var(--post-title-hover);
+const Phrase = styled.p`
+  color: var(--color-text-secondary);
+`;
+
+const PostListItem = styled(Typography)`
+  padding: var(--space-lg) var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+
+  ${({ theme }) => theme.media.isMobile} {
+    padding: 1.5rem 0;
   }
 `;
 
-const Phrase = styled.p`
-  color: var(--text-color-secondary);
+const PostDate = styled.small`
+  margin-bottom: var(--space-xs);
+  display: inline-block;
 `;
 
 const getLowerCasePosts = (posts: FileEdge[]): PostItem[] =>
   posts.map(({ node }) => {
-    const frontmatter = node!.childMdx!.frontmatter!;
+    const frontmatter = node.childMdx.frontmatter;
 
     return {
       title: (frontmatter.title || '').toLowerCase(),
       description: (frontmatter.description || '').toLowerCase(),
-      excerpt: (node!.childMdx!.excerpt || '').toLowerCase(),
+      excerpt: (node.childMdx.excerpt || '').toLowerCase(),
       tags: (frontmatter.tags || []).map((tag) => (tag || '').toLowerCase()),
       date: frontmatter.date,
     };
@@ -89,7 +122,8 @@ export const PostList = ({ posts, hideMore = false }: Props): ReactElement => {
     if (curTag && curDate) {
       console.warn('tag and date should not all be true');
     }
-  }, [curDate, curTag, posts]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [curDate, curTag]);
 
   useEffect(() => {
     setFold(true);
@@ -98,31 +132,30 @@ export const PostList = ({ posts, hideMore = false }: Props): ReactElement => {
   return (
     <>
       {filteredPosts.map(({ node }, index) => {
-        const fields = node!.childMdx!.fields!;
-        const frontmatter = node!.childMdx!.frontmatter!;
-        const title = frontmatter.title || fields.slug || '';
+        const fields = node.childMdx.fields;
+        const frontmatter = node.childMdx.frontmatter;
+        const title = frontmatter.title;
         const { date, description, tags, categories } = frontmatter;
 
         return (
           getIsAccordion(index) && (
-            <article key={fields.slug}>
-              <header>
-                <Title>
-                  <Link to={generatePath(categories!, fields.slug!)}>
-                    {title}
-                  </Link>
-                </Title>
-                <small>{date}</small>
-              </header>
-              <section>
-                <Phrase
-                  dangerouslySetInnerHTML={{
-                    __html: description || node!.childMdx!.excerpt || '',
-                  }}
-                />
-                <Tags tags={tags as string[]} category={categories!} />
-              </section>
-            </article>
+            <PostListItem key={fields.slug}>
+              <ItemTitle level={4}>
+                <Link
+                  to={generatePath(categories, title)}
+                  className="ant-typography"
+                >
+                  {title}
+                </Link>
+              </ItemTitle>
+              <PostDate>{date}</PostDate>
+              <Phrase
+                dangerouslySetInnerHTML={{
+                  __html: description || node.childMdx.excerpt || '',
+                }}
+              />
+              <Tags tags={tags as string[]} category={categories} />
+            </PostListItem>
           )
         );
       })}

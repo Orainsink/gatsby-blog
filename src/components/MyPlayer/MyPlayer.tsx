@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import { Tooltip, TooltipProps } from 'antd';
 import styled, { css, keyframes } from 'styled-components';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { Panel } from './Panel';
 import { useIsDark } from '../../hooks';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { playerVisibleAtom, musicAtom, headerDropAtom } from '../../store/atom';
 
 const WrappedTooltip = ({ className, ...rest }: TooltipProps) => {
@@ -28,7 +28,7 @@ const breathAme = keyframes`
 
 const darkStyle = css`
   .ant-tooltip-inner {
-    color: var(--text-color);
+    color: var(--color-text);
     @supports (backdrop-filter: blur(20px)) {
       background: rgba(58, 58, 58, 0.8);
       backdrop-filter: blur(20px);
@@ -38,7 +38,7 @@ const darkStyle = css`
 
 const headerDropStyle = css`
   .ant-tooltip-inner {
-    color: var(--text-color);
+    color: var(--color-text);
     @supports (backdrop-filter: blur(20px)) {
       background: rgba(239, 239, 239, 0.8);
       backdrop-filter: blur(20px);
@@ -46,7 +46,7 @@ const headerDropStyle = css`
   }
   .playingImg {
     & > div {
-      background-color: var(--text-color);
+      background-color: var(--color-text);
     }
   }
   .liWrap {
@@ -55,7 +55,7 @@ const headerDropStyle = css`
     }
   }
   .active {
-    padding: 1em 1em;
+    padding: var(--space-md);
     background-color: rgba(0, 0, 0, 0.1);
   }
 `;
@@ -71,7 +71,7 @@ const StyledWrappedTooltip = styled(WrappedTooltip)<{
     color: rgba(255, 255, 255, 0.7);
     padding: 0;
     margin: 0;
-    border-radius: var(--border-radius-base);
+    border-radius: var(--border-radius);
     background: linear-gradient(135deg, #141619 0%, #c7d2db 100%);
     overflow: hidden;
     @supports (backdrop-filter: blur(20px)) {
@@ -86,6 +86,11 @@ const StyledWrappedTooltip = styled(WrappedTooltip)<{
   ${({ isDark }) => isDark && darkStyle}
 
   ${({ isDark, headerDrop }) => headerDrop && !isDark && headerDropStyle}
+`;
+
+const MusicIconContainer = styled.div`
+  cursor: 'pointer';
+  transform: 'translateY(0.2em)';
 `;
 
 const MusicIcon = styled.svg<{ running: boolean }>`
@@ -128,9 +133,9 @@ export const MyPlayer = memo(() => {
       headerDrop={headerDrop}
       isDark={isDark}
       getPopupContainer={() => document.getElementById('header')!}
-      onVisibleChange={setPlayerVisible}
+      onOpenChange={setPlayerVisible}
     >
-      <div style={{ cursor: 'pointer', transform: 'translateY(0.2em)' }}>
+      <MusicIconContainer>
         <MusicIcon
           running={playing && loaded}
           xmlSpace="preserve"
@@ -149,7 +154,7 @@ export const MyPlayer = memo(() => {
             <path d="M82.626 14.752a3.71 3.71 0 0 0-4.787-3.554L37.308 23.446A3.712 3.712 0 0 0 34.669 27v37.568c-3.081-.717-6.694-.103-9.997 1.994-6.218 3.946-8.987 11.65-6.183 17.205 2.804 5.556 10.119 6.861 16.337 2.914 4.789-3.04 7.528-8.306 7.255-13.104h.013V42.565L75.2 32.603V53.97c-3.103-.753-6.756-.15-10.094 1.968-6.217 3.946-8.986 11.649-6.183 17.204 2.804 5.556 10.119 6.861 16.337 2.914 4.984-3.163 7.748-8.737 7.207-13.687h.159V14.752z"></path>
           </G2>
         </MusicIcon>
-      </div>
+      </MusicIconContainer>
     </StyledWrappedTooltip>
   );
 });

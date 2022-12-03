@@ -1,50 +1,29 @@
-import { PageProps, graphql } from 'gatsby';
-import { lazy, Suspense, ReactElement } from 'react';
+import { ReactElement } from 'react';
+import { PageProps } from 'gatsby';
 import styled from 'styled-components';
 
 import { Layout } from '../layout/BlogLayout';
-import { SeoHelmet } from '../components/SeoHelmet';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { Seo } from '../components/Seo';
 import { Comment } from '../components/Comment';
 import { Poem } from '../components/Poem';
-import { GetAboutPageDataQuery } from '../../graphql-types';
-import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { Container } from './Templates.styles';
-const MoogleScene = lazy(
-  () =>
-    import(/* webpackPreload: true */ '../components/SideBlocks/MoogleScene')
-);
+import { MdxParser } from '../components/MDXComponents';
+import { MoogleScene } from '../components/SideBlocks/MoogleScene';
 
 const AboutContainer = styled(Container)`
-  padding: 1em;
+  padding: var(--space-md);
 `;
 
-type Data = DeepRequiredAndNonNullable<GetAboutPageDataQuery>;
-
-const AboutPostTemplate = ({ data }: PageProps<Data>): ReactElement => {
-  const { mdx } = data;
-  return (
-    <Layout
-      sideBlocks={
-        <Suspense fallback={null}>
-          <MoogleScene />
-        </Suspense>
-      }
-    >
-      <SeoHelmet title="About" />
-      <Poem />
-      <AboutContainer>{<MDXRenderer>{mdx.body}</MDXRenderer>}</AboutContainer>
-      <Comment />
-    </Layout>
-  );
-};
+const AboutPostTemplate = ({ children }: PageProps<{}>): ReactElement => (
+  <Layout sideBlocks={<MoogleScene />}>
+    <Poem />
+    <AboutContainer>
+      <MdxParser>{children}</MdxParser>
+    </AboutContainer>
+    <Comment />
+  </Layout>
+);
 
 export default AboutPostTemplate;
 
-export const pageQuery = graphql`
-  query getAboutPageData {
-    mdx(fields: { slug: { eq: "/about" } }) {
-      body
-    }
-  }
-`;
+export const Head = () => <Seo title="About" />;

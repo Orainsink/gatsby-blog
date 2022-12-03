@@ -38,39 +38,27 @@ export const skipAtom = atom<boolean>({
   default: false,
 });
 
-export const filterAtom = atom<Record<'curTag' | 'curDate', string>>({
+export const filterAtom = atom<Partial<Record<'curTag' | 'curDate', string>>>({
   key: 'filter',
-  default: {
-    curTag: '',
-    curDate: '',
-  },
+  default: {},
 });
 
-// headerDrop header 判断是否显示移动端UI
+// 是否已滚动，触发header样式改变
 export const headerDropAtom = atom<boolean>({
   key: 'headerDrop',
   default: false,
-});
-
-// theme 暗黑色主题
-export const themeAtom = atom<string | null>({
-  key: 'theme',
-  default: windowWrapper<string | null>(
-    () => localStorage.getItem('theme'),
-    null
-  ),
-});
-
-// title 暗黑色主题
-export const titleAtom = atom<string>({
-  key: 'title',
-  default: '',
 });
 
 // playerVisible 音乐播放器是否显示
 export const playerVisibleAtom = atom<boolean>({
   key: 'playerVisible',
   default: false,
+});
+
+// theme 暗黑色主题
+export const themeAtom = atom<string | null>({
+  key: 'theme',
+  default: windowWrapper<string | null>(() => window.__theme, null),
 });
 
 // music 播放器的状态

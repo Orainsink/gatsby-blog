@@ -12,12 +12,14 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "downlevelIteration": true,
-    "plugins": [
-      {
-        "name": "typescript-plugin-css-modules"
-      }
-    ]
+    "downlevelIteration": true
   },
-  "exclude": ["node_modules", "public", ".cache"]
+  "exclude": ["node_modules", "public", ".cache", "plugins"],
+  "include": [
+    "./src/**/*",
+    "gatsby-*.*",
+    "./scripts/*",
+    "./typings/*",
+    "./content/**/*"
+  ]
 }

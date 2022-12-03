@@ -1,5 +1,5 @@
 import { memo, ReactElement, useEffect, useState } from 'react';
-import { Button, Drawer } from 'antd';
+import { Drawer } from 'antd';
 import { Link } from 'gatsby';
 import { UnorderedListOutlined } from '@ant-design/icons';
 import { useLocation } from '@reach/router';
@@ -10,19 +10,18 @@ import SharkMenuSvg from '../../assets/img/menu.svg';
 import { CATEGORY_MAP } from '../../assets/constants/categories';
 import { NavUl } from './Header.styles';
 
-const DrawerBtn = styled(Button)`
+const DrawerBtn = styled(UnorderedListOutlined)`
   border: none;
   color: inherit;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: var(--font-weight-xl);
   margin-right: 15px;
-  line-height: 29px;
 `;
 
 const DrawerTitle = styled.span`
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-color);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-xl);
+  color: var(--color-text);
 `;
 
 const DrawerNavUl = styled(NavUl)`
@@ -31,26 +30,18 @@ const DrawerNavUl = styled(NavUl)`
   align-items: flex-start;
   padding: 0;
   margin: 0;
+
+  a {
+    width: 70%;
+    display: block;
+  }
+
   li {
+    width: 100%;
     margin: 0;
     &::after {
-      background-color: var(--text-color);
+      background-color: var(--color-text);
     }
-    a {
-      width: 100%;
-      display: block;
-    }
-  }
-  .subUl {
-    li {
-      width: 70%;
-    }
-  }
-`;
-
-const SubUl = styled.ul`
-  li {
-    width: 70%;
   }
 `;
 
@@ -76,14 +67,18 @@ const MenuDrawer = (): ReactElement => {
   return (
     <>
       <DrawerBtn
-        size="middle"
-        ghost
-        icon={<UnorderedListOutlined style={{ fontSize: '26px' }} />}
+        style={{ fontSize: '26px' }}
         onClick={() => setVisible(true)}
       />
+      {/* <DrawerBtn
+        size="middle"
+        ghost
+        icon={}
+        
+      /> */}
       <Drawer
         title={<DrawerTitle>MENU</DrawerTitle>}
-        visible={visible}
+        open={visible}
         onClose={() => setVisible(false)}
       >
         <DrawerNavUl>
@@ -93,16 +88,16 @@ const MenuDrawer = (): ReactElement => {
 
           <div style={{ width: '100%' }}>
             <div style={{ padding: '12px 0' }}>archives</div>
-            <SubUl>
+            <ul>
               {[...CATEGORY_MAP.values()].map((item) => (
                 <Link to={item.path} key={item.name}>
                   <li>{item.name}</li>
                 </Link>
               ))}
-            </SubUl>
+            </ul>
           </div>
 
-          <Link to="/about/1438181566">
+          <Link to="/about/">
             <li>about</li>
           </Link>
         </DrawerNavUl>

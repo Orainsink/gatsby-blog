@@ -1,27 +1,19 @@
 import { GatsbyNode } from 'gatsby';
+import path from 'path';
 
 import { replacePath } from '../src/utils/replacePath';
-import path from 'path';
-import { hashString } from '../src/utils/hashString';
-import { MdxEdge, Query } from '../graphql-types';
+import { DeepRequiredAndNonNullable } from '../typings/custom';
+
+const generatePath = (categories: string, title: string | null) => {
+  const titlePath = title ? '/' + replacePath(title) : '';
+  return categories + titlePath;
+};
 
 export const createPages: GatsbyNode['createPages'] = ({
   actions,
   graphql,
 }) => {
-  const { createPage, createRedirect } = actions;
-
-  createRedirect({
-    fromPath: '/tech',
-    redirectInBrowser: true,
-    toPath: '/archives',
-  });
-
-  createRedirect({
-    fromPath: '/about',
-    redirectInBrowser: true,
-    toPath: '/about/1438181566',
-  });
+  const { createPage } = actions;
 
   const Template = path.resolve(`src/templates/blog-post.tsx`);
   const SnippetTemplate = path.resolve(`src/templates/snippet-post.tsx`);
@@ -35,19 +27,17 @@ export const createPages: GatsbyNode['createPages'] = ({
     about: AboutTemplate,
   };
 
-  return graphql<Query>(`
-    {
+  return graphql<DeepRequiredAndNonNullable<Queries.Query>>(`
+    query getPagesData {
       allMdx {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-              categories
-            }
+        nodes {
+          id
+          internal {
+            contentFilePath
+          }
+          frontmatter {
+            title
+            categories
           }
         }
       }
@@ -56,22 +46,17 @@ export const createPages: GatsbyNode['createPages'] = ({
     if (result.errors) {
       return Promise.reject(result.errors);
     }
-    const posts = result.data!.allMdx.edges as unknown as MdxEdge[];
-    posts.forEach(({ node }, index) => {
-      const previous =
-        index === posts.length - 1 ? null : posts[index + 1].node;
-      const next = index === 0 ? null : posts[index - 1].node;
+    const nodes = result.data!.allMdx.nodes;
+    nodes.forEach((node) => {
+      const { categories, title } = node.frontmatter;
+      const postTemplate =
+        componentTemplate[categories as keyof typeof componentTemplate] ||
+        Template;
 
       createPage({
-        path:
-          node.frontmatter!.categories +
-          '/' +
-          replacePath(hashString(node.fields!.slug as string)),
-        component:
-          componentTemplate[
-            node.frontmatter!.categories as keyof typeof componentTemplate
-          ] || Template,
-        context: { id: node.id, previous, next },
+        path: generatePath(categories, title),
+        component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+        context: { id: node.id },
       });
     });
   });

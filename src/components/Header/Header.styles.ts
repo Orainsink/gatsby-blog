@@ -9,8 +9,8 @@ export const NavUl = styled.ul`
   align-items: flex-end;
   justify-content: flex-end;
   color: inherit;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: var(--space-md);
+  font-weight: var(--font-weight-xl);
   line-height: 1;
   text-transform: uppercase;
   margin: 0;
@@ -21,7 +21,7 @@ export const NavUl = styled.ul`
     margin: 0 10px;
     cursor: pointer;
     position: relative;
-    transition: transform 0.2s ease-out;
+    transition: transform 0.3s ease-out;
     &::after {
       background-color: rgba(255, 255, 255, 0.7);
       content: '';
@@ -30,9 +30,9 @@ export const NavUl = styled.ul`
       bottom: 0;
       width: 0;
       height: 3px;
-      border-radius: 10px;
+      border-radius: var(--border-radius);
       color: inherit;
-      transition: all 0.2s ease-out;
+      transition: all 0.3s ease-out;
     }
     &:hover::after {
       transform: translateY(-3px);
@@ -50,12 +50,12 @@ export const NavUl = styled.ul`
 `;
 
 const activeStyles = css`
-  background-color: var(--main-background);
-  color: var(--text-color);
+  background-color: var(--color-bg-container);
+  color: var(--color-text);
   position: fixed;
   padding-top: 0;
   padding-bottom: 0;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--box-shadow-secondary);
 `;
 
 export const HeaderContainer = styled.header<{ active: boolean }>`
@@ -66,9 +66,9 @@ export const HeaderContainer = styled.header<{ active: boolean }>`
   z-index: 1;
   background-color: transparent;
   box-shadow: none;
-  padding: 10px 3em;
+  padding: 10px var(--space-xxl);
   color: rgba(255, 255, 255, 0.7);
-  transition: all 0.5s ease-out;
+  transition: all 0.3s ease-out;
 
   ${({ theme }) => theme.media.isMobile} {
     padding: 10px 15px;
@@ -81,8 +81,8 @@ export const Author = styled(Col)`
   text-align: center;
   span {
     color: inherit;
-    font-size: 20px;
-    font-weight: 700;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-xl);
     line-height: 1;
     margin: 0;
     padding: 0 12px;
@@ -91,7 +91,7 @@ export const Author = styled(Col)`
 
 export const Ora = styled.span`
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3;
   &:hover {
     transform: translateY(-3px);
   }
@@ -102,7 +102,7 @@ const basedIconStyles = css`
   font-size: 30px;
   color: inherit;
   cursor: pointer;
-  transition: transform 0.2s ease-out;
+  transition: transform 0.3s ease-out;
   &:hover {
     transform: translateY(-3px);
   }
@@ -110,7 +110,7 @@ const basedIconStyles = css`
 
 export const SearchIcon = styled(SearchOutlined)`
   ${basedIconStyles}
-  margin-right: 20px;
+  margin-right: var(--space-md);
 `;
 
 export const GithubIcon = styled(GithubOutlined)`
@@ -145,7 +145,7 @@ export const Arrow = styled(ArrowSvg)`
   width: 30px;
   height: 17px;
   margin-bottom: 10px;
-  margin-left: 20px;
+  margin-left: var(--space-md);
   cursor: pointer;
   overflow: visible;
   transform: rotate(-90deg) scale(1.4);

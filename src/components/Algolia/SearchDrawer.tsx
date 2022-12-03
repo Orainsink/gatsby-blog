@@ -1,19 +1,9 @@
 import { ReactElement, useEffect } from 'react';
 import { Drawer } from 'antd';
 import { useLocation } from '@reach/router';
-import styled from 'styled-components';
 
 import { Search } from './Search';
 import { useMedia, useDrawerCloseEffect } from '../../hooks';
-
-const StyledDrawer = styled(Drawer)`
-  .ant-input-group-addon {
-    background-color: var(--main-background);
-  }
-  .ant-btn {
-    background: var(--main-background);
-  }
-`;
 
 interface Props {
   visible: boolean;
@@ -31,15 +21,15 @@ export const SearchDrawer = ({ visible, onClose }: Props): ReactElement => {
   }, [location]);
 
   return (
-    <StyledDrawer
+    <Drawer
       title="SEARCH"
       placement="left"
       onClose={onClose}
-      visible={visible}
+      open={visible}
       width={isMobile ? '100%' : 600}
       bodyStyle={{ padding: '12px' }}
     >
       <Search visible={visible} />
-    </StyledDrawer>
+    </Drawer>
   );
 };

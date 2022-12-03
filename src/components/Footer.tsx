@@ -1,29 +1,32 @@
 import { ReactElement } from 'react';
 import { GithubOutlined, MailOutlined } from '@ant-design/icons';
 import styled, { css } from 'styled-components';
+import { Typography } from 'antd';
 
 import { useIsDark } from '../hooks';
 import darkValley from '../assets/img/valley-dark.svg';
 import valley from '../assets/img/valley.svg';
 
+const { Link } = Typography;
+
+const FOOTER_MAX_HEIGHT = '200px';
+const OFFSET = '120px';
+
 const FooterContainer = styled.footer`
   width: 100%;
   position: absolute;
   bottom: 0;
-  height: 200px;
+  height: ${FOOTER_MAX_HEIGHT};
   background: linear-gradient(
     135deg,
     rgb(20, 22, 25),
     rgb(29, 32, 25) 70%,
     rgb(40, 44, 49) 90%
   );
-  a {
-    color: var(--link-hover-color);
-  }
 `;
 
 const FooterMain = styled.div`
-  transform: translateY(120px);
+  transform: translateY(${OFFSET});
   color: #fff;
   > div {
     text-align: center;
@@ -37,8 +40,8 @@ const FooterMain = styled.div`
 `;
 
 const footerIconStyles = css`
-  height: 20px;
-  width: 20px;
+  height: var(--font-size-xl);
+  width: var(--font-size-xl);
   margin: 0 4px;
   vertical-align: -2px;
 `;
@@ -49,7 +52,7 @@ const StyledMailOutlined = styled(MailOutlined)`
 
 const StyledGithubOutlined = styled(GithubOutlined)`
   ${footerIconStyles}
-  color: var(--link-hover-color);
+  color: var(--color-link-hover);
 `;
 
 const FooterPhrase = styled.div`
@@ -58,7 +61,7 @@ const FooterPhrase = styled.div`
   flex-flow: wrap;
   color: #fff;
   > div {
-    margin: 0 20px;
+    margin: 0 var(--space-lg);
   }
 `;
 
@@ -66,7 +69,7 @@ const FooterValley = styled.div<{ isDark: boolean }>`
   width: 100%;
   height: 250px;
   position: absolute;
-  top: -120px;
+  top: -${OFFSET};
   left: 0;
   background-position: center center;
   background-repeat: no-repeat;
@@ -85,13 +88,13 @@ export const Footer = (): ReactElement => {
         <FooterPhrase>
           <div>
             <StyledGithubOutlined />
-            <a
+            <Link
               href="https://github.com/Orainsink/gatsby-blog"
               target="_blank"
               rel="noopener noreferrer"
             >
               Site Repository
-            </a>
+            </Link>
           </div>
           <div>
             <StyledMailOutlined />
@@ -100,29 +103,29 @@ export const Footer = (): ReactElement => {
         </FooterPhrase>
         <div>
           © Orainsink {new Date().getFullYear()}, Built with{' '}
-          <a
+          <Link
             href="https://www.gatsbyjs.org"
             target="_blank"
             rel="noopener noreferrer"
           >
             Gatsby
-          </a>
+          </Link>
           {', '}
-          <a
+          <Link
             href="https://ant.design"
             target="_blank"
             rel="noopener noreferrer"
           >
             Antd
-          </a>
+          </Link>
           {', '}
-          <a
+          <Link
             href="https://threejs.org"
             target="_blank"
             rel="noopener noreferrer"
           >
             Three.js
-          </a>
+          </Link>
         </div>
       </FooterMain>
     </FooterContainer>

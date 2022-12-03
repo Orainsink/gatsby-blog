@@ -16,20 +16,29 @@ import styled, { css } from 'styled-components';
 
 import { ReactComponent as SteamSvg } from '../../assets/img/steam.svg';
 import { useMedia, useIsDark } from '../../hooks';
-import { GetSelfInfoQuery } from '../../../graphql-types';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 import { BaseCol, Title } from './SideBlocks.styles';
 
-const SteamContainer = styled.div`
+const StyledTitle = styled(Title)`
+  z-index: -1;
+`;
+
+const tooltipContainerSharedStyles = css`
   display: flex;
+  padding: 10px;
+  color: var(--color-text);
+
+  del {
+    color: var(--color-text-secondary);
+    font-size: 12px;
+  }
+`;
+
+const SteamContainer = styled.div`
   align-items: flex-start;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 10px;
-  del {
-    color: var(--text-color-secondary);
-    font-size: 12px;
-  }
+  ${tooltipContainerSharedStyles}
 `;
 
 const WechatContainer = styled.div`
@@ -37,11 +46,7 @@ const WechatContainer = styled.div`
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
-  padding: 10px;
-  del {
-    color: var(--text-color-secondary);
-    font-size: 12px;
-  }
+  ${tooltipContainerSharedStyles}
 `;
 
 const InfoContainer = styled(BaseCol)`
@@ -64,16 +69,20 @@ const InfoContainer = styled(BaseCol)`
   }
 `;
 
-const TitleContainer = styled.div`
-  div {
-    z-index: 1;
-    position: relative;
-    text-align: center;
-  }
-  > div:nth-child(2) {
-    font-size: 20px;
-    font-weight: bold;
-  }
+const Bloger = styled.div`
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  color: var(--color-text);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-lg);
+`;
+
+const Motto = styled.div`
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  color: var(--color-text-secondary);
 `;
 
 const IconContainer = styled.div`
@@ -88,7 +97,7 @@ const IconContainer = styled.div`
 `;
 
 const iconStyle = css`
-  color: var(--text-color);
+  color: var(--color-text);
 `;
 
 const StyledZhihuOutlined = styled(ZhihuOutlined)`
@@ -96,6 +105,14 @@ const StyledZhihuOutlined = styled(ZhihuOutlined)`
 `;
 
 const StyledGithubOutlined = styled(GithubOutlined)`
+  ${iconStyle}
+`;
+
+const StyledWechatOutlined = styled(WechatOutlined)`
+  ${iconStyle}
+`;
+
+const StyledSteamIcon = styled(Icon)`
   ${iconStyle}
 `;
 
@@ -140,7 +157,7 @@ export const Info = () => {
   const isDesktop = useMedia('isDesktop');
 
   const data = useStaticQuery<
-    DeepRequiredAndNonNullable<GetSelfInfoQuery>
+    DeepRequiredAndNonNullable<Queries.getSelfInfoQuery>
   >(graphql`
     query getSelfInfo {
       avatar: file(absolutePath: { regex: "/avatar.png/" }) {
@@ -173,10 +190,10 @@ export const Info = () => {
   return (
     <InfoContainer flex={isDesktop ? '0 0 300px' : '1 1 300px'}>
       <GatsbyImage image={avatar!} alt="" className="owner-avatar-image" />
-      <TitleContainer>
-        <Title>ABOUT</Title>
-        <div>{isDark ? 'Orainsink' : '莫沉'}</div>
-        <div>{isDark ? 'listen, feel, think' : '倾听, 感受, 思考'}</div>
+      <StyledTitle>ABOUT</StyledTitle>
+      <div>
+        <Bloger>{isDark ? 'Orainsink' : '莫沉'}</Bloger>
+        <Motto>{isDark ? 'listen, feel, think' : '倾听, 感受, 思考'}</Motto>
         <IconContainer>
           <a
             href="https://www.zhihu.com/people/f6e5b2cbbe6e9535239e41b51305bf2c?utm_source=qq&utm_medium=social&utm_oi=586439395150794752"
@@ -192,14 +209,14 @@ export const Info = () => {
           >
             <StyledGithubOutlined />
           </a>
-          <Tooltip title={<Wechat />}>
-            <WechatOutlined />
+          <Tooltip title={<Wechat />} color="var(--color-bg-container)">
+            <StyledWechatOutlined />
           </Tooltip>
-          <Tooltip title={<Steam />}>
-            <Icon component={SteamSvg} />
+          <Tooltip title={<Steam />} color="var(--color-bg-container)">
+            <StyledSteamIcon component={SteamSvg} />
           </Tooltip>
         </IconContainer>
-      </TitleContainer>
+      </div>
     </InfoContainer>
   );
 };

@@ -1,14 +1,7 @@
-import escapeStringRegexp from 'escape-string-regexp';
-import { MdxEdge } from '../../graphql-types';
-
-const pagePath = `content`;
 const indexName = `Pages`;
-const pageQuery = `{
-  pages: allMdx(
-    filter: {
-      fileAbsolutePath: { regex: "/${escapeStringRegexp(pagePath)}/" },
-    }
-  ) {
+const pageQuery = `
+query getAlgoliaData {
+  pages: allMdx {
     edges {
       node {
         id
@@ -16,8 +9,8 @@ const pageQuery = `{
           title
           categories
         }
-        fields {
-          slug
+        internal {
+          contentDigest
         }
         excerpt(pruneLength: 5000)
       }
@@ -25,9 +18,17 @@ const pageQuery = `{
   }
 }`;
 
+interface QueryVariable {
+  data: {
+    pages: {
+      edges: Queries.MdxEdge[];
+    };
+  };
+}
+
 const pageToAlgoliaRecord = ({
   node: { id, frontmatter, fields, ...rest },
-}: MdxEdge) => {
+}: Pick<Queries.MdxEdge, 'node'>) => {
   return {
     objectID: id,
     ...frontmatter,
@@ -39,15 +40,8 @@ const pageToAlgoliaRecord = ({
 const queries = [
   {
     query: pageQuery,
-    transformer: ({
-      data,
-    }: {
-      data: {
-        pages: {
-          edges: MdxEdge[];
-        };
-      };
-    }) => data.pages.edges.map(pageToAlgoliaRecord),
+    transformer: ({ data }: QueryVariable) =>
+      data.pages.edges.map(pageToAlgoliaRecord),
     indexName,
     settings: { attributesToSnippet: [`excerpt:20`] },
   },

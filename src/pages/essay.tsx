@@ -5,19 +5,18 @@ import { getImage, GatsbyImage, ImageDataLike } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 
 import { Layout } from '../layout/BlogLayout';
-import { SeoHelmet } from '../components/SeoHelmet';
+import { Seo } from '../components/Seo';
 import { useResetKey } from '../hooks';
 import { generatePath } from '../utils/generatePath';
-import { DeepRequiredAndNonNullable } from '../../typings/custom';
-import { GetEssayDataQuery } from '../../graphql-types';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
 import { PageDivider, ReloadIcon } from '../layout/Pages.styles';
+import { DeepRequiredAndNonNullable } from '../../typings/custom';
 
 const EssayCard = styled(Card)`
   width: 45%;
   max-width: 440px;
-  margin: 1em;
+  margin: var(--space-md);
   ${({ theme }) => theme.media.isMobile} {
     width: 90%;
   }
@@ -34,12 +33,11 @@ const EssayCards = styled.div`
 `;
 
 const MetaTittle = styled.p`
-  font-size: 20px;
-  font-weight: bold;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-lg);
 `;
 
-type Data = DeepRequiredAndNonNullable<GetEssayDataQuery>;
-
+type Data = DeepRequiredAndNonNullable<Queries.getEssayDataQuery>;
 const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
   const { curDate } = useRecoilValue(filterAtom);
   const resetFilter = useResetRecoilState(filterAtom);
@@ -50,9 +48,7 @@ const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
       const node = data.images.edges.find((image) =>
         relativeDirectory.startsWith(`/${image.node.relativeDirectory}`)
       )?.node;
-      if (node) {
-        return getImage(node as unknown as ImageDataLike);
-      } else return null;
+      return getImage(node as unknown as ImageDataLike);
     },
     [data]
   );
@@ -62,15 +58,16 @@ const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
   const renderPostCard = useCallback(
     ({
       node: {
-        childMdx: { frontmatter, fields },
+        childMdx: {
+          frontmatter: { categories, title, date, description },
+          fields,
+        },
       },
     }: typeof posts[number]) => {
       return (
         <EssayCard
-          onClick={() =>
-            navigate(generatePath(frontmatter.categories, fields.slug))
-          }
-          key={frontmatter.title}
+          onClick={() => navigate(generatePath(categories, title))}
+          key={title}
           hoverable
           cover={
             <GatsbyImage
@@ -80,9 +77,9 @@ const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
             />
           }
         >
-          <MetaTittle>{frontmatter.title}</MetaTittle>
-          <p>{frontmatter.date}</p>
-          <p>{frontmatter.description}</p>
+          <MetaTittle>{title}</MetaTittle>
+          <p>{date}</p>
+          <p>{description}</p>
         </EssayCard>
       );
     },
@@ -91,7 +88,6 @@ const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
 
   return (
     <Layout>
-      <SeoHelmet title="随笔-归档" />
       <PageDivider orientation="center">
         {curDate ? curDate : '随笔'}
         {curDate ? <ReloadIcon onClick={resetFilter} /> : null}
@@ -103,6 +99,8 @@ const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
 
 export default EssayPage;
 
+export const Head = () => <Seo title="随笔-归档" />;
+
 export const pageQuery = graphql`
   query getEssayData {
     allFile(
@@ -110,7 +108,7 @@ export const pageQuery = graphql`
         sourceInstanceName: { eq: "essay" }
         extension: { in: ["md", "mdx"] }
       }
-      sort: { fields: childMdx___frontmatter___date, order: DESC }
+      sort: { childMdx: { frontmatter: { date: DESC } } }
     ) {
       edges {
         node {

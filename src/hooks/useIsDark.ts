@@ -1,6 +1,6 @@
-import { themeAtom } from './../store/atom';
 import { selector, useRecoilValue } from 'recoil';
 
+import { themeAtom } from './../store/atom';
 import { Theme } from '../assets/constants/common';
 
 const isDarkSelector = selector({
@@ -10,6 +10,7 @@ const isDarkSelector = selector({
     return theme === Theme.DARK;
   },
 });
+
 /**
  * return if the theme is dark
  * @function useIsDark

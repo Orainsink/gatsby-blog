@@ -5,28 +5,27 @@ import dayjs from 'dayjs';
 
 import { useResetKey, useMedia, useIsDark } from '../hooks';
 import { Layout } from '../layout/BlogLayout';
-import { SeoHelmet } from '../components/SeoHelmet';
+import { Seo } from '../components/Seo';
 import { generatePath } from '../utils/generatePath';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
-import { GetSnippetPageDataQuery } from '../../graphql-types';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
 import { PageDivider, ReloadIcon, WrappedTable } from '../layout/Pages.styles';
+import { ColumnsType } from 'antd/es/table';
 
-type Data = DeepRequiredAndNonNullable<GetSnippetPageDataQuery>;
-
+type Data = DeepRequiredAndNonNullable<Queries.getSnippetPageDataQuery>;
 const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
   const { curDate } = useRecoilValue(filterAtom);
   const resetFilter = useResetRecoilState(filterAtom);
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
-  const isDark = useIsDark();
 
   useResetKey();
   const isMobile = useMedia('isMobile');
+  const isDark = useIsDark();
 
   const datas = posts.map(({ node: { childMdx: mdx } }) => {
-    const frontmatter = mdx.frontmatter!;
-    const fields = mdx.fields!;
+    const frontmatter = mdx.frontmatter;
+    const fields = mdx.fields;
     return {
       title: frontmatter.title,
       description: frontmatter.description ?? mdx.excerpt,
@@ -38,12 +37,12 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
     };
   });
 
-  const columns: any = [
+  const columns: ColumnsType<typeof datas[number]> = [
     {
       title: 'TITLE',
       dataIndex: 'title',
       render: (text: string) => (
-        <div style={{ fontWeight: 'bold' }}>{text}</div>
+        <div style={{ fontWeight: 'var(--font-weight-lg)' }}>{text}</div>
       ),
     },
     {
@@ -56,7 +55,7 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
       dataIndex: 'tag',
       width: 80,
       render: (text: string) => (
-        <Tag color={isDark ? 'var(--tag-color)' : 'blue'}>{text}</Tag>
+        <Tag color={isDark ? 'warning' : 'processing'}>{text}</Tag>
       ),
     },
     {
@@ -64,20 +63,20 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
       dataIndex: 'date',
       width: 120,
       defaultSortOrder: 'descend',
-      sorter: (a: any, b: any) => dayjs(a.date).unix() - dayjs(b.date).unix(),
+      sorter: (a, b) => dayjs(a.date).unix() - dayjs(b.date).unix(),
     },
   ];
-  const smallColumns: any = [
+  const smallColumns: ColumnsType<typeof datas[number]> = [
     {
       title: 'TITLE',
       dataIndex: 'title',
       width: 250,
-      render: (text: string, row: any) => (
+      render: (text, row) => (
         <div>
-          <div style={{ fontWeight: 'bold' }}>{text}</div>
+          <div style={{ fontWeight: 'var(--font-weight-lg)' }}>{text}</div>
           <div>{row.description}</div>
           <div>
-            <Tag color={isDark ? 'var(--tag-color)' : 'blue'}>{row.tag}</Tag>
+            <Tag color={isDark ? 'warning' : 'processing'}>{row.tag}</Tag>
           </div>
         </div>
       ),
@@ -87,13 +86,12 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
       dataIndex: 'date',
       width: 120,
       defaultSortOrder: 'descend',
-      sorter: (a: any, b: any) => dayjs(a.date).unix() - dayjs(b.date).unix(),
+      sorter: (a, b) => dayjs(a.date).unix() - dayjs(b.date).unix(),
     },
   ];
 
   return (
     <Layout>
-      <SeoHelmet title="Snippet-归档" />
       <PageDivider orientation="center">
         {curDate ? curDate : 'SNIPPET'}
         {curDate ? <ReloadIcon onClick={resetFilter} /> : null}
@@ -106,7 +104,7 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
         size={isMobile ? 'middle' : 'large'}
         pagination={{ pageSize: 16 }}
         onRow={(row) => ({
-          onClick: () => navigate(generatePath(row.categories!, row.slug!)),
+          onClick: () => navigate(generatePath(row.categories, row.title)),
         })}
       />
     </Layout>
@@ -115,11 +113,13 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
 
 export default SnippetPage;
 
+export const Head = () => <Seo title="Snippet-归档" />;
+
 export const pageQuery = graphql`
   query getSnippetPageData {
     allFile(
       filter: { sourceInstanceName: { eq: "snippet" } }
-      sort: { fields: childMdx___frontmatter___date, order: DESC }
+      sort: { childMdx: { frontmatter: { date: DESC } } }
     ) {
       edges {
         node {

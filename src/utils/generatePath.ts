@@ -1,9 +1,9 @@
-import { hashString } from './hashString';
+import { replacePath } from './replacePath';
 /**
- * 生成categories + hashId的路径
+ * 生成categories + title的路径
  * @param categories
- * @param id
+ * @param title
  */
-export const generatePath = (categories: string, id: string): string => {
-  return `/${categories}/${hashString(id)}`;
+export const generatePath = (categories: string, title: string): string => {
+  return `/${categories}/${replacePath(title)}`;
 };

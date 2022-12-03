@@ -1,21 +1,19 @@
 import { useEffect, useState, memo, ReactElement } from 'react';
 import { Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { MyPlayer } from '../MyPlayer/MyPlayer';
 import { SearchDrawer } from '../Algolia/SearchDrawer';
-import { useMedia, useHasMounted } from '../../hooks';
+import { useMedia } from '../../hooks';
 import { ThemeBtn } from './ThemeBtn';
 import { MenuComponent } from './MenuComponent';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
-import { GetHeaderQuery } from '../../../graphql-types';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import {
   hasArrowAtom,
   headerDropAtom,
   sceneAtom,
   skipAtom,
-  titleAtom,
 } from '../../store/atom';
 import {
   Arrow,
@@ -25,15 +23,18 @@ import {
   Ora,
   SearchIcon,
 } from './Header.styles';
+import { useHasMounted } from '../../hooks';
+import { windowWrapper } from '../../utils/windowWrapper';
 
 /**Header */
 export const Header = memo((): ReactElement | null => {
   const data = useStaticQuery<
-    DeepRequiredAndNonNullable<GetHeaderQuery>
+    DeepRequiredAndNonNullable<Queries.getHeaderQuery>
   >(graphql`
     query getHeader {
       site {
         siteMetadata {
+          title
           author {
             name
             summary
@@ -46,7 +47,7 @@ export const Header = memo((): ReactElement | null => {
     }
   `);
 
-  const { social } = data.site.siteMetadata;
+  const { social, title } = data.site.siteMetadata;
   const [searchVisible, setSearchVisible] = useState(false);
   const isDesktop = useMedia('isDesktop');
   const isMobile = useMedia('isMobile');
@@ -54,9 +55,12 @@ export const Header = memo((): ReactElement | null => {
 
   const hasArrow = useRecoilValue(hasArrowAtom);
   const [scene, setScene] = useRecoilState(sceneAtom);
-  const title = useRecoilValue(titleAtom);
   const [headerDrop, setHeaderDrop] = useRecoilState(headerDropAtom);
   const setSkip = useSetRecoilState(skipAtom);
+  const headerTitle = windowWrapper(
+    () => document?.title.match(/(\S*)\s\|\s/)?.[1] ?? title,
+    title
+  );
 
   /**
    * scroll effects
@@ -92,6 +96,21 @@ export const Header = memo((): ReactElement | null => {
     localStorage.setItem('SCENE', '1');
   };
 
+  const showTitle = isDesktop;
+  const renderTitle = () =>
+    headerDrop ? (
+      <span>{headerTitle}</span>
+    ) : (
+      <Ora
+        onClick={(event) => {
+          event.preventDefault();
+          navigate('/');
+        }}
+      >
+        Orainsink's Blog
+      </Ora>
+    );
+
   return hasMounted ? (
     <HeaderContainer
       style={{
@@ -104,22 +123,7 @@ export const Header = memo((): ReactElement | null => {
         <Col style={{ display: 'flex', alignItems: 'center' }}>
           <MyPlayer />
         </Col>
-        {!isMobile && (
-          <Author>
-            {!isDesktop ? null : headerDrop && title ? (
-              <span>{title}</span>
-            ) : (
-              <Ora
-                onClick={(event) => {
-                  event.preventDefault();
-                  navigate('/');
-                }}
-              >
-                Orainsink's Blog
-              </Ora>
-            )}
-          </Author>
-        )}
+        {!isMobile && <Author>{showTitle && renderTitle()}</Author>}
 
         <Col flex={1} style={{ textAlign: 'right' }}>
           <MenuComponent drawer={isMobile} />

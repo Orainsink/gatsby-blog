@@ -23,6 +23,7 @@ export const Moon = memo(({ onClose }: Props): ReactElement => {
   });
 
   return (
+    // @ts-ignore
     <a.pointLight
       color="#ffffff"
       decay={2}

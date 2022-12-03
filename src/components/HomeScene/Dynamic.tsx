@@ -3,6 +3,7 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { FogExp2, PerspectiveCamera, Vector3 } from 'three';
 import { useStaticQuery, graphql } from 'gatsby';
 import gsap from 'gsap';
+import { useRecoilState } from 'recoil';
 
 import { Text } from './TextComponent';
 import { Moon } from './Moon';
@@ -11,8 +12,6 @@ import { isClient } from '../../utils/isClient';
 import { Stars } from './Stars';
 import { Floor } from './Floor';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
-import { GetRockFileQuery } from '../../../graphql-types';
-import { useRecoilState } from 'recoil';
 import { sceneAtom } from '../../store/atom';
 
 /**
@@ -78,7 +77,7 @@ const CameraTween = memo(({ isScene }: { isScene: boolean }) => {
 /** webGl wrapper  */
 const Dynamic = (): ReactElement | null => {
   const data = useStaticQuery<
-    DeepRequiredAndNonNullable<GetRockFileQuery>
+    DeepRequiredAndNonNullable<Queries.getRockFileQuery>
   >(graphql`
     query getRockFile {
       file(absolutePath: { regex: "/rock.gltf/" }) {

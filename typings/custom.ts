@@ -7,3 +7,5 @@ export interface TableOfContents {
   title?: string;
   items?: TableOfContents[];
 }
+
+export type FileEdge = DeepRequiredAndNonNullable<Queries.FileEdge>;
