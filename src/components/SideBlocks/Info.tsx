@@ -2,21 +2,21 @@ import { ReactElement } from 'react';
 import { Tooltip } from 'antd';
 import {
   StaticImage,
-  GatsbyImage,
-  getImage,
-  ImageDataLike,
+  // GatsbyImage,
+  // getImage,
+  // ImageDataLike,
 } from 'gatsby-plugin-image';
 import Icon, {
   ZhihuOutlined,
   GithubOutlined,
   WechatOutlined,
 } from '@ant-design/icons';
-import { graphql, useStaticQuery } from 'gatsby';
+// import { graphql, useStaticQuery } from 'gatsby';
 import styled, { css } from 'styled-components';
 
 import { ReactComponent as SteamSvg } from '../../assets/img/steam.svg';
 import { useMedia, useIsDark } from '../../hooks';
-import { DeepRequiredAndNonNullable } from '../../../typings/custom';
+// import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 import { BaseCol, Title } from './SideBlocks.styles';
 
 const StyledTitle = styled(Title)`
@@ -156,40 +156,40 @@ export const Info = () => {
   const isDark = useIsDark();
   const isDesktop = useMedia('isDesktop');
 
-  const data = useStaticQuery<
-    DeepRequiredAndNonNullable<Queries.getSelfInfoQuery>
-  >(graphql`
-    query getSelfInfo {
-      avatar: file(absolutePath: { regex: "/avatar.png/" }) {
-        childImageSharp {
-          gatsbyImageData(
-            width: 200
-            height: 200
-            layout: CONSTRAINED
-            placeholder: BLURRED
-          )
-        }
-      }
-      avatarD: file(absolutePath: { regex: "/gatsby-icon.png/" }) {
-        childImageSharp {
-          gatsbyImageData(
-            width: 200
-            height: 200
-            layout: CONSTRAINED
-            placeholder: BLURRED
-          )
-        }
-      }
-    }
-  `);
+  // const data = useStaticQuery<
+  //   DeepRequiredAndNonNullable<Queries.getSelfInfoQuery>
+  // >(graphql`
+  //   query getSelfInfo {
+  //     avatar: file(absolutePath: { regex: "/avatar.png/" }) {
+  //       childImageSharp {
+  //         gatsbyImageData(
+  //           width: 200
+  //           height: 200
+  //           layout: CONSTRAINED
+  //           placeholder: BLURRED
+  //         )
+  //       }
+  //     }
+  //     avatarD: file(absolutePath: { regex: "/gatsby-icon.png/" }) {
+  //       childImageSharp {
+  //         gatsbyImageData(
+  //           width: 200
+  //           height: 200
+  //           layout: CONSTRAINED
+  //           placeholder: BLURRED
+  //         )
+  //       }
+  //     }
+  //   }
+  // `);
 
-  const avatar = getImage(
-    (isDark ? data.avatarD : data.avatar) as ImageDataLike
-  );
+  // const avatar = getImage(
+  //   (isDark ? data.avatarD : data.avatar) as ImageDataLike
+  // );
 
   return (
     <InfoContainer flex={isDesktop ? '0 0 300px' : '1 1 300px'}>
-      <GatsbyImage image={avatar!} alt="" className="owner-avatar-image" />
+      {/* <GatsbyImage image={avatar!} alt="" className="owner-avatar-image" /> */}
       <StyledTitle>ABOUT</StyledTitle>
       <div>
         <Bloger>{isDark ? 'Orainsink' : '莫沉'}</Bloger>
