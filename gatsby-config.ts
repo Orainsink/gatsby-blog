@@ -5,7 +5,7 @@ import path from 'path';
 
 import { CATEGORY_NAMES } from './src/assets/constants/categories';
 import isProduction from './scripts/env';
-import algoliaQueries from './src/utils/algolia-queries';
+import algoliaQueries from './src/utils/algoliaQueries';
 import { DeepRequiredAndNonNullable } from './typings/custom';
 import {
   REMARK_LINK_CLASS,
@@ -184,7 +184,6 @@ const config: GatsbyConfig = {
     },
     'gatsby-plugin-cname',
     'gatsby-plugin-svgr',
-    // 'gatsby-plugin-swc',
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-nprogress`,
