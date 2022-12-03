@@ -1,6 +1,13 @@
 a {
   text-decoration: none;
   -webkit-backface-visibility: hidden;
+  color: var(--color-link);
+}
+a:hover {
+  color: var(--color-link-hover);
+}
+a:active {
+  color: var(--color-link-active);
 }
 li {
   list-style: none;

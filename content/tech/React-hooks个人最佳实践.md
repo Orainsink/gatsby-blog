@@ -176,4 +176,6 @@ const handleFn = useCallback(() => { /* 上百行的函数 */}, [])
 
 ## 合理运用节流防抖
 
-我会在[下一篇文章](/React-hooks防抖和节流/)总结 hooks 的防抖和节流
+import { Link } from 'gatsby';
+
+我会在 <Link to="/tech/React-hooks防抖和节流/">React-hooks 防抖和节流</Link> 总结 hooks 的防抖和节流
