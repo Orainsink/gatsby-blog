@@ -1,11 +1,11 @@
 import { ReactElement } from 'react';
 import { Tooltip } from 'antd';
-import {
-  StaticImage,
-  // GatsbyImage,
-  // getImage,
-  // ImageDataLike,
-} from 'gatsby-plugin-image';
+// import {
+// StaticImage,
+// GatsbyImage,
+// getImage,
+// ImageDataLike,
+// } from 'gatsby-plugin-image';
 import Icon, {
   ZhihuOutlined,
   GithubOutlined,
@@ -119,14 +119,14 @@ const StyledSteamIcon = styled(Icon)`
 const Steam = (): ReactElement => (
   <SteamContainer>
     <h3>ID：Moogle Knight</h3>
-    <StaticImage
+    {/* <StaticImage
       src="../../../content/assets/moogle.png"
       alt=""
       width={100}
       height={100}
       layout="fixed"
       placeholder="blurred"
-    />
+    /> */}
     <div>重度RPG玩家，受苦爱好者</div>
     <div>
       <del>你玩手游吗？什么你居然不玩游戏？</del>
@@ -137,14 +137,14 @@ const Steam = (): ReactElement => (
 const Wechat = (): ReactElement => (
   <WechatContainer>
     <h3>ID：Orainsink</h3>
-    <StaticImage
+    {/* <StaticImage
       src="../../../content/assets/wechat.png"
       alt=""
       width={100}
       height={100}
       layout="fixed"
       placeholder="blurred"
-    />
+    /> */}
     <div>
       微信在线<del>相亲</del>交友
     </div>

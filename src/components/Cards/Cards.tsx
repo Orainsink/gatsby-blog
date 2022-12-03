@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Card } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
-import { StaticImage } from 'gatsby-plugin-image';
+// import { StaticImage } from 'gatsby-plugin-image';
 
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 import {
@@ -25,74 +25,74 @@ interface GroupItem {
  * @param group
  * @returns
  */
-const getCount = (category: string, group: readonly GroupItem[]): number => {
-  return group.find((item) => item.fieldValue === category)?.totalCount || 0;
-};
+// const getCount = (category: string, group: readonly GroupItem[]): number => {
+//   return group.find((item) => item.fieldValue === category)?.totalCount || 0;
+// };
 /**
  * get category info
  * @param group
  * @returns
  */
-const getColumn = (group: readonly GroupItem[]) => {
-  return [
-    {
-      category: 'leetcode',
-      name: 'leetcode',
-      path: '/leetcode',
-      count: getCount('leetcode', group),
-      img: (
-        <StaticImage
-          src="../../../content/assets/leetcode.png"
-          alt="leetcode"
-          placeholder="blurred"
-          className="card-static-image"
-        />
-      ),
-    },
-    {
-      category: 'snippet',
-      name: 'cheat sheet',
-      path: '/snippet',
-      count: getCount('snippet', group),
-      img: (
-        <StaticImage
-          src="../../../content/assets/snippet.png"
-          alt="snippet"
-          placeholder="blurred"
-          className="card-static-image"
-        />
-      ),
-    },
-    {
-      category: 'essay',
-      name: '随笔',
-      path: '/essay',
-      count: getCount('essay', group),
-      img: (
-        <StaticImage
-          src="../../../content/assets/随笔.png"
-          alt="essay"
-          placeholder="blurred"
-          className="card-static-image"
-        />
-      ),
-    },
-    {
-      category: 'tech',
-      name: '技术',
-      path: '/tech',
-      count: getCount('tech', group),
-      img: (
-        <StaticImage
-          src="../../../content/assets/javascript.png"
-          alt="tech"
-          placeholder="blurred"
-          className="card-static-image"
-        />
-      ),
-    },
-  ];
-};
+// const getColumn = (group: readonly GroupItem[]) => {
+//   return [
+//     {
+//       category: 'leetcode',
+//       name: 'leetcode',
+//       path: '/leetcode',
+//       count: getCount('leetcode', group),
+//       img: (
+//         <StaticImage
+//           src="../../../content/assets/leetcode.png"
+//           alt="leetcode"
+//           placeholder="blurred"
+//           className="card-static-image"
+//         />
+//       ),
+//     },
+//     {
+//       category: 'snippet',
+//       name: 'cheat sheet',
+//       path: '/snippet',
+//       count: getCount('snippet', group),
+//       img: (
+//         <StaticImage
+//           src="../../../content/assets/snippet.png"
+//           alt="snippet"
+//           placeholder="blurred"
+//           className="card-static-image"
+//         />
+//       ),
+//     },
+//     {
+//       category: 'essay',
+//       name: '随笔',
+//       path: '/essay',
+//       count: getCount('essay', group),
+//       img: (
+//         <StaticImage
+//           src="../../../content/assets/随笔.png"
+//           alt="essay"
+//           placeholder="blurred"
+//           className="card-static-image"
+//         />
+//       ),
+//     },
+//     {
+//       category: 'tech',
+//       name: '技术',
+//       path: '/tech',
+//       count: getCount('tech', group),
+//       img: (
+//         <StaticImage
+//           src="../../../content/assets/javascript.png"
+//           alt="tech"
+//           placeholder="blurred"
+//           className="card-static-image"
+//         />
+//       ),
+//     },
+//   ];
+// };
 
 export const CategoryComponent = (): ReactElement => {
   const data = useStaticQuery<
@@ -109,7 +109,7 @@ export const CategoryComponent = (): ReactElement => {
     }
   `);
 
-  const { group } = data.allFile;
+  // const { group } = data.allFile;
 
   return (
     <CardSection>
@@ -118,7 +118,7 @@ export const CategoryComponent = (): ReactElement => {
         欢迎光临！博主 莫沉 是个切图仔，学习Go和webGL中。
       </StyledTitle>
       <StyledCards>
-        {getColumn(group).map((item) => (
+        {/* {getColumn(group).map((item) => (
           <StyledCard
             key={item.name}
             hoverable
@@ -127,7 +127,7 @@ export const CategoryComponent = (): ReactElement => {
           >
             <Meta title={item.name} description={`${item.count}篇文章`} />
           </StyledCard>
-        ))}
+        ))} */}
       </StyledCards>
     </CardSection>
   );
