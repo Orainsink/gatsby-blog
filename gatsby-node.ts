@@ -31,16 +31,16 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
           ignore: ['node_modules', 'webpack.config.js', 'assets'],
         }),
       /**delete sourcemap before deploy*/
-      stage === 'build-javascript' && {
-        apply: (compiler: any) =>
-          compiler.hooks.done.tap(
-            'CleanJsMapPlugin',
-            (_: any, cb = () => {}) => {
-              glob.sync('./public/**/*.js.map').forEach((f) => removeSync(f));
-              cb && cb();
-            }
-          ),
-      },
+      // stage === 'build-javascript' && {
+      //   apply: (compiler: any) =>
+      //     compiler.hooks.done.tap(
+      //       'CleanJsMapPlugin',
+      //       (_: any, cb = () => {}) => {
+      //         glob.sync('./public/**/*.js.map').forEach((f) => removeSync(f));
+      //         cb && cb();
+      //       }
+      //     ),
+      // },
     ].filter(Boolean),
   });
 };
