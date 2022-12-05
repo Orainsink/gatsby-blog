@@ -24,3 +24,4 @@ jobs:
           GATSBY_SENTRY_AUTH: ${{ secrets.GATSBY_SENTRY_AUTH }}
           GATSBY_SENTRY_DSN: ${{ secrets.GATSBY_SENTRY_DSN }}
           TRACKING_ID: ${{ secrets.TRACKING_ID }}
+          access-token: ${{ secrets.ACCESS_TOKEN }}
