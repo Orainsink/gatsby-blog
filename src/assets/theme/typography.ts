@@ -1,7 +1,7 @@
 export const typographyThemeNoriega = {
     title: "Noriega",
     baseFontSize: "16px",
-    baseLineHeight: 1.61,
+    baseLineHeight: 1.60,
     headerFontFamily: ["Lato", "sans-serif"],
     bodyFontFamily: ["Lato", "sans-serif"],
     bodyWeight: 400,
