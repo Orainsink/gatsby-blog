@@ -118,27 +118,6 @@
     "lint:fix": "yarn lint --fix",
     "prepare": "husky install"
   },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "esmodules": true
-          }
-        }
-      ],
-      [
-        "@babel/preset-react",
-        {
-          "runtime": "automatic"
-        }
-      ]
-    ],
-    "plugins": [
-      "@babel/plugin-proposal-class-properties"
-    ]
-  },
   "config": {
     "commitizen": {
       "path": "node_modules/cz-gitmoji-customize"

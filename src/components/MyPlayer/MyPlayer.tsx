@@ -89,14 +89,13 @@ const StyledWrappedTooltip = styled(WrappedTooltip)<{
 `;
 
 const MusicIconContainer = styled.div`
-  cursor: 'pointer';
-  transform: 'translateY(0.2em)';
+  cursor: pointer;
+  transform: translateY(0.2em);
 `;
 
 const MusicIcon = styled.svg<{ running: boolean }>`
   * {
-    animation-play-state: ${({ running }) =>
-      running ? 'running' : 'paused'} !important;
+    animation-play-state: ${({ running }) => running ? 'running' : 'paused'} !important;
   }
 `;
 
