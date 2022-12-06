@@ -143,12 +143,12 @@ const config: GatsbyConfig = {
       },
     },
     // offline plugin makes loading strange
-    {
-      resolve: `gatsby-plugin-offline`,
-      options: {
-        precachePages: [`/pages/*`],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-offline`,
+    //   options: {
+    //     precachePages: [`/pages/*`],
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-typography`,
       options: {
@@ -198,17 +198,17 @@ const config: GatsbyConfig = {
         pure: true,
       },
     },
-    isProduction && {
-      resolve: '@sentry/gatsby',
-      options: {
-        dsn: env.GATSBY_SENTRY_DSN,
-        environment: env.NODE_ENV,
-        enabled: (() =>
-          ['production', 'stage'].includes(env.NODE_ENV || 'stage'))(),
-        sampleRate: 0.7,
-        tracesSampleRate: 0.8,
-      },
-    },
+    // isProduction && {
+    //   resolve: '@sentry/gatsby',
+    //   options: {
+    //     dsn: env.GATSBY_SENTRY_DSN,
+    //     environment: env.NODE_ENV,
+    //     enabled: (() =>
+    //       ['production', 'stage'].includes(env.NODE_ENV || 'stage'))(),
+    //     sampleRate: 0.7,
+    //     tracesSampleRate: 0.8,
+    //   },
+    // },
     !!env.WEBPACK_BUNDLE_ANALYZER && {
       resolve: 'gatsby-plugin-webpack-bundle-analyzer',
       options: {
@@ -227,6 +227,7 @@ const config: GatsbyConfig = {
         matchFields: ['slug'],
       },
     },
+    `gatsby-plugin-no-sourcemaps`,
   ].filter((conf): conf is PluginRef => Boolean(conf)),
 };
 

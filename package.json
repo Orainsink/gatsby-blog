@@ -87,6 +87,7 @@
     "eslint-plugin-jsx-a11y": "6.6.1",
     "eslint-plugin-react": "7.31.11",
     "eslint-plugin-react-hooks": "4.6.0",
+    "gatsby-plugin-no-sourcemaps": "^5.2.0",
     "gatsby-plugin-webpack-bundle-analyzer": "^1.0.5",
     "gltf-pipeline": "3.0.5",
     "husky": ">=8.0.2",
@@ -106,6 +107,7 @@
     "url": "git+https://github.com/Orainsink/gatsby-blog.git"
   },
   "scripts": {
+    "build:performance": "npx process-top ./node_modules/.bin/gatsby build",
     "build": "gatsby build",
     "format": "prettier --write \"**/*.{js,jsx,json,md,mdx,ts,tsx}\"",
     "start": "gatsby develop",
