@@ -1,4 +1,3 @@
-import { antdStyleText } from './assets/theme/antdThemeCache';
 import { DarkModeScript, HtmlLoading } from './components/HtmlTemplate';
 
 interface HTMLProps {
@@ -15,13 +14,11 @@ const HTML = (props: HTMLProps) => {
     <html {...props.htmlAttributes} style={{ overflowY: 'hidden' }}>
       <head>
         <meta charSet="utf-8" />
-        <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=0"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0"
         />
         {props.headComponents}
-        {antdStyleText}
       </head>
       <body {...props.bodyAttributes}>
         <HtmlLoading />

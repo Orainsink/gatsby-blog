@@ -107,7 +107,7 @@
   },
   "scripts": {
     "build:performance": "npx process-top ./node_modules/.bin/gatsby build",
-    "build": "GATSBY_CPU_COUNT=1 gatsby build",
+    "build": "gatsby build",
     "format": "prettier --write \"**/*.{js,jsx,json,md,mdx,ts,tsx}\"",
     "start": "gatsby develop",
     "serve": "gatsby serve",

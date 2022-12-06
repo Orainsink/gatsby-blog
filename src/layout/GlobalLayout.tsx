@@ -12,7 +12,6 @@ import { sceneAtom } from '../store/atom';
 import { defaultTheme } from '../assets/constants/defaultTheme';
 // import { DebugObserver } from '../components/Debugger';
 import { GlobalStyles } from '../assets/theme/globalStyles';
-import { StyleCacheProvider } from '../assets/theme/antdThemeCache';
 
 const Header = lazy(
   () => import(/* webpackPreload: true */ '../components/Header')
@@ -36,7 +35,6 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
   return (
     <ErrorBoundary>
       {/* {process.env.NODE_ENV === 'development' && <DebugObserver />} */}
-      <StyleCacheProvider>
         <ConfigProvider
           theme={{
             algorithm: isDark ? darkAlgorithm : defaultAlgorithm,
@@ -57,7 +55,6 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
             <BackTop />
           </ThemeProvider>
         </ConfigProvider>
-      </StyleCacheProvider>
     </ErrorBoundary>
   );
 };
