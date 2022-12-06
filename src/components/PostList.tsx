@@ -29,7 +29,7 @@ const ItemTitle = styled(Title)`
     color: var(--color-mdx-header);
     position: relative;
     transition: all 0.3s ease-out;
-    &:hover {
+    &:hover, &:active, &:focus {
       color: var(--color-mdx-header-hover);
     }
 
