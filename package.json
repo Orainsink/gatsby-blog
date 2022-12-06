@@ -90,7 +90,7 @@
     "gatsby-plugin-webpack-bundle-analyzer": "^1.0.5",
     "gltf-pipeline": "3.0.5",
     "husky": ">=8.0.2",
-    "inquirer": "9.1.4",
+    "inquirer": "8.2.4",
     "lint-staged": ">=13.0.4",
     "prettier": "2.8.0",
     "ts-essentials": "^9.3.0",
