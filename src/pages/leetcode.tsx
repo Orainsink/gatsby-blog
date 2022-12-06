@@ -1,6 +1,6 @@
 import { useMemo, ReactElement } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
-import { Button, Tag } from 'antd';
+import { Tag } from 'antd';
 import dayjs from 'dayjs';
 import type { ColumnsType } from 'antd/es/table';
 
@@ -8,7 +8,6 @@ import { Seo } from '../components/Seo';
 import { Layout } from '../layout/BlogLayout';
 import { generatePath } from '../utils/generatePath';
 import { useResetKey, useMedia, useIsDark } from '../hooks';
-import { ReactComponent as LeetcodeSvg } from '../assets/img/leetcode.svg';
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';

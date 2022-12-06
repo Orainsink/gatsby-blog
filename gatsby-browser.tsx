@@ -1,8 +1,8 @@
 /**Called when the initial (but not subsequent) render of Gatsby App is done on the client. */
 import type { GatsbyBrowser } from 'gatsby';
 import { RecoilRoot } from 'recoil';
-import { closePageLoader } from './src/utils/closePageLoader';
 
+import { closePageLoader } from './src/utils/closePageLoader';
 import { scrollToAnchor } from './src/utils/scrollToAnchor';
 
 export const onInitialClientRender: GatsbyBrowser['onInitialClientRender'] =
