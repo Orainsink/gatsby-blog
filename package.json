@@ -37,7 +37,6 @@
     "gatsby-plugin-typescript": "5.2.0",
     "gatsby-plugin-typography": "5.2.0",
     "gatsby-remark-images": "7.2.0",
-    "gatsby-remark-responsive-iframe": "6.2.0",
     "gatsby-source-filesystem": "5.2.0",
     "gatsby-transformer-sharp": "5.2.0",
     "gsap": "3.11.3",
