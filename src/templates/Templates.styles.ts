@@ -21,7 +21,6 @@ export const TableContents = styled.div`
   margin-bottom: var(--space-md);
   position: relative;
   z-index: auto;
-  border-left: 4px solid var(--color-border);
   border-radius: var(--border-radius-sm);
 
   &::after {

@@ -55,11 +55,7 @@ const BlogPostTemplate = ({ data: { mdx }, children }: Props): ReactElement => {
         </header>
         {tableOfContents && !isDesktop && (
           <TableContents>
-            <Anchor
-              targetOffset={200}
-              affix={false}
-              contents={tableOfContents as any}
-            />
+            <Anchor contents={tableOfContents as any} />
           </TableContents>
         )}
         <Container>
