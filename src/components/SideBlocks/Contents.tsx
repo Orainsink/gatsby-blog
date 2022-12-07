@@ -24,8 +24,8 @@ const hideContentStyle = css`
 `;
 
 const ContentsContainer = styled(BaseCol)<{
-  isFixed: boolean;
-  isHide: boolean;
+  $isFixed: boolean;
+  $isHide: boolean;
 }>`
   height: unset;
   max-width: 300px;
@@ -33,8 +33,8 @@ const ContentsContainer = styled(BaseCol)<{
     list-style-type: decimal;
     list-style-position: outside;
   }
-  ${({ isFixed }) => isFixed && fixedContentStyle}
-  ${({ isHide }) => isHide && hideContentStyle}
+  ${({ $isFixed }) => $isFixed && fixedContentStyle}
+  ${({ $isHide }) => $isHide && hideContentStyle}
 `;
 
 const ContentsBody = styled.div`
@@ -56,7 +56,7 @@ export const Contents = (props: Props): ReactElement | null => {
   if (!contents.items) return null;
 
   return (
-    <ContentsContainer flex="0 0 300px" isFixed={isFixed} isHide={isHide}>
+    <ContentsContainer flex="0 0 300px" $isFixed={isFixed} $isHide={isHide}>
       <Title>Contents</Title>
       <ContentsBody>
         <Anchor
