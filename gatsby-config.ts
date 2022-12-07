@@ -25,9 +25,9 @@ const categoryFileConfig: PluginRef[] = CATEGORY_NAMES.map((name) => ({
 
 const config: GatsbyConfig = {
   graphqlTypegen: !isProduction,
-  // flags: {
-  //   DEV_SSR: true,
-  // },
+  flags: {
+    DEV_SSR: true,
+  },
   siteMetadata: {
     title: `Orainsink's Blog`,
     author: {
@@ -166,17 +166,6 @@ const config: GatsbyConfig = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 890,
-            },
-          },
-          {
-            resolve: `gatsby-remark-autolink-headers`,
-            options: {
-              offsetY: REMARK_LINK_OFFSET,
-              className: REMARK_LINK_CLASS,
-              maintainCase: false,
-              removeAccents: true,
-              isIconAfterHeader: true,
-              elements: [`h2`, `h3`, `h4`],
             },
           },
         ],

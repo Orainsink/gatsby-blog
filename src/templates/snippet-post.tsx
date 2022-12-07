@@ -59,8 +59,6 @@ const SnippetPostTemplate = ({
         {tableOfContents && !isDesktop && (
           <TableContents>
             <Anchor
-              targetOffset={200}
-              affix={false}
               contents={tableOfContents as any}
             />
           </TableContents>

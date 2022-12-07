@@ -25,8 +25,13 @@ export const Anchor = ({ contents, ...rest }: AnchorProps): ReactElement => {
         </AntAnchor.Link>
       ));
     };
+
     return renderLink(content.items);
   }, []);
 
-  return <AntAnchor {...rest}>{renderLinks(contents)}</AntAnchor>;
+  return (
+    <AntAnchor {...rest} offsetTop={80} affix={false}>
+      {renderLinks(contents)}
+    </AntAnchor>
+  );
 };

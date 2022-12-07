@@ -14,44 +14,6 @@ export const Container = styled.section`
     border-radius: var(--border-radius-sm);
     margin: 0 0 var(--space-md);
   }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
-    margin: 0.67em 0;
-    padding: 0;
-    font-weight: var(--font-weight-xl);
-    text-rendering: optimizeLegibility;
-    line-height: 1.1;
-    color: var(--color-mdx-header);
-  }
-  h2 {
-    a {
-      transform: translateY(4px);
-    }
-    svg {
-      fill: var(--color-mdx-header);
-    }
-    &::before {
-      padding-left: var(--space-sm);
-      border-left: var(--space-xxs) solid var(--color-border);
-      content: '';
-      border-radius: var(--border-radius-sm);
-    }
-  }
-
-  // anchor offset
-  ${({ theme }) => theme.media.isNotMobile} {
-    *[id] {
-      padding-top: 90px;
-      margin-top: -70px;
-    }
-    & .anchor.before {
-      top: 70px;
-    }
-  }
 `;
 
 export const TableContents = styled.div`
