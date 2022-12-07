@@ -1,9 +1,5 @@
 import { ReactElement, ReactNode } from 'react';
-import { toString } from 'ramda';
-import { slug } from 'github-slugger';
 import styled, { css } from 'styled-components';
-
-const getId = (text: any) => slug(toString(text));
 
 const headerCommonStyles = css`
   margin: 0.67em 0;
@@ -34,13 +30,14 @@ const StyledH2 = styled.h2`
 export interface HxBlockProps {
   level: 2 | 3 | 4;
   children: ReactNode;
+  id: string;
 }
 export const HxBlock = ({
   level,
+  id,
   children,
   ...rest
 }: HxBlockProps): ReactElement | null => {
-  const id = getId(children || '');
   if (level === 2)
     return (
       <StyledH2 {...rest} id={id}>

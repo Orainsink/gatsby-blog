@@ -7,10 +7,6 @@ import { CATEGORY_NAMES } from './src/assets/constants/categories';
 import isProduction from './scripts/env';
 import algoliaQueries from './src/utils/algoliaQueries';
 import { DeepRequiredAndNonNullable } from './typings/custom';
-import {
-  REMARK_LINK_CLASS,
-  REMARK_LINK_OFFSET,
-} from './src/assets/constants/common';
 
 dotenv.config();
 
@@ -160,6 +156,14 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
+        mdxOptions: {
+          remarkPlugins: [
+            require(`remark-gfm`),
+          ],
+          rehypePlugins: [
+            require(`rehype-slug`),
+          ],
+        },
         gatsbyRemarkPlugins: [
           'gatsby-remark-responsive-iframe',
           {

@@ -40,7 +40,6 @@
     "gatsby-remark-responsive-iframe": "6.2.0",
     "gatsby-source-filesystem": "5.2.0",
     "gatsby-transformer-sharp": "5.2.0",
-    "github-slugger": "^2.0.0",
     "gsap": "3.11.3",
     "howler": "2.2.3",
     "jinrishici": "1.0.6",
@@ -56,6 +55,7 @@
     "react-typography": "0.16.20",
     "react-use": "^17.4.0",
     "recoil": "^0.7.6",
+    "remark-gfm": "^1",
     "siriwave": "2.3.0",
     "styled-components": "^5.3.6",
     "three": "0.147.0",
@@ -93,6 +93,7 @@
     "inquirer": "8.2.4",
     "lint-staged": ">=13.0.4",
     "prettier": "2.8.0",
+    "rehype-slug": "1",
     "ts-essentials": "^9.3.0",
     "ts-node": "^10.9.1"
   },
