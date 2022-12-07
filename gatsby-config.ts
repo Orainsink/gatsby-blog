@@ -156,14 +156,6 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
-        mdxOptions: {
-          remarkPlugins: [
-            require(`remark-gfm`),
-          ],
-          rehypePlugins: [
-            require(`rehype-slug`),
-          ],
-        },
         gatsbyRemarkPlugins: [
           'gatsby-remark-responsive-iframe',
           {
@@ -173,6 +165,14 @@ const config: GatsbyConfig = {
             },
           },
         ],
+        mdxOptions: {
+          remarkPlugins: [
+            require(`remark-gfm`),
+          ],
+          rehypePlugins: [
+            require(`rehype-slug`),
+          ],
+        },
       },
     },
     'gatsby-plugin-cname',
