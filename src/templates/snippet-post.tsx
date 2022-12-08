@@ -38,7 +38,7 @@ const SnippetPostTemplate = ({
     tableOfContents,
   } = mdx;
   const isDesktop = useMedia('isDesktop');
-  const hasTableOfContents = tableOfContents && isEmpty(tableOfContents);
+  const hasTableOfContents = tableOfContents && !isEmpty(tableOfContents);
 
   return (
     <Layout sideBlocks={isDesktop && <Contents contents={tableOfContents} />}>
