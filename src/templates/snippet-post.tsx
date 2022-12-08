@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { ReactElement, ReactNode } from 'react';
 import { graphql } from 'gatsby';
+import { isEmpty } from 'ramda';
 
 import { Layout } from '../layout/BlogLayout';
 import { Seo } from '../components/Seo';
@@ -37,6 +38,7 @@ const SnippetPostTemplate = ({
     tableOfContents,
   } = mdx;
   const isDesktop = useMedia('isDesktop');
+  const hasTableOfContents = tableOfContents && isEmpty(tableOfContents);
 
   return (
     <Layout sideBlocks={isDesktop && <Contents contents={tableOfContents} />}>
@@ -56,11 +58,9 @@ const SnippetPostTemplate = ({
             </License>
           </Subtitle>
         </header>
-        {tableOfContents && !isDesktop && (
+        {hasTableOfContents && !isDesktop && (
           <TableContents>
-            <Anchor
-              contents={tableOfContents as any}
-            />
+            <Anchor contents={tableOfContents as any} />
           </TableContents>
         )}
         <Container>

@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { graphql } from 'gatsby';
 import { ReactElement, ReactNode } from 'react';
+import { isEmpty } from 'ramda';
 
 import { Layout } from '../layout/BlogLayout';
 import { Seo } from '../components/Seo';
@@ -35,6 +36,8 @@ const BlogPostTemplate = ({ data: { mdx }, children }: Props): ReactElement => {
   } = mdx;
   const isDesktop = useMedia('isDesktop');
 
+  const hasTableOfContents = tableOfContents && isEmpty(tableOfContents);
+
   return (
     <Layout sideBlocks={isDesktop && <Contents contents={tableOfContents} />}>
       <Article>
@@ -53,7 +56,7 @@ const BlogPostTemplate = ({ data: { mdx }, children }: Props): ReactElement => {
             </License>
           </Subtitle>
         </header>
-        {tableOfContents && !isDesktop && (
+        {hasTableOfContents && !isDesktop && (
           <TableContents>
             <Anchor contents={tableOfContents as any} />
           </TableContents>
