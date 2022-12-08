@@ -26,11 +26,13 @@ interface PostItem {
 
 const ItemTitle = styled(Title)`
   & > a {
-    color: var(--color-mdx-header);
+    color: var(--color-mdx-header) !important;
     position: relative;
     transition: all 0.3s ease-out;
-    &:hover, &:active, &:focus {
-      color: var(--color-mdx-header-hover);
+    &:hover,
+    &:active,
+    &:focus {
+      color: var(--color-mdx-header-hover) !important;
     }
 
     &::after {
