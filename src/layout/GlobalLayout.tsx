@@ -2,6 +2,7 @@ import { useEffect, ReactElement, ReactNode, lazy, Suspense } from 'react';
 import { ConfigProvider, theme } from 'antd';
 import { ThemeProvider } from 'styled-components';
 import { useRecoilValue } from 'recoil';
+import { StyleProvider } from '@ant-design/cssinjs';
 
 import '../assets/css/global.css';
 
@@ -35,6 +36,7 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
   return (
     <ErrorBoundary>
       {/* {process.env.NODE_ENV === 'development' && <DebugObserver />} */}
+      <StyleProvider hashPriority="high">
         <ConfigProvider
           theme={{
             algorithm: isDark ? darkAlgorithm : defaultAlgorithm,
@@ -55,6 +57,7 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
             <BackTop />
           </ThemeProvider>
         </ConfigProvider>
+      </StyleProvider>
     </ErrorBoundary>
   );
 };

@@ -165,12 +165,8 @@ const config: GatsbyConfig = {
           },
         ],
         mdxOptions: {
-          remarkPlugins: [
-            require(`remark-gfm`),
-          ],
-          rehypePlugins: [
-            require(`rehype-slug`),
-          ],
+          remarkPlugins: [require(`remark-gfm`)],
+          rehypePlugins: [require(`rehype-slug`)],
         },
       },
     },
