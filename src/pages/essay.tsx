@@ -26,6 +26,7 @@ const EssayCards = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+  row-gap: var(--space-lg);
 
   .ant-card-cover {
     min-height: 180px;
