@@ -20,7 +20,7 @@ const categoryFileConfig: PluginRef[] = CATEGORY_NAMES.map((name) => ({
 }));
 
 const config: GatsbyConfig = {
-  graphqlTypegen: !isProduction,
+  // graphqlTypegen: !isProduction,
   flags: {
     DEV_SSR: true,
   },
