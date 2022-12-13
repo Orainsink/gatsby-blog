@@ -37,7 +37,7 @@ const darkStyle = css`
 `;
 
 const headerDropStyle = css`
-  .ant-tooltip-inner {
+  &.ant-tooltip .ant-tooltip-inner {
     color: var(--color-text);
     @supports (backdrop-filter: blur(20px)) {
       background: rgba(239, 239, 239, 0.8);
@@ -64,10 +64,10 @@ const StyledWrappedTooltip = styled(WrappedTooltip)<{
   isDark: boolean;
   headerDrop: boolean;
 }>`
-  .ant-tooltip-arrow {
+  &.ant-tooltip .ant-tooltip-arrow {
     display: none;
   }
-  .ant-tooltip-inner {
+  &.ant-tooltip .ant-tooltip-inner {
     color: rgba(255, 255, 255, 0.7);
     padding: 0;
     margin: 0;
@@ -79,7 +79,7 @@ const StyledWrappedTooltip = styled(WrappedTooltip)<{
       backdrop-filter: blur(20px);
     }
   }
-  .ant-slider-track {
+  &.ant-tooltip .ant-slider-track {
     background: linear-gradient(90deg, #7b8696 0%, #c7d2db 100%);
   }
 
@@ -95,7 +95,8 @@ const MusicIconContainer = styled.div`
 
 const MusicIcon = styled.svg<{ running: boolean }>`
   * {
-    animation-play-state: ${({ running }) => running ? 'running' : 'paused'} !important;
+    animation-play-state: ${({ running }) =>
+      running ? 'running' : 'paused'} !important;
   }
 `;
 
