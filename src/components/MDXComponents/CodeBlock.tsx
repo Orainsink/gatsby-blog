@@ -36,13 +36,15 @@ const LanguageLabel = styled.div`
 `;
 
 const CopyButton = styled(Button)`
-  ${labelSharedStyles}
-  transition: none;
-  font-family: inherit;
+  &.ant-btn {
+    ${labelSharedStyles}
+    transition: none;
+    font-family: inherit;
+  }
 `;
 
 const HighlightContainer = styled.div`
-  margin: var(--space-xl) 0 var(--space-md) 0;
+  margin: var(--space-xxl) 0 var(--space-md) 0;
   position: relative;
 `;
 
