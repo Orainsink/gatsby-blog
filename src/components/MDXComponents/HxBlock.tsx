@@ -2,29 +2,31 @@ import { ReactElement, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 const headerCommonStyles = css`
-  margin: 0.67em 0;
   padding: 0;
   font-weight: var(--font-weight-xl);
   text-rendering: optimizeLegibility;
   line-height: 1.1;
   color: var(--color-mdx-header);
+
+  a {
+    font-size: inherit !important;
+    font-weight: inherit !important;
+  }
 `;
 
 const StyledH3 = styled.h3`
+  margin: 0.67em 0;
   ${headerCommonStyles}
 `;
 const StyledH4 = styled.h4`
+  margin: 0.67em 0;
   ${headerCommonStyles}
 `;
 const StyledH2 = styled.h2`
   ${headerCommonStyles}
-
-  &::before {
-    padding-left: var(--space-sm);
-    border-left: var(--space-xxs) solid var(--color-border);
-    content: '';
-    border-radius: var(--border-radius-sm);
-  }
+  margin: 1.6em 0;
+  border-left: var(--space-xxs) solid var(--color-border);
+  padding-left: var(--space-xs);
 `;
 
 export interface HxBlockProps {
