@@ -24,9 +24,10 @@ const StyledH4 = styled.h4`
 `;
 const StyledH2 = styled.h2`
   ${headerCommonStyles}
-  margin: 1.6em 0;
+  border-radius: var(--border-radius-sm);
+  margin: var(--space-lg) 0;
   border-left: var(--space-xxs) solid var(--color-border);
-  padding-left: var(--space-xs);
+  padding-left: var(--space-md); ;
 `;
 
 export interface HxBlockProps {
