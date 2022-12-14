@@ -124,6 +124,9 @@ export const CategoryComponent = (): ReactElement => {
             hoverable
             onClick={() => navigate(item.path)}
             cover={item.img}
+            bodyStyle={{
+              background: 'var(--color-bg-component)',
+            }}
           >
             <Meta title={item.name} description={`${item.count}篇文章`} />
           </StyledCard>
