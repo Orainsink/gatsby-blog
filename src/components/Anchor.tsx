@@ -30,7 +30,7 @@ export const Anchor = ({ contents, ...rest }: AnchorProps): ReactElement => {
   }, []);
 
   return (
-    <AntAnchor {...rest} offsetTop={80} affix={false}>
+    <AntAnchor {...rest} offsetTop={80} affix={false} showInkInFixed={true}>
       {renderLinks(contents)}
     </AntAnchor>
   );
