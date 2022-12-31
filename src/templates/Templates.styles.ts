@@ -14,9 +14,6 @@ export const Container = styled.section`
     border-radius: var(--border-radius-sm);
     margin: 0 0 var(--space-md);
   }
-  p {
-    margin: 0;
-  }
 `;
 
 export const TableContents = styled.div`
