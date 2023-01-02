@@ -2,10 +2,7 @@ import { ReactElement, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 const headerCommonStyles = css`
-  padding: 0;
-  font-weight: var(--font-weight-xl);
   text-rendering: optimizeLegibility;
-  line-height: 1.1;
   color: var(--color-mdx-header);
 
   a {
@@ -15,11 +12,9 @@ const headerCommonStyles = css`
 `;
 
 const StyledH3 = styled.h3`
-  margin: 0.67em 0;
   ${headerCommonStyles}
 `;
 const StyledH4 = styled.h4`
-  margin: 0.67em 0;
   ${headerCommonStyles}
 `;
 const StyledH2 = styled.h2`
