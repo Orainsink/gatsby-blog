@@ -39,7 +39,9 @@ export const StyledCards = styled.div`
 export const StyledCard = styled(Card)`
   margin: 10px 0;
   overflow: hidden;
-  background: var(--color-bg-component);
+  && {
+    background: var(--color-bg-component);
+  }
 
   .ant-card-cover {
     overflow: hidden;

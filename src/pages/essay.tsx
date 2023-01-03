@@ -16,7 +16,9 @@ import { DeepRequiredAndNonNullable } from '../../typings/custom';
 const EssayCard = styled(Card)`
   width: 45%;
   max-width: 440px;
-  margin: var(--space-md);
+  && {
+    background: var(--color-bg-component);
+  }
   ${({ theme }) => theme.media.isMobile} {
     width: 90%;
   }
