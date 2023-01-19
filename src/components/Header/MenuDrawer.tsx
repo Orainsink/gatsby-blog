@@ -70,12 +70,6 @@ const MenuDrawer = (): ReactElement => {
         style={{ fontSize: '26px' }}
         onClick={() => setVisible(true)}
       />
-      {/* <DrawerBtn
-        size="middle"
-        ghost
-        icon={}
-        
-      /> */}
       <Drawer
         title={<DrawerTitle>MENU</DrawerTitle>}
         open={visible}
