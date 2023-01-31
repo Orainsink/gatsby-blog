@@ -21,7 +21,6 @@ export const createPages: GatsbyNode['createPages'] = ({
   /**set your Template here */
   const componentTemplate = {
     tech: Template,
-    leetcode: Template,
     essay: Template,
     snippet: SnippetTemplate,
     about: AboutTemplate,

@@ -1,5 +1,6 @@
 import Typography from 'typography';
 import { typographyThemeNoriega as noriega } from '../assets/theme/typography';
+import { isDevelopment } from '../../scripts/env';
 
 // @ts-ignore
 delete noriega.googleFonts;
@@ -7,7 +8,7 @@ delete noriega.googleFonts;
 const typography = new Typography(noriega);
 
 // Hot reload typography in development.
-if (process.env.NODE_ENV !== `production`) {
+if (isDevelopment) {
   typography.injectStyles();
 }
 

@@ -4,7 +4,7 @@ import type { GatsbyConfig, PluginRef } from 'gatsby';
 import path from 'path';
 
 import { CATEGORY_NAMES } from './src/assets/constants/categories';
-import isProduction from './scripts/env';
+import { isProduction } from './scripts/env';
 import algoliaQueries from './src/utils/algoliaQueries';
 import { DeepRequiredAndNonNullable } from './typings/custom';
 
@@ -20,7 +20,7 @@ const categoryFileConfig: PluginRef[] = CATEGORY_NAMES.map((name) => ({
 }));
 
 const config: GatsbyConfig = {
-  // graphqlTypegen: !isProduction,
+  graphqlTypegen: !isProduction && !!process.env.CODEGEN,
   flags: {
     DEV_SSR: true,
   },
@@ -58,7 +58,7 @@ const config: GatsbyConfig = {
     isProduction && {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: process.env.TRACKING_ID,
+        trackingId: env.TRACKING_ID,
       },
     },
     {
@@ -197,7 +197,7 @@ const config: GatsbyConfig = {
         tracesSampleRate: 0.8,
       },
     },
-    !!env.WEBPACK_BUNDLE_ANALYZER && {
+    !!process.env.WEBPACK_BUNDLE_ANALYZER && {
       resolve: 'gatsby-plugin-webpack-bundle-analyzer',
       options: {
         analyzerPort: 4396,
@@ -207,9 +207,9 @@ const config: GatsbyConfig = {
     isProduction && {
       resolve: `gatsby-plugin-algolia`,
       options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_ADMIN_KEY,
-        indexName: process.env.ALGOLIA_INDEX_NAME,
+        appId: env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: env.ALGOLIA_ADMIN_KEY,
+        indexName: env.ALGOLIA_INDEX_NAME,
         queries: algoliaQueries,
         enablePartialUpdates: true,
         matchFields: ['slug'],

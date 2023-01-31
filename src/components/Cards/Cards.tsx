@@ -36,14 +36,14 @@ const getCount = (category: string, group: readonly GroupItem[]): number => {
 const getColumn = (group: readonly GroupItem[]) => {
   return [
     {
-      category: 'leetcode',
-      name: 'leetcode',
-      path: '/leetcode',
-      count: getCount('leetcode', group),
+      category: 'collection',
+      name: 'collection',
+      path: '/collection',
+      count: getCount('collection', group),
       img: (
         <StaticImage
           src="../../../content/assets/leetcode.png"
-          alt="leetcode"
+          alt="collection"
           placeholder="blurred"
           className="card-static-image"
         />
