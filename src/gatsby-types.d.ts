@@ -2651,6 +2651,19 @@ declare namespace Queries {
     } | null;
   };
 
+  type getCollectionImagesQueryVariables = Exact<{ [key: string]: never }>;
+
+  type getCollectionImagesQuery = {
+    readonly allFile: {
+      readonly nodes: ReadonlyArray<{
+        readonly childImageSharp: {
+          readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData;
+          readonly fluid: { readonly originalName: string | null } | null;
+        } | null;
+      }>;
+    };
+  };
+
   type getEssayDataQueryVariables = Exact<{ [key: string]: never }>;
 
   type getEssayDataQuery = {
