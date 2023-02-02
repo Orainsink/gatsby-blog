@@ -41,8 +41,8 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: path.resolve('content/collection'),
-        name: `collection`,
+        path: path.resolve('content/resume'),
+        name: `resume`,
       },
     },
     {

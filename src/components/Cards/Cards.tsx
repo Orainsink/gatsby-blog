@@ -36,22 +36,8 @@ const getCount = (category: string, group: readonly GroupItem[]): number => {
 const getColumn = (group: readonly GroupItem[]) => {
   return [
     {
-      category: 'collection',
-      name: 'collection',
-      path: '/collection',
-      count: getCount('collection', group),
-      img: (
-        <StaticImage
-          src="../../../content/assets/leetcode.png"
-          alt="collection"
-          placeholder="blurred"
-          className="card-static-image"
-        />
-      ),
-    },
-    {
       category: 'snippet',
-      name: 'cheat sheet',
+      name: '小抄',
       path: '/snippet',
       count: getCount('snippet', group),
       img: (
@@ -86,6 +72,19 @@ const getColumn = (group: readonly GroupItem[]) => {
         <StaticImage
           src="../../../content/assets/javascript.png"
           alt="tech"
+          placeholder="blurred"
+          className="card-static-image"
+        />
+      ),
+    },
+    {
+      category: 'resume',
+      name: '简历 - TBD',
+      path: '/resume',
+      img: (
+        <StaticImage
+          src="../../../content/assets/leetcode.png"
+          alt="resume"
           placeholder="blurred"
           className="card-static-image"
         />
@@ -128,7 +127,12 @@ export const CategoryComponent = (): ReactElement => {
               background: 'var(--color-bg-component)',
             }}
           >
-            <Meta title={item.name} description={`${item.count}篇文章`} />
+            {
+              <Meta
+                title={item.name}
+                description={item.count ? `${item.count}篇文章` : null}
+              />
+            }
           </StyledCard>
         ))}
       </StyledCards>
