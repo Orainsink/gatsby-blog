@@ -90,7 +90,7 @@ export const WordCloud = memo(
             ellipticity: 1.5,
             classes: 'word-cloud-cons',
             backgroundColor: 'transparent',
-            fontFamily: 'Finger Paint, sans-serif',
+            fontFamily: 'Lato, sans-serif',
             color: isDark ? 'random-light' : 'random-dark',
             click: (item: string[]) => {
               setFilter({ curTag: item[0] });

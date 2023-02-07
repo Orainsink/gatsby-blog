@@ -11,7 +11,7 @@ const params = {
   size: 50,
   font: 'Futura, Trebuchet MS, Arial, sans-serif',
   style: 'Bold',
-  lineSpacing: 40,
+  lineSpacing: 50,
   color: '#C7C7C7',
 };
 
@@ -59,7 +59,7 @@ export const Text = memo(
       // draw text
       words.forEach((word, index) => {
         let left = canvas.width / 2;
-        context.fillText(word, left, lineHeight * index);
+        context.fillText(word, left, lineHeight * index + 10);
       });
       let texture = new Texture(canvas);
       texture.needsUpdate = true;
