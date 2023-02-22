@@ -5,10 +5,10 @@ import styled from 'styled-components';
 import { Layout } from '../layout/BlogLayout';
 import { Seo } from '../components/Seo';
 import { Comment } from '../components/Comment';
-import { Poem } from '../components/Poem';
 import { Container } from './Templates.styles';
 import { MdxParser } from '../components/MDXComponents';
 import { MoogleScene } from '../components/SideBlocks/MoogleScene';
+import { AboutSite } from '../components/AboutSite';
 
 const AboutContainer = styled(Container)`
   padding: var(--space-md);
@@ -16,7 +16,7 @@ const AboutContainer = styled(Container)`
 
 const AboutPostTemplate = ({ children }: PageProps<{}>): ReactElement => (
   <Layout sideBlocks={<MoogleScene />}>
-    <Poem />
+    <AboutSite />
     <AboutContainer>
       <MdxParser>{children}</MdxParser>
     </AboutContainer>

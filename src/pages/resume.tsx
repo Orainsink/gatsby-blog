@@ -1,33 +1,27 @@
 import { ReactElement } from 'react';
-import { PageProps, graphql } from 'gatsby';
-import { Seo } from '../components/Seo';
-import { DeepRequiredAndNonNullable } from '../../typings/custom';
+import styled from 'styled-components';
 
-type Data = DeepRequiredAndNonNullable<Queries.getResumeImagesQuery>;
-const ResumePage = ({ data }: PageProps<Data>): ReactElement => {
-  return <></>;
+import { Seo } from '../components/Seo';
+import {
+  SkillsSection,
+  AboutSection,
+  useElementTween,
+} from '../components/Resume';
+
+const ResumeContainer = styled.div`
+  background: var(--color-bg-layout);
+`;
+
+const ResumePage = (): ReactElement => {
+  useElementTween();
+  return (
+    <ResumeContainer>
+      <AboutSection />
+      <SkillsSection />
+    </ResumeContainer>
+  );
 };
 
 export default ResumePage;
 
-export const Head = () => <Seo title="简历-归档" />;
-
-export const pageQuery = graphql`
-  query getResumeImages {
-    allFile(filter: { sourceInstanceName: { eq: "resume" } }) {
-      nodes {
-        childImageSharp {
-          fluid {
-            originalName
-          }
-          gatsbyImageData(
-            width: 100
-            height: 100
-            layout: CONSTRAINED
-            placeholder: BLURRED
-          )
-        }
-      }
-    }
-  }
-`;
+export const Head = () => <Seo title="简历" />;
