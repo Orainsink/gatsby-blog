@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import styled from 'styled-components';
 
 import { Section } from './Resume.styles';
-import { AboutSite } from '../../components/AboutSite';
+import { AboutSite } from './AboutSite';
 
 const AboutSectionContainer = styled(Section)`
   * {
@@ -39,17 +39,17 @@ export const AboutSection = (): ReactElement => (
       }}
       data-el
     >
-      我是 莫沉 一个前端程序员。
+      我是 莫沉 一个前端程序员
     </h2>
     <div>
       <p data-el>
-        工作近5年，有小程序，数据可视化，大型SaaS系统。 <br />
+        工作近5年，有小程序，数据可视化，大型SaaS系统 <br />
         两年 node 全栈和 offshore 项目经验
       </p>
       <p data-el>
-        熟悉前端技术架构，性能优化及前端安全。
+        熟悉前端技术架构，性能优化及前端安全
         <br />
-        熟悉常用设计模式，算法，敏捷开发流程
+        熟悉常用的设计模式，算法，敏捷方法论
       </p>
       <div data-el>
         <ContactMe href="mailto:ywt1250066597@gmail.com">Contact me</ContactMe>

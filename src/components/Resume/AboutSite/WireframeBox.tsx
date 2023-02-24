@@ -8,30 +8,33 @@ const wireframeBackgroundStyles = css`
 const WireframeLine = styled.div<{ type: LineType }>`
   ${wireframeBackgroundStyles}
   position: absolute;
-  transition: all 1s ease-in-out;
 
   ${({ type }) => {
     switch (type) {
       case 'left':
         return css`
+          transition: height 1s ease-in-out;
           left: 0;
           width: 5px;
           height: 0;
         `;
       case 'right':
         return css`
+          transition: height 1s ease-in-out;
           right: 0;
           width: 5px;
           height: 0;
         `;
       case 'top':
         return css`
+          transition: width 1s ease-in-out;
           top: 0;
           width: 0;
           height: 5px;
         `;
       case 'bottom':
         return css`
+          transition: width 1s ease-in-out;
           bottom: 0;
           width: 0;
           height: 5px;

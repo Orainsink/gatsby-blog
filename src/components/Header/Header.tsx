@@ -2,6 +2,7 @@ import { useEffect, useState, memo, ReactElement } from 'react';
 import { Col, Row } from 'antd';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useLocation } from '@reach/router';
 
 import { MyPlayer } from '../MyPlayer/MyPlayer';
 import { SearchDrawer } from '../Algolia/SearchDrawer';
@@ -52,6 +53,7 @@ export const Header = memo((): ReactElement | null => {
   const isDesktop = useMedia('isDesktop');
   const isMobile = useMedia('isMobile');
   const hasMounted = useHasMounted();
+  const location = useLocation();
 
   const hasArrow = useRecoilValue(hasArrowAtom);
   const [scene, setScene] = useRecoilState(sceneAtom);
@@ -118,6 +120,7 @@ export const Header = memo((): ReactElement | null => {
       }}
       id="header"
       active={headerDrop}
+      $isResume={location.pathname.startsWith('/resume')}
     >
       <Row justify="space-around" align="middle">
         <Col style={{ display: 'flex', alignItems: 'center' }}>

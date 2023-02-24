@@ -56,9 +56,24 @@ const activeStyles = css`
   padding-top: 0;
   padding-bottom: 0;
   box-shadow: var(--box-shadow-secondary);
+  li::after {
+    background: var(--color-text);
+  }
 `;
 
-export const HeaderContainer = styled.header<{ active: boolean }>`
+const resumeStyles = css`
+  color: var(--color-text);
+  background: none;
+  box-shadow: none;
+  li::after {
+    background: var(--color-text);
+  }
+`;
+
+export const HeaderContainer = styled.header<{
+  active: boolean;
+  $isResume: boolean;
+}>`
   position: absolute;
   top: 0;
   left: 0;
@@ -75,6 +90,16 @@ export const HeaderContainer = styled.header<{ active: boolean }>`
   }
 
   ${({ active }) => active && activeStyles}
+
+  ${({ active, $isResume }) => {
+    if ($isResume) {
+      if (!active) {
+        return resumeStyles;
+      } else {
+        return `opacity: 0;`;
+      }
+    }
+  }}
 `;
 
 export const Author = styled(Col)`
