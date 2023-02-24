@@ -31,7 +31,7 @@ export const ThemeBtn = memo((): ReactElement | null => {
         checked={isDay}
       />
       <Btn htmlFor="toggle--daynight">
-        <Feature isDay={isDay} />
+        <Feature $isDay={isDay} />
       </Btn>
     </DayNightToggleContainer>
   );

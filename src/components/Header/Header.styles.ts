@@ -71,7 +71,7 @@ const resumeStyles = css`
 `;
 
 export const HeaderContainer = styled.header<{
-  active: boolean;
+  $active: boolean;
   $isResume: boolean;
 }>`
   position: absolute;
@@ -89,11 +89,11 @@ export const HeaderContainer = styled.header<{
     padding: 10px 15px;
   }
 
-  ${({ active }) => active && activeStyles}
+  ${({ $active }) => $active && activeStyles}
 
-  ${({ active, $isResume }) => {
+  ${({ $active, $isResume }) => {
     if ($isResume) {
-      if (!active) {
+      if (!$active) {
         return resumeStyles;
       } else {
         return `opacity: 0;`;

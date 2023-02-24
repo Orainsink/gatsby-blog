@@ -119,7 +119,7 @@ export const Header = memo((): ReactElement | null => {
         top: scene ? '100vh' : '0',
       }}
       id="header"
-      active={headerDrop}
+      $active={headerDrop}
       $isResume={location.pathname.startsWith('/resume')}
     >
       <Row justify="space-around" align="middle">
