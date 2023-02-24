@@ -5,23 +5,23 @@ export const useAnimation = () => {
   useEffect(() => {
     const leftLineTween = gsap.to('div[data-line="left"]', {
       height: '100%',
-      duration: 0.6,
+      duration: 0.5,
       stagger: 0.2,
     });
     const rightLineTween = gsap.to('div[data-line="right"]', {
       height: '100%',
-      duration: 0.4,
-      stagger: 0.3,
+      duration: 0.3,
+      stagger: 0.2,
     });
     const bottomLineTween = gsap.to('div[data-line="bottom"]', {
       width: '100%',
-      duration: 0.6,
+      duration: 0.5,
       stagger: 0.2,
     });
     const topLineTween = gsap.to('div[data-line="top"]', {
       width: '100%',
-      duration: 0.4,
-      stagger: 0.3,
+      duration: 0.3,
+      stagger: 0.2,
     });
 
     const leftColumnTween = gsap.to('div[data-column]', {
