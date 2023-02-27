@@ -29,7 +29,6 @@ export const useAnimation = () => {
         {
           top: 40,
           ease: 'power2.out',
-          delay: 1,
         },
         {
           top: -20,
@@ -38,6 +37,16 @@ export const useAnimation = () => {
         },
         {
           top: -80,
+          ease: 'power2.out',
+          delay: 1,
+        },
+        {
+          top: -140,
+          ease: 'power2.out',
+          delay: 1,
+        },
+        {
+          top: 40,
           ease: 'power2.out',
           delay: 1,
         },
