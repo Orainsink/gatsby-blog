@@ -113,7 +113,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "check-types": "tsc --noEmit --project ./tsconfig.json",
-    "new": "ts-node ./scripts/new-post.ts",
+    "new": "ts-node ./scripts/newPost.ts",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" ",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
     "lint:fix": "yarn lint --fix",
