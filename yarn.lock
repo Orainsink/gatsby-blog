@@ -1212,6 +1212,13 @@
   dependencies:
     regenerator-runtime "^0.13.10"
 
+"@babel/runtime@^7.20.13":
+  version "7.21.0"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.21.0.tgz#5b55c9d394e5fcf304909a8b00c07dc217b56673"
+  integrity sha512-xwII0//EObnq89Ji5AKYQaRYiW/nZ3llSv29d49IuxPhKbtJoLP+9QUUZ4nVragQVtaVGeZrpB+ZtG/Pdy/POw==
+  dependencies:
+    regenerator-runtime "^0.13.11"
+
 "@babel/template@^7.16.7", "@babel/template@^7.18.10":
   version "7.18.10"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.18.10.tgz#6f9134835970d1dbf0835c0d100c9f38de0c5e71"
@@ -7241,12 +7248,12 @@ gatsby-plugin-sitemap@6.2.0:
     minimatch "^3.1.2"
     sitemap "^7.0.0"
 
-gatsby-plugin-styled-components@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-styled-components/-/gatsby-plugin-styled-components-6.2.0.tgz#c48814b0f2263a2af76a7b3cd6d231df688684f3"
-  integrity sha512-Rvn1K3HDNC+OuxRv8cw/yrBNcJ6TN+3lzDcLibMANpx32OP2hMGFVWNFNgx15mqRCq2gaawZNt6TVte6drgDxA==
+gatsby-plugin-styled-components@^6.7.0:
+  version "6.7.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-styled-components/-/gatsby-plugin-styled-components-6.7.0.tgz#208a106a87867cb7f4f10c56ff12ec203e904389"
+  integrity sha512-naQ3LfYqgFLOdRiKLpxcWalcVLzeliLBx2uH0kSVNoJKkMmfyDo8g9kV81Jdkp9Fm1H/AMN1qT317w1vaqSiwQ==
   dependencies:
-    "@babel/runtime" "^7.15.4"
+    "@babel/runtime" "^7.20.13"
 
 gatsby-plugin-svgr@3.0.0-beta.0:
   version "3.0.0-beta.0"
@@ -12154,7 +12161,7 @@ regenerator-runtime@^0.11.0:
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
   integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
 
-regenerator-runtime@^0.13.10, regenerator-runtime@^0.13.7:
+regenerator-runtime@^0.13.10, regenerator-runtime@^0.13.11, regenerator-runtime@^0.13.7:
   version "0.13.11"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.11.tgz#f6dca3e7ceec20590d07ada785636a90cdca17f9"
   integrity sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==

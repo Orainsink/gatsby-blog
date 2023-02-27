@@ -32,7 +32,7 @@
     "gatsby-plugin-offline": "6.2.0",
     "gatsby-plugin-sharp": "5.2.0",
     "gatsby-plugin-sitemap": "6.2.0",
-    "gatsby-plugin-styled-components": "^6.2.0",
+    "gatsby-plugin-styled-components": "^6.7.0",
     "gatsby-plugin-svgr": "3.0.0-beta.0",
     "gatsby-plugin-typescript": "5.2.0",
     "gatsby-plugin-typography": "5.2.0",

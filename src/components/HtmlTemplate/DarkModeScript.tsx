@@ -2,6 +2,7 @@ const rootElement = 'document.body';
 
 export const DarkModeScript = () => (
   <script
+    key="dark-mode-script"
     dangerouslySetInnerHTML={{
       __html: `
     void function() {
