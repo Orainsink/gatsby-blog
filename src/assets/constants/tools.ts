@@ -38,9 +38,9 @@ export const TOOLS: Tool[] = [
     url: 'https://github.com/zenghongtu/react-use-chinese/blob/master/README.md',
   },
   {
-    name: 'box-shadow',
+    name: 'git-alias',
     icon: ShadowSvg,
-    url: 'https://html-css-js.com/css/generator/box-shadow',
+    url: 'https://www.hschne.at/git-aliases',
   },
   {
     name: 'regexr',
