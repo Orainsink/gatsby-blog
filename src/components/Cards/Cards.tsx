@@ -36,19 +36,6 @@ const getCount = (category: string, group: readonly GroupItem[]): number => {
 const getColumn = (group: readonly GroupItem[]) => {
   return [
     {
-      category: 'resume',
-      name: '简历',
-      path: '/resume',
-      img: (
-        <StaticImage
-          src="../../../content/assets/resume.png"
-          alt="resume"
-          placeholder="blurred"
-          className="card-static-image"
-        />
-      ),
-    },
-    {
       category: 'snippet',
       name: '小抄',
       path: '/snippet',
@@ -85,6 +72,19 @@ const getColumn = (group: readonly GroupItem[]) => {
         <StaticImage
           src="../../../content/assets/javascript.png"
           alt="tech"
+          placeholder="blurred"
+          className="card-static-image"
+        />
+      ),
+    },
+    {
+      category: 'resume',
+      name: '简历',
+      path: '/resume',
+      img: (
+        <StaticImage
+          src="../../../content/assets/resume.png"
+          alt="resume"
           placeholder="blurred"
           className="card-static-image"
         />
