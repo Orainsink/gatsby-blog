@@ -20,14 +20,11 @@ export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({
       <RecoilRoot>{element}</RecoilRoot>
     </StyleSheetManager>
   );
-
-  // return <RecoilRoot>{element}</RecoilRoot>;
 };
 
 export const onRenderBody: GatsbySSR['onRenderBody'] = ({
   setHeadComponents,
   pathname,
-  setPreBodyComponents,
   setHtmlAttributes,
 }) => {
   const sheet = sheetByPathname.get(pathname);

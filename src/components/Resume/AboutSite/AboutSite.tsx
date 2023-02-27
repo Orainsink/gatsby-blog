@@ -35,13 +35,13 @@ const Page = styled.div`
   height: 100%;
 `;
 
-const Column = styled.div<{ type: 'left' | 'right' }>`
+const Column = styled.div<{ $type: 'left' | 'right' }>`
   position: absolute;
   top: 40px;
   bottom: 0;
 
-  ${({ type }) => {
-    switch (type) {
+  ${({ $type }) => {
+    switch ($type) {
       case 'left':
         return css`
           right: 35%;
@@ -73,7 +73,7 @@ export const AboutSite = () => {
       <Wireframe>
         <Page>
           <WireframeBox />
-          <Column type="left" data-column>
+          <Column $type="left" data-column>
             <WireframePicture type="tall">
               <WireframeControls />
             </WireframePicture>
@@ -86,7 +86,7 @@ export const AboutSite = () => {
             <WireframePicture type="right" />
             <WireframeText type="left" />
           </Column>
-          <Column type="right">
+          <Column $type="right">
             <WireframePicture />
             <Break />
             <WireframeText />

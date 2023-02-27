@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-const TextContainer = styled.div<{ type: TextType }>`
+const TextContainer = styled.div<{ $type: TextType }>`
   overflow: hidden;
 
-  ${({ type }) => {
-    switch (type) {
+  ${({ $type }) => {
+    switch ($type) {
       case 'left':
         return css`
           float: left;
@@ -41,7 +41,7 @@ const TextLine = styled.div<{ incomplete?: boolean }>`
 
 type TextType = 'left' | 'right' | 'default';
 export const WireframeText = ({ type = 'default' }: { type?: TextType }) => (
-  <TextContainer type={type}>
+  <TextContainer $type={type}>
     <TextLine data-text />
     <TextLine data-text />
     <TextLine incomplete data-text="incomplete" />

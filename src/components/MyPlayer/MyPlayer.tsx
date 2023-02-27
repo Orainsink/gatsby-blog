@@ -93,10 +93,10 @@ const MusicIconContainer = styled.div`
   transform: translateY(0.2em);
 `;
 
-const MusicIcon = styled.svg<{ running: boolean }>`
+const MusicIcon = styled.svg<{ $running: boolean }>`
   * {
-    animation-play-state: ${({ running }) =>
-      running ? 'running' : 'paused'} !important;
+    animation-play-state: ${({ $running }) =>
+      $running ? 'running' : 'paused'} !important;
   }
 `;
 
@@ -137,7 +137,7 @@ export const MyPlayer = memo(() => {
     >
       <MusicIconContainer>
         <MusicIcon
-          running={playing && loaded}
+          $running={playing && loaded}
           xmlSpace="preserve"
           viewBox="0 0 100 100"
           y="0"

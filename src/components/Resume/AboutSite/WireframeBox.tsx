@@ -5,12 +5,12 @@ type LineType = 'left' | 'right' | 'top' | 'bottom';
 const wireframeBackgroundStyles = css`
   background-color: var(--color-text);
 `;
-const WireframeLine = styled.div<{ type: LineType }>`
+const WireframeLine = styled.div<{ $type: LineType }>`
   ${wireframeBackgroundStyles}
   position: absolute;
 
-  ${({ type }) => {
-    switch (type) {
+  ${({ $type }) => {
+    switch ($type) {
       case 'left':
         return css`
           transition: height 1s ease-in-out;
@@ -45,9 +45,9 @@ const WireframeLine = styled.div<{ type: LineType }>`
 
 export const WireframeBox = () => (
   <>
-    <WireframeLine type="left" data-line="left"></WireframeLine>
-    <WireframeLine type="right" data-line="right"></WireframeLine>
-    <WireframeLine type="top" data-line="top"></WireframeLine>
-    <WireframeLine type="bottom" data-line="bottom"></WireframeLine>
+    <WireframeLine $type="left" data-line="left"></WireframeLine>
+    <WireframeLine $type="right" data-line="right"></WireframeLine>
+    <WireframeLine $type="top" data-line="top"></WireframeLine>
+    <WireframeLine $type="bottom" data-line="bottom"></WireframeLine>
   </>
 );

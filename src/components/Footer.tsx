@@ -65,7 +65,7 @@ const FooterPhrase = styled.div`
   }
 `;
 
-const FooterValley = styled.div<{ isDark: boolean }>`
+const FooterValley = styled.div<{ $isDark: boolean }>`
   width: 100%;
   height: 250px;
   position: absolute;
@@ -74,7 +74,7 @@ const FooterValley = styled.div<{ isDark: boolean }>`
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(${({ isDark }) => (isDark ? darkValley : valley)});
+  background-image: url(${({ $isDark }) => ($isDark ? darkValley : valley)});
 `;
 
 /**Footer */
@@ -83,7 +83,7 @@ export const Footer = (): ReactElement => {
 
   return (
     <FooterContainer>
-      <FooterValley isDark={isDark} />
+      <FooterValley $isDark={isDark} />
       <FooterMain>
         <FooterPhrase>
           <div>

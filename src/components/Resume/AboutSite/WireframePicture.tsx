@@ -5,7 +5,7 @@ import { WireframeBox } from './WireframeBox';
 
 type PictureType = 'left' | 'right' | 'tall' | 'default';
 
-const PictureContainer = styled.div<{ type: PictureType }>`
+const PictureContainer = styled.div<{ $type: PictureType }>`
   position: relative;
 
   overflow: hidden;
@@ -13,8 +13,8 @@ const PictureContainer = styled.div<{ type: PictureType }>`
   width: 100%;
   height: 80px;
 
-  ${({ type }) => {
-    switch (type) {
+  ${({ $type }) => {
+    switch ($type) {
       case 'left':
         return css`
           float: left;
@@ -44,7 +44,7 @@ export const WireframePicture = ({
   type?: PictureType;
   children?: ReactNode;
 }) => (
-  <PictureContainer type={type}>
+  <PictureContainer $type={type}>
     <WireframeBox />
     {children}
   </PictureContainer>

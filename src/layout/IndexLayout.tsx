@@ -40,7 +40,7 @@ const IndexWrapper = styled(Wrapper)<{ wrapperClass: string }>`
   }}
 `;
 
-const ClickTip = styled.div<{ show: boolean }>`
+const ClickTip = styled.div<{ $show: boolean }>`
   color: var(--color-text);
   font-size: var(--font-size-lg);
   opacity: 0;
@@ -52,7 +52,7 @@ const ClickTip = styled.div<{ show: boolean }>`
   margin: auto;
   text-align: center;
 
-  ${({ show }) => show && `opacity: 1;`}
+  ${({ $show }) => $show && `opacity: 1;`}
 `;
 
 interface Props {
@@ -88,7 +88,7 @@ export const Layout = ({ children }: Props): ReactElement => {
 
   return (
     <IndexWrapper wrapperClass={wrapperClass}>
-      {scene && !skip && <ClickTip show={trigger}>Click to slide</ClickTip>}
+      {scene && !skip && <ClickTip $show={trigger}>Click to slide</ClickTip>}
       <Bg />
       <Main>
         <Container>

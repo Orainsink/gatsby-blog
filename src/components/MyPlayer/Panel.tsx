@@ -21,9 +21,9 @@ const List = styled.ul`
 `;
 
 const LiWrap = styled.li<{
-  active: boolean;
-  isDark: boolean;
-  headerDrop: boolean;
+  $active: boolean;
+  $isDark: boolean;
+  $headerDrop: boolean;
 }>`
   margin: 0;
   padding: 0.3em var(--space-md);
@@ -37,24 +37,24 @@ const LiWrap = styled.li<{
     background-color: rgba(255, 255, 255, 0.1);
   }
 
-  ${({ active }) =>
-    active &&
+  ${({ $active }) =>
+    $active &&
     css`
       padding: var(--space-md);
       background-color: rgba(0, 0, 0, 0.1);
     `}
 
-  ${({ active, isDark, headerDrop }) =>
-    active &&
-    !isDark &&
-    headerDrop &&
+  ${({ $active, $isDark, $headerDrop }) =>
+    $active &&
+    !$isDark &&
+    $headerDrop &&
     `
     padding: var(--space-md);
     background-color: rgba(0, 0, 0, 0.1);`}
 
-  ${({ isDark, headerDrop }) =>
-    !isDark &&
-    headerDrop &&
+  ${({ $isDark, $headerDrop }) =>
+    !$isDark &&
+    $headerDrop &&
     css`
       &:hover {
         background-color: rgba(0, 0, 0, 0.1);
@@ -85,7 +85,7 @@ const WaveAme = keyframes`
 }
 `;
 
-const PlayingIcon = styled.div<{ running: boolean }>`
+const PlayingIcon = styled.div<{ $running: boolean }>`
   position: relative;
   width: 25px;
   height: 22px;
@@ -121,8 +121,8 @@ const PlayingIcon = styled.div<{ running: boolean }>`
   }
 
   * {
-    animation-play-state: ${({ running }) =>
-      running ? 'running' : 'paused'} !important;
+    animation-play-state: ${({ $running }) =>
+      $running ? 'running' : 'paused'} !important;
   }
 `;
 
@@ -159,13 +159,13 @@ const SongsList = memo(
           <LiWrap
             key={song.id}
             onClick={() => onClick(song)}
-            active={song.id === id}
-            isDark={isDark}
-            headerDrop={headerDrop}
+            $active={song.id === id}
+            $isDark={isDark}
+            $headerDrop={headerDrop}
           >
             <Name>{song.name}</Name>
             {song.id === id && loaded && (
-              <PlayingIcon running={playing && playerVisible}>
+              <PlayingIcon $running={playing && playerVisible}>
                 <div />
                 <div />
                 <div />
