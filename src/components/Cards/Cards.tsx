@@ -25,8 +25,14 @@ interface GroupItem {
  * @param group
  * @returns
  */
-const getCount = (category: string, group: readonly GroupItem[]): number => {
-  return group.find((item) => item.fieldValue === category)?.totalCount || 0;
+const getCountString = (
+  category: string,
+  group: readonly GroupItem[]
+): string | null => {
+  const count =
+    group.find((item) => item.fieldValue === category)?.totalCount || 0;
+
+  return count ? `${count}篇文章` : null;
 };
 /**
  * get category info
@@ -39,7 +45,7 @@ const getColumn = (group: readonly GroupItem[]) => {
       category: 'snippet',
       name: '小抄',
       path: '/snippet',
-      count: getCount('snippet', group),
+      description: getCountString('snippet', group),
       img: (
         <StaticImage
           src="../../../content/assets/snippet.png"
@@ -53,7 +59,7 @@ const getColumn = (group: readonly GroupItem[]) => {
       category: 'essay',
       name: '随笔',
       path: '/essay',
-      count: getCount('essay', group),
+      description: getCountString('essay', group),
       img: (
         <StaticImage
           src="../../../content/assets/随笔.png"
@@ -67,7 +73,7 @@ const getColumn = (group: readonly GroupItem[]) => {
       category: 'tech',
       name: '技术',
       path: '/tech',
-      count: getCount('tech', group),
+      description: getCountString('tech', group),
       img: (
         <StaticImage
           src="../../../content/assets/javascript.png"
@@ -127,12 +133,7 @@ export const CategoryComponent = (): ReactElement => {
               background: 'var(--color-bg-component)',
             }}
           >
-            {
-              <Meta
-                title={item.name}
-                description={item.count ? `${item.count}篇文章` : null}
-              />
-            }
+            {<Meta title={item.name} description={item.description} />}
           </StyledCard>
         ))}
       </StyledCards>
