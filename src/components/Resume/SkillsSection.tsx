@@ -9,7 +9,8 @@ export const SkillsSection = (): ReactElement => (
       <p>
         <strong> 语言: </strong> Javascript, Typescript <br />
         <strong> 前端: </strong> React, Vue <br />
-        <strong> 后端: </strong> Express, Graphql, REST, PostgreSQL <br />
+        <strong> 后端: </strong> Nodejs, Express, Graphql, REST, PostgreSQL
+        <br />
         <strong> 运维: </strong> AWS, Docker <br />
         <strong> 英语: </strong> CEFR B1, CET-6 <br />
         <strong> 设计: </strong> Figma, PS <br />
