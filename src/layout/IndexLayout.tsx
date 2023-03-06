@@ -25,9 +25,9 @@ const Container = styled.div`
   ${containerStyles}
 `;
 
-const IndexWrapper = styled(Wrapper)<{ wrapperClass: string }>`
-  ${({ wrapperClass }) => {
-    switch (wrapperClass) {
+const IndexWrapper = styled(Wrapper)<{ $wrapperClass: string }>`
+  ${({ $wrapperClass }) => {
+    switch ($wrapperClass) {
       case 'disActive':
         return `top: 0;`;
       case 'trigger':
@@ -87,7 +87,7 @@ export const Layout = ({ children }: Props): ReactElement => {
   }, []);
 
   return (
-    <IndexWrapper wrapperClass={wrapperClass}>
+    <IndexWrapper $wrapperClass={wrapperClass}>
       {scene && !skip && <ClickTip $show={trigger}>Click to slide</ClickTip>}
       <Bg />
       <Main>
