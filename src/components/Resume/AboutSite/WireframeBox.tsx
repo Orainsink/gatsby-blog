@@ -2,11 +2,8 @@ import styled, { css } from 'styled-components';
 
 type LineType = 'left' | 'right' | 'top' | 'bottom';
 
-const wireframeBackgroundStyles = css`
-  background-color: var(--color-text);
-`;
 const WireframeLine = styled.div<{ $type: LineType }>`
-  ${wireframeBackgroundStyles}
+  background-color: var(--color-text);
   position: absolute;
 
   ${({ $type }) => {

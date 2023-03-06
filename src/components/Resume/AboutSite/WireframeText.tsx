@@ -8,13 +8,11 @@ const TextContainer = styled.div<{ $type: TextType }>`
       case 'left':
         return css`
           float: left;
-
           width: 40%;
         `;
       case 'right':
         return css`
           float: right;
-
           width: 40%;
         `;
       case 'default':
