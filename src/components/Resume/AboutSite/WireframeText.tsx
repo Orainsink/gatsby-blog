@@ -27,13 +27,13 @@ const TextContainer = styled.div<{ $type: TextType }>`
   }}
 `;
 
-const TextLine = styled.div<{ incomplete?: boolean }>`
+const TextLine = styled.div<{ $incomplete?: boolean }>`
   width: 0;
   height: 5px;
   margin-bottom: 20px;
   background-color: var(--color-text);
-  ${({ incomplete }) =>
-    !incomplete &&
+  ${({ $incomplete }) =>
+    !$incomplete &&
     css`
       width: 0;
     `}
@@ -44,6 +44,6 @@ export const WireframeText = ({ type = 'default' }: { type?: TextType }) => (
   <TextContainer $type={type}>
     <TextLine data-text />
     <TextLine data-text />
-    <TextLine incomplete data-text="incomplete" />
+    <TextLine $incomplete data-text="incomplete" />
   </TextContainer>
 );
