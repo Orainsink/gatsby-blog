@@ -33,6 +33,8 @@ Gitflow 或者 feature 分支开发会更安全。
 
 code owner 可以定义不同团队所拥有的代码。这样当其他团队修改到了某团队私有的代码的时候，需要该团队 approve 才能 merge 到受保护的分支。
 
+为避免麻烦，禁止随意引用其他团队的组件。如果有复用需求，则须将团队私有的组件抽离出私有 folder，成为公共组件。
+
 ## 架构设计
 
 ### Feature toggle - Optimizely
