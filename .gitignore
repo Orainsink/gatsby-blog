@@ -77,3 +77,4 @@ yarn-error.log
 .vscode/
 # test
 __snapshots__/
+*.drawio
