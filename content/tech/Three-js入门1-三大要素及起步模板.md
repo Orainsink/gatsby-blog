@@ -13,7 +13,7 @@ password:
 
 粗略地扫完了《webGl 编程指南》这本 webGL 入门书过后,发现直接操纵 webGL 提供的 API 有点复杂,于是开始学习成熟的 webGl 封装库.我们的学习路径按照入门->做出东西->深入研究,进行学习.Three.js 诞生到现在已经比较成熟,功能强大,而且更新频率快,作为入门的库来说再合适不过了.
 
-Three.js 的学习资料来源不多,大部分学习资料来自于[webGL 中文网](http://www.hewebgl.com/)(网站从 2012 年办到 2019 年了,webgl 还是没有火,个人感觉即便是 5G 时代这个技术也不会在互联网领域内火,一方面是是 webGl 的性能虽然已经提升了很多但相对本地应用来说还是比较羸弱,另一方面 2d canvas 已经能做出炫酷的页面了,3d 最多只能当个玩具,只是某些方向比如互联网医疗,在线教育和大数据 ppt 展示等可能有需求而已.学习 webGl 纯粹是兴趣驱动.)
+Three.js 的学习资料来源不多,大部分学习资料来自于[webGL 中文网](https://www.hewebgl.com/)(网站从 2012 年办到 2019 年了,webgl 还是没有火,个人感觉即便是 5G 时代这个技术也不会在互联网领域内火,一方面是是 webGl 的性能虽然已经提升了很多但相对本地应用来说还是比较羸弱,另一方面 2d canvas 已经能做出炫酷的页面了,3d 最多只能当个玩具,只是某些方向比如互联网医疗,在线教育和大数据 ppt 展示等可能有需求而已.学习 webGl 纯粹是兴趣驱动.)
 
 webGl 相关代码用框架的模块化编程的话,结构会更清晰,但是学习过程中考虑效率问题直接按教程来就行了.做项目的时候自行变通.
 
@@ -23,7 +23,7 @@ webGl 相关代码用框架的模块化编程的话,结构会更清晰,但是学
 
 [dragon/threejs 教程](https://teakki.com/p/58a2a21af0d40775548c7e68)
 
-[webGL 中文网教程](http://www.hewebgl.com/)
+[webGL 中文网教程](https://www.hewebgl.com/)
 
 [three.js 官方文档](https://threejs.org/docs/index.html#manual/zh/introduction/Creating-a-scene).
 
@@ -78,7 +78,7 @@ far — 摄像机视锥体远端面。
 - 在这种投影模式下，无论物体距离相机距离远或者近，在最终渲染的图片中物体的大小都保持不变。 这对于渲染 2D 场景或者 UI 元素是非常有用的。
 - 构造器的 6 个参数,构造了一个完整的矩形,一般来说以浏览器窗口的宽度和高度作为视景体的高度和宽度，相机正好在窗口的中心点上。这也是我们一般的设置方法，基本上为了方便，我们不会设置其他的值.
 
-![img](http://www.hewebgl.com/attached/image/20130530/20130530145859_920.jpg)
+![img](https://www.hewebgl.com/attached/image/20130530/20130530145859_920.jpg)
 
 ### 2.构建透视投影相机`THREE.PerspectiveCamera`
 
@@ -99,7 +99,7 @@ far — 摄像机视锥体远端面
 
 这一投影模式被用来模拟人眼所看到的景象，它是 3D 场景的渲染中使用得最普遍的投影模式.
 
-![img](http://www.hewebgl.com/attached/image/20130530/20130530151418_279.jpg)
+![img](https://www.hewebgl.com/attached/image/20130530/20130530151418_279.jpg)
 
 ### 3.相机的位置属性属性:up,position,lookAt
 

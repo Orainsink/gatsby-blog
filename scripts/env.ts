@@ -1,6 +1,6 @@
-import { env } from 'process';
-
 const isProduction =
-  ['production', 'stage'].indexOf(env.NODE_ENV || 'stage') !== -1;
+  ['production', 'stage'].indexOf(process.env.NODE_ENV || 'stage') !== -1;
 
-export default isProduction;
+const isDevelopment = process.env.NODE_ENV === 'development';
+
+export { isProduction, isDevelopment };

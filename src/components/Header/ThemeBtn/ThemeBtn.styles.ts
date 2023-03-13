@@ -120,7 +120,7 @@ export const Checkbox = styled.input`
   ${basedBtnStyles}
 `;
 
-export const Feature = styled.span<{ isDay: boolean }>`
+export const Feature = styled.span<{ $isDay: boolean }>`
   display: block;
   position: absolute;
   top: 4px;
@@ -155,8 +155,8 @@ export const Feature = styled.span<{ isDay: boolean }>`
       ${toggleBtnBorderColorNight} -4px 12px 0 -1px;
   }
 
-  ${({ isDay }) =>
-    isDay &&
+  ${({ $isDay }) =>
+    $isDay &&
     css`
       opacity: 0;
       box-shadow: rgba(255, 255, 255, 0.1) 15px -1px 0 -2px,

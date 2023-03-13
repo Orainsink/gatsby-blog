@@ -1276,7 +1276,6 @@ declare namespace Queries {
     readonly copyright: Maybe<Scalars['Boolean']>;
     readonly date: Maybe<Scalars['Date']>;
     readonly description: Maybe<Scalars['String']>;
-    readonly index: Maybe<Scalars['Int']>;
     readonly permalink: Maybe<Scalars['Int']>;
     readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
     readonly title: Maybe<Scalars['String']>;
@@ -1295,7 +1294,6 @@ declare namespace Queries {
     readonly copyright: InputMaybe<FieldSelectorEnum>;
     readonly date: InputMaybe<FieldSelectorEnum>;
     readonly description: InputMaybe<FieldSelectorEnum>;
-    readonly index: InputMaybe<FieldSelectorEnum>;
     readonly permalink: InputMaybe<FieldSelectorEnum>;
     readonly tags: InputMaybe<FieldSelectorEnum>;
     readonly title: InputMaybe<FieldSelectorEnum>;
@@ -1307,7 +1305,6 @@ declare namespace Queries {
     readonly copyright: InputMaybe<BooleanQueryOperatorInput>;
     readonly date: InputMaybe<DateQueryOperatorInput>;
     readonly description: InputMaybe<StringQueryOperatorInput>;
-    readonly index: InputMaybe<IntQueryOperatorInput>;
     readonly permalink: InputMaybe<IntQueryOperatorInput>;
     readonly tags: InputMaybe<StringQueryOperatorInput>;
     readonly title: InputMaybe<StringQueryOperatorInput>;
@@ -1319,7 +1316,6 @@ declare namespace Queries {
     readonly copyright: InputMaybe<SortOrderEnum>;
     readonly date: InputMaybe<SortOrderEnum>;
     readonly description: InputMaybe<SortOrderEnum>;
-    readonly index: InputMaybe<SortOrderEnum>;
     readonly permalink: InputMaybe<SortOrderEnum>;
     readonly tags: InputMaybe<SortOrderEnum>;
     readonly title: InputMaybe<SortOrderEnum>;
@@ -2703,31 +2699,6 @@ declare namespace Queries {
     } | null;
   };
 
-  type getLeetcodePageDataQueryVariables = Exact<{ [key: string]: never }>;
-
-  type getLeetcodePageDataQuery = {
-    readonly allFile: {
-      readonly group: ReadonlyArray<{ readonly fieldValue: string | null }>;
-      readonly edges: ReadonlyArray<{
-        readonly node: {
-          readonly childMdx: {
-            readonly id: string;
-            readonly excerpt: string | null;
-            readonly frontmatter: {
-              readonly date: string | null;
-              readonly title: string | null;
-              readonly description: string | null;
-              readonly categories: string | null;
-              readonly tags: ReadonlyArray<string | null> | null;
-              readonly index: number | null;
-            } | null;
-            readonly fields: { readonly slug: string | null } | null;
-          } | null;
-        };
-      }>;
-    };
-  };
-
   type getMoogleFileQueryVariables = Exact<{ [key: string]: never }>;
 
   type getMoogleFileQuery = {
@@ -2754,6 +2725,19 @@ declare namespace Queries {
             readonly categories: string | null;
           } | null;
         };
+      }>;
+    };
+  };
+
+  type getResumeImagesQueryVariables = Exact<{ [key: string]: never }>;
+
+  type getResumeImagesQuery = {
+    readonly allFile: {
+      readonly nodes: ReadonlyArray<{
+        readonly childImageSharp: {
+          readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData;
+          readonly fluid: { readonly originalName: string | null } | null;
+        } | null;
       }>;
     };
   };

@@ -6,7 +6,7 @@ tags: [性能]
 categories: tech
 ---
 
-> 参考资料 [腾讯前端团队-前端离线化探索](http://www.alloyteam.com/2019/07/web-applications-offline/)
+> 参考资料 [腾讯前端团队-前端离线化探索](https://www.alloyteam.com/2019/07/web-applications-offline/)
 
 ## 为什么要前端离线化
 
@@ -36,7 +36,7 @@ categories: tech
 
 谈及改善用户焦虑情绪，很有必要介绍下乐观 UI[[Optimistic User Interfaces](https://guide.meteor.com/ui-ux.html#optimistic-ui)]。乐观 UI 是一种界面的响应模式，它推荐前端在服务端接收响应之前，先更新 UI，一旦服务器返回，再变更为实际结果。
 
-[![img](http://www.alloyteam.com/wp-content/uploads/2019/07/9-1.png)](http://www.alloyteam.com/wp-content/uploads/2019/07/9-1.png)
+[![img](https://www.alloyteam.com/wp-content/uploads/2019/07/9-1.png)](https://www.alloyteam.com/wp-content/uploads/2019/07/9-1.png)
 
 比如，用户点击按钮，前端更新数据状态为成功，请求到达后台，服务器响应，更新前端数据。因为 99% 的响应都是成功的，所以只有少部分用户需要退回到失败状态。
 
@@ -64,7 +64,7 @@ sw 对于我们的离线化方案而言，有一个致命的问题，就是 ios 
 
 事实上，我们的大部分离线场景将是会在本地独立 app 之中，借助客户端能力，我们可以把 web 代码包提前内置到客户端之中，然后使用一套代码更新机制，前端代码缓存问题可以得到解决。离线代码加载和更新逻辑本身不复杂，下面是一个简化图，具体特定业务场景下还需要考虑比如是否灰度用户，代码版本和数据是否同步等问题。
 
-[![img](http://www.alloyteam.com/wp-content/uploads/2019/07/1-1-e1563807031838.png)](http://www.alloyteam.com/wp-content/uploads/2019/07/1-1-e1563807031838.png)
+[![img](https://www.alloyteam.com/wp-content/uploads/2019/07/1-1-e1563807031838.png)](https://www.alloyteam.com/wp-content/uploads/2019/07/1-1-e1563807031838.png)
 
 离线化方案的复杂度之一在于离线数据的处理，及如何对设计之初就没有考虑过 “Offline First” 的旧代码进行最小改造处理，既优先考虑在离线状态的基本功能，在线时再进一步增强。基于离线和在线逻辑解耦的考虑，我们应该本着最大限度减少对原有在线逻辑侵入的原则去思考离线化方案。我们看下常见的离线数据前端方案。
 
@@ -76,14 +76,14 @@ PouchDB 是一个跨平台 javascript 数据库，内部封装了 IndexDB、WebS
 
 Sync 接口专门用于同步前后的数据：
 
-[![img](http://www.alloyteam.com/wp-content/uploads/2019/07/2-1.png)](http://www.alloyteam.com/wp-content/uploads/2019/07/2-1.png)
+[![img](https://www.alloyteam.com/wp-content/uploads/2019/07/2-1.png)](https://www.alloyteam.com/wp-content/uploads/2019/07/2-1.png)
 
 在中小型项目，特别是那种后台可以由前端接手的全栈式开发，pouchDB 是一种不错的离线数据处理方案。此方案问题是压缩后任然有 130 多 kb，并且依赖于特定后台方案，不够通用。
 
 ### Redux-Offline
 
 对于项目使用了 redux 数据管理的项目而言，最快捷的办法，就是使用 redux-offline，其基本思路是通过 redux middleware 监听每次 acton 数据变化，然后将需要离线的数据序列化到本地（对于 web 浏览而言存储兼容顺序是 indexdb—websql—localstorage），等下一次刷新页面时，优先从本地还原数据还原到 store 中。这种方案的好处是快速配置需要缓存的 API 接口到中间件即可，充分结合了 redux 特性，对于想要达到简单优先展示离线数据的应用而言，是非常不错的。
-[![img](http://www.alloyteam.com/wp-content/uploads/2019/07/4-1-e1563807797814.png)](http://www.alloyteam.com/wp-content/uploads/2019/07/4-1-e1563807797814.png)
+[![img](https://www.alloyteam.com/wp-content/uploads/2019/07/4-1-e1563807797814.png)](https://www.alloyteam.com/wp-content/uploads/2019/07/4-1-e1563807797814.png)
 
 但这种思路带来的问题是操作数据不够灵活，本地储存数据无法方便的和其他非 redux 逻辑共享。在离线数据量较大的情况，一次性读写，并同时序列化大量本地数据也会带来性能问题，对于频繁有数据变更的场景也不合适。
 
@@ -95,14 +95,14 @@ Sync 接口专门用于同步前后的数据：
 
 由于 IndexDB 原生操作 api 比较粗糙，我们分装了一套通用 DB 底层操作库，同时将 api 接口抽象出来，以 git 子仓库的形式在各业务放公用。这里首先简化了前端业务层 DB 本地读写、排序等逻辑， 便于相互关联项目的共用，其次将 DB 抽象出来也是为了更好的方便业务本身可以不依赖 IndexDB 本身，可以结合客户端特性，给底层数据库替换及进行优化提供了便捷，或者对于纯 web 端，为向下兼容可以使用 WebSql、LocalStorage 等兼容提供了拓展。
 
-[![img](http://www.alloyteam.com/wp-content/uploads/2019/07/5-1-1024x593.png)](http://www.alloyteam.com/wp-content/uploads/2019/07/5-1-1024x593.png)
+[![img](https://www.alloyteam.com/wp-content/uploads/2019/07/5-1-1024x593.png)](https://www.alloyteam.com/wp-content/uploads/2019/07/5-1-1024x593.png)
 
 对于前端代码架构上，如何借助 redux 将原有的在线请求后台接口，快速优雅的转换到对本地的读写呢？
 
-[![img](http://www.alloyteam.com/wp-content/uploads/2019/07/6-1.png)](http://www.alloyteam.com/wp-content/uploads/2019/07/6-1.png)
+[![img](https://www.alloyteam.com/wp-content/uploads/2019/07/6-1.png)](https://www.alloyteam.com/wp-content/uploads/2019/07/6-1.png)
 
 比较合适的做法是，单独抽出一层 redux 中间件，通过配置文件的形式，将需要离线的 API 初始化时传进去，然后在 middleware 中，完成对 DB 的读写操作，将数据组装好给下一个 reducer，我们可以叫 offline 中间件。为了更进一步合理的对 api 参数分解出来，我们也需要在 offline 中间件前将接口请求层再抽象一个中间件，我们叫 API middleware ，这样经过离线中间件的 api 参数已经被分解，可以直接作为查询 db 使用，同时也能服务于后台请求。
-[![img](http://www.alloyteam.com/wp-content/uploads/2019/07/7-1-e1563806790758.png)](http://www.alloyteam.com/wp-content/uploads/2019/07/7-1-e1563806790758.png)
+[![img](https://www.alloyteam.com/wp-content/uploads/2019/07/7-1-e1563806790758.png)](https://www.alloyteam.com/wp-content/uploads/2019/07/7-1-e1563806790758.png)
 
 ### 离线优先与数据同步
 
@@ -111,7 +111,7 @@ Sync 接口专门用于同步前后的数据：
 数据同步分为本地向后台同步，和后台向本地同步。后者需要增加增量变更的逻辑，用于解决离线下用户数据由于其他原因发生的变更，比如当用户登录多台设备数据移动、删除等场景（前端离线增量变更涉及很多细节及业务相关考虑点，这里暂不细述）。
 
 如何记录本地的数据变更然后同步到后台呢？这里我们需要定义一个数据变更的抽象，比如 Change
-[![img](http://www.alloyteam.com/wp-content/uploads/2019/07/8-1.png)](http://www.alloyteam.com/wp-content/uploads/2019/07/8-1.png)
+[![img](https://www.alloyteam.com/wp-content/uploads/2019/07/8-1.png)](https://www.alloyteam.com/wp-content/uploads/2019/07/8-1.png)
 
 里面功能主要是定义变更类型，字段等。每次抵达 offline 中间件的数据通过一个数据同步管理器对变更进行注册，待合适的时机再去同步。数据同步管理器主要接受 change，进行 diff 管理，判断数据是否有变化，及去重管理，最后再触发异步同步任务。同步可能会失败，这里的超时，重试，失败退回处理都需要加以注意，保证同步的事务性。
 

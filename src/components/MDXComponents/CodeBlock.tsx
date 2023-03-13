@@ -48,6 +48,11 @@ const HighlightContainer = styled.div`
   position: relative;
 `;
 
+const copyToClipboard = async (code: string) => {
+  if (typeof code !== 'string') return;
+  await navigator.clipboard.writeText(code);
+};
+
 export interface CodeBlockProps {
   children: string;
   className: string;
@@ -63,20 +68,17 @@ export const CodeBlock = memo(
     const [copied, setCopied] = useState(false);
     const isDark = useIsDark();
 
-    const copyToClipboard = (code: string) => {
-      if (typeof code !== 'string') return;
-      const el = document.createElement('textarea');
-      el.value = code;
-      el.setAttribute('readonly', '');
-      el.style.position = 'absolute';
-      el.style.left = '-9999px';
-      document.body.appendChild(el);
-      el.select();
-      document.execCommand('copy');
-      document.body.removeChild(el);
-    };
-
     const theme = isDark ? vsDark : lightTheme;
+
+    const handleCopy = async () => {
+      try {
+        await copyToClipboard(children);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 3000);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
     return (
       <Highlight
@@ -89,14 +91,7 @@ export const CodeBlock = memo(
           <HighlightContainer>
             <LabelsContainer>
               <LanguageLabel>{language}</LanguageLabel>
-              <CopyButton
-                type="link"
-                onClick={() => {
-                  copyToClipboard(children);
-                  setCopied(true);
-                  setTimeout(() => setCopied(false), 3000);
-                }}
-              >
+              <CopyButton type="link" onClick={handleCopy}>
                 {copied ? <SmileOutlined /> : <CopyOutlined />}
                 {copied ? 'succeed' : 'copy'}
               </CopyButton>

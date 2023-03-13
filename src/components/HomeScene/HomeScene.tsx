@@ -1,4 +1,11 @@
-import { memo, useCallback, lazy, Suspense, ReactElement } from 'react';
+import {
+  memo,
+  useCallback,
+  lazy,
+  Suspense,
+  ReactElement,
+  useEffect,
+} from 'react';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 import styled, { css, keyframes } from 'styled-components';
 import { selector, useRecoilValue, useSetRecoilState } from 'recoil';
@@ -22,7 +29,7 @@ const triggerStyles = css`
 `;
 
 const CanvasContainer = styled.div<{
-  status: 'disActive' | 'trigger' | 'active';
+  $status: 'disActive' | 'trigger' | 'active';
 }>`
   position: absolute;
   z-index: 10;
@@ -33,8 +40,8 @@ const CanvasContainer = styled.div<{
   transition: all 0.3s ease-out;
   top: 0;
 
-  ${({ status }) => {
-    switch (status) {
+  ${({ $status }) => {
+    switch ($status) {
       case 'disActive':
         return disActiveStyles;
       case 'active':
@@ -132,7 +139,7 @@ export const HomeScene = memo((): ReactElement => {
 
   return (
     <ReactScrollWheelHandler downHandler={handleScene}>
-      <CanvasContainer status={dynamicSceneStyle}>
+      <CanvasContainer $status={dynamicSceneStyle}>
         <Suspense fallback={<DynamicFallback />}>
           <Dynamic />
         </Suspense>

@@ -10,7 +10,7 @@ import _path from 'path';
 import inquirer from 'inquirer';
 import { mapObjIndexed } from 'ramda';
 
-import { CATEGORY_NAMES } from '../src/assets/constants/categories';
+import { fileSystemNames } from '../src/assets/constants/categories';
 
 const exec = childProcess.exec;
 
@@ -25,7 +25,7 @@ const QUESTIONS = [
     type: 'list',
     name: 'categories',
     message: 'Choose a category:',
-    choices: CATEGORY_NAMES,
+    choices: fileSystemNames,
   },
   {
     type: 'input',

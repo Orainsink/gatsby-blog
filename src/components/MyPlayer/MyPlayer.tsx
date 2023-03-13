@@ -61,8 +61,8 @@ const headerDropStyle = css`
 `;
 
 const StyledWrappedTooltip = styled(WrappedTooltip)<{
-  isDark: boolean;
-  headerDrop: boolean;
+  $isDark: boolean;
+  $headerDrop: boolean;
 }>`
   &.ant-tooltip .ant-tooltip-arrow {
     display: none;
@@ -83,9 +83,9 @@ const StyledWrappedTooltip = styled(WrappedTooltip)<{
     background: linear-gradient(90deg, #7b8696 0%, #c7d2db 100%);
   }
 
-  ${({ isDark }) => isDark && darkStyle}
+  ${({ $isDark }) => $isDark && darkStyle}
 
-  ${({ isDark, headerDrop }) => headerDrop && !isDark && headerDropStyle}
+  ${({ $isDark, $headerDrop }) => $headerDrop && !$isDark && headerDropStyle}
 `;
 
 const MusicIconContainer = styled.div`
@@ -93,10 +93,10 @@ const MusicIconContainer = styled.div`
   transform: translateY(0.2em);
 `;
 
-const MusicIcon = styled.svg<{ running: boolean }>`
+const MusicIcon = styled.svg<{ $running: boolean }>`
   * {
-    animation-play-state: ${({ running }) =>
-      running ? 'running' : 'paused'} !important;
+    animation-play-state: ${({ $running }) =>
+      $running ? 'running' : 'paused'} !important;
   }
 `;
 
@@ -130,14 +130,14 @@ export const MyPlayer = memo(() => {
     <StyledWrappedTooltip
       title={<Panel />}
       trigger={['click']}
-      headerDrop={headerDrop}
-      isDark={isDark}
+      $headerDrop={headerDrop}
+      $isDark={isDark}
       getPopupContainer={() => document.getElementById('header')!}
       onOpenChange={setPlayerVisible}
     >
       <MusicIconContainer>
         <MusicIcon
-          running={playing && loaded}
+          $running={playing && loaded}
           xmlSpace="preserve"
           viewBox="0 0 100 100"
           y="0"

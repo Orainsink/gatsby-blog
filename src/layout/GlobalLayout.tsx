@@ -35,7 +35,7 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
 
   return (
     <ErrorBoundary>
-      {/* {process.env.NODE_ENV === 'development' && <DebugObserver />} */}
+      {/* {isDevelopment && <DebugObserver />} */}
       <StyleProvider hashPriority="high">
         <ConfigProvider
           theme={{

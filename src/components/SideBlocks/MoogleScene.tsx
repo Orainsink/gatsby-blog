@@ -19,6 +19,7 @@ import styled from 'styled-components';
 import { useMedia, useIsDark } from '../../hooks';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 import { BaseCol } from './SideBlocks.styles';
+import { isDevelopment } from '../../../scripts/env';
 
 const CanvasContainer = styled(BaseCol)`
   padding: 0;
@@ -147,7 +148,7 @@ const Moogle = () => {
           args={['#ffffff']}
           position={[0, 20, -40]}
         />
-        {process.env.NODE_ENV === 'development' && <gridHelper />}
+        {isDevelopment && <gridHelper />}
         <Suspense fallback={null}>
           <Modal url={url} isDark={isDark} />
         </Suspense>

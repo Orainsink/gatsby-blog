@@ -25,8 +25,14 @@ interface GroupItem {
  * @param group
  * @returns
  */
-const getCount = (category: string, group: readonly GroupItem[]): number => {
-  return group.find((item) => item.fieldValue === category)?.totalCount || 0;
+const getCountString = (
+  category: string,
+  group: readonly GroupItem[]
+): string | null => {
+  const count =
+    group.find((item) => item.fieldValue === category)?.totalCount || 0;
+
+  return count ? `${count}篇文章` : null;
 };
 /**
  * get category info
@@ -36,24 +42,10 @@ const getCount = (category: string, group: readonly GroupItem[]): number => {
 const getColumn = (group: readonly GroupItem[]) => {
   return [
     {
-      category: 'leetcode',
-      name: 'leetcode',
-      path: '/leetcode',
-      count: getCount('leetcode', group),
-      img: (
-        <StaticImage
-          src="../../../content/assets/leetcode.png"
-          alt="leetcode"
-          placeholder="blurred"
-          className="card-static-image"
-        />
-      ),
-    },
-    {
       category: 'snippet',
-      name: 'cheat sheet',
+      name: '小抄',
       path: '/snippet',
-      count: getCount('snippet', group),
+      description: getCountString('snippet', group),
       img: (
         <StaticImage
           src="../../../content/assets/snippet.png"
@@ -67,7 +59,7 @@ const getColumn = (group: readonly GroupItem[]) => {
       category: 'essay',
       name: '随笔',
       path: '/essay',
-      count: getCount('essay', group),
+      description: getCountString('essay', group),
       img: (
         <StaticImage
           src="../../../content/assets/随笔.png"
@@ -81,11 +73,25 @@ const getColumn = (group: readonly GroupItem[]) => {
       category: 'tech',
       name: '技术',
       path: '/tech',
-      count: getCount('tech', group),
+      description: getCountString('tech', group),
       img: (
         <StaticImage
           src="../../../content/assets/javascript.png"
           alt="tech"
+          placeholder="blurred"
+          className="card-static-image"
+        />
+      ),
+    },
+    {
+      category: 'resume',
+      name: '简历',
+      path: '/resume',
+      description: '曲终人散',
+      img: (
+        <StaticImage
+          src="../../../content/assets/resume.png"
+          alt="resume"
           placeholder="blurred"
           className="card-static-image"
         />
@@ -115,7 +121,7 @@ export const CategoryComponent = (): ReactElement => {
     <CardSection>
       <StyledTitle>
         <StyledMarkSvg />
-        欢迎光临！博主 莫沉 是个切图仔，学习Go和webGL中。
+        欢迎光临！博主 莫沉 是个切图仔。
       </StyledTitle>
       <StyledCards>
         {getColumn(group).map((item) => (
@@ -128,7 +134,7 @@ export const CategoryComponent = (): ReactElement => {
               background: 'var(--color-bg-component)',
             }}
           >
-            <Meta title={item.name} description={`${item.count}篇文章`} />
+            {<Meta title={item.name} description={item.description} />}
           </StyledCard>
         ))}
       </StyledCards>

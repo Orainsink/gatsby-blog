@@ -11,12 +11,6 @@ import { PostList } from '../components/PostList';
 import { HomeScene } from '../components/HomeScene/HomeScene';
 import { DeepRequiredAndNonNullable, FileEdge } from '../../typings/custom';
 
-const ListHeaderText = styled.h5`
-  text-align: center;
-  padding: 2em 0;
-  margin: 0;
-`;
-
 type Data = DeepRequiredAndNonNullable<Queries.getPageDataQuery>;
 const Index = ({ data }: PageProps<Data>): ReactElement => {
   const posts = data.allMdx.edges.map((edge) => ({
@@ -32,7 +26,16 @@ const Index = ({ data }: PageProps<Data>): ReactElement => {
       <Layout>
         <Poem />
         <CategoryComponent />
-        <ListHeaderText>最近五篇文章</ListHeaderText>
+        {/* Styled component here breaks the hydrate, and I don't know why */}
+        <h5
+          style={{
+            textAlign: 'center',
+            padding: '1rem 0',
+            margin: 0,
+          }}
+        >
+          最近五篇文章
+        </h5>
         <PostList posts={posts} />
       </Layout>
     </>

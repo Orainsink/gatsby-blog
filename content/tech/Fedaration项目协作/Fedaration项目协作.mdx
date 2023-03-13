@@ -1,0 +1,98 @@
+---
+categories: tech
+description: 多Team协同的项目，如何进行代码管理，架构设计，沟通交流和敏捷实践等总结
+date: 2023-01-20 14:02:11
+title: Fedaration项目协作
+tags: [规范]
+---
+
+> 从项目的 Admin 角度来思考多 Team 协同的项目，如何进行代码管理，架构设计和沟通交流等。
+> 多 Team 协作的项目面临几大问题：1.沟通困难 2.代码腐败速度快（人员流动快，外包水平层次不齐等）3.核心人员较少，容易疲于奔命
+
+## 代码管理
+
+### 微前端（服务）
+
+理想情况下 微前端（服务）是应对 Fedaration 项目最好的解决方案。但大多数项目刚开始的时候考虑不到最后会被接手这么多次（倾向于满足当前需求的设计而不是超前设计），对于遗留系统来说，微前端改造难度较高。
+
+微前端为了保持设计的统一性以及共享 context，最好是采用 Monorepos 或者有一个共享的组件库和规范。
+
+### 单一 repo
+
+即一个大型项目，所有人工作在一个 repo 下
+
+#### 分支策略
+
+主干分支开发(TBD)会极大增加被 block 的风险，对 CI/CD 等基建要求较高，但通常来说，对于协同的项目，主干分支带来的风险大于收益。
+
+Gitflow 或者 feature 分支开发会更安全。
+
+#### Code owner
+
+[Github - about-code-owners](https://docs.github.com/zh/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)
+
+code owner 可以定义不同团队所拥有的代码。这样当其他团队修改到了某团队私有的代码的时候，需要该团队 approve 才能 merge 到受保护的分支。
+
+为避免麻烦，禁止随意引用其他团队的组件。如果有复用需求，则须将团队私有的组件抽离出私有 folder，成为公共组件。
+
+## 架构设计
+
+### Feature toggle - Optimizely
+
+Feature toggle 即所有特性都在主干分支上，但是需要用不同的 toggle 来切换特性。当我们需要阶段性发布一些需要在 prod 环境测试的功能时可以使用。
+
+主干分支开发比较依赖 Feature toggle，其他分支策略也可以使用 Feature toggle，以让开发中的功能在上线前更稳定。
+
+可以用[Optimizely](https://www.optimizely.com)管理 toggle 。它也可以用来做 A/B 测，灰度发布之类的。
+
+### 容器化
+
+接手别人的项目时，最难的一步就是把它跑起来。
+
+容器化可以很好地解决这一问题。
+
+### Automatic
+
+自动脚本： 将常用操作脚本化，将常见代码模版化。
+
+基建：CI/CD，单元测试和 E2E 测试，回滚机制，分析平台(Sentry, newRelic)等。
+
+自动报警：Slack/微信/邮箱自动报警
+
+### 分开跑测试
+
+Monorepo 可以很方便地分开跑测试代码。但如果是单一 Repo，则需要手动修改 jest 脚本，提供不同的命令给不同 workspace。
+
+这样做的好处是减少跑测试的耗时，同时可以更快定位错误来自于哪个 team。
+
+### 严格 lint
+
+ESlint，styleLint，CommentLint
+
+lint 让生活更美好。
+
+## 沟通和反馈
+
+Admin 工作的大部分时间是沟通(💁‍♂️)
+
+### 文档
+
+**README：** 从 quick start 到项目的各种细节。尽量保证 README 是渐进式的，从可执行到深入，并且不要过长。
+
+**CONRTRIBUTION：** 规定代码贡献者需要注意的 Tips。
+
+**STYLE_GUIDE：** 风格指南。有一千个程序员，就有一千种最佳实践。谁的更佳不重要，重要的是所有人遵循同一份规范。
+
+**Statement Of Work(SOW)：** 即项目工作说明书，Admin 可以让其他 team 在做一些改动之前先提供说明文档，在 admin 确认并 approve 之后再开工。以避免业务细节没有对齐最后白开发的情况。
+
+**Architectural Decision Records(ADR)：** 即架构决策记录，当其他 team 有修改基础架构的需求的时候，需要他们提供一个 ADR，然后在各 team 之间讨论和对齐上下文，大家达成统一过后再进行开发。
+
+**Single Source Of Truth(SSOT)：** 即单一可信来源，尽可能将项目内的信息整理（脚本化，配置化或文档化），降低系统的信息不一致。
+
+**Request For Comment(RFC)：** 一种特殊的 pr 或 issue，用于征求其他人的意见，和 ADR 类似不过适用范围更广。
+
+### catchup & milestone
+
+定期 catchup，同步一些代码里较好的实践，刷存在感。
+
+公布自己的 milestone，可以让其他 team 参与及制定自己的 milestone。
