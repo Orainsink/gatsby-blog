@@ -132,10 +132,6 @@ export const HomeScene = memo((): ReactElement => {
   const setScene = useSetRecoilState(sceneAtom);
   const dynamicSceneStyle = useRecoilValue(dynamicSceneStyleSelector);
 
-  useEffect(() => {
-    setScene(Boolean(localStorage.getItem('SCENE')));
-  }, [setScene]);
-
   const handleScene = useCallback(() => {
     setScene(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
