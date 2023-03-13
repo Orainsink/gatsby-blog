@@ -2,8 +2,9 @@ import { ReactElement } from 'react';
 import { Link } from 'gatsby';
 import { Tag } from 'antd';
 import { useSetRecoilState } from 'recoil';
+import { has } from 'ramda';
 
-import { CATEGORY_MAP } from '../assets/constants/categories';
+import { FILE_SYSTEM_CATEGORY_MAP } from '../assets/constants/categories';
 import { useIsDark, useHasMounted } from '../hooks';
 import { filterAtom } from '../store/atom';
 
@@ -23,12 +24,19 @@ export const Tags = ({ tags, category }: Props): ReactElement | null => {
     setFilter({ curTag: tag?.trim() ?? '' });
   };
 
-  if (!!category && category !== 'tech' && CATEGORY_MAP.has(category)) {
-    let curCategory = CATEGORY_MAP.get(category)!;
+  if (
+    !!category &&
+    category !== 'tech' &&
+    has(category, FILE_SYSTEM_CATEGORY_MAP)
+  ) {
+    let curCategory =
+      FILE_SYSTEM_CATEGORY_MAP[
+        category as keyof typeof FILE_SYSTEM_CATEGORY_MAP
+      ];
     return (
       <div>
         <Link key={category} to={curCategory.path}>
-          <Tag color={curCategory.tag} style={pointerStyle}>
+          <Tag color={curCategory.tag || ''} style={pointerStyle}>
             {curCategory.name}
           </Tag>
         </Link>

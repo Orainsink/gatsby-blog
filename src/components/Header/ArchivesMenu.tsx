@@ -4,7 +4,10 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 import { useMagicColor } from '../../hooks';
-import { CATEGORY_MAP, MENU_NAMES } from '../../assets/constants/categories';
+import {
+  fileSystemCategories,
+  MENU_NAMES,
+} from '../../assets/constants/categories';
 
 const DropMenu = styled.div`
   width: 200px;
@@ -52,8 +55,18 @@ export const ArchivesMenu = memo(({ visible }: Props): ReactElement => {
         <Row align="middle" justify="space-between" key={item[0][0]}>
           {item.map((category) => (
             <Col span={12} key={category}>
-              <Link to={CATEGORY_MAP.get(category)!.path}>
-                {CATEGORY_MAP.get(category)!.name}
+              <Link
+                to={
+                  fileSystemCategories[
+                    category as keyof typeof fileSystemCategories
+                  ].path
+                }
+              >
+                {
+                  fileSystemCategories[
+                    category as keyof typeof fileSystemCategories
+                  ].name
+                }
               </Link>
             </Col>
           ))}

@@ -3,7 +3,7 @@ import { env } from 'process';
 import type { GatsbyConfig, PluginRef } from 'gatsby';
 import path from 'path';
 
-import { CATEGORY_NAMES } from './src/assets/constants/categories';
+import { fileSystemNames } from './src/assets/constants/categories';
 import { isProduction } from './scripts/env';
 import algoliaQueries from './src/utils/algoliaQueries';
 import { DeepRequiredAndNonNullable } from './typings/custom';
@@ -11,7 +11,7 @@ import { DeepRequiredAndNonNullable } from './typings/custom';
 dotenv.config();
 
 /**categories filesystem config */
-const categoryFileConfig: PluginRef[] = CATEGORY_NAMES.map((name) => ({
+const categoryFileConfig: PluginRef[] = fileSystemNames.map((name) => ({
   resolve: `gatsby-source-filesystem`,
   options: {
     path: path.resolve(`content/${name}`),
@@ -161,6 +161,7 @@ const config: GatsbyConfig = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 890,
+              wrapperStyle: `margin: 1rem auto;`,
             },
           },
         ],

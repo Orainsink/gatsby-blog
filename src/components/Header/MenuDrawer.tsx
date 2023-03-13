@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 import { useDrawerCloseEffect } from '../../hooks';
 import SharkMenuSvg from '../../assets/img/menu.svg';
-import { CATEGORY_MAP } from '../../assets/constants/categories';
+import { fileSystemCategories } from '../../assets/constants/categories';
 import { NavUl } from './Header.styles';
 
 const DrawerBtn = styled(UnorderedListOutlined)`
@@ -83,7 +83,7 @@ const MenuDrawer = (): ReactElement => {
           <div style={{ width: '100%' }}>
             <div style={{ padding: '12px 0' }}>archives</div>
             <ul>
-              {[...CATEGORY_MAP.values()].map((item) => (
+              {[...Object.values(fileSystemCategories)].map((item) => (
                 <Link to={item.path} key={item.name}>
                   <li>{item.name}</li>
                 </Link>
