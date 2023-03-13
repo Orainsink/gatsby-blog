@@ -87,6 +87,7 @@ const getColumn = (group: readonly GroupItem[]) => {
       category: 'resume',
       name: '简历',
       path: '/resume',
+      description: '曲终人散',
       img: (
         <StaticImage
           src="../../../content/assets/resume.png"
@@ -120,7 +121,7 @@ export const CategoryComponent = (): ReactElement => {
     <CardSection>
       <StyledTitle>
         <StyledMarkSvg />
-        欢迎光临！博主 莫沉 是个切图仔，学习Go和webGL中。
+        欢迎光临！博主 莫沉 是个切图仔。
       </StyledTitle>
       <StyledCards>
         {getColumn(group).map((item) => (
