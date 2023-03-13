@@ -1,6 +1,5 @@
-import { useEffect, ReactElement } from 'react';
+import { useEffect, ReactElement, useState } from 'react';
 import { load as poemLoader } from 'jinrishici';
-import { useLocalStorage } from 'react-use';
 import styled, { css } from 'styled-components';
 
 interface PoemData {
@@ -64,9 +63,10 @@ const Poet = styled.div`
 `;
 
 export const Poem = (): ReactElement => {
-  const [poem, setPoem] = useLocalStorage<null | PoemData>('poem', null);
+  const [poem, setPoem] = useState<null | PoemData>(null);
 
   useEffect(() => {
+    setPoem(JSON.parse(localStorage.getItem('poem') || '') || null);
     poemLoader((res: PoemResponse) => {
       setPoem(res.data);
     });

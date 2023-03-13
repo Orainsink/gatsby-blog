@@ -14,10 +14,7 @@ interface MusicState {
 // scene 判断是否隐藏主页scene及按需加载
 export const sceneAtom = atom<boolean>({
   key: 'scene',
-  default: windowWrapper<boolean>(
-    () => Boolean(localStorage.getItem('SCENE')),
-    true
-  ),
+  default: true,
 });
 
 // trigger 判断首页是否鼠标滑到了视区下方的热区

@@ -32,7 +32,7 @@ const Index = ({ data }: PageProps<Data>): ReactElement => {
       <Layout>
         <Poem />
         <CategoryComponent />
-        <ListHeaderText>最近五篇文章</ListHeaderText>
+        {/* <ListHeaderText>最近五篇文章</ListHeaderText> */}
         <PostList posts={posts} />
       </Layout>
     </>
