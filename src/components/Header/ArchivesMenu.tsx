@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { useMagicColor } from '../../hooks';
 import {
   fileSystemCategories,
-  MENU_NAMES,
+  menuNames,
 } from '../../assets/constants/categories';
 
 const DropMenu = styled.div`
@@ -51,7 +51,7 @@ export const ArchivesMenu = memo(({ visible }: Props): ReactElement => {
 
   return (
     <DropMenu id="magic-container">
-      {MENU_NAMES.map((item) => (
+      {menuNames.map((item) => (
         <Row align="middle" justify="space-between" key={item[0][0]}>
           {item.map((category) => (
             <Col span={12} key={category}>

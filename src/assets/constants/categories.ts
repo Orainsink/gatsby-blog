@@ -14,7 +14,7 @@ export const fileSystemCategories = {
 export const fileSystemNames = Object.keys(FILE_SYSTEM_CATEGORY_MAP);
 
 /**archive key array */
-export const MENU_NAMES = (() => {
+export const menuNames = (() => {
   const menus = Object.keys(fileSystemCategories);
   let columns = [];
   for (let i = 0; i < menus.length; i += 2) {
