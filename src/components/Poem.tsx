@@ -66,7 +66,8 @@ export const Poem = (): ReactElement => {
   const [poem, setPoem] = useState<null | PoemData>(null);
 
   useEffect(() => {
-    setPoem(JSON.parse(localStorage.getItem('poem') || '') || null);
+    const storedPoem = localStorage.getItem('poem');
+    setPoem(storedPoem ? JSON.parse(storedPoem) : null);
     poemLoader((res: PoemResponse) => {
       setPoem(res.data);
     });
