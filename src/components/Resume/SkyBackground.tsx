@@ -38,8 +38,8 @@ class SkyCanvas implements SkyCanvasInterface {
   height;
   private counter = 0;
   private readonly backgroundColor = '#141619';
-  private readonly maxStarRadius = 2;
-  private readonly spacing = 50;
+  private readonly maxStarRadius = 1.8;
+  private readonly spacing = 70;
   private prevTime = 0;
   private frameId = 0;
   private readonly opacity = {
@@ -131,7 +131,7 @@ class SkyCanvas implements SkyCanvasInterface {
   render(timestamp = 0): void {
     const interval = timestamp - this.prevTime;
 
-    if (interval > 300) {
+    if (interval > 500) {
       this.prevTime = timestamp;
 
       this.ctx.fillRect(0, 0, this.width, this.height);
