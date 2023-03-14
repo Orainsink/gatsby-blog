@@ -3,10 +3,13 @@ import styled from 'styled-components';
 
 import { Section } from './Resume.styles';
 import { AboutSite } from './AboutSite';
+import { useMedia } from '../../hooks';
 
 const AboutSectionContainer = styled(Section)`
-  * {
-    text-align: center;
+  ${({ theme }) => theme.media.isNotMobile} {
+    * {
+      text-align: center;
+    }
   }
 `;
 
@@ -29,31 +32,30 @@ const ContactMe = styled.a`
   }
 `;
 
-export const AboutSection = (): ReactElement => (
-  <AboutSectionContainer id="resume-about">
-    <AboutSite />
-    <h1 data-el>HELLO</h1>
-    <h2
-      style={{
-        textAlign: 'center',
-      }}
-      data-el
-    >
-      我是 莫沉 一个前端程序员
-    </h2>
-    <div>
-      <p data-el>
-        工作近5年，有小程序，数据可视化，大型SaaS系统 <br />
-        两年 node 全栈和 offshore 项目经验
-      </p>
-      <p data-el>
-        熟悉前端技术架构，性能优化及前端安全
-        <br />
-        熟悉常用的设计模式，算法，敏捷方法论
-      </p>
-      <div data-el>
-        <ContactMe href="mailto:ywt1250066597@gmail.com">Contact me</ContactMe>
+export const AboutSection = (): ReactElement => {
+  const isNotMobile = useMedia('isNotMobile');
+  return (
+    <AboutSectionContainer id="resume-about">
+      <AboutSite />
+      <h1 data-el>HELLO</h1>
+      <h2 data-el>我是 莫沉 一个前端程序员</h2>
+      <div>
+        <p data-el>
+          工作5年，有小程序，数据可视化，大型SaaS系统
+          {isNotMobile ? <br /> : '，'}
+          node 全栈和 offshore 项目经验
+        </p>
+        <p data-el>
+          熟悉前端技术架构，性能优化及前端安全
+          {isNotMobile ? <br /> : '，'}
+          熟悉常用的设计模式，算法，敏捷方法论
+        </p>
+        <div data-el>
+          <ContactMe href="mailto:ywt1250066597@gmail.com">
+            Contact me
+          </ContactMe>
+        </div>
       </div>
-    </div>
-  </AboutSectionContainer>
-);
+    </AboutSectionContainer>
+  );
+};
