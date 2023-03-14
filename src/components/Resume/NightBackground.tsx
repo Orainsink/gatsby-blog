@@ -1,18 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react';
-import styled from 'styled-components';
-
-const CanvasContainer = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-
-  canvas {
-    width: 100%;
-    height: 100%;
-  }
-`;
+import { CanvasContainer } from './Resume.styles';
 
 interface Star {
   x: number;
@@ -20,7 +7,7 @@ interface Star {
   r: number;
 }
 
-interface SkyCanvasInterface {
+interface NightSkyCanvasInterface {
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
   stars: Star[];
@@ -31,11 +18,11 @@ interface SkyCanvasInterface {
   stop(): void;
 }
 
-class SkyCanvas implements SkyCanvasInterface {
+class NightSkyCanvas implements NightSkyCanvasInterface {
   stars: Star[] = [];
   ctx;
-  width;
-  height;
+  width = 0;
+  height = 0;
   private counter = 0;
   private readonly backgroundColor = '#141619';
   private readonly maxStarRadius = 1.8;
@@ -48,15 +35,10 @@ class SkyCanvas implements SkyCanvasInterface {
   };
 
   constructor(readonly canvas: HTMLCanvasElement) {
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
-
-    this.init();
     this.ctx = canvas.getContext('2d')!;
+    this.init();
 
     window.addEventListener('resize', this.init.bind(this));
-
-    this.createStars();
   }
 
   private init(): void {
@@ -134,7 +116,9 @@ class SkyCanvas implements SkyCanvasInterface {
     if (interval > 500) {
       this.prevTime = timestamp;
 
+      this.ctx.clearRect(0, 0, this.width, this.height);
       this.ctx.fillRect(0, 0, this.width, this.height);
+
       this.stars.forEach((star, i) => {
         const factor = this.counter * i;
         const opacity = this.getOpacity(factor);
@@ -148,11 +132,11 @@ class SkyCanvas implements SkyCanvasInterface {
   }
 }
 
-export const SkyBackground = () => {
-  const canvas = useRef<SkyCanvas | null>(null);
+export const NightBackground = () => {
+  const canvas = useRef<NightSkyCanvas | null>(null);
   const skyCanvasRefCallback = useCallback((node: HTMLCanvasElement | null) => {
     if (node) {
-      canvas.current = new SkyCanvas(node);
+      canvas.current = new NightSkyCanvas(node);
       canvas.current.render();
     }
   }, []);
@@ -163,7 +147,7 @@ export const SkyBackground = () => {
 
   return (
     <CanvasContainer>
-      <canvas id="sky-canvas" ref={skyCanvasRefCallback}></canvas>
+      <canvas ref={skyCanvasRefCallback}></canvas>
     </CanvasContainer>
   );
 };

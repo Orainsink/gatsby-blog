@@ -5,7 +5,8 @@ import { Seo } from '../components/Seo';
 import {
   SkillsSection,
   AboutSection,
-  SkyBackground,
+  NightBackground,
+  DayBackground,
   useElementTween,
 } from '../components/Resume';
 import { hasArrowAtom } from '../store/atom';
@@ -30,7 +31,7 @@ const ResumePage = (): ReactElement => {
 
   return (
     <ResumeContainer>
-      {isDark && <SkyBackground />}
+      {isDark ? <NightBackground /> : <DayBackground />}
       <AboutSection />
       <SkillsSection />
     </ResumeContainer>
