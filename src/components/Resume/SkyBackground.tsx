@@ -51,15 +51,15 @@ class SkyCanvas implements SkyCanvasInterface {
     this.width = window.innerWidth;
     this.height = window.innerHeight;
 
-    this.resize();
+    this.init();
     this.ctx = canvas.getContext('2d')!;
 
-    window.addEventListener('resize', this.resize.bind(this));
+    window.addEventListener('resize', this.init.bind(this));
 
     this.createStars();
   }
 
-  private resize(): void {
+  private init(): void {
     this.width = window.innerWidth;
     this.height = window.innerHeight;
 
@@ -124,7 +124,7 @@ class SkyCanvas implements SkyCanvasInterface {
   }
 
   stop(): void {
-    window.removeEventListener('resize', this.resize);
+    window.removeEventListener('resize', this.init);
     cancelAnimationFrame(this.frameId);
   }
 
