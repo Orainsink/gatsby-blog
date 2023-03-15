@@ -1,38 +1,30 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { ReactElement, useCallback, useEffect, useRef } from 'react';
 import { CanvasContainer } from './Resume.styles';
+import { SkyCanvasInterface } from './types';
 
 interface Star {
   x: number;
   y: number;
   r: number;
+  expandState: boolean;
+  opacity: number;
 }
 
-interface NightSkyCanvasInterface {
-  canvas: HTMLCanvasElement;
-  ctx: CanvasRenderingContext2D;
-  stars: Star[];
-  width: number;
-  height: number;
-
-  render(timestamp?: number): void;
-  stop(): void;
-}
-
-class NightSkyCanvas implements NightSkyCanvasInterface {
-  stars: Star[] = [];
+class NightSkyCanvas implements SkyCanvasInterface {
   ctx;
   width = 0;
   height = 0;
-  private counter = 0;
-  private readonly backgroundColor = '#141619';
-  private readonly maxStarRadius = 1.8;
-  private readonly spacing = 70;
-  private prevTime = 0;
-  private frameId = 0;
-  private readonly opacity = {
-    min: 0.1,
-    max: 0.7,
+  stars: Star[] = [];
+  private config = {
+    backgroundColor: '#141619',
+    maxStarRadius: 1.8,
+    spacing: 70,
+    opacity: {
+      min: 0.1,
+      max: 0.7,
+    },
   };
+  private frameId = 0;
 
   constructor(readonly canvas: HTMLCanvasElement) {
     this.ctx = canvas.getContext('2d')!;
@@ -57,13 +49,21 @@ class NightSkyCanvas implements NightSkyCanvasInterface {
 
   private createStars(): void {
     const stars = [];
+    const { width, height } = this;
+    const {
+      spacing,
+      maxStarRadius,
+      opacity: { min, max },
+    } = this.config;
 
-    for (let x = 0; x < this.width; x += this.spacing) {
-      for (let y = 0; y < this.height; y += this.spacing) {
+    for (let x = 0; x < width; x += spacing) {
+      for (let y = 0; y < height; y += spacing) {
         const star = {
-          x: x + this.randomInt(this.spacing),
-          y: y + this.randomInt(this.spacing),
-          r: Math.random() * this.maxStarRadius,
+          x: x + this.randomInt(spacing),
+          y: y + this.randomInt(spacing),
+          r: Math.random() * maxStarRadius,
+          expandState: Math.random() - 0.5 > 0,
+          opacity: Math.random() * (max - min) + min,
         };
         stars.push(star);
       }
@@ -71,14 +71,17 @@ class NightSkyCanvas implements NightSkyCanvasInterface {
     this.stars = stars;
   }
 
-  private fillCircle({ x, y, r }: Star, fillStyle: string): void {
+  private fillCircle(
+    { x, y, r }: Pick<Star, 'x' | 'y' | 'r'>,
+    fillStyle: string
+  ): void {
     this.ctx.beginPath();
     this.ctx.fillStyle = fillStyle;
     this.ctx.arc(x, y, r, 0, Math.PI * 2);
     this.ctx.fill();
   }
 
-  private renderMoon() {
+  private renderMoon(): void {
     const color = '#fea';
     const moon = {
       x: this.height / 3,
@@ -87,22 +90,36 @@ class NightSkyCanvas implements NightSkyCanvasInterface {
     };
 
     this.fillCircle(moon, color);
-    // render a smaller circle above the moon to give it that well-known moon-shape
     this.fillCircle(
       {
         x: moon.x - moon.r / 3,
         y: moon.y - moon.r / 3,
         r: moon.r,
       },
-      this.backgroundColor
+      this.config.backgroundColor
     );
   }
 
-  private getOpacity(factor: number): number {
-    const { min, max } = this.opacity;
-    const opacityIncrement = (max - min) * Math.abs(Math.sin(factor));
-    const opacity = min + opacityIncrement;
-    return opacity;
+  private renderStars(): void {
+    this.stars.forEach((star) => {
+      this.updatedOpacity(star);
+      this.fillCircle(star, `rgba(255, 255, 255, ${star.opacity}`);
+    });
+  }
+
+  private updatedOpacity(star: Star) {
+    const opacity = star.opacity;
+    if (opacity >= 1) {
+      star.opacity -= 0.01;
+      star.expandState = false;
+    } else if (opacity <= 0) {
+      star.opacity += 0.01;
+      star.expandState = true;
+    } else {
+      star.opacity = star.expandState
+        ? star.opacity + 0.01
+        : star.opacity - 0.01;
+    }
   }
 
   stop(): void {
@@ -110,29 +127,21 @@ class NightSkyCanvas implements NightSkyCanvasInterface {
     cancelAnimationFrame(this.frameId);
   }
 
-  render(timestamp = 0): void {
-    const interval = timestamp - this.prevTime;
+  clear(): void {
+    this.ctx.clearRect(0, 0, this.width, this.height);
+  }
 
-    if (interval > 500) {
-      this.prevTime = timestamp;
+  render(): void {
+    this.clear();
 
-      this.ctx.clearRect(0, 0, this.width, this.height);
-      this.ctx.fillRect(0, 0, this.width, this.height);
-
-      this.stars.forEach((star, i) => {
-        const factor = this.counter * i;
-        const opacity = this.getOpacity(factor);
-        this.fillCircle(star, `rgba(255, 255, 255, ${opacity}`);
-      });
-      this.renderMoon();
-      this.counter = this.counter + 1;
-    }
+    this.renderStars();
+    this.renderMoon();
 
     this.frameId = requestAnimationFrame(this.render.bind(this));
   }
 }
 
-export const NightBackground = () => {
+export const NightBackground = (): ReactElement => {
   const canvas = useRef<NightSkyCanvas | null>(null);
   const skyCanvasRefCallback = useCallback((node: HTMLCanvasElement | null) => {
     if (node) {

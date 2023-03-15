@@ -27,5 +27,8 @@ export const CanvasContainer = styled.div`
   canvas {
     width: 100%;
     height: 100%;
+
+    user-select: none;
+    pointer-events: none;
   }
 `;
