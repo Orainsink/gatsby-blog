@@ -16,3 +16,18 @@ export const Section = styled.section`
     padding-bottom: 200px;
   }
 `;
+
+export const CanvasContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  canvas {
+    width: 100%;
+    height: 100%;
+
+    user-select: none;
+  }
+`;
