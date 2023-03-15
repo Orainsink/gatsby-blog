@@ -1,10 +1,10 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 
-# Orainsink's Blog - SSR, Responsive, WebGL, Dark Mode, Typescript, loadable
+# Orainsink's Blog - SSG, Responsive, WebGL, Dark Mode, Typescript, loadable
 
 **Site url: [blog.foolishrobot.xyz](https://blog.foolishrobot.xyz/)**
 
-[![Build Status](https://travis-ci.org/Orainsink/gatsby-blog.svg?branch=master)](https://travis-ci.org/Orainsink/gatsby-blog)
+![Build Status](https://travis-ci.org/Orainsink/gatsby-blog.svg?branch=master)](https://travis-ci.org/Orainsink/gatsby-blog)
 
 ![preview](./preview.gif)
 
