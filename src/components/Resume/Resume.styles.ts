@@ -24,10 +24,10 @@ export const CanvasContainer = styled.div`
   width: 100vw;
   height: 100vh;
 
+  pointer-events: none;
+
   canvas {
     width: 100%;
     height: 100%;
-
-    user-select: none;
   }
 `;
