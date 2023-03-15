@@ -110,9 +110,11 @@ class DaySkyCanvas implements DaySkyCanvasInterface {
   }
 
   build() {
-    for (let h = 0; h < this.circles.length; h++) {
-      var curCircle = this.circles[h];
+    const { circles } = this;
+
+    circles.forEach((curCircle) => {
       this.ctx.fillStyle = this.colors[curCircle.color - 1];
+
       this.ctx.beginPath();
       if (curCircle.left > this.width + curCircle.size) {
         curCircle.left = 0 - curCircle.size;
@@ -205,8 +207,8 @@ class DaySkyCanvas implements DaySkyCanvasInterface {
 
       this.ctx.closePath();
       this.ctx.fill();
-      //   this.ctx.ellipse;
-    }
+      // this.ctx.ellipse;
+    });
   }
 
   render() {
@@ -218,9 +220,7 @@ class DaySkyCanvas implements DaySkyCanvasInterface {
     this.build();
 
     // request a new frame
-    this.frameId = requestAnimationFrame(() => {
-      this.render();
-    });
+    this.frameId = requestAnimationFrame(this.render.bind(this));
   }
 
   stop(): void {
