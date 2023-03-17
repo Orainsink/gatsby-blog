@@ -4,8 +4,7 @@
 
 **Site url: [blog.foolishrobot.xyz](https://blog.foolishrobot.xyz/)**
 
-![Build Status](https://travis-ci.org/Orainsink/gatsby-blog.svg?branch=master)](https://travis-ci.org/Orainsink/gatsby-blog)
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5ce41f8f-7767-400e-86c5-233b5e728209/deploy-status)](https://app.netlify.com/sites/verdant-medovik-584e44/deploys)
 ![preview](./preview.gif)
 
 ## 👷Built with
