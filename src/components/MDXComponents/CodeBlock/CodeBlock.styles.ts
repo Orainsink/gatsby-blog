@@ -42,10 +42,10 @@ export const HighlightContainer = styled.div`
 `;
 
 export const getPreStyle = (style: CSSProperties) => ({
-  ...style,
   padding: 'var(--space-sm)',
   borderRadius: 'var(--border-radius-sm)',
   lineHeight: 1.5,
   overflow: 'auto',
   maxHeight: '40em',
+  ...style,
 });
