@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
 import { PageProps, graphql } from 'gatsby';
-import styled from 'styled-components';
 
 import { Layout } from '../layout/IndexLayout';
 import { Seo } from '../components/Seo';

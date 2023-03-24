@@ -165,9 +165,17 @@ const config: GatsbyConfig = {
             },
           },
         ],
+        /*
+         *  gatsby plugin with MDX2 does not support ESM for mdx plugins yet.
+         *  So I have to use v1 of remark-gfm, and create my own rehype-meta-as-attributes
+         *  https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-mdx#mdxoptions
+         */
         mdxOptions: {
-          remarkPlugins: [require(`remark-gfm`)],
-          rehypePlugins: [require(`rehype-slug`)],
+          remarkPlugins: [require('remark-gfm')],
+          rehypePlugins: [
+            require('rehype-slug'),
+            require('./scripts/rehype-meta-as-attributes'),
+          ],
         },
       },
     },
