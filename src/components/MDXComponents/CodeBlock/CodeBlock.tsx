@@ -13,7 +13,7 @@ import {
 } from './CodeBlock.styles';
 import { has } from 'ramda';
 import { LivePre } from './LivePre';
-import { NormalPre } from './NormalPre';
+import { ReadonlyPre } from './ReadonlyPre';
 import { copyToClipboard } from '../../../utils/copyToClipboard';
 
 export interface CodeBlockProps {
@@ -66,7 +66,7 @@ export const CodeBlock = memo(
             theme={theme}
           >
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
-              <NormalPre
+              <ReadonlyPre
                 className={className}
                 style={style}
                 tokens={tokens}

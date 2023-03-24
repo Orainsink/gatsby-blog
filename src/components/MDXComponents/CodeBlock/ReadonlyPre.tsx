@@ -9,7 +9,7 @@ interface Token {
   empty?: boolean;
 }
 
-interface NormalPreProps {
+interface ReadonlyPreProps {
   className: string;
   style: CSSProperties;
   tokens: Token[][];
@@ -18,14 +18,14 @@ interface NormalPreProps {
   getTokenProps: Highlight['getTokenProps'];
 }
 
-export const NormalPre = ({
+export const ReadonlyPre = ({
   className,
   style,
   tokens,
   getLineProps,
   lineStr,
   getTokenProps,
-}: NormalPreProps) => {
+}: ReadonlyPreProps) => {
   const shouldHighlightLine = (lineIndex: number): boolean => {
     const RE = /{([\d,-]+)}/;
     if (!lineStr) return false;
