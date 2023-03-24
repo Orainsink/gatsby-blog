@@ -41,10 +41,6 @@ export const ReadonlyPre = ({
   return (
     <pre className={className} style={getPreStyle(style)}>
       {tokens.map((line, i) => {
-        const isLastLineEmpty =
-          i === tokens.length - 1 && line.length === 1 && line[0].empty;
-        if (isLastLineEmpty) return null;
-
         const lineProps = getLineProps({ line, key: i });
         if (shouldHighlightLine(i)) {
           lineProps.className = `${lineProps.className} highlight-line`;

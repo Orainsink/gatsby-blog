@@ -32,6 +32,7 @@ export const CodeBlock = memo(
   ({ children, className: langClass, meta }: CodeBlockProps): ReactElement => {
     const language = langClass.replace(/language-/, '') as Language;
     const [copied, setCopied] = useState(false);
+    const code = children.trim();
 
     const isDark = useIsDark();
     const theme = isDark ? vsDark : lightTheme;
@@ -57,11 +58,11 @@ export const CodeBlock = memo(
           </CopyButton>
         </LabelsContainer>
         {isLive ? (
-          <LivePre theme={theme} code={children} />
+          <LivePre theme={theme} code={code} />
         ) : (
           <Highlight
             {...defaultProps}
-            code={children}
+            code={code}
             language={language}
             theme={theme}
           >
