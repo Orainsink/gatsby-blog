@@ -47,6 +47,20 @@ yarn new your-post-name
 yarn new your-post-name
 ```
 
+### MDX code block meta usage
+
+use `live` to start a live code block in mdx file:
+
+````text
+```js live filename=demo.md
+````
+
+use `line` to highlight lines
+
+````text
+```js line={1,2,3-4} filename=demo.md
+````
+
 ### How to change styles and components
 
 You can change global styles by modifying `src/assets/theme/`

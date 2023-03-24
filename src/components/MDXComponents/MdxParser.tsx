@@ -16,9 +16,15 @@ export const MdxParser = ({
   return (
     <MDXProvider
       components={{
-        code: ({ children, className }: CodeBlockProps) => {
+        code: ({
+          children,
+          className,
+          ...meta
+        }: Omit<CodeBlockProps, 'meta'> & Record<string, string>) => {
           return className ? (
-            <CodeBlock className={className}>{children}</CodeBlock>
+            <CodeBlock className={className} meta={meta}>
+              {children}
+            </CodeBlock>
           ) : (
             <code>{children}</code>
           );

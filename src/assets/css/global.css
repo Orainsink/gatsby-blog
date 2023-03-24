@@ -45,3 +45,18 @@ body {
 code {
   white-space: pre-wrap;
 }
+
+.highlight-line {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.3em solid rgba(0, 0, 0, 0.4);
+}
+
+.dark .highlight-line {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: 0.3em solid rgba(255, 255, 255, 0.4);
+}
