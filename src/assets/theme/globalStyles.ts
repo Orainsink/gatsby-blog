@@ -34,6 +34,8 @@ export const GlobalStyles = createGlobalStyle`
     --color-primary: ${defaultMapToken.colorPrimary};
     --color-primary-hover: ${defaultMapToken.colorPrimaryBorderHover};
     --color-primary-active: ${defaultMapToken.colorPrimaryHover};
+
+    --color-error: ${defaultMapToken.colorError};
     
     /* -------- Text ---------- */
     --color-text: ${defaultMapToken.colorText};
@@ -70,6 +72,8 @@ export const GlobalStyles = createGlobalStyle`
     --color-primary: ${defaultMapToken.colorWarningText};
     --color-primary-hover: ${defaultMapToken.colorWarningTextHover};
     --color-primary-active: ${defaultMapToken.colorWarningTextActive};
+
+    --color-error: ${darkMapToken.colorError};
 
     /* -------- Dark Variables ---------- */
     --color-text: ${darkMapToken.colorText};
