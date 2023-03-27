@@ -30,11 +30,12 @@ const Error = styled(LiveError)`
 interface LivePreProps {
   theme: PrismTheme;
   code: string;
+  noInline?: boolean;
 }
-export const LivePre = ({ theme, code }: LivePreProps) => {
+export const LivePre = ({ theme, code, noInline = false }: LivePreProps) => {
   const isDark = useIsDark();
   return (
-    <LiveProvider code={code} theme={theme} scope={scope}>
+    <LiveProvider code={code} theme={theme} scope={scope} noInline={noInline}>
       <LiveEditor style={getPreStyle({ padding: 0 })} />
       <PreviewContainer $isDark={isDark}>
         <Preview />

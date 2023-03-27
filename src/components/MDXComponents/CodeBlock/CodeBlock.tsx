@@ -38,7 +38,8 @@ export const CodeBlock = memo(
     const isDark = useIsDark();
     const theme = isDark ? vsDark : lightTheme;
     const isLive = has('live', meta);
-    const filename = meta.filename;
+    const noInline = has('noInline', meta);
+    const { filename } = meta;
 
     const handleCopy = async () => {
       try {
@@ -61,7 +62,7 @@ export const CodeBlock = memo(
           </CopyButton>
         </LabelsContainer>
         {isLive ? (
-          <LivePre theme={theme} code={code} />
+          <LivePre theme={theme} code={code} noInline={noInline} />
         ) : (
           <Highlight
             {...defaultProps}
