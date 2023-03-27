@@ -16,16 +16,27 @@ export const LabelsContainer = styled.div`
   position: absolute;
   top: 0;
   right: 14px;
+  max-width: 100%;
+  left: 9px;
   transform: translateY(-98%);
-  text-transform: uppercase;
 `;
 
-export const LanguageLabel = styled.div`
+const MetaLabel = styled.div`
   ${labelSharedStyles}
   pointer-events: none;
   margin: 0 5px;
   height: 32px;
   line-height: 32px;
+`;
+
+export const LanguageLabel = styled(MetaLabel)`
+  text-transform: uppercase;
+`;
+
+export const FilenameLabel = styled(MetaLabel)`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export const CopyButton = styled(Button)`
