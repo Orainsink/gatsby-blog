@@ -9571,6 +9571,11 @@ maath@^0.5.2:
   resolved "https://registry.yarnpkg.com/maath/-/maath-0.5.3.tgz#777a1f9b8463c6ffb199ea43406874a357c0cd58"
   integrity sha512-ut63A4zTd9abtpi+sOHW1fPWPtAFrjK0E17eAthx1k93W/T2cWLKV5oaswyotJVDvvW1EXSdokAqhK5KOu0Qdw==
 
+mac-scrollbar@^0.10.6:
+  version "0.10.6"
+  resolved "https://registry.yarnpkg.com/mac-scrollbar/-/mac-scrollbar-0.10.6.tgz#d273a140f620f393aa737621ccbbddcadaafa5e1"
+  integrity sha512-aNmVDGeYRDmT3mXVubOSCosVkuNCGDTafPuQD4+AGG+KZ6imvr9IcRjQIsHdYFgXmearNsaEKt6efT4+5YBSqg==
+
 make-dir@^3.0.0, make-dir@^3.0.2, make-dir@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-3.1.0.tgz#415e967046b3a7f1d185277d84aa58203726a13f"
