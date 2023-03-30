@@ -3,7 +3,6 @@ import { ConfigProvider, theme } from 'antd';
 import { ThemeProvider } from 'styled-components';
 import { useRecoilValue } from 'recoil';
 import { StyleProvider } from '@ant-design/cssinjs';
-import { GlobalScrollbar } from 'mac-scrollbar';
 
 import '../assets/css/global.css';
 
@@ -36,7 +35,6 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
 
   return (
     <ErrorBoundary>
-      <GlobalScrollbar />
       {/* {isDevelopment && <DebugObserver />} */}
       <StyleProvider hashPriority="high">
         <ConfigProvider

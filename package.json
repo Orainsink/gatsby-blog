@@ -42,7 +42,6 @@
     "gsap": "3.11.5",
     "howler": "2.2.3",
     "jinrishici": "1.0.6",
-    "mac-scrollbar": "^0.10.6",
     "mdx-embed": "^1.1.2",
     "parse-numeric-range": "^1.3.0",
     "prism-react-renderer": "1.3.5",
