@@ -7,7 +7,7 @@ import { theme as lightTheme } from '../../../assets/theme/customPrism';
 import { useIsDark } from '../../../hooks';
 import {
   CopyButton,
-  FilenameLabel,
+  NameLabel,
   HighlightContainer,
   LabelsContainer,
   LanguageLabel,
@@ -39,7 +39,7 @@ export const CodeBlock = memo(
     const theme = isDark ? vsDark : lightTheme;
     const isLive = has('live', meta);
     const noInline = has('noInline', meta);
-    const { filename } = meta;
+    const { name } = meta;
 
     const handleCopy = async () => {
       try {
@@ -54,7 +54,7 @@ export const CodeBlock = memo(
     return (
       <HighlightContainer>
         <LabelsContainer>
-          {filename && <FilenameLabel>{filename}</FilenameLabel>}
+          {name && <NameLabel>{name}</NameLabel>}
           <LanguageLabel>{language}</LanguageLabel>
           <CopyButton type="link" onClick={handleCopy}>
             {copied ? <SmileOutlined /> : <CopyOutlined />}

@@ -33,10 +33,12 @@ export const LanguageLabel = styled(MetaLabel)`
   text-transform: uppercase;
 `;
 
-export const FilenameLabel = styled(MetaLabel)`
+export const NameLabel = styled(MetaLabel)`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-right: auto;
+  font-weight: bold;
 `;
 
 export const CopyButton = styled(Button)`

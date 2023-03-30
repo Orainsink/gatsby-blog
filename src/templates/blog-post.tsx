@@ -8,7 +8,7 @@ import { Seo } from '../components/Seo';
 import { Tags } from '../components/Tags';
 import { Anchor } from '../components/Anchor';
 import { Contents } from '../components/SideBlocks/Contents';
-import { useMedia } from '../hooks';
+import { useHasMounted, useMedia } from '../hooks';
 import { MdxParser } from '../components/MDXComponents';
 import { ReactComponent as LicenseSvg } from '../assets/img/license.svg';
 import { Comment } from '../components/Comment';
@@ -35,6 +35,7 @@ const BlogPostTemplate = ({ data: { mdx }, children }: Props): ReactElement => {
     tableOfContents,
   } = mdx;
   const isDesktop = useMedia('isDesktop');
+  const hasMounted = useHasMounted();
 
   const hasTableOfContents = tableOfContents && !isEmpty(tableOfContents);
 
@@ -56,7 +57,7 @@ const BlogPostTemplate = ({ data: { mdx }, children }: Props): ReactElement => {
             </License>
           </Subtitle>
         </header>
-        {hasTableOfContents && !isDesktop && (
+        {hasTableOfContents && !isDesktop && hasMounted && (
           <TableContents>
             <Anchor contents={tableOfContents as any} />
           </TableContents>

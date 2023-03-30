@@ -52,13 +52,13 @@ yarn new your-post-name
 use `live` to start a live code block in mdx file:
 
 ````text
-```js live filename=demo.md
+```js live name=demo.md
 ````
 
 use `line` to highlight lines
 
 ````text
-```js line={1,2,3-4} filename=demo.md
+```js line={1,2,3-4} name=demo.md
 ````
 
 ### How to change styles and components
