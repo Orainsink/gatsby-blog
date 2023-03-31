@@ -80,7 +80,9 @@ GPT 没有解释清楚(好险，差点被 AI 替代掉了 🐔🍚)。
 
 闭包是很多语言的难点，只言片语肯定说不清楚。要从头到尾说的话，我自己也没有自信能解释清楚。
 
-闭包即是在函数内可以访问函数外变量的函数，是函数与词法环境的结合。
+一个函数和对其周围状态(Lexical environment，词法环境)的引用捆绑在一起(或者说函数被引用包围)，这样的组合就是闭包(Closure)。
+
+即闭包由 函数 及声明该函数的 词法环境 组合而成。
 
 词法环境是一个无法访问到的对象，从对象的角度来理解闭包会比较抽象晦涩。
 
@@ -88,20 +90,20 @@ GPT 没有解释清楚(好险，差点被 AI 替代掉了 🐔🍚)。
 
 ### 闭包的值捕获
 
-当你去找网上的资料的时候，会发现大部分人对保存外部引用的描述止步于`capture`，并没有说明这个`capture`究竟是如何实现的。
+当你去找网上的资料的时候，会发现大部分人对保存外部词法环境这个步骤的描述止步于`capture`，并没有说明这个`capture`究竟是如何实现的。
 
 是值的拷贝还是词法环境对象引用地址的拷贝？存在哪里？同一函数的如果返回多个闭包，这些闭包`capture`的值会互相影响还是各管各的？如何释放？我们有必要搞懂这个问题，否则无法完全理解过时闭包的所有场景。下面就回答这些问题。
 
 1. 是值的拷贝还是词法环境对象引用地址的拷贝？
 
-闭包的实现依赖于函数对象的[隐藏属性](https://tc39.es/ecma262/#sec-ecmascript-function-objects)`[[Environment]]`, 这个属性储存了函数声明时的外部词法环境的引用地址(环境记录)。该属性无法读取和修改，但是我们可以通过编译器(V8)实现的`[[Scopes]]`作用域链属性中的`Closure`来观察。
-所以第一个问题有了答案：`capture`捕获的是函数声明时的词法环境(对象)的引用地址，而不是新开辟一片内存把引用到的值复制进去。通过`[[scope]]`观察可以看到如下(该图片是过时闭包的例子，将在紧接的段落里详细解释)
+闭包的实现依赖于函数对象的[隐藏属性](https://tc39.es/ecma262/#sec-ecmascript-function-objects)`[[Environment]]`, 这个属性储存了函数声明时的外部词法环境的引用地址。该属性无法读取和修改，但是我们可以通过编译器(V8)实现的`[[Scopes]]`作用域链属性中的`Closure`来观察。
+所以第一个问题有了答案：`capture`捕获的是函数声明时的词法环境的引用地址，而不是新开辟一片内存把引用到的值复制进去。通过`[[scope]]`观察可以看到如下(该图片是过时闭包的例子，将在紧接的段落里详细解释)
 ![closure-debug1](./closure-debug1.png)
-可以看到`[[Scopes]]`内有一个`Closure(App)`
+可以看到`[[Scopes]]`内有一个`Closure(App)`(及外部函数`App`的词法环境)
 
 2. 储存在哪里？
 
-上面其实已经回答了，词法环境的引用被保存在了闭包函数对象的隐藏属性`[[Enviroment]]`内
+上面其实已经回答了，外部词法环境的引用被保存在了闭包函数对象的隐藏属性`[[Enviroment]]`内
 
 3. 同一函数返回多个闭包的情况是如何的？
 
@@ -112,7 +114,7 @@ GPT 没有解释清楚(好险，差点被 AI 替代掉了 🐔🍚)。
 4. 如何释放？
 
 GC 会回收掉没有被引用的变量，只要还有作用域引用该词法环境，那其中的变量就不会被回收。
-在上面的例子中，哪怕我们将`log`手动标记为清除：`log = null`，`Closure(App)`中的变量将因为`increment`的引用而一直存在于内存中。由于闭包产生于编译阶段，引用`message`的闭包函数`log`虽然已经被清除了，但却没有任何机制将`message: "Count is 0"`删除，这就容易导致性能问题，假如这个`message`是一个很大的对象，那这个对象占用的内存就不会被回收，可能会造成内存泄漏。
+在上面的例子中，哪怕我们将`log`手动标记为清除：`log = null`，`Closure(App)`中的变量仍将因为`increment`的引用而一直存在于内存中。由于闭包产生于编译阶段，引用`message`的闭包函数`log`虽然已经被清除了，但却没有任何机制将`message: "Count is 0"`删除，这就容易导致性能问题，假如这个`message`是一个很大的对象，那这个对象占用的内存就不会被回收，可能会造成内存泄漏。
 只有当`increment`也被标记为清除的时候，`Closure(App)`中的变量才会被 GC 回收。
 ![不会清除](./closure-not-clear.png)
 
@@ -336,11 +338,11 @@ export function Demo() {
 
 2. ES6 之后: 参考[ES modules: A cartoon deep-dive](https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/), [掘金翻译版](https://juejin.cn/post/7098192216229117959)。
 
-ES module 虽然原理和自执行函数不同，但表现形式十分相似。
+ES module 虽然原理和自执行函数不同，但表现形式十分相似。module 也会在编译阶段构建 AST 时会跳过未被其他 module import 的变量。
 
 被`useState`引用的`state`变量则会存在于内存中，只要该变量还被标记为引用状态，就不会被 GC 回收。
 
-在 Demo module 内通过 `useState` 引用 state module (外部词法环境)里的变量，这就是一个标准的闭包。
+在 Demo module 内通过 `useState` 引用 state module (外部词法环境)里的变量，实际上也是一个闭包。
 
 ### 再看 useEffect
 
@@ -401,7 +403,7 @@ render(<Timer />);
 
 最简单的，看上面两个截图，在 scope 的`Closure`那里，一个是`Closure(Timer)`一个是`Closure`
 
-`handleCount` 中引用的`count`, 是在`Timer`执行生成的:`const count = useMyState(0)[0]` 也就是 `count: 0`, 和第一个过时闭包的例子一模一样`let message = "count is " + count`
+`handleCount` 中捕获的`count`, 是在`Timer`执行生成的:`const count = useMyState(0)[0]` 也就是 `count: 0`, 和前面章节第一个过时闭包的例子一模一样`let message = "count is " + count`
 
 `useEffect`, `useMemo`, `useCallback` 等 memorization hooks 都会面临相同的过时闭包问题，而且这类型 bug 很难发现。这也是为什么最新的 react 文档建议开发者最好开启 deps eslint，以及最好不要 ban 掉 eslint 以 [欺骗 react](https://react.dev/reference/react/useEffect#specifying-reactive-dependencies)
 
@@ -423,19 +425,19 @@ render(<Timer />);
 因为从上面举的很多例子中我们可以看到，出过时闭包的 bug 需要满足几个条件：
 
 1. 这个被忽略掉的 dep 本身是可变的。
-2. 我们要在事件绑定或者定时器中用到这个可变的数据
+2. 我们要在事件绑定或者定时器中用到这个可变的数据(延迟执行的 event)
 
-另外，`useEffect` 的特性是只要 deps 数组中有一项数据发生了变化，就会执行回调函数，如果有一个变量`b`和被忽略的变量`a`总是同时更新(比如他俩来自于同一个接口数据)，那么哪怕 deps 数组里只有变量`b`，`useEffect` 的每次触发，闭包函数都能绑定最新的`a`
+另外，`useEffect` 的特性是只要 deps 数组中有一项数据发生了变化就会执行回调函数，如果有一个变量`b`和被忽略的变量`a`总是同时更新(比如他俩来自于同一个接口数据)，那么哪怕 deps 数组里只有变量`b`，`useEffect` 的每次触发，闭包函数都能绑定最新的`a`
 
-`useEffect`最大的心智负担就在这里：eslint 强迫我们将`useEffect`中所有用到的 prop，state 全部放到 deps 数组中，即将该数组当成了闭包会引用的变量的全家福。
+`useEffect`最大的心智负担就在这里：eslint 强迫我们将`useEffect`中所有用到的 prop / state 全部放到 deps 数组中，即将该数组当成了闭包会引用的变量的全家福。
 
-但 `useEffect`本身的作用是响应状态变更的副作用，绝大部分场景下我们不想对所有的依赖进行响应，我们只想要能通过某个状态能 trigger effect，然后该 Effect 能拿到最新的依赖，执行我们想要的操作。
+但 `useEffect`本身的作用是响应状态变更的副作用，绝大部分场景下我们不想对所有的依赖进行响应，我们只想要响应一个或两个状态的变化，然后在该 Effect 中能拿到最新的依赖，执行我们想要的操作。
 
 我们想要 deps 数组有业务含义，而不是长破天的全家福。我们想要 deps 数组里不用再传入毫无意义的 handle 或 dispatch 函数。
 
-目前我们只能在熟悉上下文的情况下，手动添加 eslint-disable😅
+目前我们只能在熟悉上下文的情况下，手动添加 eslint-disable😅，还得再写一条注释解释 ban 掉 eslint 的原因。
 
-但目前的 React 并不欢迎我们这么做。其理由是即便 开发 Dev 在了解上下文并保证没有 bug 的情况下 ban 掉了 eslint，他依然无法预知代码的后续维护者是否清楚上下文。这很容易给后续的维护留下隐患。
+React 官方并不欢迎我们这么做。其理由是即便 开发 Dev 在了解上下文并保证没有 bug 的情况下 ban 掉了 eslint，他依然无法预知代码的后续维护者是否清楚上下文。这很容易给后续的维护留下隐患。
 
 ## 解决闭包陷阱的旧方案
 
@@ -506,7 +508,7 @@ const Demo = ({ name, height, weight, onError, onOk, path }) => {
 };
 ```
 
-用 ref 就不用 ban eslint，也不会出现过时闭包。
+用 ref 就不用 ban eslint，也不用担心过时闭包。
 
 ```jsx name=refDemo
 const Demo = ({ name, height, weight, onError, onOk, path }) => {
