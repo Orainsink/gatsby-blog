@@ -45,7 +45,7 @@ const getColumn = (group: readonly GroupItem[]) => {
       category: 'resume',
       name: '简历',
       path: '/resume',
-      description: '曲终人散',
+      description: '',
       img: (
         <StaticImage
           src="../../../content/assets/resume.png"
