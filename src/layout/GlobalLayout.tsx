@@ -41,10 +41,17 @@ const GlobalLayout = ({ children }: Props): ReactElement => {
           theme={{
             algorithm: isDark ? darkAlgorithm : defaultAlgorithm,
             token: {
+              fontSize: 16,
+              lineHeight: 1.6,
               colorPrimary: isDark ? '#faad14' : '#1677ff',
               colorLink: 'var(--color-link)',
               colorLinkActive: 'var(--color-link-hover)',
               colorLinkHover: 'var(--color-link-active)',
+            },
+            components: {
+              Anchor: {
+                fontSize: 14,
+              },
             },
           }}
         >
