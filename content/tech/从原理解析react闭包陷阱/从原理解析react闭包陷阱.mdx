@@ -62,8 +62,6 @@ ChatGPT 给的闭包陷阱的文字描述：在 react 钩子中定义了一个�
 
 文字描述里有两个关键词 “闭包特性” 和 “捕获变量”。如果你不能深入理解这两个东西，那看完文字描述等于还是啥都不懂。
 
-GPT 没有解释清楚(好险，差点被 AI 替代掉了 🐔🍚)。
-
 ## 闭包和过时闭包(stale closure)
 
 > [Understading stale closures in javascript](https://dilshankelsen.com/understanding-stale-closures-in-javascript/)
@@ -96,10 +94,10 @@ GPT 没有解释清楚(好险，差点被 AI 替代掉了 🐔🍚)。
 
 1. 是值的拷贝还是词法环境对象引用地址的拷贝？
 
-闭包的实现依赖于函数对象的[隐藏属性](https://tc39.es/ecma262/#sec-ecmascript-function-objects)`[[Environment]]`, 这个属性储存了函数声明时的外部词法环境的引用地址。该属性无法读取和修改，但是我们可以通过编译器(V8)实现的`[[Scopes]]`作用域链属性中的`Closure`来观察。
-所以第一个问题有了答案：`capture`捕获的是函数声明时的词法环境的引用地址，而不是新开辟一片内存把引用到的值复制进去。通过`[[scope]]`观察可以看到如下(该图片是过时闭包的例子，将在紧接的段落里详细解释)
+闭包的实现依赖于函数对象的[隐藏属性](https://tc39.es/ecma262/#sec-ecmascript-function-objects)`[[Environment]]`, 这个属性储存了函数声明时的词法环境的引用地址，词法环境是一个无法读取和修改的对象，它的 outer 属性又指向外部词法环境的引用，我们可以通过编译器(V8)实现的`[[Scopes]]`作用域链属性中的`Closure`来观察。
+所以第一个问题有了答案：`capture`捕获的是函数声明时的外部词法环境的引用地址，而不是新开辟一片内存把引用到的值复制进去。通过`[[scope]]`观察可以看到如下(该图片是过时闭包的例子，将在紧接的段落里详细解释)
 ![closure-debug1](./closure-debug1.png)
-可以看到`[[Scopes]]`内有一个`Closure(App)`(及外部函数`App`的词法环境)
+可以看到`[[Scopes]]`内有一个`Closure(App)`(及外部函数`App`的词法环境对象)
 
 2. 储存在哪里？
 
