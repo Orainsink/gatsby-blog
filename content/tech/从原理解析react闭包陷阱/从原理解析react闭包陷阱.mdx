@@ -7,8 +7,6 @@ tags: [react, js]
 ---
 
 > 详细介绍 Memorization hooks 出现闭包陷阱的原因和应对方法。以及介绍 react 最新的尚处于提案阶段的 hook
->
-> 我看了很多谈论闭包陷阱的文章，但大多数都是浅尝辄止，且绝大部分都是复制粘贴，很少有深入到闭包原理的，即便有涉及到的，作者自己也写的云里雾里，不知所云。
 
 ## 何为 React 的闭包陷阱
 
@@ -94,7 +92,7 @@ ChatGPT 给的闭包陷阱的文字描述：在 react 钩子中定义了一个�
 
 1. 是值的拷贝还是词法环境对象引用地址的拷贝？
 
-闭包的实现依赖于函数对象的[隐藏属性](https://tc39.es/ecma262/#sec-ecmascript-function-objects)`[[Environment]]`, 这个属性储存了函数声明时的词法环境的引用地址，词法环境是一个无法读取和修改的对象，它的 outer 属性又指向外部词法环境的引用，我们可以通过编译器(V8)实现的`[[Scopes]]`作用域链属性中的`Closure`来观察。
+闭包的实现依赖于函数对象的[隐藏属性](https://tc39.es/ecma262/#sec-ecmascript-function-objects)`[[Environment]]`, 这个属性储存了函数声明时的词法环境的引用地址，词法环境是一个无法读取和修改的对象，它的 outer 属性又指向外部词法环境的引用(形成作用域链)，我们可以通过编译器(V8)实现的`[[Scopes]]`作用域链属性中的`Closure`来观察。
 所以第一个问题有了答案：`capture`捕获的是函数声明时的外部词法环境的引用地址，而不是新开辟一片内存把引用到的值复制进去。通过`[[scope]]`观察可以看到如下(该图片是过时闭包的例子，将在紧接的段落里详细解释)
 ![closure-debug1](./closure-debug1.png)
 可以看到`[[Scopes]]`内有一个`Closure(App)`(及外部函数`App`的词法环境对象)
@@ -112,7 +110,7 @@ ChatGPT 给的闭包陷阱的文字描述：在 react 钩子中定义了一个�
 4. 如何释放？
 
 GC 会回收掉没有被引用的变量，只要还有作用域引用该词法环境，那其中的变量就不会被回收。
-在上面的例子中，哪怕我们将`log`手动标记为清除：`log = null`，`Closure(App)`中的变量仍将因为`increment`的引用而一直存在于内存中。由于闭包产生于编译阶段，引用`message`的闭包函数`log`虽然已经被清除了，但却没有任何机制将`message: "Count is 0"`删除，这就容易导致性能问题，假如这个`message`是一个很大的对象，那这个对象占用的内存就不会被回收，可能会造成内存泄漏。
+在上面的例子中，哪怕我们将`log`手动标记为清除：`log = null`，`Closure(App)`中的变量仍将因为`increment`的引用而一直存在于内存中。引用`message`的闭包函数`log`虽然已经被清除了，但却没有任何机制将`message: "Count is 0"`删除，这就容易导致性能问题，假如这个`message`是一个很大的对象，那这个对象占用的内存就不会被回收，可能会造成内存泄漏。
 只有当`increment`也被标记为清除的时候，`Closure(App)`中的变量才会被 GC 回收。
 ![不会清除](./closure-not-clear.png)
 
@@ -160,7 +158,7 @@ Count is 0
 4. 声明局部变量`message`，分配内存，存入值`"Count is 0"`
 5. 声明函数`log`，在函数内引用`message`，形成闭包
 6. 全局作用域以解构的方式声明`increment`和`log`两个变量，分别来储存从函数`App` return 的两个函数的引用地址
-7. `App`执行完毕，其函数执行上下文出栈销毁，但词法环境被闭包引用，避免被 GC。需要注意的是并不是整个词法环境被保留，而是只保留了编译阶段被引用的`count`和`message`
+7. `App`执行完毕，其函数执行上下文出栈销毁，但词法环境被闭包引用，避免被 GC。需要注意的是并不是整个词法环境被保留，JS 引擎有优化，只保留了编译阶段被引用的`count`和`message`
 8. 执行`increment`, 直接修改`count`的值为 1
 9. 执行`log`，直接打印`message`的值为`"Count is 0"`
 
@@ -246,7 +244,7 @@ Count is 1
 
 ![closure2](./closure2.png)
 
-`log`打印出 count 旧值的原因是闭包函数引用的是第一次执行`increment`时的词法环境，其`message`是第一次执行`increment`时的值。和上面的复现闭包第一个例子一模一样。
+`log`打印出 count 旧值的原因是闭包函数引用的是第一次执行`increment`时的词法环境，其`message`是第一次执行`increment`时的值。
 
 **修正过后的代码**
 
@@ -403,11 +401,11 @@ render(<Timer />);
 
 `handleCount` 中捕获的`count`, 是在`Timer`执行生成的:`const count = useMyState(0)[0]` 也就是 `count: 0`, 和前面章节第一个过时闭包的例子一模一样`let message = "count is " + count`
 
-`useEffect`, `useMemo`, `useCallback` 等 memorization hooks 都会面临相同的过时闭包问题，而且这类型 bug 很难发现。这也是为什么最新的 react 文档建议开发者最好开启 deps eslint，以及最好不要 ban 掉 eslint 以 [欺骗 react](https://react.dev/reference/react/useEffect#specifying-reactive-dependencies)
+`useEffect`, `useMemo`, `useCallback` 等 hooks 都会面临相同的过时闭包问题，而且这类型 bug 很难发现。这也是为什么最新的 react 文档建议开发者最好开启 deps eslint，以及最好不要 ban 掉 eslint 以 [欺骗 react](https://react.dev/reference/react/useEffect#specifying-reactive-dependencies)
 
-结合 memorization hooks (后面都以`useEffect`为例)的特性，复盘一下：
+结合 hooks (后面都以`useEffect`为例)的特性，复盘一下：
 
-在 `useEffect` 的回调函数中引用了外部作用域的变量，但是没有将该变量添加进 `useEffect` 的 deps 数组内。只有在 deps `useEffect` 中的回调函数才会重新执行。
+在 `useEffect` 的回调函数中引用了外部作用域的变量，但是没有将该变量添加进 `useEffect` 的 deps 数组内。`useEffect`的回调函数只有`useEffect`重新触发时才会重新执行。
 由于我们少传或没有传相应的 deps，当漏网之鱼发生变化时，`useEffect` 并没有触发，`useEffect` 内的闭包函数所捕获的还是上一次 `useEffect` 执行时的词法环境中的变量，就产生了过时闭包的 bug。
 
 ## 不指定依赖就一定会出现 bug 吗？
@@ -429,7 +427,7 @@ render(<Timer />);
 
 `useEffect`最大的心智负担就在这里：eslint 强迫我们将`useEffect`中所有用到的 prop / state 全部放到 deps 数组中，即将该数组当成了闭包会引用的变量的全家福。
 
-但 `useEffect`本身的作用是响应状态变更的副作用，绝大部分场景下我们不想对所有的依赖进行响应，我们只想要响应一个或两个状态的变化，然后在该 Effect 中能拿到最新的依赖，执行我们想要的操作。
+但 `useEffect`本身的作用是响应状态变更，执行副作用，绝大部分场景下我们不想对所有的依赖进行响应，我们只想要响应一个或两个状态的变化，然后在该 Effect 中能拿到最新的依赖，执行我们想要的操作。
 
 我们想要 deps 数组有业务含义，而不是长破天的全家福。我们想要 deps 数组里不用再传入毫无意义的 handle 或 dispatch 函数。
 
