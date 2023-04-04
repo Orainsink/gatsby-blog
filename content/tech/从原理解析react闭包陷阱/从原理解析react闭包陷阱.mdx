@@ -6,7 +6,7 @@ title: 从原理解析react闭包陷阱
 tags: [react, js]
 ---
 
-> 详细介绍 Memorization hooks 出现闭包陷阱的原因和应对方法。以及介绍 react 最新的尚处于提案阶段的 hook
+> 详细介绍 hooks 出现闭包陷阱的原因和应对方法。以及介绍 react 最新的尚处于提案阶段的 hook
 
 ## 何为 React 的闭包陷阱
 
@@ -22,7 +22,7 @@ function Timer() {
     const handleCount = () => {
       setCount(count + 1);
     };
-    setInterval(handleCount, 500);
+    const timer = setInterval(handleCount, 500);
   }, []);
 
   return (
@@ -523,7 +523,7 @@ const Demo = ({ name, height, weight, onError, onOk, path }) => {
 
 [Declaring an Effect Event](https://react.dev/learn/separating-events-from-effects#declaring-an-effect-event)
 
-`useEffectEvent` 的内部实现就是基于 ref，其作用就是减少 memorization hooks 不必要的 deps。
+`useEffectEvent` 的内部实现就是基于 ref，其作用就是减少 hooks 不必要的 deps。
 
 ```jsx name=useEffectEventDemo
 const Demo = ({ name, height, weight, onError, onOk, path }) => {
