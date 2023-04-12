@@ -1,10 +1,8 @@
 import { useState, ReactElement, memo } from 'react';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
-import vsDark from 'prism-react-renderer/themes/vsDark';
 import { CopyOutlined, SmileOutlined } from '@ant-design/icons';
 
-import { theme as lightTheme } from '../../../assets/theme/customPrism';
-import { useIsDark } from '../../../hooks';
+import { theme as customTheme } from '../../../assets/theme/customPrism';
 import {
   CopyButton,
   NameLabel,
@@ -35,8 +33,6 @@ export const CodeBlock = memo(
     const [copied, setCopied] = useState(false);
     const code = children.trim();
 
-    const isDark = useIsDark();
-    const theme = isDark ? vsDark : lightTheme;
     const isLive = has('live', meta);
     const noInline = has('noInline', meta);
     const { name } = meta;
@@ -62,13 +58,13 @@ export const CodeBlock = memo(
           </CopyButton>
         </LabelsContainer>
         {isLive ? (
-          <LivePre theme={theme} code={code} noInline={noInline} />
+          <LivePre theme={customTheme} code={code} noInline={noInline} />
         ) : (
           <Highlight
             {...defaultProps}
             code={code}
             language={language}
-            theme={theme}
+            theme={customTheme}
           >
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
               <ReadonlyPre

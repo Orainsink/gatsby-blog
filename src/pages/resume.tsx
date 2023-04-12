@@ -11,7 +11,7 @@ import {
 } from '../components/Resume';
 import { hasArrowAtom } from '../store/atom';
 import { useSetRecoilState } from 'recoil';
-import { useIsDark } from '../hooks';
+import { useHasMounted, useIsDark } from '../hooks';
 
 const ResumeContainer = styled.div`
   position: relative;
@@ -21,6 +21,7 @@ const ResumeContainer = styled.div`
 const ResumePage = (): ReactElement => {
   const setHasArrow = useSetRecoilState(hasArrowAtom);
   const isDark = useIsDark();
+  const hasMounted = useHasMounted();
 
   useEffect(() => {
     setHasArrow(false);
@@ -31,7 +32,7 @@ const ResumePage = (): ReactElement => {
 
   return (
     <ResumeContainer>
-      {isDark ? <NightBackground /> : <DayBackground />}
+      {!hasMounted ? null : isDark ? <NightBackground /> : <DayBackground />}
       <AboutSection />
       <SkillsSection />
     </ResumeContainer>

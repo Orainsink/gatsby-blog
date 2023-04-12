@@ -1,7 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 import { theme } from 'antd';
+
 import darkValley from '../img/valley-dark.svg';
 import valley from '../img/valley.svg';
+import { lightPrismVariables, darkPrismVariables } from './prismVariables';
 
 const { darkAlgorithm, defaultAlgorithm, defaultSeed } = theme;
 
@@ -73,6 +75,8 @@ export const GlobalStyles = createGlobalStyle`
     --color-mdx-header-hover: var(--color-text-secondary);
 
     --image-footer: url(${valley});
+
+    ${lightPrismVariables}
   }
 
   :root[data-theme='dark'] body {
@@ -109,5 +113,7 @@ export const GlobalStyles = createGlobalStyle`
     --color-mdx-header-hover: ${darkMapToken.colorWarningHover};
 
     --image-footer: url(${darkValley});
+
+    ${darkPrismVariables}
   }
 `;

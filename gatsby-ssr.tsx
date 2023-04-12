@@ -5,32 +5,13 @@
  */
 import { RecoilRoot } from 'recoil';
 import type { GatsbySSR } from 'gatsby';
-import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 
-const sheetByPathname = new Map();
-
-export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({
-  element,
-  pathname,
-}) => {
-  const sheet = new ServerStyleSheet();
-  sheetByPathname.set(pathname, sheet);
-  return (
-    <StyleSheetManager sheet={sheet.instance}>
-      <RecoilRoot>{element}</RecoilRoot>
-    </StyleSheetManager>
-  );
+export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => {
+  return <RecoilRoot>{element}</RecoilRoot>;
 };
 
 export const onRenderBody: GatsbySSR['onRenderBody'] = ({
-  setHeadComponents,
-  pathname,
   setHtmlAttributes,
 }) => {
-  const sheet = sheetByPathname.get(pathname);
-  if (sheet) {
-    setHeadComponents([sheet.getStyleElement()]);
-    sheetByPathname.delete(pathname);
-  }
   setHtmlAttributes({ lang: 'zh' });
 };

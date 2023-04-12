@@ -4,13 +4,11 @@ import styled from 'styled-components';
 
 import { getPreStyle } from './CodeBlock.styles';
 import scope from './scope';
-import { useIsDark } from '../../../hooks';
 
-const PreviewContainer = styled.div<{ $isDark: boolean }>`
+const PreviewContainer = styled.div`
   padding: var(--space-sm);
   border-radius: var(--border-radius-sm);
-  background-color: ${({ $isDark }) =>
-    $isDark ? 'rgb(30, 30, 30)' : 'rgb(246, 246, 246)'};
+  background-color: var(--prism-plain-background);
   margin-top: var(--space-md);
 `;
 
@@ -32,15 +30,12 @@ interface LivePreProps {
   code: string;
   noInline?: boolean;
 }
-export const LivePre = ({ theme, code, noInline = false }: LivePreProps) => {
-  const isDark = useIsDark();
-  return (
-    <LiveProvider code={code} theme={theme} scope={scope} noInline={noInline}>
-      <LiveEditor style={getPreStyle({ padding: 0 })} />
-      <PreviewContainer $isDark={isDark}>
-        <Preview />
-        <Error />
-      </PreviewContainer>
-    </LiveProvider>
-  );
-};
+export const LivePre = ({ theme, code, noInline = false }: LivePreProps) => (
+  <LiveProvider code={code} theme={theme} scope={scope} noInline={noInline}>
+    <LiveEditor style={getPreStyle({ padding: 0 })} />
+    <PreviewContainer>
+      <Preview />
+      <Error />
+    </PreviewContainer>
+  </LiveProvider>
+);
