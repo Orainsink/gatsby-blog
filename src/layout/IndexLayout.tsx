@@ -2,7 +2,6 @@ import { useEffect, ReactNode, ReactElement } from 'react';
 import styled from 'styled-components';
 
 import { SideBar, Info, TagsBlock, Tools } from '../components/SideBlocks';
-import { useBackgroundColor } from '../hooks';
 import { Comment } from '../components/Comment';
 import { Footer } from '../components/Footer';
 import { Bg } from '../components/Bg';
@@ -78,7 +77,6 @@ export const Layout = ({ children }: Props): ReactElement => {
   const skip = useRecoilValue(skipAtom);
   const setHasArrow = useSetRecoilState(hasArrowAtom);
   const resetFilter = useResetRecoilState(filterAtom);
-  useBackgroundColor(skip);
 
   useEffect(() => {
     setHasArrow(true);

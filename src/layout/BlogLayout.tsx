@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import { hasArrowAtom, sceneAtom, skipAtom } from '../store/atom';
 import { Info, SideBar } from '../components/SideBlocks';
-import { useBackgroundColor } from '../hooks';
 import { useSetRecoilState } from 'recoil';
 import { Footer } from '../components/Footer';
 import { Bg } from '../components/Bg';
@@ -25,7 +24,6 @@ export const Layout = (props: Props): ReactElement => {
   const setSkip = useSetRecoilState(skipAtom);
   const setHasArrow = useSetRecoilState(hasArrowAtom);
   const setScene = useSetRecoilState(sceneAtom);
-  useBackgroundColor();
 
   useEffect(() => {
     setSkip(true);

@@ -7,7 +7,6 @@ import { useRecoilState } from 'recoil';
 
 import { Text } from './TextComponent';
 import { Moon } from './Moon';
-import { useBackgroundColor } from '../../hooks';
 import { isClient } from '../../utils/isClient';
 import { Stars } from './Stars';
 import { Floor } from './Floor';
@@ -88,8 +87,6 @@ const Dynamic = (): ReactElement | null => {
   const url = data.file.publicURL;
   const [scene, setScene] = useRecoilState(sceneAtom);
   const [words, setWords] = useState<string[] | null>(null);
-
-  useBackgroundColor();
 
   const handleScene = useCallback(() => {
     setScene(false);
