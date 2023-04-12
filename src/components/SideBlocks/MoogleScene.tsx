@@ -79,7 +79,7 @@ const Modal = memo(({ url, isDark }: Props) => {
     if (!nodes) return;
     const geometry = nodes.mesh_0.geometry as BufferGeometry;
     const positions = geometry.attributes.position;
-    // 深拷贝存储莫古利模型数据
+    // @ts-ignore 深拷贝存储莫古利模型数据
     const curArr = Object.assign({}, positions.array);
     // @ts-ignore 位置乱序
     positions.array.sort(() => Math.random() - 0.5);
@@ -91,7 +91,7 @@ const Modal = memo(({ url, isDark }: Props) => {
       if (!geomRef.current) return;
       geomRef.current.attributes.position.needsUpdate = true;
     };
-    // 渐变动画
+    // @ts-ignore 渐变动画
     const tween = gsap.to(positions.array, {
       duration: 4,
       ease: 'power4.out',
