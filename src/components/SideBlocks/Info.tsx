@@ -15,7 +15,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import styled, { css } from 'styled-components';
 
 import { ReactComponent as SteamSvg } from '../../assets/img/steam.svg';
-import { useMedia, useIsDark } from '../../hooks';
+import { useMedia, useIsDark, useHasMounted } from '../../hooks';
 import { DeepRequiredAndNonNullable } from '../../../typings/custom';
 import { BaseCol, Title } from './SideBlocks.styles';
 
@@ -96,6 +96,12 @@ const IconContainer = styled.div`
   }
 `;
 
+const AvatarSkeleton = styled.div`
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+`;
+
 const iconStyle = css`
   color: var(--color-text);
 `;
@@ -154,6 +160,7 @@ const Wechat = (): ReactElement => (
 /**个人信息块 */
 export const Info = () => {
   const isDark = useIsDark();
+  const hasMounted = useHasMounted();
   const isDesktop = useMedia('isDesktop');
 
   const data = useStaticQuery<
@@ -189,12 +196,11 @@ export const Info = () => {
 
   return (
     <InfoContainer flex={isDesktop ? '0 0 300px' : '1 1 300px'}>
-      <GatsbyImage
-        suppressHydrationWarning
-        image={avatar!}
-        alt=""
-        className="owner-avatar-image"
-      />
+      {hasMounted ? (
+        <GatsbyImage image={avatar!} alt="" className="owner-avatar-image" />
+      ) : (
+        <AvatarSkeleton />
+      )}
       <StyledTitle>ABOUT</StyledTitle>
       <div>
         <Bloger suppressHydrationWarning>

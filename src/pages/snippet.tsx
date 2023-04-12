@@ -37,7 +37,7 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
     };
   });
 
-  const columns: ColumnsType<typeof datas[number]> = [
+  const columns: ColumnsType<(typeof datas)[number]> = [
     {
       title: 'TITLE',
       dataIndex: 'title',
@@ -55,7 +55,9 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
       dataIndex: 'tag',
       width: 80,
       render: (text: string) => (
-        <Tag color={isDark ? 'warning' : 'processing'}>{text}</Tag>
+        <Tag color={isDark ? 'warning' : 'processing'} suppressHydrationWarning>
+          {text}
+        </Tag>
       ),
     },
     {
@@ -66,7 +68,7 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
       sorter: (a, b) => dayjs(a.date).unix() - dayjs(b.date).unix(),
     },
   ];
-  const smallColumns: ColumnsType<typeof datas[number]> = [
+  const smallColumns: ColumnsType<(typeof datas)[number]> = [
     {
       title: 'TITLE',
       dataIndex: 'title',
@@ -76,7 +78,12 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
           <div style={{ fontWeight: 'var(--font-weight-lg)' }}>{text}</div>
           <div>{row.description}</div>
           <div>
-            <Tag color={isDark ? 'warning' : 'processing'}>{row.tag}</Tag>
+            <Tag
+              color={isDark ? 'warning' : 'processing'}
+              suppressHydrationWarning
+            >
+              {row.tag}
+            </Tag>
           </div>
         </div>
       ),
