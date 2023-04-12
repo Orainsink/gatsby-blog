@@ -189,11 +189,20 @@ export const Info = () => {
 
   return (
     <InfoContainer flex={isDesktop ? '0 0 300px' : '1 1 300px'}>
-      <GatsbyImage image={avatar!} alt="" className="owner-avatar-image" />
+      <GatsbyImage
+        suppressHydrationWarning
+        image={avatar!}
+        alt=""
+        className="owner-avatar-image"
+      />
       <StyledTitle>ABOUT</StyledTitle>
       <div>
-        <Bloger>{isDark ? 'Orainsink' : '莫沉'}</Bloger>
-        <Motto>{isDark ? 'listen, feel, think' : '倾听, 感受, 思考'}</Motto>
+        <Bloger suppressHydrationWarning>
+          {isDark ? 'Orainsink' : '莫沉'}
+        </Bloger>
+        <Motto suppressHydrationWarning>
+          {isDark ? 'listen, feel, think' : '倾听, 感受, 思考'}
+        </Motto>
         <IconContainer>
           <a
             href="https://www.zhihu.com/people/f6e5b2cbbe6e9535239e41b51305bf2c?utm_source=qq&utm_medium=social&utm_oi=586439395150794752"

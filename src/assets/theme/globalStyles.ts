@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { theme } from 'antd';
+import darkValley from '../img/valley-dark.svg';
+import valley from '../img/valley.svg';
 
 const { darkAlgorithm, defaultAlgorithm, defaultSeed } = theme;
 
@@ -69,9 +71,11 @@ export const GlobalStyles = createGlobalStyle`
     /* -------- Post ---------- */
     --color-mdx-header: var(--color-text);
     --color-mdx-header-hover: var(--color-text-secondary);
+
+    --image-footer: url(${valley});
   }
 
-  :root body.dark {
+  :root[data-theme='dark'] body {
     --color-primary: ${defaultMapToken.colorWarningText};
     --color-primary-hover: ${defaultMapToken.colorWarningTextHover};
     --color-primary-active: ${defaultMapToken.colorWarningTextActive};
@@ -103,5 +107,7 @@ export const GlobalStyles = createGlobalStyle`
     /* -------- Post ---------- */
     --color-mdx-header: ${darkMapToken.colorWarning};
     --color-mdx-header-hover: ${darkMapToken.colorWarningHover};
+
+    --image-footer: url(${darkValley});
   }
 `;

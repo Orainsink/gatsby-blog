@@ -3,10 +3,6 @@ import { GithubOutlined, MailOutlined } from '@ant-design/icons';
 import styled, { css } from 'styled-components';
 import { Typography } from 'antd';
 
-import { useIsDark } from '../hooks';
-import darkValley from '../assets/img/valley-dark.svg';
-import valley from '../assets/img/valley.svg';
-
 const { Link } = Typography;
 
 const FOOTER_MAX_HEIGHT = '200px';
@@ -65,7 +61,7 @@ const FooterPhrase = styled.div`
   }
 `;
 
-const FooterValley = styled.div<{ $isDark: boolean }>`
+const FooterValley = styled.div`
   width: 100%;
   height: 250px;
   position: absolute;
@@ -74,60 +70,56 @@ const FooterValley = styled.div<{ $isDark: boolean }>`
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(${({ $isDark }) => ($isDark ? darkValley : valley)});
+  background-image: var(--image-footer);
 `;
 
 /**Footer */
-export const Footer = (): ReactElement => {
-  const isDark = useIsDark();
-
-  return (
-    <FooterContainer>
-      <FooterValley $isDark={isDark} />
-      <FooterMain>
-        <FooterPhrase>
-          <div>
-            <StyledGithubOutlined />
-            <Link
-              href="https://github.com/Orainsink/gatsby-blog"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Site Repository
-            </Link>
-          </div>
-          <div>
-            <StyledMailOutlined />
-            Email: ywt1250066597@gmail.com
-          </div>
-        </FooterPhrase>
+export const Footer = (): ReactElement => (
+  <FooterContainer>
+    <FooterValley />
+    <FooterMain>
+      <FooterPhrase>
         <div>
-          © Orainsink {new Date().getFullYear()}, Built with{' '}
+          <StyledGithubOutlined />
           <Link
-            href="https://www.gatsbyjs.org"
+            href="https://github.com/Orainsink/gatsby-blog"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Gatsby
-          </Link>
-          {', '}
-          <Link
-            href="https://ant.design"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Antd
-          </Link>
-          {', '}
-          <Link
-            href="https://threejs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Three.js
+            Site Repository
           </Link>
         </div>
-      </FooterMain>
-    </FooterContainer>
-  );
-};
+        <div>
+          <StyledMailOutlined />
+          Email: ywt1250066597@gmail.com
+        </div>
+      </FooterPhrase>
+      <div>
+        © Orainsink {new Date().getFullYear()}, Built with{' '}
+        <Link
+          href="https://www.gatsbyjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Gatsby
+        </Link>
+        {', '}
+        <Link
+          href="https://ant.design"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Antd
+        </Link>
+        {', '}
+        <Link
+          href="https://threejs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Three.js
+        </Link>
+      </div>
+    </FooterMain>
+  </FooterContainer>
+);

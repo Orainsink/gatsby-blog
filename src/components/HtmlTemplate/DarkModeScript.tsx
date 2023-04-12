@@ -1,4 +1,4 @@
-const rootElement = 'document.body';
+const rootElement = 'document.documentElement';
 
 export const DarkModeScript = () => (
   <script
@@ -12,11 +12,7 @@ export const DarkModeScript = () => (
         preferredTheme = localStorage.getItem('theme')
       } catch (err) { }
       function setTheme(newTheme) {
-        if (preferredTheme && ${rootElement}.classList.contains(preferredTheme)) {
-          ${rootElement}.classList.replace(preferredTheme, newTheme)
-        } else {
-          ${rootElement}.classList.add(newTheme)
-        }
+        ${rootElement}.setAttribute("data-theme", newTheme)
         window.__theme = newTheme
         preferredTheme = newTheme
         window.__onThemeChange(newTheme)

@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import { Tag } from 'antd';
 import { useSetRecoilState } from 'recoil';
 import { has } from 'ramda';
+import styled from 'styled-components';
 
 import { FILE_SYSTEM_CATEGORY_MAP } from '../assets/constants/categories';
 import { useIsDark, useHasMounted } from '../hooks';
@@ -13,7 +14,9 @@ interface Props {
   category?: string;
 }
 
-const pointerStyle = { cursor: 'pointer' };
+const StyledTag = styled(Tag)`
+  cursor: pointer;
+`;
 
 export const Tags = ({ tags, category }: Props): ReactElement | null => {
   const setFilter = useSetRecoilState(filterAtom);
@@ -36,9 +39,9 @@ export const Tags = ({ tags, category }: Props): ReactElement | null => {
     return (
       <div>
         <Link key={category} to={curCategory.path}>
-          <Tag color={curCategory.tag || ''} style={pointerStyle}>
+          <StyledTag color={curCategory.tag || ''}>
             {curCategory.name}
-          </Tag>
+          </StyledTag>
         </Link>
       </div>
     );
@@ -49,9 +52,12 @@ export const Tags = ({ tags, category }: Props): ReactElement | null => {
     <div>
       {tags.map((tag) => (
         <Link key={tag} onClick={() => onTagClicked(tag)} to={`/tech`}>
-          <Tag color={isDark ? 'warning' : 'processing'} style={pointerStyle}>
+          <StyledTag
+            color={isDark ? 'warning' : 'processing'}
+            suppressHydrationWarning
+          >
             #{tag}
-          </Tag>
+          </StyledTag>
         </Link>
       ))}
     </div>
