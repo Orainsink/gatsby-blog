@@ -2,7 +2,6 @@ import { useState, ReactElement, memo } from 'react';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import { CopyOutlined, SmileOutlined } from '@ant-design/icons';
 
-import { theme as customTheme } from '../../../assets/theme/customPrism';
 import {
   CopyButton,
   NameLabel,
@@ -58,13 +57,13 @@ export const CodeBlock = memo(
           </CopyButton>
         </LabelsContainer>
         {isLive ? (
-          <LivePre theme={customTheme} code={code} noInline={noInline} />
+          <LivePre code={code} noInline={noInline} />
         ) : (
           <Highlight
             {...defaultProps}
             code={code}
             language={language}
-            theme={customTheme}
+            theme={undefined}
           >
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
               <ReadonlyPre

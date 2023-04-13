@@ -3,7 +3,7 @@ import styled, { CSSProperties, css } from 'styled-components';
 
 export const labelSharedStyles = css`
   padding: 2px 12px 0px;
-  background: var(--color-code-bg);
+  background: var(--prism-block-bg);
   border-radius: var(--border-radius-sm) var(--border-radius-sm) 0px 0px;
   color: var(--color-text) !important;
   font-weight: var(--font-weight-lg);

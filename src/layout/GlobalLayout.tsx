@@ -5,6 +5,7 @@ import { useRecoilValue } from 'recoil';
 import { StyleProvider } from '@ant-design/cssinjs';
 
 import '../assets/css/global.css';
+import '../assets/css/prism-theme.css';
 
 import { BackTop } from '../components/BackTop';
 import { useIsDark } from '../hooks';

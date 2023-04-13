@@ -42,7 +42,7 @@ function EventListener() {
     const handleCount = () => {
       setCount(count + 1);
     };
-    countRef.current?.addEventListener('click', handleCount);
+    countRef.current.addEventListener('click', handleCount);
   }, []);
 
   return (

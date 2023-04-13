@@ -1,0 +1,310 @@
+diff --git a/node_modules/react-live/dist/react-live.cjs.js b/node_modules/react-live/dist/react-live.cjs.js
+index 3e7b72b..2b8de0f 100644
+--- a/node_modules/react-live/dist/react-live.cjs.js
++++ b/node_modules/react-live/dist/react-live.cjs.js
+@@ -343,80 +343,6 @@ function useEditable(c, a, b) {
+   return n;
+ }
+ 
+-const theme = {
+-    plain: {
+-        color: "#C5C8C6",
+-        backgroundColor: "#1D1F21",
+-    },
+-    styles: [
+-        {
+-            types: ["prolog", "comment", "doctype", "cdata"],
+-            style: {
+-                color: "hsl(30, 20%, 50%)",
+-            },
+-        },
+-        {
+-            types: ["property", "tag", "boolean", "number", "constant", "symbol"],
+-            style: { color: "hsl(350, 40%, 70%)" },
+-        },
+-        {
+-            types: ["attr-name", "string", "char", "builtin", "insterted"],
+-            style: {
+-                color: "hsl(75, 70%, 60%)",
+-            },
+-        },
+-        {
+-            types: [
+-                "operator",
+-                "entity",
+-                "url",
+-                "string",
+-                "variable",
+-                "language-css",
+-            ],
+-            style: {
+-                color: "hsl(40, 90%, 60%)",
+-            },
+-        },
+-        {
+-            types: ["deleted"],
+-            style: {
+-                color: "rgb(255, 85, 85)",
+-            },
+-        },
+-        {
+-            types: ["italic"],
+-            style: {
+-                fontStyle: "italic",
+-            },
+-        },
+-        {
+-            types: ["important", "bold"],
+-            style: {
+-                fontWeight: "bold",
+-            },
+-        },
+-        {
+-            types: ["regex", "important"],
+-            style: {
+-                color: "#e90",
+-            },
+-        },
+-        {
+-            types: ["atrule", "attr-value", "keyword"],
+-            style: {
+-                color: "hsl(350, 40%, 70%)",
+-            },
+-        },
+-        {
+-            types: ["punctuation", "symbol"],
+-            style: {
+-                opacity: 0.7,
+-            },
+-        },
+-    ],
+-};
+-
+ const CodeEditor = (props) => {
+     const editorRef = React.useRef(null);
+     const [code, setCode] = React.useState(props.code || "");
+@@ -435,11 +361,7 @@ const CodeEditor = (props) => {
+             props.onChange(code);
+         }
+     }, [code]);
+-    return (jsxRuntime.jsx("div", Object.assign({ className: props.className, style: props.style }, { children: jsxRuntime.jsx(Highlight__default['default'], Object.assign({ Prism: props.prism || Highlight.Prism, code: code, theme: props.theme || theme, language: props.language }, { children: ({ className: _className, tokens, getLineProps, getTokenProps, style: _style, 
+-            /* @ts-ignore — this property exists but the lib's types are incorrect */
+-            theme: _theme, }) => (jsxRuntime.jsx("pre", Object.assign({ className: _className, style: Object.assign(Object.assign({ margin: 0, outline: "none", padding: 10, fontFamily: "inherit" }, (_theme && typeof _theme.plain === "object"
+-                    ? _theme.plain
+-                    : {})), _style), ref: editorRef, spellCheck: "false" }, { children: tokens.map((line, lineIndex) => (
++    return (jsxRuntime.jsx("div", Object.assign({ className: props.className, style: props.style }, { children: jsxRuntime.jsx(Highlight__default['default'], Object.assign({ Prism: props.prism || Highlight.Prism, code: code, theme: props.theme, language: props.language }, { children: ({ className: _className, tokens, getLineProps, getTokenProps, style: _style, }) => (jsxRuntime.jsx("pre", Object.assign({ className: _className, style: Object.assign({ margin: 0, outline: "none", padding: 10, fontFamily: "inherit" }, _style), ref: editorRef, spellCheck: "false" }, { children: tokens.map((line, lineIndex) => (
+                 // eslint-disable-next-line react/jsx-key
+                 jsxRuntime.jsxs("div", Object.assign({}, getLineProps({ line, key: `line-${lineIndex}` }), { children: [line
+                             .filter((token) => !token.empty)
+diff --git a/node_modules/react-live/dist/react-live.es.js b/node_modules/react-live/dist/react-live.es.js
+index 8a2c354..173ccdb 100644
+--- a/node_modules/react-live/dist/react-live.es.js
++++ b/node_modules/react-live/dist/react-live.es.js
+@@ -334,80 +334,6 @@ function useEditable(c, a, b) {
+   return n;
+ }
+ 
+-const theme = {
+-    plain: {
+-        color: "#C5C8C6",
+-        backgroundColor: "#1D1F21",
+-    },
+-    styles: [
+-        {
+-            types: ["prolog", "comment", "doctype", "cdata"],
+-            style: {
+-                color: "hsl(30, 20%, 50%)",
+-            },
+-        },
+-        {
+-            types: ["property", "tag", "boolean", "number", "constant", "symbol"],
+-            style: { color: "hsl(350, 40%, 70%)" },
+-        },
+-        {
+-            types: ["attr-name", "string", "char", "builtin", "insterted"],
+-            style: {
+-                color: "hsl(75, 70%, 60%)",
+-            },
+-        },
+-        {
+-            types: [
+-                "operator",
+-                "entity",
+-                "url",
+-                "string",
+-                "variable",
+-                "language-css",
+-            ],
+-            style: {
+-                color: "hsl(40, 90%, 60%)",
+-            },
+-        },
+-        {
+-            types: ["deleted"],
+-            style: {
+-                color: "rgb(255, 85, 85)",
+-            },
+-        },
+-        {
+-            types: ["italic"],
+-            style: {
+-                fontStyle: "italic",
+-            },
+-        },
+-        {
+-            types: ["important", "bold"],
+-            style: {
+-                fontWeight: "bold",
+-            },
+-        },
+-        {
+-            types: ["regex", "important"],
+-            style: {
+-                color: "#e90",
+-            },
+-        },
+-        {
+-            types: ["atrule", "attr-value", "keyword"],
+-            style: {
+-                color: "hsl(350, 40%, 70%)",
+-            },
+-        },
+-        {
+-            types: ["punctuation", "symbol"],
+-            style: {
+-                opacity: 0.7,
+-            },
+-        },
+-    ],
+-};
+-
+ const CodeEditor = (props) => {
+     const editorRef = useRef(null);
+     const [code, setCode] = useState(props.code || "");
+@@ -426,11 +352,7 @@ const CodeEditor = (props) => {
+             props.onChange(code);
+         }
+     }, [code]);
+-    return (jsx("div", Object.assign({ className: props.className, style: props.style }, { children: jsx(Highlight, Object.assign({ Prism: props.prism || Prism, code: code, theme: props.theme || theme, language: props.language }, { children: ({ className: _className, tokens, getLineProps, getTokenProps, style: _style, 
+-            /* @ts-ignore — this property exists but the lib's types are incorrect */
+-            theme: _theme, }) => (jsx("pre", Object.assign({ className: _className, style: Object.assign(Object.assign({ margin: 0, outline: "none", padding: 10, fontFamily: "inherit" }, (_theme && typeof _theme.plain === "object"
+-                    ? _theme.plain
+-                    : {})), _style), ref: editorRef, spellCheck: "false" }, { children: tokens.map((line, lineIndex) => (
++    return (jsx("div", Object.assign({ className: props.className, style: props.style }, { children: jsx(Highlight, Object.assign({ Prism: props.prism || Prism, code: code, theme: props.theme, language: props.language }, { children: ({ className: _className, tokens, getLineProps, getTokenProps, style: _style, }) => (jsx("pre", Object.assign({ className: _className, style: Object.assign({ margin: 0, outline: "none", padding: 10, fontFamily: "inherit" }, _style), ref: editorRef, spellCheck: "false" }, { children: tokens.map((line, lineIndex) => (
+                 // eslint-disable-next-line react/jsx-key
+                 jsxs("div", Object.assign({}, getLineProps({ line, key: `line-${lineIndex}` }), { children: [line
+                             .filter((token) => !token.empty)
+diff --git a/node_modules/react-live/dist/react-live.js b/node_modules/react-live/dist/react-live.js
+index bc772cd..24d2d82 100644
+--- a/node_modules/react-live/dist/react-live.js
++++ b/node_modules/react-live/dist/react-live.js
+@@ -340,80 +340,6 @@
+     return n;
+   }
+ 
+-  const theme = {
+-      plain: {
+-          color: "#C5C8C6",
+-          backgroundColor: "#1D1F21",
+-      },
+-      styles: [
+-          {
+-              types: ["prolog", "comment", "doctype", "cdata"],
+-              style: {
+-                  color: "hsl(30, 20%, 50%)",
+-              },
+-          },
+-          {
+-              types: ["property", "tag", "boolean", "number", "constant", "symbol"],
+-              style: { color: "hsl(350, 40%, 70%)" },
+-          },
+-          {
+-              types: ["attr-name", "string", "char", "builtin", "insterted"],
+-              style: {
+-                  color: "hsl(75, 70%, 60%)",
+-              },
+-          },
+-          {
+-              types: [
+-                  "operator",
+-                  "entity",
+-                  "url",
+-                  "string",
+-                  "variable",
+-                  "language-css",
+-              ],
+-              style: {
+-                  color: "hsl(40, 90%, 60%)",
+-              },
+-          },
+-          {
+-              types: ["deleted"],
+-              style: {
+-                  color: "rgb(255, 85, 85)",
+-              },
+-          },
+-          {
+-              types: ["italic"],
+-              style: {
+-                  fontStyle: "italic",
+-              },
+-          },
+-          {
+-              types: ["important", "bold"],
+-              style: {
+-                  fontWeight: "bold",
+-              },
+-          },
+-          {
+-              types: ["regex", "important"],
+-              style: {
+-                  color: "#e90",
+-              },
+-          },
+-          {
+-              types: ["atrule", "attr-value", "keyword"],
+-              style: {
+-                  color: "hsl(350, 40%, 70%)",
+-              },
+-          },
+-          {
+-              types: ["punctuation", "symbol"],
+-              style: {
+-                  opacity: 0.7,
+-              },
+-          },
+-      ],
+-  };
+-
+   const CodeEditor = (props) => {
+       const editorRef = React.useRef(null);
+       const [code, setCode] = React.useState(props.code || "");
+@@ -432,11 +358,7 @@
+               props.onChange(code);
+           }
+       }, [code]);
+-      return (jsxRuntime.jsx("div", Object.assign({ className: props.className, style: props.style }, { children: jsxRuntime.jsx(Highlight__default['default'], Object.assign({ Prism: props.prism || Highlight.Prism, code: code, theme: props.theme || theme, language: props.language }, { children: ({ className: _className, tokens, getLineProps, getTokenProps, style: _style, 
+-              /* @ts-ignore — this property exists but the lib's types are incorrect */
+-              theme: _theme, }) => (jsxRuntime.jsx("pre", Object.assign({ className: _className, style: Object.assign(Object.assign({ margin: 0, outline: "none", padding: 10, fontFamily: "inherit" }, (_theme && typeof _theme.plain === "object"
+-                      ? _theme.plain
+-                      : {})), _style), ref: editorRef, spellCheck: "false" }, { children: tokens.map((line, lineIndex) => (
++      return (jsxRuntime.jsx("div", Object.assign({ className: props.className, style: props.style }, { children: jsxRuntime.jsx(Highlight__default['default'], Object.assign({ Prism: props.prism || Highlight.Prism, code: code, theme: props.theme, language: props.language }, { children: ({ className: _className, tokens, getLineProps, getTokenProps, style: _style, }) => (jsxRuntime.jsx("pre", Object.assign({ className: _className, style: Object.assign({ margin: 0, outline: "none", padding: 10, fontFamily: "inherit" }, _style), ref: editorRef, spellCheck: "false" }, { children: tokens.map((line, lineIndex) => (
+                   // eslint-disable-next-line react/jsx-key
+                   jsxRuntime.jsxs("div", Object.assign({}, getLineProps({ line, key: `line-${lineIndex}` }), { children: [line
+                               .filter((token) => !token.empty)
+diff --git a/node_modules/react-live/dist/react-live.min.js b/node_modules/react-live/dist/react-live.min.js
+index ba52074..e2521cb 100644
+--- a/node_modules/react-live/dist/react-live.min.js
++++ b/node_modules/react-live/dist/react-live.min.js
+@@ -1,4 +1,4 @@
+-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("react/jsx-runtime"),require("prism-react-renderer"),require("react"),require("sucrase")):"function"==typeof define&&define.amd?define(["exports","react/jsx-runtime","prism-react-renderer","react","sucrase"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).ReactLive={},e["jsx-runtime"],e.Prism,e.React,e.Sucrase)}(this,(function(e,t,n,r,o){"use strict";function i(e){return e&&"object"==typeof e&&"default"in e?e:{default:e}}var s=i(n),a=i(r),c={characterData:!0,characterDataOldValue:!0,childList:!0,subtree:!0};function l(e){var t=window.getSelection();t.empty(),t.addRange(e)}function d(e){return(e.metaKey||e.ctrlKey)&&!e.altKey&&"KeyZ"===e.code}function u(e){e=[e.firstChild];for(var t,n="";t=e.pop();)t.nodeType===Node.TEXT_NODE?n+=t.textContent:t.nodeType===Node.ELEMENT_NODE&&"BR"===t.nodeName&&(n+="\n"),t.nextSibling&&e.push(t.nextSibling),t.firstChild&&e.push(t.firstChild);return"\n"!==n[n.length-1]&&(n+="\n"),n}function p(e){var t=window.getSelection().getRangeAt(0),n=t.collapsed?0:t.toString().length,r=document.createRange();return r.setStart(e,0),r.setEnd(t.startContainer,t.startOffset),{position:e=(r=r.toString()).length,extent:n,content:r=(r=r.split("\n"))[t=r.length-1],line:t}}function f(e,t,n){0>=t&&(t=0),(!n||0>n)&&(n=t);var r=document.createRange();e=[e.firstChild];for(var o,i=0,s=t;o=e[e.length-1];){if(o.nodeType===Node.TEXT_NODE){if(i+o.textContent.length>=s){var a=s-i;if(s===t){if(s=r,a<o.textContent.length?s.setStart(o,a):s.setStartAfter(o),n!==t){s=n;continue}break}t=r,a<(n=o).textContent.length?t.setEnd(n,a):t.setEndAfter(n);break}i+=o.textContent.length}else if(o.nodeType===Node.ELEMENT_NODE&&"BR"===o.nodeName){if(i+1>=s){if(s===t){if(a=r,0<o.textContent.length?a.setStart(o,0):a.setStartAfter(o),n!==t){s=n;continue}break}t=r,0<(n=o).textContent.length?t.setEnd(n,0):t.setEndAfter(n);break}i++}e.pop(),o.nextSibling&&e.push(o.nextSibling),o.firstChild&&e.push(o.firstChild)}return r}const y={plain:{color:"#C5C8C6",backgroundColor:"#1D1F21"},styles:[{types:["prolog","comment","doctype","cdata"],style:{color:"hsl(30, 20%, 50%)"}},{types:["property","tag","boolean","number","constant","symbol"],style:{color:"hsl(350, 40%, 70%)"}},{types:["attr-name","string","char","builtin","insterted"],style:{color:"hsl(75, 70%, 60%)"}},{types:["operator","entity","url","string","variable","language-css"],style:{color:"hsl(40, 90%, 60%)"}},{types:["deleted"],style:{color:"rgb(255, 85, 85)"}},{types:["italic"],style:{fontStyle:"italic"}},{types:["important","bold"],style:{fontWeight:"bold"}},{types:["regex","important"],style:{color:"#e90"}},{types:["atrule","attr-value","keyword"],style:{color:"hsl(350, 40%, 70%)"}},{types:["punctuation","symbol"],style:{opacity:.7}}]},g=e=>{const o=r.useRef(null),[i,a]=r.useState(e.code||"");r.useEffect((()=>{a(e.code)}),[e.code]);const g=r.useCallback((e=>{a(e.slice(0,-1))}),[]);return function(e,t,n){function o(t){var n=e.current;if(n){var r=p(n);n=u(n),r.position+=t.length-n.length,h.position=r,h.onChange(t,r)}}function i(t,n){var r=e.current;if(r){var o=window.getSelection().getRangeAt(0);o.deleteContents(),o.collapse();var i=n||0;(o=f(r,n=(o=p(r)).position+(0>i?i:0),o.position+(0<i?i:0))).deleteContents(),t&&o.insertNode(document.createTextNode(t)),l(f(r,n+t.length))}}function s(t){var n=e.current;if(n){n.focus();var r=0;if("number"==typeof t)r=t;else{var o=u(n).split("\n").slice(0,t.row);t.row&&(r+=o.join("\n").length+1),r+=t.column}l(f(n,r))}}function a(){var t=e.current;return{text:u(t),position:t=p(t)}}function y(){h.observer.disconnect()}n||(n={});var g=r.useState([])[1],h=r.useState((function(){var e={observer:null,disconnected:!1,onChange:t,queue:[],history:[],historyAt:-1,position:null};return"undefined"!=typeof MutationObserver&&(e.observer=new MutationObserver((function(t){var n;(n=e.queue).push.apply(n,t)}))),e}))[0],v=r.useMemo((function(){return{update:o,insert:i,move:s,getState:a}}),[]);"object"!=typeof navigator||(r.useLayoutEffect((function(){if(h.onChange=t,e.current&&!n.disabled){if(h.disconnected=!1,h.observer.observe(e.current,c),h.position){var r=h.position,o=r.position;l(f(e.current,o,o+r.extent))}return y}})),r.useLayoutEffect((function(){if(e.current&&!n.disabled){var t=e.current;if(h.position){t.focus();var r=h.position,o=r.position;l(f(t,o,o+r.extent))}var i=t.style.whiteSpace,s=t.contentEditable,a=!0;try{t.contentEditable="plaintext-only"}catch(e){t.contentEditable="true",a=!1}"pre"!==i&&(t.style.whiteSpace="pre-wrap"),n.indentation&&(t.style.tabSize=t.style.MozTabSize=""+n.indentation),r=""+" ".repeat(n.indentation||0);var c,y=new RegExp("^(?:"+r+")"),m=new RegExp("^(?:"+r+")*("+r+")$"),b=function(n){if(e.current&&h.position){var r=u(t),o=p(t),i=(new Date).valueOf(),s=h.history[h.historyAt];!n&&500>i-c||s&&s[1]===r?c=i:(n=++h.historyAt,h.history[n]=[o,r],h.history.splice(n+1),500<n&&(h.historyAt--,h.history.shift()))}},x=function(){var e;if((e=h.queue).push.apply(e,h.observer.takeRecords()),e=p(t),h.queue.length){h.observer.disconnect(),h.disconnected=!0;var n,r,o=u(t);for(h.position=e;n=h.queue.pop();){for(null!==n.oldValue&&(n.target.textContent=n.oldValue),r=n.removedNodes.length-1;0<=r;r--)n.target.insertBefore(n.removedNodes[r],n.nextSibling);for(r=n.addedNodes.length-1;0<=r;r--)n.addedNodes[r].parentNode&&n.target.removeChild(n.addedNodes[r])}h.onChange(o,e)}},j=function(e){if(!e.defaultPrevented&&e.target===t){if(h.disconnected)return e.preventDefault(),g([]);if(d(e))e.preventDefault(),e.shiftKey?(e=++h.historyAt,(e=h.history[e])||(h.historyAt=h.history.length-1)):(e=--h.historyAt,(e=h.history[e])||(h.historyAt=0)),e&&(h.observer.disconnect(),h.disconnected=!0,h.position=e[0],h.onChange(e[1],e[0]));else{if(b(),"Enter"===e.key){e.preventDefault();var r=p(t),o=/\S/g.exec(r.content);r="\n"+r.content.slice(0,o?o.index:r.content.length),v.insert(r)}else if(a&&!n.indentation||"Backspace"!==e.key){if(n.indentation&&"Tab"===e.key){e.preventDefault(),o=(r=p(t)).position-r.content.length;var i=u(t);r=e.shiftKey?i.slice(0,o)+r.content.replace(y,"")+i.slice(o+r.content.length):i.slice(0,o)+(n.indentation?" ".repeat(n.indentation):"\t")+i.slice(o),v.update(r)}}else e.preventDefault(),window.getSelection().getRangeAt(0).collapsed?(r=p(t),r=m.exec(r.content),v.insert("",r?-r[1].length:-1)):v.insert("",0);e.repeat&&x()}}},C=function(e){e.defaultPrevented||e.isComposing||(d(e)||b(),x(),t.focus())},E=function(e){h.position=window.getSelection().rangeCount&&e.target===t?p(t):null},w=function(e){e.preventDefault(),b(!0),v.insert(e.clipboardData.getData("text/plain")),b(!0),x()};return document.addEventListener("selectstart",E),window.addEventListener("keydown",j),t.addEventListener("paste",w),t.addEventListener("keyup",C),function(){document.removeEventListener("selectstart",E),window.removeEventListener("keydown",j),t.removeEventListener("paste",w),t.removeEventListener("keyup",C),t.style.whiteSpace=i,t.contentEditable=s}}h.history.length=0,h.historyAt=-1}),[e.current,n.disabled,n.indentation]))}(o,g,{disabled:e.disabled,indentation:"indentation"===e.tabMode?2:void 0}),r.useEffect((()=>{e.onChange&&e.onChange(i)}),[i]),t.jsx("div",Object.assign({className:e.className,style:e.style},{children:t.jsx(s.default,Object.assign({Prism:e.prism||n.Prism,code:i,theme:e.theme||y,language:e.language},{children:({className:e,tokens:n,getLineProps:r,getTokenProps:i,style:s,theme:a})=>t.jsx("pre",Object.assign({className:e,style:Object.assign(Object.assign({margin:0,outline:"none",padding:10,fontFamily:"inherit"},a&&"object"==typeof a.plain?a.plain:{}),s),ref:o,spellCheck:"false"},{children:n.map(((e,n)=>t.jsxs("div",Object.assign({},r({line:e,key:`line-${n}`}),{children:[e.filter((e=>!e.empty)).map(((e,n)=>t.jsx("span",Object.assign({},i({token:e,key:`token-${n}`}))))),"\n"]}))))}))}))}))};function h(e,t,n,r){return new(n||(n=Promise))((function(o,i){function s(e){try{c(r.next(e))}catch(e){i(e)}}function a(e){try{c(r.throw(e))}catch(e){i(e)}}function c(e){var t;e.done?o(e.value):(t=e.value,t instanceof n?t:new n((function(e){e(t)}))).then(s,a)}c((r=r.apply(e,t||[])).next())}))}g.defaultProps={tabMode:"indentation"};const v=r.createContext({}),m=["jsx","imports"];function b(e={}){const t=Array.isArray(e.transforms)?e.transforms.filter(Boolean):m;return e=>o.transform(e,{transforms:t}).code}const x=(e,n)=>class extends r.Component{componentDidCatch(e){n(e)}render(){return"function"==typeof e?t.jsx(e,{}):a.default.isValidElement(e)?e:null}},j=(e,t)=>{const n=Object.keys(t),r=n.map((e=>t[e]));return new Function(...n,e)(...r)};const C='const _jsxFileName = "";',E=e=>e.trim().replace(/;$/,""),w=e=>e.replace(C,"").trim(),S=e=>C+e,O=e=>`return (${e})`,N=({code:e="",scope:t={},enableTypeScript:n=!0},r)=>{const o=["jsx"];n&&o.push("typescript");const i=function(...e){return e.reduce(((e,t)=>(...n)=>e(t(...n))))}(S,b({transforms:["imports"]}),O,w,E,b({transforms:o}),E)(e);return x(j(i,Object.assign({React:a.default},t)),r)},k=({code:e="",scope:t={},enableTypeScript:n=!0},r,o)=>{if(!/render\s*\(/.test(e))return o(new SyntaxError("No-Inline evaluations must call `render`."));const i=["jsx","imports"];n&&i.splice(1,0,"typescript"),j(b({transforms:i})(e),Object.assign(Object.assign({React:a.default},t),{render:e=>{void 0===e?o(new SyntaxError("`render` must be called with valid JSX.")):r(x(e,o))}}))};const L=e=>t.jsx("div",Object.assign({},e));e.Editor=g,e.LiveContext=v,e.LiveEditor=function(e){const{code:n,language:o,theme:i,disabled:s,onChange:a}=r.useContext(v);return t.jsx(g,Object.assign({theme:i,code:n,language:o,disabled:s,onChange:a},e))},e.LiveError=function(e){const{error:n}=r.useContext(v);return n?t.jsx("pre",Object.assign({},e,{children:n})):null},e.LivePreview=function(e){var{Component:n=L}=e,o=
++!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("react/jsx-runtime"),require("prism-react-renderer"),require("react"),require("sucrase")):"function"==typeof define&&define.amd?define(["exports","react/jsx-runtime","prism-react-renderer","react","sucrase"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).ReactLive={},e["jsx-runtime"],e.Prism,e.React,e.Sucrase)}(this,(function(e,t,n,r,o){"use strict";function i(e){return e&&"object"==typeof e&&"default"in e?e:{default:e}}var s=i(n),a=i(r),c={characterData:!0,characterDataOldValue:!0,childList:!0,subtree:!0};function l(e){var t=window.getSelection();t.empty(),t.addRange(e)}function d(e){return(e.metaKey||e.ctrlKey)&&!e.altKey&&"KeyZ"===e.code}function u(e){e=[e.firstChild];for(var t,n="";t=e.pop();)t.nodeType===Node.TEXT_NODE?n+=t.textContent:t.nodeType===Node.ELEMENT_NODE&&"BR"===t.nodeName&&(n+="\n"),t.nextSibling&&e.push(t.nextSibling),t.firstChild&&e.push(t.firstChild);return"\n"!==n[n.length-1]&&(n+="\n"),n}function f(e){var t=window.getSelection().getRangeAt(0),n=t.collapsed?0:t.toString().length,r=document.createRange();return r.setStart(e,0),r.setEnd(t.startContainer,t.startOffset),{position:e=(r=r.toString()).length,extent:n,content:r=(r=r.split("\n"))[t=r.length-1],line:t}}function p(e,t,n){0>=t&&(t=0),(!n||0>n)&&(n=t);var r=document.createRange();e=[e.firstChild];for(var o,i=0,s=t;o=e[e.length-1];){if(o.nodeType===Node.TEXT_NODE){if(i+o.textContent.length>=s){var a=s-i;if(s===t){if(s=r,a<o.textContent.length?s.setStart(o,a):s.setStartAfter(o),n!==t){s=n;continue}break}t=r,a<(n=o).textContent.length?t.setEnd(n,a):t.setEndAfter(n);break}i+=o.textContent.length}else if(o.nodeType===Node.ELEMENT_NODE&&"BR"===o.nodeName){if(i+1>=s){if(s===t){if(a=r,0<o.textContent.length?a.setStart(o,0):a.setStartAfter(o),n!==t){s=n;continue}break}t=r,0<(n=o).textContent.length?t.setEnd(n,0):t.setEndAfter(n);break}i++}e.pop(),o.nextSibling&&e.push(o.nextSibling),o.firstChild&&e.push(o.firstChild)}return r}const h=e=>{const o=r.useRef(null),[i,a]=r.useState(e.code||"");r.useEffect((()=>{a(e.code)}),[e.code]);const h=r.useCallback((e=>{a(e.slice(0,-1))}),[]);return function(e,t,n){function o(t){var n=e.current;if(n){var r=f(n);n=u(n),r.position+=t.length-n.length,v.position=r,v.onChange(t,r)}}function i(t,n){var r=e.current;if(r){var o=window.getSelection().getRangeAt(0);o.deleteContents(),o.collapse();var i=n||0;(o=p(r,n=(o=f(r)).position+(0>i?i:0),o.position+(0<i?i:0))).deleteContents(),t&&o.insertNode(document.createTextNode(t)),l(p(r,n+t.length))}}function s(t){var n=e.current;if(n){n.focus();var r=0;if("number"==typeof t)r=t;else{var o=u(n).split("\n").slice(0,t.row);t.row&&(r+=o.join("\n").length+1),r+=t.column}l(p(n,r))}}function a(){var t=e.current;return{text:u(t),position:t=f(t)}}function h(){v.observer.disconnect()}n||(n={});var g=r.useState([])[1],v=r.useState((function(){var e={observer:null,disconnected:!1,onChange:t,queue:[],history:[],historyAt:-1,position:null};return"undefined"!=typeof MutationObserver&&(e.observer=new MutationObserver((function(t){var n;(n=e.queue).push.apply(n,t)}))),e}))[0],y=r.useMemo((function(){return{update:o,insert:i,move:s,getState:a}}),[]);"object"!=typeof navigator||(r.useLayoutEffect((function(){if(v.onChange=t,e.current&&!n.disabled){if(v.disconnected=!1,v.observer.observe(e.current,c),v.position){var r=v.position,o=r.position;l(p(e.current,o,o+r.extent))}return h}})),r.useLayoutEffect((function(){if(e.current&&!n.disabled){var t=e.current;if(v.position){t.focus();var r=v.position,o=r.position;l(p(t,o,o+r.extent))}var i=t.style.whiteSpace,s=t.contentEditable,a=!0;try{t.contentEditable="plaintext-only"}catch(e){t.contentEditable="true",a=!1}"pre"!==i&&(t.style.whiteSpace="pre-wrap"),n.indentation&&(t.style.tabSize=t.style.MozTabSize=""+n.indentation),r=""+" ".repeat(n.indentation||0);var c,h=new RegExp("^(?:"+r+")"),m=new RegExp("^(?:"+r+")*("+r+")$"),b=function(n){if(e.current&&v.position){var r=u(t),o=f(t),i=(new Date).valueOf(),s=v.history[v.historyAt];!n&&500>i-c||s&&s[1]===r?c=i:(n=++v.historyAt,v.history[n]=[o,r],v.history.splice(n+1),500<n&&(v.historyAt--,v.history.shift()))}},x=function(){var e;if((e=v.queue).push.apply(e,v.observer.takeRecords()),e=f(t),v.queue.length){v.observer.disconnect(),v.disconnected=!0;var n,r,o=u(t);for(v.position=e;n=v.queue.pop();){for(null!==n.oldValue&&(n.target.textContent=n.oldValue),r=n.removedNodes.length-1;0<=r;r--)n.target.insertBefore(n.removedNodes[r],n.nextSibling);for(r=n.addedNodes.length-1;0<=r;r--)n.addedNodes[r].parentNode&&n.target.removeChild(n.addedNodes[r])}v.onChange(o,e)}},j=function(e){if(!e.defaultPrevented&&e.target===t){if(v.disconnected)return e.preventDefault(),g([]);if(d(e))e.preventDefault(),e.shiftKey?(e=++v.historyAt,(e=v.history[e])||(v.historyAt=v.history.length-1)):(e=--v.historyAt,(e=v.history[e])||(v.historyAt=0)),e&&(v.observer.disconnect(),v.disconnected=!0,v.position=e[0],v.onChange(e[1],e[0]));else{if(b(),"Enter"===e.key){e.preventDefault();var r=f(t),o=/\S/g.exec(r.content);r="\n"+r.content.slice(0,o?o.index:r.content.length),y.insert(r)}else if(a&&!n.indentation||"Backspace"!==e.key){if(n.indentation&&"Tab"===e.key){e.preventDefault(),o=(r=f(t)).position-r.content.length;var i=u(t);r=e.shiftKey?i.slice(0,o)+r.content.replace(h,"")+i.slice(o+r.content.length):i.slice(0,o)+(n.indentation?" ".repeat(n.indentation):"\t")+i.slice(o),y.update(r)}}else e.preventDefault(),window.getSelection().getRangeAt(0).collapsed?(r=f(t),r=m.exec(r.content),y.insert("",r?-r[1].length:-1)):y.insert("",0);e.repeat&&x()}}},E=function(e){e.defaultPrevented||e.isComposing||(d(e)||b(),x(),t.focus())},C=function(e){v.position=window.getSelection().rangeCount&&e.target===t?f(t):null},w=function(e){e.preventDefault(),b(!0),y.insert(e.clipboardData.getData("text/plain")),b(!0),x()};return document.addEventListener("selectstart",C),window.addEventListener("keydown",j),t.addEventListener("paste",w),t.addEventListener("keyup",E),function(){document.removeEventListener("selectstart",C),window.removeEventListener("keydown",j),t.removeEventListener("paste",w),t.removeEventListener("keyup",E),t.style.whiteSpace=i,t.contentEditable=s}}v.history.length=0,v.historyAt=-1}),[e.current,n.disabled,n.indentation]))}(o,h,{disabled:e.disabled,indentation:"indentation"===e.tabMode?2:void 0}),r.useEffect((()=>{e.onChange&&e.onChange(i)}),[i]),t.jsx("div",Object.assign({className:e.className,style:e.style},{children:t.jsx(s.default,Object.assign({Prism:e.prism||n.Prism,code:i,theme:e.theme,language:e.language},{children:({className:e,tokens:n,getLineProps:r,getTokenProps:i,style:s})=>t.jsx("pre",Object.assign({className:e,style:Object.assign({margin:0,outline:"none",padding:10,fontFamily:"inherit"},s),ref:o,spellCheck:"false"},{children:n.map(((e,n)=>t.jsxs("div",Object.assign({},r({line:e,key:`line-${n}`}),{children:[e.filter((e=>!e.empty)).map(((e,n)=>t.jsx("span",Object.assign({},i({token:e,key:`token-${n}`}))))),"\n"]}))))}))}))}))};function g(e,t,n,r){return new(n||(n=Promise))((function(o,i){function s(e){try{c(r.next(e))}catch(e){i(e)}}function a(e){try{c(r.throw(e))}catch(e){i(e)}}function c(e){var t;e.done?o(e.value):(t=e.value,t instanceof n?t:new n((function(e){e(t)}))).then(s,a)}c((r=r.apply(e,t||[])).next())}))}h.defaultProps={tabMode:"indentation"};const v=r.createContext({}),y=["jsx","imports"];function m(e={}){const t=Array.isArray(e.transforms)?e.transforms.filter(Boolean):y;return e=>o.transform(e,{transforms:t}).code}const b=(e,n)=>class extends r.Component{componentDidCatch(e){n(e)}render(){return"function"==typeof e?t.jsx(e,{}):a.default.isValidElement(e)?e:null}},x=(e,t)=>{const n=Object.keys(t),r=n.map((e=>t[e]));return new Function(...n,e)(...r)};const j='const _jsxFileName = "";',E=e=>e.trim().replace(/;$/,""),C=e=>e.replace(j,"").trim(),w=e=>j+e,S=e=>`return (${e})`,O=({code:e="",scope:t={},enableTypeScript:n=!0},r)=>{const o=["jsx"];n&&o.push("typescript");const i=function(...e){return e.reduce(((e,t)=>(...n)=>e(t(...n))))}(w,m({transforms:["imports"]}),S,C,E,m({transforms:o}),E)(e);return b(x(i,Object.assign({React:a.default},t)),r)},N=({code:e="",scope:t={},enableTypeScript:n=!0},r,o)=>{if(!/render\s*\(/.test(e))return o(new SyntaxError("No-Inline evaluations must call `render`."));const i=["jsx","imports"];n&&i.splice(1,0,"typescript"),x(m({transforms:i})(e),Object.assign(Object.assign({React:a.default},t),{render:e=>{void 0===e?o(new SyntaxError("`render` must be called with valid JSX.")):r(b(e,o))}}))};const k=e=>t.jsx("div",Object.assign({},e));e.Editor=h,e.LiveContext=v,e.LiveEditor=function(e){const{code:n,language:o,theme:i,disabled:s,onChange:a}=r.useContext(v);return t.jsx(h,Object.assign({theme:i,code:n,language:o,disabled:s,onChange:a},e))},e.LiveError=function(e){const{error:n}=r.useContext(v);return n?t.jsx("pre",Object.assign({},e,{children:n})):null},e.LivePreview=function(e){var{Component:n=k}=e,o=
+ /*! *****************************************************************************
+   Copyright (c) Microsoft Corporation.
+ 
+@@ -13,4 +13,4 @@
+   OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+   PERFORMANCE OF THIS SOFTWARE.
+   ***************************************************************************** */
+-function(e,t){var n={};for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&t.indexOf(r)<0&&(n[r]=e[r]);if(null!=e&&"function"==typeof Object.getOwnPropertySymbols){var o=0;for(r=Object.getOwnPropertySymbols(e);o<r.length;o++)t.indexOf(r[o])<0&&Object.prototype.propertyIsEnumerable.call(e,r[o])&&(n[r[o]]=e[r[o]])}return n}(e,["Component"]);const{element:i}=r.useContext(v);return t.jsx(n,Object.assign({},o,{children:i?t.jsx(i,{}):null}))},e.LiveProvider=function({children:e,code:n="",language:o="tsx",theme:i,enableTypeScript:s=!0,disabled:a=!1,scope:c,transformCode:l,noInline:d=!1}){const[u,p]=r.useState({error:void 0,element:void 0});function f(e){return h(this,void 0,void 0,(function*(){const t=e=>{p({error:e.toString(),element:void 0})};try{const n=l?l(e):e;try{const e=yield Promise.resolve(n),r=e=>p({error:void 0,element:e});if("string"!=typeof e)throw new Error("Code failed to transform");const o={code:e,scope:c,enableTypeScript:s};d?(p({error:void 0,element:null}),k(o,r,t)):r(N(o,t))}catch(e){return t(e)}}catch(e){return t(e),Promise.resolve()}}))}const y=e=>p({error:e.toString()});return r.useEffect((()=>{f(n).catch(y)}),[n,c,d,l]),t.jsx(v.Provider,Object.assign({value:Object.assign(Object.assign({},u),{code:n,language:o,theme:i,disabled:a,onError:y,onChange:e=>{f(e).catch(y)}})},{children:e}))},e.generateElement=N,e.renderElementAsync=k,e.withLive=function(e){const n=n=>t.jsx(v.Consumer,{children:r=>t.jsx(e,Object.assign({live:r},n))});return n.displayName="WithLive",n},Object.defineProperty(e,"__esModule",{value:!0})}));
++function(e,t){var n={};for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&t.indexOf(r)<0&&(n[r]=e[r]);if(null!=e&&"function"==typeof Object.getOwnPropertySymbols){var o=0;for(r=Object.getOwnPropertySymbols(e);o<r.length;o++)t.indexOf(r[o])<0&&Object.prototype.propertyIsEnumerable.call(e,r[o])&&(n[r[o]]=e[r[o]])}return n}(e,["Component"]);const{element:i}=r.useContext(v);return t.jsx(n,Object.assign({},o,{children:i?t.jsx(i,{}):null}))},e.LiveProvider=function({children:e,code:n="",language:o="tsx",theme:i,enableTypeScript:s=!0,disabled:a=!1,scope:c,transformCode:l,noInline:d=!1}){const[u,f]=r.useState({error:void 0,element:void 0});function p(e){return g(this,void 0,void 0,(function*(){const t=e=>{f({error:e.toString(),element:void 0})};try{const n=l?l(e):e;try{const e=yield Promise.resolve(n),r=e=>f({error:void 0,element:e});if("string"!=typeof e)throw new Error("Code failed to transform");const o={code:e,scope:c,enableTypeScript:s};d?(f({error:void 0,element:null}),N(o,r,t)):r(O(o,t))}catch(e){return t(e)}}catch(e){return t(e),Promise.resolve()}}))}const h=e=>f({error:e.toString()});return r.useEffect((()=>{p(n).catch(h)}),[n,c,d,l]),t.jsx(v.Provider,Object.assign({value:Object.assign(Object.assign({},u),{code:n,language:o,theme:i,disabled:a,onError:h,onChange:e=>{p(e).catch(h)}})},{children:e}))},e.generateElement=O,e.renderElementAsync=N,e.withLive=function(e){const n=n=>t.jsx(v.Consumer,{children:r=>t.jsx(e,Object.assign({live:r},n))});return n.displayName="WithLive",n},Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -63,9 +63,6 @@ export const GlobalStyles = createGlobalStyle`
     /* -------- Border ---------- */
     --color-border: ${defaultMapToken.colorBorder};
     --color-border-secondary: ${defaultMapToken.colorBorderSecondary};
-    /* -------- Code ---------- */
-    --color-code-bg: #f6f6f6;
-    --color-code: #db4c69;
     /* -------- Link ---------- */
     --color-link: var(--color-primary);
     --color-link-hover: var(--color-primary-hover);
@@ -105,9 +102,6 @@ export const GlobalStyles = createGlobalStyle`
     /* -------- Border ---------- */
     --color-border: ${darkMapToken.colorBorder};
     --color-border-secondary: ${darkMapToken.colorBorderSecondary};
-    /* -------- Code ---------- */
-    --color-code-bg: #1e1e1e;
-    --color-code: #9cdcfe;
     /* -------- Post ---------- */
     --color-mdx-header: ${darkMapToken.colorWarning};
     --color-mdx-header-hover: ${darkMapToken.colorWarningHover};

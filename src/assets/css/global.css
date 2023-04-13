@@ -12,21 +12,6 @@ a:active {
 li {
   list-style: none;
 }
-:not(pre) > code {
-  color: var(--color-code);
-  background: var(--color-code-bg);
-  padding: 0.1em 0.3em;
-  border-radius: var(--border-radius-sm);
-  text-shadow: none;
-  direction: ltr;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  line-height: 1.5;
-  tab-size: 4;
-  hyphens: none;
-}
 
 html,
 body {
@@ -41,19 +26,4 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   color: var(--color-text);
   background-color: var(--color-bg-layout);
-}
-
-.highlight-line {
-  background-color: rgba(0, 0, 0, 0.1);
-  display: block;
-  margin-right: -1em;
-  margin-left: -1em;
-  padding-right: 1em;
-  padding-left: 0.75em;
-  border-left: 0.3em solid rgba(0, 0, 0, 0.4);
-}
-
-:root[data-theme='dark'] .highlight-line {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-left: 0.3em solid rgba(255, 255, 255, 0.4);
 }
