@@ -1,31 +1,33 @@
-import { memo, ReactElement, useCallback } from 'react';
+import { memo, ReactElement, useCallback, useRef } from 'react';
 import { useUpdateEffect } from 'react-use';
 
 import { useIsDark, useHasMounted } from '../hooks';
 
 export const Comment = memo((): ReactElement | null => {
   const isDark = useIsDark();
+  const getScriptElementRef = useRef(() => {
+    const scriptEl = document.createElement('script');
+    scriptEl.async = true;
+    scriptEl.src = 'https://utteranc.es/client.js';
+    scriptEl.setAttribute('repo', 'Orainsink/gatsby-blog');
+    scriptEl.setAttribute('issue-term', 'title');
+    scriptEl.setAttribute('id', 'utterances');
+    scriptEl.setAttribute('label', 'comment');
+    scriptEl.setAttribute('crossorigin', 'anonymous');
+    scriptEl.setAttribute('theme', isDark ? 'github-dark' : 'github-light');
+    return scriptEl;
+  });
   const hasMounted = useHasMounted();
 
   const commentsRefCb = useCallback((node: HTMLDivElement) => {
     if (node) {
-      const scriptEl = document.createElement('script');
-      scriptEl.async = true;
-      scriptEl.src = 'https://utteranc.es/client.js';
-      scriptEl.setAttribute('repo', 'Orainsink/gatsby-blog');
-      scriptEl.setAttribute('issue-term', 'title');
-      scriptEl.setAttribute('id', 'utterances');
-      scriptEl.setAttribute('label', 'comment');
-      scriptEl.setAttribute('crossorigin', 'anonymous');
-      scriptEl.setAttribute('theme', isDark ? 'github-dark' : 'github-light');
-
       if (node) {
+        const scriptEl = getScriptElementRef.current();
         node.appendChild(scriptEl);
       } else {
         console.log(`Error adding utterances comments`);
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useUpdateEffect(() => {
