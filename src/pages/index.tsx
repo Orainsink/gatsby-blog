@@ -9,9 +9,11 @@ import { Poem } from '../components/Poem';
 import { PostList } from '../components/PostList';
 import { HomeScene } from '../components/HomeScene/HomeScene';
 import { DeepRequiredAndNonNullable, FileEdge } from '../../typings/custom';
+import { useHasMounted } from '../hooks';
 
 type Data = DeepRequiredAndNonNullable<Queries.getPageDataQuery>;
 const Index = ({ data }: PageProps<Data>): ReactElement => {
+  const hasMounted = useHasMounted();
   const posts = data.allMdx.edges.map((edge) => ({
     node: {
       childMdx: edge.node,
@@ -20,7 +22,7 @@ const Index = ({ data }: PageProps<Data>): ReactElement => {
 
   return (
     <>
-      <HomeScene />
+      {hasMounted && <HomeScene />}
       <Trigger />
       <Layout>
         <Poem />

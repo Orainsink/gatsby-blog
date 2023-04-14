@@ -95,7 +95,6 @@ export const Header = memo((): ReactElement | null => {
   const handleArrow = () => {
     setScene(true);
     setSkip(false);
-    localStorage.setItem('SCENE', '1');
   };
 
   const showTitle = isDesktop;

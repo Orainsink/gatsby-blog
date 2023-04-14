@@ -1,4 +1,4 @@
-import { DarkModeScript, HtmlLoading } from './components/HtmlTemplate';
+import { DarkModeScript } from './components/HtmlTemplate';
 
 interface HTMLProps {
   htmlAttributes: Record<string, any>;
@@ -11,7 +11,7 @@ interface HTMLProps {
 
 const HTML = (props: HTMLProps) => {
   return (
-    <html {...props.htmlAttributes} style={{ overflowY: 'hidden' }}>
+    <html {...props.htmlAttributes}>
       <head>
         <meta charSet="utf-8" />
         <meta
@@ -21,7 +21,6 @@ const HTML = (props: HTMLProps) => {
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
-        <HtmlLoading />
         <DarkModeScript />
         {props.preBodyComponents}
         <div

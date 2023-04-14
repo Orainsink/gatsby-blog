@@ -19,6 +19,7 @@ import {
   triggerAtom,
 } from '../store/atom';
 import { containerStyles, Main, MainWrap, Wrapper } from './Layout.styles';
+import { useHasMounted } from '../hooks';
 
 const Container = styled.div`
   ${containerStyles}
@@ -75,6 +76,7 @@ export const Layout = ({ children }: Props): ReactElement => {
   const scene = useRecoilValue(sceneAtom);
   const trigger = useRecoilValue(triggerAtom);
   const skip = useRecoilValue(skipAtom);
+  const hasMounted = useHasMounted();
   const setHasArrow = useSetRecoilState(hasArrowAtom);
   const resetFilter = useResetRecoilState(filterAtom);
 
@@ -86,7 +88,9 @@ export const Layout = ({ children }: Props): ReactElement => {
 
   return (
     <IndexWrapper $wrapperClass={wrapperClass}>
-      {scene && !skip && <ClickTip $show={trigger}>Click to slide</ClickTip>}
+      {hasMounted && scene && !skip && (
+        <ClickTip $show={trigger}>Click to slide</ClickTip>
+      )}
       <Bg />
       <Main>
         <Container>

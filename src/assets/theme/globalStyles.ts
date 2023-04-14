@@ -49,10 +49,12 @@ export const GlobalStyles = createGlobalStyle`
     --color-text-secondary: ${defaultMapToken.colorTextSecondary};
     --color-text-third: rgba(0,0,0,0.3);
     --color-text-fourth: rgba(0,0,0,0.1);
+    --color-text-disabled: rgba(0,0,0,0.25);
     /* -------- Bg ---------- */
     --color-bg-layout: #efefef;
     --color-bg-elevated: ${defaultMapToken.colorBgElevated};
     --color-bg-container: #fff;
+    --color-bg-container-disabled: rgba(0, 0, 0, 0.04);
     --color-bg-component: #fff;
     --color-component-hover: rgba(0,0,0,0.1);
     /* -------- Fill ---------- */
@@ -88,10 +90,12 @@ export const GlobalStyles = createGlobalStyle`
     --color-text-secondary: ${darkMapToken.colorTextSecondary};
     --color-text-third: rgba(255,255,255,0.3);
     --color-text-fourth: rgba(255,255,255,0.1);
+    --color-text-disabled: rgba(255,255,255,0.25);
     /* -------- Bg ---------- */
     --color-bg-layout: #141619;
     --color-bg-elevated: ${darkMapToken.colorBgElevated};
     --color-bg-container: #2b2b2e;
+    --color-bg-container-disabled: rgba(255, 255, 255, 0.04);
     --color-bg-component: #3a3a3e;
     --color-component-hover: rgba(255,255,255,0.1);
     /* -------- Fill ---------- */

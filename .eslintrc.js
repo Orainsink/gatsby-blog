@@ -4,7 +4,7 @@ module.exports = {
   },
   extends: [`react-app`, 'plugin:mdx/recommended'],
   rules: {
-    'no-unused-expressions': 'warn',
+    'no-unused-expressions': 'error',
     strict: 'error',
   },
   settings: {

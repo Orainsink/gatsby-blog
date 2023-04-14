@@ -29,8 +29,6 @@ export const Layout = (props: Props): ReactElement => {
     setSkip(true);
     setHasArrow(false);
     setScene(false);
-
-    localStorage.setItem('SCENE', '');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

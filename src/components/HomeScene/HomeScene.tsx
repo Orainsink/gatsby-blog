@@ -1,11 +1,4 @@
-import {
-  memo,
-  useCallback,
-  lazy,
-  Suspense,
-  ReactElement,
-  useEffect,
-} from 'react';
+import { memo, useCallback, lazy, Suspense, ReactElement } from 'react';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 import styled, { css, keyframes } from 'styled-components';
 import { selector, useRecoilValue, useSetRecoilState } from 'recoil';

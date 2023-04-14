@@ -1,3 +1,7 @@
+/**
+ * @deprecated To make SSR perfect, ban html loading
+ * <HtmlLoading />
+ */
 export const HtmlLoading = () => (
   <>
     <div

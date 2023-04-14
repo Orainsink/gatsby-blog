@@ -3,7 +3,7 @@ import { PageProps, graphql, navigate } from 'gatsby';
 import { Tag } from 'antd';
 import dayjs from 'dayjs';
 
-import { useResetKey, useMedia, useIsDark } from '../hooks';
+import { useResetKey, useMedia, useIsDark, useHasMounted } from '../hooks';
 import { Layout } from '../layout/BlogLayout';
 import { Seo } from '../components/Seo';
 import { generatePath } from '../utils/generatePath';
@@ -20,6 +20,7 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
   const posts = data.allFile.edges.filter((item) => item.node.childMdx);
 
   useResetKey();
+  const hasMounted = useHasMounted();
   const isMobile = useMedia('isMobile');
   const isDark = useIsDark();
 
@@ -103,17 +104,19 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
         {curDate ? curDate : 'SNIPPET'}
         {curDate ? <ReloadIcon onClick={resetFilter} /> : null}
       </PageDivider>
-      <WrappedTable
-        columns={isMobile ? smallColumns : columns}
-        dataSource={datas}
-        rowKey="slug"
-        showSorterTooltip={false}
-        size={isMobile ? 'middle' : 'large'}
-        pagination={{ pageSize: 16 }}
-        onRow={(row) => ({
-          onClick: () => navigate(generatePath(row.categories, row.title)),
-        })}
-      />
+      {hasMounted && (
+        <WrappedTable
+          columns={isMobile ? smallColumns : columns}
+          dataSource={datas}
+          rowKey="slug"
+          showSorterTooltip={false}
+          size={isMobile ? 'middle' : 'large'}
+          pagination={{ pageSize: 16 }}
+          onRow={(row) => ({
+            onClick: () => navigate(generatePath(row.categories, row.title)),
+          })}
+        />
+      )}
     </Layout>
   );
 };
