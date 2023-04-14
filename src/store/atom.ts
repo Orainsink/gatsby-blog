@@ -12,12 +12,15 @@ interface MusicState {
 }
 
 // scene 判断是否隐藏主页scene及按需加载
+/* 为了避免水合错误，只能ban掉 localstorage 功能了
+ *@example windowWrapper<boolean>(
+ *  () => Boolean(localStorage.getItem('SCENE')),
+ *  true
+ * )
+ */
 export const sceneAtom = atom<boolean>({
   key: 'scene',
-  default: windowWrapper<boolean>(
-    () => Boolean(localStorage.getItem('SCENE')),
-    true
-  ),
+  default: false,
 });
 
 // trigger 判断首页是否鼠标滑到了视区下方的热区
