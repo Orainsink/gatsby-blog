@@ -17,7 +17,7 @@ import { sceneAtom } from '../../store/atom';
  * some default values
  */
 const HF_URL =
-  'https://free-api.heweather.net/s6/weather/now?&location=auto_ip&key=' +
+  'https://devapi.qweather.com/v7/weather/now?&location=auto_ip&key=' +
   process.env.GATSBY_HEWEATHER_KEY;
 let cameraShakeY = 0;
 const cameraProps = {
