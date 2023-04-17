@@ -13,12 +13,6 @@ export const typographyThemeNoriega = {
   bodyWeight: 400,
   headerWeight: 700,
   boldWeight: 700,
-  googleFonts: [
-    {
-      name: 'Lato',
-      styles: ['400', '700'],
-    },
-  ],
   scaleRatio: 1.618,
   overrideStyles: () => ({
     code: {
