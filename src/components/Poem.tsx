@@ -1,9 +1,12 @@
-import { useEffect, ReactElement, useState } from 'react';
+import { useEffect, ReactElement } from 'react';
 import { load as poemLoader } from 'jinrishici';
 import styled, { css } from 'styled-components';
+import { useLocalStorage } from 'react-use';
+import dayjs from 'dayjs';
 
 interface PoemData {
   content: string;
+  cacheAt: string;
   origin: {
     title: string;
     dynasty: string;
@@ -62,25 +65,37 @@ const Poet = styled.div`
   ${mobileStyle}
 `;
 
+const shouldUpdatePoem = (cacheAt?: string) => {
+  if (!cacheAt) return true;
+
+  const diffInMs = dayjs(Date.now()).diff(dayjs(cacheAt));
+  return diffInMs >= 60 * 60 * 1000;
+};
+
 export const Poem = (): ReactElement => {
-  const [poem, setPoem] = useState<null | PoemData>(null);
+  const [poem, setPoem] = useLocalStorage<null | PoemData>('poem', null);
 
   useEffect(() => {
-    const storedPoem = localStorage.getItem('poem');
-    setPoem(storedPoem ? JSON.parse(storedPoem) : null);
-    poemLoader((res: PoemResponse) => {
-      setPoem(res.data);
-    });
+    const storedPoemJSON = localStorage.getItem('poem');
+    const storedPoem: PoemData | null = storedPoemJSON
+      ? JSON.parse(storedPoemJSON)
+      : null;
+    setPoem(storedPoem);
+    if (shouldUpdatePoem(storedPoem?.cacheAt)) {
+      poemLoader((res: PoemResponse) => {
+        setPoem(res.data);
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <PoemContainer>
-      <PoemContent>{poem?.content}</PoemContent>
+      <PoemContent suppressHydrationWarning>{poem?.content}</PoemContent>
       {poem?.origin.title ? (
-        <PoemTitle>《{poem?.origin.title}》</PoemTitle>
+        <PoemTitle suppressHydrationWarning>《{poem?.origin.title}》</PoemTitle>
       ) : null}
-      <Poet>{poem?.origin.author}</Poet>
+      <Poet suppressHydrationWarning>{poem?.origin.author}</Poet>
     </PoemContainer>
   );
 };
