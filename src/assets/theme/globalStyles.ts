@@ -7,7 +7,7 @@ import { lightPrismVariables, darkPrismVariables } from './prismVariables';
 
 const { darkAlgorithm, defaultAlgorithm, defaultSeed } = theme;
 
-const defaultMapToken = defaultAlgorithm(defaultSeed);
+export const defaultMapToken = defaultAlgorithm(defaultSeed);
 const darkMapToken = darkAlgorithm(defaultSeed);
 
 export const GlobalStyles = createGlobalStyle`

@@ -1,23 +1,15 @@
-const FONT_ARRAY = [
-  '-apple-system',
-  'BlinkMacSystemFont',
-  'Segoe UI',
-  'Roboto',
-  'Helvetica Neue',
-  'Arial',
-  'Noto Sans',
-  'sans-serif',
-  'Apple Color Emoji',
-  'Segoe UI Emoji',
-  'Segoe UI Symbol',
-  'Noto Color Emoji',
-];
+import { defaultMapToken } from './globalStyles';
+
+const fontArray = defaultMapToken.fontFamilyCode
+  .replaceAll("'", '')
+  .split(',')
+  .map((fontString) => fontString.trim());
+
 export const typographyThemeNoriega = {
   title: 'Noriega',
   baseFontSize: '16px',
   baseLineHeight: 1.6,
-  headerFontFamily: FONT_ARRAY,
-  bodyFontFamily: FONT_ARRAY,
+  bodyFontFamily: fontArray,
   bodyWeight: 400,
   headerWeight: 700,
   boldWeight: 700,
