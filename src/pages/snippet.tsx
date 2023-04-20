@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import { PageProps, graphql, navigate } from 'gatsby';
+import styled from 'styled-components';
 import { Tag } from 'antd';
 import dayjs from 'dayjs';
 
@@ -12,6 +13,10 @@ import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
 import { PageDivider, ReloadIcon, WrappedTable } from '../layout/Pages.styles';
 import { ColumnsType } from 'antd/es/table';
+
+const EmptyDiv = styled.div`
+  height: 100vh;
+`;
 
 type Data = DeepRequiredAndNonNullable<Queries.getSnippetPageDataQuery>;
 const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
@@ -104,7 +109,7 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
         {curDate ? curDate : 'SNIPPET'}
         {curDate ? <ReloadIcon onClick={resetFilter} /> : null}
       </PageDivider>
-      {hasMounted && (
+      {hasMounted ? (
         <WrappedTable
           columns={isMobile ? smallColumns : columns}
           dataSource={datas}
@@ -116,6 +121,8 @@ const SnippetPage = ({ data }: PageProps<Data>): ReactElement => {
             onClick: () => navigate(generatePath(row.categories, row.title)),
           })}
         />
+      ) : (
+        <EmptyDiv />
       )}
     </Layout>
   );
