@@ -18,7 +18,7 @@ const QUESTIONS = [
   {
     type: 'confirm',
     name: 'isFolder',
-    message: 'is a folder？(default is Yes)',
+    message: 'is a folder? (default is Yes)',
     default: true,
   },
   {
@@ -32,6 +32,11 @@ const QUESTIONS = [
     name: 'description',
     message: 'input your description:',
   },
+  {
+    type: 'confirm',
+    name: 'isTodo',
+    message: 'create in todo folder? (default is false)',
+  },
 ];
 
 interface Config {
@@ -44,6 +49,7 @@ interface Config {
 }
 class NewPost {
   isFolder: boolean;
+  isTodo: boolean;
   path: string;
   config: Config;
 
@@ -51,10 +57,12 @@ class NewPost {
     isFolder = true,
     categories = '',
     description = ' ',
+    isTodo = false,
     url = '',
     index = 0,
   }) {
     this.isFolder = isFolder;
+    this.isTodo = isTodo;
     this.path = '';
     this.config = {
       categories,
@@ -78,11 +86,12 @@ class NewPost {
   }
   getPath() {
     const { categories, title } = this.config;
+    const folderName = this.isTodo ? 'todo' : categories;
     if (this.isFolder) {
-      fs.mkdirSync(`./content/${categories}/${title}`);
-      this.path = `./content/${categories}/${title}/${title}.mdx`;
+      fs.mkdirSync(`./content/${folderName}/${title}`);
+      this.path = `./content/${folderName}/${title}/${title}.mdx`;
     } else {
-      this.path = `./content/${categories}/${title}.mdx`;
+      this.path = `./content/${folderName}/${title}.mdx`;
     }
   }
   getStrByConfig() {
