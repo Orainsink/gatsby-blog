@@ -7,8 +7,8 @@ import { Seo } from '../components/Seo';
 import { Comment } from '../components/Comment';
 import { Poem } from '../components/Poem';
 import { Container } from './Templates.styles';
-import { MdxParser } from '../components/MDXComponents';
-import { MoogleScene } from '../components/SideBlocks/MoogleScene';
+import { MdxParser } from '../containers/MDXComponents';
+import { MoogleScene } from '../containers/SideBlocks/MoogleScene';
 
 const AboutContainer = styled(Container)`
   padding: var(--space-md);

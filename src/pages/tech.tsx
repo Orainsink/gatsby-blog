@@ -5,7 +5,7 @@ import { WordCloud } from '../components/WordCloud';
 import { Layout } from '../layout/BlogLayout';
 import { Seo } from '../components/Seo';
 import { PostList } from '../components/PostList';
-import { CalendarBlock } from '../components/SideBlocks/Calendar';
+import { CalendarBlock } from '../containers/SideBlocks/Calendar';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { filterAtom } from '../store/atom';
 import { PageDivider, ReloadIcon } from '../layout/Pages.styles';

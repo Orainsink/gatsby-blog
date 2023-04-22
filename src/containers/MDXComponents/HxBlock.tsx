@@ -22,7 +22,7 @@ const StyledH2 = styled.h2`
   border-radius: var(--border-radius-sm);
   margin: var(--space-lg) 0;
   border-left: var(--space-xxs) solid var(--color-border);
-  padding-left: var(--space-md); ;
+  padding-left: var(--space-md);
 `;
 
 export interface HxBlockProps {

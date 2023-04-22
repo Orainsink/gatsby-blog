@@ -7,7 +7,7 @@ import { CategoryComponent } from '../components/Cards/Cards';
 import { Trigger } from '../components/Trigger';
 import { Poem } from '../components/Poem';
 import { PostList } from '../components/PostList';
-import { HomeScene } from '../components/HomeScene/HomeScene';
+import { HomeScene } from '../containers/HomeScene/HomeScene';
 import { DeepRequiredAndNonNullable, FileEdge } from '../../typings/custom';
 import { useHasMounted } from '../hooks';
 

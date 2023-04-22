@@ -2,7 +2,7 @@ import { useEffect, ReactNode, ReactElement } from 'react';
 import styled from 'styled-components';
 
 import { hasArrowAtom, sceneAtom, skipAtom } from '../store/atom';
-import { Info, SideBar } from '../components/SideBlocks';
+import { Info, SideBar } from '../containers/SideBlocks';
 import { useSetRecoilState } from 'recoil';
 import { Footer } from '../components/Footer';
 import { Bg } from '../components/Bg';

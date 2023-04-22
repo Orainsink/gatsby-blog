@@ -1,7 +1,7 @@
 import { useEffect, ReactNode, ReactElement } from 'react';
 import styled from 'styled-components';
 
-import { SideBar, Info, TagsBlock, Tools } from '../components/SideBlocks';
+import { SideBar, Info, TagsBlock, Tools } from '../containers/SideBlocks';
 import { Comment } from '../components/Comment';
 import { Footer } from '../components/Footer';
 import { Bg } from '../components/Bg';

@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import styled from 'styled-components';
 
 import { useMedia } from '../../hooks';
-import { WordCloud } from '../WordCloud';
+import { WordCloud } from '../../components/WordCloud';
 import { BaseCol, Title } from './SideBlocks.styles';
 
 const WordCloudContainer = styled(BaseCol)`

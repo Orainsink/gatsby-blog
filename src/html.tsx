@@ -1,4 +1,4 @@
-import { DarkModeScript } from './components/HtmlTemplate';
+import { DarkModeScript } from './containers/HtmlTemplate';
 
 interface HTMLProps {
   htmlAttributes: Record<string, any>;

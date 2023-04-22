@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 import { useScrollY } from '../../hooks';
 import { isClient } from '../../utils/isClient';
-import { Anchor } from '../Anchor';
+import { Anchor } from '../../components/Anchor';
 import { BaseCol, Title } from './SideBlocks.styles';
 
 interface Props {

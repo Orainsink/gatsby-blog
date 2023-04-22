@@ -8,7 +8,7 @@ import {
   NightBackground,
   DayBackground,
   useElementTween,
-} from '../components/Resume';
+} from '../containers/Resume';
 import { hasArrowAtom } from '../store/atom';
 import { useSetRecoilState } from 'recoil';
 import { useHasMounted, useIsDark } from '../hooks';
