@@ -33,11 +33,11 @@ export const SONGS: Song[] = [
   },
   {
     id: 4,
-    name: "Everything's Alright",
-    artist: 'Kan R. Gao',
-    url: 'http://music.163.com/song/media/outer/url?id=1645135.mp3',
+    name: 'Before I Leave This World',
+    artist: 'Ivan Torrent',
+    url: 'http://music.163.com/song/media/outer/url?id=29087191.mp3',
     cover:
-      'http://p2.music.126.net/0AYWra9rCzgeprGp6OUyUw==/868614185993997.jpg?param=130y130',
+      'https://p2.music.126.net/EoQskTlpYyaCi-oqvQMUow==/6671836558420469.jpg?param=130y130',
   },
   {
     id: 5,
@@ -57,19 +57,19 @@ export const SONGS: Song[] = [
   },
   {
     id: 7,
-    name: '清平乐',
-    artist: '张紫宁',
-    url: 'http://music.163.com/song/media/outer/url?id=1375868212.mp3',
+    name: 'Past Lives',
+    artist: 'Slushii',
+    url: 'http://music.163.com/song/media/outer/url?id=1384482575.mp3',
     cover:
-      'https://p1.music.126.net/145FpHsLi2_RyjqCm9kEUQ==/109951164698991135.jpg?param=130y130',
+      'https://p1.music.126.net/AdKHwgHpmKVHwV30qOo9lA==/109951164297278446.jpg?param=130y130',
   },
   {
     id: 8,
-    name: '荏染时',
-    artist: '紫龙',
-    url: 'http://music.163.com/song/media/outer/url?id=1876135435.mp3',
+    name: 'The Sun Also Rises',
+    artist: '久石让',
+    url: 'http://music.163.com/song/media/outer/url?id=441722.mp3',
     cover:
-      '	https://p2.music.126.net/G1ze4Vc6PvAW-KXoef59Qw==/109951166363571092.jpg?param=130y130',
+      'https://p1.music.126.net/HvKvIjzIXpQokDZ-Dnwv7Q==/109951167566811108.jpg?param=130y130',
   },
   {
     id: 9,
@@ -112,3 +112,30 @@ export const SONGS: Song[] = [
       'http://p2.music.126.net/TT9aYBeuXyPkwQyUODBdqQ==/109951166135693121.jpg?param=130y130',
   },
 ];
+
+// const outdatedSongs = [
+// {
+//   id: 4,
+//   name: "Everything's Alright",
+//   artist: 'Kan R. Gao',
+//   url: 'http://music.163.com/song/media/outer/url?id=1645135.mp3',
+//   cover:
+//     'http://p2.music.126.net/0AYWra9rCzgeprGp6OUyUw==/868614185993997.jpg?param=130y130',
+// },
+//   {
+//     id: 7,
+//     name: '清平乐',
+//     artist: '张紫宁',
+//     url: 'http://music.163.com/song/media/outer/url?id=1375868212.mp3',
+//     cover:
+//       'https://p1.music.126.net/145FpHsLi2_RyjqCm9kEUQ==/109951164698991135.jpg?param=130y130',
+//   },
+//   {
+//     id: 8,
+//     name: '荏染时',
+//     artist: '紫龙',
+//     url: 'http://music.163.com/song/media/outer/url?id=1876135435.mp3',
+//     cover:
+//       '	https://p2.music.126.net/G1ze4Vc6PvAW-KXoef59Qw==/109951166363571092.jpg?param=130y130',
+//   },
+// ];
