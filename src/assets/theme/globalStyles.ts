@@ -24,7 +24,6 @@ export const GlobalStyles = createGlobalStyle`
     --space-xl: 2rem;
     --space-xxl: 3rem;
 
-    --font-family: ${defaultSeed.fontFamily};
     --font-family-code: ${defaultSeed.fontFamilyCode};
 
     --font-size-sm: 14px;
