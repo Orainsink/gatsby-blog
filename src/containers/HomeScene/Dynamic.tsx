@@ -17,7 +17,7 @@ import { sceneAtom } from '../../store/atom';
  * some default values
  */
 const HF_URL =
-  'https://devapi.qweather.com/v7/weather/now?&location=auto_ip&key=' +
+  'https://devapi.qweather.com/v7/weather/now?location=101270101&key=' +
   process.env.GATSBY_HEWEATHER_KEY;
 let cameraShakeY = 0;
 const cameraProps = {
@@ -106,13 +106,13 @@ const Dynamic = (): ReactElement | null => {
           },
           method: 'GET',
         });
-        const res = await promise.json();
-        const data = res.HeWeather6[0];
+        const data = await promise.json();
+
         if (data.now) {
           const words: string[] = [
-            data.basic.location, //city
-            data.now.tmp + '℃ ' + data.now.cond_txt, // temperature
-          ].filter(Boolean);
+            '成都',
+            data.now.temp + '℃ ' + data.now.text,
+          ];
 
           setWords(words);
         }
