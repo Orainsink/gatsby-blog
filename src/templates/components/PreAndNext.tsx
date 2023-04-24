@@ -6,6 +6,11 @@ interface PreAndNextProps {
   previous: any;
   next: any;
 }
+
+/**
+ * @deprecated
+ * Not in use because I don't have time to design it
+ */
 export const PreAndNext = ({ previous, next }: PreAndNextProps) => {
   return (
     <nav>

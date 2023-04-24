@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-no-target-blank */
-import { ReactElement, ReactNode } from 'react';
-import { graphql } from 'gatsby';
+import { ReactElement } from 'react';
+import { PageProps, graphql } from 'gatsby';
 import { isEmpty } from 'ramda';
 
 import { Layout } from '../layout/BlogLayout';
@@ -24,15 +23,11 @@ import {
 import { Anchor } from '../components/Anchor';
 
 type Data = DeepRequiredAndNonNullable<Queries.getSnippetPostQuery>;
-interface Props {
-  data: Data;
-  children: ReactNode;
-}
 
 const SnippetPostTemplate = ({
   data: { mdx },
   children,
-}: Props): ReactElement => {
+}: PageProps<Data>): ReactElement => {
   const {
     frontmatter: { title, tags, date, categories },
     tableOfContents,
@@ -76,22 +71,22 @@ const SnippetPostTemplate = ({
 
 export default SnippetPostTemplate;
 
-export const Head = ({ data: { mdx } }: Pick<Props, 'data'>) => {
+export const Head = ({
+  data: { mdx },
+  pageContext: { ogImage },
+}: PageProps<Data, PageContext>) => {
   const {
     frontmatter: { title, description },
     excerpt,
   } = mdx;
 
-  return <Seo title={title} description={description || excerpt} />;
+  return (
+    <Seo title={title} description={description || excerpt} ogImage={ogImage} />
+  );
 };
 
 export const pageQuery = graphql`
   query getSnippetPost($id: String) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     mdx(id: { eq: $id }) {
       id
       frontmatter {

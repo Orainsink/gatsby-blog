@@ -1,4 +1,5 @@
-import { GatsbyNode } from 'gatsby';
+import type { GatsbyNode } from 'gatsby';
+import { createOpenGraphImage } from 'gatsby-plugin-open-graph-images';
 import path from 'path';
 
 import { replacePath } from '../src/utils/replacePath';
@@ -60,10 +61,30 @@ export const createPages: GatsbyNode['createPages'] = async ({
     const postTemplate =
       componentTemplate[categories as keyof typeof componentTemplate];
 
+    const {
+      id,
+      internal: { contentFilePath },
+    } = node;
+
     createPage({
       path: generatePath(categories, title),
-      component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
-      context: { id: node.id },
+      component: `${postTemplate}?__contentFilePath=${contentFilePath}`,
+      context: {
+        id,
+        /**
+         * create open graph images
+         * https://github.com/squer-solutions/gatsby-plugin-open-graph-images
+         */
+        ogImage: createOpenGraphImage(createPage, {
+          path: `og-images/${id}.png`,
+          component: `${postTemplate}?__contentFilePath=${contentFilePath}`,
+          context: { id },
+          size: {
+            width: 400,
+            height: 50,
+          },
+        }),
+      },
     });
   });
 };

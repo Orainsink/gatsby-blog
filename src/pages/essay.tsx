@@ -66,7 +66,7 @@ const EssayPage = ({ data }: PageProps<Data>): ReactElement => {
           fields,
         },
       },
-    }: typeof posts[number]) => {
+    }: (typeof posts)[number]) => {
       return (
         <EssayCard
           onClick={() => navigate(generatePath(categories, title))}
