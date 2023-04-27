@@ -31,7 +31,7 @@ export const Seo = ({ description, title }: Props): ReactElement => {
             siteUrl
           }
         }
-        ogImage: file(absolutePath: { regex: "/og-bg.jpeg/" }) {
+        ogImage: file(absolutePath: { regex: "/og-bg.png/" }) {
           publicURL
         }
       }
@@ -53,8 +53,8 @@ export const Seo = ({ description, title }: Props): ReactElement => {
         property="og:image"
         content={metadata.siteUrl + ogImage.publicURL}
       />
-      <meta property="og:image:width" content="256" />
-      <meta property="og:image:width" content="256" />
+      <meta property="og:image:width" content="600" />
+      <meta property="og:image:height" content="315" />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:creator" content={metadata.social.github} />
       <meta name="twitter:title" content={title} />
