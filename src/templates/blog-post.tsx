@@ -1,5 +1,6 @@
-import { PageProps, graphql } from 'gatsby';
-import { ReactElement } from 'react';
+/* eslint-disable react/jsx-no-target-blank */
+import { graphql } from 'gatsby';
+import { ReactElement, ReactNode } from 'react';
 import { isEmpty } from 'ramda';
 
 import { Layout } from '../layout/BlogLayout';
@@ -23,17 +24,19 @@ import {
 } from './Templates.styles';
 
 type Data = DeepRequiredAndNonNullable<Queries.getBlogPostQuery>;
+interface Props {
+  data: Data;
+  children: ReactNode;
+}
 
-const BlogPostTemplate = ({
-  data: { mdx },
-  children,
-}: PageProps<Data>): ReactElement => {
+const BlogPostTemplate = ({ data: { mdx }, children }: Props): ReactElement => {
   const {
     frontmatter: { title, tags, date, categories },
     tableOfContents,
   } = mdx;
   const isDesktop = useMedia('isDesktop');
   const hasMounted = useHasMounted();
+
   const hasTableOfContents = tableOfContents && !isEmpty(tableOfContents);
 
   return (
@@ -72,22 +75,22 @@ const BlogPostTemplate = ({
 
 export default BlogPostTemplate;
 
-export const Head = ({
-  data: { mdx },
-  pageContext: { ogImage },
-}: PageProps<Data, PageContext>) => {
+export const Head = ({ data: { mdx } }: Pick<Props, 'data'>) => {
   const {
     frontmatter: { title, description },
     excerpt,
   } = mdx;
 
-  return (
-    <Seo title={title} description={description || excerpt} ogImage={ogImage} />
-  );
+  return <Seo title={title} description={description || excerpt} />;
 };
 
 export const pageQuery = graphql`
   query getBlogPost($id: String) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     mdx(id: { eq: $id }) {
       id
       frontmatter {

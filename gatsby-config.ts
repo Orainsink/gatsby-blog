@@ -181,12 +181,7 @@ const config: GatsbyConfig = {
     },
     'gatsby-plugin-cname',
     'gatsby-plugin-svgr',
-    {
-      resolve: 'gatsby-plugin-sitemap',
-      options: {
-        exclude: [`/__generated/*`],
-      },
-    },
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {
@@ -229,7 +224,6 @@ const config: GatsbyConfig = {
         matchFields: ['slug'],
       },
     },
-    'gatsby-plugin-open-graph-images',
   ].filter((conf): conf is PluginRef => Boolean(conf)),
 };
 

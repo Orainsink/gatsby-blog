@@ -14,7 +14,7 @@ const AboutContainer = styled(Container)`
   padding: var(--space-md);
 `;
 
-const AboutPostTemplate = ({ children }: PageProps): ReactElement => (
+const AboutPostTemplate = ({ children }: PageProps<{}>): ReactElement => (
   <Layout sideBlocks={<MoogleScene />}>
     <Poem />
     <AboutContainer>
@@ -26,6 +26,4 @@ const AboutPostTemplate = ({ children }: PageProps): ReactElement => (
 
 export default AboutPostTemplate;
 
-export const Head = ({
-  pageContext: { ogImage },
-}: PageProps<{}, PageContext>) => <Seo title="About" ogImage={ogImage} />;
+export const Head = () => <Seo title="About" />;

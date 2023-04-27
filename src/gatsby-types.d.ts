@@ -2639,6 +2639,9 @@ declare namespace Queries {
   }>;
 
   type getBlogPostQuery = {
+    readonly site: {
+      readonly siteMetadata: { readonly title: string | null } | null;
+    } | null;
     readonly mdx: {
       readonly id: string;
       readonly excerpt: string | null;
@@ -2758,12 +2761,13 @@ declare namespace Queries {
   type getSeoDataQuery = {
     readonly site: {
       readonly siteMetadata: {
+        readonly title: string | null;
         readonly description: string | null;
         readonly siteUrl: string | null;
-        readonly title: string | null;
         readonly social: { readonly github: string | null } | null;
       } | null;
     } | null;
+    readonly ogImage: { readonly publicURL: string | null } | null;
   };
 
   type getSnippetPageDataQueryVariables = Exact<{ [key: string]: never }>;
@@ -2794,6 +2798,9 @@ declare namespace Queries {
   }>;
 
   type getSnippetPostQuery = {
+    readonly site: {
+      readonly siteMetadata: { readonly title: string | null } | null;
+    } | null;
     readonly mdx: {
       readonly id: string;
       readonly excerpt: string | null;

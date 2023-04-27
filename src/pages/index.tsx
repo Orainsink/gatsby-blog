@@ -12,16 +12,14 @@ import { DeepRequiredAndNonNullable, FileEdge } from '../../typings/custom';
 import { useHasMounted } from '../hooks';
 
 type Data = DeepRequiredAndNonNullable<Queries.getPageDataQuery>;
-const Index = ({
-  data,
-  pageContext,
-}: PageProps<Data, PageContext>): ReactElement => {
+const Index = ({ data }: PageProps<Data>): ReactElement => {
   const hasMounted = useHasMounted();
   const posts = data.allMdx.edges.map((edge) => ({
     node: {
       childMdx: edge.node,
     },
   })) as FileEdge[];
+
   return (
     <>
       {hasMounted && <HomeScene />}
@@ -47,9 +45,7 @@ const Index = ({
 
 export default Index;
 
-export const Head = ({
-  pageContext: { ogImage },
-}: PageProps<{}, PageContext>) => <Seo title="首页" ogImage={ogImage} />;
+export const Head = () => <Seo title="首页" />;
 
 export const pageQuery = graphql`
   query getPageData {

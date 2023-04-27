@@ -2,14 +2,12 @@ import { ReactElement } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import { DeepRequiredAndNonNullable } from '../../typings/custom';
-import { DEFAULT_OG_IMAGE } from '../assets/constants/defaultOgImage';
 
 interface Props {
   description?: string;
   lang?: string;
   meta?: [];
   title: string;
-  ogImage?: OgImage;
 }
 /**
  * Seo component that queries for data with
@@ -17,25 +15,24 @@ interface Props {
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
-export const Seo = ({
-  description,
-  title,
-  ogImage = DEFAULT_OG_IMAGE,
-}: Props): ReactElement => {
-  const { site } = useStaticQuery<
+export const Seo = ({ description, title }: Props): ReactElement => {
+  const { site, ogImage } = useStaticQuery<
     DeepRequiredAndNonNullable<Queries.getSeoDataQuery>
   >(
     graphql`
       query getSeoData {
         site {
           siteMetadata {
+            title
             description
-            siteUrl
             social {
               github
             }
-            title
+            siteUrl
           }
+        }
+        ogImage: file(absolutePath: { regex: "/og-bg.jpeg/" }) {
+          publicURL
         }
       }
     `
@@ -52,12 +49,9 @@ export const Seo = ({
       <meta name="og:description" content={metaDescription} />
       <meta name="og:type" content="website" />
       <meta name="og:description" content={metaDescription} />
-      <meta
-        property="og:image"
-        content={`${metadata.siteUrl}/${ogImage.path}`}
-      />
-      <meta property="og:image:width" content={ogImage.size.width} />
-      <meta property="og:image:width" content={ogImage.size.width} />
+      <meta property="og:image" content={ogImage.publicURL} />
+      <meta property="og:image:width" content="512" />
+      <meta property="og:image:width" content="512" />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:creator" content={metadata.social.github} />
       <meta name="twitter:title" content={title} />
