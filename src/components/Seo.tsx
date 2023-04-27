@@ -49,9 +49,12 @@ export const Seo = ({ description, title }: Props): ReactElement => {
       <meta name="og:description" content={metaDescription} />
       <meta name="og:type" content="website" />
       <meta name="og:description" content={metaDescription} />
-      <meta property="og:image" content={ogImage.publicURL} />
-      <meta property="og:image:width" content="512" />
-      <meta property="og:image:width" content="512" />
+      <meta
+        property="og:image"
+        content={metadata.siteUrl + ogImage.publicURL}
+      />
+      <meta property="og:image:width" content="256" />
+      <meta property="og:image:width" content="256" />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:creator" content={metadata.social.github} />
       <meta name="twitter:title" content={title} />
