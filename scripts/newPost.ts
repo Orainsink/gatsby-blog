@@ -36,6 +36,7 @@ const QUESTIONS = [
     type: 'confirm',
     name: 'isTodo',
     message: 'create in todo folder? (default is false)',
+    default: false,
   },
 ];
 
