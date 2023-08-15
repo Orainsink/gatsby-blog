@@ -28,6 +28,7 @@
     "gatsby-plugin-manifest": "5.8.0",
     "gatsby-plugin-mdx": "5.8.0",
     "gatsby-plugin-mdx-embed": "^1.1.3",
+    "gatsby-plugin-netlify": "^5.1.0",
     "gatsby-plugin-nprogress": "5.8.0",
     "gatsby-plugin-offline": "6.8.0",
     "gatsby-plugin-sharp": "5.8.0",

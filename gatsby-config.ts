@@ -213,6 +213,7 @@ const config: GatsbyConfig = {
         production: true,
       },
     },
+    'gatsby-plugin-netlify',
     isProduction && {
       resolve: `gatsby-plugin-algolia`,
       options: {
