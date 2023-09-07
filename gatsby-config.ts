@@ -162,6 +162,13 @@ const config: GatsbyConfig = {
             options: {
               maxWidth: 890,
               wrapperStyle: `margin: 1rem auto;`,
+              linkImagesToOriginal: false,
+            },
+          },
+          {
+            resolve: 'gatsby-remark-images-medium-zoom',
+            options: {
+              background: 'var(--color-bg-layout)',
             },
           },
         ],

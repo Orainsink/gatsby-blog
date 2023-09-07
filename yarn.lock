@@ -1385,6 +1385,11 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.36.0.tgz#9837f768c03a1e4a30bd304a64fb8844f0e72efe"
   integrity sha512-lxJ9R5ygVm8ZWgYdUweoq5ownDlJ4upvoWmO4eLxBYHdMo+vZ/Rx0EN6MbKWDJOSUGrqJy2Gt+Dyv/VKml0fjg==
 
+"@fastly/performance-observer-polyfill@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@fastly/performance-observer-polyfill/-/performance-observer-polyfill-1.1.1.tgz#2e64762fa2e43f32c01dcb2ac68421aded55bbb8"
+  integrity sha512-hmXJBYhIs77KPyg/IcPM5sDeQSPLrTzD6DqGfSUUtvEUoQxbW6nxHYCYJE8CP+Ay+OUqLZlTpW+w1OEOZWckzQ==
+
 "@gatsbyjs/parcel-namer-relative-to-cwd@^2.8.0":
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/@gatsbyjs/parcel-namer-relative-to-cwd/-/parcel-namer-relative-to-cwd-2.8.0.tgz#62178054b97048328070fcafdcb12964f3f43811"
@@ -7500,6 +7505,14 @@ gatsby-react-router-scroll@^6.8.0:
     "@babel/runtime" "^7.20.13"
     prop-types "^15.8.1"
 
+gatsby-remark-images-medium-zoom@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-images-medium-zoom/-/gatsby-remark-images-medium-zoom-1.7.0.tgz#b9a55ebf29a4a15f9e7da7a8f4d0dfbe47aa5717"
+  integrity sha512-TLaq+ua+nO2CX/B/FnWB0OvJiLdplzbRCXrgCxYoZs3RkN5IfUu9BJYKEFjzx6J3uhwLvBA7XqE5cFOZ2cu4AQ==
+  dependencies:
+    "@fastly/performance-observer-polyfill" "^1.1.1"
+    medium-zoom "^1.0.4"
+
 gatsby-remark-images@7.8.0:
   version "7.8.0"
   resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-7.8.0.tgz#bd2d31f909dfe2886eeee53413a0275b9b224a0d"
@@ -9961,6 +9974,11 @@ media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
   integrity sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==
+
+medium-zoom@^1.0.4:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/medium-zoom/-/medium-zoom-1.0.8.tgz#2bd1fbcf2961fa7b0e318fe284462aa9b8608ed2"
+  integrity sha512-CjFVuFq/IfrdqesAXfg+hzlDKu6A2n80ZIq0Kl9kWjoHh9j1N9Uvk5X0/MmN0hOfm5F9YBswlClhcwnmtwz7gA==
 
 mem@^8.1.1:
   version "8.1.1"
