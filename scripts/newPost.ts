@@ -85,10 +85,17 @@ class NewPost {
       console.error(error);
     }
   }
+  createFolderIfNeeded(folderPath: string) {
+    if (!fs.existsSync(folderPath)) {
+      fs.mkdirSync(folderPath);
+      console.log(`Folder created: ${folderPath}`);
+    }
+  }
   getPath() {
     const { categories, title } = this.config;
     const folderName = this.isTodo ? 'todo' : categories;
     if (this.isFolder) {
+      this.createFolderIfNeeded(`./content/${folderName}`);
       fs.mkdirSync(`./content/${folderName}/${title}`);
       this.path = `./content/${folderName}/${title}/${title}.mdx`;
     } else {
